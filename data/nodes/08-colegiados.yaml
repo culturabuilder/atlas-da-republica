@@ -1,0 +1,127 @@
+# Colegiados deliberativos do Executivo. Cada um com norma de criação e composição.
+- id: br-conselho-monetario-nacional
+  type: commission
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-da-fazenda
+  name: Conselho Monetário Nacional
+  aliases: [CMN]
+  description: >-
+    Órgão superior do Sistema Financeiro Nacional; fixa as diretrizes da política monetária, creditícia e cambial
+    e a meta de inflação. Composto pelo Ministro da Fazenda (presidente), pelo Ministro do Planejamento e Orçamento
+    e pelo Presidente do Banco Central.
+  cite: Lei 4.595/1964 arts. 2º-4º; Lei 9.069/1995 art. 8º
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l9069.htm
+  official_url: https://www.bcb.gov.br/acessoinformacao/cmn
+  seats_count: 3
+
+- id: br-comite-de-politica-monetaria
+  type: commission
+  sector: executivo
+  ring: 3
+  parent: br-banco-central-do-brasil
+  name: Comitê de Política Monetária
+  aliases: [Copom]
+  description: >-
+    Colegiado do Banco Central que define a taxa Selic a cada 45 dias. Formado pelo Presidente e pelos Diretores
+    do Banco Central.
+  cite: Circular BCB 2.698/1996; Resolução BCB 61/2021
+  cite_url: https://www.bcb.gov.br/controleinflacao/copom
+  official_url: https://www.bcb.gov.br/controleinflacao/copom
+  seats_count: 9
+  verified: false
+
+- id: br-conselho-nacional-de-politica-energetica
+  type: commission
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-de-minas-e-energia
+  name: Conselho Nacional de Política Energética
+  aliases: [CNPE]
+  description: >-
+    Propõe ao Presidente da República políticas nacionais e medidas para o setor de energia; presidido pelo
+    Ministro de Minas e Energia.
+  cite: Lei 9.478/1997 art. 2º
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l9478.htm
+  official_url: https://www.gov.br/mme/pt-br/assuntos/conselhos-e-comites/cnpe
+
+- id: br-conselho-nacional-do-meio-ambiente
+  type: commission
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+  name: Conselho Nacional do Meio Ambiente
+  aliases: [Conama, CONAMA]
+  description: >-
+    Órgão consultivo e deliberativo do Sistema Nacional do Meio Ambiente; edita resoluções com normas e padrões
+    ambientais. Presidido pelo Ministro do Meio Ambiente.
+  cite: Lei 6.938/1981 art. 6º II e art. 8º
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l6938.htm
+  official_url: https://conama.mma.gov.br/
+
+- id: br-conselho-nacional-de-saude
+  type: commission
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-da-saude
+  name: Conselho Nacional de Saúde
+  aliases: [CNS]
+  description: >-
+    Instância colegiada de controle social do SUS, com representação de usuários, trabalhadores, gestores e
+    prestadores. Delibera sobre diretrizes e aprova o plano nacional de saúde.
+  cite: Lei 8.142/1990 art. 1º; Decreto 5.839/2006
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l8142.htm
+  official_url: https://conselho.saude.gov.br/
+
+- id: br-conselho-nacional-de-educacao
+  type: commission
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-da-educacao
+  name: Conselho Nacional de Educação
+  aliases: [CNE]
+  description: >-
+    Órgão normativo e de assessoramento do MEC; delibera sobre diretrizes curriculares e credenciamento de
+    instituições de ensino superior. Câmaras de Educação Básica e Superior.
+  cite: Lei 9.131/1995 arts. 7º-9º
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l9131.htm
+  official_url: https://www.gov.br/mec/pt-br/cne
+
+- id: br-camara-de-comercio-exterior
+  type: commission
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
+  name: Câmara de Comércio Exterior
+  aliases: [Camex, CAMEX]
+  description: >-
+    Colegiado interministerial que formula e coordena a política de comércio exterior, incluindo tarifas de
+    importação e defesa comercial. Presidido pelo Ministro do MDIC.
+  cite: Lei 14.600/2023 art. 2º; Decreto 11.428/2023
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/decreto/D11428.htm
+  official_url: https://www.gov.br/camex/
+  verified: false
+
+- id: br-conselho-nacional-de-assistencia-social
+  type: commission
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-do-desenvolvimento-social
+  name: Conselho Nacional de Assistência Social
+  aliases: [CNAS]
+  description: Órgão superior de deliberação colegiada do Sistema Único de Assistência Social, paritário entre governo e sociedade civil.
+  cite: Lei 8.742/1993 arts. 17-18
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l8742.htm
+  official_url: https://www.gov.br/mds/pt-br/orgaos/conselhos/cnas
+
+- id: br-conselho-nacional-de-transito
+  type: commission
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-dos-transportes
+  name: Conselho Nacional de Trânsito
+  aliases: [Contran, CONTRAN]
+  description: Órgão máximo normativo do Sistema Nacional de Trânsito; edita as resoluções que regulamentam o Código de Trânsito.
+  cite: Lei 9.503/1997 arts. 7º e 10
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm
+  official_url: https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran

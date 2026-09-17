@@ -1,0 +1,226 @@
+# Poder Judiciário. CF/88 arts. 92-126.
+- id: br-supremo-tribunal-federal
+  type: department
+  subtype: tribunal
+  sector: judiciario
+  ring: 1
+  name: Supremo Tribunal Federal
+  aliases: [STF, Supremo]
+  description: >-
+    Guarda da Constituição. Onze ministros nomeados pelo Presidente da República após aprovação do Senado, com
+    vitaliciedade até os 75 anos. Julga ações de controle concentrado e o Presidente, parlamentares e ministros
+    nas infrações penais comuns.
+  cite: CF/88 arts. 101-103
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://portal.stf.jus.br/
+  seats_count: 11
+
+- id: br-conselho-nacional-de-justica
+  type: commission
+  sector: judiciario
+  ring: 2
+  name: Conselho Nacional de Justiça
+  aliases: [CNJ]
+  description: >-
+    Controla a atuação administrativa e financeira do Poder Judiciário e o cumprimento dos deveres dos juízes.
+    Quinze membros com mandato de dois anos, presididos pelo Presidente do STF.
+  cite: CF/88 art. 103-B
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.cnj.jus.br/
+  seats_count: 15
+
+- id: br-superior-tribunal-de-justica
+  type: department
+  subtype: tribunal
+  sector: judiciario
+  ring: 2
+  name: Superior Tribunal de Justiça
+  aliases: [STJ]
+  description: >-
+    Uniformiza a interpretação da lei federal. Trinta e três ministros nomeados pelo Presidente da República após
+    aprovação do Senado, escolhidos entre desembargadores, advogados e membros do Ministério Público.
+  cite: CF/88 arts. 104-105
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.stj.jus.br/
+  seats_count: 33
+
+- id: br-tribunal-superior-do-trabalho
+  type: department
+  subtype: tribunal
+  sector: judiciario
+  ring: 2
+  name: Tribunal Superior do Trabalho
+  aliases: [TST]
+  description: >-
+    Instância máxima da Justiça do Trabalho. Vinte e sete ministros nomeados pelo Presidente após aprovação do
+    Senado.
+  cite: CF/88 art. 111-A
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.tst.jus.br/
+  seats_count: 27
+
+- id: br-tribunal-superior-eleitoral
+  type: department
+  subtype: tribunal
+  sector: judiciario
+  ring: 2
+  name: Tribunal Superior Eleitoral
+  aliases: [TSE]
+  description: >-
+    Instância máxima da Justiça Eleitoral; organiza as eleições e julga o registro e a cassação de candidatos.
+    Sete membros: três ministros do STF e dois do STJ eleitos por seus pares, e dois advogados nomeados pelo
+    Presidente a partir de lista sêxtupla do STF.
+  cite: CF/88 arts. 118-121
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.tse.jus.br/
+  seats_count: 7
+
+- id: br-superior-tribunal-militar
+  type: department
+  subtype: tribunal
+  sector: judiciario
+  ring: 2
+  name: Superior Tribunal Militar
+  aliases: [STM]
+  description: >-
+    Instância máxima da Justiça Militar da União. Quinze ministros vitalícios nomeados pelo Presidente após
+    aprovação do Senado: dez oficiais-generais e cinco civis.
+  cite: CF/88 arts. 122-124
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.stm.jus.br/
+  seats_count: 15
+
+- id: br-conselho-da-justica-federal
+  type: commission
+  sector: judiciario
+  ring: 3
+  parent: br-superior-tribunal-de-justica
+  name: Conselho da Justiça Federal
+  aliases: [CJF]
+  description: >-
+    Órgão do STJ que exerce a supervisão administrativa e orçamentária da Justiça Federal de primeiro e segundo
+    graus.
+  cite: CF/88 art. 105, parágrafo único, II; Lei 11.798/2008
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11798.htm
+  official_url: https://www.cjf.jus.br/
+
+- id: br-conselho-superior-da-justica-do-trabalho
+  type: commission
+  sector: judiciario
+  ring: 3
+  parent: br-tribunal-superior-do-trabalho
+  name: Conselho Superior da Justiça do Trabalho
+  aliases: [CSJT]
+  description: Órgão do TST que supervisiona administrativa, orçamentária e financeiramente a Justiça do Trabalho.
+  cite: CF/88 art. 111-A §2º II
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.csjt.jus.br/
+
+- id: br-tribunal-regional-federal-da-1a-regiao
+  type: department
+  subtype: tribunal
+  sector: judiciario
+  ring: 3
+  parent: br-superior-tribunal-de-justica
+  name: Tribunal Regional Federal da 1ª Região
+  aliases: [TRF1, TRF-1]
+  description: Segunda instância da Justiça Federal com sede em Brasília; jurisdição sobre DF e treze estados.
+  cite: CF/88 arts. 107-108; Lei 7.727/1989
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.trf1.jus.br/
+
+- id: br-tribunal-regional-federal-da-2a-regiao
+  type: department
+  subtype: tribunal
+  sector: judiciario
+  ring: 3
+  parent: br-superior-tribunal-de-justica
+  name: Tribunal Regional Federal da 2ª Região
+  aliases: [TRF2, TRF-2]
+  description: Segunda instância da Justiça Federal com sede no Rio de Janeiro; jurisdição sobre RJ e ES.
+  cite: CF/88 arts. 107-108; Lei 7.727/1989
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.trf2.jus.br/
+
+- id: br-tribunal-regional-federal-da-3a-regiao
+  type: department
+  subtype: tribunal
+  sector: judiciario
+  ring: 3
+  parent: br-superior-tribunal-de-justica
+  name: Tribunal Regional Federal da 3ª Região
+  aliases: [TRF3, TRF-3]
+  description: Segunda instância da Justiça Federal com sede em São Paulo; jurisdição sobre SP e MS.
+  cite: CF/88 arts. 107-108; Lei 7.727/1989
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.trf3.jus.br/
+
+- id: br-tribunal-regional-federal-da-4a-regiao
+  type: department
+  subtype: tribunal
+  sector: judiciario
+  ring: 3
+  parent: br-superior-tribunal-de-justica
+  name: Tribunal Regional Federal da 4ª Região
+  aliases: [TRF4, TRF-4]
+  description: Segunda instância da Justiça Federal com sede em Porto Alegre; jurisdição sobre RS, SC e PR.
+  cite: CF/88 arts. 107-108; Lei 7.727/1989
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.trf4.jus.br/
+
+- id: br-tribunal-regional-federal-da-5a-regiao
+  type: department
+  subtype: tribunal
+  sector: judiciario
+  ring: 3
+  parent: br-superior-tribunal-de-justica
+  name: Tribunal Regional Federal da 5ª Região
+  aliases: [TRF5, TRF-5]
+  description: Segunda instância da Justiça Federal com sede em Recife; jurisdição sobre seis estados do Nordeste.
+  cite: CF/88 arts. 107-108; Lei 7.727/1989
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.trf5.jus.br/
+
+- id: br-tribunal-regional-federal-da-6a-regiao
+  type: department
+  subtype: tribunal
+  sector: judiciario
+  ring: 3
+  parent: br-superior-tribunal-de-justica
+  name: Tribunal Regional Federal da 6ª Região
+  aliases: [TRF6, TRF-6]
+  description: Segunda instância da Justiça Federal com sede em Belo Horizonte; jurisdição sobre MG. Instalado em 2022.
+  cite: Lei 14.226/2021
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/L14226.htm
+  official_url: https://www.trf6.jus.br/
+
+- id: br-tribunais-regionais-do-trabalho
+  type: department
+  subtype: tribunal
+  sector: judiciario
+  ring: 3
+  parent: br-tribunal-superior-do-trabalho
+  name: Tribunais Regionais do Trabalho
+  aliases: [TRTs]
+  description: >-
+    Os 24 tribunais de segunda instância da Justiça do Trabalho. Agrupados em um nó na Fase 0; serão
+    desdobrados individualmente na Fase 1.
+  cite: CF/88 arts. 112-115
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.tst.jus.br/web/guest/tribunais-regionais
+  seats_count: 24
+
+- id: br-tribunais-regionais-eleitorais
+  type: department
+  subtype: tribunal
+  sector: judiciario
+  ring: 3
+  parent: br-tribunal-superior-eleitoral
+  name: Tribunais Regionais Eleitorais
+  aliases: [TREs]
+  description: >-
+    Os 27 tribunais eleitorais, um por unidade da federação. Agrupados em um nó na Fase 0.
+  cite: CF/88 art. 120
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.tse.jus.br/
+  seats_count: 27

@@ -1,0 +1,169 @@
+# Funções essenciais à Justiça (CF/88 arts. 127-135) e controle externo (arts. 70-75). Quarto setor da roda.
+- id: br-ministerio-publico-da-uniao
+  type: department
+  subtype: ministerio_publico
+  sector: essenciais
+  ring: 1
+  name: Ministério Público da União
+  aliases: [MPU]
+  description: >-
+    Instituição permanente, essencial à função jurisdicional, incumbida da defesa da ordem jurídica, do regime
+    democrático e dos interesses sociais e individuais indisponíveis. Compreende o MPF, o MPT, o MPM e o MPDFT,
+    sob a chefia do Procurador-Geral da República.
+  cite: CF/88 arts. 127-128; LC 75/1993
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp75.htm
+  official_url: https://www.mpu.mp.br/
+
+- id: br-ministerio-publico-federal
+  type: department
+  subtype: ministerio_publico
+  sector: essenciais
+  ring: 2
+  parent: br-ministerio-publico-da-uniao
+  name: Ministério Público Federal
+  aliases: [MPF, Procuradoria-Geral da República, PGR]
+  description: >-
+    Ramo do MPU que atua perante o STF, o STJ, os TRFs e a Justiça Federal, em matéria criminal, cível,
+    eleitoral e na tutela de direitos coletivos.
+  cite: LC 75/1993 arts. 37-82
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp75.htm
+  official_url: https://www.mpf.mp.br/
+
+- id: br-ministerio-publico-do-trabalho
+  type: department
+  subtype: ministerio_publico
+  sector: essenciais
+  ring: 3
+  parent: br-ministerio-publico-da-uniao
+  name: Ministério Público do Trabalho
+  aliases: [MPT]
+  description: Ramo do MPU que atua perante a Justiça do Trabalho na defesa dos direitos coletivos trabalhistas.
+  cite: LC 75/1993 arts. 83-115
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp75.htm
+  official_url: https://mpt.mp.br/
+
+- id: br-ministerio-publico-militar
+  type: department
+  subtype: ministerio_publico
+  sector: essenciais
+  ring: 3
+  parent: br-ministerio-publico-da-uniao
+  name: Ministério Público Militar
+  aliases: [MPM]
+  description: Ramo do MPU que atua perante a Justiça Militar da União.
+  cite: LC 75/1993 arts. 116-148
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp75.htm
+  official_url: https://www.mpm.mp.br/
+
+- id: br-ministerio-publico-do-distrito-federal-e-territorios
+  type: department
+  subtype: ministerio_publico
+  sector: essenciais
+  ring: 3
+  parent: br-ministerio-publico-da-uniao
+  name: Ministério Público do Distrito Federal e Territórios
+  aliases: [MPDFT]
+  description: Ramo do MPU que atua perante o Tribunal de Justiça e os juízes do Distrito Federal e Territórios.
+  cite: LC 75/1993 arts. 149-181
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp75.htm
+  official_url: https://www.mpdft.mp.br/
+
+- id: br-conselho-nacional-do-ministerio-publico
+  type: commission
+  sector: essenciais
+  ring: 2
+  name: Conselho Nacional do Ministério Público
+  aliases: [CNMP]
+  description: >-
+    Controla a atuação administrativa e financeira do Ministério Público e o cumprimento dos deveres funcionais de
+    seus membros. Catorze membros nomeados pelo Presidente da República após aprovação do Senado, presididos pelo
+    Procurador-Geral da República.
+  cite: CF/88 art. 130-A
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.cnmp.mp.br/
+  seats_count: 14
+
+- id: br-defensoria-publica-da-uniao
+  type: department
+  subtype: defensoria
+  sector: essenciais
+  ring: 2
+  name: Defensoria Pública da União
+  aliases: [DPU]
+  description: >-
+    Instituição permanente, essencial à função jurisdicional, que presta assistência jurídica integral e gratuita
+    aos necessitados perante a Justiça Federal, do Trabalho, Eleitoral e Militar e os tribunais superiores.
+  cite: CF/88 art. 134; LC 80/1994
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp80.htm
+  official_url: https://www.dpu.def.br/
+
+- id: br-advocacia-geral-da-uniao
+  type: department
+  subtype: advocacia
+  sector: essenciais
+  ring: 2
+  name: Advocacia-Geral da União
+  aliases: [AGU]
+  description: >-
+    Representa a União judicial e extrajudicialmente e presta consultoria e assessoramento jurídico ao Poder
+    Executivo. Seu chefe, o Advogado-Geral da União, tem status de Ministro de Estado.
+  cite: CF/88 art. 131; LC 73/1993; Lei 14.600/2023 art. 47
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp73.htm
+  official_url: https://www.gov.br/agu/
+
+- id: br-procuradoria-geral-da-uniao
+  type: department
+  subtype: advocacia
+  sector: essenciais
+  ring: 3
+  parent: br-advocacia-geral-da-uniao
+  name: Procuradoria-Geral da União
+  aliases: [PGU]
+  description: Órgão da AGU que representa a União em juízo na área não tributária.
+  cite: LC 73/1993 arts. 2º e 9º
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp73.htm
+  official_url: https://www.gov.br/agu/pt-br/composicao/pgu
+
+- id: br-procuradoria-geral-federal
+  type: department
+  subtype: advocacia
+  sector: essenciais
+  ring: 3
+  parent: br-advocacia-geral-da-uniao
+  name: Procuradoria-Geral Federal
+  aliases: [PGF]
+  description: Órgão vinculado à AGU que representa judicialmente as autarquias e fundações federais.
+  cite: Lei 10.480/2002 arts. 9º-10
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/2002/l10480.htm
+  official_url: https://www.gov.br/agu/pt-br/composicao/pgf
+
+- id: br-procuradoria-geral-da-fazenda-nacional
+  type: department
+  subtype: advocacia
+  sector: essenciais
+  ring: 3
+  parent: br-advocacia-geral-da-uniao
+  name: Procuradoria-Geral da Fazenda Nacional
+  aliases: [PGFN]
+  description: >-
+    Órgão da AGU, subordinado administrativamente ao Ministério da Fazenda, que representa a União nas causas
+    tributárias e cobra a dívida ativa.
+  cite: LC 73/1993 arts. 12-13
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp73.htm
+  official_url: https://www.gov.br/pgfn/
+
+- id: br-tribunal-de-contas-da-uniao
+  type: department
+  subtype: tribunal
+  sector: essenciais
+  ring: 2
+  name: Tribunal de Contas da União
+  aliases: [TCU]
+  description: >-
+    Órgão de controle externo que auxilia o Congresso Nacional na fiscalização contábil, financeira, orçamentária e
+    patrimonial da União. Nove ministros: um terço escolhido pelo Presidente com aprovação do Senado, dois terços
+    pelo Congresso.
+  cite: CF/88 arts. 70-73; Lei 8.443/1992
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l8443.htm
+  official_url: https://portal.tcu.gov.br/
+  seats_count: 9

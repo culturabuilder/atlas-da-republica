@@ -1,0 +1,172 @@
+# Presidência da República e órgãos de assessoramento. Lei 14.600/2023 (organização básica dos órgãos da Presidência e dos Ministérios).
+- id: br-presidencia-da-republica
+  type: department
+  subtype: orgao_presidencia
+  sector: executivo
+  ring: 1
+  name: Presidência da República
+  aliases: [Planalto, Palácio do Planalto]
+  description: >-
+    Estrutura de apoio direto ao Presidente. É constituída pela Casa Civil, Secretaria-Geral, Secretaria de Relações
+    Institucionais, Secretaria de Comunicação Social, Gabinete Pessoal e Gabinete de Segurança Institucional,
+    além dos órgãos de assessoramento imediato e de consulta.
+  cite: Lei 14.600/2023 arts. 2º a 6º
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm
+  official_url: https://www.gov.br/planalto/
+
+- id: br-casa-civil
+  type: department
+  subtype: orgao_presidencia
+  sector: executivo
+  ring: 2
+  parent: br-presidencia-da-republica
+  name: Casa Civil da Presidência da República
+  aliases: [Casa Civil, CC]
+  description: >-
+    Coordena e integra as ações do governo, analisa a constitucionalidade e o mérito das propostas submetidas ao
+    Presidente e avalia os projetos prioritários. Seu chefe tem status de Ministro de Estado.
+  cite: Lei 14.600/2023 art. 3º
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm
+  official_url: https://www.gov.br/casacivil/
+
+- id: br-secretaria-geral-da-presidencia
+  type: department
+  subtype: orgao_presidencia
+  sector: executivo
+  ring: 2
+  parent: br-presidencia-da-republica
+  name: Secretaria-Geral da Presidência da República
+  aliases: [Secretaria-Geral, SG-PR]
+  description: >-
+    Assiste o Presidente no relacionamento com entidades da sociedade civil e na articulação de mecanismos de
+    participação social; supervisiona o Conselho de Desenvolvimento Econômico Social Sustentável.
+  cite: Lei 14.600/2023 art. 4º
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm
+  official_url: https://www.gov.br/secretariageral/
+
+- id: br-secretaria-de-relacoes-institucionais
+  type: department
+  subtype: orgao_presidencia
+  sector: executivo
+  ring: 2
+  parent: br-presidencia-da-republica
+  name: Secretaria de Relações Institucionais da Presidência da República
+  aliases: [SRI, Relações Institucionais]
+  description: >-
+    Coordena a articulação política do governo com o Congresso Nacional, os partidos e os entes federativos,
+    e acompanha a tramitação das proposições de interesse do Executivo.
+  cite: Lei 14.600/2023 art. 5º
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm
+  official_url: https://www.gov.br/secretariadegoverno/
+
+- id: br-secretaria-de-comunicacao-social
+  type: department
+  subtype: orgao_presidencia
+  sector: executivo
+  ring: 2
+  parent: br-presidencia-da-republica
+  name: Secretaria de Comunicação Social da Presidência da República
+  aliases: [Secom, Secom-PR]
+  description: >-
+    Formula e coordena a política de comunicação e publicidade do Poder Executivo federal e supervisiona a
+    Empresa Brasil de Comunicação.
+  cite: Lei 14.600/2023 art. 6º
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm
+  official_url: https://www.gov.br/secom/
+
+- id: br-gabinete-de-seguranca-institucional
+  type: department
+  subtype: orgao_presidencia
+  sector: executivo
+  ring: 2
+  parent: br-presidencia-da-republica
+  name: Gabinete de Segurança Institucional da Presidência da República
+  aliases: [GSI, GSI-PR]
+  description: >-
+    Assiste o Presidente em assuntos militares e de segurança, coordena as atividades de inteligência federal e
+    a segurança da informação, e zela pela segurança pessoal do Presidente e do Vice-Presidente.
+  cite: Lei 14.600/2023 art. 8º
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm
+  official_url: https://www.gov.br/gsi/
+
+- id: br-agencia-brasileira-de-inteligencia
+  type: department
+  subtype: orgao_singular
+  sector: executivo
+  ring: 3
+  parent: br-gabinete-de-seguranca-institucional
+  name: Agência Brasileira de Inteligência
+  aliases: [ABIN]
+  description: >-
+    Órgão central do Sistema Brasileiro de Inteligência. Planeja e executa as atividades de inteligência e
+    contrainteligência de interesse do Estado.
+  cite: Lei 9.883/1999
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l9883.htm
+  official_url: https://www.gov.br/abin/
+
+- id: br-controladoria-geral-da-uniao
+  type: department
+  subtype: ministerio
+  sector: executivo
+  ring: 2
+  parent: br-presidencia-da-republica
+  name: Controladoria-Geral da União
+  aliases: [CGU]
+  description: >-
+    Órgão central de controle interno, auditoria, correição, ouvidoria e prevenção da corrupção do Poder Executivo
+    federal. Seu titular é Ministro de Estado.
+  cite: Lei 14.600/2023 art. 9º e arts. 46-47
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm
+  official_url: https://www.gov.br/cgu/
+
+# Colegiados de consulta do Presidente (CF arts. 89-91; Lei 14.600 art. 2º)
+- id: br-conselho-da-republica
+  type: advisory
+  sector: executivo
+  ring: 3
+  parent: br-presidencia-da-republica
+  name: Conselho da República
+  description: >-
+    Órgão superior de consulta do Presidente. Pronuncia-se sobre intervenção federal, estado de defesa, estado de
+    sítio e questões relevantes para a estabilidade das instituições democráticas.
+  cite: CF/88 arts. 89-90; Lei 8.041/1990
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  seats_count: 14
+
+- id: br-conselho-de-defesa-nacional
+  type: advisory
+  sector: executivo
+  ring: 3
+  parent: br-presidencia-da-republica
+  name: Conselho de Defesa Nacional
+  aliases: [CDN]
+  description: >-
+    Órgão de consulta do Presidente nos assuntos relacionados à soberania nacional e à defesa do Estado democrático.
+    Opina sobre declaração de guerra, celebração de paz e uso de áreas indispensáveis à segurança.
+  cite: CF/88 art. 91; Lei 8.183/1991
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+
+- id: br-conselho-de-desenvolvimento-economico-social-sustentavel
+  type: advisory
+  sector: executivo
+  ring: 4
+  parent: br-secretaria-geral-da-presidencia
+  name: Conselho de Desenvolvimento Econômico Social Sustentável
+  aliases: [CDESS, Conselhão]
+  description: >-
+    Assessora o Presidente na formulação de políticas e diretrizes voltadas ao desenvolvimento econômico e social
+    sustentável, reunindo representantes da sociedade civil, empresários e trabalhadores.
+  cite: Lei 14.600/2023 art. 2º; Decreto 11.372/2023
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm
+
+- id: br-conselho-de-governo
+  type: advisory
+  sector: executivo
+  ring: 3
+  parent: br-presidencia-da-republica
+  name: Conselho de Governo
+  description: >-
+    Assessora o Presidente na formulação de diretrizes da ação governamental. Reúne os Ministros de Estado e o
+    titular do Gabinete Pessoal, sob presidência do Presidente da República ou, por delegação, da Casa Civil.
+  cite: Lei 14.600/2023 art. 2º, §1º e art. 11
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm

@@ -1,0 +1,127 @@
+# Legislativo além das Casas (que estão em 01). CF/88 arts. 57-58; regimentos internos.
+- id: br-mesa-da-camara-dos-deputados
+  type: commission
+  sector: legislativo
+  ring: 3
+  parent: br-camara-dos-deputados
+  name: Mesa Diretora da Câmara dos Deputados
+  aliases: [Mesa da Câmara]
+  description: >-
+    Órgão de direção da Câmara, eleito pelos deputados para mandato de dois anos: Presidente, dois Vice-Presidentes
+    e quatro Secretários. Dirige os trabalhos legislativos e os serviços administrativos da Casa.
+  cite: CF/88 art. 57 §4º; RICD arts. 14-15
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.camara.leg.br/a-camara/estruturaadm/mesa
+  seats_count: 7
+
+- id: br-mesa-do-senado-federal
+  type: commission
+  sector: legislativo
+  ring: 3
+  parent: br-senado-federal
+  name: Mesa do Senado Federal
+  aliases: [Mesa do Senado]
+  description: >-
+    Órgão de direção do Senado, eleito pelos senadores para dois anos. Seu Presidente preside também as sessões
+    conjuntas do Congresso Nacional.
+  cite: CF/88 art. 57 §§4º-5º; RISF arts. 46-48
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www25.senado.leg.br/web/senadores/mesa-diretora
+  seats_count: 7
+
+- id: br-comissao-de-constituicao-e-justica-e-de-cidadania-da-camara
+  type: commission
+  sector: legislativo
+  ring: 3
+  parent: br-camara-dos-deputados
+  name: Comissão de Constituição e Justiça e de Cidadania da Câmara
+  aliases: [CCJC, CCJ da Câmara]
+  description: >-
+    Comissão permanente que examina a constitucionalidade, juridicidade e técnica legislativa de todas as proposições
+    e admite as propostas de emenda à Constituição.
+  cite: RICD art. 32 IV
+  cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
+  official_url: https://www2.camara.leg.br/atividade-legislativa/comissoes/comissoes-permanentes/ccjc
+
+- id: br-comissao-de-financas-e-tributacao-da-camara
+  type: commission
+  sector: legislativo
+  ring: 3
+  parent: br-camara-dos-deputados
+  name: Comissão de Finanças e Tributação da Câmara
+  aliases: [CFT]
+  description: >-
+    Comissão permanente que examina a adequação orçamentária e financeira das proposições e matérias tributárias.
+  cite: RICD art. 32 X
+  cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
+  official_url: https://www2.camara.leg.br/atividade-legislativa/comissoes/comissoes-permanentes/cft
+
+- id: br-comissao-de-constituicao-justica-e-cidadania-do-senado
+  type: commission
+  sector: legislativo
+  ring: 3
+  parent: br-senado-federal
+  name: Comissão de Constituição, Justiça e Cidadania do Senado
+  aliases: [CCJ, CCJ do Senado]
+  description: >-
+    Comissão permanente que opina sobre constitucionalidade e juridicidade e realiza as sabatinas de ministros do
+    STF, STJ e tribunais superiores, do Procurador-Geral da República e de membros do CNJ e do CNMP.
+  cite: RISF art. 101
+  cite_url: https://www25.senado.leg.br/web/atividade/regimento-interno
+  official_url: https://legis.senado.leg.br/comissoes/comissao?codcol=34
+
+- id: br-comissao-de-assuntos-economicos-do-senado
+  type: commission
+  sector: legislativo
+  ring: 3
+  parent: br-senado-federal
+  name: Comissão de Assuntos Econômicos do Senado
+  aliases: [CAE]
+  description: >-
+    Comissão permanente de matéria econômica, financeira e tributária. Sabatina o presidente e os diretores do
+    Banco Central e da CVM e os dirigentes de agências reguladoras da área econômica.
+  cite: RISF art. 99
+  cite_url: https://www25.senado.leg.br/web/atividade/regimento-interno
+  official_url: https://legis.senado.leg.br/comissoes/comissao?codcol=38
+
+- id: br-comissao-de-relacoes-exteriores-e-defesa-nacional-do-senado
+  type: commission
+  sector: legislativo
+  ring: 3
+  parent: br-senado-federal
+  name: Comissão de Relações Exteriores e Defesa Nacional do Senado
+  aliases: [CRE]
+  description: >-
+    Comissão permanente que aprecia tratados e sabatina os chefes de missão diplomática permanente indicados pelo
+    Presidente da República.
+  cite: RISF art. 103; CF/88 art. 52 IV
+  cite_url: https://www25.senado.leg.br/web/atividade/regimento-interno
+  official_url: https://legis.senado.leg.br/comissoes/comissao?codcol=54
+
+- id: br-comissao-de-infraestrutura-do-senado
+  type: commission
+  sector: legislativo
+  ring: 3
+  parent: br-senado-federal
+  name: Comissão de Serviços de Infraestrutura do Senado
+  aliases: [CI]
+  description: >-
+    Comissão permanente de transportes, energia, telecomunicações e obras públicas. Sabatina os dirigentes da
+    Aneel, ANP, Anatel, ANTT, Antaq, Anac e ANA.
+  cite: RISF art. 104
+  cite_url: https://www25.senado.leg.br/web/atividade/regimento-interno
+  official_url: https://legis.senado.leg.br/comissoes/comissao?codcol=59
+
+- id: br-comissao-mista-de-orcamento
+  type: commission
+  sector: legislativo
+  ring: 3
+  parent: br-congresso-nacional
+  name: Comissão Mista de Planos, Orçamentos Públicos e Fiscalização
+  aliases: [CMO, Comissão Mista de Orçamento]
+  description: >-
+    Comissão permanente mista de deputados e senadores que examina o PPA, a LDO, a LOA e as contas do Presidente
+    da República, e acompanha a execução orçamentária.
+  cite: CF/88 art. 166 §1º; Resolução CN 1/2006
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.congressonacional.leg.br/materias/orcamento-da-uniao/cmo

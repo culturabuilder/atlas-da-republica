@@ -1,0 +1,95 @@
+# Centro da roda e órgãos eletivos. CF/88 arts. 14, 44-46, 76-77.
+- id: br-eleitorado
+  type: constituency
+  sector: null
+  ring: 0
+  name: Povo brasileiro
+  aliases: [Eleitorado, Eleitores]
+  description: >-
+    O eleitorado nacional. Elege, por voto direto e secreto, o Presidente e o Vice-Presidente da República,
+    os 81 senadores e os 513 deputados federais. Todo o poder emana do povo (CF art. 1º, parágrafo único).
+  cite: CF/88 art. 1º, parágrafo único; art. 14
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.tse.jus.br/
+  seats_count: 0
+
+- id: br-presidente-da-republica
+  type: elected
+  subtype: chefia_executivo
+  sector: executivo
+  ring: 1
+  name: Presidente da República
+  aliases: [Presidente, PR, Chefe do Executivo]
+  description: >-
+    Chefe de Estado e de Governo, eleito por maioria absoluta em até dois turnos para mandato de quatro anos.
+    Nomeia e exonera os Ministros de Estado, exerce a direção superior da administração federal, sanciona e veta
+    leis e comanda as Forças Armadas.
+  cite: CF/88 arts. 76, 77, 84
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.gov.br/planalto/
+  seats_count: 1
+  head_of: br-presidencia-da-republica
+
+- id: br-vice-presidente-da-republica
+  type: elected
+  subtype: chefia_executivo
+  sector: executivo
+  ring: 1
+  name: Vice-Presidente da República
+  aliases: [Vice-Presidente, Vice]
+  description: >-
+    Eleito na mesma chapa do Presidente. Substitui o Presidente nos impedimentos e o sucede no caso de vaga;
+    integra o Conselho da República e o Conselho de Defesa Nacional.
+  cite: CF/88 arts. 77 §1º, 79, 89 I, 91 I
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.gov.br/planalto/pt-br/vice-presidencia
+  seats_count: 1
+
+- id: br-congresso-nacional
+  type: elected
+  subtype: casa_legislativa
+  sector: legislativo
+  ring: 1
+  name: Congresso Nacional
+  aliases: [Congresso, Parlamento]
+  description: >-
+    Poder Legislativo da União, bicameral, composto pela Câmara dos Deputados e pelo Senado Federal.
+    Legisla, aprova o orçamento, fiscaliza o Executivo com auxílio do TCU e julga o Presidente
+    nos crimes de responsabilidade.
+  cite: CF/88 arts. 44, 48, 49, 70
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.congressonacional.leg.br/
+  seats_count: 594
+
+- id: br-camara-dos-deputados
+  type: elected
+  subtype: casa_legislativa
+  sector: legislativo
+  ring: 2
+  parent: br-congresso-nacional
+  name: Câmara dos Deputados
+  aliases: [Câmara, CD]
+  description: >-
+    Casa dos representantes do povo: 513 deputados eleitos pelo sistema proporcional para mandatos de quatro anos.
+    Tem a iniciativa privativa de autorizar processo contra o Presidente e de tomar as contas quando não prestadas.
+  cite: CF/88 arts. 45, 51
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.camara.leg.br/
+  seats_count: 513
+
+- id: br-senado-federal
+  type: elected
+  subtype: casa_legislativa
+  sector: legislativo
+  ring: 2
+  parent: br-congresso-nacional
+  name: Senado Federal
+  aliases: [Senado, SF]
+  description: >-
+    Casa dos representantes dos Estados e do Distrito Federal: 81 senadores, três por unidade da federação,
+    eleitos pelo sistema majoritário para oito anos. Aprova, após sabatina, ministros de tribunais superiores,
+    o Procurador-Geral da República, a diretoria do Banco Central e chefes de missão diplomática.
+  cite: CF/88 arts. 46, 52
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.senado.leg.br/
+  seats_count: 81

@@ -1,0 +1,1083 @@
+# Executivo: órgãos singulares (anel 3) e administração indireta (anel 4). DL 200/1967 arts. 4º-5º; vinculações conforme Lei 14.600/2023 e decretos de estrutura.
+# `verified: false` marca citações a conferir pelo pesquisador da Fase 0.
+- id: br-banco-central-do-brasil
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 2
+  parent: null
+  name: Banco Central do Brasil
+  aliases:
+    - BCB
+    - Bacen
+    - Banco Central
+  description: >-
+    Autarquia de natureza especial com autonomia técnica, operacional, administrativa e financeira. Executa a política
+    monetária, regula e supervisiona o sistema financeiro e emite a moeda. Não é vinculado a ministério; presidente
+    e diretores têm mandato fixo.
+  cite: LC 179/2021 arts. 1º, 4º e 6º; Lei 4.595/1964
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/Lcp179.htm
+  official_url: https://www.bcb.gov.br/
+- id: br-receita-federal-do-brasil
+  type: department
+  subtype: orgao_singular
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-da-fazenda
+  name: Secretaria Especial da Receita Federal do Brasil
+  aliases:
+    - Receita Federal
+    - RFB
+    - Receita
+  description: >-
+    Administração dos tributos federais e do comércio exterior (aduana), arrecadação, fiscalização e cobrança dos
+    créditos tributários da União.
+  cite: Lei 11.457/2007 art. 2º
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/lei/l11457.htm
+  official_url: https://www.gov.br/receitafederal/
+- id: br-secretaria-do-tesouro-nacional
+  type: department
+  subtype: orgao_singular
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-da-fazenda
+  name: Secretaria do Tesouro Nacional
+  aliases:
+    - Tesouro Nacional
+    - STN
+    - Tesouro
+  description: >-
+    Órgão central de contabilidade e administração financeira da União: gere a dívida pública, o caixa único e os
+    sistemas Siafi e Siconfi.
+  cite: Decreto 92.452/1986; Lei 10.180/2001 arts. 5º-9º
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/leis_2001/l10180.htm
+  official_url: https://www.gov.br/tesouronacional/
+  verified: false
+- id: br-comissao-de-valores-mobiliarios
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-fazenda
+  name: Comissão de Valores Mobiliários
+  aliases:
+    - CVM
+  description: >-
+    Regula e fiscaliza o mercado de valores mobiliários: companhias abertas, bolsas, fundos e intermediários. Colegiado
+    de presidente e quatro diretores com mandato.
+  cite: Lei 6.385/1976 arts. 5º e 6º
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l6385.htm
+  official_url: https://www.gov.br/cvm/
+- id: br-superintendencia-de-seguros-privados
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-fazenda
+  name: Superintendência de Seguros Privados
+  aliases:
+    - Susep
+  description: >-
+    Controle e fiscalização dos mercados de seguros, previdência privada aberta, capitalização e resseguros.
+  cite: Decreto-Lei 73/1966 art. 35
+  cite_url: https://www.planalto.gov.br/ccivil_03/decreto-lei/del0073.htm
+  official_url: https://www.gov.br/susep/
+- id: br-banco-do-brasil
+  type: department
+  subtype: sociedade_economia_mista
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-fazenda
+  name: Banco do Brasil S.A.
+  aliases:
+    - BB
+    - Banco do Brasil
+  description: >-
+    Sociedade de economia mista sob controle da União, agente financeiro do Tesouro Nacional e executor de políticas
+    de crédito rural e de fomento.
+  cite: Lei 4.595/1964 art. 19; Lei 13.303/2016
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l4595.htm
+  official_url: https://www.bb.com.br/
+- id: br-caixa-economica-federal
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-fazenda
+  name: Caixa Econômica Federal
+  aliases:
+    - Caixa
+    - CEF
+  description: >-
+    Empresa pública, agente operador do FGTS, das loterias federais e dos programas sociais e habitacionais do governo
+    federal.
+  cite: Decreto-Lei 759/1969
+  cite_url: https://www.planalto.gov.br/ccivil_03/decreto-lei/del0759.htm
+  official_url: https://www.caixa.gov.br/
+- id: br-casa-da-moeda-do-brasil
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-fazenda
+  name: Casa da Moeda do Brasil
+  aliases:
+    - CMB
+    - Casa da Moeda
+  description: >-
+    Empresa pública responsável pela fabricação de papel-moeda, moeda metálica, passaportes e selos fiscais.
+  cite: Lei 5.895/1973
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l5895.htm
+  official_url: https://www.casadamoeda.gov.br/
+- id: br-bndes
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
+  name: Banco Nacional de Desenvolvimento Econômico e Social
+  aliases:
+    - BNDES
+  description: >-
+    Empresa pública federal, principal instrumento de financiamento de longo prazo para investimentos em infraestrutura,
+    indústria e inovação.
+  cite: Lei 5.662/1971; Lei 13.303/2016
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l5662.htm
+  official_url: https://www.bndes.gov.br/
+- id: br-instituto-nacional-da-propriedade-industrial
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
+  name: Instituto Nacional da Propriedade Industrial
+  aliases:
+    - INPI
+  description: >-
+    Concede patentes, registra marcas, desenhos industriais, indicações geográficas e programas de computador.
+  cite: Lei 5.648/1970
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l5648.htm
+  official_url: https://www.gov.br/inpi/
+- id: br-inmetro
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
+  name: Instituto Nacional de Metrologia, Qualidade e Tecnologia
+  aliases:
+    - Inmetro
+  description: >-
+    Executor das políticas de metrologia legal e científica, avaliação da conformidade e qualidade industrial.
+  cite: Lei 5.966/1973
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l5966.htm
+  official_url: https://www.gov.br/inmetro/
+- id: br-aneel
+  type: department
+  subtype: agencia_reguladora
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-de-minas-e-energia
+  name: Agência Nacional de Energia Elétrica
+  aliases:
+    - Aneel
+    - ANEEL
+  description: >-
+    Regula e fiscaliza a produção, transmissão, distribuição e comercialização de energia elétrica; define tarifas
+    e concede outorgas. Diretoria colegiada de cinco membros.
+  cite: Lei 9.427/1996; Lei 13.848/2019
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l9427cons.htm
+  official_url: https://www.gov.br/aneel/
+- id: br-anp
+  type: department
+  subtype: agencia_reguladora
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-de-minas-e-energia
+  name: Agência Nacional do Petróleo, Gás Natural e Biocombustíveis
+  aliases:
+    - ANP
+  description: >-
+    Regula, contrata e fiscaliza as atividades da indústria do petróleo, gás natural e biocombustíveis, e promove
+    as licitações de blocos exploratórios.
+  cite: Lei 9.478/1997 arts. 7º-8º; Lei 13.848/2019
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l9478.htm
+  official_url: https://www.gov.br/anp/
+- id: br-anm
+  type: department
+  subtype: agencia_reguladora
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-de-minas-e-energia
+  name: Agência Nacional de Mineração
+  aliases:
+    - ANM
+  description: >-
+    Gestão dos recursos minerais da União: outorga de direitos minerários, fiscalização e arrecadação da CFEM. Sucedeu
+    o DNPM em 2017.
+  cite: Lei 13.575/2017
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13575.htm
+  official_url: https://www.gov.br/anm/
+- id: br-petrobras
+  type: department
+  subtype: sociedade_economia_mista
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-de-minas-e-energia
+  name: Petróleo Brasileiro S.A.
+  aliases:
+    - Petrobras
+  description: >-
+    Sociedade de economia mista sob controle da União, atua em exploração, produção, refino e comercialização de
+    petróleo, gás e derivados.
+  cite: Lei 9.478/1997 arts. 61-62; Lei 13.303/2016
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l9478.htm
+  official_url: https://petrobras.com.br/
+- id: br-empresa-de-pesquisa-energetica
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-de-minas-e-energia
+  name: Empresa de Pesquisa Energética
+  aliases:
+    - EPE
+  description: >-
+    Estudos e pesquisas para subsidiar o planejamento do setor energético: expansão da geração, transmissão, petróleo,
+    gás e eficiência energética.
+  cite: Lei 10.847/2004
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10.847.htm
+  official_url: https://www.epe.gov.br/
+- id: br-anatel
+  type: department
+  subtype: agencia_reguladora
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-das-comunicacoes
+  name: Agência Nacional de Telecomunicações
+  aliases:
+    - Anatel
+    - ANATEL
+  description: >-
+    Regula e fiscaliza os serviços de telecomunicações, administra o espectro de radiofrequências e expede outorgas.
+    Conselho diretor de cinco membros.
+  cite: Lei 9.472/1997 arts. 8º e 19
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l9472.htm
+  official_url: https://www.gov.br/anatel/
+- id: br-correios
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-das-comunicacoes
+  name: Empresa Brasileira de Correios e Telégrafos
+  aliases:
+    - Correios
+    - ECT
+  description: >-
+    Empresa pública que executa, em regime de monopólio, os serviços postais de carta e telegrama e opera encomendas
+    e logística.
+  cite: Decreto-Lei 509/1969; Lei 6.538/1978
+  cite_url: https://www.planalto.gov.br/ccivil_03/decreto-lei/del0509.htm
+  official_url: https://www.correios.com.br/
+- id: br-telebras
+  type: department
+  subtype: sociedade_economia_mista
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-das-comunicacoes
+  name: Telecomunicações Brasileiras S.A.
+  aliases:
+    - Telebras
+  description: >-
+    Sociedade de economia mista que opera infraestrutura de rede e o satélite geoestacionário de defesa e comunicações
+    estratégicas.
+  cite: Lei 5.792/1972; Decreto 7.175/2010
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l5792.htm
+  official_url: https://www.telebras.com.br/
+- id: br-empresa-brasil-de-comunicacao
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-secretaria-de-comunicacao-social
+  name: Empresa Brasil de Comunicação
+  aliases:
+    - EBC
+    - TV Brasil
+  description: >-
+    Empresa pública que presta os serviços de radiodifusão pública (TV Brasil, rádios) e a comunicação institucional
+    do governo federal (Canal Gov, Agência Brasil).
+  cite: Lei 11.652/2008
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11652.htm
+  official_url: https://www.ebc.com.br/
+- id: br-anvisa
+  type: department
+  subtype: agencia_reguladora
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-saude
+  name: Agência Nacional de Vigilância Sanitária
+  aliases:
+    - Anvisa
+    - ANVISA
+  description: >-
+    Controle sanitário de medicamentos, alimentos, cosméticos, produtos para saúde, portos, aeroportos e fronteiras.
+    Diretoria colegiada de cinco membros.
+  cite: Lei 9.782/1999
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l9782.htm
+  official_url: https://www.gov.br/anvisa/
+- id: br-ans
+  type: department
+  subtype: agencia_reguladora
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-saude
+  name: Agência Nacional de Saúde Suplementar
+  aliases:
+    - ANS
+  description: Regula, normatiza e fiscaliza os planos privados de assistência à saúde e as operadoras.
+  cite: Lei 9.961/2000
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l9961.htm
+  official_url: https://www.gov.br/ans/
+- id: br-fiocruz
+  type: department
+  subtype: fundacao
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-saude
+  name: Fundação Oswaldo Cruz
+  aliases:
+    - Fiocruz
+  description: >-
+    Fundação pública de pesquisa, ensino e produção em saúde: vacinas (Bio-Manguinhos), medicamentos (Farmanguinhos),
+    vigilância e formação.
+  cite: Lei 5.019/1966; Decreto 4.725/2003
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/1950-1969/l5019.htm
+  official_url: https://portal.fiocruz.br/
+  verified: false
+- id: br-funasa
+  type: department
+  subtype: fundacao
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-saude
+  name: Fundação Nacional de Saúde
+  aliases:
+    - Funasa
+  description: Fundação pública que promove saneamento básico em municípios pequenos e saúde ambiental.
+  cite: Lei 8.029/1990 art. 14; Decreto 100/1991
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l8029cons.htm
+  official_url: https://www.gov.br/funasa/
+- id: br-inep
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-educacao
+  name: Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira
+  aliases:
+    - Inep
+    - INEP
+  description: >-
+    Avaliações e estatísticas educacionais: Enem, Saeb, Censo Escolar, Censo da Educação Superior.
+  cite: Lei 9.448/1997
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l9448.htm
+  official_url: https://www.gov.br/inep/
+- id: br-fnde
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-educacao
+  name: Fundo Nacional de Desenvolvimento da Educação
+  aliases:
+    - FNDE
+  description: >-
+    Executa as transferências e programas de financiamento da educação básica: PNAE (merenda), PNLD (livro didático),
+    PDDE, transporte escolar e Fies.
+  cite: Lei 5.537/1968; Decreto 9.007/2017
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l5537.htm
+  official_url: https://www.gov.br/fnde/
+- id: br-capes
+  type: department
+  subtype: fundacao
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-educacao
+  name: Coordenação de Aperfeiçoamento de Pessoal de Nível Superior
+  aliases:
+    - Capes
+    - CAPES
+  description: >-
+    Fundação que avalia a pós-graduação stricto sensu, concede bolsas de mestrado e doutorado e fomenta a formação
+    de professores.
+  cite: Lei 8.405/1992
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l8405.htm
+  official_url: https://www.gov.br/capes/
+- id: br-ebserh
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-educacao
+  name: Empresa Brasileira de Serviços Hospitalares
+  aliases:
+    - Ebserh
+    - EBSERH
+  description: Empresa pública que administra os hospitais universitários federais.
+  cite: Lei 12.550/2011
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12550.htm
+  official_url: https://www.gov.br/ebserh/
+- id: br-cnpq
+  type: department
+  subtype: fundacao
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-ciencia-tecnologia-e-inovacao
+  name: Conselho Nacional de Desenvolvimento Científico e Tecnológico
+  aliases:
+    - CNPq
+  description: >-
+    Fundação de fomento à pesquisa científica e tecnológica: bolsas de pesquisa, auxílios e o Currículo Lattes.
+  cite: Lei 6.129/1974
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/1970-1979/l6129.htm
+  official_url: https://www.gov.br/cnpq/
+- id: br-finep
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-ciencia-tecnologia-e-inovacao
+  name: Financiadora de Estudos e Projetos
+  aliases:
+    - Finep
+    - FINEP
+  description: >-
+    Empresa pública que financia ciência, tecnologia e inovação em empresas, universidades e institutos; secretaria-executiva
+    do FNDCT.
+  cite: Decreto 61.056/1967; Lei 11.540/2007
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/lei/l11540.htm
+  official_url: https://www.finep.gov.br/
+  verified: false
+- id: br-inpe
+  type: department
+  subtype: orgao_singular
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-da-ciencia-tecnologia-e-inovacao
+  name: Instituto Nacional de Pesquisas Espaciais
+  aliases:
+    - INPE
+  description: >-
+    Unidade de pesquisa do MCTI em ciências espaciais, meteorologia, monitoramento por satélite (desmatamento, queimadas)
+    e engenharia espacial.
+  cite: Decreto 11.xxx/2023 (estrutura regimental do MCTI)
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm
+  official_url: https://www.gov.br/inpe/
+  verified: false
+- id: br-agencia-espacial-brasileira
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-ciencia-tecnologia-e-inovacao
+  name: Agência Espacial Brasileira
+  aliases:
+    - AEB
+  description: Autarquia que formula e coordena a política espacial brasileira e o programa espacial.
+  cite: Lei 8.854/1994
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l8854.htm
+  official_url: https://www.gov.br/aeb/
+- id: br-cnen
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-ciencia-tecnologia-e-inovacao
+  name: Comissão Nacional de Energia Nuclear
+  aliases:
+    - CNEN
+  description: >-
+    Autarquia que executa a política nuclear, pesquisa e produz radioisótopos. A regulação e a fiscalização passaram
+    à ANSN em 2021.
+  cite: Lei 4.118/1962; Lei 14.222/2021
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l4118.htm
+  official_url: https://www.gov.br/cnen/
+- id: br-policia-federal
+  type: department
+  subtype: orgao_singular
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-da-justica-e-seguranca-publica
+  name: Polícia Federal
+  aliases:
+    - PF
+    - DPF
+  description: >-
+    Órgão permanente da União: polícia judiciária federal, controle de fronteiras, imigração, repressão ao tráfico
+    e a crimes contra a ordem política e social.
+  cite: CF/88 art. 144 §1º; Lei 9.266/1996
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.gov.br/pf/
+- id: br-policia-rodoviaria-federal
+  type: department
+  subtype: orgao_singular
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-da-justica-e-seguranca-publica
+  name: Polícia Rodoviária Federal
+  aliases:
+    - PRF
+  description: Patrulhamento ostensivo das rodovias federais.
+  cite: CF/88 art. 144 §2º
+  cite_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+  official_url: https://www.gov.br/prf/
+- id: br-cade
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-justica-e-seguranca-publica
+  name: Conselho Administrativo de Defesa Econômica
+  aliases:
+    - Cade
+    - CADE
+  description: >-
+    Autarquia que julga atos de concentração e condutas anticompetitivas. Tribunal administrativo de presidente
+    e seis conselheiros, todos sabatinados pelo Senado.
+  cite: Lei 12.529/2011 arts. 4º-6º
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12529.htm
+  official_url: https://www.gov.br/cade/
+- id: br-anpd
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-presidencia-da-republica
+  name: Autoridade Nacional de Proteção de Dados
+  aliases:
+    - ANPD
+  description: >-
+    Autarquia de natureza especial que zela pela proteção de dados pessoais, fiscaliza e aplica sanções da LGPD.
+    Conselho diretor de cinco membros sabatinados pelo Senado.
+  cite: Lei 13.709/2018 arts. 55-A a 55-D (redação da Lei 14.460/2022)
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm
+  official_url: https://www.gov.br/anpd/
+  verified: false
+- id: br-ibama
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+  name: Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis
+  aliases:
+    - Ibama
+    - IBAMA
+  description: >-
+    Autarquia que executa o licenciamento ambiental federal, a fiscalização e o poder de polícia ambiental.
+  cite: Lei 7.735/1989
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l7735.htm
+  official_url: https://www.gov.br/ibama/
+- id: br-icmbio
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+  name: Instituto Chico Mendes de Conservação da Biodiversidade
+  aliases:
+    - ICMBio
+  description: >-
+    Autarquia que gere as unidades de conservação federais e executa ações de conservação da biodiversidade.
+  cite: Lei 11.516/2007
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/lei/l11516.htm
+  official_url: https://www.gov.br/icmbio/
+- id: br-ana
+  type: department
+  subtype: agencia_reguladora
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-integracao-e-do-desenvolvimento-regional
+  name: Agência Nacional de Águas e Saneamento Básico
+  aliases:
+    - ANA
+  description: >-
+    Regula o uso dos recursos hídricos de domínio da União e edita normas de referência para o saneamento básico.
+  cite: Lei 9.984/2000; Lei 14.026/2020
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l9984.htm
+  official_url: https://www.gov.br/ana/
+  verified: false
+- id: br-sudene
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-integracao-e-do-desenvolvimento-regional
+  name: Superintendência do Desenvolvimento do Nordeste
+  aliases:
+    - Sudene
+  description: >-
+    Autarquia que promove o desenvolvimento do Nordeste e administra incentivos fiscais e o FDNE.
+  cite: LC 125/2007
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp125.htm
+  official_url: https://www.gov.br/sudene/
+- id: br-sudam
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-integracao-e-do-desenvolvimento-regional
+  name: Superintendência do Desenvolvimento da Amazônia
+  aliases:
+    - Sudam
+  description: >-
+    Autarquia que promove o desenvolvimento da Amazônia Legal e administra o FDA e incentivos fiscais.
+  cite: LC 124/2007
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp124.htm
+  official_url: https://www.gov.br/sudam/
+- id: br-sudeco
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-integracao-e-do-desenvolvimento-regional
+  name: Superintendência do Desenvolvimento do Centro-Oeste
+  aliases:
+    - Sudeco
+  description: Autarquia que promove o desenvolvimento do Centro-Oeste e administra o FDCO.
+  cite: LC 129/2009
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp129.htm
+  official_url: https://www.gov.br/sudeco/
+- id: br-dnocs
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-integracao-e-do-desenvolvimento-regional
+  name: Departamento Nacional de Obras Contra as Secas
+  aliases:
+    - DNOCS
+  description: Autarquia que executa obras hídricas, açudes e perímetros irrigados no semiárido.
+  cite: Lei 4.229/1963
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/1950-1969/l4229.htm
+  official_url: https://www.gov.br/dnocs/
+- id: br-codevasf
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-integracao-e-do-desenvolvimento-regional
+  name: Companhia de Desenvolvimento dos Vales do São Francisco e do Parnaíba
+  aliases:
+    - Codevasf
+  description: >-
+    Empresa pública de desenvolvimento regional dos vales dos rios São Francisco, Parnaíba, Itapecuru e Mearim:
+    irrigação, infraestrutura e revitalização.
+  cite: Lei 6.088/1974
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l6088.htm
+  official_url: https://www.codevasf.gov.br/
+- id: br-antt
+  type: department
+  subtype: agencia_reguladora
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-dos-transportes
+  name: Agência Nacional de Transportes Terrestres
+  aliases:
+    - ANTT
+  description: >-
+    Regula e fiscaliza rodovias e ferrovias concedidas e o transporte rodoviário de passageiros e cargas.
+  cite: Lei 10.233/2001 arts. 21-26
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/leis_2001/l10233.htm
+  official_url: https://www.gov.br/antt/
+- id: br-dnit
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-dos-transportes
+  name: Departamento Nacional de Infraestrutura de Transportes
+  aliases:
+    - DNIT
+  description: >-
+    Autarquia que constrói, mantém e opera a infraestrutura rodoviária, ferroviária e aquaviária federal não concedida.
+  cite: Lei 10.233/2001 arts. 79-83
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/leis_2001/l10233.htm
+  official_url: https://www.gov.br/dnit/
+- id: br-infra-sa
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-dos-transportes
+  name: Infra S.A.
+  aliases:
+    - Infra S.A.
+    - VALEC
+  description: >-
+    Empresa pública de planejamento e infraestrutura de transportes, resultante da fusão da VALEC com a EPL em 2022.
+  cite: Lei 11.772/2008; Decreto 11.204/2022
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11772.htm
+  official_url: https://www.infrasa.gov.br/
+  verified: false
+- id: br-antaq
+  type: department
+  subtype: agencia_reguladora
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-de-portos-e-aeroportos
+  name: Agência Nacional de Transportes Aquaviários
+  aliases:
+    - Antaq
+    - ANTAQ
+  description: Regula e fiscaliza portos, terminais e navegação. Diretoria de três membros.
+  cite: Lei 10.233/2001 arts. 21-27
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/leis_2001/l10233.htm
+  official_url: https://www.gov.br/antaq/
+- id: br-anac
+  type: department
+  subtype: agencia_reguladora
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-de-portos-e-aeroportos
+  name: Agência Nacional de Aviação Civil
+  aliases:
+    - Anac
+    - ANAC
+  description: Regula e fiscaliza a aviação civil e a infraestrutura aeroportuária e aeronáutica civil.
+  cite: Lei 11.182/2005
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2005/lei/l11182.htm
+  official_url: https://www.gov.br/anac/
+- id: br-infraero
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-de-portos-e-aeroportos
+  name: Empresa Brasileira de Infraestrutura Aeroportuária
+  aliases:
+    - Infraero
+  description: >-
+    Empresa pública que administra aeroportos e presta serviços de navegação aérea não concedidos.
+  cite: Lei 5.862/1972
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l5862.htm
+  official_url: https://www.infraero.gov.br/
+- id: br-embrapa
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-agricultura-e-pecuaria
+  name: Empresa Brasileira de Pesquisa Agropecuária
+  aliases:
+    - Embrapa
+  description: Empresa pública de pesquisa agropecuária, com unidades em todo o país.
+  cite: Lei 5.851/1972
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l5851.htm
+  official_url: https://www.embrapa.br/
+- id: br-conab
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-agricultura-e-pecuaria
+  name: Companhia Nacional de Abastecimento
+  aliases:
+    - Conab
+  description: >-
+    Empresa pública que executa a política de garantia de preços mínimos, estoques públicos e o levantamento de
+    safras.
+  cite: Lei 8.029/1990 art. 19
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l8029cons.htm
+  official_url: https://www.conab.gov.br/
+- id: br-incra
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-do-desenvolvimento-agrario
+  name: Instituto Nacional de Colonização e Reforma Agrária
+  aliases:
+    - Incra
+    - INCRA
+  description: >-
+    Autarquia que executa a reforma agrária, o cadastro de imóveis rurais e a regularização fundiária.
+  cite: Decreto-Lei 1.110/1970
+  cite_url: https://www.planalto.gov.br/ccivil_03/decreto-lei/1965-1988/del1110.htm
+  official_url: https://www.gov.br/incra/
+- id: br-funai
+  type: department
+  subtype: fundacao
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-dos-povos-indigenas
+  name: Fundação Nacional dos Povos Indígenas
+  aliases:
+    - Funai
+    - FUNAI
+  description: >-
+    Fundação que executa a política indigenista: proteção dos povos, demarcação e fiscalização de terras indígenas.
+  cite: Lei 5.371/1967
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/1950-1969/l5371.htm
+  official_url: https://www.gov.br/funai/
+- id: br-inss
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-previdencia-social
+  name: Instituto Nacional do Seguro Social
+  aliases:
+    - INSS
+  description: >-
+    Autarquia que reconhece direitos e paga os benefícios do Regime Geral de Previdência Social: aposentadorias,
+    pensões, auxílios e o BPC.
+  cite: Lei 8.029/1990 art. 17
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l8029cons.htm
+  official_url: https://www.gov.br/inss/
+- id: br-previc
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-previdencia-social
+  name: Superintendência Nacional de Previdência Complementar
+  aliases:
+    - Previc
+  description: >-
+    Autarquia que fiscaliza e supervisiona as entidades fechadas de previdência complementar (fundos de pensão).
+  cite: Lei 12.154/2009
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/lei/l12154.htm
+  official_url: https://www.gov.br/previc/
+- id: br-ibge
+  type: department
+  subtype: fundacao
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-do-planejamento-e-orcamento
+  name: Instituto Brasileiro de Geografia e Estatística
+  aliases:
+    - IBGE
+  description: Fundação que produz as estatísticas oficiais (Censo, PNAD, IPCA) e a cartografia do país.
+  cite: Lei 5.878/1973
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l5878.htm
+  official_url: https://www.ibge.gov.br/
+- id: br-ipea
+  type: department
+  subtype: fundacao
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-do-planejamento-e-orcamento
+  name: Instituto de Pesquisa Econômica Aplicada
+  aliases:
+    - Ipea
+    - IPEA
+  description: Fundação que produz estudos e avaliações para subsidiar políticas públicas.
+  cite: Decreto 7.142/2010
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/decreto/d7142.htm
+  official_url: https://www.ipea.gov.br/
+  verified: false
+- id: br-enap
+  type: department
+  subtype: fundacao
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-gestao
+  name: Escola Nacional de Administração Pública
+  aliases:
+    - Enap
+    - ENAP
+  description: Fundação que forma e capacita servidores públicos federais e realiza concursos e seleções.
+  cite: Lei 6.871/1980; Lei 8.140/1990
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l6871.htm
+  official_url: https://www.gov.br/enap/
+- id: br-serpro
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-gestao
+  name: Serviço Federal de Processamento de Dados
+  aliases:
+    - Serpro
+  description: >-
+    Empresa pública de tecnologia da informação que opera sistemas estruturantes como Siafi, Receita e gov.br.
+  cite: Lei 4.516/1964; Lei 5.615/1970
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l5615.htm
+  official_url: https://www.serpro.gov.br/
+- id: br-dataprev
+  type: department
+  subtype: empresa_publica
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-gestao
+  name: Empresa de Tecnologia e Informações da Previdência
+  aliases:
+    - Dataprev
+  description: Empresa pública de TI que processa os benefícios previdenciários e sociais e o CNIS.
+  cite: Lei 6.125/1974
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l6125.htm
+  official_url: https://www.dataprev.gov.br/
+- id: br-iphan
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-cultura
+  name: Instituto do Patrimônio Histórico e Artístico Nacional
+  aliases:
+    - Iphan
+    - IPHAN
+  description: >-
+    Autarquia que preserva o patrimônio cultural brasileiro: tombamentos, registro de bens imateriais e fiscalização.
+  cite: Lei 8.113/1990
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l8113.htm
+  official_url: https://www.gov.br/iphan/
+- id: br-funarte
+  type: department
+  subtype: fundacao
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-cultura
+  name: Fundação Nacional de Artes
+  aliases:
+    - Funarte
+  description: Fundação de fomento às artes visuais, música, teatro, dança e circo.
+  cite: Lei 6.312/1975
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/1970-1979/l6312.htm
+  official_url: https://www.gov.br/funarte/
+- id: br-biblioteca-nacional
+  type: department
+  subtype: fundacao
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-cultura
+  name: Fundação Biblioteca Nacional
+  aliases:
+    - Biblioteca Nacional
+    - FBN
+  description: >-
+    Fundação que guarda a memória bibliográfica e documental do país e administra o depósito legal e o registro
+    de direitos autorais de obras.
+  cite: Lei 8.029/1990 art. 22; Decreto 8.297/2014
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l8029cons.htm
+  official_url: https://www.gov.br/bn/
+  verified: false
+- id: br-ancine
+  type: department
+  subtype: agencia_reguladora
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-cultura
+  name: Agência Nacional do Cinema
+  aliases:
+    - Ancine
+    - ANCINE
+  description: >-
+    Agência que fomenta, regula e fiscaliza o mercado audiovisual e administra o Fundo Setorial do Audiovisual.
+  cite: MP 2.228-1/2001
+  cite_url: https://www.planalto.gov.br/ccivil_03/mpv/2228-1.htm
+  official_url: https://www.gov.br/ancine/
+- id: br-fundacao-cultural-palmares
+  type: department
+  subtype: fundacao
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-da-igualdade-racial
+  name: Fundação Cultural Palmares
+  aliases:
+    - Palmares
+  description: >-
+    Fundação que promove e preserva a cultura afro-brasileira e certifica comunidades remanescentes de quilombos.
+  cite: Lei 7.668/1988
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/l7668.htm
+  official_url: https://www.gov.br/palmares/
+  verified: false
+- id: br-marinha-do-brasil
+  type: department
+  subtype: forca_armada
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-da-defesa
+  name: Marinha do Brasil
+  aliases:
+    - Marinha
+    - MB
+  description: >-
+    Força Armada responsável pelo poder naval, pela segurança da navegação e pela autoridade marítima.
+  cite: CF/88 art. 142; LC 97/1999
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp97.htm
+  official_url: https://www.marinha.mil.br/
+- id: br-exercito-brasileiro
+  type: department
+  subtype: forca_armada
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-da-defesa
+  name: Exército Brasileiro
+  aliases:
+    - Exército
+    - EB
+  description: Força Armada responsável pelo poder terrestre e pela defesa das fronteiras.
+  cite: CF/88 art. 142; LC 97/1999
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp97.htm
+  official_url: https://www.eb.mil.br/
+- id: br-forca-aerea-brasileira
+  type: department
+  subtype: forca_armada
+  sector: executivo
+  ring: 3
+  parent: br-ministerio-da-defesa
+  name: Força Aérea Brasileira
+  aliases:
+    - Aeronáutica
+    - FAB
+  description: Força Armada responsável pelo poder aeroespacial e pelo controle do espaço aéreo.
+  cite: CF/88 art. 142; LC 97/1999
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp97.htm
+  official_url: https://www.fab.mil.br/
+- id: br-imprensa-nacional
+  type: department
+  subtype: orgao_singular
+  sector: executivo
+  ring: 3
+  parent: br-casa-civil
+  name: Imprensa Nacional
+  aliases:
+    - Diário Oficial da União
+    - DOU
+  description: >-
+    Órgão da Casa Civil que publica o Diário Oficial da União, fonte oficial de nomeações, exonerações e atos normativos.
+  cite: Lei 14.600/2023 art. 3º
+  cite_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm
+  official_url: https://www.gov.br/imprensanacional/
+  verified: false
+- id: br-iti
+  type: department
+  subtype: autarquia
+  sector: executivo
+  ring: 4
+  parent: br-casa-civil
+  name: Instituto Nacional de Tecnologia da Informação
+  aliases:
+    - ITI
+  description: Autarquia que opera a Autoridade Certificadora Raiz da ICP-Brasil.
+  cite: MP 2.200-2/2001
+  cite_url: https://www.planalto.gov.br/ccivil_03/mpv/antigas_2001/2200-2.htm
+  official_url: https://www.gov.br/iti/
+- id: br-funag
+  type: department
+  subtype: fundacao
+  sector: executivo
+  ring: 4
+  parent: br-ministerio-das-relacoes-exteriores
+  name: Fundação Alexandre de Gusmão
+  aliases:
+    - Funag
+    - FUNAG
+  description: Fundação de pesquisa, ensino e publicações sobre política externa e diplomacia.
+  cite: Lei 5.717/1971
+  cite_url: https://www.planalto.gov.br/ccivil_03/leis/1970-1979/l5717.htm
+  official_url: https://www.gov.br/funag/

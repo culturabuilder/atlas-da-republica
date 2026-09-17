@@ -1,0 +1,52 @@
+# Layout radial "br-sectors": quatro setores e quatro anéis.
+# A distância do centro codifica quantos passos separam o eleitorado do órgão.
+graph:
+  id: br
+  name: Atlas da República
+  subtitle: Governo federal do Brasil
+  center: br-eleitorado
+
+sectors:
+  - id: legislativo
+    name: Legislativo
+    color_light: "#B8452E"
+    color_dark: "#F0907A"
+  - id: executivo
+    name: Executivo
+    color_light: "#3B4C9B"
+    color_dark: "#9AA6EE"
+  - id: judiciario
+    name: Judiciário
+    color_light: "#8A6C10"
+    color_dark: "#E2C25A"
+  - id: essenciais
+    name: Funções essenciais e controle
+    short: Essenciais
+    color_light: "#5E3D7A"
+    color_dark: "#C9A3E6"
+
+rings:
+  1: { name: Chefia, description: "Quem o eleitorado escolhe diretamente e as chefias de cada poder" }
+  2: { name: Cúpula, description: "Ministérios, plenários, tribunais superiores, procuradorias-gerais" }
+  3: { name: Administração direta, description: "Secretarias, comissões, tribunais regionais, órgãos internos" }
+  4: { name: Administração indireta, description: "Autarquias, fundações, agências, estatais, conselhos" }
+
+node_types:
+  constituency: { name: Eleitorado, shape: star }
+  elected: { name: Órgão eletivo, shape: circle }
+  department: { name: Órgão, shape: square }
+  dept_head: { name: Cargo de chefia, shape: person }
+  commission: { name: Colegiado deliberativo, shape: pentagon }
+  advisory: { name: Conselho consultivo, shape: hexagon }
+
+edge_types:
+  elege:        { name: Elege,            style: double }
+  nomeia:       { name: Nomeia,           style: solid }
+  sabatina:     { name: Sabatina e aprova, style: solid-open }
+  fiscaliza:    { name: Fiscaliza,        style: wavy }
+  supervisiona: { name: Supervisiona,     style: wavy }
+  aconselha:    { name: Aconselha,        style: wavy }
+  chefia:       { name: Chefia,           style: dashed }
+  membro_nato:  { name: Membro nato,      style: dotted }
+  integra:      { name: Integra,          style: dotted }
+  indica:       { name: Indica,           style: solid-open }

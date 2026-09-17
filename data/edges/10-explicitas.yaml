@@ -1,0 +1,89 @@
+# Arestas que não se derivam de parent / head_of / nomeado_por / sabatina / eleito_por.
+# Direções: elege, nomeia, sabatina, fiscaliza, supervisiona, aconselha, indica: de quem age para quem recebe.
+# membro_nato: do cargo para o colegiado que ele integra por força de lei.
+- { type: elege, from: br-eleitorado, to: br-presidente-da-republica, seats: 1, cite: "CF/88 art. 77", note: "Maioria absoluta, em até dois turnos" }
+- { type: elege, from: br-eleitorado, to: br-vice-presidente-da-republica, seats: 1, cite: "CF/88 art. 77 §1º", note: "Eleito na chapa do Presidente" }
+- { type: elege, from: br-eleitorado, to: br-camara-dos-deputados, seats: 513, cite: "CF/88 art. 45", note: "Sistema proporcional, por Estado e DF" }
+- { type: elege, from: br-eleitorado, to: br-senado-federal, seats: 81, cite: "CF/88 art. 46", note: "Sistema majoritário, três por unidade da federação" }
+
+# Fiscalização e controle externo
+- { type: fiscaliza, from: br-congresso-nacional, to: br-presidencia-da-republica, cite: "CF/88 art. 49 X; art. 70", note: "Fiscalização e controle dos atos do Poder Executivo, incluídos os da administração indireta" }
+- { type: fiscaliza, from: br-tribunal-de-contas-da-uniao, to: br-presidencia-da-republica, cite: "CF/88 art. 71", note: "Auxilia o Congresso no controle externo; julga contas dos administradores de toda a administração federal" }
+- { type: fiscaliza, from: br-camara-dos-deputados, to: br-presidente-da-republica, cite: "CF/88 art. 51 I", note: "Autoriza, por dois terços, a instauração de processo contra o Presidente" }
+- { type: fiscaliza, from: br-senado-federal, to: br-presidente-da-republica, cite: "CF/88 art. 52 I", note: "Processa e julga o Presidente nos crimes de responsabilidade" }
+- { type: fiscaliza, from: br-controladoria-geral-da-uniao, to: br-presidencia-da-republica, cite: "Lei 14.600/2023 art. 46; Lei 10.180/2001 art. 19", note: "Controle interno do Poder Executivo federal" }
+- { type: fiscaliza, from: br-conselho-nacional-de-justica, to: br-superior-tribunal-de-justica, cite: "CF/88 art. 103-B §4º" }
+- { type: fiscaliza, from: br-conselho-nacional-de-justica, to: br-tribunal-superior-do-trabalho, cite: "CF/88 art. 103-B §4º" }
+- { type: fiscaliza, from: br-conselho-nacional-de-justica, to: br-tribunal-superior-eleitoral, cite: "CF/88 art. 103-B §4º" }
+- { type: fiscaliza, from: br-conselho-nacional-de-justica, to: br-superior-tribunal-militar, cite: "CF/88 art. 103-B §4º" }
+- { type: fiscaliza, from: br-conselho-nacional-de-justica, to: br-tribunal-regional-federal-da-1a-regiao, cite: "CF/88 art. 103-B §4º" }
+- { type: fiscaliza, from: br-conselho-nacional-de-justica, to: br-tribunal-regional-federal-da-2a-regiao, cite: "CF/88 art. 103-B §4º" }
+- { type: fiscaliza, from: br-conselho-nacional-de-justica, to: br-tribunal-regional-federal-da-3a-regiao, cite: "CF/88 art. 103-B §4º" }
+- { type: fiscaliza, from: br-conselho-nacional-de-justica, to: br-tribunal-regional-federal-da-4a-regiao, cite: "CF/88 art. 103-B §4º" }
+- { type: fiscaliza, from: br-conselho-nacional-de-justica, to: br-tribunal-regional-federal-da-5a-regiao, cite: "CF/88 art. 103-B §4º" }
+- { type: fiscaliza, from: br-conselho-nacional-de-justica, to: br-tribunal-regional-federal-da-6a-regiao, cite: "CF/88 art. 103-B §4º" }
+- { type: fiscaliza, from: br-conselho-nacional-de-justica, to: br-tribunais-regionais-do-trabalho, cite: "CF/88 art. 103-B §4º" }
+- { type: fiscaliza, from: br-conselho-nacional-de-justica, to: br-tribunais-regionais-eleitorais, cite: "CF/88 art. 103-B §4º" }
+- { type: fiscaliza, from: br-conselho-nacional-do-ministerio-publico, to: br-ministerio-publico-federal, cite: "CF/88 art. 130-A §2º" }
+- { type: fiscaliza, from: br-conselho-nacional-do-ministerio-publico, to: br-ministerio-publico-do-trabalho, cite: "CF/88 art. 130-A §2º" }
+- { type: fiscaliza, from: br-conselho-nacional-do-ministerio-publico, to: br-ministerio-publico-militar, cite: "CF/88 art. 130-A §2º" }
+- { type: fiscaliza, from: br-conselho-nacional-do-ministerio-publico, to: br-ministerio-publico-do-distrito-federal-e-territorios, cite: "CF/88 art. 130-A §2º" }
+- { type: fiscaliza, from: br-comissao-mista-de-orcamento, to: br-presidencia-da-republica, cite: "CF/88 art. 166 §1º", note: "Examina as contas do Presidente e acompanha a execução orçamentária" }
+
+# Conselhos de consulta do Presidente
+- { type: aconselha, from: br-conselho-da-republica, to: br-presidente-da-republica, cite: "CF/88 art. 90" }
+- { type: aconselha, from: br-conselho-de-defesa-nacional, to: br-presidente-da-republica, cite: "CF/88 art. 91 §1º" }
+- { type: aconselha, from: br-conselho-de-desenvolvimento-economico-social-sustentavel, to: br-presidente-da-republica, cite: "Lei 14.600/2023 art. 2º" }
+- { type: aconselha, from: br-conselho-de-governo, to: br-presidente-da-republica, cite: "Lei 14.600/2023 art. 11" }
+- { type: aconselha, from: br-conselho-nacional-de-politica-energetica, to: br-presidente-da-republica, cite: "Lei 9.478/1997 art. 2º" }
+
+# Membros natos (cargo -> colegiado)
+- { type: membro_nato, from: br-ministro-de-estado-da-fazenda, to: br-conselho-monetario-nacional, cite: "Lei 9.069/1995 art. 8º I", note: "Preside o CMN" }
+- { type: membro_nato, from: br-ministro-de-estado-do-planejamento-e-orcamento, to: br-conselho-monetario-nacional, cite: "Lei 9.069/1995 art. 8º II" }
+- { type: membro_nato, from: br-presidente-do-banco-central, to: br-conselho-monetario-nacional, cite: "Lei 9.069/1995 art. 8º III" }
+- { type: membro_nato, from: br-presidente-do-banco-central, to: br-comite-de-politica-monetaria, cite: "Resolução BCB 61/2021", note: "Preside o Copom" }
+- { type: membro_nato, from: br-diretor-do-banco-central, to: br-comite-de-politica-monetaria, cite: "Resolução BCB 61/2021" }
+- { type: membro_nato, from: br-supremo-tribunal-federal-presidente, to: br-conselho-nacional-de-justica, cite: "CF/88 art. 103-B I e §1º", note: "Preside o CNJ" }
+- { type: membro_nato, from: br-procurador-geral-da-republica, to: br-conselho-nacional-do-ministerio-publico, cite: "CF/88 art. 130-A I", note: "Preside o CNMP" }
+- { type: membro_nato, from: br-vice-presidente-da-republica, to: br-conselho-da-republica, cite: "CF/88 art. 89 I" }
+- { type: membro_nato, from: br-presidente-da-camara-dos-deputados, to: br-conselho-da-republica, cite: "CF/88 art. 89 II" }
+- { type: membro_nato, from: br-presidente-do-senado-federal, to: br-conselho-da-republica, cite: "CF/88 art. 89 III" }
+- { type: membro_nato, from: br-ministro-de-estado-da-justica-e-seguranca-publica, to: br-conselho-da-republica, cite: "CF/88 art. 89 VI" }
+- { type: membro_nato, from: br-vice-presidente-da-republica, to: br-conselho-de-defesa-nacional, cite: "CF/88 art. 91 I" }
+- { type: membro_nato, from: br-presidente-da-camara-dos-deputados, to: br-conselho-de-defesa-nacional, cite: "CF/88 art. 91 II" }
+- { type: membro_nato, from: br-presidente-do-senado-federal, to: br-conselho-de-defesa-nacional, cite: "CF/88 art. 91 III" }
+- { type: membro_nato, from: br-ministro-de-estado-da-justica-e-seguranca-publica, to: br-conselho-de-defesa-nacional, cite: "CF/88 art. 91 IV" }
+- { type: membro_nato, from: br-ministro-de-estado-da-defesa, to: br-conselho-de-defesa-nacional, cite: "CF/88 art. 91 V" }
+- { type: membro_nato, from: br-ministro-de-estado-das-relacoes-exteriores, to: br-conselho-de-defesa-nacional, cite: "CF/88 art. 91 VI" }
+- { type: membro_nato, from: br-ministro-de-estado-do-planejamento-e-orcamento, to: br-conselho-de-defesa-nacional, cite: "CF/88 art. 91 VII" }
+- { type: membro_nato, from: br-marinha-do-brasil-comandante, to: br-conselho-de-defesa-nacional, cite: "CF/88 art. 91 VIII" }
+- { type: membro_nato, from: br-exercito-brasileiro-comandante, to: br-conselho-de-defesa-nacional, cite: "CF/88 art. 91 VIII" }
+- { type: membro_nato, from: br-forca-aerea-brasileira-comandante, to: br-conselho-de-defesa-nacional, cite: "CF/88 art. 91 VIII" }
+- { type: membro_nato, from: br-ministro-de-estado-de-minas-e-energia, to: br-conselho-nacional-de-politica-energetica, cite: "Lei 9.478/1997 art. 2º; Decreto 3.520/2000", note: "Preside o CNPE" }
+- { type: membro_nato, from: br-ministro-de-estado-do-meio-ambiente-e-mudanca-do-clima, to: br-conselho-nacional-do-meio-ambiente, cite: "Lei 6.938/1981 art. 6º II", note: "Preside o Conama" }
+- { type: membro_nato, from: br-ministro-de-estado-da-saude, to: br-conselho-nacional-de-saude, cite: "Decreto 5.839/2006", note: "Membro nato; a presidência é eleita entre os conselheiros" }
+- { type: membro_nato, from: br-ministro-de-estado-do-desenvolvimento-industria-comercio-e-servicos, to: br-camara-de-comercio-exterior, cite: "Decreto 11.428/2023", note: "Preside a Camex" }
+- { type: membro_nato, from: br-presidente-do-senado-federal, to: br-congresso-nacional, cite: "CF/88 art. 57 §5º", note: "Preside a Mesa do Congresso Nacional" }
+- { type: membro_nato, from: br-supremo-tribunal-federal-presidente, to: br-tribunal-superior-eleitoral, cite: "CF/88 art. 119 I a", note: "Três ministros do STF compõem o TSE; não é o Presidente por força do cargo (simplificação da Fase 0)", verified: false }
+
+# Indicações e escolhas por outros órgãos
+- { type: indica, from: br-congresso-nacional, to: br-ministro-do-tcu, seats: 6, cite: "CF/88 art. 73 §2º II", note: "Dois terços dos ministros do TCU são escolhidos pelo Congresso" }
+- { type: indica, from: br-supremo-tribunal-federal, to: br-tribunal-superior-eleitoral-ministro, seats: 3, cite: "CF/88 art. 119 I a", note: "Três ministros eleitos pelo STF entre seus membros" }
+- { type: indica, from: br-superior-tribunal-de-justica, to: br-tribunal-superior-eleitoral-ministro, seats: 2, cite: "CF/88 art. 119 I b", note: "Dois ministros eleitos pelo STJ entre seus membros" }
+- { type: indica, from: br-supremo-tribunal-federal, to: br-tribunal-superior-eleitoral-ministro, seats: 2, cite: "CF/88 art. 119 II", note: "Lista sêxtupla de advogados para as duas vagas nomeadas pelo Presidente" }
+- { type: indica, from: br-camara-dos-deputados, to: br-conselheiro-do-cnj, seats: 1, cite: "CF/88 art. 103-B XIII", note: "Um cidadão indicado pela Câmara" }
+- { type: indica, from: br-senado-federal, to: br-conselheiro-do-cnj, seats: 1, cite: "CF/88 art. 103-B XIII", note: "Um cidadão indicado pelo Senado" }
+- { type: indica, from: br-camara-dos-deputados, to: br-conselho-da-republica, seats: 2, cite: "CF/88 art. 89 VII", note: "Dois cidadãos eleitos pela Câmara" }
+- { type: indica, from: br-senado-federal, to: br-conselho-da-republica, seats: 2, cite: "CF/88 art. 89 VII", note: "Dois cidadãos eleitos pelo Senado" }
+- { type: indica, from: br-presidente-da-republica, to: br-conselho-da-republica, seats: 2, cite: "CF/88 art. 89 VII", note: "Dois cidadãos nomeados pelo Presidente" }
+- { type: indica, from: br-ministerio-publico-federal, to: br-procurador-geral-da-republica, cite: "Costume institucional (lista tríplice da ANPR); sem previsão legal", note: "Prática desde 2003, não vinculante", verified: false }
+- { type: indica, from: br-ministro-de-estado-da-defesa, to: br-marinha-do-brasil-comandante, cite: "LC 97/1999 art. 4º" }
+- { type: indica, from: br-ministro-de-estado-da-defesa, to: br-exercito-brasileiro-comandante, cite: "LC 97/1999 art. 4º" }
+- { type: indica, from: br-ministro-de-estado-da-defesa, to: br-forca-aerea-brasileira-comandante, cite: "LC 97/1999 art. 4º" }
+- { type: indica, from: br-advogado-geral-da-uniao, to: br-procurador-geral-da-uniao, cite: "LC 73/1993 art. 9º", verified: false }
+- { type: indica, from: br-advogado-geral-da-uniao, to: br-procurador-geral-federal, cite: "Lei 10.480/2002 art. 11", verified: false }
+- { type: indica, from: br-ministro-de-estado-da-fazenda, to: br-procurador-geral-da-fazenda-nacional, cite: "LC 73/1993 art. 12", verified: false }
+
+# Nomeações especiais não cobertas por nomeado_por
+- { type: nomeia, from: br-presidente-da-republica, to: br-ministerio-publico-do-trabalho, cite: "LC 75/1993 art. 88", note: "Não: o PGT é nomeado pelo PGR. Aresta mantida como negativa de teste.", disabled: true }
+- { type: sabatina, from: br-senado-federal, to: br-ministerio-das-relacoes-exteriores, cite: "CF/88 art. 52 IV", note: "Aprova previamente os chefes de missão diplomática permanente (embaixadores), cargos que a Fase 1 desdobra por posto" }
