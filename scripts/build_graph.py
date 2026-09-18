@@ -339,8 +339,24 @@ for n in nodes.values():
         rec["positions"].append({"id": n["id"], "name": n["name"], "since": p.get("started_at"), "role": p.get("role")})
         if p.get("party") and not rec.get("party"): rec["party"] = p["party"]
 img_dir = ROOT / "site" / "img"
+import base64, shutil as _sh
+# a mesma pessoa pode ter ids diferentes conforme a fonte (oficial, Wikidata, Câmara): reaproveita a foto pelo nome
+_man_p = ROOT / "build" / "fotos-manifesto.json"
+_byname = json.load(open(_man_p, encoding="utf-8")) if _man_p.exists() else {}
+_byname = {k: v for k, v in _byname.items() if (img_dir / (v + ".jpg")).exists()}
 for rec in people_index.values():
-    rec["photo"] = (img_dir / (rec["id"] + ".jpg")).exists()
+    if (img_dir / (rec["id"] + ".jpg")).exists(): _byname.setdefault(norm(rec["name"] or ""), rec["id"])
+json.dump(_byname, open(_man_p, "w", encoding="utf-8"), ensure_ascii=False)
+for rec in people_index.values():
+    f = img_dir / (rec["id"] + ".jpg")
+    if not f.exists() and norm(rec["name"] or "") in _byname:
+        _sh.copy(img_dir / (_byname[norm(rec["name"])] + ".jpg"), f)
+for rec in people_index.values():
+    f = img_dir / (rec["id"] + ".jpg")
+    rec["photo"] = f.exists()
+    # protótipo publicado não carrega imagens externas: embute as fotos de quem não é parlamentar (poucas e pequenas)
+    if f.exists() and rec.get("source") != "api":
+        rec["photo_data"] = "data:image/jpeg;base64," + base64.b64encode(f.read_bytes()).decode()
 stats["people"] = len(people_index)
 graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "changes": changes[:200], "people": people_index}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
@@ -357,7 +373,7 @@ for nid, n in nodes.items():
 core_edges = {eid: {k: v for k, v in e.items() if k in ("id", "type", "from", "to", "cite", "seats")} for eid, e in graph["edges"].items()}
 core_news = [{k: v for k, v in a.items() if k != "summary"} for a in news]
 core_changes = [{k: v for k, v in c.items() if k not in ("cargoText", "act")} for c in changes[:120]]
-core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), "uf": r.get("uf"), "positions": [q["id"] for q in r["positions"]], "photo": r.get("photo", False)} for pid, r in people_index.items()}
+core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), "uf": r.get("uf"), "positions": [q["id"] for q in r["positions"]], "photo": r.get("photo", False)} for pid, r in people_index.items()}  # sem photo_data: o site serve /img/
 core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "changes": core_changes, "people": core_people, "detail_base": "/nodes/", "img_base": "/img/"}
 cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")

@@ -2,7 +2,7 @@
 """Fotos dos ocupantes → site/img/<id-da-pessoa>.jpg (48×48 em JPEG). Fontes: Câmara, Senado, Wikimedia Commons.
 Uso: .venv/bin/python etl/fotos.py [--limit N]
 """
-import json, io, sys, time, pathlib, argparse, urllib.request
+import json, io, sys, re, time, pathlib, argparse, urllib.request, urllib.parse, urllib.error
 from PIL import Image, ImageOps
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "site" / "img"; OUT.mkdir(parents=True, exist_ok=True)
@@ -13,9 +13,56 @@ def fetch(url):
     r = urllib.request.Request(url, headers=UA)
     return urllib.request.urlopen(r, timeout=40).read()
 
+WD = "https://www.wikidata.org/w/api.php"
+def wd(params):
+    params = dict(params, format="json")
+    for i in range(4):
+        try:
+            r = urllib.request.Request(WD + "?" + urllib.parse.urlencode(params), headers=UA)
+            return json.load(urllib.request.urlopen(r, timeout=60))
+        except urllib.error.HTTPError as e:
+            if e.code == 429: time.sleep(20 * (i + 1)); continue
+            raise
+    return {}
+def name_variants(n):
+    w = n.split(); out = [n]
+    if len(w) >= 3: out += [w[0] + " " + w[-1], " ".join(w[:2]) + " " + w[-1], w[0] + " " + w[1]]
+    return list(dict.fromkeys(out))
+def wikidata_image(name):
+    """Foto (P18) da pessoa no Wikidata, procurando pelo nome; exige item humano com descrição ligada ao Brasil ou a política."""
+    try:
+        hits = wd({"action": "wbsearchentities", "search": name, "language": "pt", "type": "item", "limit": 5}).get("search", [])
+    except Exception: return None
+    for h in hits:
+        d = (h.get("description") or "").lower()
+        if d and not re.search(r"brasil|brazil|polit|minist|jurist|juiz|judge|econom|advogad|lawyer|diplomat|military|militar|servidor|engenh|professor|empres|banqueir|econom", d): continue
+        try:
+            ent = wd({"action": "wbgetentities", "ids": h["id"], "props": "claims"})["entities"][h["id"]]
+        except Exception: continue
+        cl = ent.get("claims", {})
+        if not any((c.get("mainsnak", {}).get("datavalue", {}).get("value", {}) or {}).get("id") == "Q5" for c in cl.get("P31", [])): continue
+        for c in cl.get("P18", [])[:1]:
+            try: return "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(c["mainsnak"]["datavalue"]["value"])
+            except Exception: pass
+        return None
+    return None
+
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--limit", type=int); a = ap.parse_args()
     g = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8"))
+    cache_p = ROOT / "build" / "cache-fotos.json"; cache = json.load(open(cache_p)) if cache_p.exists() else {}
+    # sem foto de origem: tenta o Wikidata pelo nome (só quem não é parlamentar; eles já vêm com foto oficial)
+    for p in g["people"].values():
+        if p.get("image") or p.get("source") == "api": continue
+        if p["id"] in cache: p["image"] = cache[p["id"]]; continue
+        img = None
+        for v in name_variants(p["name"]):
+            img = wikidata_image(v)
+            if img: break
+            time.sleep(0.6)
+        cache[p["id"]] = img; p["image"] = img; time.sleep(0.6)
+        print("wikidata:", p["name"], "->", "foto" if img else "—", file=sys.stderr)
+    json.dump(cache, open(cache_p, "w"), ensure_ascii=False)
     people = [p for p in g["people"].values() if p.get("image")]
     if a.limit: people = people[:a.limit]
     ok = skip = fail = 0
