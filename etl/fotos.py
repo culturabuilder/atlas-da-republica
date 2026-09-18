@@ -39,7 +39,7 @@ def commons_image(name):
     w = [x for x in nn(name).split() if x not in ("de", "da", "do", "das", "dos", "e")]
     if len(w) < 2: return None
     hits = [h["title"] for h in j.get("query", {}).get("search", []) if re.search(r"\.(jpe?g|png)$", h["title"], re.I)]
-    good = [h for h in hits if w[0] in nn(h) and w[-1] in nn(h)]
+    good = [h for h in hits if w[0] in nn(h) and any(x in nn(h) for x in w[1:] if len(x) > 3)]
     good.sort(key=lambda h: (0 if "cropped" in h.lower() else 1, len(h)))
     return ("https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(good[0][5:])) if good else None
 
