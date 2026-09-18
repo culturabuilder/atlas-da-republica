@@ -58,7 +58,7 @@ def page(title):
         except Exception as e: time.sleep(4 * (i + 1))
     return ""
 
-def cell(c): return re.sub(r"\s*\[\s*\d+\s*\]", "", re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", c)))).replace("\u200b", "").strip()
+def cell(c): return re.sub(r"\s*\[\s*(?:nota\s*)?\d+\s*\]", "", re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", c))), flags=re.I).replace("\u200b", "").strip()
 def date(s):
     m = re.search(r"(\d{1,2})º?\s+de\s+([a-zç]+)\s+de\s+(\d{4})", (s or "").lower())
     if m and m.group(2) in MESES: return f"{m.group(3)}-{MESES[m.group(2)]:02d}-{int(m.group(1)):02d}"
@@ -96,7 +96,7 @@ def main():
                 j = ni + shift
                 if len(r) <= j or not r[j] or re.match(r"^\d+$", r[j]): continue
                 nm = r[j]
-                if len(nm) < 5 or len(nm) > 70 or re.match(r"^(Diretor|Diretora|Presidente|Ministro|Conselheiro)", nm): continue
+                if len(nm) < 5 or len(nm) > 70 or re.match(r"^(Diretor|Diretora|Presidente|Ministro|Conselheiro|vago|vaga)", nm, re.I): continue
                 fim = date(r[fi + shift]) if fi is not None and len(r) > fi + shift else None
                 if fim and fim < today: continue
                 role = r[ri + shift] if ri is not None and len(r) > ri + shift else None
