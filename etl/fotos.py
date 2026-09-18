@@ -71,8 +71,11 @@ def main():
     g = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8"))
     cache_p = ROOT / "build" / "cache-fotos.json"; cache = json.load(open(cache_p)) if cache_p.exists() else {}
     # sem foto de origem: tenta o Wikidata pelo nome (só quem não é parlamentar; eles já vêm com foto oficial)
+    import yaml
+    blocked = set((yaml.safe_load(open(ROOT / "data" / "fotos-bloqueadas.yaml", encoding="utf-8")) or []) if (ROOT / "data" / "fotos-bloqueadas.yaml").exists() else [])
     for p in g["people"].values():
         if p.get("image") or p.get("source") == "api": continue
+        if p["id"] in blocked: p["image"] = None; continue
         if p["id"] in cache: p["image"] = cache[p["id"]]; continue
         img = None
         for v in name_variants(p["name"]):
@@ -80,7 +83,9 @@ def main():
             if img: break
             time.sleep(0.6)
         if not img:
-            img = commons_image(p["name"]); time.sleep(1.2)
+            for v in name_variants(p["name"]):
+                img = commons_image(v); time.sleep(1.2)
+                if img: break
             if img: print("commons:", p["name"], "->", img[-60:], file=sys.stderr)
         cache[p["id"]] = img; p["image"] = img; time.sleep(0.6)
         print("wikidata:", p["name"], "->", "foto" if img else "—", file=sys.stderr)
