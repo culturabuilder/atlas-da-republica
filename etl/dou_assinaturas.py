@@ -35,7 +35,8 @@ def role_phrase(position_name, org_name):
     role = re.match(r"^(Diretor-Presidente|Diretor-Geral|Diretora-Presidente|Presidente|Superintendente|Diretor-Superintendente|Procurador-Geral|Defensor Público-Geral|Advogado-Geral|Secretário Especial|Secretário|Comandante|Diretor)", position_name)
     if not role: return None
     art = "DA" if re.match(r"^(Agência|Fundação|Comissão|Superintendência|Empresa|Companhia|Caixa|Casa|Escola|Financiadora|Procuradoria|Defensoria|Advocacia|Secretaria|Polícia|Marinha|Força)", org_name) else "DO"
-    return f"{norm(role.group(1))} {art} {norm(org_name)}"
+    short = " ".join(norm(org_name).split()[:5])   # a busca e o trecho do resultado truncam nomes longos
+    return f"{norm(role.group(1))} {art} {short}"
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--limit", type=int); a = ap.parse_args()
@@ -50,10 +51,29 @@ def main():
         if ph: targets.append((n, org, ph))
     if a.limit: targets = targets[:a.limit]
     out, today = {}, datetime.date.today().isoformat()
+    prev = {}
+    pf = ROOT / "data" / "generated" / "dou-assinaturas.yaml"
+    if pf.exists(): prev = (yaml.safe_load(open(pf, encoding="utf-8")) or {}).get("positions") or {}
+    out.update(prev)
+    def variants(ph, org):
+        vs = [ph]
+        vs.append(re.sub(r"^PRESIDENTE ", "PRESIDENTA ", ph)); vs.append(re.sub(r"^DIRETOR-", "DIRETORA-", ph)); vs.append(re.sub(r"^DIRETOR ", "DIRETORA ", ph))
+        for a in org.get("aliases") or []:
+            if a.isupper() and 2 < len(a) <= 8: vs.append(re.sub(r" D[OA] .*$", (" DA " if ph.split(" ")[1] == "DA" else " DO ") + norm(a), ph))
+        return list(dict.fromkeys(vs))
     for i, (n, org, ph) in enumerate(targets):
-        items = search(ph)
+        if n["id"] in prev: continue
         found = None
-        for it in items[:10]:
+        for v in variants(ph, org):
+            items = search(v)
+            if not items: continue
+            for it in items[:10]:
+                sn = norm(re.sub(r"<[^>]+>", " ", it.get("content") or ""))
+                if not re.search(r"\b(O|A)\s+" + re.escape(v), sn[:600]): continue
+                ph = v; break
+            else: continue
+            break
+        for it in (items if found is None and items else [])[:10]:
             sn = norm(re.sub(r"<[^>]+>", " ", it.get("content") or ""))
             if not re.search(r"\b(O|A)\s+" + re.escape(ph), sn[:600]): continue
             names, cargos = signature(it["urlTitle"])
