@@ -84,6 +84,8 @@ p{margin:8px 0;color:var(--ink-2)}
 .cite{font-size:13.5px;color:var(--ink-3)}
 .cite a{color:var(--ink-2)}
 .foot{font-size:13px;color:var(--ink-3);padding:4px 6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--card);color:var(--ink);padding:8px 12px;border-radius:6px;z-index:20}
+.skip:focus{left:8px;outline:2px solid var(--focus)}
 .news{display:flex;flex-direction:column;gap:10px}
 .news .it{font-size:14.5px;line-height:1.45}
 .news .it a.t{color:var(--ink);text-decoration:none;font-weight:600}
@@ -160,14 +162,15 @@ svg.wheel{width:100%;max-width:min(96vh,980px);height:auto;display:block;margin:
 @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
 </style>
 
+<a href="#content" class="skip">Pular para o conteúdo</a>
 <div class="app">
-  <aside class="panel" id="panel">
+  <aside class="panel" id="panel" aria-label="Painel de informações">
     <div class="card" style="padding:12px 16px">
       <div class="brand"><span class="mark"></span><span>Atlas da República</span><span class="crumb">/ <a href="#">Governo federal</a></span></div>
     </div>
     <div class="search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input id="q" type="search" placeholder="Buscar órgão, cargo ou sigla (MF, STF, Anatel…)" autocomplete="off" aria-label="Buscar no grafo" role="combobox" aria-expanded="false" aria-controls="results">
+      <input id="q" type="search" placeholder="Buscar órgão, cargo, pessoa ou sigla (MF, STF, Anatel…)" autocomplete="off" aria-label="Buscar no grafo" role="combobox" aria-expanded="false" aria-controls="results">
       <div id="results" class="results" role="listbox" hidden></div>
     </div>
     <div id="content"></div>
@@ -192,7 +195,7 @@ svg.wheel{width:100%;max-width:min(96vh,980px);height:auto;display:block;margin:
 const G = window.ATLAS; const N = G.nodes, E = G.edges, L = G.layout;
 const SEC = {}; L.sectors.forEach(s => SEC[s.id] = s);
 const COL = {legislativo:'var(--leg)', executivo:'var(--exe)', judiciario:'var(--jud)', essenciais:'var(--ess)'};
-const TYPE_NAME = {constituency:'Eleitorado', elected:'Órgão eletivo', department:'Órgão', dept_head:'Cargo', commission:'Colegiado', advisory:'Conselho consultivo'};
+const TYPE_NAME = {constituency:'Eleitorado', elected:'Órgão eletivo', department:'Órgão', dept_head:'Cargo', commission:'Colegiado', advisory:'Conselho consultivo', pessoa:'Pessoa'};
 const SUB = {orgao_presidencia:'Órgão da Presidência', ministerio:'Ministério', orgao_singular:'Órgão singular', autarquia:'Autarquia', agencia_reguladora:'Agência reguladora', fundacao:'Fundação pública', empresa_publica:'Empresa pública', sociedade_economia_mista:'Sociedade de economia mista', forca_armada:'Força Armada', tribunal:'Tribunal', casa_legislativa:'Casa legislativa', ministerio_publico:'Ministério Público', defensoria:'Defensoria', advocacia:'Advocacia pública', chefia_executivo:'Chefia do Executivo', instituicao_de_ensino:'Universidade ou instituto federal', orgao_autonomo:'Órgão autônomo', secao_judiciaria:'Seção judiciária'};
 const REL = {elege:['Elege','Eleito por'], nomeia:['Nomeia','Nomeado por'], sabatina:['Sabatina e aprova','Sabatinado por'], fiscaliza:['Fiscaliza','Fiscalizado por'], supervisiona:['Supervisiona','Supervisionado por'], aconselha:['Aconselha','Aconselhado por'], chefia:['Chefia','Chefiado por'], membro_nato:['Membro nato de','Tem como membro nato'], integra:['Integra','Integrado por'], indica:['Indica','Indicado por']};
 
@@ -380,10 +383,11 @@ function renderNode(n){
 const q = document.getElementById('q'), res = document.getElementById('results');
 const norm = s => s.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
 const index = Object.values(N).map(n => ({id:n.id, name:n.name, type:n.type, sector:n.sector, hay: norm([n.name, ...(n.aliases||[])].join(' ')), al: norm((n.aliases||[]).join(' '))}));
+for (const n of Object.values(N)) for (const p of (n.people||[])) if (p.name) index.push({id:n.id, name:p.name, type:'pessoa', sub:n.name, sector:n.sector, hay:norm(p.name), al:''});
 q.addEventListener('input', () => {
   const v = norm(q.value.trim()); if (v.length < 2) { res.hidden = true; q.setAttribute('aria-expanded','false'); return; }
   const hits = index.map(x => { let sc = 0; if (x.al.split(' ').includes(v)) sc = 100; else if (x.hay.startsWith(v)) sc = 60; else if (x.hay.includes(' '+v)) sc = 40; else if (x.hay.includes(v)) sc = 20; if (x.type==='dept_head') sc -= 5; return {x, sc}; }).filter(h=>h.sc>0).sort((a,b)=>b.sc-a.sc).slice(0,12);
-  res.innerHTML = hits.length ? hits.map(h=>`<a href="#${h.x.id}" role="option"><span class="dot" style="background:${COL[h.x.sector]||'var(--povo)'}"></span><span>${esc(h.x.name)}</span><span class="t">${TYPE_NAME[h.x.type]}</span></a>`).join('') : '<div style="padding:10px;color:var(--ink-3)">Nada encontrado. Tente a sigla (MF, STF, Anatel).</div>';
+  res.innerHTML = hits.length ? hits.map(h=>`<a href="#${h.x.id}" role="option"><span class="dot" style="background:${COL[h.x.sector]||'var(--povo)'}"></span><span>${esc(h.x.name)}${h.x.sub?` <span style="color:var(--ink-3);font-size:12.5px">· ${esc(h.x.sub)}</span>`:''}</span><span class="t">${TYPE_NAME[h.x.type]}</span></a>`).join('') : '<div style="padding:10px;color:var(--ink-3)">Nada encontrado. Tente a sigla (MF, STF, Anatel).</div>';
   res.hidden = false; q.setAttribute('aria-expanded','true');
 });
 q.addEventListener('keydown', e => { if (e.key==='Enter') { const a = res.querySelector('a'); if (a) { location.hash = a.getAttribute('href'); } } if (e.key==='Escape') { res.hidden = true; q.value=''; } if (e.key==='ArrowDown') { const a=res.querySelector('a'); if(a){a.focus(); e.preventDefault();} } });
