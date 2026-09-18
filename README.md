@@ -9,7 +9,7 @@ entre eles (quem elege, nomeia, sabatina, supervisiona, fiscaliza). Réplica, ad
 - `data/nodes/` e `data/edges/` — curadoria em YAML: 320 nós e as regras que geram as relações, cada uma com citação legal.
 - `data/generated/siorg.yaml` — 330 órgãos e entidades e 214 colegiados nacionais importados do SIORG (`etl/siorg.py`); `parlamentares.yaml` — 594 parlamentares (Câmara e Senado). A curadoria manda; o gerado preenche o resto. Resultado: 732 nós e 976 relações.
 - `data/ocupantes-oficiais.yaml` — ocupantes conferidos em páginas oficiais (Planalto, STF, TCU, TSE, STM), com data da conferência.
-- `etl/` — conectores: `siorg.py`, `parlamentares.py` (Câmara e Senado), `sabatinas.py` (MSF do Senado com placar), `wikidata.py` (ocupantes via item do órgão, marcados como não verificados), `noticias.py` (8 feeds RSS com entidades e pessoas linkadas), `dou.py` (Seção 2 do Diário Oficial por órgão).
+- `etl/` — conectores: `siorg.py`, `parlamentares.py` (Câmara e Senado), `sabatinas.py` (MSF do Senado com placar), `wikidata.py` (ocupantes via item do órgão, marcados como não verificados), `noticias.py` (8 feeds RSS com entidades e pessoas linkadas), `dou.py` (Seção 2 do Diário Oficial por órgão, com pausa de 2,5 s entre consultas; o portal bloqueia agentes desconhecidos), `orcamento.py` (despesas por órgão do Portal da Transparência, exige `PORTAL_TRANSPARENCIA_KEY` em `.env`).
 - `scripts/build_graph.py` — valida os YAML, funde as camadas (curadoria > oficiais > APIs > Wikidata) e gera `build/graph.br.json` e `web/graph.br.js`.
 - `scripts/build_site.py` — site estático em `site/`: uma página por nó com HTML pré-renderizado, canonical, JSON-LD, sitemap e robots.
 - `scripts/update.sh` e `.github/workflows/daily.yml` — atualização diária.
@@ -29,7 +29,19 @@ Ver o plano completo: modelo, fontes (SIORG, Portal da Transparência, Câmara, 
 
 1. **Fase 1** ✓ — SIORG, Câmara e Senado, páginas por entidade com sitemap e JSON-LD (gerador estático em vez de Next.js: mesmo resultado, sem dependências).
 2. **Fase 2** — sabatinas ✓, notícias e power map ✓, DOU Seção 2 (parcial: busca pública por órgão; o INLABS dá cobertura completa), ocupantes do Executivo (Planalto ✓; agências e autarquias ainda dependem do DOU ou de curadoria).
-3. **Fase 3** — transição de governo 2027, orçamento por órgão, segundo graph (SP).
+3. **Fase 3** — aba Transição 2027 ✓ (cargos de nomeação presidencial e ocupantes), orçamento por órgão ✓, segundo graph (SP) pendente.
+
+## Camadas de dados e confiança
+
+| Camada | Origem | Como aparece |
+|---|---|---|
+| Curadoria | `data/nodes`, `data/edges`, `data/ocupantes-oficiais.yaml` | citação legal; ocupantes com "página oficial, conferido em …" |
+| APIs oficiais | SIORG, Câmara, Senado, Portal da Transparência | chip "via SIORG", partido e UF, orçamento |
+| Wikidata | `etl/wikidata.py` | marcado "wikidata · pode estar desatualizado"; no Executivo só entra com início a partir de 2023 |
+| Notícias e DOU | RSS e busca pública do DOU | ligados a entidades e cargos por sigla, nome e similaridade |
+
+Pendências conhecidas: lista completa dos 33 ministros do STJ e diretoria do Banco Central (sites bloqueiam coleta automática);
+cadastro no INLABS para o Diário Oficial completo em XML; universidades e institutos federais sem reitores.
 
 ## Licenças
 

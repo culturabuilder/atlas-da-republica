@@ -13,7 +13,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from sabatinas import build_index, match_position, norm
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "generated" / "dou.json"
-UA = {"User-Agent": "Mozilla/5.0 atlas-da-republica/0.1"}
+UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36", "Accept": "text/html,*/*;q=0.8", "Accept-Language": "pt-BR,pt;q=0.9"}
 ORGS = ["Presidência da República", "Ministério da Fazenda", "Ministério da Justiça e Segurança Pública", "Ministério da Saúde", "Ministério da Educação",
         "Ministério da Defesa", "Ministério das Relações Exteriores", "Ministério de Minas e Energia", "Ministério da Gestão e da Inovação em Serviços Públicos",
         "Ministério do Planejamento e Orçamento", "Ministério do Desenvolvimento, Indústria, Comércio e Serviços", "Ministério da Agricultura e Pecuária",
@@ -27,10 +27,18 @@ ORGS = ["Presidência da República", "Ministério da Fazenda", "Ministério da 
 VERBS = ["NOMEAR", "EXONERAR", "DESIGNAR", "DISPENSAR"]
 CARGO_RX = re.compile(r"Ministro de Estado|Presidente d|Diretor[a]?(?:-Geral|-Presidente| d)|Secret[áa]ri[oa](?:-Executiv[oa]| Nacional| Especial| de Estado)|Procurador[a]?-Geral|Defensor[a]? P[úu]blic[oa]-Geral|Comandante d|Chefe d[oa] (?:Casa|Gabinete|Secretaria)|Advogad[oa]-Geral|Superintendente|Conselheir[oa] d|Membro d[oa] Conselho|Ministr[oa] d[oa] (?:Supremo|Superior|Tribunal)", re.I)
 
+BLOCKED = {"n": 0}
 def get(url):
+    """Uma requisição a cada 2,5 s; se o portal responder vazio/erro três vezes seguidas, aborta a execução (bloqueio por IP)."""
+    time.sleep(2.5)
     for i in range(3):
-        try: return urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=90).read().decode("utf-8", "ignore")
-        except Exception as e: time.sleep(2)
+        try:
+            h = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=90).read().decode("utf-8", "ignore")
+            if h: BLOCKED["n"] = 0; return h
+        except Exception as e: pass
+        time.sleep(5 * (i + 1))
+    BLOCKED["n"] += 1
+    if BLOCKED["n"] >= 3: sys.exit("in.gov.br sem resposta em 3 consultas seguidas: provável bloqueio temporário; tente mais tarde")
     return ""
 
 def search(q, org):
