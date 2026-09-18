@@ -111,9 +111,14 @@ def main():
         if not org: continue
         nm = u["nome"].strip()
         if not re.match(r"^(Conselho|Comitê|Comissão|Câmara|Colegiado|Junta)\b", nm): continue
+        # só colegiados de primeiro nível (pai = o próprio órgão) de órgãos da administração direta,
+        # com alcance nacional no nome; corta comitês internos de estatais e autarquias
+        if code(u.get("codigoUnidadePai")) != o: continue
+        if org["natureza_juridica"] != 3: continue
+        if not re.search(r"Nacional|Federal|Interministerial|de Governo|Monetário|da República|de Política|Gestor|Deliberativ", nm): continue
         coleg.append({"id": "br-" + slug(nm), "siorg_code": int(c), "type": "commission", "sector": org["sector"], "ring": 3,
                       "name": nm, "aliases": [u["sigla"]] if u.get("sigla") else [], "siorg_parent_id": org["id"],
-                      "description": clean(u.get("competencia") or u.get("finalidade") or "") or f"Unidade colegiada de {org['name']} registrada no SIORG.",
+                      "description": (lambda d: d if len(d) >= 40 else f"Colegiado vinculado a {org['name']}, registrado no SIORG como unidade colegiada de primeiro nível. Competência não informada na fonte.")(clean(u.get("competencia") or u.get("finalidade") or "")),
                       "cite": ato_cite(u.get("atoNormativo")) or "SIORG (ato normativo não informado)",
                       "cite_url": f"https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/{c}", "source": "siorg", "verified": False})
     # dedupe ids

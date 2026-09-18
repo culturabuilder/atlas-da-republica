@@ -7,7 +7,7 @@ entre eles (quem elege, nomeia, sabatina, supervisiona, fiscaliza). Réplica, ad
 ## Estado: Fase 1 em andamento (SIORG conectado)
 
 - `data/nodes/` e `data/edges/` — curadoria em YAML: 320 nós e as regras que geram as relações, cada uma com citação legal.
-- `data/generated/siorg.yaml` — 330 órgãos e entidades importados do SIORG (`etl/siorg.py`). A curadoria manda; o gerado preenche o resto. Resultado: 529 nós e 765 relações.
+- `data/generated/siorg.yaml` — 330 órgãos e entidades e 214 colegiados nacionais importados do SIORG (`etl/siorg.py`); `parlamentares.yaml` — 594 parlamentares (Câmara e Senado). A curadoria manda; o gerado preenche o resto. Resultado: 732 nós e 976 relações.
 - `scripts/build_graph.py` — valida os YAML e gera `build/graph.br.json` e `web/graph.br.js`.
 - `web/index.html` — protótipo da roda: quatro setores, quatro anéis, busca por sigla, legenda, tema claro/escuro,
   nós como links navegáveis por teclado.
