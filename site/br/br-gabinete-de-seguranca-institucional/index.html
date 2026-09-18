@@ -1,0 +1,411 @@
+<meta charset="utf-8">
+<title>Gabinete de Segurança Institucional da Presidência da República · Atlas da República</title>
+<meta name="description" content="Assiste o Presidente em assuntos militares e de segurança, coordena as atividades de inteligência federal e a segurança da informação, e zela pela segurança pessoal do Presidente e do Vice-Presidente.">
+<link rel="canonical" href="https://atlasdarepublica.org/br/br-gabinete-de-seguranca-institucional/">
+<meta property="og:title" content="Gabinete de Segurança Institucional da Presidência da República · Atlas da República"><meta property="og:description" content="Assiste o Presidente em assuntos militares e de segurança, coordena as atividades de inteligência federal e a segurança da informação, e zela pela segurança pessoal do Presidente e do Vice-Presidente."><meta property="og:url" content="https://atlasdarepublica.org/br/br-gabinete-de-seguranca-institucional/"><meta property="og:type" content="website">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "GovernmentOrganization", "name": "Gabinete de Segurança Institucional da Presidência da República", "description": "Assiste o Presidente em assuntos militares e de segurança, coordena as atividades de inteligência federal e a segurança da informação, e zela pela segurança pessoal do Presidente e do Vice-Presidente.", "url": "https://atlasdarepublica.org/br/br-gabinete-de-seguranca-institucional/", "sameAs": ["https://www.gov.br/gsi/"], "alternateName": ["GSI", "GSI-PR"], "parentOrganization": {"@type": "GovernmentOrganization", "name": "Presidência da República", "url": "https://atlasdarepublica.org/br/br-presidencia-da-republica/"}}</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#EFF0EB; --panel:#FAFAF7; --card:#FFFFFF; --ink:#1A1C19; --ink-2:#4B4F49; --ink-3:#7D817A; --line:#D8DBD3; --line-2:#E8EAE4;
+  --accent:#1F5F4A; --accent-soft:#DDEBE3; --focus:#1F5F4A;
+  --leg:#B8452E; --exe:#3B4C9B; --jud:#8A6C10; --ess:#5E3D7A; --povo:#C25A12;
+  --sector-alpha:.10; --ring-alpha:.35; --node-fill:#FAFAF7;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace; --sans:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif; --disp:"Archivo","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#131412; --panel:#1A1C19; --card:#20231F; --ink:#ECEDE8; --ink-2:#BDC0B8; --ink-3:#868A82; --line:#33362F; --line-2:#2A2D27;
+  --accent:#8CCBAF; --accent-soft:#1E3A2E; --focus:#8CCBAF;
+  --leg:#F0907A; --exe:#9AA6EE; --jud:#E2C25A; --ess:#C9A3E6; --povo:#F2A063;
+  --sector-alpha:.14; --ring-alpha:.4; --node-fill:#1A1C19;
+}}
+:root[data-theme="dark"]{
+  --bg:#131412; --panel:#1A1C19; --card:#20231F; --ink:#ECEDE8; --ink-2:#BDC0B8; --ink-3:#868A82; --line:#33362F; --line-2:#2A2D27;
+  --accent:#8CCBAF; --accent-soft:#1E3A2E; --focus:#8CCBAF;
+  --leg:#F0907A; --exe:#9AA6EE; --jud:#E2C25A; --ess:#C9A3E6; --povo:#F2A063;
+  --sector-alpha:.14; --ring-alpha:.4; --node-fill:#1A1C19;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--accent)}
+.app{display:grid;grid-template-columns:minmax(360px,440px) 1fr;min-height:100vh}
+/* ---------- painel ---------- */
+.panel{padding:16px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:100vh;position:sticky;top:0}
+.card{background:var(--card);border:1px solid var(--line-2);border-radius:10px;padding:18px 20px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;font-size:17px}
+.brand .mark{width:20px;height:20px;border-radius:50%;background:var(--povo);box-shadow:0 0 0 3px var(--card),0 0 0 4px var(--povo)}
+.brand .crumb{color:var(--ink-3);font-weight:500}
+.brand .crumb a{color:var(--ink-3);text-decoration:none}
+.brand .crumb a:hover{color:var(--ink)}
+.search{position:relative}
+.search input{width:100%;font:inherit;font-size:15px;padding:10px 12px 10px 36px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink)}
+.search input:focus{outline:2px solid var(--focus);outline-offset:1px}
+.search svg{position:absolute;left:11px;top:11px;width:16px;height:16px;color:var(--ink-3)}
+.results{position:absolute;left:0;right:0;top:44px;background:var(--card);border:1px solid var(--line);border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,.18);z-index:10;max-height:360px;overflow:auto;padding:6px}
+.results[hidden]{display:none}
+.results a{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:15px}
+.results a:hover,.results a:focus{background:var(--accent-soft);outline:none}
+.results .t{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-left:auto;white-space:nowrap}
+.dot{width:10px;height:10px;border-radius:3px;flex:none}
+h1{font-family:var(--disp);font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:0 0 8px;text-wrap:balance}
+h2{font-family:var(--disp);font-size:15px;font-weight:700;margin:0 0 10px}
+h3{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin:16px 0 6px}
+p{margin:8px 0;color:var(--ink-2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.chip{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:var(--panel);border:1px solid var(--line);color:var(--ink-2)}
+.chip.sec{border-color:transparent;color:#fff}
+.chip.warn{background:transparent;border-color:var(--jud);color:var(--jud)}
+.links{display:flex;gap:14px;flex-wrap:wrap;font-size:14px}
+.list{display:flex;flex-direction:column;gap:6px}
+.list a{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line-2);border-radius:8px;text-decoration:none;color:var(--ink);font-size:15px;background:var(--panel)}
+.list a:hover{border-color:var(--accent)}
+.list a .sm{color:var(--ink-3);font-size:13px;margin-left:auto;white-space:nowrap}
+.seat{padding:8px 10px;border:1px dashed var(--line);border-radius:8px;font-size:14px;color:var(--ink-3);font-style:italic}
+.people{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+.person{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;padding:5px 8px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:14.5px}
+.person:hover{background:var(--panel)}
+.person .av{width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.person .pn em{font-style:normal;color:var(--ink-3);font-size:12.5px;margin-left:4px}
+.person .pm{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);white-space:nowrap}
+.parties{display:grid;grid-template-columns:auto 1fr auto;gap:3px 10px;align-items:center;font-size:12.5px;margin:6px 0 10px}
+.parties .pr{display:contents}
+.parties .pk{font-family:var(--mono);font-size:11px}
+.parties .pb{height:8px;background:var(--line-2);border-radius:4px;overflow:hidden}
+.parties .pb i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.parties .pv{font-family:var(--mono);font-size:11px;color:var(--ink-3);text-align:right}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:var(--panel);border:1px solid var(--line-2);border-radius:8px;padding:10px 12px}
+.stat .n{font-family:var(--disp);font-size:24px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.counts{display:grid;grid-template-columns:1fr auto;gap:4px 12px;font-size:14.5px}
+.counts span:nth-child(even){font-family:var(--mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+.counts .k{display:flex;align-items:center;gap:8px}
+.rel{margin-top:4px}
+.rel summary{cursor:pointer;font-size:14.5px;padding:6px 0;display:flex;gap:8px;align-items:center}
+.rel summary .n{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-left:auto}
+.rel .list{margin:4px 0 8px}
+.cite{font-size:13.5px;color:var(--ink-3)}
+.cite a{color:var(--ink-2)}
+.foot{font-size:13px;color:var(--ink-3);padding:4px 6px}
+.news{display:flex;flex-direction:column;gap:10px}
+.news .it{font-size:14.5px;line-height:1.45}
+.news .it a.t{color:var(--ink);text-decoration:none;font-weight:600}
+.news .it a.t:hover{text-decoration:underline}
+.news .it .m{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:2px}
+.news .it .e{display:inline-block;font-size:12.5px;color:var(--accent);text-decoration:none;margin-right:8px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line-2);margin:0 -20px 12px;padding:0 12px}
+.tabs button{font:inherit;font-size:14px;padding:8px 10px;border:0;border-bottom:2px solid transparent;background:none;color:var(--ink-3);cursor:pointer}
+.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent)}
+.tabs button:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.chg{display:grid;grid-template-columns:74px 1fr;gap:4px 12px;padding:8px 0;border-bottom:1px solid var(--line-2);font-size:14.5px}
+.chg:last-child{border-bottom:0}
+.chg .d{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);padding-top:3px}
+.chg .k{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:3px;margin-right:6px;background:var(--accent-soft);color:var(--accent)}
+.chg .k.sab{background:color-mix(in srgb,var(--leg) 18%,transparent);color:var(--leg)}
+.chg .k.rej{background:color-mix(in srgb,var(--jud) 25%,transparent);color:var(--jud)}
+.chg a{color:var(--ink);text-decoration:none}
+.chg a:hover{text-decoration:underline}
+.chg .pn{color:var(--ink-3);font-size:13.5px}
+.pm{display:grid;grid-template-columns:1fr;gap:6px}
+.pm .row{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;font-size:14.5px}
+.pm .bar{height:6px;background:var(--line-2);border-radius:3px;overflow:hidden;grid-column:2/4}
+.pm .bar i{display:block;height:100%;background:var(--povo)}
+.pm .n{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+.person .av img{width:30px;height:30px;border-radius:50%;object-fit:cover;display:block}
+.sab{font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line-2);display:grid;grid-template-columns:1fr auto;gap:2px 10px}
+.sab:last-child{border-bottom:0}
+.sab .r{font-family:var(--mono);font-size:11px;color:var(--ink-3);text-align:right}
+.sab .r b{color:var(--ok,#1E6B3A)}
+/* ---------- gráfico ---------- */
+.stage{position:relative;padding:12px}
+.topbar{position:absolute;top:22px;right:22px;display:flex;gap:8px;z-index:5}
+.btn{font:inherit;font-size:14px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);cursor:pointer;display:flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--ink-3)}
+.btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.legend{position:absolute;left:22px;bottom:22px;z-index:5}
+.legend .box{margin-top:8px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.legend .box[hidden]{display:none}
+.legend .box h3{grid-column:1/-1;margin:6px 0 2px}
+.legend .box div{display:flex;align-items:center;gap:8px}
+.legend svg{width:22px;height:14px;flex:none;color:var(--ink)}
+svg.wheel{width:100%;max-width:min(96vh,980px);height:auto;display:block;margin:0 auto;font-family:var(--mono)}
+.sector-bg{fill-opacity:var(--sector-alpha);stroke:var(--ink);stroke-opacity:.12}
+.ring{fill:none;stroke:var(--ink);stroke-opacity:var(--ring-alpha);stroke-dasharray:2 5}
+.ring-label{font-size:8.5px;letter-spacing:.2em;fill:var(--ink);fill-opacity:.55}
+.sector-label{font-size:11px;letter-spacing:.28em;font-weight:600}
+.node{cursor:pointer}
+.node .shape{fill:var(--node-fill);stroke-width:1.4;transition:opacity .15s}
+.node.pos .shape{stroke-width:1;fill-opacity:.9}
+.node:hover .shape,.node:focus .shape{stroke-width:2.6}
+.node:focus{outline:none}
+.node:focus-visible .shape{stroke-width:3;stroke:var(--focus)}
+.node.sel .shape{fill:currentColor;stroke:currentColor;stroke-width:2}
+.dim .node:not(.sel):not(.lit) .shape{opacity:.25}
+.dim .node:not(.sel):not(.lit) text{opacity:.2}
+.edge{fill:none;stroke-width:1.3;pointer-events:none}
+.edge.nomeia,.edge.chefia{stroke-dasharray:none}
+.edge.sabatina,.edge.indica{stroke-dasharray:5 3}
+.edge.integra,.edge.membro_nato{stroke-dasharray:1.5 3}
+.edge.supervisiona,.edge.fiscaliza,.edge.aconselha{stroke-dasharray:8 3 2 3}
+.edge.elege{stroke-width:2.4}
+.center-label{font-family:var(--disp);font-weight:700;font-size:9.5px;fill:#fff;text-anchor:middle}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:13px;padding:5px 9px;border-radius:5px;white-space:nowrap;z-index:6;transform:translate(-50%,-140%)}
+.tip[hidden]{display:none}
+.tip small{opacity:.7;font-family:var(--mono);font-size:10px;margin-left:6px}
+@media (max-width:900px){
+  .app{grid-template-columns:1fr}
+  .panel{max-height:none;position:static;order:2}
+  .stage{order:1}
+  .topbar{top:16px;right:16px}
+  .legend{position:static;margin-top:8px}
+  .legend .box{box-shadow:none}
+}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+
+<div class="app">
+  <aside class="panel" id="panel">
+    <div class="card" style="padding:12px 16px">
+      <div class="brand"><span class="mark"></span><span>Atlas da República</span><span class="crumb">/ <a href="#">Governo federal</a></span></div>
+    </div>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Buscar órgão, cargo ou sigla (MF, STF, Anatel…)" autocomplete="off" aria-label="Buscar no grafo" role="combobox" aria-expanded="false" aria-controls="results">
+      <div id="results" class="results" role="listbox" hidden></div>
+    </div>
+    <div id="content"></div><div id="ssr" hidden><article><h1>Gabinete de Segurança Institucional da Presidência da República</h1><p>Assiste o Presidente em assuntos militares e de segurança, coordena as atividades de inteligência federal e a segurança da informação, e zela pela segurança pessoal do Presidente e do Vice-Presidente.</p><p>Fonte legal: Lei 14.600/2023 art. 8º</p>
+<h2>Órgãos integrados e vinculados</h2><ul><li><a href="/br/br-agencia-brasileira-de-inteligencia/">Agência Brasileira de Inteligência</a></li><li><a href="/br/br-camara-de-relacoes-exteriores-e-defesa-nacional/">Câmara de Relações Exteriores e  Defesa Nacional</a></li><li><a href="/br/br-comite-gestor-da-seguranca-da-informacao/">Comitê Gestor da Segurança da Informação</a></li></ul><h2>Relações</h2><ul><li>Gabinete de Segurança Institucional da Presidência da República <em>integra</em> <a href="/br/br-presidencia-da-republica/">Presidência da República</a> <small>(Lei 14.600/2023 art. 8º)</small></li><li>Agência Brasileira de Inteligência <em>integra</em> <a href="/br/br-agencia-brasileira-de-inteligencia/">Gabinete de Segurança Institucional da Presidência da República</a> <small>(Lei 9.883/1999)</small></li><li>Ministro de Estado Chefe do Gabinete de Segurança Institucional <em>chefia</em> <a href="/br/br-ministro-chefe-gabinete-de-seguranca-institucional/">Gabinete de Segurança Institucional da Presidência da República</a> <small>(Lei 14.600/2023 art. 46)</small></li><li>Comitê Gestor da Segurança da Informação <em>integra</em> <a href="/br/br-comite-gestor-da-seguranca-da-informacao/">Gabinete de Segurança Institucional da Presidência da República</a> <small>(SIORG (ato normativo não informado))</small></li><li>Câmara de Relações Exteriores e  Defesa Nacional <em>integra</em> <a href="/br/br-camara-de-relacoes-exteriores-e-defesa-nacional/">Gabinete de Segurança Institucional da Presidência da República</a> <small>(SIORG (ato normativo não informado))</small></li></ul><p><a href="/">Atlas da República</a></p></article></div>
+    <div class="foot">Fase 1 · curadoria com citação legal + SIORG, Câmara e Senado · cargos do Executivo e do Judiciário aguardam Portal da Transparência e DOU</div>
+  </aside>
+  <main class="stage" id="stage">
+    <div class="topbar">
+      <button class="btn" id="theme" aria-label="Alternar tema claro e escuro">◐ Tema</button>
+    </div>
+    <div class="tip" id="tip" hidden></div>
+    <div id="graph"></div>
+    <div class="legend">
+      <button class="btn" id="legend-btn" aria-expanded="false" aria-controls="legend-box">Legenda ▾</button>
+      <div class="box" id="legend-box" hidden></div>
+    </div>
+  </main>
+</div>
+
+<script src="/graph.br.js"></script>
+<script>
+(function(){
+const G = window.ATLAS; const N = G.nodes, E = G.edges, L = G.layout;
+const SEC = {}; L.sectors.forEach(s => SEC[s.id] = s);
+const COL = {legislativo:'var(--leg)', executivo:'var(--exe)', judiciario:'var(--jud)', essenciais:'var(--ess)'};
+const TYPE_NAME = {constituency:'Eleitorado', elected:'Órgão eletivo', department:'Órgão', dept_head:'Cargo', commission:'Colegiado', advisory:'Conselho consultivo'};
+const SUB = {orgao_presidencia:'Órgão da Presidência', ministerio:'Ministério', orgao_singular:'Órgão singular', autarquia:'Autarquia', agencia_reguladora:'Agência reguladora', fundacao:'Fundação pública', empresa_publica:'Empresa pública', sociedade_economia_mista:'Sociedade de economia mista', forca_armada:'Força Armada', tribunal:'Tribunal', casa_legislativa:'Casa legislativa', ministerio_publico:'Ministério Público', defensoria:'Defensoria', advocacia:'Advocacia pública', chefia_executivo:'Chefia do Executivo', instituicao_de_ensino:'Universidade ou instituto federal', orgao_autonomo:'Órgão autônomo', secao_judiciaria:'Seção judiciária'};
+const REL = {elege:['Elege','Eleito por'], nomeia:['Nomeia','Nomeado por'], sabatina:['Sabatina e aprova','Sabatinado por'], fiscaliza:['Fiscaliza','Fiscalizado por'], supervisiona:['Supervisiona','Supervisionado por'], aconselha:['Aconselha','Aconselhado por'], chefia:['Chefia','Chefiado por'], membro_nato:['Membro nato de','Tem como membro nato'], integra:['Integra','Integrado por'], indica:['Indica','Indicado por']};
+
+// ---------- layout radial ----------
+const W = 920, C = W/2;
+const RING_R = {0:0, 1:118, 2:205, 3:292, 4:378};
+const R_IN = 78, R_OUT = 415;
+// setores: [início, fim] em graus, 0 = topo, sentido horário
+const ARC = {legislativo:[-28,28], executivo:[28,212], judiciario:[212,284], essenciais:[284,332]};
+const rad = d => (d-90)*Math.PI/180;
+const pt = (deg, r) => [C + r*Math.cos(rad(deg)), C + r*Math.sin(rad(deg))];
+function arcPath(a0,a1,r0,r1){ const [x0,y0]=pt(a0,r1),[x1,y1]=pt(a1,r1),[x2,y2]=pt(a1,r0),[x3,y3]=pt(a0,r0); const big=(a1-a0)>180?1:0; return `M${x0},${y0} A${r1},${r1} 0 ${big} 1 ${x1},${y1} L${x2},${y2} A${r0},${r0} 0 ${big} 0 ${x3},${y3} Z`; }
+function ringArc(a0,a1,r){ const [x0,y0]=pt(a0,r),[x1,y1]=pt(a1,r); const big=(a1-a0)>180?1:0; return `M${x0},${y0} A${r},${r} 0 ${big} 1 ${x1},${y1}`; }
+
+const CLUSTER_SUB = 'instituicao_de_ensino';
+const orgs = Object.values(N).filter(n => n.type !== 'dept_head' && n.type !== 'constituency');
+const angle = {}, radius = {}, clusterOf = {};
+for (const sid of Object.keys(ARC)) {
+  const [a0,a1] = ARC[sid]; const pad = 5;
+  for (const ring of [1,2,3,4]) {
+    let all = orgs.filter(n => n.sector === sid && n.ring === ring);
+    if (!all.length) continue;
+    // instituições de ensino viram um cluster por órgão supervisor (um único slot angular)
+    const clusters = {}; const list = [];
+    for (const n of all) { if (n.cluster) { const k = n.parent || 'x'; (clusters[k] = clusters[k] || []).push(n); } else list.push(n); }
+    for (const k of Object.keys(clusters)) list.push({id:'cluster:'+k+':'+ring, parent:k, name:'~', _cluster:clusters[k]});
+    list.sort((a,b) => { const pa = a.parent && angle[a.parent] != null ? angle[a.parent] : 999, pb = b.parent && angle[b.parent] != null ? angle[b.parent] : 999; return pa - pb || String(a.name).localeCompare(String(b.name),'pt'); });
+    const span = (a1-a0) - 2*pad; const step = list.length > 1 ? span/(list.length-1) : 0;
+    const dense = list.length > 48;
+    list.forEach((n,i) => {
+      const a = list.length > 1 ? a0+pad+i*step : (a0+a1)/2;
+      if (n._cluster) { // grade de pontos ao redor do slot
+        const cols = Math.ceil(Math.sqrt(n._cluster.length*1.6)); n._cluster.forEach((m,j) => { const r = Math.floor(j/cols), c = j%cols; angle[m.id] = a + (c-(cols-1)/2)*1.05; radius[m.id] = RING_R[ring] + 14 + (r-2)*6.5; clusterOf[m.id] = n.id; }); return; }
+      angle[n.id] = a; radius[n.id] = RING_R[ring] + (dense ? (i%2 ? 12 : -12) : 0);
+    });
+  }
+}
+// cargos: mesmo ângulo do órgão, um pouco para dentro; vários cargos do mesmo órgão se espalham
+const posOf = {};
+for (const n of orgs) {
+  const ps = n.positions || []; const rr = radius[n.id] != null ? radius[n.id] : RING_R[n.ring]; ps.forEach((pid,i) => { const off = (i-(ps.length-1)/2)*2.4; posOf[pid] = {a: angle[n.id]+off, r: rr-15}; });
+}
+function xy(id){ const n=N[id]; if(n.type==='constituency') return [C,C]; if(n.type==='dept_head'){ const p=posOf[id]; return pt(p.a,p.r);} return pt(angle[id], radius[id] != null ? radius[id] : RING_R[n.ring]); }
+
+// ---------- desenho ----------
+function shape(n, s){
+  const t=n.type, k=(n.ring===1||n.ring===2)?1.25:1; s=s*k;
+  if (t==='elected') return `<circle class="shape" r="${s}"/>`;
+  if (t==='department') { const sub=n.subtype; if(n.cluster) return `<circle class="shape" r="2.2" style="fill:currentColor;fill-opacity:.55"/>`; if(sub==='tribunal') return `<polygon class="shape" points="${poly(5,s+1,-90)}"/>`; if(sub==='forca_armada') return `<polygon class="shape" points="${poly(3,s+2,-90)}"/>`; return `<rect class="shape" x="${-s}" y="${-s}" width="${2*s}" height="${2*s}" rx="1.5"/>`; }
+  if (t==='commission') return `<polygon class="shape" points="${poly(5,s+1,-90)}" transform="rotate(180)"/>`;
+  if (t==='advisory') return `<polygon class="shape" points="${poly(6,s+1,0)}"/>`;
+  if (t==='dept_head') return `<circle class="shape" r="2.6"/>`;
+  return '';
+}
+function poly(nn,r,rot){ const o=[]; for(let i=0;i<nn;i++){ const a=(rot+i*360/nn)*Math.PI/180; o.push((r*Math.cos(a)).toFixed(1)+','+(r*Math.sin(a)).toFixed(1)); } return o.join(' '); }
+function burst(r){ const o=[]; for(let i=0;i<32;i++){ const a=i*Math.PI/16, rr=i%2?r:r*0.88; o.push((C+rr*Math.cos(a)).toFixed(1)+','+(C+rr*Math.sin(a)).toFixed(1)); } return o.join(' '); }
+
+function draw(){
+  let s = `<svg class="wheel" viewBox="0 0 ${W} ${W}" role="group" aria-label="Roda do governo federal: ${G.stats.nodes} nós em quatro setores">
+  <defs>${Object.keys(REL).map(t=>`<marker id="m-${t}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker>`).join('')}</defs>`;
+  for (const sid of Object.keys(ARC)) { const [a0,a1]=ARC[sid]; s += `<path class="sector-bg" d="${arcPath(a0,a1,R_IN,R_OUT)}" fill="${COL[sid]}"/>`; }
+  for (const r of [1,2,3,4]) s += `<circle class="ring" cx="${C}" cy="${C}" r="${RING_R[r]}"/>`;
+  // rótulos de anel na fatia executiva, ao longo do arco
+  for (const r of [1,2,3,4]) { s += `<path id="rl${r}" d="${ringArcRev(150,210,RING_R[r]-9)}" fill="none"/><text class="ring-label"><textPath href="#rl${r}" startOffset="50%" text-anchor="middle">${L.rings[r].name.toUpperCase()}</textPath></text>`; }
+  for (const sid of Object.keys(ARC)) { const [a0,a1]=ARC[sid]; const flip = (a0+a1)/2 > 90 && (a0+a1)/2 < 270; const d = flip ? ringArc(a1,a0,R_OUT+9).replace('0 0 1','0 0 0') : ringArc(a0,a1,R_OUT+12); const lbl=(SEC[sid].short||SEC[sid].name).toUpperCase();
+    s += `<path id="sl-${sid}" d="${flip?ringArcRev(a0,a1,R_OUT+6):ringArc(a0,a1,R_OUT+13)}" fill="none"/><text class="sector-label" fill="${COL[sid]}"><textPath href="#sl-${sid}" startOffset="50%" text-anchor="middle">${lbl}</textPath></text>`; }
+  s += `<g id="edges"></g>`;
+  s += `<a class="node center" href="#br-eleitorado" data-id="br-eleitorado" aria-label="Povo brasileiro, eleitorado"><polygon class="shape" points="${burst(52)}" style="fill:var(--povo);stroke:var(--povo)"/><text class="center-label" x="${C}" y="${C-3}">Povo</text><text class="center-label" x="${C}" y="${C+9}">brasileiro</text></a>`;
+  for (const n of orgs) { const [x,y]=xy(n.id); s += `<a class="node" href="#${n.id}" data-id="${n.id}" aria-label="${esc(n.name)}, ${TYPE_NAME[n.type]}" style="color:${COL[n.sector]}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})"><g style="stroke:${COL[n.sector]}">${shape(n, n.ring<=2?6:4.6)}</g></a>`; }
+  for (const n of Object.values(N)) if (n.type==='dept_head') { const [x,y]=xy(n.id); s += `<a class="node pos" href="#${n.id}" data-id="${n.id}" aria-label="${esc(n.name)}, cargo" style="color:${COL[n.sector]}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})"><g style="stroke:${COL[n.sector]}">${shape(n,0)}</g></a>`; }
+  s += `</svg>`;
+  document.getElementById('graph').innerHTML = s;
+}
+function ringArcRev(a0,a1,r){ const [x0,y0]=pt(a1,r),[x1,y1]=pt(a0,r); const big=(a1-a0)>180?1:0; return `M${x0},${y0} A${r},${r} 0 ${big} 0 ${x1},${y1}`; }
+function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+// ---------- seleção ----------
+let current = null;
+function select(id){
+  current = N[id] ? id : null;
+  const svg = document.querySelector('svg.wheel'); const eg = document.getElementById('edges');
+  document.querySelectorAll('.node').forEach(a => { a.classList.remove('sel','lit'); });
+  eg.innerHTML = '';
+  if (!current) { svg.classList.remove('dim'); renderHome(); return; }
+  svg.classList.add('dim');
+  const n = N[current]; const me = document.querySelector(`.node[data-id="${current}"]`); if (me) me.classList.add('sel');
+  let lines = '';
+  for (const eid of n.edges) { const e = E[eid]; const other = e.from === current ? e.to : e.from; const o = document.querySelector(`.node[data-id="${other}"]`); if (o) o.classList.add('lit');
+    const [x1,y1] = xy(e.from), [x2,y2] = xy(e.to); const col = COL[N[e.from].sector] || 'var(--povo)';
+    lines += `<path class="edge ${e.type}" d="${curve(x1,y1,x2,y2)}" stroke="${col}" marker-end="url(#m-${e.type})"/>`; }
+  eg.innerHTML = lines;
+  renderNode(n);
+}
+function curve(x1,y1,x2,y2){ const mx=(x1+x2)/2, my=(y1+y2)/2; const dx=x2-x1, dy=y2-y1; const k=0.12; const cx=mx-dy*k, cy=my+dx*k; return `M${x1.toFixed(1)},${y1.toFixed(1)} Q${cx.toFixed(1)},${cy.toFixed(1)} ${x2.toFixed(1)},${y2.toFixed(1)}`; }
+
+// ---------- painel ----------
+const content = document.getElementById('content');
+function sectorChip(sid){ return sid ? `<span class="chip sec" style="background:${COL[sid]}">${SEC[sid].name}</span>` : ''; }
+function link(id, extra){ const n=N[id]; return `<a href="#${id}"><span class="dot" style="background:${COL[n.sector]||'var(--povo)'}"></span><span>${esc(n.name)}</span>${extra?`<span class="sm">${extra}</span>`:''}</a>`; }
+function fmtDate(d){ if(!d) return ''; const [y,m,dd]=d.split('-'); return `${dd}/${m}/${y.slice(2)}`; }
+function entLink(id){ const n=N[id]; return n?`<a class="e" href="#${id}">${esc(n.aliases&&n.aliases[0]&&n.aliases[0].length<=8?n.aliases[0]:n.name)}</a>`:''; }
+let homeTab = 'mudancas';
+function renderHome(){
+  const st = G.stats; const bt = st.by_type, bs = st.by_sector, bsub = st.by_subtype;
+  const subRows = [['ministerio','Ministérios'],['orgao_presidencia','Órgãos da Presidência'],['agencia_reguladora','Agências reguladoras'],['autarquia','Autarquias'],['fundacao','Fundações'],['empresa_publica','Empresas públicas'],['sociedade_economia_mista','Sociedades de economia mista'],['tribunal','Tribunais'],['ministerio_publico','Ministério Público'],['forca_armada','Forças Armadas'],['instituicao_de_ensino','Universidades e institutos federais']];
+  const news = (G.news||[]).slice(0,8).map(a=>`<div class="it"><a class="t" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a><span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span>${(a.entities||[]).slice(0,4).map(entLink).join('')}${(a.people||[]).slice(0,3).map(p=>`<a class="e" href="#${p.position}">${esc(p.name)}</a>`).join('')}</div>`).join('');
+  const chg = (G.changes||[]).slice(0,12).map(c=>`<div class="chg"><span class="d">${fmtDate(c.date)}</span><span><span class="k ${c.kind==='sabatina'?(c.result==='APROVADA_NO_PLENARIO'?'sab':'rej'):c.kind==='exoneracao'?'rej':''}">${c.kind==='sabatina'?(c.result==='APROVADA_NO_PLENARIO'?'aprovado':c.result==='REJEITADO_PLENARIO'?'rejeitado':'sabatina'):c.kind==='nomeacao'?'nomeado':c.kind==='exoneracao'?'exonerado':c.kind==='designacao'?'designado':(c.acting?'interino':'posse')}</span><a href="#${c.positionId}">${esc(c.personName||'—')}</a>${c.votes&&c.votes[0]!=null?` <span class="pn">${c.votes[0]}×${c.votes[1]}</span>`:''}<br><span class="pn">${esc(c.positionName)}</span></span></div>`).join('');
+  const pw = (G.power||[]); const pmax = pw.length?pw[0].articles:1;
+  const power = pw.slice(0,12).map(p=>`<div class="row"><span class="av" style="width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center">${esc(p.name.split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join(''))}</span><a href="#${p.position}" style="color:var(--ink);text-decoration:none">${esc(p.name)}</a><span class="n">${p.articles} art.</span><span class="bar"><i style="width:${Math.round(100*p.articles/pmax)}%"></i></span></div>`).join('');
+  const tab = (id,label)=>`<button role="tab" aria-selected="${homeTab===id}" data-tab="${id}">${label}</button>`;
+  const body = homeTab==='noticias' ? (news?`<div class="news">${news}</div><p style="font-size:13px;color:var(--ink-3)">${st.news_sources||0} fontes · ${st.articles_90d||0} artigos em 90 dias · entidades e pessoas reconhecidas por sigla e nome.</p>`:'<p>Sem notícias coletadas ainda.</p>')
+    : homeTab==='poder' ? (power?`<div class="pm">${power}</div><p style="font-size:13px;color:var(--ink-3)">Pessoas do grafo mais citadas nos últimos 90 dias. Cresce a cada coleta diária.</p>`:'<p>Sem menções ainda.</p>')
+    : (chg?`<div>${chg}</div><p style="font-size:13px;color:var(--ink-3)">Sabatinas do Senado, posses e atos do Diário Oficial (Seção 2) casados com cargos do grafo.</p>`:'<p>Sem mudanças registradas.</p>');
+  content.innerHTML = `
+  <div class="card"><h1>Quem manda em quê no governo federal</h1>
+    <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
+    <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div></div>
+  <div class="card"><div class="tabs" role="tablist">${tab('mudancas','Últimas mudanças')}${tab('noticias','Notícias')}${tab('poder','Quem está na notícia')}</div>${body}</div>
+  <div class="card"><h2>Por poder</h2><div class="counts">${Object.keys(ARC).map(s=>`<span class="k"><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</span><span>${bs[s]||0}</span>`).join('')}</div>
+    <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
+    <h3>Cargos e colegiados</h3><div class="counts"><span>Cargos de chefia mapeados</span><span>${bt.dept_head||0}</span><span>Cadeiras (inclui 513 deputados e 81 senadores)</span><span>${st.seats_total}</span><span>Sabatinas do Senado desde 2023</span><span>${st.sabatinas||0}</span><span>Colegiados deliberativos</span><span>${bt.commission||0}</span></div></div>
+  <div class="card"><h2>Como ler a roda</h2><div class="counts">${[1,2,3,4].map(r=>`<span><b>Anel ${r} · ${L.rings[r].name}</b><br><span style="color:var(--ink-3);font-size:13.5px">${L.rings[r].description}</span></span><span></span>`).join('')}</div>
+    <p style="font-size:13.5px;margin-top:10px">${st.siorg_matched||0} órgãos curados casados com o registro oficial do SIORG e ${st.from_siorg||0} importados dele. ${st.unverified} citações curadas ainda marcadas para conferência. Gerado em ${st.generated_at}.</p></div>`;
+  content.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{homeTab=b.dataset.tab; renderHome();}));
+}
+function renderNode(n){
+  const isPos = n.type==='dept_head';
+  const groups = {};
+  for (const eid of n.edges) { const e=E[eid]; const out = e.from===n.id; const key = e.type+(out?':out':':in'); (groups[key] = groups[key]||[]).push(e); }
+  const order = ['chefia','elege','nomeia','sabatina','indica','supervisiona','integra','fiscaliza','aconselha','membro_nato'];
+  let rels = '';
+  for (const t of order) for (const dir of [':out',':in']) { const list = groups[t+dir]; if(!list) continue; const label = REL[t][dir===':out'?0:1];
+    rels += `<details class="rel" open><summary><span class="dot" style="background:var(--ink-3)"></span>${label}<span class="n">${list.length}</span></summary><div class="list">${list.map(e=>{ const o = e.from===n.id?e.to:e.from; const extra = (e.seats&&e.seats>1?`${e.seats} vagas · `:'')+e.cite.split(';')[0]; return link(o, esc(extra)); }).join('')}</div></details>`; }
+  const head = n.head_of ? N[n.head_of] : null;
+  const parent = n.parent ? N[n.parent] : null;
+  const kids = (n.children||[]).map(id=>link(id, SUB[N[id].subtype]||'')).join('');
+  const poss = (n.positions||[]).map(id=>{ const p=N[id]; return link(id, (p.seats>1?p.seats+' vagas':'') + (p.sabatina?' · sabatina':'')); }).join('');
+  const people = n.people || [];
+  let seats = '';
+  if (isPos || people.length) {
+    if (!people.length) seats = `<h3>Ocupante${n.seats>1?'s':''}</h3><div class="seat">${n.seats>1?n.seats+' cadeiras. ':''}Sem dado de ocupante ainda. Vem do Portal da Transparência e do DOU na Fase 1.</div>`;
+    else {
+      const parties = {}; people.forEach(p => { const k = p.party || '—'; parties[k] = (parties[k]||0)+1; });
+      const top = Object.entries(parties).sort((a,b)=>b[1]-a[1]);
+      const max = top[0][1];
+      const bars = (people.length >= 10 && people.some(p=>p.party)) ? `<div class="parties">${top.slice(0,14).map(([k,v])=>`<div class="pr"><span class="pk">${esc(k)}</span><span class="pb"><i style="width:${Math.round(100*v/max)}%"></i></span><span class="pv">${v}</span></div>`).join('')}${top.length>14?`<div class="pr" style="color:var(--ink-3)"><span class="pk">+${top.length-14}</span><span class="pb"></span><span class="pv">${top.slice(14).reduce((a,[,v])=>a+v,0)}</span></div>`:''}</div>` : '';
+      const src = p => p.source==='oficial'?`página oficial${p.checked_at?' · conferido em '+fmtDate(p.checked_at):''}`:p.source==='wikidata'?'Wikidata · pode estar desatualizado':'';
+      const item = p => `<a class="person" href="${p.source_url||'#'}" target="_blank" rel="noopener" title="${esc(src(p))}"><span class="av">${p.image_url||p.image_commons?`<img src="${esc((p.image_url||p.image_commons)+(p.image_commons?'?width=60':''))}" alt="" loading="lazy" onerror="this.remove()">`:''}${esc((p.name||'?').split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join(''))}</span><span class="pn">${esc(p.name)}${p.role?` <em>${esc(p.role)}</em>`:''}</span><span class="pm">${[p.party,p.uf].filter(Boolean).join(' · ')}${p.entry_mode==='suplente'?' · suplente':''}${p.started_at&&!p.party?fmtDate(p.started_at):''}${p.source==='wikidata'?' · <span style="color:var(--jud)">wikidata</span>':''}${p.note&&!p.party?' · '+esc(p.note):''}</span></a>`;
+      const shown = people.length > 24 ? 24 : people.length;
+      const vac = n.vacant_seats?`<div class="seat">${n.vacant_seats} ${n.vacant_seats>1?'vagas abertas':'vaga aberta'} segundo a página oficial.</div>`:'';
+      const srcNote = people[0]&&people[0].source==='oficial'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Fonte: <a href="${people[0].source_url}" target="_blank" rel="noopener">página oficial</a>, conferida em ${fmtDate(people[0].checked_at)}.</p>`:people[0]&&people[0].source==='wikidata'?`<p style="font-size:12.5px;color:var(--jud);margin:2px 0 6px">Fonte: Wikidata, sem conferência oficial. Pode estar desatualizado.</p>`:'';
+      seats = `<h3>Ocupante${people.length>1?'s':''} <span style="font-weight:400">· ${people.length}${n.seats>people.length?` de ${n.seats}`:''}</span></h3>${srcNote}${vac}${bars}<div class="people">${people.slice(0,shown).map(item).join('')}</div>${people.length>shown?`<details class="rel"><summary>Ver todos os ${people.length}</summary><div class="people">${people.slice(shown).map(item).join('')}</div></details>`:''}`;
+    }
+  }
+  content.innerHTML = `<div class="card">
+    <div class="chips">${sectorChip(n.sector)}<span class="chip">${TYPE_NAME[n.type]}${n.subtype?' · '+(SUB[n.subtype]||n.subtype):''}</span>${n.ring?`<span class="chip">Anel ${n.ring} · ${L.rings[n.ring].name}</span>`:''}${n.source==='siorg'?'<span class="chip">via SIORG</span>':(n.verified===false?'<span class="chip warn">citação a conferir</span>':'')}</div>
+    <h1>${esc(n.name)}</h1>
+    ${n.aliases&&n.aliases.length?`<p style="margin-top:-4px;font-size:14px;color:var(--ink-3)">${n.aliases.map(esc).join(' · ')}</p>`:''}
+    <p>${esc(n.description)}</p>
+    <div class="links">${n.cite_url?`<a href="${n.cite_url}" target="_blank" rel="noopener">Fonte legal ↗</a>`:''}${n.official_url?`<a href="${n.official_url}" target="_blank" rel="noopener">Site oficial ↗</a>`:''}</div>
+    <p class="cite">${esc(n.cite)}${n.mandato_anos?` · mandato de ${n.mandato_anos} anos`:''}${n.siorg_code?` · <a href="https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/${n.siorg_code}" target="_blank" rel="noopener">SIORG ${n.siorg_code}</a>`:''}</p>
+    ${n.siorg_description&&n.source!=='siorg'?`<details class="rel"><summary>Competência segundo o SIORG</summary><p style="font-size:14px">${esc(n.siorg_description)}</p></details>`:''}
+    ${head?`<h3>Chefia</h3><div class="list">${link(head.id, SUB[head.subtype]||'')}</div>`:''}
+    ${seats}
+    ${parent?`<h3>${n.subtype&&['autarquia','fundacao','empresa_publica','sociedade_economia_mista','agencia_reguladora'].includes(n.subtype)?'Vinculado a':'Integra'}</h3><div class="list">${link(parent.id)}</div>`:''}
+    ${poss?`<h3>Cargos</h3><div class="list">${poss}</div>`:''}
+    ${kids?`<h3>Órgãos integrados e vinculados <span style="font-weight:400">· ${n.children.length}</span></h3><div class="list">${kids}</div>`:''}
+  </div>
+  ${n.sabatinas&&n.sabatinas.length?`<div class="card"><h2>Sabatinas no Senado <span style="color:var(--ink-3);font-weight:500">· ${n.sabatinas.length}</span></h2>${n.sabatinas.slice(0,12).map(sb=>`<div class="sab"><span><a href="${sb.url}" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:none">${esc(sb.name||sb.msf)}</a><br><span style="color:var(--ink-3);font-size:12.5px">${esc((sb.cargo||'').slice(0,90))}</span></span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:sb.resultado==='REJEITADO_PLENARIO'?'rejeitado':(sb.resultado||'').toLowerCase().replace(/_/g,' ')}</span></div>`).join('')}</div>`:''}
+  ${(()=>{ const na=(G.news||[]).filter(a=>(a.entities||[]).includes(n.id)||(a.people||[]).some(p=>p.position===n.id)).slice(0,6); return na.length?`<div class="card"><h2>Na notícia</h2><div class="news">${na.map(a=>`<div class="it"><a class="t" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a><span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('')}</div></div>`:''; })()}
+  <div class="card"><h2>Relações <span style="color:var(--ink-3);font-weight:500">· ${n.edges.length}</span></h2>${rels||'<p>Nenhuma relação registrada.</p>'}</div>`;
+  document.getElementById('panel').scrollTo({top:0});
+}
+
+// ---------- busca ----------
+const q = document.getElementById('q'), res = document.getElementById('results');
+const norm = s => s.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
+const index = Object.values(N).map(n => ({id:n.id, name:n.name, type:n.type, sector:n.sector, hay: norm([n.name, ...(n.aliases||[])].join(' ')), al: norm((n.aliases||[]).join(' '))}));
+q.addEventListener('input', () => {
+  const v = norm(q.value.trim()); if (v.length < 2) { res.hidden = true; q.setAttribute('aria-expanded','false'); return; }
+  const hits = index.map(x => { let sc = 0; if (x.al.split(' ').includes(v)) sc = 100; else if (x.hay.startsWith(v)) sc = 60; else if (x.hay.includes(' '+v)) sc = 40; else if (x.hay.includes(v)) sc = 20; if (x.type==='dept_head') sc -= 5; return {x, sc}; }).filter(h=>h.sc>0).sort((a,b)=>b.sc-a.sc).slice(0,12);
+  res.innerHTML = hits.length ? hits.map(h=>`<a href="#${h.x.id}" role="option"><span class="dot" style="background:${COL[h.x.sector]||'var(--povo)'}"></span><span>${esc(h.x.name)}</span><span class="t">${TYPE_NAME[h.x.type]}</span></a>`).join('') : '<div style="padding:10px;color:var(--ink-3)">Nada encontrado. Tente a sigla (MF, STF, Anatel).</div>';
+  res.hidden = false; q.setAttribute('aria-expanded','true');
+});
+q.addEventListener('keydown', e => { if (e.key==='Enter') { const a = res.querySelector('a'); if (a) { location.hash = a.getAttribute('href'); } } if (e.key==='Escape') { res.hidden = true; q.value=''; } if (e.key==='ArrowDown') { const a=res.querySelector('a'); if(a){a.focus(); e.preventDefault();} } });
+res.addEventListener('keydown', e => { const items=[...res.querySelectorAll('a')]; const i=items.indexOf(document.activeElement); if(e.key==='ArrowDown'&&items[i+1]){items[i+1].focus();e.preventDefault();} if(e.key==='ArrowUp'){ (items[i-1]||q).focus(); e.preventDefault(); } if(e.key==='Escape'){res.hidden=true;q.focus();} });
+document.addEventListener('click', e => { if (!e.target.closest('.search')) res.hidden = true; });
+window.addEventListener('hashchange', () => { res.hidden = true; q.value=''; select(location.hash.slice(1) || "br-gabinete-de-seguranca-institucional"); });
+
+// ---------- tooltip, teclado ----------
+const tip = document.getElementById('tip'), stage = document.getElementById('stage');
+document.getElementById('graph').addEventListener('mousemove', e => { const a = e.target.closest('.node'); if (!a) { tip.hidden = true; return; } const n = N[a.dataset.id]; const r = stage.getBoundingClientRect(); tip.innerHTML = esc(n.name) + `<small>${TYPE_NAME[n.type]}</small>`; tip.style.left = (e.clientX - r.left) + 'px'; tip.style.top = (e.clientY - r.top) + 'px'; tip.hidden = false; });
+document.getElementById('graph').addEventListener('mouseleave', () => tip.hidden = true);
+document.addEventListener('keydown', e => { if (e.key==='Escape' && !q.value && document.activeElement !== q) { location.hash = ''; } if (e.key==='/' && document.activeElement !== q) { q.focus(); e.preventDefault(); } });
+
+// ---------- legenda e tema ----------
+const lb = document.getElementById('legend-btn'), lbox = document.getElementById('legend-box');
+function legendSvg(t){ const dash = {elege:'',nomeia:'',chefia:'',sabatina:'5 3',indica:'5 3',integra:'1.5 3',membro_nato:'1.5 3',supervisiona:'8 3 2 3',fiscaliza:'8 3 2 3',aconselha:'8 3 2 3'}[t]; const w=t==='elege'?2.4:1.3; return `<svg viewBox="0 0 22 14"><path d="M1,7 H17" stroke="currentColor" stroke-width="${w}" stroke-dasharray="${dash}" fill="none"/><path d="M15,3 L21,7 L15,11 z" fill="currentColor"/></svg>`; }
+const shapeSvg = {elected:'<svg viewBox="0 0 22 14"><circle cx="11" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>', department:'<svg viewBox="0 0 22 14"><rect x="6" y="2" width="10" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>', tribunal:'<svg viewBox="0 0 22 14"><polygon points="11,1 16.7,5.1 14.5,11.9 7.5,11.9 5.3,5.1" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>', forca:'<svg viewBox="0 0 22 14"><polygon points="11,1 17,12 5,12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>', commission:'<svg viewBox="0 0 22 14"><polygon points="11,13 5.3,8.9 7.5,2.1 14.5,2.1 16.7,8.9" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>', advisory:'<svg viewBox="0 0 22 14"><polygon points="16,7 13.5,11.3 8.5,11.3 6,7 8.5,2.7 13.5,2.7" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>', dept_head:'<svg viewBox="0 0 22 14"><circle cx="11" cy="7" r="2.6" fill="currentColor"/></svg>'};
+lbox.innerHTML = `<h3>Entidades</h3><div>${shapeSvg.elected} Órgão eletivo</div><div>${shapeSvg.department} Órgão, autarquia, empresa</div><div>${shapeSvg.tribunal} Tribunal</div><div>${shapeSvg.forca} Força Armada</div><div>${shapeSvg.commission} Colegiado deliberativo</div><div>${shapeSvg.advisory} Conselho consultivo</div><div>${shapeSvg.dept_head} Cargo de chefia</div><div></div>
+  <h3>Relações</h3>${Object.keys(REL).map(t=>`<div>${legendSvg(t)} ${REL[t][0]}</div>`).join('')}
+  <h3>Setores</h3>${Object.keys(ARC).map(s=>`<div><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</div>`).join('')}`;
+lb.addEventListener('click', () => { const open = lbox.hidden; lbox.hidden = !open; lb.setAttribute('aria-expanded', String(open)); lb.textContent = open ? 'Legenda ▴' : 'Legenda ▾'; });
+const root = document.documentElement, tb = document.getElementById('theme');
+try { const saved = localStorage.getItem('atlas-theme'); if (saved) root.dataset.theme = saved; } catch(e){}
+tb.addEventListener('click', () => { const dark = root.dataset.theme ? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; root.dataset.theme = dark ? 'light' : 'dark'; try { localStorage.setItem('atlas-theme', root.dataset.theme); } catch(e){} });
+
+draw();
+select(location.hash.slice(1));
+})();
+</script>

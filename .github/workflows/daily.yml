@@ -1,0 +1,26 @@
+name: Atualização diária
+on:
+  schedule: [{ cron: "30 9 * * *" }]   # 06:30 em Brasília
+  workflow_dispatch:
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python -m venv .venv && .venv/bin/pip install pyyaml
+      - run: scripts/update.sh --fast
+        env:
+          PORTAL_TRANSPARENCIA_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_KEY }}
+      - name: Commit dados gerados
+        run: |
+          git config user.name "atlas-bot" && git config user.email "bot@atlasdarepublica.org"
+          git add data/generated build/graph.br.json web/graph.br.js
+          git commit -m "dados: atualização automática $(date -u +%F)" || echo "sem mudanças"
+          git push
+      - name: Publicar site (Vercel)
+        if: ${{ env.VERCEL_TOKEN != '' }}
+        env: { VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }} }
+        run: npx vercel deploy --prod --yes --token "$VERCEL_TOKEN" site

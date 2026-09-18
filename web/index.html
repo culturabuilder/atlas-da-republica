@@ -84,6 +84,35 @@ p{margin:8px 0;color:var(--ink-2)}
 .cite{font-size:13.5px;color:var(--ink-3)}
 .cite a{color:var(--ink-2)}
 .foot{font-size:13px;color:var(--ink-3);padding:4px 6px}
+.news{display:flex;flex-direction:column;gap:10px}
+.news .it{font-size:14.5px;line-height:1.45}
+.news .it a.t{color:var(--ink);text-decoration:none;font-weight:600}
+.news .it a.t:hover{text-decoration:underline}
+.news .it .m{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:2px}
+.news .it .e{display:inline-block;font-size:12.5px;color:var(--accent);text-decoration:none;margin-right:8px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line-2);margin:0 -20px 12px;padding:0 12px}
+.tabs button{font:inherit;font-size:14px;padding:8px 10px;border:0;border-bottom:2px solid transparent;background:none;color:var(--ink-3);cursor:pointer}
+.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent)}
+.tabs button:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.chg{display:grid;grid-template-columns:74px 1fr;gap:4px 12px;padding:8px 0;border-bottom:1px solid var(--line-2);font-size:14.5px}
+.chg:last-child{border-bottom:0}
+.chg .d{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);padding-top:3px}
+.chg .k{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:3px;margin-right:6px;background:var(--accent-soft);color:var(--accent)}
+.chg .k.sab{background:color-mix(in srgb,var(--leg) 18%,transparent);color:var(--leg)}
+.chg .k.rej{background:color-mix(in srgb,var(--jud) 25%,transparent);color:var(--jud)}
+.chg a{color:var(--ink);text-decoration:none}
+.chg a:hover{text-decoration:underline}
+.chg .pn{color:var(--ink-3);font-size:13.5px}
+.pm{display:grid;grid-template-columns:1fr;gap:6px}
+.pm .row{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;font-size:14.5px}
+.pm .bar{height:6px;background:var(--line-2);border-radius:3px;overflow:hidden;grid-column:2/4}
+.pm .bar i{display:block;height:100%;background:var(--povo)}
+.pm .n{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+.person .av img{width:30px;height:30px;border-radius:50%;object-fit:cover;display:block}
+.sab{font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line-2);display:grid;grid-template-columns:1fr auto;gap:2px 10px}
+.sab:last-child{border-bottom:0}
+.sab .r{font-family:var(--mono);font-size:11px;color:var(--ink-3);text-align:right}
+.sab .r b{color:var(--ok,#1E6B3A)}
 /* ---------- gráfico ---------- */
 .stage{position:relative;padding:12px}
 .topbar{position:absolute;top:22px;right:22px;display:flex;gap:8px;z-index:5}
@@ -263,19 +292,31 @@ function curve(x1,y1,x2,y2){ const mx=(x1+x2)/2, my=(y1+y2)/2; const dx=x2-x1, d
 const content = document.getElementById('content');
 function sectorChip(sid){ return sid ? `<span class="chip sec" style="background:${COL[sid]}">${SEC[sid].name}</span>` : ''; }
 function link(id, extra){ const n=N[id]; return `<a href="#${id}"><span class="dot" style="background:${COL[n.sector]||'var(--povo)'}"></span><span>${esc(n.name)}</span>${extra?`<span class="sm">${extra}</span>`:''}</a>`; }
+function fmtDate(d){ if(!d) return ''; const [y,m,dd]=d.split('-'); return `${dd}/${m}/${y.slice(2)}`; }
+function entLink(id){ const n=N[id]; return n?`<a class="e" href="#${id}">${esc(n.aliases&&n.aliases[0]&&n.aliases[0].length<=8?n.aliases[0]:n.name)}</a>`:''; }
+let homeTab = 'mudancas';
 function renderHome(){
   const st = G.stats; const bt = st.by_type, bs = st.by_sector, bsub = st.by_subtype;
   const subRows = [['ministerio','Ministérios'],['orgao_presidencia','Órgãos da Presidência'],['agencia_reguladora','Agências reguladoras'],['autarquia','Autarquias'],['fundacao','Fundações'],['empresa_publica','Empresas públicas'],['sociedade_economia_mista','Sociedades de economia mista'],['tribunal','Tribunais'],['ministerio_publico','Ministério Público'],['forca_armada','Forças Armadas'],['instituicao_de_ensino','Universidades e institutos federais']];
+  const news = (G.news||[]).slice(0,8).map(a=>`<div class="it"><a class="t" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a><span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span>${(a.entities||[]).slice(0,4).map(entLink).join('')}${(a.people||[]).slice(0,3).map(p=>`<a class="e" href="#${p.position}">${esc(p.name)}</a>`).join('')}</div>`).join('');
+  const chg = (G.changes||[]).slice(0,12).map(c=>`<div class="chg"><span class="d">${fmtDate(c.date)}</span><span><span class="k ${c.kind==='sabatina'?(c.result==='APROVADA_NO_PLENARIO'?'sab':'rej'):c.kind==='exoneracao'?'rej':''}">${c.kind==='sabatina'?(c.result==='APROVADA_NO_PLENARIO'?'aprovado':c.result==='REJEITADO_PLENARIO'?'rejeitado':'sabatina'):c.kind==='nomeacao'?'nomeado':c.kind==='exoneracao'?'exonerado':c.kind==='designacao'?'designado':(c.acting?'interino':'posse')}</span><a href="#${c.positionId}">${esc(c.personName||'—')}</a>${c.votes&&c.votes[0]!=null?` <span class="pn">${c.votes[0]}×${c.votes[1]}</span>`:''}<br><span class="pn">${esc(c.positionName)}</span></span></div>`).join('');
+  const pw = (G.power||[]); const pmax = pw.length?pw[0].articles:1;
+  const power = pw.slice(0,12).map(p=>`<div class="row"><span class="av" style="width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center">${esc(p.name.split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join(''))}</span><a href="#${p.position}" style="color:var(--ink);text-decoration:none">${esc(p.name)}</a><span class="n">${p.articles} art.</span><span class="bar"><i style="width:${Math.round(100*p.articles/pmax)}%"></i></span></div>`).join('');
+  const tab = (id,label)=>`<button role="tab" aria-selected="${homeTab===id}" data-tab="${id}">${label}</button>`;
+  const body = homeTab==='noticias' ? (news?`<div class="news">${news}</div><p style="font-size:13px;color:var(--ink-3)">${st.news_sources||0} fontes · ${st.articles_90d||0} artigos em 90 dias · entidades e pessoas reconhecidas por sigla e nome.</p>`:'<p>Sem notícias coletadas ainda.</p>')
+    : homeTab==='poder' ? (power?`<div class="pm">${power}</div><p style="font-size:13px;color:var(--ink-3)">Pessoas do grafo mais citadas nos últimos 90 dias. Cresce a cada coleta diária.</p>`:'<p>Sem menções ainda.</p>')
+    : (chg?`<div>${chg}</div><p style="font-size:13px;color:var(--ink-3)">Sabatinas do Senado, posses e atos do Diário Oficial (Seção 2) casados com cargos do grafo.</p>`:'<p>Sem mudanças registradas.</p>');
   content.innerHTML = `
   <div class="card"><h1>Quem manda em quê no governo federal</h1>
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
-    <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div>
-    <p style="font-size:14px">Clique em um nó da roda ou busque por sigla. A distância do centro mostra quantos passos separam o eleitor do órgão.</p></div>
+    <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div></div>
+  <div class="card"><div class="tabs" role="tablist">${tab('mudancas','Últimas mudanças')}${tab('noticias','Notícias')}${tab('poder','Quem está na notícia')}</div>${body}</div>
   <div class="card"><h2>Por poder</h2><div class="counts">${Object.keys(ARC).map(s=>`<span class="k"><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</span><span>${bs[s]||0}</span>`).join('')}</div>
     <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
-    <h3>Cargos e colegiados</h3><div class="counts"><span>Cargos de chefia mapeados</span><span>${bt.dept_head||0}</span><span>Cadeiras (inclui 513 deputados e 81 senadores)</span><span>${st.seats_total}</span><span>Colegiados deliberativos</span><span>${bt.commission||0}</span><span>Conselhos consultivos</span><span>${bt.advisory||0}</span></div></div>
+    <h3>Cargos e colegiados</h3><div class="counts"><span>Cargos de chefia mapeados</span><span>${bt.dept_head||0}</span><span>Cadeiras (inclui 513 deputados e 81 senadores)</span><span>${st.seats_total}</span><span>Sabatinas do Senado desde 2023</span><span>${st.sabatinas||0}</span><span>Colegiados deliberativos</span><span>${bt.commission||0}</span></div></div>
   <div class="card"><h2>Como ler a roda</h2><div class="counts">${[1,2,3,4].map(r=>`<span><b>Anel ${r} · ${L.rings[r].name}</b><br><span style="color:var(--ink-3);font-size:13.5px">${L.rings[r].description}</span></span><span></span>`).join('')}</div>
     <p style="font-size:13.5px;margin-top:10px">${st.siorg_matched||0} órgãos curados casados com o registro oficial do SIORG e ${st.from_siorg||0} importados dele. ${st.unverified} citações curadas ainda marcadas para conferência. Gerado em ${st.generated_at}.</p></div>`;
+  content.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{homeTab=b.dataset.tab; renderHome();}));
 }
 function renderNode(n){
   const isPos = n.type==='dept_head';
@@ -297,10 +338,13 @@ function renderNode(n){
       const parties = {}; people.forEach(p => { const k = p.party || '—'; parties[k] = (parties[k]||0)+1; });
       const top = Object.entries(parties).sort((a,b)=>b[1]-a[1]);
       const max = top[0][1];
-      const bars = people.length >= 10 ? `<div class="parties">${top.slice(0,14).map(([k,v])=>`<div class="pr"><span class="pk">${esc(k)}</span><span class="pb"><i style="width:${Math.round(100*v/max)}%"></i></span><span class="pv">${v}</span></div>`).join('')}${top.length>14?`<div class="pr" style="color:var(--ink-3)"><span class="pk">+${top.length-14}</span><span class="pb"></span><span class="pv">${top.slice(14).reduce((a,[,v])=>a+v,0)}</span></div>`:''}</div>` : '';
-      const item = p => `<a class="person" href="${p.source_url||'#'}" target="_blank" rel="noopener"><span class="av">${esc((p.name||'?').split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join(''))}</span><span class="pn">${esc(p.name)}${p.role?` <em>${esc(p.role)}</em>`:''}</span><span class="pm">${[p.party,p.uf].filter(Boolean).join(' · ')}${p.entry_mode==='suplente'?' · suplente':''}</span></a>`;
+      const bars = (people.length >= 10 && people.some(p=>p.party)) ? `<div class="parties">${top.slice(0,14).map(([k,v])=>`<div class="pr"><span class="pk">${esc(k)}</span><span class="pb"><i style="width:${Math.round(100*v/max)}%"></i></span><span class="pv">${v}</span></div>`).join('')}${top.length>14?`<div class="pr" style="color:var(--ink-3)"><span class="pk">+${top.length-14}</span><span class="pb"></span><span class="pv">${top.slice(14).reduce((a,[,v])=>a+v,0)}</span></div>`:''}</div>` : '';
+      const src = p => p.source==='oficial'?`página oficial${p.checked_at?' · conferido em '+fmtDate(p.checked_at):''}`:p.source==='wikidata'?'Wikidata · pode estar desatualizado':'';
+      const item = p => `<a class="person" href="${p.source_url||'#'}" target="_blank" rel="noopener" title="${esc(src(p))}"><span class="av">${p.image_url||p.image_commons?`<img src="${esc((p.image_url||p.image_commons)+(p.image_commons?'?width=60':''))}" alt="" loading="lazy" onerror="this.remove()">`:''}${esc((p.name||'?').split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join(''))}</span><span class="pn">${esc(p.name)}${p.role?` <em>${esc(p.role)}</em>`:''}</span><span class="pm">${[p.party,p.uf].filter(Boolean).join(' · ')}${p.entry_mode==='suplente'?' · suplente':''}${p.started_at&&!p.party?fmtDate(p.started_at):''}${p.source==='wikidata'?' · <span style="color:var(--jud)">wikidata</span>':''}${p.note&&!p.party?' · '+esc(p.note):''}</span></a>`;
       const shown = people.length > 24 ? 24 : people.length;
-      seats = `<h3>Ocupante${people.length>1?'s':''} <span style="font-weight:400">· ${people.length}${n.seats>people.length?` de ${n.seats}`:''}</span></h3>${bars}<div class="people">${people.slice(0,shown).map(item).join('')}</div>${people.length>shown?`<details class="rel"><summary>Ver todos os ${people.length}</summary><div class="people">${people.slice(shown).map(item).join('')}</div></details>`:''}`;
+      const vac = n.vacant_seats?`<div class="seat">${n.vacant_seats} ${n.vacant_seats>1?'vagas abertas':'vaga aberta'} segundo a página oficial.</div>`:'';
+      const srcNote = people[0]&&people[0].source==='oficial'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Fonte: <a href="${people[0].source_url}" target="_blank" rel="noopener">página oficial</a>, conferida em ${fmtDate(people[0].checked_at)}.</p>`:people[0]&&people[0].source==='wikidata'?`<p style="font-size:12.5px;color:var(--jud);margin:2px 0 6px">Fonte: Wikidata, sem conferência oficial. Pode estar desatualizado.</p>`:'';
+      seats = `<h3>Ocupante${people.length>1?'s':''} <span style="font-weight:400">· ${people.length}${n.seats>people.length?` de ${n.seats}`:''}</span></h3>${srcNote}${vac}${bars}<div class="people">${people.slice(0,shown).map(item).join('')}</div>${people.length>shown?`<details class="rel"><summary>Ver todos os ${people.length}</summary><div class="people">${people.slice(shown).map(item).join('')}</div></details>`:''}`;
     }
   }
   content.innerHTML = `<div class="card">
@@ -317,6 +361,8 @@ function renderNode(n){
     ${poss?`<h3>Cargos</h3><div class="list">${poss}</div>`:''}
     ${kids?`<h3>Órgãos integrados e vinculados <span style="font-weight:400">· ${n.children.length}</span></h3><div class="list">${kids}</div>`:''}
   </div>
+  ${n.sabatinas&&n.sabatinas.length?`<div class="card"><h2>Sabatinas no Senado <span style="color:var(--ink-3);font-weight:500">· ${n.sabatinas.length}</span></h2>${n.sabatinas.slice(0,12).map(sb=>`<div class="sab"><span><a href="${sb.url}" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:none">${esc(sb.name||sb.msf)}</a><br><span style="color:var(--ink-3);font-size:12.5px">${esc((sb.cargo||'').slice(0,90))}</span></span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:sb.resultado==='REJEITADO_PLENARIO'?'rejeitado':(sb.resultado||'').toLowerCase().replace(/_/g,' ')}</span></div>`).join('')}</div>`:''}
+  ${(()=>{ const na=(G.news||[]).filter(a=>(a.entities||[]).includes(n.id)||(a.people||[]).some(p=>p.position===n.id)).slice(0,6); return na.length?`<div class="card"><h2>Na notícia</h2><div class="news">${na.map(a=>`<div class="it"><a class="t" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a><span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('')}</div></div>`:''; })()}
   <div class="card"><h2>Relações <span style="color:var(--ink-3);font-weight:500">· ${n.edges.length}</span></h2>${rels||'<p>Nenhuma relação registrada.</p>'}</div>`;
   document.getElementById('panel').scrollTo({top:0});
 }

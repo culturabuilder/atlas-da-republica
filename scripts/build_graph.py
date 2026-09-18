@@ -105,12 +105,46 @@ for n in nodes.values():
     else: n["verified"] = True
 
 # ---- ocupantes (camada gerada: Câmara e Senado)
-ppl_path = DATA / "generated" / "parlamentares.yaml"
-if ppl_path.exists():
+def _slug(s): return re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower()).strip("-")
+sources = [("generated", DATA / "generated" / "parlamentares.yaml")]
+# curados (páginas oficiais) têm precedência sobre o Wikidata
+of_path = DATA / "ocupantes-oficiais.yaml"
+if of_path.exists():
+    for block in yaml.safe_load(open(of_path, encoding="utf-8")) or []:
+        for pid, people in (block.get("positions") or {}).items():
+            if pid not in nodes: warn(f"ocupantes-oficiais: cargo inexistente {pid}"); continue
+            if nodes[pid].get("people") and nodes[pid]["people"][0].get("source") != "oficial": continue
+            recs = []
+            for p in people:
+                if isinstance(p, str): p = {"name": p}
+                recs.append({"id": "br-p-" + _slug(p["name"]), "name": p["name"], "started_at": str(p["started_at"]) if p.get("started_at") else None, "entry_mode": block.get("entry_mode", "nomeado"),
+                             "note": p.get("note"), "source": "oficial", "source_url": block["source"], "checked_at": str(block.get("checked_at")), "verified": True})
+            nodes[pid]["people"] = recs
+    for n in nodes.values():
+        if n["type"] == "dept_head" and n.get("people") and n["people"][0].get("source") == "oficial" and n.get("seats", 1) > len(n["people"]):
+            n["vacant_seats"] = n["seats"] - len(n["people"])
+sources.append(("generated", DATA / "generated" / "ocupantes.yaml"))
+for _, ppl_path in sources:
+    if not ppl_path.exists(): continue
     ppl = yaml.safe_load(open(ppl_path, encoding="utf-8")) or {}
     for pid, people in (ppl.get("positions") or {}).items():
-        if pid in nodes: nodes[pid]["people"] = people
-        else: warn(f"ocupantes para cargo inexistente {pid}")
+        if pid not in nodes: warn(f"ocupantes para cargo inexistente {pid}"); continue
+        if nodes[pid].get("people"): continue
+        for p in people:
+            if p.get("started_at") is not None: p["started_at"] = str(p["started_at"])
+        # Wikidata: no Executivo, ocupante com início anterior ao governo atual (2023) é considerado desatualizado
+        if nodes[pid].get("sector") == "executivo":
+            people = [p for p in people if p.get("source") != "wikidata" or (p.get("started_at") or "") >= "2023-01-01"]
+        if people: nodes[pid]["people"] = people
+
+# ---- sabatinas (Senado) anexadas ao cargo
+sab_path = DATA / "generated" / "sabatinas.yaml"
+sabatinas = []
+if sab_path.exists():
+    sabatinas = (yaml.safe_load(open(sab_path, encoding="utf-8")) or {}).get("sabatinas") or []
+    for r in sabatinas:
+        pid = r.get("position_id")
+        if pid and pid in nodes: nodes[pid].setdefault("sabatinas", []).append({k: r.get(k) for k in ("msf", "name", "cargo", "apresentacao", "deliberacao", "resultado", "tramitando", "votos_sim", "votos_nao", "abstencoes", "secreta", "url")})
 
 # ---- arestas derivadas
 edges = []
@@ -186,17 +220,55 @@ by_subtype = Counter(n.get("subtype") for n in nodes.values() if n.get("subtype"
 by_edge = Counter(e["type"] for e in edges)
 seats = sum(n.get("seats", 0) for n in nodes.values() if n["type"] == "dept_head")
 filled = sum(len(n.get("people") or []) for n in nodes.values() if n["type"] == "dept_head")
+vacant = sum(n.get("vacant_seats", 0) for n in nodes.values() if n["type"] == "dept_head")
+filled_official = sum(len(n.get("people") or []) for n in nodes.values() if n["type"] == "dept_head" and (n.get("people") or [{}])[0].get("source") in ("oficial", None) and n.get("people"))
 sabat = sum(n.get("seats", 0) for n in nodes.values() if n["type"] == "dept_head" and n.get("sabatina"))
 unverified = sum(1 for n in nodes.values() if not n["verified"] and n.get("source") != "siorg")
 from_siorg = sum(1 for n in nodes.values() if n.get("source") == "siorg")
 stats = {"nodes": len(nodes), "edges": len(edges), "by_type": dict(by_type), "by_sector": dict(by_sector),
-         "by_subtype": dict(by_subtype), "by_edge_type": dict(by_edge), "seats_total": seats, "seats_filled": filled, "seats_sabatina": sabat,
+         "by_subtype": dict(by_subtype), "by_edge_type": dict(by_edge), "seats_total": seats, "seats_filled": filled, "seats_vacant_known": vacant, "seats_sabatina": sabat,
          "unverified": unverified, "from_siorg": from_siorg, "siorg_matched": merge_report["matched"], "generated_at": datetime.date.today().isoformat()}
-graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats}
+news_path = DATA / "generated" / "noticias.json"
+news, power = [], []
+if news_path.exists():
+    store = json.load(open(news_path, encoding="utf-8"))
+    arts = sorted(store.get("articles", {}).values(), key=lambda a: a.get("date") or "", reverse=True)
+    cutoff90 = (datetime.date.today() - datetime.timedelta(days=90)).isoformat()
+    news = [a for a in arts if a.get("entities") or a.get("people")][:60]
+    mentions = {}
+    for a in arts:
+        if (a.get("date") or "") < cutoff90: continue
+        for p in a.get("people") or []:
+            m = mentions.setdefault(p["id"], {"id": p["id"], "name": p["name"], "position": p.get("position"), "articles": 0, "last": None})
+            m["articles"] += 1; m["last"] = max(m["last"] or "", a.get("date") or "")
+    power = sorted(mentions.values(), key=lambda m: -m["articles"])[:20]
+    stats["articles_90d"] = sum(1 for a in arts if (a.get("date") or "") >= cutoff90); stats["news_sources"] = len(store.get("feeds") or [])
+stats["sabatinas"] = len(sabatinas)
+# mudanças: sabatinas deliberadas + posses recentes (started_at) como eventos
+changes = []
+for r in sabatinas:
+    if r.get("deliberacao") and r.get("position_id"):
+        changes.append({"kind": "sabatina", "date": r["deliberacao"], "personName": r.get("name"), "positionId": r["position_id"], "positionName": nodes[r["position_id"]]["name"], "result": r.get("resultado"), "votes": [r.get("votos_sim"), r.get("votos_nao")], "sourceUrl": r.get("url")})
+for n in nodes.values():
+    if n["type"] != "dept_head" and n["type"] != "elected": continue
+    for p in n.get("people") or []:
+        if p.get("started_at") and p["started_at"] >= "2025-01-01" and n["id"] not in ("br-deputado-federal", "br-senador"):
+            changes.append({"kind": "posse", "date": p["started_at"], "personName": p.get("name"), "positionId": n["id"], "positionName": n["name"], "acting": p.get("acting"), "sourceUrl": p.get("source_url")})
+dou_path = DATA / "generated" / "dou.json"
+if dou_path.exists():
+    for a in (json.load(open(dou_path, encoding="utf-8")).get("acts") or {}).values():
+        for r in a.get("records") or []:
+            if not r.get("position_id") or r["position_id"] not in nodes: continue
+            kind = {"NOMEAR": "nomeacao", "EXONERAR": "exoneracao", "DESIGNAR": "designacao", "DISPENSAR": "exoneracao"}.get(r["verb"], "nomeacao")
+            changes.append({"kind": kind, "date": a["date"], "personName": r.get("name"), "positionId": r["position_id"], "positionName": nodes[r["position_id"]]["name"], "cargoText": r.get("cargo"), "sourceUrl": a.get("url"), "act": a.get("title")})
+            nodes[r["position_id"]].setdefault("dou", []).append({"date": a["date"], "verb": r["verb"], "name": r.get("name"), "cargo": r.get("cargo"), "url": a.get("url"), "act": a.get("title")})
+changes.sort(key=lambda c: c["date"], reverse=True)
+graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "changes": changes[:200]}
 js = json.dumps(graph, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.br.json").write_text(js, encoding="utf-8")
 (OUT / "graph.br.js").write_text("window.ATLAS=" + js + ";", encoding="utf-8")
 (ROOT / "web" / "graph.br.js").write_text("window.ATLAS=" + js + ";", encoding="utf-8")
+print(f"extras: notícias={len(news)} power={len(power)} mudanças={len(changes)} sabatinas={len(sabatinas)}")
 print(f"OK  nós={stats['nodes']}  arestas={stats['edges']}  cadeiras={seats} (sabatinadas {sabat})  não verificados={unverified}")
 print("   por tipo:", dict(by_type)); print("   por setor:", dict(by_sector)); print("   por aresta:", dict(by_edge))
 print(f"   build/graph.br.json = {len(js)//1024} KB")
