@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 :root{
+  --ok:#1E6B3A; --ok-soft:#DFF0E4; --warn:#9A5B00; --warn-soft:#FBEFD9;
   --bg:#EFF0EB; --panel:#FAFAF7; --card:#FFFFFF; --ink:#1A1C19; --ink-2:#4B4F49; --ink-3:#666A63; --line:#D8DBD3; --line-2:#E8EAE4;
   --accent:#1F5F4A; --accent-soft:#DDEBE3; --focus:#1F5F4A;
   --leg:#B8452E; --exe:#3B4C9B; --jud:#8A6C10; --ess:#5E3D7A; --povo:#C25A12;
@@ -12,12 +13,14 @@
   --mono:"JetBrains Mono",ui-monospace,Menlo,monospace; --sans:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif; --disp:"Archivo","Helvetica Neue",Arial,sans-serif;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --ok:#8FD3A6; --ok-soft:#1B3324; --warn:#E9B860; --warn-soft:#3A2E14;
   --bg:#131412; --panel:#1A1C19; --card:#20231F; --ink:#ECEDE8; --ink-2:#BDC0B8; --ink-3:#9A9E95; --line:#33362F; --line-2:#2A2D27;
   --accent:#8CCBAF; --accent-soft:#1E3A2E; --focus:#8CCBAF;
   --leg:#F0907A; --exe:#9AA6EE; --jud:#E2C25A; --ess:#C9A3E6; --povo:#F2A063;
   --sector-alpha:.14; --ring-alpha:.4; --node-fill:#1A1C19;
 }}
 :root[data-theme="dark"]{
+  --ok:#8FD3A6; --ok-soft:#1B3324; --warn:#E9B860; --warn-soft:#3A2E14;
   --bg:#131412; --panel:#1A1C19; --card:#20231F; --ink:#ECEDE8; --ink-2:#BDC0B8; --ink-3:#9A9E95; --line:#33362F; --line-2:#2A2D27;
   --accent:#8CCBAF; --accent-soft:#1E3A2E; --focus:#8CCBAF;
   --leg:#F0907A; --exe:#9AA6EE; --jud:#E2C25A; --ess:#C9A3E6; --povo:#F2A063;
@@ -31,11 +34,21 @@ a{color:var(--accent)}
 /* ---------- painel ---------- */
 .panel{padding:16px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:100vh;position:sticky;top:0}
 .card{background:var(--card);border:1px solid var(--line-2);border-radius:10px;padding:18px 20px}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;font-size:17px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;font-size:17px;position:relative}
 .brand .mark{width:20px;height:20px;border-radius:50%;background:var(--povo);box-shadow:0 0 0 3px var(--card),0 0 0 4px var(--povo)}
 .brand .crumb{color:var(--ink-3);font-weight:500}
 .brand .crumb a{color:var(--ink-3);text-decoration:none}
 .brand .crumb a:hover{color:var(--ink)}
+.govbtn{font:inherit;font-weight:500;color:var(--ink-3);background:none;border:0;padding:2px 4px;border-radius:4px;cursor:pointer}
+.govbtn:hover,.govbtn[aria-expanded=true]{background:var(--panel);color:var(--ink)}
+.govbtn:focus-visible{outline:2px solid var(--focus)}
+.govmenu{position:absolute;margin-top:6px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.18);padding:6px;z-index:12;min-width:260px}
+.govmenu[hidden]{display:none}
+.gm-h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:6px 10px}
+.gm-item{display:flex;flex-direction:column;padding:8px 10px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:14.5px}
+.gm-item span{font-size:12.5px;color:var(--ink-3)}
+.gm-item.on{background:var(--accent-soft)} .gm-item.off{opacity:.55}
+a.gm-item:hover,a.gm-item:focus{background:var(--panel);outline:none}
 .search{position:relative}
 .search input{width:100%;font:inherit;font-size:15px;padding:10px 12px 10px 36px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink)}
 .search input:focus{outline:2px solid var(--focus);outline-offset:1px}
@@ -86,6 +99,20 @@ p{margin:8px 0;color:var(--ink-2)}
 .cite{font-size:13.5px;color:var(--ink-3)}
 .cite a{color:var(--ink-2)}
 .foot{font-size:13px;color:var(--ink-3);padding:4px 6px}
+.win{display:flex;gap:2px;margin-left:auto;border:1px solid var(--line);border-radius:6px;padding:2px}
+.win button{font:inherit;font-family:var(--mono);font-size:11px;padding:3px 8px;border:0;border-radius:4px;background:none;color:var(--ink-3);cursor:pointer}
+.win button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.tl{display:grid;grid-template-columns:repeat(30,1fr);gap:2px;align-items:end;height:44px;margin:10px 0 2px}
+.tl i{display:block;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px;opacity:.85}
+.tl i.z{background:var(--line-2)}
+.tlx{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--ink-3);margin-bottom:8px}
+.chg .k.in{background:var(--ok-soft,#DFF0E4);color:var(--ok,#1E6B3A)} .chg .k.out{background:var(--warn-soft,#FBEFD9);color:var(--warn,#9A5B00)}
+.pred{font-size:13px;color:var(--ink-3)} .pred s{opacity:.8}
+.news .it .s{display:block;color:var(--ink-2);font-size:14px;margin-top:2px}
+.news .it .s a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+.phead{display:flex;gap:14px;align-items:center}
+.phead .big{width:64px;height:64px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;overflow:hidden;flex:none}
+.phead .big img{width:100%;height:100%;object-fit:cover;display:block}
 .skip{position:absolute;left:-999px;top:8px;background:var(--card);color:var(--ink);padding:8px 12px;border-radius:6px;z-index:20}
 .skip:focus{left:8px;outline:2px solid var(--focus)}
 .news{display:flex;flex-direction:column;gap:10px}
@@ -94,8 +121,8 @@ p{margin:8px 0;color:var(--ink-2)}
 .news .it a.t:hover{text-decoration:underline}
 .news .it .m{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:2px}
 .news .it .e{display:inline-block;font-size:12.5px;color:var(--accent);text-decoration:none;margin-right:8px}
-.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line-2);margin:0 -20px 12px;padding:0 12px}
-.tabs button{font:inherit;font-size:14px;padding:8px 10px;border:0;border-bottom:2px solid transparent;background:none;color:var(--ink-3);cursor:pointer}
+.tabs{display:flex;flex-wrap:wrap;gap:2px;align-items:center;border-bottom:1px solid var(--line-2);margin:0 -20px 12px;padding:0 12px 6px}
+.tabs button{font:inherit;font-size:13.5px;padding:8px 8px;white-space:nowrap;border:0;border-bottom:2px solid transparent;background:none;color:var(--ink-3);cursor:pointer}
 .tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent)}
 .tabs button:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
 .chg{display:grid;grid-template-columns:74px 1fr;gap:4px 12px;padding:8px 0;border-bottom:1px solid var(--line-2);font-size:14.5px}
@@ -168,7 +195,14 @@ svg.wheel{width:100%;max-width:min(96vh,980px);height:auto;display:block;margin:
 <div class="app">
   <aside class="panel" id="panel" aria-label="Painel de informações">
     <div class="card" style="padding:12px 16px">
-      <div class="brand"><span class="mark"></span><span>Atlas da República</span><span class="crumb">/ <a href="#">Governo federal</a></span></div>
+      <div class="brand"><span class="mark"></span><span>Atlas da República</span><span class="crumb">/ <button id="gov-btn" class="govbtn" aria-haspopup="menu" aria-expanded="false">Governo federal ▾</button></span></div>
+      <div id="gov-menu" class="govmenu" role="menu" hidden>
+        <div class="gm-h">Trocar de grafo</div>
+        <a role="menuitem" href="#" class="gm-item on"><b>Governo federal</b><span>União · 732 nós</span></a>
+        <div class="gm-item off" aria-disabled="true"><b>Estado de São Paulo</b><span>em preparação</span></div>
+        <div class="gm-item off" aria-disabled="true"><b>Cidade de São Paulo</b><span>em preparação</span></div>
+        <a role="menuitem" class="gm-item" href="https://github.com/atlas-da-republica/atlas/issues/new?title=Pe%C3%A7o%20um%20grafo%3A%20&body=Governo%20(estado%20ou%20cidade)%3A%20%0APor%20qu%C3%AA%3A%20" target="_blank" rel="noopener"><b>Peça um grafo</b><span>vote no próximo estado ou cidade</span></a>
+      </div>
     </div>
     <div class="search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -176,7 +210,7 @@ svg.wheel{width:100%;max-width:min(96vh,980px);height:auto;display:block;margin:
       <div id="results" class="results" role="listbox" hidden></div>
     </div>
     <div id="content"></div>
-    <div class="foot">Fase 1 · curadoria com citação legal + SIORG, Câmara e Senado · cargos do Executivo e do Judiciário aguardam Portal da Transparência e DOU</div>
+    <div class="foot">Curadoria com citação legal · SIORG, Câmara, Senado, Portal da Transparência, DOU, páginas oficiais, Wikipédia e Wikidata, nessa ordem de confiança · atualizado diariamente</div>
   </aside>
   <main class="stage" id="stage">
     <div class="topbar">
@@ -271,6 +305,9 @@ function draw(){
   for (const r of [1,2,3,4]) { s += `<path id="rl${r}" d="${ringArcRev(150,210,RING_R[r]-9)}" fill="none"/><text class="ring-label"><textPath href="#rl${r}" startOffset="50%" text-anchor="middle">${L.rings[r].name.toUpperCase()}</textPath></text>`; }
   for (const sid of Object.keys(ARC)) { const [a0,a1]=ARC[sid]; const flip = (a0+a1)/2 > 90 && (a0+a1)/2 < 270; const d = flip ? ringArc(a1,a0,R_OUT+9).replace('0 0 1','0 0 0') : ringArc(a0,a1,R_OUT+12); const lbl=(SEC[sid].short||SEC[sid].name).toUpperCase();
     s += `<path id="sl-${sid}" d="${flip?ringArcRev(a0,a1,R_OUT+6):ringArc(a0,a1,R_OUT+13)}" fill="none"/><text class="sector-label" fill="${COL[sid]}"><textPath href="#sl-${sid}" startOffset="50%" text-anchor="middle">${lbl}</textPath></text>`; }
+  // arcos de subgrupo (como "Cabinet"/"Congress" no CivLab)
+  const SUBARCS = [['executivo',2,n=>n.subtype==='ministerio','ESPLANADA'],['executivo',4,n=>n.subtype==='agencia_reguladora','AGÊNCIAS'],['executivo',4,n=>n.subtype==='empresa_publica'||n.subtype==='sociedade_economia_mista','ESTATAIS'],['judiciario',2,n=>n.subtype==='tribunal','TRIBUNAIS SUPERIORES'],['legislativo',3,n=>n.type==='commission','COMISSÕES']];
+  SUBARCS.forEach(([sid,ring,f,label],i)=>{ const as = orgs.filter(n=>n.sector===sid&&n.ring===ring&&f(n)&&angle[n.id]!=null).map(n=>angle[n.id]); if (as.length<3) return; const a0=Math.min(...as)-1.5, a1=Math.max(...as)+1.5; const r=RING_R[ring]+(ring>=3?26:22); const flip=(a0+a1)/2>90&&(a0+a1)/2<270; s += `<path d="${flip?ringArcRev(a0,a1,r):ringArc(a0,a1,r)}" fill="none" stroke="${COL[sid]}" stroke-opacity=".35" stroke-width="1"/><path id="sa${i}" d="${flip?ringArcRev(a0,a1,r+(flip?-4:6)):ringArc(a0,a1,r+6)}" fill="none"/><text class="ring-label" fill="${COL[sid]}" style="fill:${COL[sid]};fill-opacity:.85;font-size:8px"><textPath href="#sa${i}" startOffset="50%" text-anchor="middle">${label}</textPath></text>`; });
   s += `<g id="edges"></g>`;
   s += `<a class="node center" href="#br-eleitorado" data-id="br-eleitorado" aria-label="Povo brasileiro, eleitorado"><polygon class="shape" points="${burst(52)}" style="fill:var(--povo);stroke:var(--povo)"/><text class="center-label" x="${C}" y="${C-3}">Povo</text><text class="center-label" x="${C}" y="${C+9}">brasileiro</text></a>`;
   for (const n of orgs) { const [x,y]=xy(n.id); s += `<a class="node" href="#${n.id}" data-id="${n.id}" aria-label="${esc(n.name)}, ${TYPE_NAME[n.type]}" style="color:${COL[n.sector]}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})"><g style="stroke:${COL[n.sector]}">${shape(n, n.ring<=2?6:4.6)}</g></a>`; }
@@ -290,7 +327,23 @@ async function loadDetail(id){
   const d = await detailCache[id]; Object.assign(n, d); if (n.description === undefined) n.description = '';
   return n;
 }
+function renderPerson(p){
+  const svg = document.querySelector('svg.wheel'); svg.classList.add('dim');
+  document.querySelectorAll('.node').forEach(a => a.classList.remove('sel','lit'));
+  (p.positions||[]).forEach(pid=>{ const el=document.querySelector(`.node[data-id="${pid}"]`); if(el) el.classList.add('lit'); });
+  document.getElementById('edges').innerHTML='';
+  const na=(G.news||[]).filter(a=>(a.people||[]).some(q=>q.id===p.id)).slice(0,8);
+  const pos=(p.positions||[]).map(pid=>{ const n=N[pid]; if(!n) return ''; const full=(G.people&&G.people[p.id]&&G.people[p.id].positions||[]).find(q=>q.id===pid)||{}; return link(pid, (full.role?esc(full.role)+' · ':'')+(full.since?'desde '+fmtDate(full.since):'')); }).join('');
+  const sab=[]; for (const pid of p.positions||[]) for (const sb of (N[pid]&&N[pid].sabatinas)||[]) if (sb.name && norm(sb.name)===norm(p.name)) sab.push(sb);
+  content.innerHTML = `<div class="card"><div class="phead"><span class="big">${avatar(p)}</span><div><h1 style="margin:0">${esc(p.name)}</h1><p style="margin:4px 0 0;color:var(--ink-3)">${[p.party,p.uf].filter(Boolean).join(' · ')||'Pessoa'}</p></div></div>
+    <h3>Cargos</h3><div class="list">${pos||'<span class="seat">Sem cargo registrado.</span>'}</div>
+    ${sab.length?`<h3>Sabatinas no Senado</h3>${sab.map(sb=>`<div class="sab"><span>${esc((sb.cargo||'').slice(0,90))}</span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:''}</span></div>`).join('')}`:''}
+    ${na.length?`<h3>Na notícia</h3><div class="news">${na.map(a=>`<div class="it"><a class="t" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a><span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('')}</div>`:''}
+  </div>`;
+  document.getElementById('panel').scrollTo({top:0});
+}
 function select(id){
+  if (P[id]) { current = null; const need = (P[id].positions||[]).filter(pid=>N[pid]&&N[pid].description===undefined&&G.detail_base); if (need.length) { Promise.all(need.map(loadDetail)).then(()=>renderPerson(P[id])); } else renderPerson(P[id]); return; }
   if (N[id] && N[id].description === undefined && G.detail_base) { loadDetail(id).then(() => select(id)); content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; return; }
   current = N[id] ? id : null;
   const svg = document.querySelector('svg.wheel'); const eg = document.getElementById('edges');
@@ -314,14 +367,28 @@ function sectorChip(sid){ return sid ? `<span class="chip sec" style="background
 function link(id, extra){ const n=N[id]; return `<a href="#${id}"><span class="dot" style="background:${COL[n.sector]||'var(--povo)'}"></span><span>${esc(n.name)}</span>${extra?`<span class="sm">${extra}</span>`:''}</a>`; }
 function fmtDate(d){ if(!d) return ''; const [y,m,dd]=d.split('-'); return `${dd}/${m}/${y.slice(2)}`; }
 function entLink(id){ const n=N[id]; return n?`<a class="e" href="#${id}">${esc(n.aliases&&n.aliases[0]&&n.aliases[0].length<=8?n.aliases[0]:n.name)}</a>`:''; }
-let homeTab = 'mudancas';
+let homeTab = 'mudancas'; let win = 30;
+const P = G.people || {}; for (const p of Object.values(P)) { p.positions = (p.positions||[]).map(q => q.id || q); }
+function avatar(p, size){ const id = p && (p.id||p); const rec = P[id] || p || {}; const name = rec.name || p.name || '?'; const ini = esc(name.split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('')); const url = (G.img_base && rec.photo) ? G.img_base + id + '.jpg' : (p.image_url || p.image_commons ? (p.image_url||p.image_commons)+(p.image_commons?'?width=96':'') : null); return url ? `<img src="${esc(url)}" alt="" loading="lazy" onerror="this.remove()">${ini}` : ini; }
+function dayKey(d){ return (d||'').slice(0,10); }
+function inWin(d){ if(!d) return false; const t=new Date(d+'T00:00:00'); return (Date.now()-t)/(86400000) <= win; }
 function renderHome(){
   const st = G.stats; const bt = st.by_type, bs = st.by_sector, bsub = st.by_subtype;
   const subRows = [['ministerio','Ministérios'],['orgao_presidencia','Órgãos da Presidência'],['agencia_reguladora','Agências reguladoras'],['autarquia','Autarquias'],['fundacao','Fundações'],['empresa_publica','Empresas públicas'],['sociedade_economia_mista','Sociedades de economia mista'],['tribunal','Tribunais'],['ministerio_publico','Ministério Público'],['forca_armada','Forças Armadas'],['instituicao_de_ensino','Universidades e institutos federais']];
-  const news = (G.news||[]).slice(0,8).map(a=>`<div class="it"><a class="t" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a><span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span>${(a.entities||[]).slice(0,4).map(entLink).join('')}${(a.people||[]).slice(0,3).map(p=>`<a class="e" href="#${p.position}">${esc(p.name)}</a>`).join('')}</div>`).join('');
-  const chg = (G.changes||[]).slice(0,12).map(c=>`<div class="chg"><span class="d">${fmtDate(c.date)}</span><span><span class="k ${c.kind==='sabatina'?(c.result==='APROVADA_NO_PLENARIO'?'sab':'rej'):c.kind==='exoneracao'?'rej':''}">${c.kind==='sabatina'?(c.result==='APROVADA_NO_PLENARIO'?'aprovado':c.result==='REJEITADO_PLENARIO'?'rejeitado':'sabatina'):c.kind==='nomeacao'?'nomeado':c.kind==='exoneracao'?'exonerado':c.kind==='designacao'?'designado':(c.acting?'interino':'posse')}</span><a href="#${c.positionId}">${esc(c.personName||'—')}</a>${c.votes&&c.votes[0]!=null?` <span class="pn">${c.votes[0]}×${c.votes[1]}</span>`:''}<br><span class="pn">${esc(c.positionName)}</span></span></div>`).join('');
+  const news = (G.news||[]).filter(a=>inWin(a.date)).slice(0,10).map(a=>`<div class="it"><a class="t" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a>${a.summary_html?`<span class="s">${a.summary_html}</span>`:''}<span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('');
+  const allChg = (G.changes||[]);
+  const chgWin = allChg.filter(c=>inWin(c.date));
+  const kindLabel = c => c.kind==='sabatina'?(c.result==='APROVADA_NO_PLENARIO'?'aprovado':c.result==='REJEITADO_PLENARIO'?'rejeitado':'sabatina'):c.kind==='nomeacao'?'nomeado':c.kind==='exoneracao'?'exonerado':c.kind==='designacao'?'designado':c.kind==='entrada'?(c.acting?'interino':'entrou'):c.kind==='saida'?'saiu':(c.acting?'interino':'posse');
+  const kindCls = c => c.kind==='sabatina'?(c.result==='APROVADA_NO_PLENARIO'?'sab':'rej'):(c.kind==='exoneracao'||c.kind==='saida')?'out':(c.kind==='entrada'||c.kind==='nomeacao')?'in':'';
+  const chg = chgWin.slice(0,14).map(c=>`<div class="chg"><span class="d">${fmtDate(c.date)}</span><span><span class="k ${kindCls(c)}">${kindLabel(c)}</span><a href="#${c.positionId}">${esc(c.personName||'—')}</a>${c.votes&&c.votes[0]!=null?` <span class="pn">${c.votes[0]}×${c.votes[1]}</span>`:''}${c.predecessorName?`<br><span class="pred">no lugar de <s>${esc(c.predecessorName)}</s></span>`:''}<br><span class="pn">${esc(c.positionName)}</span></span></div>`).join('');
+  // barras dos últimos 30 dias
+  const days = []; for (let i=29;i>=0;i--){ const d=new Date(Date.now()-i*86400000); days.push(d.toISOString().slice(0,10)); }
+  const perDay = days.map(d=>allChg.filter(c=>dayKey(c.date)===d).length); const mx = Math.max(1,...perDay);
+  const bars = `<div class="tl" role="img" aria-label="Mudanças por dia nos últimos 30 dias">${perDay.map((v,i)=>`<i class="${v?'':'z'}" style="height:${Math.max(2,Math.round(40*v/mx))}px" title="${days[i]}: ${v}"></i>`).join('')}</div><div class="tlx"><span>30 dias atrás</span><span>20</span><span>10</span><span>hoje</span></div>`;
+  const counters = `<div class="stats" style="margin-bottom:10px"><div class="stat"><div class="n">${st.vacant_seats_known||0}</div><div class="l">cadeiras vagas conhecidas</div></div><div class="stat"><div class="n">${st.acting_officials||0}</div><div class="l">interinos</div></div><div class="stat"><div class="n" style="font-size:18px">${st.last_change?fmtDate(st.last_change):'—'}</div><div class="l">última mudança</div></div></div>`;
+  const winSel = `<span class="win" role="group" aria-label="Janela de tempo">${[7,30,90].map(w=>`<button aria-pressed="${win===w}" data-win="${w}">${w}D</button>`).join('')}</span>`;
   const pw = (G.power||[]); const pmax = pw.length?pw[0].articles:1;
-  const power = pw.slice(0,12).map(p=>`<div class="row"><span class="av" style="width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center">${esc(p.name.split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join(''))}</span><a href="#${p.position}" style="color:var(--ink);text-decoration:none">${esc(p.name)}</a><span class="n">${p.articles} art.</span><span class="bar"><i style="width:${Math.round(100*p.articles/pmax)}%"></i></span></div>`).join('');
+  const power = pw.slice(0,12).map(p=>`<div class="row"><span class="av" style="width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;overflow:hidden">${avatar(p)}</span><a href="#${P[p.id]?p.id:p.position}" style="color:var(--ink);text-decoration:none">${esc(p.name)}</a><span class="n">${p.articles} art.${p.last?` · ${fmtDate(p.last)}`:''}</span><span class="bar"><i style="width:${Math.round(100*p.articles/pmax)}%"></i></span></div>`).join('');
   const tab = (id,label)=>`<button role="tab" aria-selected="${homeTab===id}" data-tab="${id}">${label}</button>`;
   // Transição 2027: tudo que o Presidente nomeia (aresta nomeia a partir da Presidência), por setor
   const pr = 'br-presidente-da-republica';
@@ -333,18 +400,19 @@ function renderHome(){
     ${Object.keys(ARC).filter(k=>bySec[k]).map(k=>`<h3 style="color:${COL[k]}">${SEC[k].name} · ${bySec[k].length}</h3><div class="list">${bySec[k].sort((a,b)=>a.name.localeCompare(b.name,'pt')).map(n=>{ const p=(n.people||[])[0]; const extra = n.seats>1?`${Math.min((n.people||[]).length,n.seats)}/${n.seats}`:(p?esc(p.name.split(' ').slice(0,2).join(' ')):'<span style="color:var(--jud)">sem dado</span>'); return `<a href="#${n.id}"><span class="dot" style="background:${COL[n.sector]}"></span><span>${esc(n.name)}</span><span class="sm">${n.sabatina?'senado · ':''}${extra}</span>`; }).join('')}</div>`).join('')}`;
   const body = homeTab==='transicao' ? trans : homeTab==='noticias' ? (news?`<div class="news">${news}</div><p style="font-size:13px;color:var(--ink-3)">${st.news_sources||0} fontes · ${st.articles_90d||0} artigos em 90 dias · entidades e pessoas reconhecidas por sigla e nome.</p>`:'<p>Sem notícias coletadas ainda.</p>')
     : homeTab==='poder' ? (power?`<div class="pm">${power}</div><p style="font-size:13px;color:var(--ink-3)">Pessoas do grafo mais citadas nos últimos 90 dias. Cresce a cada coleta diária.</p>`:'<p>Sem menções ainda.</p>')
-    : (chg?`<div>${chg}</div><p style="font-size:13px;color:var(--ink-3)">Sabatinas do Senado, posses e atos do Diário Oficial (Seção 2) casados com cargos do grafo.</p>`:'<p>Sem mudanças registradas.</p>');
+    : `${counters}${bars}${chg||'<p>Sem mudanças nesta janela.</p>'}<p style="font-size:13px;color:var(--ink-3)">Sabatinas do Senado, posses, atos do Diário Oficial e entradas e saídas detectadas na comparação diária dos ocupantes.</p>`;
   content.innerHTML = `
   <div class="card"><h1>Quem manda em quê no governo federal</h1>
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
     <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div></div>
-  <div class="card"><div class="tabs" role="tablist">${tab('mudancas','Mudanças')}${tab('noticias','Notícias')}${tab('poder','Na notícia')}${tab('transicao','Transição 2027')}</div>${body}</div>
+  <div class="card"><div class="tabs" role="tablist">${tab('mudancas','Mudanças')}${tab('noticias','Notícias')}${tab('poder','Na notícia')}${tab('transicao','Transição 2027')}${homeTab!=='transicao'?winSel:''}</div>${body}</div>
   <div class="card"><h2>Por poder</h2><div class="counts">${Object.keys(ARC).map(s=>`<span class="k"><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</span><span>${bs[s]||0}</span>`).join('')}</div>
     <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
     <h3>Cargos e colegiados</h3><div class="counts"><span>Cargos de chefia mapeados</span><span>${bt.dept_head||0}</span><span>Cadeiras (inclui 513 deputados e 81 senadores)</span><span>${st.seats_total}</span><span>Sabatinas do Senado desde 2023</span><span>${st.sabatinas||0}</span><span>Colegiados deliberativos</span><span>${bt.commission||0}</span></div></div>
   <div class="card"><h2>Como ler a roda</h2><div class="counts">${[1,2,3,4].map(r=>`<span><b>Anel ${r} · ${L.rings[r].name}</b><br><span style="color:var(--ink-3);font-size:13.5px">${L.rings[r].description}</span></span><span></span>`).join('')}</div>
     <p style="font-size:13.5px;margin-top:10px">${st.siorg_matched||0} órgãos curados casados com o registro oficial do SIORG e ${st.from_siorg||0} importados dele. ${st.unverified} citações curadas ainda marcadas para conferência. Gerado em ${st.generated_at}.</p></div>`;
   content.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{homeTab=b.dataset.tab; renderHome();}));
+  content.querySelectorAll('[data-win]').forEach(b=>b.addEventListener('click',()=>{win=+b.dataset.win; renderHome();}));
 }
 function renderNode(n){
   const isPos = n.type==='dept_head';
@@ -368,7 +436,7 @@ function renderNode(n){
       const max = top[0][1];
       const bars = (people.length >= 10 && people.some(p=>p.party)) ? `<div class="parties">${top.slice(0,14).map(([k,v])=>`<div class="pr"><span class="pk">${esc(k)}</span><span class="pb"><i style="width:${Math.round(100*v/max)}%"></i></span><span class="pv">${v}</span></div>`).join('')}${top.length>14?`<div class="pr" style="color:var(--ink-3)"><span class="pk">+${top.length-14}</span><span class="pb"></span><span class="pv">${top.slice(14).reduce((a,[,v])=>a+v,0)}</span></div>`:''}</div>` : '';
       const src = p => p.source==='oficial'?`página oficial${p.checked_at?' · conferido em '+fmtDate(p.checked_at):''}`:p.source==='wikidata'?'Wikidata · pode estar desatualizado':'';
-      const item = p => `<a class="person" href="${p.source_url||'#'}" target="_blank" rel="noopener" title="${esc(src(p))}"><span class="av">${p.image_url||p.image_commons?`<img src="${esc((p.image_url||p.image_commons)+(p.image_commons?'?width=60':''))}" alt="" loading="lazy" onerror="this.remove()">`:''}${esc((p.name||'?').split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join(''))}</span><span class="pn">${esc(p.name)}${p.role?` <em>${esc(p.role)}</em>`:''}</span><span class="pm">${[p.party,p.uf].filter(Boolean).join(' · ')}${p.entry_mode==='suplente'?' · suplente':''}${p.started_at&&!p.party?fmtDate(p.started_at):''}${p.source==='wikidata'?' · <span style="color:var(--jud)">wikidata</span>':''}${p.note&&!p.party?' · '+esc(p.note):''}</span></a>`;
+      const item = p => `<a class="person" href="${P[p.id]?'#'+p.id:(p.source_url||'#')}" ${P[p.id]?'':'target="_blank" rel="noopener"'} title="${esc(src(p))}"><span class="av" style="overflow:hidden">${avatar(p)}</span><span class="pn">${esc(p.name)}${p.role?` <em>${esc(p.role)}</em>`:''}</span><span class="pm">${[p.party,p.uf].filter(Boolean).join(' · ')}${p.entry_mode==='suplente'?' · suplente':''}${p.started_at&&!p.party?fmtDate(p.started_at):''}${p.source==='wikidata'?' · <span style="color:var(--jud)">wikidata</span>':''}${p.note&&!p.party?' · '+esc(p.note):''}</span></a>`;
       const shown = people.length > 24 ? 24 : people.length;
       const vac = n.vacant_seats?`<div class="seat">${n.vacant_seats} ${n.vacant_seats>1?'vagas abertas':'vaga aberta'} segundo a página oficial.</div>`:'';
       const srcNote = people[0]&&people[0].source==='oficial'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Fonte: <a href="${people[0].source_url}" target="_blank" rel="noopener">página oficial</a>, conferida em ${fmtDate(people[0].checked_at)}.</p>`:people[0]&&people[0].source==='wikidata'?`<p style="font-size:12.5px;color:var(--jud);margin:2px 0 6px">Fonte: Wikidata, sem conferência oficial. Pode estar desatualizado.</p>`:'';
@@ -400,7 +468,7 @@ function renderNode(n){
 const q = document.getElementById('q'), res = document.getElementById('results');
 const norm = s => s.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
 const index = Object.values(N).map(n => ({id:n.id, name:n.name, type:n.type, sector:n.sector, hay: norm([n.name, ...(n.aliases||[])].join(' ')), al: norm((n.aliases||[]).join(' '))}));
-for (const n of Object.values(N)) for (const p of (n.people||[])) if (p && p.name) index.push({id:n.id, name:p.name, type:'pessoa', sub:n.name, sector:n.sector, hay:norm(p.name), al:''});
+for (const p of Object.values(P)) if (p.name) { const n = N[(p.positions||[])[0]] || {}; index.push({id:p.id, name:p.name, type:'pessoa', sub:n.name||'', sector:n.sector, hay:norm(p.name), al:''}); }
 q.addEventListener('input', () => {
   const v = norm(q.value.trim()); if (v.length < 2) { res.hidden = true; q.setAttribute('aria-expanded','false'); return; }
   const hits = index.map(x => { let sc = 0; if (x.al.split(' ').includes(v)) sc = 100; else if (x.hay.startsWith(v)) sc = 60; else if (x.hay.includes(' '+v)) sc = 40; else if (x.hay.includes(v)) sc = 20; if (x.type==='dept_head') sc -= 5; return {x, sc}; }).filter(h=>h.sc>0).sort((a,b)=>b.sc-a.sc).slice(0,12);
@@ -426,6 +494,10 @@ lbox.innerHTML = `<h3>Entidades</h3><div>${shapeSvg.elected} Órgão eletivo</di
   <h3>Relações</h3>${Object.keys(REL).map(t=>`<div>${legendSvg(t)} ${REL[t][0]}</div>`).join('')}
   <h3>Setores</h3>${Object.keys(ARC).map(s=>`<div><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</div>`).join('')}`;
 lb.addEventListener('click', () => { const open = lbox.hidden; lbox.hidden = !open; lb.setAttribute('aria-expanded', String(open)); lb.textContent = open ? 'Legenda ▴' : 'Legenda ▾'; });
+const gb = document.getElementById('gov-btn'), gm = document.getElementById('gov-menu');
+gb.addEventListener('click', e => { e.preventDefault(); const open = gm.hidden; gm.hidden = !open; gb.setAttribute('aria-expanded', String(open)); });
+document.addEventListener('click', e => { if (!e.target.closest('.brand') && !e.target.closest('#gov-menu')) { gm.hidden = true; gb.setAttribute('aria-expanded','false'); } });
+gm.querySelector('.gm-item.on').addEventListener('click', e => { e.preventDefault(); location.hash = ''; gm.hidden = true; });
 const root = document.documentElement, tb = document.getElementById('theme');
 try { const saved = localStorage.getItem('atlas-theme'); if (saved) root.dataset.theme = saved; } catch(e){}
 tb.addEventListener('click', () => { const dark = root.dataset.theme ? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; root.dataset.theme = dark ? 'light' : 'dark'; try { localStorage.setItem('atlas-theme', root.dataset.theme); } catch(e){} });

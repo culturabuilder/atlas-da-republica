@@ -11,9 +11,15 @@ ap = argparse.ArgumentParser(); ap.add_argument("--base", default="https://atlas
 BASE = a.base.rstrip("/")
 G = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8")); N = G["nodes"]; E = G["edges"]
 tpl = (ROOT / "web" / "index.html").read_text(encoding="utf-8")
-site = ROOT / "site"; shutil.rmtree(site, ignore_errors=True); (site / "br").mkdir(parents=True)
+site = ROOT / "site"
+img_keep = ROOT / "build" / "img"
+if (site / "img").exists():
+    shutil.rmtree(img_keep, ignore_errors=True); shutil.move(str(site / "img"), str(img_keep))
+shutil.rmtree(site, ignore_errors=True); (site / "br").mkdir(parents=True)
+if img_keep.exists(): shutil.copytree(img_keep, site / "img")
 shutil.copy(ROOT / "build" / "graph.core.js", site / "graph.br.js")
 shutil.copytree(ROOT / "build" / "nodes", site / "nodes")
+if (ROOT / "site_img_cache").exists(): pass
 tpl = tpl.replace('<script src="graph.br.js" defer></script>', '<script src="/graph.br.js" defer></script>')
 REL = {"elege": "elege", "nomeia": "nomeia", "sabatina": "sabatina e aprova", "fiscaliza": "fiscaliza", "supervisiona": "supervisiona", "aconselha": "aconselha", "chefia": "chefia", "membro_nato": "é membro nato de", "integra": "integra", "indica": "indica"}
 TYPE_SCHEMA = {"department": "GovernmentOrganization", "elected": "GovernmentOrganization", "commission": "GovernmentOrganization", "advisory": "GovernmentOrganization", "dept_head": "Role", "constituency": "Organization"}
@@ -45,7 +51,23 @@ def page(n):
     out = out.replace("draw();\nselect(location.hash.slice(1));", f"draw();\nselect(location.hash.slice(1) || {json.dumps(n['id'])});", 1)
     return out
 
+def person_page(p):
+    url = f"{BASE}/br/pessoa/{p['id']}/"; title = f"{p['name']} · Atlas da República"
+    pos = "".join(f'<li><a href="/br/{q["id"]}/">{esc(q["name"])}</a>{(" · desde " + esc(q["since"])) if q.get("since") else ""}</li>' for q in p["positions"] if q["id"] in N)
+    desc = f"{p['name']}: " + "; ".join(q["name"] for q in p["positions"][:3])
+    ld = {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "url": url, "hasOccupation": [{"@type": "Role", "roleName": q["name"]} for q in p["positions"][:5]]}
+    if p.get("party"): ld["memberOf"] = {"@type": "Organization", "name": p["party"]}
+    if p.get("photo"): ld["image"] = f"{BASE}/img/{p['id']}.jpg"
+    head = f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc[:300])}">\n<link rel="canonical" href="{url}">\n<meta property="og:title" content="{esc(title)}"><meta property="og:url" content="{url}"><meta property="og:type" content="profile">\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
+    ssr = f'<div id="ssr" hidden><article><h1>{esc(p["name"])}</h1><p>{esc(p.get("party") or "")} {esc(p.get("uf") or "")}</p><h2>Cargos</h2><ul>{pos}</ul><p><a href="/">Atlas da República</a></p></article></div>'
+    out = tpl.replace("<title>Atlas da República</title>\n", head, 1).replace('<div id="content"></div>', '<div id="content"></div>' + ssr, 1)
+    return out.replace("draw();\nselect(location.hash.slice(1));", f"draw();\nselect(location.hash.slice(1) || {json.dumps(p['id'])});", 1)
+
 urls = [f"{BASE}/"]
+PEOPLE = G.get("people", {})
+for p in PEOPLE.values():
+    d = site / "br" / "pessoa" / p["id"]; d.mkdir(parents=True, exist_ok=True)
+    (d / "index.html").write_text(person_page(p), encoding="utf-8"); urls.append(f"{BASE}/br/pessoa/{p['id']}/")
 for n in N.values():
     d = site / "br" / n["id"]; d.mkdir(parents=True, exist_ok=True)
     (d / "index.html").write_text(page(n), encoding="utf-8"); urls.append(f"{BASE}/br/{n['id']}/")
@@ -58,4 +80,4 @@ today = datetime.date.today().isoformat()
 (site / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
 (site / "404.html").write_text(tpl.replace("<title>Atlas da República</title>", "<title>Página não encontrada · Atlas da República</title>"), encoding="utf-8")
 (site / "vercel.json").write_text(json.dumps({"cleanUrls": True, "headers": [{"source": "/(.*)", "headers": [{"key": "X-Content-Type-Options", "value": "nosniff"}, {"key": "X-Frame-Options", "value": "SAMEORIGIN"}, {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"}, {"key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()"}]}, {"source": "/graph.br.js", "headers": [{"key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400"}]}]}, indent=1), encoding="utf-8")
-print(f"site/: {len(urls)} páginas, sitemap, robots, 404, vercel.json")
+print(f"site/: {len(urls)} páginas ({len(PEOPLE)} de pessoas), sitemap, robots, 404, vercel.json")

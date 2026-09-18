@@ -117,7 +117,7 @@ if of_path.exists():
             recs = []
             for p in people:
                 if isinstance(p, str): p = {"name": p}
-                recs.append({"id": "br-p-" + _slug(p["name"]), "name": p["name"], "started_at": str(p["started_at"]) if p.get("started_at") else None, "entry_mode": block.get("entry_mode", "nomeado"),
+                recs.append({"id": "br-p-" + _slug(p["name"]), "name": p["name"], "started_at": str(p["started_at"]) if p.get("started_at") else None, "entry_mode": block.get("entry_mode", "nomeado"), "acting": bool(p.get("acting")),
                              "note": p.get("note"), "source": "oficial", "source_url": block["source"], "checked_at": str(block.get("checked_at")), "verified": True})
             nodes[pid]["people"] = recs
     for n in nodes.values():
@@ -244,6 +244,29 @@ if news_path.exists():
     store = json.load(open(news_path, encoding="utf-8"))
     arts = sorted(store.get("articles", {}).values(), key=lambda a: a.get("date") or "", reverse=True)
     cutoff90 = (datetime.date.today() - datetime.timedelta(days=90)).isoformat()
+    def mark(text, a):
+        """Marca no texto os nomes/siglas das entidades e pessoas ligadas ao artigo: <a href="#id">."""
+        t = html_mod.escape(text)
+        targets = []
+        for eid in a.get("entities") or []:
+            n = nodes.get(eid)
+            if not n: continue
+            for al in [n["name"]] + list(n.get("aliases") or []):
+                if len(al) >= 3 and (al.isupper() or len(al.split()) >= 2): targets.append((al, eid))
+        for p in a.get("people") or []:
+            if p.get("name"): targets.append((p["name"], p.get("position")))
+        targets.sort(key=lambda x: -len(x[0]))
+        for al, tid in targets:
+            if not tid: continue
+            t2 = re.sub(r"(?<![\w>])(" + re.escape(html_mod.escape(al)) + r")(?![\w<])", lambda m: f'<a href="#{tid}">{m.group(1)}</a>', t, count=1, flags=re.I)
+            if t2 != t: t = t2
+        return t
+    import html as html_mod
+    for a in arts:
+        first = re.split(r"(?<=[.!?])\s+", (a.get("summary") or "").strip())[0] if a.get("summary") else ""
+        base = first if 40 <= len(first) <= 260 else (a.get("summary") or "")[:220]
+        a["summary_html"] = mark(base, a) if base else ""
+        a["title_html"] = mark(a.get("title") or "", a)
     news = [a for a in arts if a.get("entities") or a.get("people")][:60]
     mentions = {}
     for a in arts:
@@ -264,6 +287,40 @@ for n in nodes.values():
     for p in n.get("people") or []:
         if p.get("started_at") and p["started_at"] >= "2025-01-01" and n["id"] not in ("br-deputado-federal", "br-senador"):
             changes.append({"kind": "posse", "date": p["started_at"], "personName": p.get("name"), "positionId": n["id"], "positionName": n["name"], "acting": p.get("acting"), "sourceUrl": p.get("source_url")})
+# ---- histórico de ocupantes (tenures): compara com a execução anterior e gera pares saiu/entrou
+ten_path = DATA / "generated" / "tenures.json"
+today_s = datetime.date.today().isoformat()
+tenures = json.load(open(ten_path, encoding="utf-8")) if ten_path.exists() else {"positions": {}, "first_run": today_s}
+first_run = tenures.get("first_run") == today_s and not ten_path.exists()
+for n in nodes.values():
+    if n["type"] not in ("dept_head", "elected"): continue
+    if n["id"] in ("br-deputado-federal", "br-senador"): continue
+    cur = {p["id"]: p for p in (n.get("people") or []) if p.get("id")}
+    hist = tenures["positions"].setdefault(n["id"], {})
+    # saídas: quem estava e não está mais
+    for pid, rec in list(hist.items()):
+        if rec.get("ended") is None and pid not in cur:
+            rec["ended"] = today_s
+            if not first_run:
+                changes.append({"kind": "saida", "date": today_s, "personName": rec["name"], "positionId": n["id"], "positionName": n["name"], "sourceUrl": rec.get("source_url"), "observed": True})
+    # entradas: quem está e não estava
+    for pid, p in cur.items():
+        if pid not in hist or hist[pid].get("ended"):
+            prev = [r for r in hist.values() if r.get("ended") and r.get("ended") >= (today_s if first_run else "0")]
+            pred = sorted(prev, key=lambda r: r["ended"])[-1]["name"] if prev and (n.get("seats") or 1) == 1 else None
+            hist[pid] = {"name": p.get("name"), "first_seen": today_s, "started_at": p.get("started_at"), "source": p.get("source", "api"), "source_url": p.get("source_url"), "ended": None}
+            if not first_run:
+                changes.append({"kind": "entrada", "date": p.get("started_at") or today_s, "personName": p.get("name"), "positionId": n["id"], "positionName": n["name"], "predecessorName": pred, "acting": p.get("acting"), "sourceUrl": p.get("source_url"), "observed": True})
+        else:
+            hist[pid]["last_seen"] = today_s
+tenures["updated_at"] = today_s
+json.dump(tenures, open(ten_path, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+# contadores
+acting = sum(1 for n in nodes.values() if n["type"] == "dept_head" for p in (n.get("people") or []) if p.get("acting") or re.search(r"substitut|interin", (p.get("note") or "") + (p.get("role") or ""), re.I))
+vacant_known = sum(n.get("vacant_seats", 0) for n in nodes.values() if n["type"] == "dept_head")
+stats["acting_officials"] = acting; stats["vacant_seats_known"] = vacant_known
+stats["last_change"] = max((c["date"] for c in changes if c.get("date")), default=None)
+
 dou_path = DATA / "generated" / "dou.json"
 if dou_path.exists():
     for a in (json.load(open(dou_path, encoding="utf-8")).get("acts") or {}).values():
@@ -273,7 +330,19 @@ if dou_path.exists():
             changes.append({"kind": kind, "date": a["date"], "personName": r.get("name"), "positionId": r["position_id"], "positionName": nodes[r["position_id"]]["name"], "cargoText": r.get("cargo"), "sourceUrl": a.get("url"), "act": a.get("title")})
             nodes[r["position_id"]].setdefault("dou", []).append({"date": a["date"], "verb": r["verb"], "name": r.get("name"), "cargo": r.get("cargo"), "url": a.get("url"), "act": a.get("title")})
 changes.sort(key=lambda c: c["date"], reverse=True)
-graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "changes": changes[:200]}
+people_index = {}
+for n in nodes.values():
+    if n["type"] not in ("dept_head", "elected"): continue
+    for p in n.get("people") or []:
+        if not p.get("id"): continue
+        rec = people_index.setdefault(p["id"], {"id": p["id"], "name": p.get("name"), "party": p.get("party"), "uf": p.get("uf"), "positions": [], "image": p.get("image_url") or p.get("image_commons"), "source": p.get("source", "api")})
+        rec["positions"].append({"id": n["id"], "name": n["name"], "since": p.get("started_at"), "role": p.get("role")})
+        if p.get("party") and not rec.get("party"): rec["party"] = p["party"]
+img_dir = ROOT / "site" / "img"
+for rec in people_index.values():
+    rec["photo"] = (img_dir / (rec["id"] + ".jpg")).exists()
+stats["people"] = len(people_index)
+graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "changes": changes[:200], "people": people_index}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
 HEAVY = ("description", "siorg_description", "people", "sabatinas", "budget", "dou", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
@@ -286,9 +355,10 @@ for nid, n in nodes.items():
     core_nodes[nid] = core
     (OUT / "nodes" / f"{nid}.json").write_text(json.dumps({k: n.get(k) for k in HEAVY + ("nomeado_por", "indicado_por", "eleito_por", "verified", "source") if n.get(k) is not None}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 core_edges = {eid: {k: v for k, v in e.items() if k in ("id", "type", "from", "to", "cite", "seats")} for eid, e in graph["edges"].items()}
-core_news = [dict(a, summary=(a.get("summary") or "")[:160]) for a in news]
+core_news = [{k: v for k, v in a.items() if k != "summary"} for a in news]
 core_changes = [{k: v for k, v in c.items() if k not in ("cargoText", "act")} for c in changes[:120]]
-core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "changes": core_changes, "detail_base": "/nodes/"}
+core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), "uf": r.get("uf"), "positions": [q["id"] for q in r["positions"]], "photo": r.get("photo", False)} for pid, r in people_index.items()}
+core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "changes": core_changes, "people": core_people, "detail_base": "/nodes/", "img_base": "/img/"}
 cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")
 print(f"   build/graph.core.js = {len(cjs)//1024} KB + {len(core_nodes)} arquivos de detalhe")
