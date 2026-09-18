@@ -13,6 +13,8 @@ echo "== Build (1/2)";     $PY scripts/build_graph.py > /dev/null
 [ -z "$FAST" ] && { echo "== Wikidata"; $PY etl/wikidata.py; }
 echo "== Notícias";        $PY etl/noticias.py
 echo "== DOU";             $PY etl/dou.py || echo "DOU falhou (segue)"
+echo "== DOU assinaturas"; $PY etl/dou_assinaturas.py || echo "assinaturas falhou (segue)"
+echo "== Wikipédia";        $PY etl/wikipedia.py || echo "wikipedia falhou (segue)"
 echo "== Orçamento";        $PY etl/orcamento.py || echo "Orçamento falhou (sem chave?)"
 echo "== Build (2/2)";     $PY scripts/build_graph.py
 echo "== Site";            $PY scripts/build_site.py --base "${SITE_BASE:-https://atlasdarepublica.org}"

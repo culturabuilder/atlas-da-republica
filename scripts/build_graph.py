@@ -123,6 +123,8 @@ if of_path.exists():
     for n in nodes.values():
         if n["type"] == "dept_head" and n.get("people") and n["people"][0].get("source") == "oficial" and n.get("seats", 1) > len(n["people"]):
             n["vacant_seats"] = n["seats"] - len(n["people"])
+sources.append(("generated", DATA / "generated" / "dou-assinaturas.yaml"))
+sources.append(("generated", DATA / "generated" / "wikipedia.yaml"))
 sources.append(("generated", DATA / "generated" / "ocupantes.yaml"))
 for _, ppl_path in sources:
     if not ppl_path.exists(): continue
@@ -132,6 +134,7 @@ for _, ppl_path in sources:
         if nodes[pid].get("people"): continue
         for p in people:
             if p.get("started_at") is not None: p["started_at"] = str(p["started_at"])
+            if p.get("name"): p["name"] = re.sub(r"\b(De|Da|Do|Das|Dos|E)\b", lambda m: m.group(1).lower(), p["name"])
         # Wikidata: no Executivo, ocupante com início anterior ao governo atual (2023) é considerado desatualizado
         if nodes[pid].get("sector") == "executivo":
             people = [p for p in people if p.get("source") != "wikidata" or (p.get("started_at") or "") >= "2023-01-01"]

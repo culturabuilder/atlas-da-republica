@@ -9,7 +9,7 @@ entre eles (quem elege, nomeia, sabatina, supervisiona, fiscaliza). Réplica, ad
 - `data/nodes/` e `data/edges/` — curadoria em YAML: 320 nós e as regras que geram as relações, cada uma com citação legal.
 - `data/generated/siorg.yaml` — 330 órgãos e entidades e 214 colegiados nacionais importados do SIORG (`etl/siorg.py`); `parlamentares.yaml` — 594 parlamentares (Câmara e Senado). A curadoria manda; o gerado preenche o resto. Resultado: 732 nós e 976 relações.
 - `data/ocupantes-oficiais.yaml` — ocupantes conferidos em páginas oficiais (Planalto, STF, TCU, TSE, STM), com data da conferência.
-- `etl/` — conectores: `siorg.py`, `parlamentares.py` (Câmara e Senado), `sabatinas.py` (MSF do Senado com placar), `wikidata.py` (ocupantes via item do órgão, marcados como não verificados), `noticias.py` (8 feeds RSS com entidades e pessoas linkadas), `dou.py` (Seção 2 do Diário Oficial por órgão, com pausa de 2,5 s entre consultas; o portal bloqueia agentes desconhecidos), `orcamento.py` (despesas por órgão do Portal da Transparência, exige `PORTAL_TRANSPARENCIA_KEY` em `.env`).
+- `etl/` — conectores: `siorg.py`, `parlamentares.py` (Câmara e Senado), `sabatinas.py` (MSF do Senado com placar), `wikidata.py` (ocupantes via item do órgão, marcados como não verificados), `noticias.py` (8 feeds RSS com entidades e pessoas linkadas), `dou.py` (Seção 2 do Diário Oficial por órgão, com pausa de 2,5 s entre consultas; o portal bloqueia agentes desconhecidos), `orcamento.py` (despesas por órgão do Portal da Transparência, exige `PORTAL_TRANSPARENCIA_KEY` em `.env`), `dou_assinaturas.py` (dirigente atual = quem assina os atos do órgão no DOU), `wikipedia.py` (tabelas de composição atual: STJ, TST, CNJ, BC, Anatel).
 - `scripts/build_graph.py` — valida os YAML, funde as camadas (curadoria > oficiais > APIs > Wikidata) e gera `build/graph.br.json` e `web/graph.br.js`.
 - `scripts/build_site.py` — site estático em `site/`: uma página por nó com HTML pré-renderizado, canonical, JSON-LD, sitemap e robots.
 - `scripts/update.sh` e `.github/workflows/daily.yml` — atualização diária.
@@ -37,11 +37,13 @@ Ver o plano completo: modelo, fontes (SIORG, Portal da Transparência, Câmara, 
 |---|---|---|
 | Curadoria | `data/nodes`, `data/edges`, `data/ocupantes-oficiais.yaml` | citação legal; ocupantes com "página oficial, conferido em …" |
 | APIs oficiais | SIORG, Câmara, Senado, Portal da Transparência | chip "via SIORG", partido e UF, orçamento |
+| DOU (assinaturas) | `etl/dou_assinaturas.py` | "assina atos como titular", com o ato e a data como evidência |
+| Wikipédia | `etl/wikipedia.py` | tabelas de composição, marcadas como fonte secundária |
 | Wikidata | `etl/wikidata.py` | marcado "wikidata · pode estar desatualizado"; no Executivo só entra com início a partir de 2023 |
 | Notícias e DOU | RSS e busca pública do DOU | ligados a entidades e cargos por sigla, nome e similaridade |
 
-Pendências conhecidas: lista completa dos 33 ministros do STJ e diretoria do Banco Central (sites bloqueiam coleta automática);
-cadastro no INLABS para o Diário Oficial completo em XML; universidades e institutos federais sem reitores.
+Pendências conhecidas: cadastro no INLABS para o Diário Oficial completo em XML; universidades e institutos federais sem reitores;
+dois diretores do Banco Central e os conselheiros do Cade e do CNMP sem fonte automática.
 
 ## Licenças
 
