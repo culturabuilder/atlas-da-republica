@@ -1,22 +1,24 @@
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atlas da República</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%23C25A12%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%276%27 fill=%27%23fff%27/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 :root{
-  --bg:#EFF0EB; --panel:#FAFAF7; --card:#FFFFFF; --ink:#1A1C19; --ink-2:#4B4F49; --ink-3:#7D817A; --line:#D8DBD3; --line-2:#E8EAE4;
+  --bg:#EFF0EB; --panel:#FAFAF7; --card:#FFFFFF; --ink:#1A1C19; --ink-2:#4B4F49; --ink-3:#666A63; --line:#D8DBD3; --line-2:#E8EAE4;
   --accent:#1F5F4A; --accent-soft:#DDEBE3; --focus:#1F5F4A;
   --leg:#B8452E; --exe:#3B4C9B; --jud:#8A6C10; --ess:#5E3D7A; --povo:#C25A12;
   --sector-alpha:.10; --ring-alpha:.35; --node-fill:#FAFAF7;
   --mono:"JetBrains Mono",ui-monospace,Menlo,monospace; --sans:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif; --disp:"Archivo","Helvetica Neue",Arial,sans-serif;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --bg:#131412; --panel:#1A1C19; --card:#20231F; --ink:#ECEDE8; --ink-2:#BDC0B8; --ink-3:#868A82; --line:#33362F; --line-2:#2A2D27;
+  --bg:#131412; --panel:#1A1C19; --card:#20231F; --ink:#ECEDE8; --ink-2:#BDC0B8; --ink-3:#9A9E95; --line:#33362F; --line-2:#2A2D27;
   --accent:#8CCBAF; --accent-soft:#1E3A2E; --focus:#8CCBAF;
   --leg:#F0907A; --exe:#9AA6EE; --jud:#E2C25A; --ess:#C9A3E6; --povo:#F2A063;
   --sector-alpha:.14; --ring-alpha:.4; --node-fill:#1A1C19;
 }}
 :root[data-theme="dark"]{
-  --bg:#131412; --panel:#1A1C19; --card:#20231F; --ink:#ECEDE8; --ink-2:#BDC0B8; --ink-3:#868A82; --line:#33362F; --line-2:#2A2D27;
+  --bg:#131412; --panel:#1A1C19; --card:#20231F; --ink:#ECEDE8; --ink-2:#BDC0B8; --ink-3:#9A9E95; --line:#33362F; --line-2:#2A2D27;
   --accent:#8CCBAF; --accent-soft:#1E3A2E; --focus:#8CCBAF;
   --leg:#F0907A; --exe:#9AA6EE; --jud:#E2C25A; --ess:#C9A3E6; --povo:#F2A063;
   --sector-alpha:.14; --ring-alpha:.4; --node-fill:#1A1C19;
@@ -189,10 +191,17 @@ svg.wheel{width:100%;max-width:min(96vh,980px);height:auto;display:block;margin:
   </main>
 </div>
 
-<script src="graph.br.js"></script>
+<script src="graph.br.js" defer></script>
 <script>
-(function(){
+document.addEventListener("DOMContentLoaded", function(){
 const G = window.ATLAS; const N = G.nodes, E = G.edges, L = G.layout;
+// núcleo leve: deriva listas por nó a partir das arestas e dos pais
+if (G.detail_base) {
+  for (const n of Object.values(N)) { n.edges = n.edges || []; n.connected = n.connected || []; n.children = n.children || []; n.positions = n.positions || []; }
+  for (const e of Object.values(E)) { const a = N[e.from], b = N[e.to]; if (!a || !b) continue; a.edges.push(e.id); b.edges.push(e.id); if (!a.connected.includes(e.to)) a.connected.push(e.to); if (!b.connected.includes(e.from)) b.connected.push(e.from); }
+  for (const n of Object.values(N)) { if (n.parent && N[n.parent]) N[n.parent].children.push(n.id); if (n.head_of && N[n.head_of]) N[n.head_of].positions.push(n.id); }
+  for (const n of Object.values(N)) { n.children.sort(); n.positions.sort(); }
+}
 const SEC = {}; L.sectors.forEach(s => SEC[s.id] = s);
 const COL = {legislativo:'var(--leg)', executivo:'var(--exe)', judiciario:'var(--jud)', essenciais:'var(--ess)'};
 const TYPE_NAME = {constituency:'Eleitorado', elected:'Órgão eletivo', department:'Órgão', dept_head:'Cargo', commission:'Colegiado', advisory:'Conselho consultivo', pessoa:'Pessoa'};
@@ -274,7 +283,15 @@ function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/"/g,'&quot;').r
 
 // ---------- seleção ----------
 let current = null;
+const detailCache = {};
+async function loadDetail(id){
+  const n = N[id]; if (!n || n.description !== undefined || !G.detail_base) return n;
+  if (!detailCache[id]) detailCache[id] = fetch(G.detail_base + id + '.json').then(r => r.ok ? r.json() : {}).catch(() => ({}));
+  const d = await detailCache[id]; Object.assign(n, d); if (n.description === undefined) n.description = '';
+  return n;
+}
 function select(id){
+  if (N[id] && N[id].description === undefined && G.detail_base) { loadDetail(id).then(() => select(id)); content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; return; }
   current = N[id] ? id : null;
   const svg = document.querySelector('svg.wheel'); const eg = document.getElementById('edges');
   document.querySelectorAll('.node').forEach(a => { a.classList.remove('sel','lit'); });
@@ -383,7 +400,7 @@ function renderNode(n){
 const q = document.getElementById('q'), res = document.getElementById('results');
 const norm = s => s.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
 const index = Object.values(N).map(n => ({id:n.id, name:n.name, type:n.type, sector:n.sector, hay: norm([n.name, ...(n.aliases||[])].join(' ')), al: norm((n.aliases||[]).join(' '))}));
-for (const n of Object.values(N)) for (const p of (n.people||[])) if (p.name) index.push({id:n.id, name:p.name, type:'pessoa', sub:n.name, sector:n.sector, hay:norm(p.name), al:''});
+for (const n of Object.values(N)) for (const p of (n.people||[])) if (p && p.name) index.push({id:n.id, name:p.name, type:'pessoa', sub:n.name, sector:n.sector, hay:norm(p.name), al:''});
 q.addEventListener('input', () => {
   const v = norm(q.value.trim()); if (v.length < 2) { res.hidden = true; q.setAttribute('aria-expanded','false'); return; }
   const hits = index.map(x => { let sc = 0; if (x.al.split(' ').includes(v)) sc = 100; else if (x.hay.startsWith(v)) sc = 60; else if (x.hay.includes(' '+v)) sc = 40; else if (x.hay.includes(v)) sc = 20; if (x.type==='dept_head') sc -= 5; return {x, sc}; }).filter(h=>h.sc>0).sort((a,b)=>b.sc-a.sc).slice(0,12);
@@ -415,5 +432,5 @@ tb.addEventListener('click', () => { const dark = root.dataset.theme ? root.data
 
 draw();
 select(location.hash.slice(1));
-})();
+});
 </script>

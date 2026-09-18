@@ -274,6 +274,24 @@ if dou_path.exists():
             nodes[r["position_id"]].setdefault("dou", []).append({"date": a["date"], "verb": r["verb"], "name": r.get("name"), "cargo": r.get("cargo"), "url": a.get("url"), "act": a.get("title")})
 changes.sort(key=lambda c: c["date"], reverse=True)
 graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "changes": changes[:200]}
+# núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
+HEAVY = ("description", "siorg_description", "people", "sabatinas", "budget", "dou", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
+DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
+core_nodes = {}
+(OUT / "nodes").mkdir(exist_ok=True)
+for nid, n in nodes.items():
+    core = {k: v for k, v in n.items() if k not in HEAVY and k not in DERIVED}
+    core["n_people"] = len(n.get("people") or [])
+    if n.get("vacant_seats"): core["vacant_seats"] = n["vacant_seats"]
+    core_nodes[nid] = core
+    (OUT / "nodes" / f"{nid}.json").write_text(json.dumps({k: n.get(k) for k in HEAVY + ("nomeado_por", "indicado_por", "eleito_por", "verified", "source") if n.get(k) is not None}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+core_edges = {eid: {k: v for k, v in e.items() if k in ("id", "type", "from", "to", "cite", "seats")} for eid, e in graph["edges"].items()}
+core_news = [dict(a, summary=(a.get("summary") or "")[:160]) for a in news]
+core_changes = [{k: v for k, v in c.items() if k not in ("cargoText", "act")} for c in changes[:120]]
+core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "changes": core_changes, "detail_base": "/nodes/"}
+cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
+(OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")
+print(f"   build/graph.core.js = {len(cjs)//1024} KB + {len(core_nodes)} arquivos de detalhe")
 js = json.dumps(graph, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.br.json").write_text(js, encoding="utf-8")
 (OUT / "graph.br.js").write_text("window.ATLAS=" + js + ";", encoding="utf-8")

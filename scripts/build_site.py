@@ -12,8 +12,9 @@ BASE = a.base.rstrip("/")
 G = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8")); N = G["nodes"]; E = G["edges"]
 tpl = (ROOT / "web" / "index.html").read_text(encoding="utf-8")
 site = ROOT / "site"; shutil.rmtree(site, ignore_errors=True); (site / "br").mkdir(parents=True)
-shutil.copy(ROOT / "web" / "graph.br.js", site / "graph.br.js")
-tpl = tpl.replace('<script src="graph.br.js"></script>', '<script src="/graph.br.js"></script>')
+shutil.copy(ROOT / "build" / "graph.core.js", site / "graph.br.js")
+shutil.copytree(ROOT / "build" / "nodes", site / "nodes")
+tpl = tpl.replace('<script src="graph.br.js" defer></script>', '<script src="/graph.br.js" defer></script>')
 REL = {"elege": "elege", "nomeia": "nomeia", "sabatina": "sabatina e aprova", "fiscaliza": "fiscaliza", "supervisiona": "supervisiona", "aconselha": "aconselha", "chefia": "chefia", "membro_nato": "é membro nato de", "integra": "integra", "indica": "indica"}
 TYPE_SCHEMA = {"department": "GovernmentOrganization", "elected": "GovernmentOrganization", "commission": "GovernmentOrganization", "advisory": "GovernmentOrganization", "dept_head": "Role", "constituency": "Organization"}
 esc = html.escape

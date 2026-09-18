@@ -55,8 +55,10 @@ def main():
     pf = ROOT / "data" / "generated" / "dou-assinaturas.yaml"
     if pf.exists(): prev = (yaml.safe_load(open(pf, encoding="utf-8")) or {}).get("positions") or {}
     out.update(prev)
-    def variants(ph, org):
+    def variants(ph, org, pos_name=""):
         vs = [ph]
+        pn = norm(re.sub(r"^(Diretor|Diretora|Presidente|Superintendente|Procurador|Defensor|Advogado|Secretário|Comandante)[^ ]*( Especial| Público-Geral| Geral)?", lambda m: m.group(0), pos_name))
+        if pn and pn != ph: vs.insert(0, pn)   # o próprio nome do cargo ("PROCURADOR-GERAL DA REPUBLICA", "DIRETOR-GERAL DA POLICIA FEDERAL")
         vs.append(re.sub(r"^PRESIDENTE ", "PRESIDENTA ", ph)); vs.append(re.sub(r"^DIRETOR-", "DIRETORA-", ph)); vs.append(re.sub(r"^DIRETOR ", "DIRETORA ", ph))
         for a in org.get("aliases") or []:
             if a.isupper() and 2 < len(a) <= 8: vs.append(re.sub(r" D[OA] .*$", (" DA " if ph.split(" ")[1] == "DA" else " DO ") + norm(a), ph))
@@ -64,7 +66,7 @@ def main():
     for i, (n, org, ph) in enumerate(targets):
         if n["id"] in prev: continue
         found = None
-        for v in variants(ph, org):
+        for v in variants(ph, org, n['name']):
             items = search(v)
             if not items: continue
             for it in items[:10]:
