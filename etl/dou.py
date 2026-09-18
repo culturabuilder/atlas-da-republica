@@ -86,6 +86,9 @@ def main():
                 recs = []
                 for verb, name, cargo, org_txt in acts:
                     pid, sc = match_position(cargo + (" " + org_txt if org_txt else ""), idx, graph)
+                    # no DOU o casamento exige papel igual (Diretor de departamento nunca vira Ministro) e score alto
+                    role = lambda t: (re.match(r"(ministr|president|diretor president|diretor geral|diretor|conselheir|procurador|defensor|superintendent|membro|advogad|comandante|secretari)", norm(t)) or [None])[0]
+                    if pid and (sc < 0.75 or role(cargo) != role(graph["nodes"][pid]["name"])): pid, sc = None, sc
                     recs.append({"verb": verb, "name": name, "cargo": cargo, "org_text": org_txt, "position_id": pid, "match_score": sc})
                 store["acts"][key] = {"id": key, "date": date, "title": it.get("title"), "artType": it.get("artType"), "hierarchy": it.get("hierarchyList"),
                                       "url": "https://www.in.gov.br/web/dou/-/" + key, "records": recs, "org_query": org}
