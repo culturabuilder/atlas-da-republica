@@ -146,6 +146,13 @@ if sab_path.exists():
         pid = r.get("position_id")
         if pid and pid in nodes: nodes[pid].setdefault("sabatinas", []).append({k: r.get(k) for k in ("msf", "name", "cargo", "apresentacao", "deliberacao", "resultado", "tramitando", "votos_sim", "votos_nao", "abstencoes", "secreta", "url")})
 
+# ---- orçamento (Portal da Transparência)
+orc_path = DATA / "generated" / "orcamento.yaml"
+if orc_path.exists():
+    orc = yaml.safe_load(open(orc_path, encoding="utf-8")) or {}
+    for nid, years in (orc.get("nodes") or {}).items():
+        if nid in nodes: nodes[nid]["budget"] = years
+
 # ---- arestas derivadas
 edges = []
 def add(type_, frm, to, cite, note=None, seats=None, source="derivado", verified=True):
