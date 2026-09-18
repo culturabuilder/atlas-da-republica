@@ -58,6 +58,18 @@ p{margin:8px 0;color:var(--ink-2)}
 .list a:hover{border-color:var(--accent)}
 .list a .sm{color:var(--ink-3);font-size:13px;margin-left:auto;white-space:nowrap}
 .seat{padding:8px 10px;border:1px dashed var(--line);border-radius:8px;font-size:14px;color:var(--ink-3);font-style:italic}
+.people{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+.person{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;padding:5px 8px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:14.5px}
+.person:hover{background:var(--panel)}
+.person .av{width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.person .pn em{font-style:normal;color:var(--ink-3);font-size:12.5px;margin-left:4px}
+.person .pm{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);white-space:nowrap}
+.parties{display:grid;grid-template-columns:auto 1fr auto;gap:3px 10px;align-items:center;font-size:12.5px;margin:6px 0 10px}
+.parties .pr{display:contents}
+.parties .pk{font-family:var(--mono);font-size:11px}
+.parties .pb{height:8px;background:var(--line-2);border-radius:4px;overflow:hidden}
+.parties .pb i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.parties .pv{font-family:var(--mono);font-size:11px;color:var(--ink-3);text-align:right}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .stat{background:var(--panel);border:1px solid var(--line-2);border-radius:8px;padding:10px 12px}
 .stat .n{font-family:var(--disp);font-size:24px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
@@ -130,7 +142,7 @@ svg.wheel{width:100%;max-width:min(96vh,980px);height:auto;display:block;margin:
       <div id="results" class="results" role="listbox" hidden></div>
     </div>
     <div id="content"></div>
-    <div class="foot">Fase 0 · dados curados à mão com citação legal · ocupantes chegam com a ETL da Fase 1</div>
+    <div class="foot">Fase 1 · curadoria com citação legal + SIORG, Câmara e Senado · cargos do Executivo e do Judiciário aguardam Portal da Transparência e DOU</div>
   </aside>
   <main class="stage" id="stage">
     <div class="topbar">
@@ -257,7 +269,7 @@ function renderHome(){
   content.innerHTML = `
   <div class="card"><h1>Quem manda em quê no governo federal</h1>
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
-    <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_sabatina}</div><div class="l">cadeiras sabatinadas</div></div></div>
+    <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div>
     <p style="font-size:14px">Clique em um nó da roda ou busque por sigla. A distância do centro mostra quantos passos separam o eleitor do órgão.</p></div>
   <div class="card"><h2>Por poder</h2><div class="counts">${Object.keys(ARC).map(s=>`<span class="k"><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</span><span>${bs[s]||0}</span>`).join('')}</div>
     <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
@@ -277,7 +289,20 @@ function renderNode(n){
   const parent = n.parent ? N[n.parent] : null;
   const kids = (n.children||[]).map(id=>link(id, SUB[N[id].subtype]||'')).join('');
   const poss = (n.positions||[]).map(id=>{ const p=N[id]; return link(id, (p.seats>1?p.seats+' vagas':'') + (p.sabatina?' · sabatina':'')); }).join('');
-  const seats = isPos ? `<h3>Ocupante${n.seats>1?'s':''}</h3><div class="seat">${n.seats>1?n.seats+' cadeiras. ':''}Sem dado de ocupante na Fase 0. A ETL do Portal da Transparência, da Câmara, do Senado e do DOU preenche este campo.</div>` : '';
+  const people = n.people || [];
+  let seats = '';
+  if (isPos || people.length) {
+    if (!people.length) seats = `<h3>Ocupante${n.seats>1?'s':''}</h3><div class="seat">${n.seats>1?n.seats+' cadeiras. ':''}Sem dado de ocupante ainda. Vem do Portal da Transparência e do DOU na Fase 1.</div>`;
+    else {
+      const parties = {}; people.forEach(p => { const k = p.party || '—'; parties[k] = (parties[k]||0)+1; });
+      const top = Object.entries(parties).sort((a,b)=>b[1]-a[1]);
+      const max = top[0][1];
+      const bars = people.length >= 10 ? `<div class="parties">${top.slice(0,14).map(([k,v])=>`<div class="pr"><span class="pk">${esc(k)}</span><span class="pb"><i style="width:${Math.round(100*v/max)}%"></i></span><span class="pv">${v}</span></div>`).join('')}${top.length>14?`<div class="pr" style="color:var(--ink-3)"><span class="pk">+${top.length-14}</span><span class="pb"></span><span class="pv">${top.slice(14).reduce((a,[,v])=>a+v,0)}</span></div>`:''}</div>` : '';
+      const item = p => `<a class="person" href="${p.source_url||'#'}" target="_blank" rel="noopener"><span class="av">${esc((p.name||'?').split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join(''))}</span><span class="pn">${esc(p.name)}${p.role?` <em>${esc(p.role)}</em>`:''}</span><span class="pm">${[p.party,p.uf].filter(Boolean).join(' · ')}${p.entry_mode==='suplente'?' · suplente':''}</span></a>`;
+      const shown = people.length > 24 ? 24 : people.length;
+      seats = `<h3>Ocupante${people.length>1?'s':''} <span style="font-weight:400">· ${people.length}${n.seats>people.length?` de ${n.seats}`:''}</span></h3>${bars}<div class="people">${people.slice(0,shown).map(item).join('')}</div>${people.length>shown?`<details class="rel"><summary>Ver todos os ${people.length}</summary><div class="people">${people.slice(shown).map(item).join('')}</div></details>`:''}`;
+    }
+  }
   content.innerHTML = `<div class="card">
     <div class="chips">${sectorChip(n.sector)}<span class="chip">${TYPE_NAME[n.type]}${n.subtype?' · '+(SUB[n.subtype]||n.subtype):''}</span>${n.ring?`<span class="chip">Anel ${n.ring} · ${L.rings[n.ring].name}</span>`:''}${n.source==='siorg'?'<span class="chip">via SIORG</span>':(n.verified===false?'<span class="chip warn">citação a conferir</span>':'')}</div>
     <h1>${esc(n.name)}</h1>

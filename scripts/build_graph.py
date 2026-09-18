@@ -103,6 +103,14 @@ for n in nodes.values():
     if n.get("verified") is False: n["verified"] = False
     else: n["verified"] = True
 
+# ---- ocupantes (camada gerada: Câmara e Senado)
+ppl_path = DATA / "generated" / "parlamentares.yaml"
+if ppl_path.exists():
+    ppl = yaml.safe_load(open(ppl_path, encoding="utf-8")) or {}
+    for pid, people in (ppl.get("positions") or {}).items():
+        if pid in nodes: nodes[pid]["people"] = people
+        else: warn(f"ocupantes para cargo inexistente {pid}")
+
 # ---- arestas derivadas
 edges = []
 def add(type_, frm, to, cite, note=None, seats=None, source="derivado", verified=True):
@@ -176,11 +184,12 @@ by_sector = Counter(n.get("sector") for n in nodes.values() if n["type"] != "dep
 by_subtype = Counter(n.get("subtype") for n in nodes.values() if n.get("subtype"))
 by_edge = Counter(e["type"] for e in edges)
 seats = sum(n.get("seats", 0) for n in nodes.values() if n["type"] == "dept_head")
+filled = sum(len(n.get("people") or []) for n in nodes.values() if n["type"] == "dept_head")
 sabat = sum(n.get("seats", 0) for n in nodes.values() if n["type"] == "dept_head" and n.get("sabatina"))
 unverified = sum(1 for n in nodes.values() if not n["verified"] and n.get("source") != "siorg")
 from_siorg = sum(1 for n in nodes.values() if n.get("source") == "siorg")
 stats = {"nodes": len(nodes), "edges": len(edges), "by_type": dict(by_type), "by_sector": dict(by_sector),
-         "by_subtype": dict(by_subtype), "by_edge_type": dict(by_edge), "seats_total": seats, "seats_sabatina": sabat,
+         "by_subtype": dict(by_subtype), "by_edge_type": dict(by_edge), "seats_total": seats, "seats_filled": filled, "seats_sabatina": sabat,
          "unverified": unverified, "from_siorg": from_siorg, "siorg_matched": merge_report["matched"], "generated_at": datetime.date.today().isoformat()}
 graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats}
 js = json.dumps(graph, ensure_ascii=False, separators=(",", ":"))
