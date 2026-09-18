@@ -24,6 +24,25 @@ def wd(params):
             if e.code == 429: time.sleep(20 * (i + 1)); continue
             raise
     return {}
+def commons_image(name):
+    """Busca de arquivos no Wikimedia Commons pelo nome completo; exige primeiro e último nome no título do arquivo."""
+    q = urllib.parse.urlencode({"action": "query", "list": "search", "srsearch": f'"{name}"', "srnamespace": 6, "srlimit": 8, "format": "json"})
+    for i in range(4):
+        try:
+            j = json.load(urllib.request.urlopen(urllib.request.Request("https://commons.wikimedia.org/w/api.php?" + q, headers=UA), timeout=60)); break
+        except urllib.error.HTTPError as e:
+            if e.code == 429: time.sleep(20 * (i + 1)); continue
+            return None
+        except Exception: return None
+    else: return None
+    nn = lambda s: re.sub(r"[^a-z ]", "", __import__("unicodedata").normalize("NFKD", s).encode("ascii", "ignore").decode().lower())
+    w = [x for x in nn(name).split() if x not in ("de", "da", "do", "das", "dos", "e")]
+    if len(w) < 2: return None
+    hits = [h["title"] for h in j.get("query", {}).get("search", []) if re.search(r"\.(jpe?g|png)$", h["title"], re.I)]
+    good = [h for h in hits if w[0] in nn(h) and w[-1] in nn(h)]
+    good.sort(key=lambda h: (0 if "cropped" in h.lower() else 1, len(h)))
+    return ("https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(good[0][5:])) if good else None
+
 def name_variants(n):
     w = n.split(); out = [n]
     if len(w) >= 3: out += [w[0] + " " + w[-1], " ".join(w[:2]) + " " + w[-1], w[0] + " " + w[1]]
@@ -60,6 +79,9 @@ def main():
             img = wikidata_image(v)
             if img: break
             time.sleep(0.6)
+        if not img:
+            img = commons_image(p["name"]); time.sleep(1.2)
+            if img: print("commons:", p["name"], "->", img[-60:], file=sys.stderr)
         cache[p["id"]] = img; p["image"] = img; time.sleep(0.6)
         print("wikidata:", p["name"], "->", "foto" if img else "—", file=sys.stderr)
     json.dump(cache, open(cache_p, "w"), ensure_ascii=False)
