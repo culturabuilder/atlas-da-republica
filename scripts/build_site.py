@@ -42,7 +42,7 @@ def page(n):
     head = f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc)}">\n<link rel="canonical" href="{url}">\n<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{url}"><meta property="og:type" content="website">\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
     out = tpl.replace("<title>Atlas da República</title>\n", head, 1)
     out = out.replace('<div id="content"></div>', '<div id="content"></div>' + ssr, 1)
-    out = out.replace("select(location.hash.slice(1));", f"select(location.hash.slice(1) || {json.dumps(n['id'])});", 1)
+    out = out.replace("draw();\nselect(location.hash.slice(1));", f"draw();\nselect(location.hash.slice(1) || {json.dumps(n['id'])});", 1)
     return out
 
 urls = [f"{BASE}/"]
