@@ -29,6 +29,54 @@ for f in sorted(glob.glob(str(DATA / "nodes" / "*.yaml"))):
 def err(msg): errors.append(msg)
 def warn(msg): warnings.append(msg)
 
+# ---- camada gerada (SIORG): curadoria manda; o gerado preenche o que falta
+import unicodedata, re
+def norm(s): return re.sub(r"[^a-z0-9]+", " ", unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode().lower()).strip()
+gen_path = DATA / "generated" / "siorg.yaml"
+merge_report = {"matched": 0, "added": 0, "unmatched_curated": []}
+if gen_path.exists():
+    gen = yaml.safe_load(open(gen_path, encoding="utf-8")) or {}
+    gen_nodes = (gen.get("nodes") or []) + (gen.get("collegiate") or [])
+    by_key = {}
+    for n in nodes.values():
+        if n["type"] == "dept_head": continue
+        for k in [n.get("name")] + list(n.get("aliases") or []):
+            if k: by_key.setdefault(norm(k), n)
+    gen_to_id = {}; matched = set()
+    for g in gen_nodes:
+        keys = [norm(g["name"])] + [norm(a) for a in (g.get("aliases") or [])]
+        hit = next((by_key[k] for k in keys if k in by_key and len(k) > 1), None)
+        if hit:
+            merge_report["matched"] += 1; gen_to_id[g["id"]] = hit["id"]; matched.add(g["id"])
+            hit["siorg_code"] = g.get("siorg_code")
+            if not hit.get("official_url") and g.get("official_url"): hit["official_url"] = g["official_url"]
+            if g.get("description"): hit["siorg_description"] = g["description"]
+            for a in g.get("aliases") or []:
+                if a and norm(a) not in [norm(x) for x in hit.get("aliases") or []]: hit.setdefault("aliases", []).append(a)
+        else:
+            gen_to_id[g["id"]] = g["id"]
+    for g in gen_nodes:
+        if g["id"] in matched: continue
+        if g["id"] in nodes: warn(f"gerado {g['id']} colide com id curado; ignorado"); continue
+        n = dict(g); n["parent"] = gen_to_id.get(g.get("siorg_parent_id"), g.get("siorg_parent_id")) if g.get("siorg_parent_id") else None
+        n.pop("siorg_parent_id", None); n["_file"] = "generated/siorg.yaml"
+        if n.get("subtype") == "tribunal" or (n["sector"] == "judiciario" and n["name"].startswith(("Tribunal", "Justiça", "Conselho", "Superior", "Supremo"))): n["subtype"] = "tribunal"
+        if n["sector"] != "executivo" and not n.get("parent"): n["ring"] = 2
+        if n.get("subtype") == "instituicao_de_ensino": n["cluster"] = "ensino"
+        if re.match(r"^Se[çc][aã]o Judici[aá]ria|^Justi[çc]a Federal de Primeiro Grau", n["name"]): n["subtype"] = "secao_judiciaria"; n["cluster"] = "secao_judiciaria"; n["ring"] = 4
+        if re.match(r"^Tribunal Regional do Trabalho", n["name"]): n["subtype"] = "tribunal"; n["cluster"] = "trt"; n["parent"] = "br-tribunais-regionais-do-trabalho"; n["ring"] = 4
+        if re.match(r"^Tribunal Regional Eleitoral", n["name"]): n["subtype"] = "tribunal"; n["cluster"] = "tre"; n["parent"] = "br-tribunais-regionais-eleitorais"; n["ring"] = 4
+        if re.match(r"^Tribunal de Justi[çc]a do Distrito Federal", n["name"]): n["subtype"] = "tribunal"; n["parent"] = "br-superior-tribunal-de-justica"; n["ring"] = 3
+        nodes[n["id"]] = n; merge_report["added"] += 1
+    for _ in range(4):
+        for n in nodes.values():
+            if n.get("source") == "siorg" and n.get("parent") in nodes:
+                pr = nodes[n["parent"]].get("ring") or 0
+                if n["type"] != "dept_head" and (n.get("ring") or 0) <= pr: n["ring"] = min(pr + 1, 4)
+    for n in nodes.values():
+        if n["type"] in ("department",) and n.get("sector") == "executivo" and not n.get("siorg_code") and n.get("subtype") not in ("orgao_presidencia",):
+            merge_report["unmatched_curated"].append(n["id"])
+
 # ---- validação de nós
 for n in nodes.values():
     i = n["id"]
@@ -50,7 +98,7 @@ for n in nodes.values():
         if n.get("ring") not in (0, 1, 2, 3, 4): err(f"{i}: ring inválido {n.get('ring')}")
         p = n.get("parent")
         if p and p not in nodes: err(f"{i}: parent inexistente {p}")
-        if p and p in nodes and nodes[p].get("ring", 0) >= n.get("ring", 0) and n["type"] not in ("commission", "advisory"):
+        if p and p in nodes and nodes[p].get("ring", 0) >= n.get("ring", 0) and n["type"] not in ("commission", "advisory") and n.get("source") != "siorg":
             warn(f"{i}: anel {n.get('ring')} não é maior que o do parent {p} (anel {nodes[p].get('ring')})")
     if n.get("verified") is False: n["verified"] = False
     else: n["verified"] = True
@@ -113,6 +161,8 @@ for n in nodes.values():
     n["children"] = sorted(m["id"] for m in nodes.values() if m.get("parent") == n["id"])
     n["positions"] = sorted(m["id"] for m in nodes.values() if m.get("head_of") == n["id"])
 
+print(f"SIORG: {merge_report['matched']} curados casados, {merge_report['added']} nós adicionados; curados do Executivo sem código SIORG: {len(merge_report['unmatched_curated'])}")
+if merge_report["unmatched_curated"]: print("   ", ", ".join(merge_report["unmatched_curated"][:40]))
 if errors:
     print("ERROS:"); [print("  -", e) for e in errors]
 if warnings:
@@ -127,10 +177,11 @@ by_subtype = Counter(n.get("subtype") for n in nodes.values() if n.get("subtype"
 by_edge = Counter(e["type"] for e in edges)
 seats = sum(n.get("seats", 0) for n in nodes.values() if n["type"] == "dept_head")
 sabat = sum(n.get("seats", 0) for n in nodes.values() if n["type"] == "dept_head" and n.get("sabatina"))
-unverified = sum(1 for n in nodes.values() if not n["verified"]) + sum(1 for e in edges if e.get("verified") is False)
+unverified = sum(1 for n in nodes.values() if not n["verified"] and n.get("source") != "siorg")
+from_siorg = sum(1 for n in nodes.values() if n.get("source") == "siorg")
 stats = {"nodes": len(nodes), "edges": len(edges), "by_type": dict(by_type), "by_sector": dict(by_sector),
          "by_subtype": dict(by_subtype), "by_edge_type": dict(by_edge), "seats_total": seats, "seats_sabatina": sabat,
-         "unverified": unverified, "generated_at": datetime.date.today().isoformat()}
+         "unverified": unverified, "from_siorg": from_siorg, "siorg_matched": merge_report["matched"], "generated_at": datetime.date.today().isoformat()}
 graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats}
 js = json.dumps(graph, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.br.json").write_text(js, encoding="utf-8")

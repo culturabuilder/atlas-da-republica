@@ -152,7 +152,7 @@ const G = window.ATLAS; const N = G.nodes, E = G.edges, L = G.layout;
 const SEC = {}; L.sectors.forEach(s => SEC[s.id] = s);
 const COL = {legislativo:'var(--leg)', executivo:'var(--exe)', judiciario:'var(--jud)', essenciais:'var(--ess)'};
 const TYPE_NAME = {constituency:'Eleitorado', elected:'Órgão eletivo', department:'Órgão', dept_head:'Cargo', commission:'Colegiado', advisory:'Conselho consultivo'};
-const SUB = {orgao_presidencia:'Órgão da Presidência', ministerio:'Ministério', orgao_singular:'Órgão singular', autarquia:'Autarquia', agencia_reguladora:'Agência reguladora', fundacao:'Fundação pública', empresa_publica:'Empresa pública', sociedade_economia_mista:'Sociedade de economia mista', forca_armada:'Força Armada', tribunal:'Tribunal', casa_legislativa:'Casa legislativa', ministerio_publico:'Ministério Público', defensoria:'Defensoria', advocacia:'Advocacia pública', chefia_executivo:'Chefia do Executivo'};
+const SUB = {orgao_presidencia:'Órgão da Presidência', ministerio:'Ministério', orgao_singular:'Órgão singular', autarquia:'Autarquia', agencia_reguladora:'Agência reguladora', fundacao:'Fundação pública', empresa_publica:'Empresa pública', sociedade_economia_mista:'Sociedade de economia mista', forca_armada:'Força Armada', tribunal:'Tribunal', casa_legislativa:'Casa legislativa', ministerio_publico:'Ministério Público', defensoria:'Defensoria', advocacia:'Advocacia pública', chefia_executivo:'Chefia do Executivo', instituicao_de_ensino:'Universidade ou instituto federal', orgao_autonomo:'Órgão autônomo', secao_judiciaria:'Seção judiciária'};
 const REL = {elege:['Elege','Eleito por'], nomeia:['Nomeia','Nomeado por'], sabatina:['Sabatina e aprova','Sabatinado por'], fiscaliza:['Fiscaliza','Fiscalizado por'], supervisiona:['Supervisiona','Supervisionado por'], aconselha:['Aconselha','Aconselhado por'], chefia:['Chefia','Chefiado por'], membro_nato:['Membro nato de','Tem como membro nato'], integra:['Integra','Integrado por'], indica:['Indica','Indicado por']};
 
 // ---------- layout radial ----------
@@ -160,40 +160,47 @@ const W = 920, C = W/2;
 const RING_R = {0:0, 1:118, 2:205, 3:292, 4:378};
 const R_IN = 78, R_OUT = 415;
 // setores: [início, fim] em graus, 0 = topo, sentido horário
-const ARC = {legislativo:[-36,36], executivo:[36,222], judiciario:[222,282], essenciais:[282,324]};
+const ARC = {legislativo:[-28,28], executivo:[28,212], judiciario:[212,284], essenciais:[284,332]};
 const rad = d => (d-90)*Math.PI/180;
 const pt = (deg, r) => [C + r*Math.cos(rad(deg)), C + r*Math.sin(rad(deg))];
 function arcPath(a0,a1,r0,r1){ const [x0,y0]=pt(a0,r1),[x1,y1]=pt(a1,r1),[x2,y2]=pt(a1,r0),[x3,y3]=pt(a0,r0); const big=(a1-a0)>180?1:0; return `M${x0},${y0} A${r1},${r1} 0 ${big} 1 ${x1},${y1} L${x2},${y2} A${r0},${r0} 0 ${big} 0 ${x3},${y3} Z`; }
 function ringArc(a0,a1,r){ const [x0,y0]=pt(a0,r),[x1,y1]=pt(a1,r); const big=(a1-a0)>180?1:0; return `M${x0},${y0} A${r},${r} 0 ${big} 1 ${x1},${y1}`; }
 
+const CLUSTER_SUB = 'instituicao_de_ensino';
 const orgs = Object.values(N).filter(n => n.type !== 'dept_head' && n.type !== 'constituency');
-const angle = {};
+const angle = {}, radius = {}, clusterOf = {};
 for (const sid of Object.keys(ARC)) {
   const [a0,a1] = ARC[sid]; const pad = 5;
   for (const ring of [1,2,3,4]) {
-    let list = orgs.filter(n => n.sector === sid && n.ring === ring);
-    if (!list.length) continue;
-    // ordena pelo ângulo do parent (agrupa filhos) e depois por nome
-    list.sort((a,b) => {
-      const pa = a.parent && angle[a.parent] != null ? angle[a.parent] : 999, pb = b.parent && angle[b.parent] != null ? angle[b.parent] : 999;
-      return pa - pb || a.name.localeCompare(b.name,'pt');
-    });
+    let all = orgs.filter(n => n.sector === sid && n.ring === ring);
+    if (!all.length) continue;
+    // instituições de ensino viram um cluster por órgão supervisor (um único slot angular)
+    const clusters = {}; const list = [];
+    for (const n of all) { if (n.cluster) { const k = n.parent || 'x'; (clusters[k] = clusters[k] || []).push(n); } else list.push(n); }
+    for (const k of Object.keys(clusters)) list.push({id:'cluster:'+k+':'+ring, parent:k, name:'~', _cluster:clusters[k]});
+    list.sort((a,b) => { const pa = a.parent && angle[a.parent] != null ? angle[a.parent] : 999, pb = b.parent && angle[b.parent] != null ? angle[b.parent] : 999; return pa - pb || String(a.name).localeCompare(String(b.name),'pt'); });
     const span = (a1-a0) - 2*pad; const step = list.length > 1 ? span/(list.length-1) : 0;
-    list.forEach((n,i) => angle[n.id] = list.length > 1 ? a0+pad+i*step : (a0+a1)/2);
+    const dense = list.length > 48;
+    list.forEach((n,i) => {
+      const a = list.length > 1 ? a0+pad+i*step : (a0+a1)/2;
+      if (n._cluster) { // grade de pontos ao redor do slot
+        const cols = Math.ceil(Math.sqrt(n._cluster.length*1.6)); n._cluster.forEach((m,j) => { const r = Math.floor(j/cols), c = j%cols; angle[m.id] = a + (c-(cols-1)/2)*1.05; radius[m.id] = RING_R[ring] + 14 + (r-2)*6.5; clusterOf[m.id] = n.id; }); return; }
+      angle[n.id] = a; radius[n.id] = RING_R[ring] + (dense ? (i%2 ? 12 : -12) : 0);
+    });
   }
 }
 // cargos: mesmo ângulo do órgão, um pouco para dentro; vários cargos do mesmo órgão se espalham
 const posOf = {};
 for (const n of orgs) {
-  const ps = n.positions || []; ps.forEach((pid,i) => { const off = (i-(ps.length-1)/2)*2.4; posOf[pid] = {a: angle[n.id]+off, r: RING_R[n.ring]-17}; });
+  const ps = n.positions || []; const rr = radius[n.id] != null ? radius[n.id] : RING_R[n.ring]; ps.forEach((pid,i) => { const off = (i-(ps.length-1)/2)*2.4; posOf[pid] = {a: angle[n.id]+off, r: rr-15}; });
 }
-function xy(id){ const n=N[id]; if(n.type==='constituency') return [C,C]; if(n.type==='dept_head'){ const p=posOf[id]; return pt(p.a,p.r);} return pt(angle[id], RING_R[n.ring]); }
+function xy(id){ const n=N[id]; if(n.type==='constituency') return [C,C]; if(n.type==='dept_head'){ const p=posOf[id]; return pt(p.a,p.r);} return pt(angle[id], radius[id] != null ? radius[id] : RING_R[n.ring]); }
 
 // ---------- desenho ----------
 function shape(n, s){
   const t=n.type, k=(n.ring===1||n.ring===2)?1.25:1; s=s*k;
   if (t==='elected') return `<circle class="shape" r="${s}"/>`;
-  if (t==='department') { const sub=n.subtype; if(sub==='tribunal') return `<polygon class="shape" points="${poly(5,s+1,-90)}"/>`; if(sub==='forca_armada') return `<polygon class="shape" points="${poly(3,s+2,-90)}"/>`; return `<rect class="shape" x="${-s}" y="${-s}" width="${2*s}" height="${2*s}" rx="1.5"/>`; }
+  if (t==='department') { const sub=n.subtype; if(n.cluster) return `<circle class="shape" r="2.2" style="fill:currentColor;fill-opacity:.55"/>`; if(sub==='tribunal') return `<polygon class="shape" points="${poly(5,s+1,-90)}"/>`; if(sub==='forca_armada') return `<polygon class="shape" points="${poly(3,s+2,-90)}"/>`; return `<rect class="shape" x="${-s}" y="${-s}" width="${2*s}" height="${2*s}" rx="1.5"/>`; }
   if (t==='commission') return `<polygon class="shape" points="${poly(5,s+1,-90)}" transform="rotate(180)"/>`;
   if (t==='advisory') return `<polygon class="shape" points="${poly(6,s+1,0)}"/>`;
   if (t==='dept_head') return `<circle class="shape" r="2.6"/>`;
@@ -246,7 +253,7 @@ function sectorChip(sid){ return sid ? `<span class="chip sec" style="background
 function link(id, extra){ const n=N[id]; return `<a href="#${id}"><span class="dot" style="background:${COL[n.sector]||'var(--povo)'}"></span><span>${esc(n.name)}</span>${extra?`<span class="sm">${extra}</span>`:''}</a>`; }
 function renderHome(){
   const st = G.stats; const bt = st.by_type, bs = st.by_sector, bsub = st.by_subtype;
-  const subRows = [['ministerio','Ministérios'],['orgao_presidencia','Órgãos da Presidência'],['agencia_reguladora','Agências reguladoras'],['autarquia','Autarquias'],['fundacao','Fundações'],['empresa_publica','Empresas públicas'],['sociedade_economia_mista','Sociedades de economia mista'],['tribunal','Tribunais'],['ministerio_publico','Ministério Público'],['forca_armada','Forças Armadas']];
+  const subRows = [['ministerio','Ministérios'],['orgao_presidencia','Órgãos da Presidência'],['agencia_reguladora','Agências reguladoras'],['autarquia','Autarquias'],['fundacao','Fundações'],['empresa_publica','Empresas públicas'],['sociedade_economia_mista','Sociedades de economia mista'],['tribunal','Tribunais'],['ministerio_publico','Ministério Público'],['forca_armada','Forças Armadas'],['instituicao_de_ensino','Universidades e institutos federais']];
   content.innerHTML = `
   <div class="card"><h1>Quem manda em quê no governo federal</h1>
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
@@ -256,7 +263,7 @@ function renderHome(){
     <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
     <h3>Cargos e colegiados</h3><div class="counts"><span>Cargos de chefia mapeados</span><span>${bt.dept_head||0}</span><span>Cadeiras (inclui 513 deputados e 81 senadores)</span><span>${st.seats_total}</span><span>Colegiados deliberativos</span><span>${bt.commission||0}</span><span>Conselhos consultivos</span><span>${bt.advisory||0}</span></div></div>
   <div class="card"><h2>Como ler a roda</h2><div class="counts">${[1,2,3,4].map(r=>`<span><b>Anel ${r} · ${L.rings[r].name}</b><br><span style="color:var(--ink-3);font-size:13.5px">${L.rings[r].description}</span></span><span></span>`).join('')}</div>
-    <p style="font-size:13.5px;margin-top:10px">${st.unverified} citações ainda marcadas para conferência. Gerado em ${st.generated_at}.</p></div>`;
+    <p style="font-size:13.5px;margin-top:10px">${st.siorg_matched||0} órgãos curados casados com o registro oficial do SIORG e ${st.from_siorg||0} importados dele. ${st.unverified} citações curadas ainda marcadas para conferência. Gerado em ${st.generated_at}.</p></div>`;
 }
 function renderNode(n){
   const isPos = n.type==='dept_head';
@@ -272,12 +279,13 @@ function renderNode(n){
   const poss = (n.positions||[]).map(id=>{ const p=N[id]; return link(id, (p.seats>1?p.seats+' vagas':'') + (p.sabatina?' · sabatina':'')); }).join('');
   const seats = isPos ? `<h3>Ocupante${n.seats>1?'s':''}</h3><div class="seat">${n.seats>1?n.seats+' cadeiras. ':''}Sem dado de ocupante na Fase 0. A ETL do Portal da Transparência, da Câmara, do Senado e do DOU preenche este campo.</div>` : '';
   content.innerHTML = `<div class="card">
-    <div class="chips">${sectorChip(n.sector)}<span class="chip">${TYPE_NAME[n.type]}${n.subtype?' · '+(SUB[n.subtype]||n.subtype):''}</span>${n.ring?`<span class="chip">Anel ${n.ring} · ${L.rings[n.ring].name}</span>`:''}${n.verified===false?'<span class="chip warn">citação a conferir</span>':''}</div>
+    <div class="chips">${sectorChip(n.sector)}<span class="chip">${TYPE_NAME[n.type]}${n.subtype?' · '+(SUB[n.subtype]||n.subtype):''}</span>${n.ring?`<span class="chip">Anel ${n.ring} · ${L.rings[n.ring].name}</span>`:''}${n.source==='siorg'?'<span class="chip">via SIORG</span>':(n.verified===false?'<span class="chip warn">citação a conferir</span>':'')}</div>
     <h1>${esc(n.name)}</h1>
     ${n.aliases&&n.aliases.length?`<p style="margin-top:-4px;font-size:14px;color:var(--ink-3)">${n.aliases.map(esc).join(' · ')}</p>`:''}
     <p>${esc(n.description)}</p>
     <div class="links">${n.cite_url?`<a href="${n.cite_url}" target="_blank" rel="noopener">Fonte legal ↗</a>`:''}${n.official_url?`<a href="${n.official_url}" target="_blank" rel="noopener">Site oficial ↗</a>`:''}</div>
-    <p class="cite">${esc(n.cite)}${n.mandato_anos?` · mandato de ${n.mandato_anos} anos`:''}</p>
+    <p class="cite">${esc(n.cite)}${n.mandato_anos?` · mandato de ${n.mandato_anos} anos`:''}${n.siorg_code?` · <a href="https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/${n.siorg_code}" target="_blank" rel="noopener">SIORG ${n.siorg_code}</a>`:''}</p>
+    ${n.siorg_description&&n.source!=='siorg'?`<details class="rel"><summary>Competência segundo o SIORG</summary><p style="font-size:14px">${esc(n.siorg_description)}</p></details>`:''}
     ${head?`<h3>Chefia</h3><div class="list">${link(head.id, SUB[head.subtype]||'')}</div>`:''}
     ${seats}
     ${parent?`<h3>${n.subtype&&['autarquia','fundacao','empresa_publica','sociedade_economia_mista','agencia_reguladora'].includes(n.subtype)?'Vinculado a':'Integra'}</h3><div class="list">${link(parent.id)}</div>`:''}
