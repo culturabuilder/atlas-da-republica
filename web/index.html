@@ -4,29 +4,8 @@
 <title>Atlas da República</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%23C25A12%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%276%27 fill=%27%23fff%27/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="atlas.css">
 <style>
-:root{
-  --ok:#1E6B3A; --ok-soft:#DFF0E4; --warn:#9A5B00; --warn-soft:#FBEFD9;
-  --bg:#EFF0EB; --panel:#FAFAF7; --card:#FFFFFF; --ink:#1A1C19; --ink-2:#4B4F49; --ink-3:#666A63; --line:#D8DBD3; --line-2:#E8EAE4;
-  --accent:#1F5F4A; --accent-soft:#DDEBE3; --focus:#1F5F4A;
-  --leg:#B8452E; --exe:#3B4C9B; --jud:#8A6C10; --ess:#5E3D7A; --povo:#C25A12;
-  --sector-alpha:.10; --ring-alpha:.35; --node-fill:#FAFAF7;
-  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace; --sans:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif; --disp:"Archivo","Helvetica Neue",Arial,sans-serif;
-}
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --ok:#8FD3A6; --ok-soft:#1B3324; --warn:#E9B860; --warn-soft:#3A2E14;
-  --bg:#131412; --panel:#1A1C19; --card:#20231F; --ink:#ECEDE8; --ink-2:#BDC0B8; --ink-3:#9A9E95; --line:#33362F; --line-2:#2A2D27;
-  --accent:#8CCBAF; --accent-soft:#1E3A2E; --focus:#8CCBAF;
-  --leg:#F0907A; --exe:#9AA6EE; --jud:#E2C25A; --ess:#C9A3E6; --povo:#F2A063;
-  --sector-alpha:.14; --ring-alpha:.4; --node-fill:#1A1C19;
-}}
-:root[data-theme="dark"]{
-  --ok:#8FD3A6; --ok-soft:#1B3324; --warn:#E9B860; --warn-soft:#3A2E14;
-  --bg:#131412; --panel:#1A1C19; --card:#20231F; --ink:#ECEDE8; --ink-2:#BDC0B8; --ink-3:#9A9E95; --line:#33362F; --line-2:#2A2D27;
-  --accent:#8CCBAF; --accent-soft:#1E3A2E; --focus:#8CCBAF;
-  --leg:#F0907A; --exe:#9AA6EE; --jud:#E2C25A; --ess:#C9A3E6; --povo:#F2A063;
-  --sector-alpha:.14; --ring-alpha:.4; --node-fill:#1A1C19;
-}
 *{box-sizing:border-box}
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5}
@@ -189,30 +168,12 @@ p{margin:8px 0;color:var(--ink-2)}
 .legend .box h3{grid-column:1/-1;margin:6px 0 2px}
 .legend .box div{display:flex;align-items:center;gap:8px}
 .legend svg{width:22px;height:14px;flex:none;color:var(--ink)}
-svg.wheel{width:100%;max-width:min(96vh,980px);height:auto;display:block;margin:0 auto;font-family:var(--mono)}
-.sector-bg{fill-opacity:var(--sector-alpha);stroke:var(--ink);stroke-opacity:.12}
-.ring{fill:none;stroke:var(--ink);stroke-opacity:var(--ring-alpha);stroke-dasharray:2 5}
-.ring-label{font-size:8.5px;letter-spacing:.2em;fill:var(--ink);fill-opacity:.55}
-.sector-label{font-size:11px;letter-spacing:.28em;font-weight:600}
-.node{cursor:pointer}
-.node .shape{fill:var(--node-fill);stroke-width:1.4;transition:opacity .15s}
-.node.pos .shape{stroke-width:1;fill-opacity:.9}
-.node:hover .shape,.node:focus .shape{stroke-width:2.6}
-.node:focus{outline:none}
-.node:focus-visible .shape{stroke-width:3;stroke:var(--focus)}
-.node.sel .shape{fill:currentColor;stroke:currentColor;stroke-width:2}
-.dim .node:not(.sel):not(.lit) .shape{opacity:.25}
-.dim .node:not(.sel):not(.lit) text{opacity:.2}
-.edge{fill:none;stroke-width:1.3;pointer-events:none}
-.edge.nomeia,.edge.chefia{stroke-dasharray:none}
-.edge.sabatina,.edge.indica{stroke-dasharray:5 3}
-.edge.integra,.edge.membro_nato{stroke-dasharray:1.5 3}
-.edge.supervisiona,.edge.fiscaliza,.edge.aconselha{stroke-dasharray:8 3 2 3}
-.edge.elege{stroke-width:2.4}
-.center-label{font-family:var(--disp);font-weight:700;font-size:9.5px;fill:#fff;text-anchor:middle}
-.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:13px;padding:5px 9px;border-radius:5px;white-space:nowrap;z-index:6;transform:translate(-50%,-140%)}
-.tip[hidden]{display:none}
-.tip small{opacity:.7;font-family:var(--mono);font-size:10px;margin-left:6px}
+a.card.start{display:grid;gap:4px;text-decoration:none;color:var(--ink);border-color:var(--accent);background:linear-gradient(135deg,var(--accent-soft),var(--card))}
+a.card.start .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+a.card.start b{font-family:var(--disp);font-size:19px;letter-spacing:-.01em}
+a.card.start span{font-size:14px;color:var(--ink-2)}
+a.card.start .go{color:var(--accent);font-weight:600;margin-top:4px}
+a.card.start:hover{border-color:var(--ink-3)}
 @media (max-width:900px){
   .app{grid-template-columns:1fr}
   .panel{max-height:none;position:static;order:2}
@@ -259,97 +220,9 @@ svg.wheel{width:100%;max-width:min(96vh,980px);height:auto;display:block;margin:
 </div>
 
 <script src="graph.br.js" defer></script>
+<script src="atlas.js" defer></script>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-const G = window.ATLAS; const N = G.nodes, E = G.edges, L = G.layout;
-// núcleo leve: deriva listas por nó a partir das arestas e dos pais
-if (G.detail_base) {
-  for (const n of Object.values(N)) { n.edges = n.edges || []; n.connected = n.connected || []; n.children = n.children || []; n.positions = n.positions || []; }
-  for (const e of Object.values(E)) { const a = N[e.from], b = N[e.to]; if (!a || !b) continue; a.edges.push(e.id); b.edges.push(e.id); if (!a.connected.includes(e.to)) a.connected.push(e.to); if (!b.connected.includes(e.from)) b.connected.push(e.from); }
-  for (const n of Object.values(N)) { if (n.parent && N[n.parent]) N[n.parent].children.push(n.id); if (n.head_of && N[n.head_of]) N[n.head_of].positions.push(n.id); }
-  for (const n of Object.values(N)) { n.children.sort(); n.positions.sort(); }
-}
-const SEC = {}; L.sectors.forEach(s => SEC[s.id] = s);
-const COL = {legislativo:'var(--leg)', executivo:'var(--exe)', judiciario:'var(--jud)', essenciais:'var(--ess)'};
-const TYPE_NAME = {constituency:'Eleitorado', elected:'Órgão eletivo', department:'Órgão', dept_head:'Cargo', commission:'Colegiado', advisory:'Conselho consultivo', pessoa:'Pessoa'};
-const SUB = {orgao_presidencia:'Órgão da Presidência', ministerio:'Ministério', orgao_singular:'Órgão singular', autarquia:'Autarquia', agencia_reguladora:'Agência reguladora', fundacao:'Fundação pública', empresa_publica:'Empresa pública', sociedade_economia_mista:'Sociedade de economia mista', forca_armada:'Força Armada', tribunal:'Tribunal', casa_legislativa:'Casa legislativa', ministerio_publico:'Ministério Público', defensoria:'Defensoria', advocacia:'Advocacia pública', chefia_executivo:'Chefia do Executivo', instituicao_de_ensino:'Universidade ou instituto federal', orgao_autonomo:'Órgão autônomo', secao_judiciaria:'Seção judiciária'};
-const REL = {elege:['Elege','Eleito por'], nomeia:['Nomeia','Nomeado por'], sabatina:['Sabatina e aprova','Sabatinado por'], fiscaliza:['Fiscaliza','Fiscalizado por'], supervisiona:['Supervisiona','Supervisionado por'], aconselha:['Aconselha','Aconselhado por'], chefia:['Chefia','Chefiado por'], membro_nato:['Membro nato de','Tem como membro nato'], integra:['Integra','Integrado por'], indica:['Indica','Indicado por']};
-
-// ---------- layout radial ----------
-const W = 920, C = W/2;
-const RING_R = {0:0, 1:118, 2:205, 3:292, 4:378};
-const R_IN = 78, R_OUT = 415;
-// setores: [início, fim] em graus, 0 = topo, sentido horário
-const ARC = {legislativo:[-28,28], executivo:[28,212], judiciario:[212,284], essenciais:[284,332]};
-const rad = d => (d-90)*Math.PI/180;
-const pt = (deg, r) => [C + r*Math.cos(rad(deg)), C + r*Math.sin(rad(deg))];
-function arcPath(a0,a1,r0,r1){ const [x0,y0]=pt(a0,r1),[x1,y1]=pt(a1,r1),[x2,y2]=pt(a1,r0),[x3,y3]=pt(a0,r0); const big=(a1-a0)>180?1:0; return `M${x0},${y0} A${r1},${r1} 0 ${big} 1 ${x1},${y1} L${x2},${y2} A${r0},${r0} 0 ${big} 0 ${x3},${y3} Z`; }
-function ringArc(a0,a1,r){ const [x0,y0]=pt(a0,r),[x1,y1]=pt(a1,r); const big=(a1-a0)>180?1:0; return `M${x0},${y0} A${r},${r} 0 ${big} 1 ${x1},${y1}`; }
-
-const CLUSTER_SUB = 'instituicao_de_ensino';
-const orgs = Object.values(N).filter(n => n.type !== 'dept_head' && n.type !== 'constituency');
-const angle = {}, radius = {}, clusterOf = {};
-for (const sid of Object.keys(ARC)) {
-  const [a0,a1] = ARC[sid]; const pad = 5;
-  for (const ring of [1,2,3,4]) {
-    let all = orgs.filter(n => n.sector === sid && n.ring === ring);
-    if (!all.length) continue;
-    // instituições de ensino viram um cluster por órgão supervisor (um único slot angular)
-    const clusters = {}; const list = [];
-    for (const n of all) { if (n.cluster) { const k = n.parent || 'x'; (clusters[k] = clusters[k] || []).push(n); } else list.push(n); }
-    for (const k of Object.keys(clusters)) list.push({id:'cluster:'+k+':'+ring, parent:k, name:'~', _cluster:clusters[k]});
-    list.sort((a,b) => { const pa = a.parent && angle[a.parent] != null ? angle[a.parent] : 999, pb = b.parent && angle[b.parent] != null ? angle[b.parent] : 999; return pa - pb || String(a.name).localeCompare(String(b.name),'pt'); });
-    const span = (a1-a0) - 2*pad; const step = list.length > 1 ? span/(list.length-1) : 0;
-    const dense = list.length > 48;
-    list.forEach((n,i) => {
-      const a = list.length > 1 ? a0+pad+i*step : (a0+a1)/2;
-      if (n._cluster) { // grade de pontos ao redor do slot
-        const cols = Math.ceil(Math.sqrt(n._cluster.length*1.6)); n._cluster.forEach((m,j) => { const r = Math.floor(j/cols), c = j%cols; angle[m.id] = a + (c-(cols-1)/2)*1.05; radius[m.id] = RING_R[ring] + 14 + (r-2)*6.5; clusterOf[m.id] = n.id; }); return; }
-      angle[n.id] = a; radius[n.id] = RING_R[ring] + (dense ? (i%2 ? 12 : -12) : 0);
-    });
-  }
-}
-// cargos: mesmo ângulo do órgão, um pouco para dentro; vários cargos do mesmo órgão se espalham
-const posOf = {};
-for (const n of orgs) {
-  const ps = n.positions || []; const rr = radius[n.id] != null ? radius[n.id] : RING_R[n.ring]; ps.forEach((pid,i) => { const off = (i-(ps.length-1)/2)*2.4; posOf[pid] = {a: angle[n.id]+off, r: rr-15}; });
-}
-function xy(id){ const n=N[id]; if(n.type==='constituency') return [C,C]; if(n.type==='dept_head'){ const p=posOf[id]; return pt(p.a,p.r);} return pt(angle[id], radius[id] != null ? radius[id] : RING_R[n.ring]); }
-
-// ---------- desenho ----------
-function shape(n, s){
-  const t=n.type, k=(n.ring===1||n.ring===2)?1.25:1; s=s*k;
-  if (t==='elected') return `<circle class="shape" r="${s}"/>`;
-  if (t==='department') { const sub=n.subtype; if(n.cluster) return `<circle class="shape" r="2.2" style="fill:currentColor;fill-opacity:.55"/>`; if(sub==='tribunal') return `<polygon class="shape" points="${poly(5,s+1,-90)}"/>`; if(sub==='forca_armada') return `<polygon class="shape" points="${poly(3,s+2,-90)}"/>`; return `<rect class="shape" x="${-s}" y="${-s}" width="${2*s}" height="${2*s}" rx="1.5"/>`; }
-  if (t==='commission') return `<polygon class="shape" points="${poly(5,s+1,-90)}" transform="rotate(180)"/>`;
-  if (t==='advisory') return `<polygon class="shape" points="${poly(6,s+1,0)}"/>`;
-  if (t==='dept_head') return `<circle class="shape" r="2.6"/>`;
-  return '';
-}
-function poly(nn,r,rot){ const o=[]; for(let i=0;i<nn;i++){ const a=(rot+i*360/nn)*Math.PI/180; o.push((r*Math.cos(a)).toFixed(1)+','+(r*Math.sin(a)).toFixed(1)); } return o.join(' '); }
-function burst(r){ const o=[]; for(let i=0;i<32;i++){ const a=i*Math.PI/16, rr=i%2?r:r*0.88; o.push((C+rr*Math.cos(a)).toFixed(1)+','+(C+rr*Math.sin(a)).toFixed(1)); } return o.join(' '); }
-
-function draw(){
-  let s = `<svg class="wheel" viewBox="0 0 ${W} ${W}" role="group" aria-label="Roda do governo federal: ${G.stats.nodes} nós em quatro setores">
-  <defs>${Object.keys(REL).map(t=>`<marker id="m-${t}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker>`).join('')}</defs>`;
-  for (const sid of Object.keys(ARC)) { const [a0,a1]=ARC[sid]; s += `<path class="sector-bg" d="${arcPath(a0,a1,R_IN,R_OUT)}" fill="${COL[sid]}"/>`; }
-  for (const r of [1,2,3,4]) s += `<circle class="ring" cx="${C}" cy="${C}" r="${RING_R[r]}"/>`;
-  // rótulos de anel na fatia executiva, ao longo do arco
-  for (const r of [1,2,3,4]) { s += `<path id="rl${r}" d="${ringArcRev(288,328,RING_R[r]-9)}" fill="none"/><text class="ring-label"><textPath href="#rl${r}" startOffset="50%" text-anchor="middle">${L.rings[r].name.toUpperCase()}</textPath></text>`; }
-  for (const sid of Object.keys(ARC)) { const [a0,a1]=ARC[sid]; const flip = (a0+a1)/2 > 90 && (a0+a1)/2 < 270; const d = flip ? ringArc(a1,a0,R_OUT+9).replace('0 0 1','0 0 0') : ringArc(a0,a1,R_OUT+12); const lbl=(SEC[sid].short||SEC[sid].name).toUpperCase();
-    s += `<path id="sl-${sid}" d="${flip?ringArcRev(a0,a1,R_OUT+6):ringArc(a0,a1,R_OUT+13)}" fill="none"/><text class="sector-label" fill="${COL[sid]}"><textPath href="#sl-${sid}" startOffset="50%" text-anchor="middle">${lbl}</textPath></text>`; }
-  // arcos de subgrupo (como "Cabinet"/"Congress" no CivLab)
-  const SUBARCS = [['executivo',2,n=>n.subtype==='ministerio','ESPLANADA'],['judiciario',2,n=>n.subtype==='tribunal','TRIBUNAIS SUPERIORES'],['legislativo',3,n=>n.type==='commission','COMISSÕES'],['essenciais',3,n=>n.subtype==='ministerio_publico','RAMOS DO MPU']];
-  SUBARCS.forEach(([sid,ring,f,label],i)=>{ const as = orgs.filter(n=>n.sector===sid&&n.ring===ring&&f(n)&&angle[n.id]!=null).map(n=>angle[n.id]); if (as.length<3) return; const a0=Math.min(...as)-1.5, a1=Math.max(...as)+1.5; const r=RING_R[ring]+(ring>=3?26:22); const flip=(a0+a1)/2>90&&(a0+a1)/2<270; s += `<path d="${flip?ringArcRev(a0,a1,r):ringArc(a0,a1,r)}" fill="none" stroke="${COL[sid]}" stroke-opacity=".35" stroke-width="1"/><path id="sa${i}" d="${flip?ringArcRev(a0,a1,r+(flip?-4:6)):ringArc(a0,a1,r+6)}" fill="none"/><text class="ring-label" fill="${COL[sid]}" style="fill:${COL[sid]};fill-opacity:.85;font-size:8px"><textPath href="#sa${i}" startOffset="50%" text-anchor="middle">${label}</textPath></text>`; });
-  s += `<g id="edges"></g>`;
-  s += `<a class="node center" href="#br-eleitorado" data-id="br-eleitorado" aria-label="Povo brasileiro, eleitorado"><polygon class="shape" points="${burst(52)}" style="fill:var(--povo);stroke:var(--povo)"/><text class="center-label" x="${C}" y="${C-3}">Povo</text><text class="center-label" x="${C}" y="${C+9}">brasileiro</text></a>`;
-  for (const n of orgs) { const [x,y]=xy(n.id); s += `<a class="node" href="#${n.id}" data-id="${n.id}" aria-label="${esc(n.name)}, ${TYPE_NAME[n.type]}" style="color:${COL[n.sector]}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})"><g style="stroke:${COL[n.sector]}">${shape(n, n.ring<=2?6:4.6)}</g></a>`; }
-  for (const n of Object.values(N)) if (n.type==='dept_head') { const [x,y]=xy(n.id); s += `<a class="node pos" href="#${n.id}" data-id="${n.id}" aria-label="${esc(n.name)}, cargo" style="color:${COL[n.sector]}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})"><g style="stroke:${COL[n.sector]}">${shape(n,0)}</g></a>`; }
-  s += `</svg>`;
-  document.getElementById('graph').innerHTML = s;
-}
-function ringArcRev(a0,a1,r){ const [x0,y0]=pt(a1,r),[x1,y1]=pt(a0,r); const big=(a1-a0)>180?1:0; return `M${x0},${y0} A${r},${r} 0 ${big} 0 ${x1},${y1}`; }
-function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
 
 // ---------- seleção ----------
 let current = null;
@@ -471,7 +344,6 @@ function select(id){
   eg.innerHTML = lines;
   renderNode(n);
 }
-function curve(x1,y1,x2,y2){ const mx=(x1+x2)/2, my=(y1+y2)/2; const dx=x2-x1, dy=y2-y1; const k=0.12; const cx=mx-dy*k, cy=my+dx*k; return `M${x1.toFixed(1)},${y1.toFixed(1)} Q${cx.toFixed(1)},${cy.toFixed(1)} ${x2.toFixed(1)},${y2.toFixed(1)}`; }
 
 // ---------- painel ----------
 const content = document.getElementById('content');
@@ -537,7 +409,7 @@ function renderHome(){
   const body = homeTab==='transicao' ? trans : homeTab==='noticias' ? (news?`<div class="news">${news}</div><p style="font-size:13px;color:var(--ink-3)">${st.news_sources||0} fontes · ${st.articles_90d||0} artigos em 90 dias · entidades e pessoas reconhecidas por sigla e nome.</p>`:'<p>Sem notícias coletadas ainda.</p>')
     : homeTab==='poder' ? (power?`<div class="pm">${power}</div><p style="font-size:13px;color:var(--ink-3)">Pessoas do grafo mais citadas nos últimos 90 dias. Cresce a cada coleta diária.</p>`:'<p>Sem menções ainda.</p>')
     : `${counters}${bars}${chg||'<p>Sem mudanças nesta janela.</p>'}<p style="font-size:13px;color:var(--ink-3)">Sabatinas do Senado, posses, atos do Diário Oficial e entradas e saídas detectadas na comparação diária dos ocupantes.</p>`;
-  content.innerHTML = `
+  content.innerHTML = `<a class="card start" href="/como-funciona/"><span class="eyebrow">Comece por aqui</span><b>Como funciona a República</b><span>Uma visita guiada de 9 minutos pela roda: quem você elege, quem nomeia quem, quem vigia quem. Para quem nunca precisou entender isso e agora quer.</span><span class="go">Começar →</span></a>`+`
   <div class="card"><h1>Quem manda em quê no governo federal</h1>
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
     <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div></div>

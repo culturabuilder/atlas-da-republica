@@ -50,3 +50,7 @@ Pendências conhecidas: cadastro no INLABS para o Diário Oficial completo em XM
 ## Licenças
 
 Código: MIT (`LICENSE`). Dados em `data/`: CC BY 4.0 (`data/LICENSE`).
+
+## Área educativa
+
+`/como-funciona/` é uma visita guiada por rolagem: a mesma roda da home acende setores, anéis, nós e ligações a cada passo do texto. Conteúdo em `data/como-funciona.yaml` (10 capítulos, 50 passos, cada um com citação legal e o estado da roda), glossário em `data/glossario.yaml`, dados vivos calculados no build por `scripts/build_como_funciona.py` (chamado por `build_site.py`). A roda e os tokens de tema ficam em `web/atlas.js` e `web/atlas.css`, compartilhados pela home.

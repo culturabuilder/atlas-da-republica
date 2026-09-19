@@ -1,0 +1,48 @@
+/* Atlas da República — tokens de tema e regras da roda, compartilhados entre a home e a área educativa */
+:root{
+  --ok:#1E6B3A; --ok-soft:#DFF0E4; --warn:#9A5B00; --warn-soft:#FBEFD9;
+  --bg:#EFF0EB; --panel:#FAFAF7; --card:#FFFFFF; --ink:#1A1C19; --ink-2:#4B4F49; --ink-3:#666A63; --line:#D8DBD3; --line-2:#E8EAE4;
+  --accent:#1F5F4A; --accent-soft:#DDEBE3; --focus:#1F5F4A;
+  --leg:#B8452E; --exe:#3B4C9B; --jud:#8A6C10; --ess:#5E3D7A; --povo:#C25A12;
+  --sector-alpha:.10; --ring-alpha:.35; --node-fill:#FAFAF7;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace; --sans:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif; --disp:"Archivo","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --ok:#8FD3A6; --ok-soft:#1B3324; --warn:#E9B860; --warn-soft:#3A2E14;
+  --bg:#131412; --panel:#1A1C19; --card:#20231F; --ink:#ECEDE8; --ink-2:#BDC0B8; --ink-3:#9A9E95; --line:#33362F; --line-2:#2A2D27;
+  --accent:#8CCBAF; --accent-soft:#1E3A2E; --focus:#8CCBAF;
+  --leg:#F0907A; --exe:#9AA6EE; --jud:#E2C25A; --ess:#C9A3E6; --povo:#F2A063;
+  --sector-alpha:.14; --ring-alpha:.4; --node-fill:#1A1C19;
+}}
+:root[data-theme="dark"]{
+  --ok:#8FD3A6; --ok-soft:#1B3324; --warn:#E9B860; --warn-soft:#3A2E14;
+  --bg:#131412; --panel:#1A1C19; --card:#20231F; --ink:#ECEDE8; --ink-2:#BDC0B8; --ink-3:#9A9E95; --line:#33362F; --line-2:#2A2D27;
+  --accent:#8CCBAF; --accent-soft:#1E3A2E; --focus:#8CCBAF;
+  --leg:#F0907A; --exe:#9AA6EE; --jud:#E2C25A; --ess:#C9A3E6; --povo:#F2A063;
+  --sector-alpha:.14; --ring-alpha:.4; --node-fill:#1A1C19;
+}
+/* ---------- roda ---------- */
+svg.wheel{width:100%;max-width:min(96vh,980px);height:auto;display:block;margin:0 auto;font-family:var(--mono)}
+.sector-bg{fill-opacity:var(--sector-alpha);stroke:var(--ink);stroke-opacity:.12}
+.ring{fill:none;stroke:var(--ink);stroke-opacity:var(--ring-alpha);stroke-dasharray:2 5}
+.ring-label{font-size:8.5px;letter-spacing:.2em;fill:var(--ink);fill-opacity:.55}
+.sector-label{font-size:11px;letter-spacing:.28em;font-weight:600}
+.node{cursor:pointer}
+.node .shape{fill:var(--node-fill);stroke-width:1.4;transition:opacity .15s}
+.node.pos .shape{stroke-width:1;fill-opacity:.9}
+.node:hover .shape,.node:focus .shape{stroke-width:2.6}
+.node:focus{outline:none}
+.node:focus-visible .shape{stroke-width:3;stroke:var(--focus)}
+.node.sel .shape{fill:currentColor;stroke:currentColor;stroke-width:2}
+.dim .node:not(.sel):not(.lit) .shape{opacity:.25}
+.dim .node:not(.sel):not(.lit) text{opacity:.2}
+.edge{fill:none;stroke-width:1.3;pointer-events:none}
+.edge.nomeia,.edge.chefia{stroke-dasharray:none}
+.edge.sabatina,.edge.indica{stroke-dasharray:5 3}
+.edge.integra,.edge.membro_nato{stroke-dasharray:1.5 3}
+.edge.supervisiona,.edge.fiscaliza,.edge.aconselha{stroke-dasharray:8 3 2 3}
+.edge.elege{stroke-width:2.4}
+.center-label{font-family:var(--disp);font-weight:700;font-size:9.5px;fill:#fff;text-anchor:middle}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:13px;padding:5px 9px;border-radius:5px;white-space:nowrap;z-index:6;transform:translate(-50%,-140%)}
+.tip[hidden]{display:none}
+.tip small{opacity:.7;font-family:var(--mono);font-size:10px;margin-left:6px}

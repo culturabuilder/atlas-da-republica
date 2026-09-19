@@ -1,0 +1,319 @@
+# Área educativa "Como funciona a República": capítulos e passos que guiam a roda.
+# Marcação no texto: [[termo]] abre a definição do glossário (data/glossario.yaml); ((id|texto)) linka um nó da roda.
+# Cada passo declara o estado da roda (wheel), um dado vivo opcional (live, calculado no build) e um "experimente" opcional (try).
+title: Como funciona a República
+subtitle: Uma visita guiada ao mapa do governo federal, para quem nunca precisou entender isso e agora quer.
+minutes: 9
+chapters:
+  - id: c0
+    title: Todo poder emana do povo
+    question: De onde vem o poder de quem governa?
+    steps:
+      - text: >-
+          Você está no centro. A Constituição diz que todo o poder emana do povo, que o exerce por representantes eleitos
+          ou diretamente. Tudo o que vem a seguir existe para exercer um poder que é seu.
+        cite: CF/88 art. 1º, parágrafo único
+        wheel: {center: true}
+      - text: >-
+          Esse poder é dividido em três, para que ninguém o tenha inteiro. O ((br-congresso-nacional|Legislativo)) faz as leis e fiscaliza.
+        cite: CF/88 art. 2º; art. 44
+        wheel: {sectors: [legislativo], center: true}
+      - text: >-
+          O ((br-presidente-da-republica|Executivo)) governa: arrecada, gasta, presta serviços e comanda as Forças Armadas. É o maior setor do mapa.
+        cite: CF/88 art. 76; art. 84
+        wheel: {sectors: [executivo], center: true}
+      - text: >-
+          O ((br-supremo-tribunal-federal|Judiciário)) julga conflitos e diz o que a Constituição e as leis significam.
+        cite: CF/88 art. 92
+        wheel: {sectors: [judiciario], center: true}
+      - text: >-
+          Há ainda instituições que a Constituição colocou fora dos três poderes, para vigiar e defender: o
+          ((br-ministerio-publico-da-uniao|Ministério Público)), a ((br-defensoria-publica-da-uniao|Defensoria)), a ((br-advocacia-geral-da-uniao|Advocacia da União))
+          e o ((br-tribunal-de-contas-da-uniao|Tribunal de Contas)).
+        cite: CF/88 arts. 127-135; art. 71
+        wheel: {sectors: [essenciais], center: true}
+      - text: >-
+          Os anéis dizem a distância até o seu voto. No primeiro estão os que você elege e as chefias. No segundo, a
+          cúpula: ministérios e tribunais superiores. No terceiro, a [[administração direta]]. No quarto, a [[administração indireta]]:
+          autarquias, fundações, empresas e agências.
+        cite: DL 200/1967 art. 4º
+        wheel: {rings: [1, 2, 3, 4], center: true}
+        live: stats
+
+  - id: c1
+    title: Quem você elege?
+    question: Quais cargos saem diretamente da urna?
+    steps:
+      - text: >-
+          Só quatro coisas. A primeira é a chapa ((br-presidente-da-republica|Presidente)) e ((br-vice-presidente-da-republica|Vice)):
+          um voto elege os dois, por maioria absoluta, em até dois turnos, para quatro anos.
+        cite: CF/88 art. 77; art. 82
+        wheel: {nodes: [br-eleitorado, br-presidente-da-republica, br-vice-presidente-da-republica], edges: [[br-eleitorado, br-presidente-da-republica, elege], [br-eleitorado, br-vice-presidente-da-republica, elege]], select: br-presidente-da-republica}
+      - text: >-
+          A segunda são os 513 deputados da ((br-camara-dos-deputados|Câmara)). Cada estado tem um número de cadeiras
+          conforme a população, de 8 a 70, e o voto é [[proporcional]]: o partido ganha cadeiras pelo total de votos da lista.
+        cite: CF/88 art. 45
+        wheel: {nodes: [br-eleitorado, br-camara-dos-deputados], edges: [[br-eleitorado, br-camara-dos-deputados, elege]], select: br-camara-dos-deputados}
+      - text: >-
+          A terceira são os 81 senadores do ((br-senado-federal|Senado)): três por estado e pelo Distrito Federal, iguais para todos,
+          por [[voto majoritário]], com mandato de oito anos. A cada quatro anos renova-se um terço ou dois terços.
+        cite: CF/88 art. 46
+        wheel: {nodes: [br-eleitorado, br-senado-federal], edges: [[br-eleitorado, br-senado-federal, elege]], select: br-senado-federal}
+      - text: >-
+          Só isso. Todos os outros cargos do mapa são nomeados, escolhidos por outros órgãos ou preenchidos por concurso.
+          A quarta coisa que você elege, o governador, fica em outro mapa.
+        cite: CF/88 art. 14; art. 28
+        wheel: {rings: [1], nodes: [br-eleitorado, br-presidente-da-republica, br-vice-presidente-da-republica, br-camara-dos-deputados, br-senado-federal], edge_types_from: {from: br-eleitorado, types: [elege]}}
+        try: uf
+
+  - id: c2
+    title: Quem manda em quem no Executivo?
+    question: Como o Presidente governa um setor com centenas de órgãos?
+    steps:
+      - text: >-
+          O Presidente escolhe os ministros de Estado sozinho, sem passar pelo Senado, e pode demiti-los quando quiser.
+          É a chamada [[livre nomeação e exoneração]].
+        cite: CF/88 art. 84, I; art. 87
+        wheel: {select: br-presidente-da-republica, filter: {sector: executivo, ring: 2, subtype: ministerio}, edge_types_from: {from: br-presidente-da-republica, types: [nomeia]}}
+      - text: >-
+          Hoje são 37 ministérios, mais os órgãos da Presidência, como a ((br-casa-civil|Casa Civil)). Juntos formam a
+          Esplanada, o segundo anel do setor.
+        cite: Lei 14.600/2023
+        wheel: {rings: [2], filter: {sector: executivo, ring: 2}}
+        live: ministros
+      - text: >-
+          Dentro de cada ministério há secretarias e departamentos. Isso é a [[administração direta]]: parte do próprio
+          ministério, sem personalidade jurídica própria.
+        cite: DL 200/1967 art. 4º, I
+        wheel: {rings: [3], filter: {sector: executivo, ring: 3}}
+      - text: >-
+          Fora do ministério, mas [[supervisão ministerial|supervisionadas]] por ele, estão as entidades com vida própria.
+          A [[autarquia]] presta um serviço público com autonomia: ((br-inss|INSS)), ((br-ibama|Ibama)), ((br-banco-central-do-brasil|Banco Central)).
+        cite: DL 200/1967 art. 5º, I
+        wheel: {rings: [4], filter: {sector: executivo, subtype: autarquia}, nodes: [br-inss, br-ibama, br-banco-central-do-brasil]}
+      - text: >-
+          A [[fundação pública]] cuida de pesquisa, cultura e assistência: ((br-ibge|IBGE)), ((br-funai|Funai)), ((br-fiocruz|Fiocruz)).
+        cite: DL 200/1967 art. 5º, IV
+        wheel: {rings: [4], filter: {sector: executivo, subtype: fundacao}, nodes: [br-ibge, br-funai, br-fiocruz]}
+      - text: >-
+          A [[empresa pública]] pertence só à União e atua no mercado: ((br-correios|Correios)), ((br-caixa-economica-federal|Caixa)), ((br-bndes|BNDES)).
+        cite: DL 200/1967 art. 5º, II
+        wheel: {rings: [4], filter: {sector: executivo, subtype: empresa_publica}, nodes: [br-correios, br-caixa-economica-federal, br-bndes]}
+      - text: >-
+          A [[sociedade de economia mista]] tem ações na bolsa, mas a União manda: ((br-petrobras|Petrobras)), Banco do Brasil, Eletrobras antes da privatização.
+        cite: DL 200/1967 art. 5º, III
+        wheel: {rings: [4], filter: {sector: executivo, subtype: sociedade_economia_mista}, nodes: [br-petrobras]}
+      - text: >-
+          A [[agência reguladora]] é uma autarquia especial: fiscaliza um setor e seus diretores têm [[mandato fixo]], que o
+          Presidente não pode encerrar. ((br-anatel|Anatel)), ((br-anvisa|Anvisa)), ((br-aneel|Aneel)).
+        cite: Lei 9.986/2000 arts. 6º e 9º; Lei 13.848/2019
+        wheel: {rings: [4], filter: {sector: executivo, subtype: agencia_reguladora}}
+        try: ministerio
+
+  - id: c3
+    title: O que a Câmara e o Senado fazem de diferente?
+    question: Por que o Congresso tem duas Casas?
+    steps:
+      - text: >-
+          A ((br-camara-dos-deputados|Câmara)) representa o povo. Quase toda lei começa nela. É ela que autoriza, por dois terços,
+          abrir processo contra o Presidente.
+        cite: CF/88 art. 51, I; art. 61 §2º
+        wheel: {select: br-camara-dos-deputados, nodes: [br-congresso-nacional]}
+      - text: >-
+          O ((br-senado-federal|Senado)) representa os estados. Ele [[sabatina]] e aprova quem o Presidente indica para o STF,
+          o Banco Central e as agências, julga o Presidente e autoriza empréstimos da União.
+        cite: CF/88 art. 52
+        wheel: {select: br-senado-federal, nodes: [br-congresso-nacional], edge_types_from: {from: br-senado-federal, types: [sabatina]}}
+      - text: >-
+          Cada Casa é dirigida por uma ((br-mesa-do-senado-federal|Mesa)), eleita pelos próprios parlamentares para dois anos.
+          O presidente da Câmara é o segundo na linha sucessória do Presidente da República; o do Senado, o terceiro.
+        cite: CF/88 art. 57 §4º; art. 80
+        wheel: {nodes: [br-mesa-da-camara-dos-deputados, br-mesa-do-senado-federal, br-presidente-da-camara-dos-deputados, br-presidente-do-senado-federal]}
+        live: presidentes_casas
+      - text: >-
+          Antes do plenário, tudo passa por comissões temáticas. A de Constituição e Justiça diz se o projeto é constitucional;
+          a de Finanças, se cabe no orçamento. Muitos projetos são decididos ali, sem ir a plenário.
+        cite: CF/88 art. 58 §2º, I; RICD art. 24, II
+        wheel: {filter: {sector: legislativo, type: commission}}
+        live: casas_composicao
+      - text: >-
+          Como uma lei nasce: alguém apresenta o projeto, as comissões opinam, o plenário vota, a outra Casa revisa,
+          o Presidente sanciona ou veta, e o Congresso pode derrubar o veto.
+        cite: CF/88 arts. 61-66
+        wheel: {nodes: [br-camara-dos-deputados, br-senado-federal, br-presidente-da-republica, br-congresso-nacional]}
+        try: lei
+
+  - id: c4
+    title: Quem julga o quê?
+    question: Como se organiza a Justiça federal?
+    steps:
+      - text: >-
+          O ((br-supremo-tribunal-federal|Supremo Tribunal Federal)) guarda a Constituição. Onze ministros julgam se uma lei
+          é constitucional e processam o Presidente, deputados e senadores por crime comum.
+        cite: CF/88 art. 101; art. 102
+        wheel: {select: br-supremo-tribunal-federal}
+      - text: >-
+          O ((br-superior-tribunal-de-justica|Superior Tribunal de Justiça)) unifica o entendimento da lei federal em todo o país.
+          Tem 33 ministros.
+        cite: CF/88 art. 104; art. 105
+        wheel: {select: br-superior-tribunal-de-justica}
+      - text: >-
+          Três tribunais são especializados: o ((br-tribunal-superior-do-trabalho|do Trabalho)), o ((br-tribunal-superior-eleitoral|Eleitoral))
+          e o ((br-superior-tribunal-militar|Militar)). Abaixo deles, os tribunais regionais e a primeira instância.
+        cite: CF/88 arts. 111, 118, 122
+        wheel: {rings: [2, 3, 4], filter: {sector: judiciario}}
+      - text: >-
+          Como alguém vira ministro do STF: o Presidente escolhe uma pessoa com mais de 35 anos e "notável saber jurídico",
+          o Senado a sabatina e aprova por maioria absoluta, e ela fica no cargo até os 75 anos. É [[vitalício]].
+        cite: CF/88 art. 101, parágrafo único; art. 40 §1º, II
+        wheel: {select: br-supremo-tribunal-federal-ministro, edges_to: br-supremo-tribunal-federal-ministro, nodes: [br-presidente-da-republica, br-senado-federal]}
+        live: stf
+      - text: >-
+          O ((br-conselho-nacional-de-justica|Conselho Nacional de Justiça)) fiscaliza os tribunais e os juízes, mas não julga
+          processos. Quem o preside é o presidente do STF.
+        cite: CF/88 art. 103-B
+        wheel: {select: br-conselho-nacional-de-justica, edge_types_from: {from: br-conselho-nacional-de-justica, types: [fiscaliza]}}
+
+  - id: c5
+    title: Quem vigia quem?
+    question: Que instituições existem para controlar o próprio Estado?
+    steps:
+      - text: >-
+          O ((br-ministerio-publico-da-uniao|Ministério Público)) acusa quem comete crime e defende a sociedade, sem receber ordens
+          de nenhum poder. Seu chefe, o ((br-procurador-geral-da-republica|Procurador-Geral da República)), é nomeado pelo
+          Presidente, sabatinado pelo Senado e tem mandato de dois anos.
+        cite: CF/88 art. 127; art. 128 §1º
+        wheel: {select: br-ministerio-publico-da-uniao, nodes: [br-ministerio-publico-federal, br-ministerio-publico-do-trabalho, br-ministerio-publico-militar, br-ministerio-publico-do-distrito-federal-e-territorios, br-procurador-geral-da-republica]}
+      - text: >-
+          A ((br-defensoria-publica-da-uniao|Defensoria Pública da União)) defende de graça quem não pode pagar advogado
+          em causas federais.
+        cite: CF/88 art. 134
+        wheel: {select: br-defensoria-publica-da-uniao}
+      - text: >-
+          A ((br-advocacia-geral-da-uniao|Advocacia-Geral da União)) é a advogada do Estado: defende a União na Justiça e
+          orienta o Executivo.
+        cite: CF/88 art. 131
+        wheel: {select: br-advocacia-geral-da-uniao, nodes: [br-procuradoria-geral-da-uniao, br-procuradoria-geral-federal, br-procuradoria-geral-da-fazenda-nacional]}
+      - text: >-
+          O ((br-tribunal-de-contas-da-uniao|Tribunal de Contas da União)) julga as contas de quem gasta dinheiro público e
+          auxilia o Congresso no [[controle externo]]. Seus nove ministros vêm do Congresso e do Presidente.
+        cite: CF/88 art. 71; art. 73
+        wheel: {select: br-tribunal-de-contas-da-uniao, edge_types_from: {from: br-tribunal-de-contas-da-uniao, types: [fiscaliza]}}
+        live: tcu_pgr
+      - text: >-
+          Por dentro do Executivo, a ((br-controladoria-geral-da-uniao|Controladoria-Geral da União)) faz o [[controle interno]]:
+          audita, apura irregularidades e cuida da transparência.
+        cite: Lei 14.600/2023 art. 51
+        wheel: {select: br-controladoria-geral-da-uniao, edge_types_from: {from: br-controladoria-geral-da-uniao, types: [fiscaliza]}}
+
+  - id: c6
+    title: Quem pode parar quem?
+    question: Como os poderes se controlam entre si?
+    steps:
+      - text: >-
+          O Senado precisa aprovar, em [[sabatina]], quem o Presidente escolhe para 203 cadeiras: ministros dos tribunais
+          superiores, do TCU, o Procurador-Geral, o presidente e os diretores do Banco Central e das agências, embaixadores.
+        cite: CF/88 art. 52, III e IV
+        wheel: {select: br-senado-federal, edge_types_from: {from: br-senado-federal, types: [sabatina]}}
+      - text: >-
+          Para afastar o Presidente por crime de responsabilidade, a Câmara autoriza por dois terços e o Senado julga,
+          presidido pelo presidente do STF.
+        cite: CF/88 art. 51, I; art. 52, I e parágrafo único; art. 86
+        wheel: {nodes: [br-camara-dos-deputados, br-senado-federal, br-presidente-da-republica, br-supremo-tribunal-federal], edges: [[br-camara-dos-deputados, br-presidente-da-republica, fiscaliza], [br-senado-federal, br-presidente-da-republica, fiscaliza]]}
+      - text: >-
+          O STF julga o Presidente e os parlamentares por crime comum e pode derrubar leis. O Congresso, por sua vez,
+          pode derrubar um veto do Presidente por maioria absoluta.
+        cite: CF/88 art. 102, I, b; art. 66 §4º
+        wheel: {nodes: [br-supremo-tribunal-federal, br-congresso-nacional, br-presidente-da-republica], edges: [[br-supremo-tribunal-federal, br-presidente-da-republica, fiscaliza], [br-supremo-tribunal-federal, br-congresso-nacional, fiscaliza], [br-congresso-nacional, br-presidente-da-republica, fiscaliza]]}
+      - text: >-
+          O TCU julga as contas do governo e pode mandar devolver dinheiro. A Comissão Mista de Orçamento acompanha
+          cada real gasto.
+        cite: CF/88 art. 71, II e VIII
+        wheel: {nodes: [br-tribunal-de-contas-da-uniao, br-comissao-mista-de-orcamento, br-presidencia-da-republica], edges: [[br-tribunal-de-contas-da-uniao, br-presidencia-da-republica, fiscaliza], [br-comissao-mista-de-orcamento, br-presidencia-da-republica, fiscaliza]]}
+      - text: >-
+          Tudo junto, é isso: uma teia de freios cruzando os setores. Nenhuma instituição decide sozinha algo importante
+          sem que outra possa rever.
+        cite: CF/88 art. 2º
+        wheel: {cross: true}
+        live: sabatinas_ultima
+        try: quem_sabatina
+
+  - id: c7
+    title: Como as pessoas chegam aos cargos?
+    question: Quantos passos separam o seu voto de cada cadeira?
+    steps:
+      - text: >-
+          Por eleição: Presidente, Vice, deputados e senadores. Um passo do seu voto.
+        cite: CF/88 art. 14
+        wheel: {rings: [1], nodes: [br-presidente-da-republica, br-vice-presidente-da-republica, br-camara-dos-deputados, br-senado-federal], edge_types_from: {from: br-eleitorado, types: [elege]}}
+      - text: >-
+          Por nomeação livre: ministros de Estado e os dirigentes da maior parte dos órgãos. Dois passos: você elege o
+          Presidente, ele nomeia.
+        cite: CF/88 art. 84, I e XXV
+        wheel: {select: br-presidente-da-republica, filter: {sector: executivo, ring: 2}, edge_types_from: {from: br-presidente-da-republica, types: [nomeia]}}
+      - text: >-
+          Por nomeação com sabatina: STF, tribunais superiores, TCU, Procurador-Geral, Banco Central, agências. Três passos:
+          Presidente escolhe, Senado aprova.
+        cite: CF/88 art. 52, III
+        wheel: {select: br-senado-federal, edge_types_from: {from: br-senado-federal, types: [sabatina]}}
+      - text: >-
+          Alguns desses têm [[mandato fixo]]: o presidente do Banco Central fica quatro anos, os diretores de agência cinco,
+          e o Presidente da República não pode demiti-los. É o que protege a decisão técnica da pressão política.
+        cite: LC 179/2021 art. 4º; Lei 9.986/2000 arts. 6º e 9º
+        wheel: {nodes: [br-banco-central-do-brasil, br-presidente-do-banco-central], filter: {sector: executivo, subtype: agencia_reguladora}}
+      - text: >-
+          Por escolha dos pares: os presidentes dos tribunais são eleitos pelos próprios ministros, para dois anos.
+          Parte das vagas do STJ e dos tribunais vem de [[lista tríplice]] e do [[quinto constitucional]].
+        cite: CF/88 art. 96, I, a; art. 94; art. 104, parágrafo único
+        wheel: {nodes: [br-supremo-tribunal-federal-presidente, br-superior-tribunal-de-justica-presidente, br-tribunal-superior-do-trabalho-presidente, br-presidente-do-tcu, br-superior-tribunal-de-justica]}
+      - text: >-
+          Por concurso: a grande maioria dos servidores, de juízes a técnicos, entra por prova. É a base que continua
+          quando os governos mudam.
+        cite: CF/88 art. 37, II
+        wheel: {rings: [3, 4]}
+        live: distancia
+        try: caminho
+
+  - id: c8
+    title: Para onde vai o dinheiro?
+    question: Quem decide e quem gasta o orçamento da União?
+    steps:
+      - text: >-
+          O Presidente propõe o orçamento, a ((br-comissao-mista-de-orcamento|Comissão Mista de Orçamento)) o examina, o
+          Congresso aprova, o Executivo executa e o TCU julga as contas no ano seguinte.
+        cite: CF/88 arts. 165-166; art. 71, I
+        wheel: {nodes: [br-presidente-da-republica, br-comissao-mista-de-orcamento, br-congresso-nacional, br-tribunal-de-contas-da-uniao], edges: [[br-presidente-da-republica, br-comissao-mista-de-orcamento, integra], [br-comissao-mista-de-orcamento, br-congresso-nacional, integra], [br-tribunal-de-contas-da-uniao, br-presidencia-da-republica, fiscaliza]]}
+      - text: >-
+          Gastar tem três etapas. [[Empenho]]: o governo reserva o valor para uma despesa. [[Liquidação]]: confere que o
+          serviço foi entregue. [[Pagamento]]: o dinheiro sai. O Atlas mostra as três.
+        cite: Lei 4.320/1964 arts. 58-64
+        wheel: {filter: {sector: executivo, ring: 2, subtype: ministerio}}
+      - text: >-
+          Previdência e Fazenda lideram o ranking, e não por acaso: aposentadorias e juros da dívida são as maiores despesas
+          da União. Saúde e Educação vêm depois.
+        cite: Portal da Transparência, despesas por órgão superior
+        wheel: {budget: true, filter: {sector: executivo, ring: 2, subtype: ministerio}}
+        live: orcamento_top
+
+  - id: c9
+    title: Como acompanhar daqui em diante?
+    question: Onde as mudanças aparecem primeiro?
+    steps:
+      - text: >-
+          Toda nomeação e exoneração sai no [[Diário Oficial da União]], Seção 2. Toda sabatina é publicada pelo Senado.
+          O Atlas lê essas fontes todo dia e cruza com as notícias, mostrando quem está envolvido em cada uma.
+        cite: Lei 14.063/2020 art. 3º; RISF art. 383
+        wheel: {reset: true}
+        live: ultima
+      - text: >-
+          Em 1º de janeiro de 2027 toma posse quem vencer a eleição de outubro de 2026. Presidente, Vice, ministros de Estado
+          e os dirigentes de livre nomeação trocam; quem tem mandato fixo ou é vitalício fica.
+        cite: CF/88 art. 82; art. 84, I
+        wheel: {filter: {sector: executivo, ring: 2}, nodes: [br-presidente-da-republica, br-vice-presidente-da-republica]}
+        live: transicao
+      - text: >-
+          Agora é com você. Toque em qualquer órgão da roda para ver quem manda nele, quem ele supervisiona e qual lei o
+          criou. Busque um nome, uma sigla, um cargo.
+        cite: CF/88 art. 5º, XXXIII
+        wheel: {reset: true}
+        try: explorar

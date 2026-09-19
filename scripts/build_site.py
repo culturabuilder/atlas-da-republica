@@ -21,7 +21,8 @@ core_js = core_js.replace('"detail_base":"/nodes/"', f'"detail_base":"{PREFIX}/n
 shutil.copytree(ROOT / "build" / "nodes", site / "nodes")
 shutil.copytree(ROOT / "build" / "people", site / "people")
 if (ROOT / "site_img_cache").exists(): pass
-tpl = tpl.replace('<script src="graph.br.js" defer></script>', f'<script src="{PREFIX}/graph.br.js" defer></script>')
+tpl = tpl.replace('<script src="graph.br.js" defer></script>', f'<script src="{PREFIX}/graph.br.js" defer></script>').replace('<script src="atlas.js" defer></script>', f'<script src="{PREFIX}/atlas.js" defer></script>').replace('<link rel="stylesheet" href="atlas.css">', f'<link rel="stylesheet" href="{PREFIX}/atlas.css">')
+for f in ("atlas.js", "atlas.css"): shutil.copy(ROOT / "web" / f, site / f)
 REL = {"elege": "elege", "nomeia": "nomeia", "sabatina": "sabatina e aprova", "fiscaliza": "fiscaliza", "supervisiona": "supervisiona", "aconselha": "aconselha", "chefia": "chefia", "membro_nato": "é membro nato de", "integra": "integra", "indica": "indica"}
 TYPE_SCHEMA = {"department": "GovernmentOrganization", "elected": "GovernmentOrganization", "commission": "GovernmentOrganization", "advisory": "GovernmentOrganization", "dept_head": "Role", "constituency": "Organization"}
 esc = html.escape
@@ -65,7 +66,9 @@ def person_page(p):
     out = out.replace("draw();\nselect(location.hash.slice(1));", f"draw();\nselect(location.hash.slice(1) || {json.dumps(p['id'])});", 1)
     return out.replace('href="/br/', f'href="{PREFIX}/br/').replace('href="/"', f'href="{PREFIX}/"')
 
-urls = [f"{BASE}/"]
+import importlib.util as _ilu
+_spec = _ilu.spec_from_file_location("build_como_funciona", ROOT / "scripts" / "build_como_funciona.py"); _cf = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_cf)
+urls = [f"{BASE}/", _cf.build(site, PREFIX, BASE, G)]
 PEOPLE = G.get("people", {})
 for p in PEOPLE.values():
     d = site / "br" / "pessoa" / p["id"]; d.mkdir(parents=True, exist_ok=True)
@@ -76,7 +79,7 @@ for n in N.values():
 home = tpl.replace("<title>Atlas da República</title>\n", f'<title>Atlas da República</title>\n<meta name="description" content="Mapa navegável do governo federal brasileiro: órgãos, cargos, colegiados e as relações legais entre eles, com citação da norma.">\n<link rel="canonical" href="{BASE}/">\n', 1)
 links = "".join(f'<li><a href="/br/{n["id"]}/">{esc(n["name"])}</a></li>' for n in sorted(N.values(), key=lambda x: x["name"]) if n["type"] != "dept_head")
 home = home.replace('<div id="content"></div>', '<div id="content"></div><div id="ssr" hidden><h1>Atlas da República</h1><ul>' + links + '</ul></div>', 1)
-home = home.replace('href="/br/', f'href="{PREFIX}/br/')
+home = home.replace('href="/br/', f'href="{PREFIX}/br/').replace('href="/como-funciona/"', f'href="{PREFIX}/como-funciona/"')
 (site / "index.html").write_text(home, encoding="utf-8")
 (site / ".nojekyll").write_text("", encoding="utf-8")
 if a.cname: (site / "CNAME").write_text(a.cname + "\n", encoding="utf-8")

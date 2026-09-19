@@ -1,0 +1,262 @@
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('atlas-theme')||'dark'}catch(e){document.documentElement.dataset.theme='dark'}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Como funciona a República · Atlas da República</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%23C25A12%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="atlas.css">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55}
+a{color:var(--accent)}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:var(--card);padding:8px;z-index:9}
+/* barra */
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:14px;padding:8px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-2)}
+.bar .brand{display:flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap}
+.bar .brand .mark{width:16px;height:16px;border-radius:50%;background:var(--povo);box-shadow:0 0 0 2px var(--card),0 0 0 3px var(--povo)}
+.bar .crumb{color:var(--ink-3);font-weight:500}
+.prog{flex:1;display:flex;gap:4px;align-items:center;min-width:0}
+.prog a{flex:1;height:6px;border-radius:3px;background:var(--line);display:block;position:relative;text-decoration:none;min-width:8px}
+.prog a.done{background:var(--ink-3)}.prog a.on{background:var(--accent)}
+.prog a span{position:absolute;left:0;top:12px;font-family:var(--mono);font-size:10px;color:var(--ink-3);white-space:nowrap;display:none}
+.prog a.on span{display:block}
+.btn{font:inherit;font-size:13px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);cursor:pointer}
+.btn:hover{border-color:var(--ink-3)}
+/* grade */
+.cf{display:grid;grid-template-columns:minmax(340px,500px) 1fr;gap:0 24px;max-width:1500px;margin:0 auto;padding-inline:20px}
+.text{padding-block:24px 120px;max-width:560px}
+.stage{position:sticky;top:52px;height:calc(100vh - 52px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 0}
+.stage #graph{width:100%;max-width:min(88vh,900px)}
+.stage svg.wheel{max-width:100%}
+.cap{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);text-align:center;max-width:520px;margin-top:4px;min-height:34px;line-height:1.4}
+.cap a{color:var(--accent)}
+/* abertura */
+.hero{padding:40px 0 30px;border-bottom:1px solid var(--line-2);margin-bottom:10px}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.hero h1{font-family:var(--disp);font-size:clamp(34px,5vw,50px);font-weight:800;letter-spacing:-.02em;line-height:1.02;margin:10px 0 14px;text-wrap:balance}
+.hero p{font-size:19px;color:var(--ink-2);margin:0 0 20px;max-width:34ch}
+.hero .meta{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-bottom:22px}
+.hero .cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--bg);text-decoration:none;font-family:var(--disp);font-weight:700;padding:11px 18px;border-radius:10px;font-size:15px}
+.hero .toc{margin:26px 0 0;padding:0;list-style:none;display:grid;gap:4px}
+.hero .toc a{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:baseline;text-decoration:none;color:var(--ink);font-size:15px;padding:5px 0;border-bottom:1px dashed var(--line-2)}
+.hero .toc a b{font-family:var(--mono);font-weight:600;font-size:11px;color:var(--ink-3)}
+.hero .toc a:hover{color:var(--accent)}
+/* capítulos */
+.chapter{padding-top:70px}
+.chapter h2{font-family:var(--disp);font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.015em;line-height:1.1;margin:8px 0 6px;text-wrap:balance}
+.chapter .q{color:var(--ink-3);font-size:16px;margin:0 0 10px}
+.step{padding:22vh 0 8vh;border-left:2px solid transparent;margin-left:-14px;padding-left:12px;transition:border-color .3s}
+.step:first-of-type{padding-top:12vh}
+.step.on{border-left-color:var(--accent)}
+.step p{margin:0;font-size:18.5px;line-height:1.55;max-width:34em}
+.step p+p{margin-top:10px}
+.step cite{display:block;font-style:normal;font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-top:10px}
+.gl{font:inherit;border:0;background:none;padding:0;color:inherit;cursor:help;border-bottom:1.5px dotted var(--accent);color:var(--ink)}
+.gl:hover,.gl:focus-visible{background:var(--accent-soft);outline:none}
+.nl{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--accent)}
+.nl:hover{background:var(--accent-soft)}
+.glossbox{position:absolute;z-index:8;max-width:340px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;box-shadow:0 12px 30px rgba(0,0,0,.18);font-size:14.5px;line-height:1.45}
+.glossbox b{font-family:var(--disp);display:block;margin-bottom:4px}
+.glossbox[hidden]{display:none}
+.glossbox small{display:block;margin-top:6px;font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+/* dado vivo */
+.live{margin:18px 0 0;background:var(--card);border:1px solid var(--line-2);border-radius:12px;padding:14px 16px;font-size:15px}
+.live h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+.live .big{font-family:var(--disp);font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1}
+.live .big small{font-size:14px;color:var(--ink-3);font-family:var(--mono);font-weight:400;letter-spacing:0;margin-left:6px}
+.live .row{display:flex;gap:18px;flex-wrap:wrap}
+.live .row>div{min-width:120px}
+.live .faces{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:6px;margin-top:6px}
+.live .faces a{display:block;aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--line-2);border:1.5px solid var(--line)}
+.live .faces img{width:100%;height:100%;object-fit:cover;display:block}
+.live .faces .ini{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.live .pl{display:flex;align-items:center;gap:10px;margin:6px 0}
+.live .pl .av{width:36px;height:36px;border-radius:50%;overflow:hidden;background:var(--line-2);flex:none}
+.live .pl .av img{width:100%;height:100%;object-fit:cover;display:block}
+.live .pl b{font-weight:600}
+.live .pl span{display:block;font-size:13px;color:var(--ink-3)}
+.live .bars{display:grid;grid-template-columns:auto 1fr auto;gap:4px 10px;align-items:center;font-size:13.5px}
+.live .bars .k{font-family:var(--mono);font-size:11.5px}
+.live .bars .b{height:8px;background:var(--line-2);border-radius:4px;overflow:hidden}
+.live .bars .b i{display:block;height:100%;background:var(--accent)}
+.live .bars .v{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);text-align:right;white-space:nowrap}
+.live .src{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-top:8px}
+.live .src a{color:var(--ink-3)}
+/* experimente */
+.try{margin:18px 0 0;border:1px dashed var(--accent);border-radius:12px;padding:14px 16px;background:color-mix(in srgb,var(--accent-soft) 45%,transparent)}
+.try h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 8px;font-weight:600}
+.try select,.try button.chip{font:inherit;font-size:14px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.try .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.try button.chip{cursor:pointer;font-size:13px;padding:4px 9px}
+.try button.chip.on{background:var(--exe);color:#fff;border-color:var(--exe)}
+.try .out{margin-top:10px;font-size:15px}
+.try .out ul{margin:6px 0 0;padding-left:18px}
+.try .out li{margin:3px 0}
+.try .stepper{display:flex;gap:8px;align-items:center;margin-top:8px}
+.try .stepper .n{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+.try .path{margin:8px 0 0;padding:0;list-style:none;counter-reset:s}
+.try .path li{position:relative;padding:6px 0 6px 30px;border-left:2px solid var(--line);margin-left:9px}
+.try .path li::before{counter-increment:s;content:counter(s);position:absolute;left:-11px;top:6px;width:20px;height:20px;border-radius:50%;background:var(--accent);color:var(--bg);font-family:var(--mono);font-size:11px;display:flex;align-items:center;justify-content:center}
+.try .path li small{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+/* roda: estados */
+.sector-bg{transition:fill-opacity .3s}
+.sector-bg.on{fill-opacity:.32}
+.ring.on{stroke-opacity:1;stroke-dasharray:none;stroke-width:1.4}
+.node .shape{transition:opacity .3s,stroke-width .2s}
+.dim .node:not(.sel):not(.lit) .shape{opacity:.12}
+.edge.tmp{stroke-width:1.8;stroke-opacity:.9}
+.edge.faint{stroke-opacity:.35;stroke-width:1}
+.node.center.lit .shape{filter:drop-shadow(0 0 10px var(--povo))}
+/* fim */
+.end{margin-top:40px;padding:20px;border:1px solid var(--line-2);border-radius:12px;background:var(--card)}
+.end a.cta{display:inline-block;margin-top:10px;background:var(--accent);color:var(--bg);text-decoration:none;font-family:var(--disp);font-weight:700;padding:10px 16px;border-radius:10px}
+@media (max-width:900px){
+  .cf{grid-template-columns:1fr;gap:0;padding-inline:16px}
+  .stage{order:-1;position:sticky;top:44px;height:auto;padding:6px 0;background:var(--bg);z-index:4;border-bottom:1px solid var(--line-2)}
+  .stage #graph{max-width:min(46vh,100%)}
+  .cap{min-height:0;font-size:10.5px}
+  .text{max-width:none;padding-top:10px}
+  .step{padding:12vh 0 6vh}
+  .step p{font-size:17px}
+  .hero{padding-top:18px}
+  .bar .crumb{display:none}
+}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important} }
+</style>
+
+<a href="#c0" class="skip">Pular para o conteúdo</a>
+<div class="bar">
+  <a class="brand" href="/"><span class="mark"></span>Atlas da República <span class="crumb">/ Como funciona</span></a>
+  <nav class="prog" id="prog" aria-label="Capítulos"></nav>
+  <button class="btn" id="theme" aria-label="Alternar tema claro e escuro">◐ Tema</button>
+</div>
+<div class="cf">
+  <div class="text" id="text">
+    <!--CF_CONTENT-->
+  </div>
+  <div class="stage" aria-hidden="true">
+    <div id="graph"></div>
+    <div class="cap" id="cap"></div>
+  </div>
+</div>
+<div class="glossbox" id="glossbox" hidden role="dialog" aria-live="polite"></div>
+
+<script src="graph.br.js" defer></script>
+<script src="atlas.js" defer></script>
+<script id="cf-data" type="application/json"><!--CF_DATA--></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+const CF = JSON.parse(document.getElementById('cf-data').textContent || '{}');
+const GL = CF.glossary || {}; const HOME = CF.home || '/';
+const P = G.people || {};
+const norm = s => String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().trim();
+const glNorm = {}; for (const k of Object.keys(GL)) glNorm[norm(k)] = k;
+draw();
+const svg = document.querySelector('svg.wheel'); const eg = document.getElementById('edges'); const cap = document.getElementById('cap');
+const sectorEls = Array.from(document.querySelectorAll('.sector-bg')); const ringEls = Array.from(document.querySelectorAll('.ring'));
+const SIDS = ['legislativo','executivo','judiciario','essenciais'];
+const nodeEl = id => document.querySelector(`.node[data-id="${id}"]`);
+const lit = id => { const el = nodeEl(id); if (el) el.classList.add('lit'); };
+function edgePath(from, to, type, cls){ if(!N[from]||!N[to]) return ''; const [x1,y1]=xy(from),[x2,y2]=xy(to); const col=COL[N[from].sector]||'var(--povo)'; return `<path class="edge ${type} ${cls||''}" d="${curve(x1,y1,x2,y2)}" stroke="${col}" marker-end="url(#m-${type})"/>`; }
+const budgetOrig = {};
+function resetBudget(){ for (const id of Object.keys(budgetOrig)) { const sh = nodeEl(id) && nodeEl(id).querySelector('.shape'); if (sh) { const o = budgetOrig[id]; for (const k of Object.keys(o)) sh.setAttribute(k, o[k]); } } }
+function applyBudget(){ const sc = CF.budget_scale || {}; for (const id of Object.keys(sc)) { const sh = nodeEl(id) && nodeEl(id).querySelector('.shape'); if (!sh || sh.tagName !== 'rect') continue; if (!budgetOrig[id]) budgetOrig[id] = {x:sh.getAttribute('x'), y:sh.getAttribute('y'), width:sh.getAttribute('width'), height:sh.getAttribute('height')}; const w = parseFloat(budgetOrig[id].width) * sc[id]; sh.setAttribute('x', -w/2); sh.setAttribute('y', -w/2); sh.setAttribute('width', w); sh.setAttribute('height', w); lit(id); } }
+function matches(n, f){ if (!f) return false; for (const k of Object.keys(f)) if (n[k] !== f[k]) return false; return n.type !== 'dept_head' || f.type === 'dept_head'; }
+function applyState(st, capHtml){
+  st = st || {};
+  document.querySelectorAll('.node').forEach(a => a.classList.remove('sel','lit'));
+  sectorEls.forEach(e => e.classList.remove('on')); ringEls.forEach(e => e.classList.remove('on'));
+  eg.innerHTML = ''; resetBudget();
+  if (st.reset) { svg.classList.remove('dim'); cap.innerHTML = capHtml || ''; return; }
+  svg.classList.add('dim');
+  (st.sectors||[]).forEach(s => { const i = SIDS.indexOf(s); if (sectorEls[i]) sectorEls[i].classList.add('on'); Object.values(N).forEach(n => { if (n.sector === s && n.type !== 'dept_head') lit(n.id); }); });
+  (st.rings||[]).forEach(r => { if (ringEls[r-1]) ringEls[r-1].classList.add('on'); if (!st.filter && !st.nodes && !st.sectors) Object.values(N).forEach(n => { if (n.ring === r && n.type !== 'dept_head') lit(n.id); }); });
+  if (st.center) lit('br-eleitorado');
+  if (st.filter) Object.values(N).forEach(n => { if (matches(n, st.filter)) lit(n.id); });
+  (st.nodes||[]).forEach(lit);
+  let lines = '';
+  (st.edges||[]).forEach(([a,b,t]) => { lit(a); lit(b); lines += edgePath(a,b,t,'tmp'); });
+  if (st.edge_types_from) { const f = st.edge_types_from; for (const e of Object.values(E)) if (e.from === f.from && (!f.types || f.types.includes(e.type))) { lit(e.to); lines += edgePath(e.from, e.to, e.type, 'tmp'); } lit(f.from); }
+  if (st.edges_to) { for (const e of Object.values(E)) if (e.to === st.edges_to) { lit(e.from); lines += edgePath(e.from, e.to, e.type, 'tmp'); } lit(st.edges_to); }
+  if (st.cross) { for (const e of Object.values(E)) { const a = N[e.from], b = N[e.to]; if (!a || !b) continue; if (['fiscaliza','sabatina','elege'].includes(e.type) && (a.sector !== b.sector || e.type === 'elege') && (a.ring||0) <= 2 && (b.ring||0) <= 2) { lit(e.from); lit(e.to); lines += edgePath(e.from, e.to, e.type, 'faint'); } } }
+  if (st.budget) applyBudget();
+  if (st.select) { const el = nodeEl(st.select); if (el) el.classList.add('sel'); }
+  eg.innerHTML = lines;
+  cap.innerHTML = capHtml || '';
+}
+// passos e rolagem
+const steps = Array.from(document.querySelectorAll('.step'));
+let active = null;
+function activate(el){ if (el === active) return; active = el; steps.forEach(s => s.classList.toggle('on', s === el)); let st = {}; try { st = JSON.parse(el.dataset.state || '{}'); } catch(e){}
+  const cite = el.querySelector('cite'); const see = st.select || (st.nodes||[])[0] || (st.edge_types_from||{}).from || (st.filter && st.filter.sector ? null : null);
+  applyState(st, `${cite ? esc(cite.textContent) : ''}${see && N[see] ? ` · <a href="${HOME}#${see}">ver ${esc(N[see].name)} na roda ↗</a>` : ''}`);
+  const ch = el.closest('.chapter'); document.querySelectorAll('#prog a').forEach(a => { const done = ch && a.dataset.ch < ch.id; a.classList.toggle('on', ch && a.dataset.ch === ch.id); a.classList.toggle('done', !!done); });
+}
+const io = new IntersectionObserver(entries => { const vis = entries.filter(e => e.isIntersecting); if (!vis.length) return; const mid = innerHeight * 0.42; let best = null, bd = Infinity; for (const s of steps) { const r = s.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) continue; const d = Math.abs((r.top + Math.min(r.height, 300)/2) - mid); if (d < bd) { bd = d; best = s; } } if (best) activate(best); }, {threshold: [0, .25, .5, .75, 1]});
+steps.forEach(s => io.observe(s));
+addEventListener('scroll', () => { const mid = innerHeight * 0.42; let best = null, bd = Infinity; for (const s of steps) { const r = s.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) continue; const d = Math.abs((r.top + Math.min(r.height, 300)/2) - mid); if (d < bd) { bd = d; best = s; } } if (best) activate(best); }, {passive: true});
+// progresso
+const prog = document.getElementById('prog');
+prog.innerHTML = Array.from(document.querySelectorAll('.chapter')).map(c => `<a href="#${c.id}" data-ch="${c.id}" title="${esc(c.dataset.title)}"><span>${esc(c.dataset.short)}</span></a>`).join('');
+// glossário
+const box = document.getElementById('glossbox');
+function showGl(btn){ const k = glNorm[norm(btn.dataset.term)]; if (!k) return; const def = GL[k]; const m = def.match(/^(.*?)\s*\(([^()]*)\)\s*$/); box.innerHTML = `<b>${esc(k)}</b>${esc(m ? m[1] : def)}${m ? `<small>${esc(m[2])}</small>` : ''}`; box.hidden = false; const r = btn.getBoundingClientRect(); box.style.top = (scrollY + r.bottom + 8) + 'px'; box.style.left = Math.max(12, Math.min(scrollX + r.left, innerWidth - 360)) + 'px'; }
+document.addEventListener('click', e => { const b = e.target.closest('.gl'); if (b) { if (!box.hidden && box.dataset.for === b.dataset.term) { box.hidden = true; return; } box.dataset.for = b.dataset.term; showGl(b); return; } if (!e.target.closest('#glossbox')) box.hidden = true; });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') box.hidden = true; });
+// links de nó: iluminar ao passar o mouse
+document.addEventListener('mouseover', e => { const a = e.target.closest('.nl'); if (a && a.dataset.id) { const el = nodeEl(a.dataset.id); if (el) el.classList.add('sel'); } });
+document.addEventListener('mouseout', e => { const a = e.target.closest('.nl'); if (a && a.dataset.id && !(active && (JSON.parse(active.dataset.state||'{}').select === a.dataset.id))) { const el = nodeEl(a.dataset.id); if (el) el.classList.remove('sel'); } });
+// ---------- experimente ----------
+const UFS = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO'];
+const UFN = {AC:'Acre',AL:'Alagoas',AM:'Amazonas',AP:'Amapá',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MG:'Minas Gerais',MS:'Mato Grosso do Sul',MT:'Mato Grosso',PA:'Pará',PB:'Paraíba',PE:'Pernambuco',PI:'Piauí',PR:'Paraná',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',RO:'Rondônia',RR:'Roraima',RS:'Rio Grande do Sul',SC:'Santa Catarina',SE:'Sergipe',SP:'São Paulo',TO:'Tocantins'};
+const av = p => p.photo ? `<img src="${G.img_base||'/img/'}${p.id}.jpg" alt="" loading="lazy">` : `<span class="ini">${esc((p.name||'?').split(' ').slice(0,2).map(w=>w[0]).join(''))}</span>`;
+const plink = p => `<a href="${HOME}#${p.id}" style="text-decoration:none;color:inherit" title="${esc(p.name)}">${av(p)}</a>`;
+const tries = {
+  uf(el){ el.innerHTML = `<h4>Experimente · escolha seu estado</h4><select id="uf-sel" aria-label="Estado"><option value="">Selecione…</option>${UFS.map(u=>`<option value="${u}">${UFN[u]}</option>`).join('')}</select><div class="out" id="uf-out"></div>`;
+    el.querySelector('#uf-sel').addEventListener('change', ev => { const uf = ev.target.value; const out = el.querySelector('#uf-out'); if (!uf) { out.innerHTML=''; return; }
+      const sen = Object.values(P).filter(p => p.uf === uf && p.positions.includes('br-senador')); const dep = Object.values(P).filter(p => p.uf === uf && p.positions.includes('br-deputado-federal'));
+      out.innerHTML = `<b>${UFN[uf]}</b> elege <b>${sen.length} senadores</b> e <b>${dep.length} deputados</b>. Seus senadores hoje:<div class="live" style="margin-top:8px;padding:10px 12px"><div class="faces" style="grid-template-columns:repeat(${Math.max(sen.length,3)},44px)">${sen.map(plink).join('')}</div>${sen.map(p=>`<div class="pl" style="margin:4px 0 0"><b>${esc(p.name)}</b><span>&nbsp;· ${esc(p.party||'')}</span></div>`).join('')}</div>`;
+      applyState({nodes:['br-eleitorado','br-senado-federal','br-camara-dos-deputados','br-senador','br-deputado-federal'], edges:[['br-eleitorado','br-senado-federal','elege'],['br-eleitorado','br-camara-dos-deputados','elege']]}, `${UFN[uf]}: ${sen.length} senadores, ${dep.length} deputados`); }); },
+  ministerio(el){ const ms = Object.values(N).filter(n => n.subtype === 'ministerio' && n.ring === 2).sort((a,b)=>a.name.localeCompare(b.name,'pt'));
+    el.innerHTML = `<h4>Experimente · toque num ministério</h4><div class="chips">${ms.map(m=>`<button class="chip" data-id="${m.id}">${esc((s=>s.length>30?s.slice(0,28)+'…':s)(m.name.replace(/^Ministério (d[aeo]s? )?/,'').replace(/^Controladoria-Geral da União$/,'CGU')))}</button>`).join('')}</div><div class="out" id="min-out"></div>`;
+    el.addEventListener('click', ev => { const b = ev.target.closest('.chip'); if (!b) return; el.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on', c===b)); const id = b.dataset.id; const kids = Object.values(E).filter(e => e.from === id && (e.type === 'supervisiona' || e.type === 'integra')).map(e => N[e.to]).filter(Boolean);
+      const sup = kids.filter(k => Object.values(E).some(e => e.from === id && e.to === k.id && e.type === 'supervisiona')); const int = kids.filter(k => !sup.includes(k));
+      const SUBN = {autarquia:'autarquia', fundacao:'fundação', empresa_publica:'empresa pública', sociedade_economia_mista:'sociedade de economia mista', agencia_reguladora:'agência reguladora', instituicao_de_ensino:'instituição de ensino'};
+      const head = Object.values(N).find(n => n.type === 'dept_head' && n.head_of === id);
+      el.querySelector('#min-out').innerHTML = `<b>${esc(N[id].name)}</b>${head ? ` · <a href="${HOME}#${head.id}">${esc(head.name)}</a>` : ''}<br>Supervisiona <b>${sup.length}</b> ${sup.length===1?'entidade':'entidades'} e integra <b>${int.length}</b> ${int.length===1?'órgão':'órgãos'}.${sup.length?`<ul>${sup.slice(0,12).map(k=>`<li><a class="nl" href="${HOME}#${k.id}" data-id="${k.id}">${esc(k.name)}</a> <small style="color:var(--ink-3)">${SUBN[k.subtype]||''}</small></li>`).join('')}${sup.length>12?`<li>… e mais ${sup.length-12}</li>`:''}</ul>`:''}`;
+      applyState({select:id, edge_types_from:{from:id, types:['supervisiona','integra']}}, `${esc(N[id].name)}: ${sup.length} vinculadas`); }); },
+  lei(el){ const ST = [
+      {t:'1 · Alguém apresenta o projeto', d:'Um deputado, um senador, o Presidente, o STF, o Procurador-Geral ou um grupo de cidadãos (1% do eleitorado) apresenta o projeto. Quase sempre começa na Câmara.', c:'CF/88 art. 61', s:{select:'br-camara-dos-deputados', nodes:['br-eleitorado','br-presidente-da-republica']}},
+      {t:'2 · Comissões da Câmara opinam', d:'A Comissão de Constituição e Justiça diz se é constitucional; as comissões do tema discutem o mérito. Aqui muitos projetos param ou são arquivados.', c:'RICD arts. 24 e 32', s:{select:'br-comissao-de-constituicao-e-justica-e-de-cidadania-da-camara', nodes:['br-camara-dos-deputados','br-comissao-de-financas-e-tributacao-da-camara']}},
+      {t:'3 · Plenário da Câmara vota', d:'Maioria simples para lei ordinária; maioria absoluta para lei complementar; três quintos, em dois turnos, para emenda à Constituição.', c:'CF/88 arts. 47, 69 e 60 §2º', s:{select:'br-camara-dos-deputados'}},
+      {t:'4 · O Senado revisa', d:'A outra Casa repete o caminho. Se mudar o texto, ele volta para a Casa de origem decidir.', c:'CF/88 art. 65', s:{select:'br-senado-federal', edges:[['br-camara-dos-deputados','br-senado-federal','integra']]}},
+      {t:'5 · O Presidente sanciona ou veta', d:'Tem 15 dias úteis. Pode vetar tudo ou parte, por inconstitucionalidade ou contrariedade ao interesse público. Silêncio vale como sanção.', c:'CF/88 art. 66', s:{select:'br-presidente-da-republica', edges:[['br-senado-federal','br-presidente-da-republica','integra']]}},
+      {t:'6 · O Congresso pode derrubar o veto', d:'Em sessão conjunta, por maioria absoluta de deputados e de senadores. Se derrubar, a lei vale mesmo sem o Presidente.', c:'CF/88 art. 66 §4º', s:{select:'br-congresso-nacional', edges:[['br-presidente-da-republica','br-congresso-nacional','fiscaliza']]}}];
+    let i = 0; const render = () => { const st = ST[i]; el.innerHTML = `<h4>Experimente · uma lei nasce</h4><b>${esc(st.t)}</b><div class="out">${esc(st.d)}<br><small style="font-family:var(--mono);color:var(--ink-3)">${esc(st.c)}</small></div><div class="stepper"><button class="btn" id="lei-prev" ${i===0?'disabled':''}>← Voltar</button><button class="btn" id="lei-next" ${i===ST.length-1?'disabled':''}>Avançar →</button><span class="n">${i+1} de ${ST.length}</span></div>`; applyState(st.s, esc(st.t)); el.querySelector('#lei-prev').onclick = () => { i = Math.max(0, i-1); render(); }; el.querySelector('#lei-next').onclick = () => { i = Math.min(ST.length-1, i+1); render(); }; };
+    el.innerHTML = `<h4>Experimente · uma lei nasce</h4><div class="out">Siga um projeto de lei do começo ao fim, passo a passo.</div><div class="stepper"><button class="btn" id="lei-start">Começar →</button></div>`; el.querySelector('#lei-start').onclick = render; },
+  quem_sabatina(el){ const pos = Object.values(N).filter(n => n.type === 'dept_head' && n.sabatina).sort((a,b)=>a.name.localeCompare(b.name,'pt'));
+    const rule = n => { const id = n.id, h = n.head_of || ''; if (/tribunal|supremo|superior|cnj|cnmp|procurador|defensor|tcu/.test(id)) return ['br-comissao-de-constituicao-justica-e-cidadania-do-senado','Constituição, Justiça e Cidadania (CCJ)','RISF art. 101, II, i']; if (/banco-central|cvm|cade|susep/.test(id)) return ['br-comissao-de-assuntos-economicos-do-senado','Assuntos Econômicos (CAE)','RISF art. 99, II']; if (/anatel|aneel|anp-|anm-|antt|antaq|anac|ana-/.test(id)) return ['br-comissao-de-infraestrutura-do-senado','Serviços de Infraestrutura (CI)','RISF art. 104'];  if (/anvisa|ans-/.test(id)) return [null,'Assuntos Sociais (CAS)','RISF art. 100']; if (/ancine/.test(id)) return [null,'Educação e Cultura (CE)','RISF art. 102']; if (/abin|relacoes-exteriores|embaix/.test(id)) return ['br-comissao-de-relacoes-exteriores-e-defesa-nacional-do-senado','Relações Exteriores e Defesa Nacional (CRE)','RISF art. 103']; return ['br-comissao-de-constituicao-justica-e-cidadania-do-senado','Constituição, Justiça e Cidadania (CCJ)','RISF art. 383']; };
+    el.innerHTML = `<h4>Experimente · quem sabatina?</h4><select id="sab-sel" aria-label="Cargo"><option value="">Escolha um cargo…</option>${pos.map(n=>`<option value="${n.id}">${esc(n.name)}</option>`).join('')}</select><div class="out" id="sab-out"></div>`;
+    el.querySelector('#sab-sel').addEventListener('change', ev => { const n = N[ev.target.value]; const out = el.querySelector('#sab-out'); if (!n) { out.innerHTML=''; return; } const [cid, cname, cite] = rule(n); out.innerHTML = `<b>${esc(n.name)}</b>${n.seats>1?` (${n.seats} cadeiras)`:''}: a arguição acontece, em regra, na Comissão de <b>${cname}</b>; depois o plenário do Senado vota em escrutínio secreto, e o nome precisa de maioria.<br><small style="font-family:var(--mono);color:var(--ink-3)">CF/88 art. 52, III; ${cite}</small>`;
+      applyState({select:n.id, nodes:[cid,'br-senado-federal','br-presidente-da-republica'].filter(Boolean), edges:[['br-presidente-da-republica',n.id,'nomeia'],['br-senado-federal',n.id,'sabatina']].concat(cid?[[cid,'br-senado-federal','integra']]:[])}, `${esc(n.name)} · sabatina na ${cname}`); }); },
+  caminho(el){ const pos = Object.values(N).filter(n => n.type === 'dept_head' && (n.ring||0) <= 2).sort((a,b)=>a.name.localeCompare(b.name,'pt'));
+    el.innerHTML = `<h4>Experimente · caminho até o cargo</h4><select id="cam-sel" aria-label="Cargo"><option value="">Escolha um cargo…</option>${pos.map(n=>`<option value="${n.id}">${esc(n.name)}</option>`).join('')}</select><div class="out" id="cam-out"></div>`;
+    const VERB = {elege:'elege', nomeia:'nomeia', indica:'indica', sabatina:'sabatina e aprova', chefia:'chefia'};
+    el.querySelector('#cam-sel').addEventListener('change', ev => { const id = ev.target.value; const out = el.querySelector('#cam-out'); if (!id) { out.innerHTML=''; return; }
+      const chain = []; const edges = []; let cur = id; const seen = new Set();
+      for (let k = 0; k < 6 && cur && !seen.has(cur); k++) { seen.add(cur); const inc = Object.values(E).filter(e => e.to === cur && ['nomeia','indica','elege'].includes(e.type)); const sab = Object.values(E).find(e => e.to === cur && e.type === 'sabatina'); if (sab) { chain.unshift({from: sab.from, to: cur, type:'sabatina', cite: sab.cite}); edges.push(sab); } if (!inc.length) break; const e = inc.find(x => x.type === 'elege') || inc[0]; chain.unshift({from: e.from, to: cur, type: e.type, cite: e.cite}); edges.push(e); cur = e.from; }
+      const nodes = new Set(['br-eleitorado', id]); chain.forEach(c => { nodes.add(c.from); nodes.add(c.to); });
+      const steps = chain.length ? chain.map(c => `<li><b>${esc(N[c.from].name)}</b> ${VERB[c.type]||c.type} <b>${esc(N[c.to].name)}</b><small>${esc(c.cite||'')}</small></li>`).join('') : '<li>Cargo preenchido por eleição pelos pares, carreira ou concurso; sem cadeia de nomeação no mapa.</li>';
+      const dist = chain.filter(c => c.type !== 'sabatina').length; out.innerHTML = `Do seu voto até <b>${esc(N[id].name)}</b>: <b>${dist} ${dist===1?'passo':'passos'}</b>${chain.some(c=>c.type==='sabatina')?' e uma sabatina no Senado':''}.<ol class="path">${steps}</ol>`;
+      applyState({select:id, nodes:[...nodes], edges: edges.map(e => [e.from, e.to, e.type])}, `${esc(N[id].name)}: ${dist} passos do seu voto`); }); },
+  explorar(el){ el.innerHTML = `<h4>Continue explorando</h4><div class="out">A roda completa tem ${G.stats.nodes} órgãos e cargos, ${G.stats.edges} ligações e ${Object.keys(P).length} pessoas. Cada uma com a lei que a criou.</div><div class="stepper"><a class="btn" href="${HOME}">Abrir a roda →</a><a class="btn" href="${HOME}#br-presidente-da-republica">Começar pelo Presidente</a><a class="btn" href="${HOME}#br-supremo-tribunal-federal">Começar pelo STF</a></div>`; }
+};
+document.querySelectorAll('.try').forEach(el => { const f = tries[el.dataset.try]; if (f) f(el); });
+// tema
+const root = document.documentElement, tb = document.getElementById('theme');
+tb.addEventListener('click', () => { const dark = root.dataset.theme !== 'light'; root.dataset.theme = dark ? 'light' : 'dark'; try { localStorage.setItem('atlas-theme', root.dataset.theme); } catch(e){} });
+// estado inicial
+if (location.hash && document.querySelector(location.hash)) { setTimeout(() => document.querySelector(location.hash).scrollIntoView(), 50); } else if (steps[0]) activate(steps[0]);
+});
+</script>
