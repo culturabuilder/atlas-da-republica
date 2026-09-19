@@ -23,6 +23,8 @@ shutil.copytree(ROOT / "build" / "people", site / "people")
 if (ROOT / "site_img_cache").exists(): pass
 tpl = tpl.replace('<script src="graph.br.js" defer></script>', f'<script src="{PREFIX}/graph.br.js" defer></script>').replace('<script src="atlas.js" defer></script>', f'<script src="{PREFIX}/atlas.js" defer></script>').replace('<link rel="stylesheet" href="atlas.css">', f'<link rel="stylesheet" href="{PREFIX}/atlas.css">')
 for f in ("atlas.js", "atlas.css"): shutil.copy(ROOT / "web" / f, site / f)
+# atlas.css é pequeno: embutido para não bloquear a renderização com mais uma requisição
+tpl = tpl.replace(f'<link rel="stylesheet" href="{PREFIX}/atlas.css">', "<style>" + (ROOT / "web" / "atlas.css").read_text(encoding="utf-8") + "</style>", 1)
 # roda pré-renderizada (LCP sem esperar o JS): node executa o mesmo atlas.js sem DOM
 import subprocess
 WHEEL = ""
@@ -86,7 +88,12 @@ for n in N.values():
     (d / "index.html").write_text(page(n), encoding="utf-8"); urls.append(f"{BASE}/br/{n['id']}/")
 home = tpl.replace("<title>Atlas da República</title>\n", f'<title>Atlas da República</title>\n<meta name="description" content="Mapa navegável do governo federal brasileiro: órgãos, cargos, colegiados e as relações legais entre eles, com citação da norma.">\n<link rel="canonical" href="{BASE}/">\n', 1)
 links = "".join(f'<li><a href="/br/{n["id"]}/">{esc(n["name"])}</a></li>' for n in sorted(N.values(), key=lambda x: x["name"]) if n["type"] != "dept_head")
-home = home.replace('<div id="content"></div>', '<div id="content"></div><div id="ssr" hidden><h1>Atlas da República</h1><ul>' + links + '</ul></div>', 1)
+st = G["stats"]
+first = (f'<a class="card start" href="{PREFIX}/como-funciona/"><span class="eyebrow">Comece por aqui</span><b>Como funciona a República</b><span>Uma visita guiada de 9 minutos pela roda: quem você elege, quem nomeia quem, quem vigia quem. Para quem nunca precisou entender isso e agora quer.</span><span class="go">Começar →</span></a>'
+         f'<div class="card"><h1>Quem manda em quê no governo federal</h1><p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>'
+         f'<div class="stats"><div class="stat"><div class="n">{st["nodes"]}</div><div class="l">nós</div></div><div class="stat"><div class="n">{st["edges"]}</div><div class="l">relações</div></div><div class="stat"><div class="n">{st.get("seats_filled", 0)}</div><div class="l">de {st["seats_total"]} cadeiras com ocupante</div></div></div></div>')
+# os dois primeiros cartões da home já vêm no HTML (pintura imediata); o JS os substitui pelo painel completo
+home = home.replace('<div id="content"></div>', '<div id="content">' + first + '</div><div id="ssr" hidden><h1>Atlas da República</h1><ul>' + links + '</ul></div>', 1)
 if WHEEL: home = home.replace('<div id="graph"></div>', '<div id="graph">' + WHEEL + '</div>', 1)
 home = home.replace('href="/br/', f'href="{PREFIX}/br/').replace('href="/como-funciona/"', f'href="{PREFIX}/como-funciona/"')
 (site / "index.html").write_text(home, encoding="utf-8")
