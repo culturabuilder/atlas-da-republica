@@ -21,7 +21,7 @@ jobs:
       - name: Commit dados gerados
         run: |
           git config user.name "atlas-bot" && git config user.email "bot@users.noreply.github.com"
-          git add data/generated assets/img build/graph.br.json web/graph.br.js
+          git add data/generated assets/img web/graph.br.js
           git commit -m "dados: atualização automática $(date -u +%F)" || echo "sem mudanças"
           git push
       - uses: actions/upload-pages-artifact@v3
