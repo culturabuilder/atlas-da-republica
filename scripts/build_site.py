@@ -7,7 +7,7 @@ Uso: .venv/bin/python scripts/build_site.py [--base https://atlas.exemplo.br]
 """
 import json, pathlib, argparse, html, shutil, re, datetime
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-ap = argparse.ArgumentParser(); ap.add_argument("--base", default="https://atlasdarepublica.org"); ap.add_argument("--prefix", default=""); a = ap.parse_args()
+ap = argparse.ArgumentParser(); ap.add_argument("--base", default="https://atlasdarepublica.org"); ap.add_argument("--prefix", default=""); ap.add_argument("--cname", default=""); a = ap.parse_args()
 PREFIX = a.prefix.rstrip("/")
 BASE = a.base.rstrip("/")
 G = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8")); N = G["nodes"]; E = G["edges"]
@@ -78,7 +78,7 @@ home = home.replace('<div id="content"></div>', '<div id="content"></div><div id
 home = home.replace('href="/br/', f'href="{PREFIX}/br/')
 (site / "index.html").write_text(home, encoding="utf-8")
 (site / ".nojekyll").write_text("", encoding="utf-8")
-if "atlasdarepublica.org" in BASE: (site / "CNAME").write_text("atlasdarepublica.org\n", encoding="utf-8")
+if a.cname: (site / "CNAME").write_text(a.cname + "\n", encoding="utf-8")
 today = datetime.date.today().isoformat()
 (site / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
 (site / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
