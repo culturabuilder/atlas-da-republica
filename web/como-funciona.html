@@ -1,3 +1,5 @@
+<!doctype html>
+<html lang="pt-BR">
 <script>try{document.documentElement.dataset.theme=localStorage.getItem('atlas-theme')||'dark'}catch(e){document.documentElement.dataset.theme='dark'}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,13 +19,14 @@ a{color:var(--accent)}
 .bar .brand .mark{width:16px;height:16px;border-radius:50%;background:var(--povo);box-shadow:0 0 0 2px var(--card),0 0 0 3px var(--povo)}
 .bar .crumb{color:var(--ink-3);font-weight:500}
 .prog{flex:1;display:flex;gap:4px;align-items:center;min-width:0}
-.prog a{flex:1;height:6px;border-radius:3px;background:var(--line);display:block;position:relative;text-decoration:none;min-width:8px}
-.prog a.done{background:var(--ink-3)}.prog a.on{background:var(--accent)}
-.prog a span{position:absolute;left:0;top:12px;font-family:var(--mono);font-size:10px;color:var(--ink-3);white-space:nowrap;display:none}
+.prog a{flex:1;height:24px;padding:9px 0;background-clip:content-box;border-radius:3px;background-color:var(--line);display:block;position:relative;text-decoration:none;min-width:8px}
+.prog a.done{background-color:var(--ink-3)}.prog a.on{background-color:var(--accent)}
+.prog a span{position:absolute;left:0;top:22px;font-family:var(--mono);font-size:10px;color:var(--ink-3);white-space:nowrap;display:none}
 .prog a.on span{display:block}
 .btn{font:inherit;font-size:13px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);cursor:pointer}
 .btn:hover{border-color:var(--ink-3)}
 /* grade */
+.cf>*{min-width:0}
 .cf{display:grid;grid-template-columns:minmax(340px,500px) 1fr;gap:0 24px;max-width:1500px;margin:0 auto;padding-inline:20px}
 .text{padding-block:24px 120px;max-width:560px}
 .stage{position:sticky;top:52px;height:calc(100vh - 52px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 0}
@@ -62,7 +65,7 @@ a{color:var(--accent)}
 .glossbox small{display:block;margin-top:6px;font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
 /* dado vivo */
 .live{margin:18px 0 0;background:var(--card);border:1px solid var(--line-2);border-radius:12px;padding:14px 16px;font-size:15px}
-.live h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+.live h3{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
 .live .big{font-family:var(--disp);font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1}
 .live .big small{font-size:14px;color:var(--ink-3);font-family:var(--mono);font-weight:400;letter-spacing:0;margin-left:6px}
 .live .row{display:flex;gap:18px;flex-wrap:wrap}
@@ -85,7 +88,7 @@ a{color:var(--accent)}
 .live .src a{color:var(--ink-3)}
 /* experimente */
 .try{margin:18px 0 0;border:1px dashed var(--accent);border-radius:12px;padding:14px 16px;background:color-mix(in srgb,var(--accent-soft) 45%,transparent)}
-.try h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 8px;font-weight:600}
+.try h3{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 8px;font-weight:600}
 .try select,.try button.chip{font:inherit;font-size:14px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
 .try .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .try button.chip{cursor:pointer;font-size:13px;padding:4px 9px}
@@ -132,9 +135,9 @@ a{color:var(--accent)}
   <button class="btn" id="theme" aria-label="Alternar tema claro e escuro">◐ Tema</button>
 </div>
 <div class="cf">
-  <div class="text" id="text">
+  <main class="text" id="text">
     <!--CF_CONTENT-->
-  </div>
+  </main>
   <div class="stage" aria-hidden="true">
     <div id="graph"></div>
     <div class="cap" id="cap"></div>
@@ -153,6 +156,7 @@ const P = G.people || {};
 const norm = s => String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().trim();
 const glNorm = {}; for (const k of Object.keys(GL)) glNorm[norm(k)] = k;
 draw();
+document.querySelectorAll('.node').forEach(a => { a.setAttribute('tabindex', '-1'); a.setAttribute('href', HOME + '#' + a.dataset.id); });
 const svg = document.querySelector('svg.wheel'); const eg = document.getElementById('edges'); const cap = document.getElementById('cap');
 const sectorEls = Array.from(document.querySelectorAll('.sector-bg')); const ringEls = Array.from(document.querySelectorAll('.ring'));
 const SIDS = ['legislativo','executivo','judiciario','essenciais'];
@@ -198,7 +202,7 @@ steps.forEach(s => io.observe(s));
 addEventListener('scroll', () => { const mid = innerHeight * 0.42; let best = null, bd = Infinity; for (const s of steps) { const r = s.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) continue; const d = Math.abs((r.top + Math.min(r.height, 300)/2) - mid); if (d < bd) { bd = d; best = s; } } if (best) activate(best); }, {passive: true});
 // progresso
 const prog = document.getElementById('prog');
-prog.innerHTML = Array.from(document.querySelectorAll('.chapter')).map(c => `<a href="#${c.id}" data-ch="${c.id}" title="${esc(c.dataset.title)}"><span>${esc(c.dataset.short)}</span></a>`).join('');
+prog.innerHTML = Array.from(document.querySelectorAll('.chapter')).map(c => `<a href="#${c.id}" data-ch="${c.id}" title="${esc(c.dataset.title)}" aria-label="${esc(c.dataset.title)}"><span>${esc(c.dataset.short)}</span></a>`).join('');
 // glossário
 const box = document.getElementById('glossbox');
 function showGl(btn){ const k = glNorm[norm(btn.dataset.term)]; if (!k) return; const def = GL[k]; const m = def.match(/^(.*?)\s*\(([^()]*)\)\s*$/); box.innerHTML = `<b>${esc(k)}</b>${esc(m ? m[1] : def)}${m ? `<small>${esc(m[2])}</small>` : ''}`; box.hidden = false; const r = btn.getBoundingClientRect(); box.style.top = (scrollY + r.bottom + 8) + 'px'; box.style.left = Math.max(12, Math.min(scrollX + r.left, innerWidth - 360)) + 'px'; }
@@ -213,13 +217,13 @@ const UFN = {AC:'Acre',AL:'Alagoas',AM:'Amazonas',AP:'Amapá',BA:'Bahia',CE:'Cea
 const av = p => p.photo ? `<img src="${G.img_base||'/img/'}${p.id}.jpg" alt="" loading="lazy">` : `<span class="ini">${esc((p.name||'?').split(' ').slice(0,2).map(w=>w[0]).join(''))}</span>`;
 const plink = p => `<a href="${HOME}#${p.id}" style="text-decoration:none;color:inherit" title="${esc(p.name)}">${av(p)}</a>`;
 const tries = {
-  uf(el){ el.innerHTML = `<h4>Experimente · escolha seu estado</h4><select id="uf-sel" aria-label="Estado"><option value="">Selecione…</option>${UFS.map(u=>`<option value="${u}">${UFN[u]}</option>`).join('')}</select><div class="out" id="uf-out"></div>`;
+  uf(el){ el.innerHTML = `<h3>Experimente · escolha seu estado</h3><select id="uf-sel" aria-label="Estado"><option value="">Selecione…</option>${UFS.map(u=>`<option value="${u}">${UFN[u]}</option>`).join('')}</select><div class="out" id="uf-out"></div>`;
     el.querySelector('#uf-sel').addEventListener('change', ev => { const uf = ev.target.value; const out = el.querySelector('#uf-out'); if (!uf) { out.innerHTML=''; return; }
       const sen = Object.values(P).filter(p => p.uf === uf && p.positions.includes('br-senador')); const dep = Object.values(P).filter(p => p.uf === uf && p.positions.includes('br-deputado-federal'));
       out.innerHTML = `<b>${UFN[uf]}</b> elege <b>${sen.length} senadores</b> e <b>${dep.length} deputados</b>. Seus senadores hoje:<div class="live" style="margin-top:8px;padding:10px 12px"><div class="faces" style="grid-template-columns:repeat(${Math.max(sen.length,3)},44px)">${sen.map(plink).join('')}</div>${sen.map(p=>`<div class="pl" style="margin:4px 0 0"><b>${esc(p.name)}</b><span>&nbsp;· ${esc(p.party||'')}</span></div>`).join('')}</div>`;
       applyState({nodes:['br-eleitorado','br-senado-federal','br-camara-dos-deputados','br-senador','br-deputado-federal'], edges:[['br-eleitorado','br-senado-federal','elege'],['br-eleitorado','br-camara-dos-deputados','elege']]}, `${UFN[uf]}: ${sen.length} senadores, ${dep.length} deputados`); }); },
   ministerio(el){ const ms = Object.values(N).filter(n => n.subtype === 'ministerio' && n.ring === 2).sort((a,b)=>a.name.localeCompare(b.name,'pt'));
-    el.innerHTML = `<h4>Experimente · toque num ministério</h4><div class="chips">${ms.map(m=>`<button class="chip" data-id="${m.id}">${esc((s=>s.length>30?s.slice(0,28)+'…':s)(m.name.replace(/^Ministério (d[aeo]s? )?/,'').replace(/^Controladoria-Geral da União$/,'CGU')))}</button>`).join('')}</div><div class="out" id="min-out"></div>`;
+    el.innerHTML = `<h3>Experimente · toque num ministério</h3><div class="chips">${ms.map(m=>`<button class="chip" data-id="${m.id}">${esc((s=>s.length>30?s.slice(0,28)+'…':s)(m.name.replace(/^Ministério (d[aeo]s? )?/,'').replace(/^Controladoria-Geral da União$/,'CGU')))}</button>`).join('')}</div><div class="out" id="min-out"></div>`;
     el.addEventListener('click', ev => { const b = ev.target.closest('.chip'); if (!b) return; el.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on', c===b)); const id = b.dataset.id; const kids = Object.values(E).filter(e => e.from === id && (e.type === 'supervisiona' || e.type === 'integra')).map(e => N[e.to]).filter(Boolean);
       const sup = kids.filter(k => Object.values(E).some(e => e.from === id && e.to === k.id && e.type === 'supervisiona')); const int = kids.filter(k => !sup.includes(k));
       const SUBN = {autarquia:'autarquia', fundacao:'fundação', empresa_publica:'empresa pública', sociedade_economia_mista:'sociedade de economia mista', agencia_reguladora:'agência reguladora', instituicao_de_ensino:'instituição de ensino'};
@@ -233,15 +237,15 @@ const tries = {
       {t:'4 · O Senado revisa', d:'A outra Casa repete o caminho. Se mudar o texto, ele volta para a Casa de origem decidir.', c:'CF/88 art. 65', s:{select:'br-senado-federal', edges:[['br-camara-dos-deputados','br-senado-federal','integra']]}},
       {t:'5 · O Presidente sanciona ou veta', d:'Tem 15 dias úteis. Pode vetar tudo ou parte, por inconstitucionalidade ou contrariedade ao interesse público. Silêncio vale como sanção.', c:'CF/88 art. 66', s:{select:'br-presidente-da-republica', edges:[['br-senado-federal','br-presidente-da-republica','integra']]}},
       {t:'6 · O Congresso pode derrubar o veto', d:'Em sessão conjunta, por maioria absoluta de deputados e de senadores. Se derrubar, a lei vale mesmo sem o Presidente.', c:'CF/88 art. 66 §4º', s:{select:'br-congresso-nacional', edges:[['br-presidente-da-republica','br-congresso-nacional','fiscaliza']]}}];
-    let i = 0; const render = () => { const st = ST[i]; el.innerHTML = `<h4>Experimente · uma lei nasce</h4><b>${esc(st.t)}</b><div class="out">${esc(st.d)}<br><small style="font-family:var(--mono);color:var(--ink-3)">${esc(st.c)}</small></div><div class="stepper"><button class="btn" id="lei-prev" ${i===0?'disabled':''}>← Voltar</button><button class="btn" id="lei-next" ${i===ST.length-1?'disabled':''}>Avançar →</button><span class="n">${i+1} de ${ST.length}</span></div>`; applyState(st.s, esc(st.t)); el.querySelector('#lei-prev').onclick = () => { i = Math.max(0, i-1); render(); }; el.querySelector('#lei-next').onclick = () => { i = Math.min(ST.length-1, i+1); render(); }; };
-    el.innerHTML = `<h4>Experimente · uma lei nasce</h4><div class="out">Siga um projeto de lei do começo ao fim, passo a passo.</div><div class="stepper"><button class="btn" id="lei-start">Começar →</button></div>`; el.querySelector('#lei-start').onclick = render; },
+    let i = 0; const render = () => { const st = ST[i]; el.innerHTML = `<h3>Experimente · uma lei nasce</h3><b>${esc(st.t)}</b><div class="out">${esc(st.d)}<br><small style="font-family:var(--mono);color:var(--ink-3)">${esc(st.c)}</small></div><div class="stepper"><button class="btn" id="lei-prev" ${i===0?'disabled':''}>← Voltar</button><button class="btn" id="lei-next" ${i===ST.length-1?'disabled':''}>Avançar →</button><span class="n">${i+1} de ${ST.length}</span></div>`; applyState(st.s, esc(st.t)); el.querySelector('#lei-prev').onclick = () => { i = Math.max(0, i-1); render(); }; el.querySelector('#lei-next').onclick = () => { i = Math.min(ST.length-1, i+1); render(); }; };
+    el.innerHTML = `<h3>Experimente · uma lei nasce</h3><div class="out">Siga um projeto de lei do começo ao fim, passo a passo.</div><div class="stepper"><button class="btn" id="lei-start">Começar →</button></div>`; el.querySelector('#lei-start').onclick = render; },
   quem_sabatina(el){ const pos = Object.values(N).filter(n => n.type === 'dept_head' && n.sabatina).sort((a,b)=>a.name.localeCompare(b.name,'pt'));
     const rule = n => { const id = n.id, h = n.head_of || ''; if (/tribunal|supremo|superior|cnj|cnmp|procurador|defensor|tcu/.test(id)) return ['br-comissao-de-constituicao-justica-e-cidadania-do-senado','Constituição, Justiça e Cidadania (CCJ)','RISF art. 101, II, i']; if (/banco-central|cvm|cade|susep/.test(id)) return ['br-comissao-de-assuntos-economicos-do-senado','Assuntos Econômicos (CAE)','RISF art. 99, II']; if (/anatel|aneel|anp-|anm-|antt|antaq|anac|ana-/.test(id)) return ['br-comissao-de-infraestrutura-do-senado','Serviços de Infraestrutura (CI)','RISF art. 104'];  if (/anvisa|ans-/.test(id)) return [null,'Assuntos Sociais (CAS)','RISF art. 100']; if (/ancine/.test(id)) return [null,'Educação e Cultura (CE)','RISF art. 102']; if (/abin|relacoes-exteriores|embaix/.test(id)) return ['br-comissao-de-relacoes-exteriores-e-defesa-nacional-do-senado','Relações Exteriores e Defesa Nacional (CRE)','RISF art. 103']; return ['br-comissao-de-constituicao-justica-e-cidadania-do-senado','Constituição, Justiça e Cidadania (CCJ)','RISF art. 383']; };
-    el.innerHTML = `<h4>Experimente · quem sabatina?</h4><select id="sab-sel" aria-label="Cargo"><option value="">Escolha um cargo…</option>${pos.map(n=>`<option value="${n.id}">${esc(n.name)}</option>`).join('')}</select><div class="out" id="sab-out"></div>`;
+    el.innerHTML = `<h3>Experimente · quem sabatina?</h3><select id="sab-sel" aria-label="Cargo"><option value="">Escolha um cargo…</option>${pos.map(n=>`<option value="${n.id}">${esc(n.name)}</option>`).join('')}</select><div class="out" id="sab-out"></div>`;
     el.querySelector('#sab-sel').addEventListener('change', ev => { const n = N[ev.target.value]; const out = el.querySelector('#sab-out'); if (!n) { out.innerHTML=''; return; } const [cid, cname, cite] = rule(n); out.innerHTML = `<b>${esc(n.name)}</b>${n.seats>1?` (${n.seats} cadeiras)`:''}: a arguição acontece, em regra, na Comissão de <b>${cname}</b>; depois o plenário do Senado vota em escrutínio secreto, e o nome precisa de maioria.<br><small style="font-family:var(--mono);color:var(--ink-3)">CF/88 art. 52, III; ${cite}</small>`;
       applyState({select:n.id, nodes:[cid,'br-senado-federal','br-presidente-da-republica'].filter(Boolean), edges:[['br-presidente-da-republica',n.id,'nomeia'],['br-senado-federal',n.id,'sabatina']].concat(cid?[[cid,'br-senado-federal','integra']]:[])}, `${esc(n.name)} · sabatina na ${cname}`); }); },
   caminho(el){ const pos = Object.values(N).filter(n => n.type === 'dept_head' && (n.ring||0) <= 2).sort((a,b)=>a.name.localeCompare(b.name,'pt'));
-    el.innerHTML = `<h4>Experimente · caminho até o cargo</h4><select id="cam-sel" aria-label="Cargo"><option value="">Escolha um cargo…</option>${pos.map(n=>`<option value="${n.id}">${esc(n.name)}</option>`).join('')}</select><div class="out" id="cam-out"></div>`;
+    el.innerHTML = `<h3>Experimente · caminho até o cargo</h3><select id="cam-sel" aria-label="Cargo"><option value="">Escolha um cargo…</option>${pos.map(n=>`<option value="${n.id}">${esc(n.name)}</option>`).join('')}</select><div class="out" id="cam-out"></div>`;
     const VERB = {elege:'elege', nomeia:'nomeia', indica:'indica', sabatina:'sabatina e aprova', chefia:'chefia'};
     el.querySelector('#cam-sel').addEventListener('change', ev => { const id = ev.target.value; const out = el.querySelector('#cam-out'); if (!id) { out.innerHTML=''; return; }
       const chain = []; const edges = []; let cur = id; const seen = new Set();
@@ -250,7 +254,7 @@ const tries = {
       const steps = chain.length ? chain.map(c => `<li><b>${esc(N[c.from].name)}</b> ${VERB[c.type]||c.type} <b>${esc(N[c.to].name)}</b><small>${esc(c.cite||'')}</small></li>`).join('') : '<li>Cargo preenchido por eleição pelos pares, carreira ou concurso; sem cadeia de nomeação no mapa.</li>';
       const dist = chain.filter(c => c.type !== 'sabatina').length; out.innerHTML = `Do seu voto até <b>${esc(N[id].name)}</b>: <b>${dist} ${dist===1?'passo':'passos'}</b>${chain.some(c=>c.type==='sabatina')?' e uma sabatina no Senado':''}.<ol class="path">${steps}</ol>`;
       applyState({select:id, nodes:[...nodes], edges: edges.map(e => [e.from, e.to, e.type])}, `${esc(N[id].name)}: ${dist} passos do seu voto`); }); },
-  explorar(el){ el.innerHTML = `<h4>Continue explorando</h4><div class="out">A roda completa tem ${G.stats.nodes} órgãos e cargos, ${G.stats.edges} ligações e ${Object.keys(P).length} pessoas. Cada uma com a lei que a criou.</div><div class="stepper"><a class="btn" href="${HOME}">Abrir a roda →</a><a class="btn" href="${HOME}#br-presidente-da-republica">Começar pelo Presidente</a><a class="btn" href="${HOME}#br-supremo-tribunal-federal">Começar pelo STF</a></div>`; }
+  explorar(el){ el.innerHTML = `<h3>Continue explorando</h3><div class="out">A roda completa tem ${G.stats.nodes} órgãos e cargos, ${G.stats.edges} ligações e ${Object.keys(P).length} pessoas. Cada uma com a lei que a criou.</div><div class="stepper"><a class="btn" href="${HOME}">Abrir a roda →</a><a class="btn" href="${HOME}#br-presidente-da-republica">Começar pelo Presidente</a><a class="btn" href="${HOME}#br-supremo-tribunal-federal">Começar pelo STF</a></div>`; }
 };
 document.querySelectorAll('.try').forEach(el => { const f = tries[el.dataset.try]; if (f) f(el); });
 // tema
