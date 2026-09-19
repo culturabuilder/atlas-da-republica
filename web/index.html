@@ -434,7 +434,7 @@ function renderPerson(p){
   document.getElementById('edges').innerHTML='';
   const na=(G.news||[]).filter(a=>(a.people||[]).some(q=>q.id===p.id)).slice(0,8);
   const pm=(G.power||[]).find(q=>q.id===p.id);
-  const pos=posIds.map(pid=>{ const n=N[pid]; if(!n) return ''; const full=fullPos.find(q=>q.id===pid)||{}; return link(pid, (full.role?esc(full.role)+' · ':'')+(full.since?'desde '+fmtDate(full.since):'')); }).join('');
+  const pos=posIds.map(pid=>{ const n=N[pid]; if(!n) return ''; const full=fullPos.find(q=>q.id===pid)||{}; return link(pid, [full.role?esc(full.role):'', full.since?'desde '+fmtDate(full.since):''].filter(Boolean).join(' · ')); }).join('');
   const sab=[]; for (const pid of p.positions||[]) for (const sb of (N[pid]&&N[pid].sabatinas)||[]) if (sb.name && norm(sb.name)===norm(p.name)) sab.push(sb);
   content.innerHTML = `<div class="card"><div class="phead"><span class="big">${avatar(p)}</span><div><h1 style="margin:0">${esc(p.name)}</h1><p style="margin:4px 0 0;color:var(--ink-3)">${[p.party,p.uf].filter(Boolean).join(' · ')||'Pessoa'}${pm?` · na notícia ${pm.articles}× em 90 dias, última ${fmtDate(pm.last)}`:''}</p></div></div>
     <h3>Cargos</h3><div class="list">${pos||'<span class="seat">Sem cargo registrado.</span>'}</div>
