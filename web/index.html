@@ -1,3 +1,4 @@
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('atlas-theme')||'dark'}catch(e){document.documentElement.dataset.theme='dark'}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atlas da República</title>
@@ -72,6 +73,10 @@ p{margin:8px 0;color:var(--ink-2)}
 .list a{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line-2);border-radius:8px;text-decoration:none;color:var(--ink);font-size:15px;background:var(--panel)}
 .list a:hover{border-color:var(--accent)}
 .list a .sm{color:var(--ink-3);font-size:13px;margin-left:auto;white-space:nowrap}
+.list .entry{font-size:13px;color:var(--ink-2);line-height:1.45;margin:-4px 0 8px;padding:0 10px 0 30px}
+.list .entry a{display:inline;padding:0;border:0;background:none;font-size:inherit;color:var(--accent,var(--ink));text-decoration:underline;text-underline-offset:2px}
+.list .entry b{font-weight:600;color:var(--ink)}
+.list .entry .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-right:6px}
 .seat{padding:8px 10px;border:1px dashed var(--line);border-radius:8px;font-size:14px;color:var(--ink-3);font-style:italic}
 .people{display:flex;flex-direction:column;gap:4px;margin-top:6px}
 .person{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;padding:5px 8px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:14.5px}
@@ -434,8 +439,9 @@ function renderPerson(p){
   document.getElementById('edges').innerHTML='';
   const na=(G.news||[]).filter(a=>(a.people||[]).some(q=>q.id===p.id)).slice(0,8);
   const pm=(G.power||[]).find(q=>q.id===p.id);
-  const pos=posIds.map(pid=>{ const n=N[pid]; if(!n) return ''; const full=fullPos.find(q=>q.id===pid)||{}; return link(pid, [full.role?esc(full.role):'', full.since?'desde '+fmtDate(full.since):''].filter(Boolean).join(' · ')); }).join('');
-  const sab=[]; for (const pid of p.positions||[]) for (const sb of (N[pid]&&N[pid].sabatinas)||[]) if (sb.name && norm(sb.name)===norm(p.name)) sab.push(sb);
+  const pos=posIds.map(pid=>{ const n=N[pid]; if(!n) return ''; const full=fullPos.find(q=>q.id===pid)||{}; const eh=entryHtml(full.entry, n); return link(pid, [full.role?esc(full.role):'', full.since&&!eh?'desde '+fmtDate(full.since):''].filter(Boolean).join(' · '))+(eh?`<div class="entry">${eh}${full.note&&full.source!=='senado'?` · ${esc(full.note)}`:''}</div>`:''); }).join('');
+  const samePerson=(a,b)=>{ const ta=norm(a).split(' ').filter(Boolean), tb=norm(b).split(' ').filter(Boolean); if(!ta.length||!tb.length) return false; if(ta.join(' ')===tb.join(' ')) return true; const [s,l]=ta.length<=tb.length?[ta,tb]:[tb,ta]; if(s.length<2||s[0]!==l[0]) return false; let i=0; for(const w of s){ i=l.indexOf(w,i); if(i<0) return false; i++; } return true; };
+  const sab=[]; for (const pid of posIds) for (const sb of (N[pid]&&N[pid].sabatinas)||[]) if (sb.name && samePerson(sb.name,p.name)) sab.push(sb);
   content.innerHTML = `<div class="card"><div class="phead"><span class="big">${avatar(p)}</span><div><h1 style="margin:0">${esc(p.name)}</h1><p style="margin:4px 0 0;color:var(--ink-3)">${[p.party,p.uf].filter(Boolean).join(' · ')||'Pessoa'}${pm?` · na notícia ${pm.articles}× em 90 dias, última ${fmtDate(pm.last)}`:''}</p></div></div>
     <h3>Cargos</h3><div class="list">${pos||'<span class="seat">Sem cargo registrado.</span>'}</div>
     ${sab.length?`<h3>Sabatinas no Senado</h3>${sab.map(sb=>`<div class="sab"><span>${esc((sb.cargo||'').slice(0,90))}</span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:''}</span></div>`).join('')}`:''}
@@ -471,6 +477,25 @@ function curve(x1,y1,x2,y2){ const mx=(x1+x2)/2, my=(y1+y2)/2; const dx=x2-x1, d
 const content = document.getElementById('content');
 function sectorChip(sid){ return sid ? `<span class="chip sec" style="background:${COL[sid]}">${SEC[sid].name}</span>` : ''; }
 function link(id, extra){ const n=N[id]; return `<a href="#${id}"><span class="dot" style="background:${COL[n.sector]||'var(--povo)'}"></span><span>${esc(n.name)}</span>${extra?`<span class="sm">${extra}</span>`:''}</a>`; }
+function fmtLong(d){ if(!d) return ''; const [y,m,dd]=d.split('-'); const M=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']; return dd&&m?`${+dd} ${M[+m-1]} ${y}`:y; }
+function whoLink(e){ if(!e.by_id&&!e.by_person) return ''; const body=e.by_id&&N[e.by_id]?`<a href="#${e.by_id}">${esc(e.by_name||N[e.by_id].name)}</a>`:esc(e.by_name||''); if(e.by_person){ const pl=e.by_person_id&&P[e.by_person_id]?`<a href="#${e.by_person_id}">${esc(e.by_person)}</a>`:`<b>${esc(e.by_person)}</b>`; return `${pl} (${body})`; } return body; }
+// Frase completa: quem chamou, quando, sabatina, posse, fim do mandato
+function entryHtml(e, n){
+  if(!e) return ''; const parts=[]; const mode=e.mode;
+  if(mode==='eleito'){ parts.push(`<b>Eleito pelo povo</b>${e.election?` em ${fmtLong(e.election)}`:''}`); if(e.date) parts.push(`no cargo desde ${fmtLong(e.date)}`); if(e.term_end) parts.push(`mandato até ${fmtLong(e.term_end)}`); }
+  else if(mode==='suplente'){ parts.push(`<b>Suplente</b> em exercício`); if(e.date) parts.push(`desde ${fmtLong(e.date)}`); }
+  else if(mode==='eleito_pares'){ parts.push(`<b>Eleito pelos pares</b>${e.by_id?` (${whoLink({by_id:e.by_id,by_name:e.by_name})})`:''}`); if(e.date) parts.push(`desde ${fmtLong(e.date)}`); if(e.term_end) parts.push(`mandato até ${fmtLong(e.term_end)}`); }
+  else if(mode==='nomeado'||mode==='indicado'){ parts.push(`<b>${mode==='indicado'?'Indicado':'Nomeado'}</b>${e.by_id||e.by_person?` por ${whoLink(e)}`:''}`);
+    if(e.sabatina){ const s=e.sabatina; const ok=s.resultado==='APROVADA_NO_PLENARIO'; parts.push(`${ok?'aprovado':'rejeitado'} pelo Senado em ${fmtLong(s.date)}${s.sim!=null?` por ${s.sim} a ${s.nao}`:''}${s.url?` <a href="${s.url}" target="_blank" rel="noopener">↗</a>`:''}`); }
+    else if(n&&n.sabatina) parts.push(`cargo sujeito a sabatina no Senado`);
+    if(e.dou) parts.push(`nomeação publicada no DOU em ${fmtLong(e.dou.date)}${e.dou.url?` <a href="${e.dou.url}" target="_blank" rel="noopener">↗</a>`:''}`);
+    if(e.date) parts.push(`no cargo desde ${fmtLong(e.date)}`); else if(e.sabatina) parts.push(`data de posse ainda não conferida`); else parts.push(`data de posse não informada`);
+    if(e.term_end) parts.push(`mandato até ${fmtLong(e.term_end)}`); else if(e.term_note) parts.push(e.term_note); }
+  else { if(e.date) parts.push(`no cargo desde ${fmtLong(e.date)}`); }
+  if(e.acting) parts.unshift(`<span class="tag">interino</span>`);
+  return parts.join(' · ');
+}
+function entryShort(p){ const e=p.entry; if(!e) return ''; const bits=[]; if(e.date) bits.push('desde '+fmtDate(e.date)); if(e.mode==='eleito') bits.push('eleito'); else if(e.mode==='eleito_pares') bits.push('eleito pelos pares'); else if(e.by_person) bits.push('por '+e.by_person); if(e.sabatina&&e.sabatina.sim!=null) bits.push(`senado ${e.sabatina.sim}×${e.sabatina.nao}`); return bits.join(' · '); }
 function fmtDate(d){ if(!d) return ''; const [y,m,dd]=d.split('-'); return `${dd}/${m}/${y.slice(2)}`; }
 function entLink(id){ const n=N[id]; return n?`<a class="e" href="#${id}">${esc(n.aliases&&n.aliases[0]&&n.aliases[0].length<=8?n.aliases[0]:n.name)}</a>`:''; }
 let homeTab = 'mudancas'; let win = 30;
@@ -547,7 +572,7 @@ function renderNode(n){
       const max = top[0][1];
       const bars = (people.length >= 10 && people.some(p=>p.party)) ? `<div class="parties">${top.slice(0,14).map(([k,v])=>`<div class="pr"><span class="pk">${esc(k)}</span><span class="pb"><i style="width:${Math.round(100*v/max)}%"></i></span><span class="pv">${v}</span></div>`).join('')}${top.length>14?`<div class="pr" style="color:var(--ink-3)"><span class="pk">+${top.length-14}</span><span class="pb"></span><span class="pv">${top.slice(14).reduce((a,[,v])=>a+v,0)}</span></div>`:''}</div>` : '';
       const src = p => p.source==='oficial'?`página oficial${p.checked_at?' · conferido em '+fmtDate(p.checked_at):''}`:p.source==='wikidata'?'nome via Wikidata, sem conferência oficial':p.source==='wikipedia'?'nome via Wikipédia, sem conferência oficial':p.source==='dou'?'assina os atos do órgão no DOU':p.source==='portal'?'Portal da Transparência':p.source==='sabatina'?'aprovado pelo Senado; posse não conferida':p.source==='senado'||p.source==='camara'?'composição oficial da Casa':'';
-      const item = p => `<a class="person" href="${P[p.id]?'#'+p.id:(p.source_url||'#')}" ${P[p.id]?'':'target="_blank" rel="noopener"'} title="${esc(src(p))}"><span class="av" style="overflow:hidden">${avatar(p)}</span><span class="pn">${esc(p.name)}${p.role?` <em>${esc(p.role)}</em>`:''}</span><span class="pm">${[p.party,p.uf].filter(Boolean).join(' · ')}${p.entry_mode==='suplente'?' · suplente':''}${p.started_at&&!p.party?fmtDate(p.started_at):''}${p.source==='wikidata'?' · <span style="color:var(--jud)">wikidata</span>':''}${p.note&&!p.party?' · '+esc(p.note):''}</span></a>`;
+      const item = p => `<a class="person" href="${P[p.id]?'#'+p.id:(p.source_url||'#')}" ${P[p.id]?'':'target="_blank" rel="noopener"'} title="${esc([entryHtml(p.entry, n).replace(/<[^>]+>/g,''), src(p)].filter(Boolean).join(' — '))}"><span class="av" style="overflow:hidden">${avatar(p)}</span><span class="pn">${esc(p.name)}${p.role?` <em>${esc(p.role)}</em>`:''}</span><span class="pm">${[p.party,p.uf].filter(Boolean).join(' · ')}${p.entry_mode==='suplente'?' · suplente':''}${!p.party?entryShort(p):''}${p.source==='wikidata'?' · <span style="color:var(--jud)">wikidata</span>':''}${p.acting?' · interino':''}</span></a>`;
       const shown = people.length > 24 ? 24 : people.length;
       const vac = n.vacant_seats?`<div class="seat">${n.vacant_seats} ${n.vacant_seats>1?'vagas abertas':'vaga aberta'} segundo a página oficial.</div>`:'';
       const srcNote = people[0]&&people[0].source==='oficial'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Fonte: <a href="${people[0].source_url}" target="_blank" rel="noopener">página oficial</a>, conferida em ${fmtDate(people[0].checked_at)}.</p>`:people[0]&&people[0].source==='sabatina'?`<p style="font-size:12.5px;color:var(--jud);margin:2px 0 6px">Nome aprovado pelo Senado em sabatina; a posse ainda não foi conferida em página oficial.</p>`:people[0]&&people[0].source==='wikidata'?`<p style="font-size:12.5px;color:var(--jud);margin:2px 0 6px">Nome do ocupante obtido do Wikidata, ainda sem conferência em página oficial.</p>`:people[0]&&people[0].source==='wikipedia'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Nome do ocupante obtido da Wikipédia, ainda sem conferência em página oficial.</p>`:people[0]&&people[0].source==='dou'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Ocupante identificado pela assinatura dos atos do órgão no Diário Oficial.</p>`:'';
@@ -610,7 +635,9 @@ gb.addEventListener('click', e => { e.preventDefault(); const open = gm.hidden; 
 document.addEventListener('click', e => { if (!e.target.closest('.brand') && !e.target.closest('#gov-menu')) { gm.hidden = true; gb.setAttribute('aria-expanded','false'); } });
 gm.querySelector('.gm-item.on').addEventListener('click', e => { e.preventDefault(); location.hash = ''; gm.hidden = true; });
 const root = document.documentElement, tb = document.getElementById('theme');
-try { const saved = localStorage.getItem('atlas-theme'); if (saved) root.dataset.theme = saved; } catch(e){}
+// escuro por padrão; a escolha da pessoa (botão Tema) fica guardada no navegador
+let savedTheme = null; try { savedTheme = localStorage.getItem('atlas-theme'); } catch(e){}
+root.dataset.theme = savedTheme || 'dark';
 tb.addEventListener('click', () => { const dark = root.dataset.theme ? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; root.dataset.theme = dark ? 'light' : 'dark'; try { localStorage.setItem('atlas-theme', root.dataset.theme); } catch(e){} });
 
 draw();

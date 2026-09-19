@@ -54,6 +54,9 @@ def main():
         role = role_title(" ".join(lst(c.get("Cargo")))); party, uf = bancada(c.get("Bancada"))
         ppl.append({"id": f"br-p-sf-{c['Http']}", "name": clean_name(c["NomeParlamentar"]), "party": party, "uf": uf, "role": role, "entry_mode": "eleito", "source": "senado",
                     "source_url": "https://www25.senado.leg.br/web/senadores/mesa-diretora"})
+    import datetime as _dt
+    _t = _dt.date.today(); _y = _t.year if (_t.year % 2 == 1 and _t >= _dt.date(_t.year, 2, 1)) else (_t.year - 1 if _t.year % 2 == 0 else _t.year - 2)
+    for p in ppl: p["started_at"] = f"{_y}-02-01"; p["note"] = "biênio da Mesa; eleição em 1º de fevereiro"
     positions["br-mesa-do-senado-federal"] = [p for p in ppl if "Suplente" not in p["role"]]
     pres = [dict(p, role=None) for p in ppl if p["role"] == "Presidente"]
     if pres: positions["br-presidente-do-senado-federal"] = pres

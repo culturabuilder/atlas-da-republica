@@ -377,13 +377,76 @@ if dou_path.exists():
             changes.append({"kind": kind, "date": a["date"], "personName": r.get("name"), "positionId": r["position_id"], "positionName": nodes[r["position_id"]]["name"], "cargoText": r.get("cargo"), "sourceUrl": a.get("url"), "act": a.get("title")})
             nodes[r["position_id"]].setdefault("dou", []).append({"date": a["date"], "verb": r["verb"], "name": r.get("name"), "cargo": r.get("cargo"), "url": a.get("url"), "act": a.get("title")})
 changes.sort(key=lambda c: c["date"], reverse=True)
+# ---- trajetória até o cargo: quem chamou, quando, sabatina, posse, fim do mandato
+_pres = yaml.safe_load(open(DATA / "presidentes.yaml", encoding="utf-8")) or []
+def president_at(d):
+    for p in _pres:
+        if str(p["start"]) <= d and (not p.get("end") or d <= str(p["end"])): return p
+    return None
+_wd_by_pos = {}
+_wd_p = DATA / "generated" / "ocupantes.yaml"
+if _wd_p.exists():
+    for pid, ppl in ((yaml.safe_load(open(_wd_p, encoding="utf-8")) or {}).get("positions") or {}).items():
+        for p in ppl:
+            if p.get("name") and p.get("started_at"): _wd_by_pos.setdefault(pid, {})[norm(p["name"])] = str(p["started_at"])
+def same_person(a, b):
+    """'Cristiano Zanin' ~ 'Cristiano Zanin Martins': o nome mais curto (>= 2 palavras) está contido, em ordem, no mais longo."""
+    ta, tb = norm(a).split(), norm(b).split()
+    if not ta or not tb: return False
+    if ta == tb: return True
+    s, l = (ta, tb) if len(ta) <= len(tb) else (tb, ta)
+    if len(s) < 2 or s[0] != l[0]: return False
+    it = iter(l); return all(w in it for w in s)
+ELECTIONS = {"2023": "2022-10-02", "2019": "2018-10-07", "2015": "2014-10-05", "2027": "2026-10-04"}
+def _add_years(d, y):
+    try: return (datetime.date.fromisoformat(d).replace(year=datetime.date.fromisoformat(d).year + y) - datetime.timedelta(days=1)).isoformat()
+    except Exception: return None
+for n in nodes.values():
+    if n["type"] not in ("dept_head", "elected"): continue
+    for p in n.get("people") or []:
+        nm = norm(p.get("name") or "")
+        if not p.get("started_at") and nm in _wd_by_pos.get(n["id"], {}):
+            p["started_at"] = _wd_by_pos[n["id"]][nm]; p["started_at_source"] = "wikidata"
+        e = {"mode": None, "by_id": None, "by_name": None, "by_person": None, "by_person_id": None, "date": p.get("started_at"), "sabatina": None, "dou": None, "term_end": None, "term_note": None, "election": None}
+        sab = [s for s in n.get("sabatinas") or [] if s.get("name") and same_person(s["name"], p.get("name") or "") and s.get("deliberacao")]
+        if sab:
+            s = max(sab, key=lambda s: str(s["deliberacao"]))
+            e["sabatina"] = {"date": str(s["deliberacao"]), "sim": s.get("votos_sim"), "nao": s.get("votos_nao"), "msf": s.get("msf"), "url": s.get("url"), "resultado": s.get("resultado")}
+        dou = [d for d in n.get("dou") or [] if d.get("name") and same_person(d["name"], p.get("name") or "") and d.get("verb") in ("NOMEAR", "DESIGNAR")]
+        if dou:
+            d = max(dou, key=lambda d: str(d["date"])); e["dou"] = {"date": str(d["date"]), "url": d.get("url"), "act": d.get("act")}
+            if not e["date"]: e["date"] = str(d["date"]); p["started_at"] = e["date"]; p["started_at_source"] = "dou"
+        ref = e["date"] or (e["sabatina"] or {}).get("date")
+        if p.get("entry_mode") == "suplente": e["mode"] = "suplente"
+        elif n.get("eleito_por") == "br-eleitorado" or n["id"] in ("br-presidente-da-republica", "br-vice-presidente-da-republica"):
+            e["mode"] = "eleito"; e["by_id"] = "br-eleitorado"; e["by_name"] = "Povo brasileiro"
+            if e["date"]: e["election"] = ELECTIONS.get(e["date"][:4]); 
+            if n["id"] == "br-presidente-da-republica" or n["id"] == "br-vice-presidente-da-republica": e["election"] = "2022-10-30"; e["term_end"] = "2026-12-31"
+            elif n["id"] == "br-senador" and e["date"]: e["term_end"] = _add_years(e["date"], 8)
+            elif e["date"]: e["term_end"] = _add_years(e["date"], 4)
+        elif n.get("eleito_por"):
+            e["mode"] = "eleito_pares"; e["by_id"] = n["eleito_por"]; e["by_name"] = nodes[n["eleito_por"]]["name"]
+            if e["date"]: e["term_end"] = _add_years(e["date"], n.get("mandato_anos") or 2)
+        elif n.get("indicado_por") or n.get("nomeado_por"):
+            e["mode"] = "indicado" if n.get("indicado_por") and not n.get("nomeado_por") else "nomeado"
+            e["by_id"] = n.get("nomeado_por") or n.get("indicado_por"); e["by_name"] = nodes[e["by_id"]]["name"]
+            if e["by_id"] == "br-presidente-da-republica" and ref:
+                pr = president_at(ref)
+                if pr: e["by_person"] = pr["short"]; e["by_person_id"] = pr.get("person_id")
+            if n.get("mandato_anos"):
+                e["term_end"] = _add_years(e["date"], n["mandato_anos"]) if e["date"] else None; e["term_note"] = f"mandato de {n['mandato_anos']} anos"
+            elif n.get("sector") == "judiciario" or n.get("subtype") == "tribunal" or "tribunal" in n["id"] or "supremo" in n["id"]: e["term_note"] = "cargo vitalício; aposentadoria compulsória aos 75 anos"
+            elif n.get("sector") == "executivo" and not n.get("sabatina"): e["term_note"] = "livre nomeação e exoneração"
+        else: e["mode"] = p.get("entry_mode")
+        if p.get("acting"): e["acting"] = True
+        p["entry"] = e
 people_index = {}
 for n in nodes.values():
     if n["type"] not in ("dept_head", "elected") and not (n["type"] == "commission" and n.get("sector") == "legislativo"): continue
     for p in n.get("people") or []:
         if not p.get("id"): continue
         rec = people_index.setdefault(p["id"], {"id": p["id"], "name": p.get("name"), "party": p.get("party"), "uf": p.get("uf"), "positions": [], "image": p.get("image_url") or p.get("image_commons"), "source": p.get("source", "api")})
-        rec["positions"].append({"id": n["id"], "name": n["name"], "since": p.get("started_at"), "role": p.get("role")})
+        rec["positions"].append({"id": n["id"], "name": n["name"], "since": p.get("started_at"), "role": p.get("role"), "entry": p.get("entry"), "acting": bool(p.get("acting")), "note": p.get("note"), "source": p.get("source")})
         if p.get("party") and not rec.get("party"): rec["party"] = p["party"]
 # ordem: cargo/mandato primeiro; depois comissões (presidência antes de titularidade e suplência)
 _rank = lambda q: (0 if nodes[q["id"]]["type"] != "commission" else 1, {"Presidente": 0, "Vice-Presidente": 1, "1º Vice-Presidente": 1, "2º Vice-Presidente": 1, "Titular": 3, "Suplente": 4}.get(q.get("role") or "", 2))
