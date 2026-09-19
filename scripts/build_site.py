@@ -16,9 +16,10 @@ site = ROOT / "site"
 shutil.rmtree(site, ignore_errors=True); (site / "br").mkdir(parents=True)
 if (ROOT / "assets" / "img").exists(): shutil.copytree(ROOT / "assets" / "img", site / "img")
 core_js = (ROOT / "build" / "graph.core.js").read_text(encoding="utf-8")
-core_js = core_js.replace('"detail_base":"/nodes/"', f'"detail_base":"{PREFIX}/nodes/"').replace('"img_base":"/img/"', f'"img_base":"{PREFIX}/img/"')
+core_js = core_js.replace('"detail_base":"/nodes/"', f'"detail_base":"{PREFIX}/nodes/"').replace('"img_base":"/img/"', f'"img_base":"{PREFIX}/img/"').replace('"people_base":"/people/"', f'"people_base":"{PREFIX}/people/"')
 (site / "graph.br.js").write_text(core_js, encoding="utf-8")
 shutil.copytree(ROOT / "build" / "nodes", site / "nodes")
+shutil.copytree(ROOT / "build" / "people", site / "people")
 if (ROOT / "site_img_cache").exists(): pass
 tpl = tpl.replace('<script src="graph.br.js" defer></script>', f'<script src="{PREFIX}/graph.br.js" defer></script>')
 REL = {"elege": "elege", "nomeia": "nomeia", "sabatina": "sabatina e aprova", "fiscaliza": "fiscaliza", "supervisiona": "supervisiona", "aconselha": "aconselha", "chefia": "chefia", "membro_nato": "é membro nato de", "integra": "integra", "indica": "indica"}

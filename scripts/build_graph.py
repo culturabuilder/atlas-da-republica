@@ -78,6 +78,17 @@ if gen_path.exists():
         if n["type"] in ("department",) and n.get("sector") == "executivo" and not n.get("siorg_code") and n.get("subtype") not in ("orgao_presidencia",):
             merge_report["unmatched_curated"].append(n["id"])
 
+# ---- camada gerada (comissões do Congresso): nós novos + composição
+com_path = DATA / "generated" / "comissoes.yaml"
+if com_path.exists():
+    com = yaml.safe_load(open(com_path, encoding="utf-8")) or {}
+    for g in com.get("nodes") or []:
+        if g.get("_merge_only"):
+            if g["id"] in nodes and g.get("seats_count"): nodes[g["id"]]["seats_count"] = g["seats_count"]
+            continue
+        if g["id"] in nodes: warn(f"comissão gerada {g['id']} colide com id curado; ignorada"); continue
+        n = dict(g); n["_file"] = "generated/comissoes.yaml"; nodes[n["id"]] = n; merge_report["added"] += 1
+
 # ---- validação de nós
 for n in nodes.values():
     i = n["id"]
@@ -106,7 +117,7 @@ for n in nodes.values():
 
 # ---- ocupantes (camada gerada: Câmara e Senado)
 def _slug(s): return re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower()).strip("-")
-sources = [("generated", DATA / "generated" / "parlamentares.yaml")]
+sources = [("generated", DATA / "generated" / "parlamentares.yaml"), ("generated", DATA / "generated" / "comissoes.yaml")]
 # curados (páginas oficiais) têm precedência sobre o Wikidata
 of_path = DATA / "ocupantes-oficiais.yaml"
 if of_path.exists():
@@ -125,6 +136,25 @@ if of_path.exists():
             n["vacant_seats"] = n["seats"] - len(n["people"])
 sources.append(("generated", DATA / "generated" / "dou-assinaturas.yaml"))
 sources.append(("generated", DATA / "generated" / "wikipedia.yaml"))
+# aprovados pelo Senado (sabatina) sem ocupante conhecido: fallback com aviso, só para cargos sabatinados de mandato fixo
+_sab_p = DATA / "generated" / "sabatinas.yaml"
+if _sab_p.exists():
+    _sab = (yaml.safe_load(open(_sab_p, encoding="utf-8")) or {}).get("sabatinas") or []
+    _by_pos = {}
+    for r in sorted(_sab, key=lambda r: str(r.get("deliberacao") or ""), reverse=True):
+        pid = r.get("position_id"); nm = r.get("name")
+        if not pid or pid not in nodes or nodes[pid]["type"] != "dept_head" or not nm or r.get("resultado") != "APROVADA_NO_PLENARIO": continue
+        n = nodes[pid]
+        if not n.get("sabatina") or n.get("sector") != "executivo" or not n.get("mandato_anos"): continue
+        d = str(r.get("deliberacao") or "")
+        if d < (datetime.date.today() - datetime.timedelta(days=365 * n["mandato_anos"])).isoformat(): continue
+        lst = _by_pos.setdefault(pid, [])
+        if any(norm(x["name"]) == norm(nm) for x in lst) or len(lst) >= (n.get("seats") or 1): continue
+        lst.append({"id": "br-p-" + _slug(nm), "name": nm, "started_at": None, "entry_mode": "nomeado", "source": "sabatina", "source_url": r.get("url"), "verified": False,
+                    "note": f"Aprovado pelo Senado em {d[8:10]}/{d[5:7]}/{d[:4]} ({r.get('msf')}); posse ainda não conferida em página oficial."})
+    _sab_out = DATA / "generated" / "ocupantes-sabatinas.yaml"
+    _sab_out.write_text("# GERADO por scripts/build_graph.py a partir de sabatinas.yaml. Não edite à mão.\n" + yaml.dump({"positions": _by_pos}, allow_unicode=True, sort_keys=False, width=110), encoding="utf-8")
+    sources.append(("generated", _sab_out))
 sources.append(("generated", DATA / "generated" / "ocupantes.yaml"))
 for _, ppl_path in sources:
     if not ppl_path.exists(): continue
@@ -349,12 +379,15 @@ if dou_path.exists():
 changes.sort(key=lambda c: c["date"], reverse=True)
 people_index = {}
 for n in nodes.values():
-    if n["type"] not in ("dept_head", "elected"): continue
+    if n["type"] not in ("dept_head", "elected") and not (n["type"] == "commission" and n.get("sector") == "legislativo"): continue
     for p in n.get("people") or []:
         if not p.get("id"): continue
         rec = people_index.setdefault(p["id"], {"id": p["id"], "name": p.get("name"), "party": p.get("party"), "uf": p.get("uf"), "positions": [], "image": p.get("image_url") or p.get("image_commons"), "source": p.get("source", "api")})
         rec["positions"].append({"id": n["id"], "name": n["name"], "since": p.get("started_at"), "role": p.get("role")})
         if p.get("party") and not rec.get("party"): rec["party"] = p["party"]
+# ordem: cargo/mandato primeiro; depois comissões (presidência antes de titularidade e suplência)
+_rank = lambda q: (0 if nodes[q["id"]]["type"] != "commission" else 1, {"Presidente": 0, "Vice-Presidente": 1, "1º Vice-Presidente": 1, "2º Vice-Presidente": 1, "Titular": 3, "Suplente": 4}.get(q.get("role") or "", 2))
+for rec in people_index.values(): rec["positions"].sort(key=_rank)
 img_dir = ROOT / "assets" / "img"
 import base64, shutil as _sh
 # a mesma pessoa pode ter ids diferentes conforme a fonte (oficial, Wikidata, Câmara): reaproveita a foto pelo nome
@@ -390,8 +423,12 @@ for nid, n in nodes.items():
 core_edges = {eid: {k: v for k, v in e.items() if k in ("id", "type", "from", "to", "cite", "seats")} for eid, e in graph["edges"].items()}
 core_news = [{k: v for k, v in a.items() if k != "summary"} for a in news]
 core_changes = [{k: v for k, v in c.items() if k not in ("cargoText", "act")} for c in changes[:120]]
-core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), "uf": r.get("uf"), "positions": [q["id"] for q in r["positions"]], "photo": r.get("photo", False)} for pid, r in people_index.items()}  # sem photo_data: o site serve /img/
-core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "detail_base": "/nodes/", "img_base": "/img/"}
+core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), "uf": r.get("uf"), "positions": [q["id"] for q in r["positions"] if nodes[q["id"]]["type"] != "commission"], "photo": r.get("photo", False)} for pid, r in people_index.items()}  # sem photo_data: o site serve /img/
+# detalhe por pessoa (comissões, papéis, datas) carregado sob demanda
+_pp = OUT / "people"; _pp.mkdir(exist_ok=True)
+for pid, r in people_index.items():
+    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
 cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")
 print(f"   build/graph.core.js = {len(cjs)//1024} KB + {len(core_nodes)} arquivos de detalhe")

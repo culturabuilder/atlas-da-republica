@@ -429,11 +429,12 @@ function renderNews(a){
 function renderPerson(p){
   const svg = document.querySelector('svg.wheel'); svg.classList.add('dim');
   document.querySelectorAll('.node').forEach(a => a.classList.remove('sel','lit'));
-  (p.positions||[]).forEach(pid=>{ const el=document.querySelector(`.node[data-id="${pid}"]`); if(el) el.classList.add('lit'); });
+  const fullPos = p._full || (G.people&&G.people[p.id]&&G.people[p.id].positions) || []; const posIds = fullPos.length ? fullPos.map(q=>q.id) : (p.positions||[]);
+  posIds.forEach(pid=>{ const el=document.querySelector(`.node[data-id="${pid}"]`); if(el) el.classList.add('lit'); });
   document.getElementById('edges').innerHTML='';
   const na=(G.news||[]).filter(a=>(a.people||[]).some(q=>q.id===p.id)).slice(0,8);
   const pm=(G.power||[]).find(q=>q.id===p.id);
-  const pos=(p.positions||[]).map(pid=>{ const n=N[pid]; if(!n) return ''; const full=(G.people&&G.people[p.id]&&G.people[p.id].positions||[]).find(q=>q.id===pid)||{}; return link(pid, (full.role?esc(full.role)+' · ':'')+(full.since?'desde '+fmtDate(full.since):'')); }).join('');
+  const pos=posIds.map(pid=>{ const n=N[pid]; if(!n) return ''; const full=fullPos.find(q=>q.id===pid)||{}; return link(pid, (full.role?esc(full.role)+' · ':'')+(full.since?'desde '+fmtDate(full.since):'')); }).join('');
   const sab=[]; for (const pid of p.positions||[]) for (const sb of (N[pid]&&N[pid].sabatinas)||[]) if (sb.name && norm(sb.name)===norm(p.name)) sab.push(sb);
   content.innerHTML = `<div class="card"><div class="phead"><span class="big">${avatar(p)}</span><div><h1 style="margin:0">${esc(p.name)}</h1><p style="margin:4px 0 0;color:var(--ink-3)">${[p.party,p.uf].filter(Boolean).join(' · ')||'Pessoa'}${pm?` · na notícia ${pm.articles}× em 90 dias, última ${fmtDate(pm.last)}`:''}</p></div></div>
     <h3>Cargos</h3><div class="list">${pos||'<span class="seat">Sem cargo registrado.</span>'}</div>
@@ -444,7 +445,11 @@ function renderPerson(p){
 }
 function select(id){
   if (id && id.startsWith('news:')) { const a=(G.news||[]).find(x=>x.id===id.slice(5)); if (a) { current=null; renderNews(a); return; } }
-  if (P[id]) { current = null; const need = (P[id].positions||[]).filter(pid=>N[pid]&&N[pid].description===undefined&&G.detail_base); if (need.length) { Promise.all(need.map(loadDetail)).then(()=>renderPerson(P[id])); } else renderPerson(P[id]); return; }
+  if (P[id]) { current = null;
+    if (G.people_base && !P[id]._full) { content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; fetch(G.people_base + id + '.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{ P[id]._full = d.positions || []; if (location.hash.slice(1)===id) select(id); }); return; }
+    const full = P[id]._full || (G.people&&G.people[id]&&G.people[id].positions) || [];
+    const ids = full.length ? full.map(q=>q.id) : (P[id].positions||[]);
+    const need = ids.filter(pid=>N[pid]&&N[pid].description===undefined&&G.detail_base); if (need.length) { Promise.all(need.map(loadDetail)).then(()=>renderPerson(P[id])); } else renderPerson(P[id]); return; }
   if (N[id] && N[id].description === undefined && G.detail_base) { loadDetail(id).then(() => select(id)); content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; return; }
   current = N[id] ? id : null;
   const svg = document.querySelector('svg.wheel'); const eg = document.getElementById('edges');
@@ -541,11 +546,11 @@ function renderNode(n){
       const top = Object.entries(parties).sort((a,b)=>b[1]-a[1]);
       const max = top[0][1];
       const bars = (people.length >= 10 && people.some(p=>p.party)) ? `<div class="parties">${top.slice(0,14).map(([k,v])=>`<div class="pr"><span class="pk">${esc(k)}</span><span class="pb"><i style="width:${Math.round(100*v/max)}%"></i></span><span class="pv">${v}</span></div>`).join('')}${top.length>14?`<div class="pr" style="color:var(--ink-3)"><span class="pk">+${top.length-14}</span><span class="pb"></span><span class="pv">${top.slice(14).reduce((a,[,v])=>a+v,0)}</span></div>`:''}</div>` : '';
-      const src = p => p.source==='oficial'?`página oficial${p.checked_at?' · conferido em '+fmtDate(p.checked_at):''}`:p.source==='wikidata'?'nome via Wikidata, sem conferência oficial':p.source==='wikipedia'?'nome via Wikipédia, sem conferência oficial':p.source==='dou'?'assina os atos do órgão no DOU':p.source==='portal'?'Portal da Transparência':'';
+      const src = p => p.source==='oficial'?`página oficial${p.checked_at?' · conferido em '+fmtDate(p.checked_at):''}`:p.source==='wikidata'?'nome via Wikidata, sem conferência oficial':p.source==='wikipedia'?'nome via Wikipédia, sem conferência oficial':p.source==='dou'?'assina os atos do órgão no DOU':p.source==='portal'?'Portal da Transparência':p.source==='sabatina'?'aprovado pelo Senado; posse não conferida':p.source==='senado'||p.source==='camara'?'composição oficial da Casa':'';
       const item = p => `<a class="person" href="${P[p.id]?'#'+p.id:(p.source_url||'#')}" ${P[p.id]?'':'target="_blank" rel="noopener"'} title="${esc(src(p))}"><span class="av" style="overflow:hidden">${avatar(p)}</span><span class="pn">${esc(p.name)}${p.role?` <em>${esc(p.role)}</em>`:''}</span><span class="pm">${[p.party,p.uf].filter(Boolean).join(' · ')}${p.entry_mode==='suplente'?' · suplente':''}${p.started_at&&!p.party?fmtDate(p.started_at):''}${p.source==='wikidata'?' · <span style="color:var(--jud)">wikidata</span>':''}${p.note&&!p.party?' · '+esc(p.note):''}</span></a>`;
       const shown = people.length > 24 ? 24 : people.length;
       const vac = n.vacant_seats?`<div class="seat">${n.vacant_seats} ${n.vacant_seats>1?'vagas abertas':'vaga aberta'} segundo a página oficial.</div>`:'';
-      const srcNote = people[0]&&people[0].source==='oficial'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Fonte: <a href="${people[0].source_url}" target="_blank" rel="noopener">página oficial</a>, conferida em ${fmtDate(people[0].checked_at)}.</p>`:people[0]&&people[0].source==='wikidata'?`<p style="font-size:12.5px;color:var(--jud);margin:2px 0 6px">Nome do ocupante obtido do Wikidata, ainda sem conferência em página oficial.</p>`:people[0]&&people[0].source==='wikipedia'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Nome do ocupante obtido da Wikipédia, ainda sem conferência em página oficial.</p>`:people[0]&&people[0].source==='dou'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Ocupante identificado pela assinatura dos atos do órgão no Diário Oficial.</p>`:'';
+      const srcNote = people[0]&&people[0].source==='oficial'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Fonte: <a href="${people[0].source_url}" target="_blank" rel="noopener">página oficial</a>, conferida em ${fmtDate(people[0].checked_at)}.</p>`:people[0]&&people[0].source==='sabatina'?`<p style="font-size:12.5px;color:var(--jud);margin:2px 0 6px">Nome aprovado pelo Senado em sabatina; a posse ainda não foi conferida em página oficial.</p>`:people[0]&&people[0].source==='wikidata'?`<p style="font-size:12.5px;color:var(--jud);margin:2px 0 6px">Nome do ocupante obtido do Wikidata, ainda sem conferência em página oficial.</p>`:people[0]&&people[0].source==='wikipedia'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Nome do ocupante obtido da Wikipédia, ainda sem conferência em página oficial.</p>`:people[0]&&people[0].source==='dou'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Ocupante identificado pela assinatura dos atos do órgão no Diário Oficial.</p>`:'';
       seats = `<h3>Ocupante${people.length>1?'s':''} <span style="font-weight:400">· ${people.length}${n.seats>people.length?` de ${n.seats}`:''}</span></h3>${srcNote}${vac}${bars}<div class="people">${people.slice(0,shown).map(item).join('')}</div>${people.length>shown?`<details class="rel"><summary>Ver todos os ${people.length}</summary><div class="people">${people.slice(shown).map(item).join('')}</div></details>`:''}`;
     }
   }

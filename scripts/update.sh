@@ -9,6 +9,7 @@ FAST=${1:-}
 echo "== SIORG";           $PY etl/siorg.py ${FAST:+--no-full} --cache build
 echo "== Câmara/Senado";   $PY etl/parlamentares.py --cache build
 echo "== Sabatinas";       $PY etl/sabatinas.py
+echo "== Comissões";       $PY etl/comissoes.py --cache build/cache-comissoes || echo "comissões falhou (segue)"
 echo "== Build (1/2)";     $PY scripts/build_graph.py > /dev/null
 [ -z "$FAST" ] && { echo "== Wikidata"; $PY etl/wikidata.py; }
 echo "== Notícias";        $PY etl/noticias.py
