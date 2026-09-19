@@ -1,6 +1,6 @@
 # Atlas da República
 
-Site: https://culturabuilder.github.io/atlas-da-republica/ · Código MIT · Dados CC BY 4.0
+Site: https://atlasdarepublica.org · Código MIT · Dados CC BY 4.0
 
 Mapa navegável do governo federal brasileiro: cada órgão, cargo e colegiado da União e as relações legais
 entre eles (quem elege, nomeia, sabatina, supervisiona, fiscaliza). Réplica, adaptada ao Brasil, da lógica do

@@ -78,6 +78,7 @@ home = home.replace('<div id="content"></div>', '<div id="content"></div><div id
 home = home.replace('href="/br/', f'href="{PREFIX}/br/')
 (site / "index.html").write_text(home, encoding="utf-8")
 (site / ".nojekyll").write_text("", encoding="utf-8")
+if "atlasdarepublica.org" in BASE: (site / "CNAME").write_text("atlasdarepublica.org\n", encoding="utf-8")
 today = datetime.date.today().isoformat()
 (site / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
 (site / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
