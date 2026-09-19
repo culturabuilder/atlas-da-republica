@@ -7,7 +7,7 @@ import json, io, re, sys, time, pathlib, unicodedata, urllib.request
 import yaml
 from PIL import Image, ImageOps
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-OUT = ROOT / "site" / "img"; OUT.mkdir(parents=True, exist_ok=True)
+OUT = ROOT / "assets" / "img"; OUT.mkdir(parents=True, exist_ok=True)
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36", "Accept": "image/*,*/*;q=0.8"}
 def norm(s): return re.sub(r"[^a-z ]", "", unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode().lower()).strip()
 def main():

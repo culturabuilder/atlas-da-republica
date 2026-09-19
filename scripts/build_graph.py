@@ -355,7 +355,7 @@ for n in nodes.values():
         rec = people_index.setdefault(p["id"], {"id": p["id"], "name": p.get("name"), "party": p.get("party"), "uf": p.get("uf"), "positions": [], "image": p.get("image_url") or p.get("image_commons"), "source": p.get("source", "api")})
         rec["positions"].append({"id": n["id"], "name": n["name"], "since": p.get("started_at"), "role": p.get("role")})
         if p.get("party") and not rec.get("party"): rec["party"] = p["party"]
-img_dir = ROOT / "site" / "img"
+img_dir = ROOT / "assets" / "img"
 import base64, shutil as _sh
 # a mesma pessoa pode ter ids diferentes conforme a fonte (oficial, Wikidata, Câmara): reaproveita a foto pelo nome
 _man_p = ROOT / "build" / "fotos-manifesto.json"

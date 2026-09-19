@@ -5,7 +5,7 @@ Uso: .venv/bin/python etl/fotos.py [--limit N]
 import json, io, sys, re, time, pathlib, argparse, urllib.request, urllib.parse, urllib.error
 from PIL import Image, ImageOps
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-OUT = ROOT / "site" / "img"; OUT.mkdir(parents=True, exist_ok=True)
+OUT = ROOT / "assets" / "img"; OUT.mkdir(parents=True, exist_ok=True)
 UA = {"User-Agent": "atlas-da-republica/0.1 (fotos; contato via github)"}
 
 def fetch(url):

@@ -7,20 +7,20 @@ Uso: .venv/bin/python scripts/build_site.py [--base https://atlas.exemplo.br]
 """
 import json, pathlib, argparse, html, shutil, re, datetime
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-ap = argparse.ArgumentParser(); ap.add_argument("--base", default="https://atlasdarepublica.org"); a = ap.parse_args()
+ap = argparse.ArgumentParser(); ap.add_argument("--base", default="https://atlasdarepublica.org"); ap.add_argument("--prefix", default=""); a = ap.parse_args()
+PREFIX = a.prefix.rstrip("/")
 BASE = a.base.rstrip("/")
 G = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8")); N = G["nodes"]; E = G["edges"]
 tpl = (ROOT / "web" / "index.html").read_text(encoding="utf-8")
 site = ROOT / "site"
-img_keep = ROOT / "build" / "img"
-if (site / "img").exists():
-    shutil.rmtree(img_keep, ignore_errors=True); shutil.move(str(site / "img"), str(img_keep))
 shutil.rmtree(site, ignore_errors=True); (site / "br").mkdir(parents=True)
-if img_keep.exists(): shutil.copytree(img_keep, site / "img")
-shutil.copy(ROOT / "build" / "graph.core.js", site / "graph.br.js")
+if (ROOT / "assets" / "img").exists(): shutil.copytree(ROOT / "assets" / "img", site / "img")
+core_js = (ROOT / "build" / "graph.core.js").read_text(encoding="utf-8")
+core_js = core_js.replace('"detail_base":"/nodes/"', f'"detail_base":"{PREFIX}/nodes/"').replace('"img_base":"/img/"', f'"img_base":"{PREFIX}/img/"')
+(site / "graph.br.js").write_text(core_js, encoding="utf-8")
 shutil.copytree(ROOT / "build" / "nodes", site / "nodes")
 if (ROOT / "site_img_cache").exists(): pass
-tpl = tpl.replace('<script src="graph.br.js" defer></script>', '<script src="/graph.br.js" defer></script>')
+tpl = tpl.replace('<script src="graph.br.js" defer></script>', f'<script src="{PREFIX}/graph.br.js" defer></script>')
 REL = {"elege": "elege", "nomeia": "nomeia", "sabatina": "sabatina e aprova", "fiscaliza": "fiscaliza", "supervisiona": "supervisiona", "aconselha": "aconselha", "chefia": "chefia", "membro_nato": "é membro nato de", "integra": "integra", "indica": "indica"}
 TYPE_SCHEMA = {"department": "GovernmentOrganization", "elected": "GovernmentOrganization", "commission": "GovernmentOrganization", "advisory": "GovernmentOrganization", "dept_head": "Role", "constituency": "Organization"}
 esc = html.escape
@@ -61,7 +61,8 @@ def person_page(p):
     head = f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc[:300])}">\n<link rel="canonical" href="{url}">\n<meta property="og:title" content="{esc(title)}"><meta property="og:url" content="{url}"><meta property="og:type" content="profile">\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
     ssr = f'<div id="ssr" hidden><article><h1>{esc(p["name"])}</h1><p>{esc(p.get("party") or "")} {esc(p.get("uf") or "")}</p><h2>Cargos</h2><ul>{pos}</ul><p><a href="/">Atlas da República</a></p></article></div>'
     out = tpl.replace("<title>Atlas da República</title>\n", head, 1).replace('<div id="content"></div>', '<div id="content"></div>' + ssr, 1)
-    return out.replace("draw();\nselect(location.hash.slice(1));", f"draw();\nselect(location.hash.slice(1) || {json.dumps(p['id'])});", 1)
+    out = out.replace("draw();\nselect(location.hash.slice(1));", f"draw();\nselect(location.hash.slice(1) || {json.dumps(p['id'])});", 1)
+    return out.replace('href="/br/', f'href="{PREFIX}/br/').replace('href="/"', f'href="{PREFIX}/"')
 
 urls = [f"{BASE}/"]
 PEOPLE = G.get("people", {})
@@ -74,7 +75,9 @@ for n in N.values():
 home = tpl.replace("<title>Atlas da República</title>\n", f'<title>Atlas da República</title>\n<meta name="description" content="Mapa navegável do governo federal brasileiro: órgãos, cargos, colegiados e as relações legais entre eles, com citação da norma.">\n<link rel="canonical" href="{BASE}/">\n', 1)
 links = "".join(f'<li><a href="/br/{n["id"]}/">{esc(n["name"])}</a></li>' for n in sorted(N.values(), key=lambda x: x["name"]) if n["type"] != "dept_head")
 home = home.replace('<div id="content"></div>', '<div id="content"></div><div id="ssr" hidden><h1>Atlas da República</h1><ul>' + links + '</ul></div>', 1)
+home = home.replace('href="/br/', f'href="{PREFIX}/br/')
 (site / "index.html").write_text(home, encoding="utf-8")
+(site / ".nojekyll").write_text("", encoding="utf-8")
 today = datetime.date.today().isoformat()
 (site / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
 (site / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
