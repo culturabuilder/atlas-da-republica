@@ -139,6 +139,23 @@ p{margin:8px 0;color:var(--ink-2)}
 .pm .bar{height:6px;background:var(--line-2);border-radius:3px;overflow:hidden;grid-column:2/4}
 .pm .bar i{display:block;height:100%;background:var(--povo)}
 .pm .n{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+.pm .row{grid-template-columns:36px 1fr auto;align-items:start}
+.pm .row .av{width:36px;height:36px}
+.pm .who{display:flex;flex-direction:column;gap:2px}
+.pm .who a{font-weight:600}
+.pm .job{font-size:12.5px;color:var(--ink-3)}
+.pm .latest{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+.pm .latest a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+.spark{display:inline-flex;gap:1px;align-items:end;height:16px;vertical-align:middle;margin-left:6px}
+.spark i{display:block;width:4px;background:var(--povo);opacity:.8;min-height:1px;border-radius:1px}
+.spark i.z{background:var(--line)}
+.news .it .who{display:flex;flex-wrap:wrap;gap:6px;margin-top:5px}
+.news .it .who a{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--ink);text-decoration:none;background:var(--panel);border:1px solid var(--line-2);border-radius:14px;padding:2px 8px 2px 2px}
+.news .it .who .av{width:20px;height:20px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:8px;font-weight:600;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.news .it .who .av img{width:100%;height:100%;object-fit:cover}
+.news .it .who a.ent{padding-left:8px;color:var(--accent)}
+.plinks{font-size:12.5px;color:var(--ink-3);margin:6px 0 0}
+.plinks a{color:var(--ink-2);text-decoration:none}
 .person .av img{width:30px;height:30px;border-radius:50%;object-fit:cover;display:block}
 .sab{font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line-2);display:grid;grid-template-columns:1fr auto;gap:2px 10px}
 .sab:last-child{border-bottom:0}
@@ -333,12 +350,13 @@ function renderPerson(p){
   (p.positions||[]).forEach(pid=>{ const el=document.querySelector(`.node[data-id="${pid}"]`); if(el) el.classList.add('lit'); });
   document.getElementById('edges').innerHTML='';
   const na=(G.news||[]).filter(a=>(a.people||[]).some(q=>q.id===p.id)).slice(0,8);
+  const pm=(G.power||[]).find(q=>q.id===p.id);
   const pos=(p.positions||[]).map(pid=>{ const n=N[pid]; if(!n) return ''; const full=(G.people&&G.people[p.id]&&G.people[p.id].positions||[]).find(q=>q.id===pid)||{}; return link(pid, (full.role?esc(full.role)+' · ':'')+(full.since?'desde '+fmtDate(full.since):'')); }).join('');
   const sab=[]; for (const pid of p.positions||[]) for (const sb of (N[pid]&&N[pid].sabatinas)||[]) if (sb.name && norm(sb.name)===norm(p.name)) sab.push(sb);
-  content.innerHTML = `<div class="card"><div class="phead"><span class="big">${avatar(p)}</span><div><h1 style="margin:0">${esc(p.name)}</h1><p style="margin:4px 0 0;color:var(--ink-3)">${[p.party,p.uf].filter(Boolean).join(' · ')||'Pessoa'}</p></div></div>
+  content.innerHTML = `<div class="card"><div class="phead"><span class="big">${avatar(p)}</span><div><h1 style="margin:0">${esc(p.name)}</h1><p style="margin:4px 0 0;color:var(--ink-3)">${[p.party,p.uf].filter(Boolean).join(' · ')||'Pessoa'}${pm?` · na notícia ${pm.articles}× em 90 dias, última ${fmtDate(pm.last)}`:''}</p></div></div>
     <h3>Cargos</h3><div class="list">${pos||'<span class="seat">Sem cargo registrado.</span>'}</div>
     ${sab.length?`<h3>Sabatinas no Senado</h3>${sab.map(sb=>`<div class="sab"><span>${esc((sb.cargo||'').slice(0,90))}</span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:''}</span></div>`).join('')}`:''}
-    ${na.length?`<h3>Na notícia</h3><div class="news">${na.map(a=>`<div class="it"><a class="t" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a><span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('')}</div>`:''}
+    ${na.length?`<h3>Na notícia</h3><div class="news">${na.map(a=>`<div class="it"><a class="t" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a>${(()=>{ const ps=(a.people||[]).filter(q=>q.id!==p.id).slice(0,4).map(q=>`<a href="#${P[q.id]?q.id:q.position}"><span class="av">${avatar(P[q.id]||{id:q.id,name:q.name})}</span>${esc(q.name)}</a>`); const es=(a.entities||[]).slice(0,3).map(id=>N[id]?`<a class="ent" href="#${id}">${esc(N[id].aliases&&N[id].aliases[0]&&N[id].aliases[0].length<=8?N[id].aliases[0]:N[id].name)}</a>`:'').filter(Boolean); return ps.length||es.length?`<span class="who">${ps.join('')}${es.join('')}</span>`:''; })()}<span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('')}</div>`:''}
   </div>`;
   document.getElementById('panel').scrollTo({top:0});
 }
@@ -375,7 +393,8 @@ function inWin(d){ if(!d) return false; const t=new Date(d+'T00:00:00'); return 
 function renderHome(){
   const st = G.stats; const bt = st.by_type, bs = st.by_sector, bsub = st.by_subtype;
   const subRows = [['ministerio','Ministérios'],['orgao_presidencia','Órgãos da Presidência'],['agencia_reguladora','Agências reguladoras'],['autarquia','Autarquias'],['fundacao','Fundações'],['empresa_publica','Empresas públicas'],['sociedade_economia_mista','Sociedades de economia mista'],['tribunal','Tribunais'],['ministerio_publico','Ministério Público'],['forca_armada','Forças Armadas'],['instituicao_de_ensino','Universidades e institutos federais']];
-  const news = (G.news||[]).filter(a=>inWin(a.date)).slice(0,10).map(a=>`<div class="it"><a class="t" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a>${a.summary_html?`<span class="s">${a.summary_html}</span>`:''}<span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('');
+  const chips = a => { const ps=(a.people||[]).slice(0,4).map(p=>`<a href="#${P[p.id]?p.id:p.position}" title="${esc(N[p.position]?N[p.position].name:'')}"><span class="av">${avatar(P[p.id]||{id:p.id,name:p.name})}</span>${esc(p.name)}</a>`); const es=(a.entities||[]).slice(0,3).map(id=>N[id]?`<a class="ent" href="#${id}">${esc(N[id].aliases&&N[id].aliases[0]&&N[id].aliases[0].length<=8?N[id].aliases[0]:N[id].name)}</a>`:'').filter(Boolean); return ps.length||es.length?`<span class="who">${ps.join('')}${es.join('')}</span>`:''; };
+  const news = (G.news||[]).filter(a=>inWin(a.date)).slice(0,10).map(a=>`<div class="it"><a class="t" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a>${a.summary_html?`<span class="s">${a.summary_html}</span>`:''}${chips(a)}<span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('');
   const allChg = (G.changes||[]);
   const chgWin = allChg.filter(c=>inWin(c.date));
   const kindLabel = c => c.kind==='sabatina'?(c.result==='APROVADA_NO_PLENARIO'?'aprovado':c.result==='REJEITADO_PLENARIO'?'rejeitado':'sabatina'):c.kind==='nomeacao'?'nomeado':c.kind==='exoneracao'?'exonerado':c.kind==='designacao'?'designado':c.kind==='entrada'?(c.acting?'interino':'entrou'):c.kind==='saida'?'saiu':(c.acting?'interino':'posse');
@@ -388,7 +407,11 @@ function renderHome(){
   const counters = `<div class="stats" style="margin-bottom:10px"><div class="stat"><div class="n">${st.vacant_seats_known||0}</div><div class="l">cadeiras vagas conhecidas</div></div><div class="stat"><div class="n">${st.acting_officials||0}</div><div class="l">interinos</div></div><div class="stat"><div class="n" style="font-size:18px">${st.last_change?fmtDate(st.last_change):'—'}</div><div class="l">última mudança</div></div></div>`;
   const winSel = `<span class="win" role="group" aria-label="Janela de tempo">${[7,30,90].map(w=>`<button aria-pressed="${win===w}" data-win="${w}">${w}D</button>`).join('')}</span>`;
   const pw = (G.power||[]); const pmax = pw.length?pw[0].articles:1;
-  const power = pw.slice(0,12).map(p=>`<div class="row"><span class="av" style="width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;overflow:hidden">${avatar(p)}</span><a href="#${P[p.id]?p.id:p.position}" style="color:var(--ink);text-decoration:none">${esc(p.name)}</a><span class="n">${p.articles} art.${p.last?` · ${fmtDate(p.last)}`:''}</span><span class="bar"><i style="width:${Math.round(100*p.articles/pmax)}%"></i></span></div>`).join('');
+  const ago = d => { if(!d) return ''; const days=Math.round((Date.now()-new Date(d+'T00:00:00'))/86400000); return days<=0?'hoje':days===1?'ontem':`há ${days} dias`; };
+  const spark = w => `<span class="spark" title="menções por semana, 12 semanas">${(w||[]).map(v=>`<i class="${v?'':'z'}" style="height:${Math.max(1,Math.round(14*v/Math.max(1,...(w||[1]))))}px"></i>`).join('')}</span>`;
+  const pl = (G.power_links||[]); const byId = Object.fromEntries(pw.map(p=>[p.id,p]));
+  const power = pw.slice(0,14).map(p=>{ const job = N[p.position] ? N[p.position].name : ''; const rel = pl.filter(l=>l.from===p.id||l.to===p.id).map(l=>{ const o = byId[l.from===p.id?l.to:l.from]; if(!o) return ''; return `${l.from===p.id?REL[l.type][0].toLowerCase():REL[l.type][1].toLowerCase()} <a href="#${o.id}">${esc(o.name.split(' ').slice(0,2).join(' '))}</a>`; }).filter(Boolean);
+    return `<div class="row"><span class="av" style="border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;overflow:hidden">${avatar(p)}</span><span class="who"><a href="#${P[p.id]?p.id:p.position}" style="color:var(--ink);text-decoration:none">${esc(p.name)}</a><span class="job">${esc(job)}</span>${p.latest?`<span class="latest"><a href="${p.latest.url}" target="_blank" rel="noopener">${esc((p.latest.title||'').slice(0,90))}</a> · ${esc(p.latest.source||'')}</span>`:''}${rel.length?`<span class="plinks">${rel.slice(0,3).join(' · ')}</span>`:''}</span><span class="n">${p.articles} art.<br><span style="color:var(--povo)">${ago(p.last)}</span>${spark(p.weeks)}</span></div>`; }).join('');
   const tab = (id,label)=>`<button role="tab" aria-selected="${homeTab===id}" data-tab="${id}">${label}</button>`;
   // Transição 2027: tudo que o Presidente nomeia (aresta nomeia a partir da Presidência), por setor
   const pr = 'br-presidente-da-republica';
@@ -459,7 +482,7 @@ function renderNode(n){
     ${kids?`<h3>Órgãos integrados e vinculados <span style="font-weight:400">· ${n.children.length}</span></h3><div class="list">${kids}</div>`:''}
   </div>
   ${n.sabatinas&&n.sabatinas.length?`<div class="card"><h2>Sabatinas no Senado <span style="color:var(--ink-3);font-weight:500">· ${n.sabatinas.length}</span></h2>${n.sabatinas.slice(0,12).map(sb=>`<div class="sab"><span><a href="${sb.url}" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:none">${esc(sb.name||sb.msf)}</a><br><span style="color:var(--ink-3);font-size:12.5px">${esc((sb.cargo||'').slice(0,90))}</span></span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:sb.resultado==='REJEITADO_PLENARIO'?'rejeitado':(sb.resultado||'').toLowerCase().replace(/_/g,' ')}</span></div>`).join('')}</div>`:''}
-  ${(()=>{ const na=(G.news||[]).filter(a=>(a.entities||[]).includes(n.id)||(a.people||[]).some(p=>p.position===n.id)).slice(0,6); return na.length?`<div class="card"><h2>Na notícia</h2><div class="news">${na.map(a=>`<div class="it"><a class="t" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a><span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('')}</div></div>`:''; })()}
+  ${(()=>{ const na=(G.news||[]).filter(a=>(a.entities||[]).includes(n.id)||(a.people||[]).some(p=>p.position===n.id)).slice(0,6); return na.length?`<div class="card"><h2>Na notícia</h2><div class="news">${na.map(a=>`<div class="it"><a class="t" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a>${(()=>{ const ps=(a.people||[]).filter(q=>q.position!==n.id).slice(0,4).map(q=>`<a href="#${P[q.id]?q.id:q.position}"><span class="av">${avatar(P[q.id]||{id:q.id,name:q.name})}</span>${esc(q.name)}</a>`); return ps.length?`<span class="who">${ps.join('')}</span>`:''; })()}<span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('')}</div></div>`:''; })()}
   <div class="card"><h2>Relações <span style="color:var(--ink-3);font-weight:500">· ${n.edges.length}</span></h2>${rels||'<p>Nenhuma relação registrada.</p>'}</div>`;
   document.getElementById('panel').scrollTo({top:0});
 }

@@ -269,12 +269,29 @@ if news_path.exists():
         a["title_html"] = mark(a.get("title") or "", a)
     news = [a for a in arts if a.get("entities") or a.get("people")][:60]
     mentions = {}
-    for a in arts:
+    today_d = datetime.date.today(); cutoff7 = (today_d - datetime.timedelta(days=7)).isoformat()
+    for a in sorted(arts, key=lambda a: a.get("date") or "", reverse=True):
         if (a.get("date") or "") < cutoff90: continue
         for p in a.get("people") or []:
-            m = mentions.setdefault(p["id"], {"id": p["id"], "name": p["name"], "position": p.get("position"), "articles": 0, "last": None})
-            m["articles"] += 1; m["last"] = max(m["last"] or "", a.get("date") or "")
-    power = sorted(mentions.values(), key=lambda m: -m["articles"])[:20]
+            m = mentions.setdefault(p["id"], {"id": p["id"], "name": p["name"], "position": p.get("position"), "articles": 0, "recent": 0, "last": None, "weeks": [0] * 12, "latest": None})
+            m["articles"] += 1
+            if (a.get("date") or "") >= cutoff7: m["recent"] += 1
+            if not m["latest"]: m["latest"] = {"title": a.get("title"), "url": a.get("url"), "source": a.get("publication"), "date": a.get("date")}
+            m["last"] = max(m["last"] or "", a.get("date") or "")
+            try:
+                wk = (today_d - datetime.date.fromisoformat(a["date"])).days // 7
+                if 0 <= wk < 12: m["weeks"][11 - wk] += 1
+            except Exception: pass
+    for m in mentions.values():
+        m["heat"] = round(m["recent"] * 2 + m["articles"] / 10, 2)
+    power = sorted(mentions.values(), key=lambda m: (-m["heat"], -m["articles"]))[:20]
+    # relações do grafo entre pessoas do power map (quem nomeia quem), como as linhas do CivLab
+    pos_of = {m["position"]: m["id"] for m in power if m.get("position")}
+    power_links = []
+    for e in edges:
+        if e["type"] in ("nomeia", "chefia", "sabatina", "indica") and e["from"] in pos_of and e["to"] in pos_of:
+            power_links.append({"from": pos_of[e["from"]], "to": pos_of[e["to"]], "type": e["type"]})
+    stats["power_links"] = len(power_links)
     stats["articles_90d"] = sum(1 for a in arts if (a.get("date") or "") >= cutoff90); stats["news_sources"] = len(store.get("feeds") or [])
 stats["sabatinas"] = len(sabatinas)
 # mudanças: sabatinas deliberadas + posses recentes (started_at) como eventos
@@ -358,7 +375,7 @@ for rec in people_index.values():
     if f.exists() and rec.get("source") != "api":
         rec["photo_data"] = "data:image/jpeg;base64," + base64.b64encode(f.read_bytes()).decode()
 stats["people"] = len(people_index)
-graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "changes": changes[:200], "people": people_index}
+graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
 HEAVY = ("description", "siorg_description", "people", "sabatinas", "budget", "dou", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
@@ -374,7 +391,7 @@ core_edges = {eid: {k: v for k, v in e.items() if k in ("id", "type", "from", "t
 core_news = [{k: v for k, v in a.items() if k != "summary"} for a in news]
 core_changes = [{k: v for k, v in c.items() if k not in ("cargoText", "act")} for c in changes[:120]]
 core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), "uf": r.get("uf"), "positions": [q["id"] for q in r["positions"]], "photo": r.get("photo", False)} for pid, r in people_index.items()}  # sem photo_data: o site serve /img/
-core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "changes": core_changes, "people": core_people, "detail_base": "/nodes/", "img_base": "/img/"}
+core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "detail_base": "/nodes/", "img_base": "/img/"}
 cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")
 print(f"   build/graph.core.js = {len(cjs)//1024} KB + {len(core_nodes)} arquivos de detalhe")

@@ -49,15 +49,36 @@ def parse(xml_bytes):
         items.append({"title": strip_html(t.text if t is not None else ""), "url": (l.get("href") if l is not None else ""), "summary": strip_html(s.text if s is not None else "")[:600], "date": (d.text[:10] if d is not None and d.text else None)})
     return [i for i in items if i["title"] and i["url"]]
 
+COMMON = set("silva santos oliveira souza sousa lima pereira costa rodrigues almeida nascimento ferreira araujo carvalho gomes martins rocha ribeiro alves monteiro mendes barros freitas barbosa pinto moura cavalcanti dias castro campos cardoso correia cunha teixeira nunes moreira lopes vieira fernandes andrade ramos machado batista medeiros melo marques reis duarte farias nogueira borges rezende xavier guimaraes jesus torres sales azevedo neto filho junior gomes lacerda amaral leal pires ferraz gonçalves goncalves maciel".split())
+def person_forms(nm, apelidos):
+    """Formas pelas quais um nome pode aparecer: nome completo, primeiro+último, apelidos curados e sobrenome raro."""
+    forms = set()
+    w = [x for x in nm.split() if x.lower() not in ("de", "da", "do", "das", "dos", "e")]
+    if len(w) >= 2:
+        forms.add(nm); forms.add(w[0] + " " + w[-1])
+        if len(w) >= 3: forms.add(w[0] + " " + w[1]); forms.add(w[-2] + " " + w[-1])
+        # sobrenome sozinho só via apelidos curados: "Federal", "Flávio" e afins geram falsos positivos
+    for a in apelidos.get(nm, []) or []: forms.add(a)
+    return [f for f in forms if len(norm(f)) >= 4]
+
 def build_matchers(graph):
     """Lista de (regex, id, tipo) por nome/alias de órgão e por nome de pessoa."""
+    import yaml
+    ap_path = ROOT / "data" / "apelidos.yaml"
+    apelidos = yaml.safe_load(open(ap_path, encoding="utf-8")) if ap_path.exists() else {}
     ms = []
+    seen_forms = {}
     for n in graph["nodes"].values():
-        if n["type"] == "dept_head":
+        if n["type"] in ("dept_head", "elected"):
             for p in n.get("people") or []:
                 nm = p.get("name") or ""
-                if len(nm.split()) >= 2: ms.append((re.compile(r"\b" + re.escape(norm(nm)) + r"\b"), p["id"], "person", n["id"], nm))
-            continue
+                if len(nm.split()) < 2: continue
+                for f in person_forms(nm, apelidos):
+                    key = norm(f)
+                    if key in seen_forms and seen_forms[key] != p["id"]: seen_forms[key] = None; continue  # forma ambígua entre pessoas: descarta
+                    seen_forms[key] = p["id"]
+                    ms.append((re.compile(r"\b" + re.escape(key) + r"\b"), p["id"], "person", n["id"], nm, key))
+            if n["type"] == "dept_head": continue
         names = [n["name"]] + list(n.get("aliases") or [])
         for a in names:
             a2 = norm(a)
@@ -66,6 +87,8 @@ def build_matchers(graph):
             multiword = len(a2.split()) >= 2 and len(a2) >= 12
             if not (is_sigla or multiword): continue  # "Presidente", "Justiça", "Fazenda" sozinhos são genéricos demais
             ms.append((re.compile(r"\b" + re.escape(a2) + r"\b"), n["id"], "entity", None, a))
+    ms = [m for m in ms if len(m) < 6 or seen_forms.get(m[5]) == m[1]]
+    ms = [m[:5] for m in ms]
     # nomes mais longos primeiro para evitar que "Senado" capture antes de "Senado Federal"
     ms.sort(key=lambda m: -len(m[4]))
     return ms
@@ -82,6 +105,9 @@ def main():
     graph = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8"))
     matchers = build_matchers(graph)
     store = json.load(open(OUT, encoding="utf-8")) if OUT.exists() else {"articles": {}}
+    if "--relink" in sys.argv:
+        for a in store["articles"].values():
+            a["entities"], a["people"] = link(a["title"] + " " + a.get("summary", ""), matchers)
     new = 0
     for pub, url in FEEDS:
         for it in parse(fetch(url)):
