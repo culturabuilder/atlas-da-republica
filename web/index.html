@@ -156,6 +156,17 @@ p{margin:8px 0;color:var(--ink-2)}
 .news .it .who a.ent{padding-left:8px;color:var(--accent)}
 .plinks{font-size:12.5px;color:var(--ink-3);margin:6px 0 0}
 .plinks a{color:var(--ink-2);text-decoration:none}
+.news .it a.t{cursor:pointer}
+.ext{font-size:12.5px;color:var(--ink-3);text-decoration:none;margin-left:8px}
+.inv{display:grid;grid-template-columns:36px 1fr;gap:8px 10px;align-items:start;padding:7px 0;border-bottom:1px solid var(--line-2)}
+.inv:last-child{border-bottom:0}
+.inv .av{width:36px;height:36px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.inv .av img{width:100%;height:100%;object-fit:cover}
+.inv .nm a{color:var(--ink);text-decoration:none;font-weight:600}
+.inv .why{font-size:13px;color:var(--ink-2)}
+.inv .why a{color:var(--accent);text-decoration:none}
+.inv .why .p{display:block}
+.lvl{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:14px 0 4px}
 .person .av img{width:30px;height:30px;border-radius:50%;object-fit:cover;display:block}
 .sab{font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line-2);display:grid;grid-template-columns:1fr auto;gap:2px 10px}
 .sab:last-child{border-bottom:0}
@@ -344,6 +355,57 @@ async function loadDetail(id){
   const d = await detailCache[id]; Object.assign(n, d); if (n.description === undefined) n.description = '';
   return n;
 }
+// ---------- notícia como nó: envolvidos a um e dois passos ----------
+let _posPeople = null;
+function holders(pid){ if (!_posPeople) { _posPeople = {}; for (const p of Object.values(P)) for (const q of (p.positions||[])) (_posPeople[q] = _posPeople[q]||[]).push(p.id); } return (_posPeople[pid]||[]).slice(0,3).map(id=>P[id]).filter(Boolean); }
+function newsInvolved(a){
+  const direct = {}, indirect = {}; const usedEdges = new Set(); const litNodes = new Set();
+  const addI = (person, why, edgeId) => { if (!person) return; if (direct[person.id]) return; const r = indirect[person.id] = indirect[person.id] || {p: person, why: []}; if (!r.why.some(w=>w.text===why.text)) r.why.push(why); if (edgeId) usedEdges.add(edgeId); };
+  for (const q of (a.people||[])) { const p = P[q.id]; if (p) { direct[p.id] = {p, why: [{text: 'citado na notícia', pos: q.position}]}; litNodes.add(q.position); } }
+  const ents = (a.entities||[]).filter(id=>N[id]); ents.forEach(id=>litNodes.add(id));
+  const nameOf = id => N[id] ? (N[id].aliases&&N[id].aliases[0]&&N[id].aliases[0].length<=8?N[id].aliases[0]:N[id].name) : id;
+  // a partir dos órgãos citados
+  for (const eid of ents) {
+    const e = N[eid];
+    for (const pid of (e.positions||[])) for (const h of holders(pid)) addI(h, {text: `${esc(N[pid].name)}, órgão citado`, pos: pid, link: eid});
+    if (e.parent && N[e.parent]) for (const pid of (N[e.parent].positions||[])) for (const h of holders(pid)) addI(h, {text: `chefia ${esc(nameOf(e.parent))}, que supervisiona ${esc(nameOf(eid))}`, pos: pid, link: e.parent});
+    for (const edId of (e.edges||[])) { const ed = E[edId]; if (!ed) continue;
+      if (ed.to === eid && (ed.type==='fiscaliza'||ed.type==='supervisiona'||ed.type==='aconselha') && N[ed.from]) for (const pid of (N[ed.from].positions||[])) for (const h of holders(pid)) addI(h, {text: `${REL[ed.type][0].toLowerCase()} ${esc(nameOf(eid))} como ${esc(N[pid].name)}`, pos: pid, link: ed.from}, edId);
+      if (ed.from === eid && ed.type==='supervisiona' && N[ed.to]) for (const pid of (N[ed.to].positions||[])) for (const h of holders(pid)) addI(h, {text: `dirige ${esc(nameOf(ed.to))}, vinculado a ${esc(nameOf(eid))}`, pos: pid, link: ed.to}, edId);
+    }
+  }
+  // a partir das pessoas citadas
+  for (const q of (a.people||[])) { const pos = N[q.position]; if (!pos) continue;
+    for (const edId of (pos.edges||[])) { const ed = E[edId]; if (!ed) continue;
+      if (ed.to === pos.id && ed.type==='nomeia' && N[ed.from]) { const src = N[ed.from]; const pids = src.type==='dept_head'||src.type==='elected' ? [src.id] : (src.positions||[]); for (const pid of pids) for (const h of holders(pid)) addI(h, {text: `nomeia ${esc(q.name)} (${esc(pos.name)})`, pos: pid, link: ed.from}, edId); }
+      if (ed.from === pos.id && ed.type==='nomeia' && N[ed.to]) for (const h of holders(ed.to)) addI(h, {text: `nomeado por ${esc(q.name)} para ${esc(N[ed.to].name)}`, pos: ed.to, link: ed.to}, edId);
+      if (ed.from === pos.id && ed.type==='membro_nato' && N[ed.to]) { for (const ed2Id of (N[ed.to].edges||[])) { const ed2 = E[ed2Id]; if (ed2 && ed2.type==='membro_nato' && ed2.to===ed.to && ed2.from!==pos.id) for (const h of holders(ed2.from)) addI(h, {text: `integra ${esc(nameOf(ed.to))} com ${esc(q.name)}`, pos: ed2.from, link: ed.to}, ed2Id); } }
+      if (ed.from === pos.id && ed.type==='chefia' && N[ed.to]) { const org = N[ed.to]; litNodes.add(org.id); if (org.parent && N[org.parent]) for (const pid of (N[org.parent].positions||[])) for (const h of holders(pid)) addI(h, {text: `chefia ${esc(nameOf(org.parent))}, ao qual ${esc(nameOf(org.id))} se vincula`, pos: pid, link: org.parent}); }
+    }
+    if (pos.head_of && N[pos.head_of]) { const org = N[pos.head_of]; for (const pid of (org.positions||[])) if (pid !== pos.id) for (const h of holders(pid)) addI(h, {text: `${esc(N[pid].name)}, mesmo órgão de ${esc(q.name)}`, pos: pid, link: org.id}); }
+  }
+  const ind = Object.values(indirect).sort((x,y)=>y.why.length-x.why.length).slice(0,16);
+  ind.forEach(r=>r.why.forEach(w=>{ if (w.pos) litNodes.add(w.pos); }));
+  return {direct: Object.values(direct), indirect: ind, ents, litNodes, usedEdges};
+}
+function renderNews(a){
+  const inv = newsInvolved(a);
+  const svg = document.querySelector('svg.wheel'); svg.classList.add('dim');
+  document.querySelectorAll('.node').forEach(el => el.classList.remove('sel','lit'));
+  inv.litNodes.forEach(id=>{ const el=document.querySelector(`.node[data-id="${id}"]`); if(el) el.classList.add('lit'); });
+  let lines=''; inv.usedEdges.forEach(eid=>{ const e=E[eid]; if(!e||!N[e.from]||!N[e.to]) return; const [x1,y1]=xy(e.from),[x2,y2]=xy(e.to); lines += `<path class="edge ${e.type}" d="${curve(x1,y1,x2,y2)}" stroke="${COL[N[e.from].sector]||'var(--povo)'}" marker-end="url(#m-${e.type})"/>`; });
+  document.getElementById('edges').innerHTML = lines;
+  const row = r => `<div class="inv"><span class="av">${avatar(r.p)}</span><span><span class="nm"><a href="#${r.p.id}">${esc(r.p.name)}</a>${r.p.party?` <span style="color:var(--ink-3);font-size:12.5px">· ${esc(r.p.party)}</span>`:''}</span><span class="why">${r.why.slice(0,3).map(w=>`<span class="p">${w.link&&N[w.link]?`<a href="#${w.link}">↳</a> `:''}${w.text}</span>`).join('')}</span></span></div>`;
+  content.innerHTML = `<div class="card"><div class="chips"><span class="chip">Notícia</span><span class="chip">${esc(a.publication)}</span><span class="chip">${fmtDate(a.date)}</span></div>
+    <h1 style="font-size:21px">${esc(a.title)}</h1>${a.summary_html?`<p>${a.summary_html}</p>`:''}
+    <div class="links"><a href="${a.url}" target="_blank" rel="noopener">Ler na fonte ↗</a></div>
+    ${inv.ents.length?`<h3>Órgãos citados</h3><div class="list">${inv.ents.map(id=>link(id, SUB[N[id].subtype]||'')).join('')}</div>`:''}
+    <div class="lvl">Envolvidos diretamente · ${inv.direct.length}</div>${inv.direct.length?inv.direct.map(row).join(''):'<div class="seat">Nenhuma pessoa do grafo citada pelo nome.</div>'}
+    <div class="lvl">Envolvidos indiretamente · ${inv.indirect.length}</div>${inv.indirect.length?inv.indirect.map(row).join(''):'<div class="seat">Sem ligações a dois passos.</div>'}
+    <p style="font-size:12.5px;color:var(--ink-3);margin-top:12px">Indiretos são pessoas ligadas aos citados por uma relação do grafo: chefia, supervisão, nomeação, colegiado. A seta em cada linha abre o nó da ligação.</p>
+  </div>`;
+  document.getElementById('panel').scrollTo({top:0});
+}
 function renderPerson(p){
   const svg = document.querySelector('svg.wheel'); svg.classList.add('dim');
   document.querySelectorAll('.node').forEach(a => a.classList.remove('sel','lit'));
@@ -361,6 +423,7 @@ function renderPerson(p){
   document.getElementById('panel').scrollTo({top:0});
 }
 function select(id){
+  if (id && id.startsWith('news:')) { const a=(G.news||[]).find(x=>x.id===id.slice(5)); if (a) { current=null; renderNews(a); return; } }
   if (P[id]) { current = null; const need = (P[id].positions||[]).filter(pid=>N[pid]&&N[pid].description===undefined&&G.detail_base); if (need.length) { Promise.all(need.map(loadDetail)).then(()=>renderPerson(P[id])); } else renderPerson(P[id]); return; }
   if (N[id] && N[id].description === undefined && G.detail_base) { loadDetail(id).then(() => select(id)); content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; return; }
   current = N[id] ? id : null;
@@ -394,7 +457,7 @@ function renderHome(){
   const st = G.stats; const bt = st.by_type, bs = st.by_sector, bsub = st.by_subtype;
   const subRows = [['ministerio','Ministérios'],['orgao_presidencia','Órgãos da Presidência'],['agencia_reguladora','Agências reguladoras'],['autarquia','Autarquias'],['fundacao','Fundações'],['empresa_publica','Empresas públicas'],['sociedade_economia_mista','Sociedades de economia mista'],['tribunal','Tribunais'],['ministerio_publico','Ministério Público'],['forca_armada','Forças Armadas'],['instituicao_de_ensino','Universidades e institutos federais']];
   const chips = a => { const ps=(a.people||[]).slice(0,4).map(p=>`<a href="#${P[p.id]?p.id:p.position}" title="${esc(N[p.position]?N[p.position].name:'')}"><span class="av">${avatar(P[p.id]||{id:p.id,name:p.name})}</span>${esc(p.name)}</a>`); const es=(a.entities||[]).slice(0,3).map(id=>N[id]?`<a class="ent" href="#${id}">${esc(N[id].aliases&&N[id].aliases[0]&&N[id].aliases[0].length<=8?N[id].aliases[0]:N[id].name)}</a>`:'').filter(Boolean); return ps.length||es.length?`<span class="who">${ps.join('')}${es.join('')}</span>`:''; };
-  const news = (G.news||[]).filter(a=>inWin(a.date)).slice(0,10).map(a=>`<div class="it"><a class="t" href="${a.url}" target="_blank" rel="noopener">${esc(a.title)}</a>${a.summary_html?`<span class="s">${a.summary_html}</span>`:''}${chips(a)}<span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('');
+  const news = (G.news||[]).filter(a=>inWin(a.date)).slice(0,10).map(a=>`<div class="it"><a class="t" href="#news:${a.id}">${esc(a.title)}</a><a class="ext" href="${a.url}" target="_blank" rel="noopener" title="Ler na fonte">${esc(a.publication)} ↗</a>${a.summary_html?`<span class="s">${a.summary_html}</span>`:''}${chips(a)}<span class="m">${fmtDate(a.date)} · <a href="#news:${a.id}" style="color:var(--accent);text-decoration:none">quem está envolvido</a></span></div>`).join('');
   const allChg = (G.changes||[]);
   const chgWin = allChg.filter(c=>inWin(c.date));
   const kindLabel = c => c.kind==='sabatina'?(c.result==='APROVADA_NO_PLENARIO'?'aprovado':c.result==='REJEITADO_PLENARIO'?'rejeitado':'sabatina'):c.kind==='nomeacao'?'nomeado':c.kind==='exoneracao'?'exonerado':c.kind==='designacao'?'designado':c.kind==='entrada'?(c.acting?'interino':'entrou'):c.kind==='saida'?'saiu':(c.acting?'interino':'posse');
