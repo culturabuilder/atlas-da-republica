@@ -31,7 +31,7 @@ def live_widgets(G, prefix):
         if not p: return ""
         pid = p.get("id"); rec = P.get(pid) or {}
         av = f'<img src="{img}{pid}.jpg" alt="" loading="lazy">' if rec.get("photo") else f'<span class="ini">{esc("".join(w[0] for w in (p.get("name") or "?").split()[:2]))}</span>'
-        return f'<div class="pl"><a class="av" href="{prefix}/#{pid}">{av}</a><div><b>{esc(p.get("name") or "")}</b><span>{extra}</span></div></div>'
+        return f'<div class="pl"><a class="av" href="{prefix}/#{pid}" aria-label="{esc(p.get("name") or "")}">{av}</a><div><b>{esc(p.get("name") or "")}</b><span>{extra}</span></div></div>'
     def face(p):
         pid = p.get("id"); rec = P.get(pid) or {}
         inner = f'<img src="{img}{pid}.jpg" alt="{esc(p.get("name") or "")}" loading="lazy">' if rec.get("photo") else f'<span class="ini">{esc("".join(w[0] for w in (p.get("name") or "?").split()[:2]))}</span>'

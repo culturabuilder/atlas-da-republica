@@ -202,7 +202,7 @@ steps.forEach(s => io.observe(s));
 addEventListener('scroll', () => { const mid = innerHeight * 0.42; let best = null, bd = Infinity; for (const s of steps) { const r = s.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) continue; const d = Math.abs((r.top + Math.min(r.height, 300)/2) - mid); if (d < bd) { bd = d; best = s; } } if (best) activate(best); }, {passive: true});
 // progresso
 const prog = document.getElementById('prog');
-prog.innerHTML = Array.from(document.querySelectorAll('.chapter')).map(c => `<a href="#${c.id}" data-ch="${c.id}" title="${esc(c.dataset.title)}" aria-label="${esc(c.dataset.title)}"><span>${esc(c.dataset.short)}</span></a>`).join('');
+prog.innerHTML = Array.from(document.querySelectorAll('.chapter')).map(c => `<a href="#${c.id}" data-ch="${c.id}" title="${esc(c.dataset.title)}" aria-label="${esc(c.dataset.short)}"><span>${esc(c.dataset.short)}</span></a>`).join('');
 // glossário
 const box = document.getElementById('glossbox');
 function showGl(btn){ const k = glNorm[norm(btn.dataset.term)]; if (!k) return; const def = GL[k]; const m = def.match(/^(.*?)\s*\(([^()]*)\)\s*$/); box.innerHTML = `<b>${esc(k)}</b>${esc(m ? m[1] : def)}${m ? `<small>${esc(m[2])}</small>` : ''}`; box.hidden = false; const r = btn.getBoundingClientRect(); box.style.top = (scrollY + r.bottom + 8) + 'px'; box.style.left = Math.max(12, Math.min(scrollX + r.left, innerWidth - 360)) + 'px'; }
@@ -215,7 +215,7 @@ document.addEventListener('mouseout', e => { const a = e.target.closest('.nl'); 
 const UFS = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO'];
 const UFN = {AC:'Acre',AL:'Alagoas',AM:'Amazonas',AP:'Amapá',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MG:'Minas Gerais',MS:'Mato Grosso do Sul',MT:'Mato Grosso',PA:'Pará',PB:'Paraíba',PE:'Pernambuco',PI:'Piauí',PR:'Paraná',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',RO:'Rondônia',RR:'Roraima',RS:'Rio Grande do Sul',SC:'Santa Catarina',SE:'Sergipe',SP:'São Paulo',TO:'Tocantins'};
 const av = p => p.photo ? `<img src="${G.img_base||'/img/'}${p.id}.jpg" alt="" loading="lazy">` : `<span class="ini">${esc((p.name||'?').split(' ').slice(0,2).map(w=>w[0]).join(''))}</span>`;
-const plink = p => `<a href="${HOME}#${p.id}" style="text-decoration:none;color:inherit" title="${esc(p.name)}">${av(p)}</a>`;
+const plink = p => `<a href="${HOME}#${p.id}" style="text-decoration:none;color:inherit" title="${esc(p.name)}" aria-label="${esc(p.name)}">${av(p)}</a>`;
 const tries = {
   uf(el){ el.innerHTML = `<h3>Experimente · escolha seu estado</h3><select id="uf-sel" aria-label="Estado"><option value="">Selecione…</option>${UFS.map(u=>`<option value="${u}">${UFN[u]}</option>`).join('')}</select><div class="out" id="uf-out"></div>`;
     el.querySelector('#uf-sel').addEventListener('change', ev => { const uf = ev.target.value; const out = el.querySelector('#uf-out'); if (!uf) { out.innerHTML=''; return; }
