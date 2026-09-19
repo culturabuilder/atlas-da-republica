@@ -401,6 +401,11 @@ ELECTIONS = {"2023": "2022-10-02", "2019": "2018-10-07", "2015": "2014-10-05", "
 def _add_years(d, y):
     try: return (datetime.date.fromisoformat(d).replace(year=datetime.date.fromisoformat(d).year + y) - datetime.timedelta(days=1)).isoformat()
     except Exception: return None
+_nasc_p = DATA / "generated" / "nascimentos.yaml"
+_nasc = ((yaml.safe_load(open(_nasc_p, encoding="utf-8")) or {}).get("people") or {}) if _nasc_p.exists() else {}
+def _plus_years(d, y):
+    try: dd = datetime.date.fromisoformat(str(d)[:10]); return dd.replace(year=dd.year + y).isoformat()
+    except Exception: return None
 for n in nodes.values():
     if n["type"] not in ("dept_head", "elected"): continue
     for p in n.get("people") or []:
@@ -439,6 +444,12 @@ for n in nodes.values():
             elif n.get("sector") == "executivo" and not n.get("sabatina"): e["term_note"] = "livre nomeação e exoneração"
         else: e["mode"] = p.get("entry_mode")
         if p.get("acting"): e["acting"] = True
+        # aposentadoria compulsória aos 75 (vitalícios e TCU): data de nascimento do Wikidata
+        if (e.get("term_note") and "vital" in e["term_note"]) or "tcu" in n["id"]:
+            b = _nasc.get(p.get("id")) or next((v for v in _nasc.values() if norm(v.get("name") or "") == nm), None)
+            if b and b.get("birth"):
+                e["birth"] = str(b["birth"]); e["retire_at"] = _plus_years(b["birth"], 75)
+                if not e.get("term_end") and e["retire_at"]: e["term_end"] = e["retire_at"]; e["term_kind"] = "compulsoria"
         p["entry"] = e
 people_index = {}
 for n in nodes.values():

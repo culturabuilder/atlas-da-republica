@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Diário Oficial da União, Seção 2 → data/generated/dou.json (acumula por dia).
 
-Busca pública do in.gov.br (sem cadastro), filtrada por órgão principal (orgPrin) e dia. Para cada ato de
-nomeação/exoneração/designação cujo trecho cita um cargo de chefia, baixa o texto integral, extrai pessoa e
-cargo e casa o cargo com um cargo do grafo. Cobertura: só o que a busca devolve por dia (20 por consulta),
-por isso as consultas são por órgão. O INLABS (XML completo) substitui isto quando houver cadastro.
-Uso: .venv/bin/python etl/dou.py [--date dia]  (dia = hoje por padrão; a busca do portal só filtra por dia corrente,
-semana, mês ou ano, então --date serve apenas para rotular)
+Busca pública do in.gov.br (sem cadastro). Para cada verbo (NOMEAR, EXONERAR, DESIGNAR, DISPENSAR) percorre TODAS as
+páginas de resultado do período usando o cursor da própria busca (newPage + score/id/displayDate do último resultado),
+20 resultados por página. Para cada ato cujo trecho cita um cargo de chefia, baixa o texto integral, extrai pessoa e
+cargo e casa o cargo com um cargo do grafo.
+Uso: .venv/bin/python etl/dou.py                      (edição de hoje)
+     .venv/bin/python etl/dou.py --from 2026-09-01 --to 2026-09-18   (período; usado para recuperar dias perdidos)
+     .venv/bin/python etl/dou.py --max-pages 40
 """
 import json, re, sys, html, pathlib, datetime, urllib.request, urllib.parse, unicodedata, time
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
@@ -41,11 +42,24 @@ def get(url):
     if BLOCKED["n"] >= 3: sys.exit("in.gov.br sem resposta em 3 consultas seguidas: provável bloqueio temporário; tente mais tarde")
     return ""
 
-def search(q, org):
-    u = "https://www.in.gov.br/consulta/-/buscar/dou?" + urllib.parse.urlencode({"q": q, "s": "do2", "exactDate": "dia", "sortType": "0", "orgPrin": org})
-    h = get(u); m = re.search(r'<script[^>]*id="_br_com_seatecnologia_in_buscadou_BuscaDouPortlet_params"[^>]*>(.*?)</script>', h, re.S)
-    try: return json.loads(m.group(1)).get("jsonArray", []) if m else []
-    except Exception: return []
+def search_all(q, date_from=None, date_to=None, max_pages=60):
+    """Gera todos os resultados de uma consulta, página a página (cursor da busca do portal)."""
+    base = {"q": q, "s": "do2", "sortType": "0", "delta": "20"}
+    if date_from: base.update({"exactDate": "personalizado", "publishFrom": date_from.strftime("%d/%m/%Y"), "publishTo": (date_to or date_from).strftime("%d/%m/%Y")})
+    else: base["exactDate"] = "dia"
+    page, cursor, seen = 1, {}, set()
+    while page <= max_pages:
+        h = get("https://www.in.gov.br/consulta/-/buscar/dou?" + urllib.parse.urlencode(dict(base, **cursor)))
+        m = re.search(r'<script[^>]*id="_br_com_seatecnologia_in_buscadou_BuscaDouPortlet_params"[^>]*>(.*?)</script>', h, re.S)
+        try: hits = json.loads(m.group(1)).get("jsonArray", []) if m else []
+        except Exception: hits = []
+        tp = re.search(r"totalPages\s*:\s*(\d+)", h); total = int(tp.group(1)) if tp else 1
+        fresh = [x for x in hits if x.get("urlTitle") not in seen]
+        if not fresh: break
+        for x in fresh: seen.add(x["urlTitle"]); yield x
+        if page >= total: break
+        last = hits[-1]; cursor = {"currentPage": page, "newPage": page + 1, "score": last.get("score", 0), "id": last.get("classPK"), "displayDate": last.get("displayDateSortable")}
+        page += 1
 
 def act_text(url_title):
     h = get("https://www.in.gov.br/web/dou/-/" + url_title)
@@ -67,33 +81,35 @@ def parse_acts(text):
     return out
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser(); ap.add_argument("--from", dest="dfrom"); ap.add_argument("--to", dest="dto"); ap.add_argument("--max-pages", type=int, default=60); a = ap.parse_args()
+    dfrom = datetime.date.fromisoformat(a.dfrom) if a.dfrom else None; dto = datetime.date.fromisoformat(a.dto) if a.dto else dfrom
     graph = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8")); idx = build_index(graph)
     store = json.load(open(OUT, encoding="utf-8")) if OUT.exists() else {"acts": {}}
     today = datetime.date.today().isoformat(); seen = 0; new = 0; fetched = 0
-    for org in ORGS:
-        for v in VERBS:
-            for it in search(v, org):
-                seen += 1
-                key = it["urlTitle"]
-                if key in store["acts"]: continue
-                snippet = re.sub(r"<[^>]+>", " ", it.get("content") or "")
-                if not CARGO_RX.search(snippet) and not re.search(r"Decreto", it.get("artType") or "", re.I): continue
-                text = act_text(key); fetched += 1
-                acts = parse_acts(text)
-                if not acts: continue
-                d = it.get("pubDate", "")
-                date = f"{d[6:10]}-{d[3:5]}-{d[0:2]}" if re.match(r"\d\d/\d\d/\d{4}", d) else today
-                recs = []
-                for verb, name, cargo, org_txt in acts:
-                    pid, sc = match_position(cargo + (" " + org_txt if org_txt else ""), idx, graph)
-                    # no DOU o casamento exige papel igual (Diretor de departamento nunca vira Ministro) e score alto
-                    role = lambda t: (re.match(r"(ministr|president|diretor president|diretor geral|diretor|conselheir|procurador|defensor|superintendent|membro|advogad|comandante|secretari)", norm(t)) or [None])[0]
-                    if pid and (sc < 0.75 or role(cargo) != role(graph["nodes"][pid]["name"])): pid, sc = None, sc
-                    recs.append({"verb": verb, "name": name, "cargo": cargo, "org_text": org_txt, "position_id": pid, "match_score": sc})
-                store["acts"][key] = {"id": key, "date": date, "title": it.get("title"), "artType": it.get("artType"), "hierarchy": it.get("hierarchyList"),
-                                      "url": "https://www.in.gov.br/web/dou/-/" + key, "records": recs, "org_query": org}
-                new += 1
-        json.dump(store, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+    for v in VERBS:
+        for it in search_all(v, dfrom, dto, a.max_pages):
+            seen += 1
+            key = it["urlTitle"]
+            if key in store["acts"]: continue
+            snippet = re.sub(r"<[^>]+>", " ", html.unescape(it.get("content") or "")) + " " + (it.get("title") or "")
+            if not CARGO_RX.search(snippet) and not re.search(r"Decreto", it.get("artType") or "", re.I): continue
+            text = act_text(key); fetched += 1
+            acts = parse_acts(text)
+            if not acts: continue
+            d = it.get("pubDate", "")
+            date = f"{d[6:10]}-{d[3:5]}-{d[0:2]}" if re.match(r"\d\d/\d\d/\d{4}", d) else today
+            recs = []
+            for verb, name, cargo, org_txt in acts:
+                pid, sc = match_position(cargo + (" " + org_txt if org_txt else ""), idx, graph)
+                # no DOU o casamento exige papel igual (Diretor de departamento nunca vira Ministro) e score alto
+                role = lambda t: (re.match(r"(ministr|president|diretor president|diretor geral|diretor|conselheir|procurador|defensor|superintendent|membro|advogad|comandante|secretari)", norm(t)) or [None])[0]
+                if pid and (sc < 0.75 or role(cargo) != role(graph["nodes"][pid]["name"])): pid, sc = None, sc
+                recs.append({"verb": verb, "name": name, "cargo": cargo, "org_text": org_txt, "position_id": pid, "match_score": sc})
+            store["acts"][key] = {"id": key, "date": date, "title": it.get("title"), "artType": it.get("artType"), "hierarchy": it.get("hierarchyList"),
+                                  "url": "https://www.in.gov.br/web/dou/-/" + key, "records": recs, "verb_query": v}
+            new += 1
+            if new % 10 == 0: json.dump(store, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     store["updated_at"] = today; json.dump(store, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     linked = sum(1 for a in store["acts"].values() for r in a["records"] if r["position_id"])
     print(f"resultados vistos={seen} atos baixados={fetched} atos novos={new} total atos={len(store['acts'])} registros casados com cargo={linked}")

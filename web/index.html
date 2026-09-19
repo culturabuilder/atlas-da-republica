@@ -364,12 +364,12 @@ function entryHtml(e, n){
     else if(n&&n.sabatina) parts.push(`cargo sujeito a sabatina no Senado`);
     if(e.dou) parts.push(`nomeação publicada no DOU em ${fmtLong(e.dou.date)}${e.dou.url?` <a href="${e.dou.url}" target="_blank" rel="noopener">↗</a>`:''}`);
     if(e.date) parts.push(`no cargo desde ${fmtLong(e.date)}`); else if(e.sabatina) parts.push(`data de posse ainda não conferida`); else parts.push(`data de posse não informada`);
-    if(e.term_end) parts.push(`mandato até ${fmtLong(e.term_end)}`); else if(e.term_note) parts.push(e.term_note); }
+    if(e.term_kind==='compulsoria') parts.push(`cargo vitalício; aposentadoria compulsória aos 75 anos, em ${fmtLong(e.term_end)}`); else if(e.term_end) parts.push(`mandato até ${fmtLong(e.term_end)}`); else if(e.term_note) parts.push(e.term_note); }
   else { if(e.date) parts.push(`no cargo desde ${fmtLong(e.date)}`); }
   if(e.acting) parts.unshift(`<span class="tag">interino</span>`);
   return parts.join(' · ');
 }
-function entryShort(p){ const e=p.entry; if(!e) return ''; const bits=[]; if(e.date) bits.push('desde '+fmtDate(e.date)); if(e.mode==='eleito') bits.push('eleito'); else if(e.mode==='eleito_pares') bits.push('eleito pelos pares'); else if(e.by_person) bits.push('por '+e.by_person); if(e.sabatina&&e.sabatina.sim!=null) bits.push(`senado ${e.sabatina.sim}×${e.sabatina.nao}`); return bits.join(' · '); }
+function entryShort(p){ const e=p.entry; if(!e) return ''; const bits=[]; if(e.date) bits.push('desde '+fmtDate(e.date)); if(e.mode==='eleito') bits.push('eleito'); else if(e.mode==='eleito_pares') bits.push('eleito pelos pares'); else if(e.by_person) bits.push('por '+e.by_person); if(e.sabatina&&e.sabatina.sim!=null) bits.push(`senado ${e.sabatina.sim}×${e.sabatina.nao}`); if(e.term_kind==='compulsoria') bits.push('até '+e.term_end.slice(0,4)); return bits.join(' · '); }
 function fmtDate(d){ if(!d) return ''; const [y,m,dd]=d.split('-'); return `${dd}/${m}/${y.slice(2)}`; }
 function entLink(id){ const n=N[id]; return n?`<a class="e" href="#${id}">${esc(n.aliases&&n.aliases[0]&&n.aliases[0].length<=8?n.aliases[0]:n.name)}</a>`:''; }
 let homeTab = 'mudancas'; let win = 30;
@@ -514,7 +514,7 @@ let savedTheme = null; try { savedTheme = localStorage.getItem('atlas-theme'); }
 root.dataset.theme = savedTheme || 'dark';
 tb.addEventListener('click', () => { const dark = root.dataset.theme ? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; root.dataset.theme = dark ? 'light' : 'dark'; try { localStorage.setItem('atlas-theme', root.dataset.theme); } catch(e){} });
 
-draw();
+if (!document.querySelector('svg.wheel')) draw();
 select(location.hash.slice(1));
 });
 </script>

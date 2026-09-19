@@ -155,7 +155,7 @@ const GL = CF.glossary || {}; const HOME = CF.home || '/';
 const P = G.people || {};
 const norm = s => String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().trim();
 const glNorm = {}; for (const k of Object.keys(GL)) glNorm[norm(k)] = k;
-draw();
+if (!document.querySelector('svg.wheel')) draw();
 document.querySelectorAll('.node').forEach(a => { a.setAttribute('tabindex', '-1'); a.setAttribute('href', HOME + '#' + a.dataset.id); });
 const svg = document.querySelector('svg.wheel'); const eg = document.getElementById('edges'); const cap = document.getElementById('cap');
 const sectorEls = Array.from(document.querySelectorAll('.sector-bg')); const ringEls = Array.from(document.querySelectorAll('.ring'));

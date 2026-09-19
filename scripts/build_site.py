@@ -23,6 +23,14 @@ shutil.copytree(ROOT / "build" / "people", site / "people")
 if (ROOT / "site_img_cache").exists(): pass
 tpl = tpl.replace('<script src="graph.br.js" defer></script>', f'<script src="{PREFIX}/graph.br.js" defer></script>').replace('<script src="atlas.js" defer></script>', f'<script src="{PREFIX}/atlas.js" defer></script>').replace('<link rel="stylesheet" href="atlas.css">', f'<link rel="stylesheet" href="{PREFIX}/atlas.css">')
 for f in ("atlas.js", "atlas.css"): shutil.copy(ROOT / "web" / f, site / f)
+# roda pré-renderizada (LCP sem esperar o JS): node executa o mesmo atlas.js sem DOM
+import subprocess
+WHEEL = ""
+try:
+    subprocess.run(["node", str(ROOT / "scripts" / "render_wheel.js"), str(ROOT / "build" / "graph.core.js"), str(ROOT / "web" / "atlas.js"), str(ROOT / "build" / "wheel.svg")], check=True, capture_output=True)
+    WHEEL = (ROOT / "build" / "wheel.svg").read_text(encoding="utf-8")
+except Exception as e: print("aviso: roda não pré-renderizada:", e)
+# só a home e a área educativa recebem o SVG embutido (páginas de nó e de pessoa desenham no cliente, para manter o site leve)
 REL = {"elege": "elege", "nomeia": "nomeia", "sabatina": "sabatina e aprova", "fiscaliza": "fiscaliza", "supervisiona": "supervisiona", "aconselha": "aconselha", "chefia": "chefia", "membro_nato": "é membro nato de", "integra": "integra", "indica": "indica"}
 TYPE_SCHEMA = {"department": "GovernmentOrganization", "elected": "GovernmentOrganization", "commission": "GovernmentOrganization", "advisory": "GovernmentOrganization", "dept_head": "Role", "constituency": "Organization"}
 esc = html.escape
@@ -50,7 +58,7 @@ def page(n):
     head = f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc)}">\n<link rel="canonical" href="{url}">\n<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{url}"><meta property="og:type" content="website">\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
     out = tpl.replace("<title>Atlas da República</title>\n", head, 1)
     out = out.replace('<div id="content"></div>', '<div id="content"></div>' + ssr, 1)
-    out = out.replace("draw();\nselect(location.hash.slice(1));", f"draw();\nselect(location.hash.slice(1) || {json.dumps(n['id'])});", 1)
+    out = out.replace("select(location.hash.slice(1));", f"select(location.hash.slice(1) || {json.dumps(n['id'])});", 1)
     return out
 
 def person_page(p):
@@ -63,12 +71,12 @@ def person_page(p):
     head = f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc[:300])}">\n<link rel="canonical" href="{url}">\n<meta property="og:title" content="{esc(title)}"><meta property="og:url" content="{url}"><meta property="og:type" content="profile">\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
     ssr = f'<div id="ssr" hidden><article><h1>{esc(p["name"])}</h1><p>{esc(p.get("party") or "")} {esc(p.get("uf") or "")}</p><h2>Cargos</h2><ul>{pos}</ul><p><a href="/">Atlas da República</a></p></article></div>'
     out = tpl.replace("<title>Atlas da República</title>\n", head, 1).replace('<div id="content"></div>', '<div id="content"></div>' + ssr, 1)
-    out = out.replace("draw();\nselect(location.hash.slice(1));", f"draw();\nselect(location.hash.slice(1) || {json.dumps(p['id'])});", 1)
+    out = out.replace("select(location.hash.slice(1));", f"select(location.hash.slice(1) || {json.dumps(p['id'])});", 1)
     return out.replace('href="/br/', f'href="{PREFIX}/br/').replace('href="/"', f'href="{PREFIX}/"')
 
 import importlib.util as _ilu
 _spec = _ilu.spec_from_file_location("build_como_funciona", ROOT / "scripts" / "build_como_funciona.py"); _cf = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_cf)
-urls = [f"{BASE}/", _cf.build(site, PREFIX, BASE, G)]
+urls = [f"{BASE}/", _cf.build(site, PREFIX, BASE, G, WHEEL)]
 PEOPLE = G.get("people", {})
 for p in PEOPLE.values():
     d = site / "br" / "pessoa" / p["id"]; d.mkdir(parents=True, exist_ok=True)
@@ -79,6 +87,7 @@ for n in N.values():
 home = tpl.replace("<title>Atlas da República</title>\n", f'<title>Atlas da República</title>\n<meta name="description" content="Mapa navegável do governo federal brasileiro: órgãos, cargos, colegiados e as relações legais entre eles, com citação da norma.">\n<link rel="canonical" href="{BASE}/">\n', 1)
 links = "".join(f'<li><a href="/br/{n["id"]}/">{esc(n["name"])}</a></li>' for n in sorted(N.values(), key=lambda x: x["name"]) if n["type"] != "dept_head")
 home = home.replace('<div id="content"></div>', '<div id="content"></div><div id="ssr" hidden><h1>Atlas da República</h1><ul>' + links + '</ul></div>', 1)
+if WHEEL: home = home.replace('<div id="graph"></div>', '<div id="graph">' + WHEEL + '</div>', 1)
 home = home.replace('href="/br/', f'href="{PREFIX}/br/').replace('href="/como-funciona/"', f'href="{PREFIX}/como-funciona/"')
 (site / "index.html").write_text(home, encoding="utf-8")
 (site / ".nojekyll").write_text("", encoding="utf-8")

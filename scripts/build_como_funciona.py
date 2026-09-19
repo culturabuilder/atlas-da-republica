@@ -56,7 +56,9 @@ def live_widgets(G, prefix):
     stf = N["br-supremo-tribunal-federal-ministro"]; ppl = stf.get("people") or []; dated = [p for p in ppl if p.get("started_at")]
     old = min(dated, key=lambda p: p["started_at"]) if dated else None; new = max(dated, key=lambda p: p["started_at"]) if dated else None
     vac = (stf.get("seats") or 11) - len(ppl)
-    W["stf"] = f'<h3>O STF hoje</h3><div class="row"><div><div class="big">{len(ppl)}<small>de {stf.get("seats") or 11}</small></div>ministros{f" · {vac} vaga aberta" if vac == 1 else (f" · {vac} vagas abertas" if vac else "")}</div></div>' + (person(old, f"mais antigo · desde {fmt_date(old['started_at'])} · nomeado por {(old.get('entry') or {}).get('by_person') or 'Presidente'}") if old else "") + (person(new, f"mais recente · desde {fmt_date(new['started_at'])} · nomeado por {(new.get('entry') or {}).get('by_person') or 'Presidente'}") if new else "") + '<div class="src">Fonte: STF, composição atual.</div>'
+    aged = sorted([p for p in ppl if (p.get("entry") or {}).get("retire_at")], key=lambda p: p["entry"]["retire_at"])
+    nxt = aged[0] if aged else None
+    W["stf"] = f'<h3>O STF hoje</h3><div class="row"><div><div class="big">{len(ppl)}<small>de {stf.get("seats") or 11}</small></div>ministros{f" · {vac} vaga aberta" if vac == 1 else (f" · {vac} vagas abertas" if vac else "")}</div></div>' + (person(old, f"mais antigo · desde {fmt_date(old['started_at'])} · nomeado por {(old.get('entry') or {}).get('by_person') or 'Presidente'}") if old else "") + (person(new, f"mais recente · desde {fmt_date(new['started_at'])} · nomeado por {(new.get('entry') or {}).get('by_person') or 'Presidente'}") if new else "") + (person(nxt, f"próxima vaga por idade · aposentadoria compulsória em {fmt_date(nxt['entry']['retire_at'])}") if nxt else "") + '<div class="src">Fonte: STF, composição atual; datas de nascimento do Wikidata.</div>'
     # TCU e PGR
     tcu = N.get("br-ministro-do-tcu") or {}; pgr = (N["br-procurador-geral-da-republica"].get("people") or [None])[0]
     W["tcu_pgr"] = f'<h3>Quem vigia, hoje</h3><div class="row"><div><div class="big">{len(tcu.get("people") or [])}<small>de {tcu.get("seats") or 9}</small></div>ministros do TCU</div></div>{person(pgr, "Procurador-Geral da República · " + since(pgr) + " · mandato de 2 anos")}<div class="src">Fonte: TCU e MPF, páginas oficiais.</div>'
@@ -86,7 +88,7 @@ def live_widgets(G, prefix):
     W["transicao"] = f'<h3>Transição de 2027</h3><div class="row"><div><div class="big">{free + 2}</div>cadeiras que trocam com o novo Presidente</div><div><div class="big">{fixed}</div>mandatos fixos que atravessam a posse</div><div><div class="big">{life}</div>cargos vitalícios</div></div><div class="src">Contagem sobre os ocupantes conhecidos hoje. A aba Transição da roda acompanha cadeira a cadeira.</div>'
     return W, budget_scale
 
-def build(site, prefix, base, G):
+def build(site, prefix, base, G, wheel_svg=""):
     cf = yaml.safe_load(open(ROOT / "data" / "como-funciona.yaml", encoding="utf-8"))
     gl = yaml.safe_load(open(ROOT / "data" / "glossario.yaml", encoding="utf-8")) or {}
     W, budget_scale = live_widgets(G, prefix)
@@ -112,6 +114,7 @@ def build(site, prefix, base, G):
     html_parts.append(f'<div class="end"><div class="eyebrow">Fim da visita</div><p style="margin:8px 0 0">Tudo o que você leu vem dos mesmos dados da roda: cada órgão com a norma que o criou, cada cadeira com a fonte do nome. Quando algo mudar no Diário Oficial ou no Senado, muda aqui também.</p><a class="cta" href="{prefix}/">Abrir a roda completa →</a></div>')
     tpl = (ROOT / "web" / "como-funciona.html").read_text(encoding="utf-8")
     data = {"glossary": gl, "home": f"{prefix}/", "budget_scale": budget_scale}
+    if wheel_svg: tpl = tpl.replace('<div id="graph"></div>', '<div id="graph">' + wheel_svg + '</div>', 1)
     out = tpl.replace("<!--CF_CONTENT-->", "\n".join(html_parts)).replace("<!--CF_DATA-->", json.dumps(data, ensure_ascii=False).replace("</", "<\\/"))
     out = out.replace('<script src="graph.br.js" defer></script>', f'<script src="{prefix}/graph.br.js" defer></script>').replace('<script src="atlas.js" defer></script>', f'<script src="{prefix}/atlas.js" defer></script>').replace('<link rel="stylesheet" href="atlas.css">', f'<link rel="stylesheet" href="{prefix}/atlas.css">').replace('<a class="brand" href="/">', f'<a class="brand" href="{prefix}/">')
     desc = cf["subtitle"]
