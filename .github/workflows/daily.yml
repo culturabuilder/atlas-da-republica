@@ -16,8 +16,8 @@ jobs:
       - run: scripts/update.sh --fast
         env:
           PORTAL_TRANSPARENCIA_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_KEY }}
-          SITE_BASE: https://culturabuilder.github.io/atlas-da-republica
-          SITE_PREFIX: /atlas-da-republica
+          SITE_BASE: https://atlasdarepublica.org
+          SITE_CNAME: atlasdarepublica.org
       - name: Commit dados gerados
         run: |
           git config user.name "atlas-bot" && git config user.email "bot@users.noreply.github.com"

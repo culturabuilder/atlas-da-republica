@@ -17,4 +17,4 @@ echo "== DOU assinaturas"; $PY etl/dou_assinaturas.py || echo "assinaturas falho
 echo "== Wikipédia";        $PY etl/wikipedia.py || echo "wikipedia falhou (segue)"
 echo "== Orçamento";        $PY etl/orcamento.py || echo "Orçamento falhou (sem chave?)"
 echo "== Build (2/2)";     $PY scripts/build_graph.py
-echo "== Site";            $PY scripts/build_site.py --base "${SITE_BASE:-https://atlasdarepublica.org}" --prefix "${SITE_PREFIX:-}"
+echo "== Site";            $PY scripts/build_site.py --base "${SITE_BASE:-https://atlasdarepublica.org}" --prefix "${SITE_PREFIX:-}" --cname "${SITE_CNAME:-}"
