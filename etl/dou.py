@@ -55,6 +55,7 @@ def search_all(q, date_from=None, date_to=None, max_pages=60):
         except Exception: hits = []
         tp = re.search(r"totalPages\s*:\s*(\d+)", h); total = int(tp.group(1)) if tp else 1
         fresh = [x for x in hits if x.get("urlTitle") not in seen]
+        print(f"  {q}: página {page}/{total}, {len(fresh)} resultados", file=sys.stderr, flush=True)
         if not fresh: break
         for x in fresh: seen.add(x["urlTitle"]); yield x
         if page >= total: break
@@ -96,7 +97,10 @@ def main():
             if not CARGO_RX.search(snippet) and not re.search(r"Decreto", it.get("artType") or "", re.I): continue
             text = act_text(key); fetched += 1
             acts = parse_acts(text)
-            if not acts: continue
+            if not acts:
+                store["acts"][key] = {"id": key, "date": today, "title": it.get("title"), "records": [], "skipped": True}  # lembra para não baixar de novo
+                continue
+            print(f"    + {it.get('title','')[:60]} ({len(acts)} registros)", file=sys.stderr, flush=True)
             d = it.get("pubDate", "")
             date = f"{d[6:10]}-{d[3:5]}-{d[0:2]}" if re.match(r"\d\d/\d\d/\d{4}", d) else today
             recs = []
@@ -109,7 +113,7 @@ def main():
             store["acts"][key] = {"id": key, "date": date, "title": it.get("title"), "artType": it.get("artType"), "hierarchy": it.get("hierarchyList"),
                                   "url": "https://www.in.gov.br/web/dou/-/" + key, "records": recs, "verb_query": v}
             new += 1
-            if new % 10 == 0: json.dump(store, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+            if fetched % 5 == 0: json.dump(store, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     store["updated_at"] = today; json.dump(store, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     linked = sum(1 for a in store["acts"].values() for r in a["records"] if r["position_id"])
     print(f"resultados vistos={seen} atos baixados={fetched} atos novos={new} total atos={len(store['acts'])} registros casados com cargo={linked}")
