@@ -9,9 +9,9 @@ mkdir -p build build/cache-comissoes
 FAST=${1:-}
 echo "== SIORG";           $PY etl/siorg.py ${FAST:+--no-full} --cache build || echo "SIORG falhou (segue com os dados do último dia)"
 echo "== Câmara/Senado";   $PY etl/parlamentares.py --cache build || echo "Câmara/Senado falhou (segue com os dados do último dia)"
-echo "== Sabatinas";       $PY etl/sabatinas.py || echo "Sabatinas falhou (segue com os dados do último dia)"
 echo "== Comissões";       $PY etl/comissoes.py --cache build/cache-comissoes || echo "comissões falhou (segue)"
 echo "== Build (1/2)";     $PY scripts/build_graph.py > /dev/null
+echo "== Sabatinas";       $PY etl/sabatinas.py || echo "Sabatinas falhou (segue com os dados do último dia)"
 [ -z "$FAST" ] && { echo "== Wikidata"; $PY etl/wikidata.py || echo "Wikidata falhou (segue)"; }
 echo "== Notícias";        $PY etl/noticias.py || echo "Notícias falhou (segue com os dados do último dia)"
 echo "== DOU";             $PY etl/dou.py || echo "DOU falhou (segue)"

@@ -8,7 +8,7 @@ Uso:
   .venv/bin/python etl/siorg.py            # baixa e gera
   .venv/bin/python etl/siorg.py --cache DIR  # usa JSON já baixado em DIR (siorg-oe-{1..4}.json, siorg-full-1.json)
 """
-import json, re, sys, pathlib, unicodedata, urllib.request, argparse
+import sys, json, re, pathlib, unicodedata, urllib.request, argparse
 import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -60,6 +60,14 @@ def main():
     full = {} if args.no_full else fetch(f"{BASE}/estrutura-organizacional/completa?codigoPoder=1&codigoEsfera=1", args.cache, "siorg-full-1.json")
     units = {code(x["codigoUnidade"]): x for x in full.get("unidades") or []}
     org_codes = {code(x["codigoUnidade"]) for x in orgs}
+    # sem a estrutura completa (modo --no-full em ambiente limpo), reaproveita do arquivo gerado anterior os pais
+    # resolvidos via unidades intermediárias e os colegiados; senão o grafo encolhe (570 nós em vez de 770+)
+    prev = None
+    if not units and pathlib.Path(args.out).exists():
+        try: prev = yaml.safe_load(open(args.out, encoding="utf-8")) or {}
+        except Exception: prev = None
+    prev_nodes = {str(n.get("siorg_code")): n for n in ((prev or {}).get("nodes") or [])}
+    prev_id2code = {n["id"]: str(n.get("siorg_code")) for n in prev_nodes.values()}
 
     def resolve_parent(x):
         p = code(x.get("codigoUnidadePai"))
@@ -69,6 +77,10 @@ def main():
         if u:
             o = code(u.get("codigoOrgaoEntidade"))
             if o in org_codes and o != code(x["codigoUnidade"]): return o
+        pn = prev_nodes.get(str(code(x["codigoUnidade"])))
+        if pn and pn.get("siorg_parent_id"):
+            pc = prev_id2code.get(pn["siorg_parent_id"])
+            if pc and pc in org_codes and pc != code(x["codigoUnidade"]): return pc
         return None
 
     nodes = []
@@ -104,7 +116,7 @@ def main():
         n.pop("siorg_parent")
 
     # unidades colegiadas do Executivo (conselhos, comitês, câmaras) ligadas a órgãos/entidades
-    coleg = []
+    coleg = [] if units else list((prev or {}).get("collegiate") or [])
     for c, u in units.items():
         if not u["codigoTipoUnidade"].endswith("colegiada"): continue
         o = code(u.get("codigoOrgaoEntidade")); org = by_code.get(o)
@@ -126,6 +138,7 @@ def main():
     for n in nodes + coleg:
         if n["id"] in seen: n["id"] = f"{n['id']}-{n['siorg_code']}"
         seen[n["id"]] = n
+    if not units and prev: print("aviso: estrutura completa ausente; pais e colegiados reaproveitados do arquivo anterior", file=sys.stderr)
     out = {"generated_from": "SIORG estruturaorganizacional.dados.gov.br", "generated_at": ((full.get("servico") or {}).get("data")) or (d.get("servico") or {}).get("data"),
            "nodes": nodes, "collegiate": coleg}
     class D(yaml.SafeDumper):

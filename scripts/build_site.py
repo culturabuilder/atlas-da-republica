@@ -24,7 +24,8 @@ if (ROOT / "site_img_cache").exists(): pass
 tpl = tpl.replace('<script src="graph.br.js" defer></script>', f'<script src="{PREFIX}/graph.br.js" defer></script>').replace('<script src="atlas.js" defer></script>', f'<script src="{PREFIX}/atlas.js" defer></script>').replace('<link rel="stylesheet" href="atlas.css">', f'<link rel="stylesheet" href="{PREFIX}/atlas.css">')
 for f in ("atlas.js", "atlas.css"): shutil.copy(ROOT / "web" / f, site / f)
 # atlas.css é pequeno: embutido para não bloquear a renderização com mais uma requisição
-tpl = tpl.replace(f'<link rel="stylesheet" href="{PREFIX}/atlas.css">', "<style>" + (ROOT / "web" / "atlas.css").read_text(encoding="utf-8") + "</style>", 1)
+for _form in (f'<link rel="stylesheet" href="{PREFIX}/atlas.css">', '<link rel="stylesheet" href="atlas.css">'):
+    tpl = tpl.replace(_form, "<style>" + (ROOT / "web" / "atlas.css").read_text(encoding="utf-8") + "</style>", 1)
 # roda pré-renderizada (LCP sem esperar o JS): node executa o mesmo atlas.js sem DOM
 import subprocess
 WHEEL = ""
