@@ -4,6 +4,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 PY=.venv/bin/python
+mkdir -p build build/cache-comissoes
 [ -f .env ] && set -a && . ./.env && set +a
 FAST=${1:-}
 echo "== SIORG";           $PY etl/siorg.py ${FAST:+--no-full} --cache build
