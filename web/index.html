@@ -386,7 +386,20 @@ function newsInvolved(a){
   }
   const ind = Object.values(indirect).sort((x,y)=>y.why.length-x.why.length).slice(0,16);
   ind.forEach(r=>r.why.forEach(w=>{ if (w.pos) litNodes.add(w.pos); }));
-  return {direct: Object.values(direct), indirect: ind, ents, litNodes, usedEdges};
+  // terceiro nível: quem pode ser afetado = entidades vinculadas/integradas aos órgãos citados (e aos órgãos dos citados), com a citação legal
+  const affected = {}; const affOrgs = {}; const affEdges = new Set();
+  const roots = new Set(ents);
+  for (const q of (a.people||[])) { const pos = N[q.position]; if (pos && pos.head_of && N[pos.head_of]) roots.add(pos.head_of); }
+  for (const eid of roots) {
+    for (const cid of (N[eid].children||[])) { const c = N[cid]; if (!c || c.type==='dept_head') continue;
+      const ed = Object.values(E).find(x => (x.type==='supervisiona' && x.from===eid && x.to===cid) || (x.type==='integra' && x.from===cid && x.to===eid));
+      const cite = ed && ed.cite ? ed.cite.split(';')[0] : ''; if (ed) affEdges.add(ed.id);
+      affOrgs[cid] = {org: c, via: eid, cite, type: ed ? ed.type : 'integra'};
+      for (const pid of (c.positions||[])) for (const h of holders(pid)) { if (direct[h.id] || indirect[h.id]) continue; const r = affected[h.id] = affected[h.id] || {p: h, why: []}; if (!r.why.some(w=>w.link===cid)) r.why.push({text: `${esc(N[pid].name)} · ${ed&&ed.type==='supervisiona'?'vinculado a':'integra'} ${esc(nameOf(eid))}${cite?` <span style="color:var(--ink-3)">(${esc(cite)})</span>`:''}`, pos: pid, link: cid}); }
+    }
+  }
+  const aff = Object.values(affected).sort((x,y)=>y.why.length-x.why.length).slice(0,24);
+  return {direct: Object.values(direct), indirect: ind, affected: aff, affOrgs: Object.values(affOrgs).slice(0,40), affEdges, ents, litNodes, usedEdges};
 }
 function renderNews(a){
   const inv = newsInvolved(a);
@@ -402,8 +415,15 @@ function renderNews(a){
     ${inv.ents.length?`<h3>Órgãos citados</h3><div class="list">${inv.ents.map(id=>link(id, SUB[N[id].subtype]||'')).join('')}</div>`:''}
     <div class="lvl">Envolvidos diretamente · ${inv.direct.length}</div>${inv.direct.length?inv.direct.map(row).join(''):'<div class="seat">Nenhuma pessoa do grafo citada pelo nome.</div>'}
     <div class="lvl">Envolvidos indiretamente · ${inv.indirect.length}</div>${inv.indirect.length?inv.indirect.map(row).join(''):'<div class="seat">Sem ligações a dois passos.</div>'}
+    ${inv.affOrgs.length?`<details class="rel" id="aff"><summary><span class="lvl" style="margin:0">Quem pode ser afetado · ${inv.affOrgs.length} órgãos, ${inv.affected.length} dirigentes</span><span class="n">expandir</span></summary>
+      <p style="font-size:13px;color:var(--ink-2)">Entidades vinculadas ou integradas aos órgãos desta notícia, com a norma que cria o vínculo. Ao expandir, a roda mostra as ligações.</p>
+      ${inv.affected.map(row).join('')}
+      <h3>Órgãos</h3><div class="list">${inv.affOrgs.map(o=>`<a href="#${o.org.id}"><span class="dot" style="background:${COL[o.org.sector]}"></span><span>${esc(o.org.name)}</span><span class="sm">${o.type==='supervisiona'?'vinculado':'integra'}${o.cite?' · '+esc(o.cite):''}</span></a>`).join('')}</div>
+    </details>`:''}
     <p style="font-size:12.5px;color:var(--ink-3);margin-top:12px">Indiretos são pessoas ligadas aos citados por uma relação do grafo: chefia, supervisão, nomeação, colegiado. A seta em cada linha abre o nó da ligação.</p>
   </div>`;
+  const det = document.getElementById('aff');
+  if (det) det.addEventListener('toggle', () => { if (!det.open) return; inv.affOrgs.forEach(o=>{ const el=document.querySelector(`.node[data-id="${o.org.id}"]`); if(el) el.classList.add('lit'); }); inv.affected.forEach(r=>r.why.forEach(w=>{ const el=document.querySelector(`.node[data-id="${w.pos}"]`); if(el) el.classList.add('lit'); })); let more=''; inv.affEdges.forEach(eid=>{ const e=E[eid]; if(!e||!N[e.from]||!N[e.to]) return; const [x1,y1]=xy(e.from),[x2,y2]=xy(e.to); more += `<path class="edge ${e.type}" d="${curve(x1,y1,x2,y2)}" stroke="${COL[N[e.from].sector]||'var(--povo)'}" marker-end="url(#m-${e.type})"/>`; }); document.getElementById('edges').innerHTML += more; });
   document.getElementById('panel').scrollTo({top:0});
 }
 function renderPerson(p){
