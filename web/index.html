@@ -569,12 +569,13 @@ function arrecCard(){
 function agendaHtml(p){
   const a=p._ag; if(!a||!a.compromissos_90d) return '';
   const tipos=Object.entries(a.por_tipo||{}).sort((x,y)=>y[1]-x[1]).map(([k,v])=>`${v} ${esc(k)}`).join(' · ');
-  const ents=(a.entidades_top||[]).slice(0,8);
-  const rec=(a.recentes||[]).slice(0,6);
+  const ents=(a.entidades_top||[]).slice(0,8); const locs=(a.locais_top||[]).slice(0,8);
+  const rec=(a.recentes||[]).slice(0,6); const pl=a.fonte==='planalto';
   return `<h3>Agenda pública <span style="font-weight:400">· ${a.compromissos_90d} compromissos em ${a.janela_dias||90} dias</span></h3>
-  <p class="note" style="font-size:13px;color:var(--ink-2);margin:0 0 6px">Reuniões, audiências e viagens que o cargo obriga a publicar (Lei 12.813/2013). ${tipos?tipos+'. ':''}${a.compromissos_ano?`${a.compromissos_ano} no ano. `:''}${a.ultimo?`Último publicado em ${fmtDate(a.ultimo)}. `:''}Fonte: <a href="${a.url||'https://eagendas.cgu.gov.br'}" target="_blank" rel="noopener">e-Agendas, CGU ↗</a>, ${fmtDate(a.generated_at)}.</p>
+  <p class="note" style="font-size:13px;color:var(--ink-2);margin:0 0 6px">${pl?`Agenda oficial publicada dia a dia pelo Planalto, com hora, título e local, sem lista de participantes${a.dias_com_agenda?` (${a.dias_com_agenda} dias com agenda)`:''}. `:'Reuniões, audiências e viagens que o cargo obriga a publicar (Lei 12.813/2013). '}${tipos?tipos+'. ':''}${a.compromissos_ano?`${a.compromissos_ano} no ano. `:''}${a.ultimo?`Último publicado em ${fmtDate(a.ultimo)}. `:''}Fonte: <a href="${a.url||'https://eagendas.cgu.gov.br'}" target="_blank" rel="noopener">${esc(a.fonte_nome||'e-Agendas, CGU')} ↗</a>, ${fmtDate(a.generated_at)}.</p>
   ${ents.length?`<h4 style="margin:8px 0 4px;font-size:13px">Quem mais foi recebido</h4>${bars(ents, e=>e.nome, e=>e.n, {fmt:v=>v+'×'})}`:''}
-  ${rec.length?`<h4 style="margin:10px 0 4px;font-size:13px">Últimos compromissos</h4>${rec.map(r=>`<div class="om-it" style="padding:6px 0"><span class="t">${esc(r.titulo||r.tipo||'compromisso')}</span><span class="m">${fmtDate(r.data)}${r.hora?' '+esc(r.hora):''}${r.tipo?' · '+esc(r.tipo):''}${r.local?' · '+esc(r.local.slice(0,60)):''}${(r.participantes||[]).length?' · '+r.participantes.slice(0,5).map(q=>esc(q.nome)+(q.entidade?` (${esc(q.entidade)})`:'')).join(', ')+((r.participantes||[]).length>5?` e mais ${r.participantes.length-5}`:''):''}</span></div>`).join('')}`:''}`;
+  ${locs.length?`<h4 style="margin:8px 0 4px;font-size:13px">Locais mais frequentes</h4>${bars(locs, e=>e.nome, e=>e.n, {fmt:v=>v+'×'})}`:''}
+  ${rec.length?`<h4 style="margin:10px 0 4px;font-size:13px">Últimos compromissos</h4>${rec.map(r=>`<div class="om-it" style="padding:6px 0"><span class="t">${esc(r.titulo||r.tipo||'compromisso')}</span><span class="m">${fmtDate(r.data)}${r.hora?' '+esc(r.hora):''}${r.tipo?' · '+esc(r.tipo):''}${r.local?' · '+esc(r.local.slice(0,60)):''}${r.nota?' · '+esc(r.nota):''}${(r.participantes||[]).length?' · '+r.participantes.slice(0,5).map(q=>esc(q.nome)+(q.entidade?` (${esc(q.entidade)})`:'')).join(', ')+((r.participantes||[]).length>5?` e mais ${r.participantes.length-5}`:''):''}</span></div>`).join('')}`:''}`;
 }
 function agendaOrgaoHtml(n){
   const a=n.agenda; if(!a||!a.compromissos_90d) return '';

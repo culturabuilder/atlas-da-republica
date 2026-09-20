@@ -33,6 +33,7 @@ echo "== Proposições";     $PY etl/proposicoes.py || echo "proposições falho
 echo "== Gabinetes";       $PY etl/gabinetes.py || echo "gabinetes falhou (segue)"
 echo "== Gabinetes SF";    $PY etl/gabinetes_senado.py || echo "gabinetes do Senado falhou (segue)"
 echo "== Agendas";         $PY etl/agendas.py || echo "agendas falhou (segue)"
+echo "== Agenda Planalto"; $PY etl/agenda_planalto.py || echo "agenda do Planalto falhou (segue)"
 echo "== Emendas";         $PY etl/emendas.py || echo "emendas falhou (segue)"
 echo "== Renúncias";       $PY etl/renuncias.py || echo "renúncias falhou (segue)"
 echo "== Teto";            $PY etl/teto.py || echo "teto falhou (segue)"

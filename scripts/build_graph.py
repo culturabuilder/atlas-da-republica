@@ -671,6 +671,12 @@ if _ag_p.exists():
     for nid, a in (_ag.get("orgaos") or {}).items():
         if nid in nodes and a: nodes[nid]["agenda"] = dict(a, generated_at=str(_ag.get("generated_at") or "")[:10], janela_dias=_ag.get("janela_dias"))
     stats["agendas_pessoas"] = _ag_n
+_ap_p = DATA / "generated" / "agenda-planalto.yaml"
+if _ap_p.exists():
+    _ap = yaml.safe_load(open(_ap_p, encoding="utf-8")) or {}
+    for pid, a in (_ap.get("people") or {}).items():
+        if pid in people_index and a and not people_index[pid].get("agenda"):
+            people_index[pid]["agenda"] = dict({k: v for k, v in a.items() if k != "dias"}, generated_at=str(_ap.get("generated_at") or "")[:10], janela_dias=_ap.get("janela_dias")); stats["agendas_pessoas"] = stats.get("agendas_pessoas", 0) + 1
 stats["sinais"] = {"pessoas": sum(1 for r in people_index.values() if r.get("sinais")), "por_tipo": dict(__import__("collections").Counter(x["tipo"] for r in people_index.values() for x in r.get("sinais") or []))}
 stats["omissao"] = (omissao or {}).get("summary"); stats["resumos"] = len(_rs); stats["historico_cargos"] = _hi_n; stats["segundo_escalao"] = _se_n; stats["atividade_pessoas"] = len(atividade)
 stats["people"] = len(people_index)
