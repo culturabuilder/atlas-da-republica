@@ -358,6 +358,7 @@ function renderPerson(p){
     ${activityHtml(p)}
     ${gabHtml(p)}
     ${emendasHtml(p)}
+    ${patHtml(p)}
     ${candHtml(p)}
     ${sab.length?`<h3>Sabatinas no Senado</h3>${sab.map(sb=>`<div class="sab"><span>${esc((sb.cargo||'').slice(0,90))}</span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:''}</span></div>`).join('')}`:''}
     ${na.length?`<h3>Na notícia</h3><div class="news">${na.map(a=>`<div class="it"><a class="t" href="#news:${a.id}">${esc(a.title)}</a><a class="ext" href="${a.url}" target="_blank" rel="noopener" title="Ler na fonte">fonte ↗</a>${(()=>{ const ps=(a.people||[]).filter(q=>q.id!==p.id).slice(0,4).map(q=>`<a href="#${P[q.id]?q.id:q.position}"><span class="av">${avatar(P[q.id]||{id:q.id,name:q.name})}</span>${esc(q.name)}</a>`); const es=(a.entities||[]).slice(0,3).map(id=>N[id]?`<a class="ent" href="#${id}">${esc(N[id].aliases&&N[id].aliases[0]&&N[id].aliases[0].length<=8?N[id].aliases[0]:N[id].name)}</a>`:'').filter(Boolean); return ps.length||es.length?`<span class="who">${ps.join('')}${es.join('')}</span>`:''; })()}<span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('')}</div>`:''}
@@ -367,7 +368,7 @@ function renderPerson(p){
 function select(id){
   if (id && id.startsWith('news:')) { const a=(G.news||[]).find(x=>x.id===id.slice(5)); if (a) { current=null; renderNews(a); return; } }
   if (P[id]) { current = null;
-    if (G.people_base && !P[id]._full) { content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; fetch(G.people_base + id + '.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{ P[id]._full = d.positions || []; P[id]._activity = d.activity || null; P[id]._emendas = d.emendas || null; P[id]._cand = d.candidaturas || null; P[id]._gab = d.gabinete || null; if (location.hash.slice(1)===id) select(id); }); return; }
+    if (G.people_base && !P[id]._full) { content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; fetch(G.people_base + id + '.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{ P[id]._full = d.positions || []; P[id]._activity = d.activity || null; P[id]._emendas = d.emendas || null; P[id]._cand = d.candidaturas || null; P[id]._gab = d.gabinete || null; P[id]._pat = d.patrimonio || null; if (location.hash.slice(1)===id) select(id); }); return; }
     const full = P[id]._full || (G.people&&G.people[id]&&G.people[id].positions) || [];
     const ids = full.length ? full.map(q=>q.id) : (P[id].positions||[]);
     const need = ids.filter(pid=>N[pid]&&N[pid].description===undefined&&G.detail_base); if (need.length) { Promise.all(need.map(loadDetail)).then(()=>renderPerson(P[id])); } else renderPerson(P[id]); return; }
@@ -481,6 +482,13 @@ function gabHtml(p){
   ${cotas?`<p style="font-size:13px;color:var(--ink-2);margin:0 0 8px">Maiores cotas no ano: ${cotas}.</p>`:''}
   <details class="rel"><summary>Equipe do gabinete · ${gb.assessores}</summary><div class="act">${(gb.equipe||[]).map(s=>`<div class="row"><span>${esc(s.nome)}<span class="d" style="display:block">${sen?esc(s.funcao||s.vinculo||''):''}${s.desde?(sen?' · ':'')+'desde '+fmtDate(s.desde):''}</span></span><span class="v">${sen?(s.salario?brl(s.salario):'—'):`${esc(s.nivel)}${s.grg?' + GRG':''} · ${brl(s.salario)}`}</span></div>`).join('')}</div></details>
   <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">${esc(M.nota||'')} Fonte: ${esc(M.fonte||'')}, ${fmtDate(M.generated_at)}.</p></div>`;
+}
+function patHtml(p){
+  const pt=p._pat; if(!pt) return ''; const M=G.stats.patrimonio||{}; const y18=pt['2018'], y22=pt['2022']; if(!y18&&!y22) return '';
+  const item=(y,d)=>d?`<div class="stat"><div class="n">${brl(d.total)}</div><div class="l">declarado em ${y} (${d.itens} ${d.itens===1?'bem':'bens'}, candidato a ${esc(d.cargo)} por ${d.uf})</div></div>`:'';
+  const varTxt=pt.variacao_nominal_pct!=null?`<p style="font-size:13.5px;margin:4px 0 8px">De 2018 para 2022 o patrimônio declarado ${pt.variacao_nominal_pct>=0?'cresceu':'caiu'} <b>${Math.abs(pt.variacao_nominal_pct).toLocaleString('pt-BR')}%</b> em valor nominal${pt.variacao_real_pct!=null?`, o que corresponde a <b>${pt.variacao_real_pct>=0?'+':''}${pt.variacao_real_pct.toLocaleString('pt-BR')}%</b> em valor real (IPCA de ago/2018 a ago/2022, ×${(M.ipca_fator_2018_2022||0).toLocaleString('pt-BR',{maximumFractionDigits:2})})`:''}.</p>`:'';
+  const top=(y22||y18||{}).top||[];
+  return `<h3>Patrimônio declarado ao TSE</h3><div class="din"><div class="om">${item(2018,y18)}${item(2022,y22)}</div>${varTxt}${top.length?`<p style="font-size:13px;color:var(--ink-2);margin:0 0 6px">Maiores itens em ${y22?2022:2018}: ${top.map(t=>`${esc(t.tipo.toLowerCase())} ${brl(t.valor)}`).join(' · ')}.</p>`:''}<p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Declaração do próprio candidato no registro da candidatura; valores de aquisição, não de mercado. Casamento ${esc(((y22||y18)||{}).casado_por||'')}. Fonte: ${esc(M.fonte||'TSE')}.</p></div>`;
 }
 function candHtml(p){
   const c=p._cand; if(!c||!c.length) return '';
