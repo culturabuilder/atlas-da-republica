@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="pt-BR">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('atlas-theme')||'dark'}catch(e){document.documentElement.dataset.theme='dark'}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparar parlamentares · Atlas da República</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%23C25A12%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+<link rel="stylesheet" href="atlas.css">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--accent)}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:var(--card);padding:8px;z-index:9}
+/* barra */
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:14px;padding:8px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-2)}
+.bar .brand{display:flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap;min-width:0}
+.bar .brand .mark{width:16px;height:16px;border-radius:50%;background:var(--povo);box-shadow:0 0 0 2px var(--card),0 0 0 3px var(--povo);flex:none}
+.bar .crumb{color:var(--ink-3);font-weight:500}
+.bar nav{flex:1;display:flex;gap:4px;justify-content:center;min-width:0}
+.bar nav a{font-family:var(--mono);font-size:12px;color:var(--ink-2);text-decoration:none;padding:5px 9px;border-radius:7px;white-space:nowrap}
+.bar nav a:hover{background:var(--card)}
+.btn{font:inherit;font-size:13px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);cursor:pointer}
+.btn:hover{border-color:var(--ink-3)}
+/* página */
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;padding-block:0 80px}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.hero{padding:34px 0 22px;border-bottom:1px solid var(--line-2)}
+.hero h1{font-family:var(--disp);font-size:clamp(30px,5vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.04;margin:8px 0 12px;text-wrap:balance}
+.hero p{font-size:17.5px;color:var(--ink-2);margin:0;max-width:60ch}
+.hero .meta{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-top:14px}
+section{padding-top:44px}
+section h2{font-family:var(--disp);font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.015em;line-height:1.1;margin:6px 0 4px}
+section .q{color:var(--ink-3);font-size:15.5px;margin:0 0 16px;max-width:64ch}
+/* controles */
+.ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:end;background:var(--card);border:1px solid var(--line-2);border-radius:12px;padding:12px 14px}
+.ctl label{display:flex;flex-direction:column;gap:3px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);min-width:0}
+.ctl label.grow{flex:1 1 220px}
+.ctl select,.ctl input{font:inherit;font-size:14px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);max-width:100%;min-width:0}
+.ctl select{appearance:auto}
+.ctl .btn{padding:8px 10px}
+.mdesc{font-size:14px;color:var(--ink-2);margin:12px 0 4px}
+.mdesc b{color:var(--ink)}
+.mdesc .med{font-family:var(--mono);font-size:12px;color:var(--ink-3);display:block;margin-top:3px}
+/* ranking */
+.rk{list-style:none;margin:10px 0 0;padding:0;border-top:1px solid var(--line-2)}
+.rk li{display:grid;grid-template-columns:30px 36px minmax(0,1fr) auto;grid-template-areas:"n av who val" "n av bar bar";gap:2px 10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line-2)}
+.rk .n{grid-area:n;font-family:var(--mono);font-size:12px;color:var(--ink-3);text-align:right}
+.rk .av{grid-area:av;width:36px;height:36px;border-radius:50%;overflow:hidden;background:var(--line-2);flex:none}
+.rk .av img,.cmp .av img{width:100%;height:100%;object-fit:cover;display:block}
+.ini{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.rk .who{grid-area:who;min-width:0;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.rk .who a{color:var(--ink);text-decoration:none;font-weight:600;border-bottom:1px solid transparent}
+.rk .who a:hover{border-bottom-color:var(--accent)}
+.rk .who small{font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+.rk .val{grid-area:val;text-align:right;white-space:nowrap}
+.rk .val b{font-family:var(--mono);font-weight:600;font-size:14px}
+.rk .val small{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+.rk .bar-w{grid-area:bar;height:6px;background:var(--line-2);border-radius:3px;overflow:hidden;position:relative}
+.rk .bar-w i{display:block;height:100%;background:var(--leg);border-radius:3px}
+.rk .bar-w i.sen{background:var(--exe)}
+.rk .bar-w i.neg{background:var(--ink-3)}
+.rk .bar-w .md{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--ink);opacity:.55}
+.more{display:flex;gap:10px;align-items:center;justify-content:center;margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+.empty{padding:24px 0;color:var(--ink-3);text-align:center}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-top:10px}
+.legend i{display:inline-block;width:14px;height:6px;border-radius:3px;vertical-align:middle;margin-right:5px}
+/* comparador */
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pick .box{position:relative}
+.pick input{width:100%;font:inherit;font-size:15px;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink)}
+.pick .res{position:absolute;left:0;right:0;top:100%;z-index:4;margin:4px 0 0;padding:4px;list-style:none;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.18);max-height:280px;overflow:auto}
+.pick .res[hidden]{display:none}
+.pick .res button{display:flex;gap:10px;align-items:center;width:100%;text-align:left;font:inherit;font-size:14px;padding:6px 8px;border:0;background:none;color:var(--ink);border-radius:7px;cursor:pointer}
+.pick .res button:hover,.pick .res button:focus-visible{background:var(--accent-soft);outline:none}
+.pick .res button small{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-left:auto;white-space:nowrap}
+.pick .res .av{width:26px;height:26px;border-radius:50%;overflow:hidden;background:var(--line-2);flex:none}
+.pick .res .av img{width:100%;height:100%;object-fit:cover;display:block}
+.pick .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px;display:block}
+.cmp{margin-top:18px;border:1px solid var(--line-2);border-radius:12px;background:var(--card);overflow:hidden}
+.cmp .heads{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 14px 10px;border-bottom:1px solid var(--line-2)}
+.cmp .head{display:flex;gap:10px;align-items:center;min-width:0}
+.cmp .av{width:48px;height:48px;border-radius:50%;overflow:hidden;background:var(--line-2);flex:none}
+.cmp .head b{display:block;font-family:var(--disp);font-size:16px;line-height:1.15}
+.cmp .head b a{color:var(--ink);text-decoration:none}
+.cmp .head b a:hover{color:var(--accent)}
+.cmp .head small{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:2px}
+.cmp .head.none{color:var(--ink-3);font-size:14px}
+.cmp table{width:100%;border-collapse:collapse;font-size:14px}
+.cmp th,.cmp td{padding:8px 10px;vertical-align:top}
+.cmp thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;text-align:right;border-bottom:1px solid var(--line-2)}
+.cmp thead th:first-child{text-align:left}
+.cmp tbody th{text-align:left;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line-2);width:34%}
+.cmp tbody th small{display:block;font-weight:400;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-top:2px}
+.cmp tbody td{text-align:right;font-family:var(--mono);border-bottom:1px solid var(--line-2);white-space:nowrap}
+.cmp td.mid{color:var(--ink-3);font-size:12.5px}
+.cmp td .pos{display:block;font-size:10.5px;color:var(--ink-3);margin-top:2px}
+.cmp td.up{background:color-mix(in srgb,var(--accent-soft) 55%,transparent)}
+.cmp td.down{background:color-mix(in srgb,var(--line-2) 70%,transparent)}
+.cmp td .bb{display:block;height:4px;margin-top:5px;background:var(--line-2);border-radius:2px;overflow:hidden}
+.cmp td .bb i{display:block;height:100%;background:var(--ink-3)}
+.cmp td.a .bb i{background:var(--leg)}
+.cmp td.b .bb i{background:var(--exe)}
+.cmp .note{padding:10px 14px;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);border-top:1px solid var(--line-2)}
+.cmp .mixed{padding:10px 14px;font-size:13.5px;color:var(--ink-2);border-bottom:1px solid var(--line-2)}
+.cmp .mixed b{font-weight:600}
+/* rodapé */
+.foot{margin-top:50px;padding-top:20px;border-top:1px solid var(--line-2);font-size:14px;color:var(--ink-2)}
+.foot h3{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+.foot ul{margin:0;padding-left:18px}
+.foot li{margin:4px 0}
+.foot .src{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:14px}
+@media (max-width:640px){
+  .wrap{padding-inline:16px}
+  .bar{gap:8px;padding:8px 12px}
+  .bar .crumb{display:none}
+  .bar .brand{font-size:14px}
+  .bar nav{justify-content:flex-end;gap:0}
+  .bar nav a{padding:5px 6px;font-size:11.5px}
+  .bar nav a.aux{display:none}
+  .bar .btn{padding:5px 8px;font-size:12px}
+  .pick{grid-template-columns:1fr}
+  .cmp .heads{grid-template-columns:1fr}
+  .cmp th,.cmp td{padding:7px 6px}
+  .cmp table{font-size:12.5px}
+  .cmp tbody th{width:30%;font-size:12.5px}
+  .cmp tbody th small{display:none}
+  .cmp tbody td{white-space:normal;font-size:12px}
+  .cmp td.mid{font-size:11px}
+  .rk li{grid-template-columns:24px 32px minmax(0,1fr) auto}
+  .rk .av{width:32px;height:32px}
+  .rk .val b{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important} }
+</style>
+
+<a href="#rankings" class="skip">Pular para o conteúdo</a>
+<div class="bar">
+  <a class="brand" href="/"><span class="mark"></span>Atlas da República <span class="crumb">/ Comparar</span></a>
+  <nav aria-label="Seções"><a href="#rankings">Rankings</a><a href="#lado-a-lado">Lado a lado</a><a class="aux" href="/como-funciona/">Como funciona</a></nav>
+  <button class="btn" id="theme" aria-label="Alternar tema claro e escuro">◐ Tema</button>
+</div>
+
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">Atlas da República · deputados e senadores</div>
+  <h1>Comparar parlamentares</h1>
+  <p>Os mesmos números que aparecem em cada pessoa da roda, agora em lista: escolha uma medida, filtre por Casa, estado ou partido e veja cada parlamentar contra a mediana da sua Casa. Ou coloque dois nomes lado a lado.</p>
+  <div class="meta"><span id="m-count"></span><span id="m-date"></span><span>fontes ao fim da página</span></div>
+</header>
+
+<section id="rankings">
+  <div class="eyebrow">Rankings</div>
+  <h2>Uma medida, todos os parlamentares</h2>
+  <p class="q">A lista ordena pelo valor escolhido. A barra é proporcional ao maior valor da lista filtrada; o traço vertical marca a mediana da Casa. O “×mediana” diz quantas vezes o valor da pessoa é a mediana da Casa dela; em percentuais, a diferença aparece em pontos.</p>
+  <div class="ctl" id="ctl">
+    <label class="grow">Medida<select id="metric"></select></label>
+    <label>Casa<select id="casa"><option value="">Câmara e Senado</option><option value="camara">Câmara</option><option value="senado">Senado</option></select></label>
+    <label>UF<select id="uf"><option value="">Todas</option></select></label>
+    <label>Partido<select id="partido"><option value="">Todos</option></select></label>
+    <label>Ordem<button class="btn" id="ordem" type="button" aria-live="polite">maior → menor</button></label>
+  </div>
+  <div class="mdesc" id="mdesc"></div>
+  <ol class="rk" id="rk"></ol>
+  <div class="more" id="more"></div>
+  <div class="legend"><span><i style="background:var(--leg)"></i>Câmara</span><span><i style="background:var(--exe)"></i>Senado</span><span><i style="background:var(--ink);opacity:.55;width:2px;height:10px"></i>mediana da Casa</span></div>
+</section>
+
+<section id="lado-a-lado">
+  <div class="eyebrow">Lado a lado</div>
+  <h2>Duas pessoas, a mesma régua</h2>
+  <p class="q">Digite dois nomes. Cada linha mostra o valor de cada um e a mediana da Casa entre os dois; o fundo marca quem está acima ou abaixo dela, sem dizer se isso é bom ou ruim.</p>
+  <div class="pick">
+    <div class="box"><span class="lbl">Pessoa A</span><input id="pa" type="search" autocomplete="off" placeholder="Nome, partido ou UF" aria-label="Pessoa A"><ul class="res" id="ra" hidden></ul></div>
+    <div class="box"><span class="lbl">Pessoa B</span><input id="pb" type="search" autocomplete="off" placeholder="Nome, partido ou UF" aria-label="Pessoa B"><ul class="res" id="rb" hidden></ul></div>
+  </div>
+  <div class="cmp" id="cmp"></div>
+</section>
+
+<footer class="foot">
+  <h3>Fontes e ressalvas</h3>
+  <ul>
+    <li><b>Custo do mandato</b> soma subsídio, cota parlamentar e gabinete no ano corrente, pelos meses já decorridos. É uma estimativa de ordem de grandeza, não um valor contábil.</li>
+    <li><b>Presença</b> é a fração das votações nominais do ano em que a pessoa registrou voto (inclusive abstenção e obstrução), pelos dados abertos da Câmara e do Senado. Licenças e missões oficiais não são descontadas.</li>
+    <li><b>Cota parlamentar</b>: na Câmara, a CEAP do ano corrente; no Senado, a CEAPS somada aos gastos não incluídos na cota publicados pelo Senado.</li>
+    <li><b>Equipe e folha da Câmara</b> são uma <b>estimativa</b>: o número de secretários parlamentares e a soma do vencimento bruto da tabela de níveis de cada um, sem encargos, auxílios nem 13º. A verba de gabinete real pode ser maior.</li>
+    <li><b>Equipe e folha do Senado</b> são as <b>reais do último mês publicado</b>: servidores lotados no gabinete e nos escritórios de apoio, e a remuneração básica, função comissionada e vantagens pessoais dessas pessoas, sem auxílios nem 13º. Por isso os números das duas Casas não são diretamente comparáveis, e a mediana é sempre a da própria Casa.</li>
+    <li><b>Emendas</b> são os valores empenhados no ano, pelo Portal da Transparência. A <b>concentração</b> é a fração das emendas com município definido, desde 2023, que foi para os 15 municípios onde a pessoa teve mais votos em 2022. Emenda é instrumento legítimo de representação local; a concentração só indica onde a base eleitoral está e não é juízo de valor.</li>
+    <li><b>Patrimônio</b> é a autodeclaração de bens ao TSE nas candidaturas de 2018 e 2022, a valor de aquisição, sem atualização de mercado. A variação real desconta o IPCA do período. Só aparece para quem foi candidato nos dois anos e pôde ser casado com segurança pelo nome de urna.</li>
+    <li><b>Receita de campanha</b> é o total de receitas declarado ao TSE na eleição de 2022, em qualquer origem (partido, pessoas físicas, recursos próprios, outros candidatos).</li>
+    <li><b>Sinais</b> é a contagem de observações automáticas que o Atlas gerou para a pessoa (mesmo sobrenome na equipe, concentração de emendas, variação de patrimônio). São pontos de partida para leitura, não conclusões.</li>
+  </ul>
+  <p class="src" id="src"></p>
+</footer>
+</div>
+
+<script id="cmp-data" type="application/json"><!--CMP_DATA--></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+const D = JSON.parse(document.getElementById('cmp-data').textContent || '{}');
+const PEOPLE = D.pessoas || []; const MED = D.medianas || {}; const HOME = D.home || '/'; const IMG = D.img || '/img/'; const ANO = D.ano || new Date().getFullYear();
+const byId = {}; PEOPLE.forEach(p => { byId[p.id] = p; });
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm = s => String(s || '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim();
+const CASA = {camara: 'Câmara', senado: 'Senado'};
+const nf0 = new Intl.NumberFormat('pt-BR', {maximumFractionDigits: 0});
+const nf1 = new Intl.NumberFormat('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+function brl(v){ if (v == null) return '—'; const a = Math.abs(v); const s = v < 0 ? '−' : ''; if (a >= 1e9) return s + 'R$ ' + nf1.format(a/1e9) + ' bi'; if (a >= 1e6) return s + 'R$ ' + nf1.format(a/1e6) + ' mi'; if (a >= 1e4) return s + 'R$ ' + nf0.format(a/1e3) + ' mil'; return s + 'R$ ' + nf0.format(a); }
+function pct(v){ return v == null ? '—' : nf1.format(v) + '%'; }
+function pctS(v){ return v == null ? '—' : (v > 0 ? '+' : '') + nf1.format(v) + '%'; }
+function num(v){ return v == null ? '—' : nf0.format(v); }
+// medidas: cmp 'ratio' → ×mediana; 'diff' → diferença em pontos percentuais
+const METRICS = [
+  {k:'custo_ano_total', label:'Custo do mandato no ano', fmt:brl, cmp:'ratio', desc:`Subsídio + cota + gabinete em ${ANO}, pelos meses já decorridos. Gabinete estimado na Câmara, real no Senado.`},
+  {k:'presenca_pct', label:'Presença em votações nominais', fmt:pct, cmp:'diff', desc:`Fração das votações nominais de ${ANO} em que a pessoa registrou voto.`},
+  {k:'cota_total', label:'Cota parlamentar no ano', fmt:brl, cmp:'ratio', desc:`Cota parlamentar usada em ${ANO} (CEAP na Câmara; CEAPS e gastos não incluídos no Senado).`},
+  {k:'assessores', label:'Tamanho da equipe', fmt:num, cmp:'ratio', unit:'pessoas', desc:'Pessoas no gabinete. Secretários parlamentares na Câmara; servidores lotados no gabinete e escritórios de apoio no Senado.'},
+  {k:'folha_mensal', label:'Folha mensal do gabinete', fmt:brl, cmp:'ratio', desc:'Câmara: estimativa pela tabela de níveis. Senado: folha real do último mês publicado.'},
+  {k:'emendas_ano', label:`Emendas empenhadas em ${ANO}`, fmt:brl, cmp:'ratio', desc:`Valor empenhado em ${ANO} nas emendas de autoria da pessoa, pelo Portal da Transparência.`},
+  {k:'emendas_top15_pct', label:'Emendas nos 15 municípios de maior votação', fmt:pct, cmp:'diff', desc:'Fração das emendas com município definido, desde 2023, paga nos 15 municípios onde a pessoa teve mais votos em 2022. Não é juízo de valor.'},
+  {k:'variacao_real_pct', label:'Variação real do patrimônio 2018→2022', fmt:pctS, cmp:'diff', desc:'Bens declarados ao TSE em 2022 sobre 2018, descontado o IPCA. Só para quem foi candidato nos dois anos.'},
+  {k:'receita_2022', label:'Receita de campanha em 2022', fmt:brl, cmp:'ratio', desc:'Total de receitas declarado ao TSE na eleição de 2022.'}
+];
+const EXTRA = [
+  {k:'votacoes', label:'Votações nominais no ano', fmt:num, cmp:'ratio'},
+  {k:'cota_media_mes', label:'Cota por mês', fmt:brl, cmp:'ratio'},
+  {k:'patrimonio_2018', label:'Patrimônio declarado em 2018', fmt:brl, cmp:'ratio'},
+  {k:'patrimonio_2022', label:'Patrimônio declarado em 2022', fmt:brl, cmp:'ratio'},
+  {k:'n_sinais', label:'Sinais gerados pelo Atlas', fmt:num, cmp:'ratio'}
+];
+const MK = {}; METRICS.concat(EXTRA).forEach(m => { MK[m.k] = m; });
+function med(p, k){ const m = MED[p.casa] || {}; return m[k] == null ? null : m[k]; }
+function vsMed(p, k, m){ const v = p[k], md = med(p, k); if (v == null || md == null) return ''; if (m.cmp === 'diff') { const d = v - md; return (d > 0 ? '+' : '') + nf1.format(d) + ' pp vs mediana'; } if (md <= 0) return ''; return '×' + nf1.format(v / md) + ' mediana'; }
+function avatar(p, cls){ const inner = p.foto ? `<img src="${IMG}${esc(p.id)}.jpg" alt="" loading="lazy">` : `<span class="ini">${esc((p.nome || '?').split(' ').slice(0, 2).map(w => w[0]).join(''))}</span>`; return `<span class="${cls || 'av'}">${inner}</span>`; }
+function tag(p){ return [p.partido || '—', p.uf || '—'].join(' · ') + (p.casa ? ' · ' + CASA[p.casa] : ''); }
+// ---- cabeçalho
+$('m-count').textContent = `${PEOPLE.filter(p => p.casa === 'camara').length} deputados · ${PEOPLE.filter(p => p.casa === 'senado').length} senadores`;
+$('m-date').textContent = 'dados de ' + (D.gerado || '');
+$('src').textContent = `Fontes: Câmara dos Deputados e Senado Federal (dados abertos: votações, cota, funcionários e folha${D.notas && D.notas.folha_mes_senado ? ' de ' + D.notas.folha_mes_senado : ''}); Portal da Transparência (emendas); TSE (bens declarados e prestação de contas de 2022${D.notas && D.notas.patrimonio_ipca ? '; fator IPCA 2018→2022 = ' + String(D.notas.patrimonio_ipca).replace('.', ',') : ''}). Gerado em ${D.gerado || ''}.`;
+// ---- rankings
+const selM = $('metric'), selC = $('casa'), selU = $('uf'), selP = $('partido'), btnO = $('ordem'), list = $('rk'), more = $('more'), mdesc = $('mdesc');
+METRICS.forEach(m => { const o = document.createElement('option'); o.value = m.k; o.textContent = m.label; selM.appendChild(o); });
+const ufs = Array.from(new Set(PEOPLE.map(p => p.uf).filter(Boolean))).sort(); ufs.forEach(u => { const o = document.createElement('option'); o.value = u; o.textContent = u; selU.appendChild(o); });
+const parties = Array.from(new Set(PEOPLE.map(p => p.partido).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'pt-BR')); parties.forEach(x => { const o = document.createElement('option'); o.value = x; o.textContent = x; selP.appendChild(o); });
+let desc = true, limit = 50;
+function renderRank(){
+  const k = selM.value, m = MK[k]; const casa = selC.value, uf = selU.value, pt = selP.value;
+  const rows = PEOPLE.filter(p => (!casa || p.casa === casa) && (!uf || p.uf === uf) && (!pt || p.partido === pt));
+  const withV = rows.filter(p => p[k] != null); const semV = rows.length - withV.length;
+  withV.sort((a, b) => desc ? b[k] - a[k] : a[k] - b[k]);
+  const maxAbs = withV.reduce((mx, p) => Math.max(mx, Math.abs(p[k])), 0) || 1;
+  const medTxt = ['camara', 'senado'].filter(c => !casa || c === casa).map(c => { const v = MED[c] && MED[c][k]; return v == null ? null : `mediana ${CASA[c]}: ${m.fmt(v)}`; }).filter(Boolean).join(' · ');
+  mdesc.innerHTML = `<b>${esc(m.label)}</b> — ${esc(m.desc || '')}<span class="med">${esc(medTxt)}${semV ? ` · ${semV} sem dado (fora da lista)` : ''}</span>`;
+  const shown = withV.slice(0, limit);
+  list.innerHTML = shown.map((p, i) => {
+    const v = p[k]; const w = Math.round(100 * Math.abs(v) / maxAbs); const md = med(p, k);
+    const mdPos = (md != null && md >= 0 && m.cmp !== 'diff') || (md != null && m.cmp === 'diff' && md >= 0) ? Math.min(100, Math.round(100 * Math.abs(md) / maxAbs)) : null;
+    return `<li><span class="n">${i + 1}</span>${avatar(p, 'av')}<span class="who"><a href="${HOME}#${esc(p.id)}">${esc(p.nome)}</a><small>${esc(tag(p))}</small></span><span class="val"><b>${m.fmt(v)}${m.unit ? ' ' + m.unit : ''}</b><small>${esc(vsMed(p, k, m))}</small></span><span class="bar-w"><i class="${p.casa === 'senado' ? 'sen' : ''}${v < 0 ? ' neg' : ''}" style="width:${w}%"></i>${mdPos != null ? `<span class="md" style="left:${mdPos}%"></span>` : ''}</span></li>`;
+  }).join('') || `<li class="empty">Ninguém com esse dado nos filtros escolhidos.</li>`;
+  more.innerHTML = withV.length > shown.length ? `<span>${shown.length} de ${withV.length}</span><button class="btn" type="button" id="more-btn">mostrar mais 100</button><button class="btn" type="button" id="all-btn">todos</button>` : (withV.length ? `<span>${withV.length} pessoas</span>` : '');
+  const mb = $('more-btn'), ab = $('all-btn');
+  if (mb) mb.addEventListener('click', () => { limit += 100; renderRank(); });
+  if (ab) ab.addEventListener('click', () => { limit = Infinity; renderRank(); });
+}
+[selM, selC, selU, selP].forEach(s => s.addEventListener('change', () => { limit = 50; renderRank(); }));
+btnO.addEventListener('click', () => { desc = !desc; btnO.textContent = desc ? 'maior → menor' : 'menor → maior'; limit = 50; renderRank(); });
+// ---- comparador
+const pick = {a: null, b: null};
+function search(q){ q = norm(q); if (!q) return []; const parts = q.split(/\s+/); return PEOPLE.filter(p => { const h = norm(p.nome + ' ' + (p.partido || '') + ' ' + (p.uf || '') + ' ' + (p.casa || '')); return parts.every(t => h.includes(t)); }).slice(0, 8); }
+function wire(slot){
+  const inp = $('p' + slot), res = $('r' + slot);
+  function show(){ const hits = search(inp.value); res.innerHTML = hits.map(p => `<li><button type="button" data-id="${esc(p.id)}">${avatar(p, 'av')}<span>${esc(p.nome)}</span><small>${esc(tag(p))}</small></button></li>`).join(''); res.hidden = !hits.length; }
+  inp.addEventListener('input', show); inp.addEventListener('focus', show);
+  inp.addEventListener('keydown', e => { if (e.key === 'Escape') { res.hidden = true; } if (e.key === 'Enter') { const b = res.querySelector('button'); if (b) { e.preventDefault(); choose(slot, b.dataset.id); } } if (e.key === 'ArrowDown') { const b = res.querySelector('button'); if (b) { b.focus(); e.preventDefault(); } } });
+  res.addEventListener('click', e => { const b = e.target.closest('button'); if (b) choose(slot, b.dataset.id); });
+  res.addEventListener('keydown', e => { const items = Array.from(res.querySelectorAll('button')); const i = items.indexOf(document.activeElement); if (e.key === 'ArrowDown' && items[i + 1]) { items[i + 1].focus(); e.preventDefault(); } if (e.key === 'ArrowUp') { (items[i - 1] || inp).focus(); e.preventDefault(); } if (e.key === 'Escape') { res.hidden = true; inp.focus(); } });
+  document.addEventListener('click', e => { if (!e.target.closest('#' + inp.id) && !e.target.closest('#' + res.id)) res.hidden = true; });
+}
+function choose(slot, id){ const p = byId[id]; if (!p) return; pick[slot] = p; const inp = $('p' + slot); inp.value = p.nome; $('r' + slot).hidden = true; syncHash(); renderCmp(); }
+function syncHash(){ const a = pick.a ? pick.a.id : '', b = pick.b ? pick.b.id : ''; const h = (a || b) ? '#cmp=' + a + ',' + b : ''; if (h !== location.hash) history.replaceState(null, '', h || location.pathname + location.search); }
+function cell(p, k, m, md, cls, scale){
+  if (!p) return '<td class="' + cls + '">—</td>';
+  const v = p[k]; if (v == null) return `<td class="${cls}">—</td>`;
+  let pos = '', side = '';
+  if (md != null) { if (v > md) { side = 'up'; pos = 'acima da mediana'; } else if (v < md) { side = 'down'; pos = 'abaixo da mediana'; } else { pos = 'na mediana'; } }
+  const w = scale ? Math.round(100 * Math.abs(v) / scale) : 0;
+  return `<td class="${cls} ${side}">${m.fmt(v)}${m.unit ? ' ' + m.unit : ''}<span class="pos">${pos}</span><span class="bb"><i style="width:${w}%"></i></span></td>`;
+}
+function renderCmp(){
+  const A = pick.a, B = pick.b, box = $('cmp');
+  if (!A && !B) { box.innerHTML = '<div class="note">Escolha duas pessoas acima. O endereço da página passa a carregar a escolha, para compartilhar.</div>'; return; }
+  const head = p => p ? `<div class="head">${avatar(p, 'av')}<div><b><a href="${HOME}#${esc(p.id)}">${esc(p.nome)}</a></b><small>${esc(tag(p))}</small></div></div>` : '<div class="head none">Escolha a outra pessoa.</div>';
+  const sameHouse = A && B && A.casa === B.casa; const casaRef = A ? A.casa : B.casa;
+  const mixed = A && B && !sameHouse ? `<div class="mixed">Casas diferentes: <b>${esc(A.nome)}</b> é comparado com a mediana da ${CASA[A.casa]} e <b>${esc(B.nome)}</b> com a da ${CASA[B.casa]}. A coluna do meio mostra as duas. Equipe e folha têm métodos distintos em cada Casa (veja as ressalvas).</div>` : '';
+  const rows = METRICS.concat(EXTRA).map(m => {
+    const k = m.k; const mdA = A ? med(A, k) : null, mdB = B ? med(B, k) : null;
+    const medTxt = sameHouse || !(A && B) ? m.fmt(A ? mdA : mdB) : `${m.fmt(mdA)} <small>C</small><br>${m.fmt(mdB)} <small>S</small>`;
+    const scale = Math.max(Math.abs(A && A[k] != null ? A[k] : 0), Math.abs(B && B[k] != null ? B[k] : 0), Math.abs(mdA || 0), Math.abs(mdB || 0)) || 0;
+    return `<tr><th>${esc(m.label)}${m.desc ? `<small>${esc(m.desc)}</small>` : ''}</th>${cell(A, k, m, mdA, 'a', scale)}<td class="mid">${medTxt}</td>${cell(B, k, m, mdB, 'b', scale)}</tr>`;
+  }).join('');
+  box.innerHTML = `<div class="heads">${head(A)}${head(B)}</div>${mixed}<div style="overflow-x:auto"><table><thead><tr><th>Medida</th><th>${A ? esc(A.nome.split(' ')[0]) : 'A'}</th><th>mediana ${sameHouse || !(A && B) ? (CASA[casaRef] || '') : 'C / S'}</th><th>${B ? esc(B.nome.split(' ')[0]) : 'B'}</th></tr></thead><tbody>${rows}</tbody></table></div><div class="note">Mediana: metade da Casa está acima, metade abaixo. Estar acima ou abaixo descreve a posição na distribuição, não a qualidade do mandato. Traço significa dado indisponível para a pessoa.</div>`;
+}
+wire('a'); wire('b');
+function readHash(){ const mt = /cmp=([^,]*),?([^,&]*)/.exec(location.hash || ''); if (!mt) return false; let ok = false; if (mt[1] && byId[mt[1]]) { pick.a = byId[mt[1]]; $('pa').value = pick.a.nome; ok = true; } if (mt[2] && byId[mt[2]]) { pick.b = byId[mt[2]]; $('pb').value = pick.b.nome; ok = true; } return ok; }
+// ---- tema
+const root = document.documentElement, tb = $('theme');
+tb.addEventListener('click', () => { const dark = root.dataset.theme !== 'light'; root.dataset.theme = dark ? 'light' : 'dark'; try { localStorage.setItem('atlas-theme', root.dataset.theme); } catch(e){} });
+// ---- estado inicial
+renderRank();
+if (readHash()) { renderCmp(); setTimeout(() => $('lado-a-lado').scrollIntoView(), 50); } else { renderCmp(); }
+});
+</script>

@@ -58,3 +58,11 @@ Código: MIT (`LICENSE`). Dados em `data/`: CC BY 4.0 (`data/LICENSE`).
 ## Desempenho
 
 A home e a área educativa saem do build com a roda já em SVG (`scripts/render_wheel.js` executa `atlas.js` no Node, sem DOM) e com os primeiros cartões no HTML; o CSS da roda é embutido e as fontes carregam sem bloquear a renderização. Páginas de nó e de pessoa desenham a roda no cliente para manter o site leve.
+
+## Outras páginas e saídas do build
+
+- `/comparar/` (`scripts/build_comparar.py`): rankings por medida, Casa, UF e partido, e comparador lado a lado de dois parlamentares, sempre contra a mediana da Casa.
+- `/dados/` (`scripts/build_dados.py`): CSV e JSON de nós, ligações, pessoas, ocupantes, mudanças, omissão, temas, arrecadação, emendas, gabinetes, patrimônio e viagens, com licença CC BY 4.0.
+- `/metodologia/` (`web/metodologia.html`): fonte, periodicidade e o que é estimativa em cada bloco, e o que fica de fora.
+- `/feeds/*.xml` (`scripts/build_feeds.py`): RSS de mudanças de cargo, prazos vencendo, temas e notícias.
+- `/og/<id>.png` (`scripts/build_og.py`): imagem de compartilhamento por pessoa e órgão, referenciada nas metas Open Graph de cada página.

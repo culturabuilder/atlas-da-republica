@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="pt-BR">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('atlas-theme')||'dark'}catch(e){document.documentElement.dataset.theme='dark'}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metodologia · Atlas da República</title>
+<meta name="description" content="O que o Atlas da República mostra, de onde vem cada dado, com que frequência é atualizado e o que é estimativa.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%23C25A12%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+<link rel="stylesheet" href="__PREFIX__/atlas.css">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55}
+a{color:var(--accent)}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:var(--card);padding:8px;z-index:9}
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:14px;padding:8px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-2)}
+.bar .brand{display:flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap}
+.bar .brand .mark{width:16px;height:16px;border-radius:50%;background:var(--povo);box-shadow:0 0 0 2px var(--card),0 0 0 3px var(--povo)}
+.bar .crumb{color:var(--ink-3);font-weight:500}
+.bar .sp{flex:1}
+.btn{font:inherit;font-size:13px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);cursor:pointer;text-decoration:none}
+.btn:hover{border-color:var(--ink-3)}
+main{max-width:820px;margin:0 auto;padding:24px 20px 100px}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+h1{font-family:var(--disp);font-size:clamp(32px,5vw,48px);font-weight:800;letter-spacing:-.02em;line-height:1.04;margin:10px 0 14px;text-wrap:balance}
+p.lead{font-size:19px;color:var(--ink-2);max-width:60ch;margin:0 0 18px}
+.meta{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-bottom:22px}
+.toc{margin:0 0 30px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2px 20px}
+.toc a{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:baseline;text-decoration:none;color:var(--ink);font-size:15px;padding:5px 0;border-bottom:1px dashed var(--line-2)}
+.toc a b{font-family:var(--mono);font-weight:600;font-size:11px;color:var(--ink-3)}
+.toc a:hover{color:var(--accent)}
+section{padding-top:44px;scroll-margin-top:60px}
+h2{font-family:var(--disp);font-size:clamp(22px,3vw,28px);font-weight:800;letter-spacing:-.015em;line-height:1.1;margin:6px 0 10px}
+h3{font-family:var(--disp);font-size:17px;font-weight:700;margin:22px 0 6px}
+p{margin:0 0 12px;max-width:66ch}
+dl{display:grid;grid-template-columns:130px 1fr;gap:6px 14px;margin:14px 0 16px;padding:14px 16px;background:var(--card);border:1px solid var(--line-2);border-radius:10px;font-size:15.5px}
+dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding-top:3px}
+dd{margin:0}
+ul,ol{padding-left:22px;max-width:66ch} li{margin:5px 0}
+code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5px;border-radius:4px;border:1px solid var(--line-2)}
+.note{border-left:3px solid var(--accent);padding:8px 14px;margin:14px 0;color:var(--ink-2);background:var(--accent-soft);border-radius:0 8px 8px 0}
+.foot{margin-top:50px;padding-top:16px;border-top:1px solid var(--line-2);font-size:14px;color:var(--ink-3)}
+@media (max-width:600px){ .bar .crumb{display:none} dl{grid-template-columns:1fr;gap:2px 0} dt{margin-top:8px} }
+</style>
+
+<a href="#estrutura" class="skip">Pular para o conteúdo</a>
+<div class="bar">
+  <a class="brand" href="__PREFIX__/"><span class="mark"></span>Atlas da República <span class="crumb">/ Metodologia</span></a>
+  <span class="sp"></span>
+  <a class="btn" href="__PREFIX__/dados/">Dados</a>
+  <button class="btn" id="theme" aria-label="Alternar tema claro e escuro">◐ Tema</button>
+</div>
+<main>
+  <header>
+    <div class="eyebrow">Atlas da República · metodologia</div>
+    <h1>De onde vem cada número</h1>
+    <p class="lead">Este texto descreve, bloco a bloco, o que o Atlas mostra, qual é a fonte oficial, com que frequência o dado é lido e o que é estimativa. Nada aqui é conclusão sobre pessoas.</p>
+    <div class="meta"><span>atualização diária</span><span>fontes públicas</span><span>código aberto</span></div>
+    <ol class="toc">
+      <li><a href="#estrutura"><b>01</b><span>Estrutura</span></a></li>
+      <li><a href="#ocupantes"><b>02</b><span>Ocupantes</span></a></li>
+      <li><a href="#trajetoria"><b>03</b><span>Trajetória até o cargo</span></a></li>
+      <li><a href="#omissao"><b>04</b><span>Placar da omissão</span></a></li>
+      <li><a href="#arrecadometro"><b>05</b><span>Arrecadômetro</span></a></li>
+      <li><a href="#temas"><b>06</b><span>Temas</span></a></li>
+      <li><a href="#emendas"><b>07</b><span>Emendas</span></a></li>
+      <li><a href="#renuncias"><b>08</b><span>Renúncias fiscais</span></a></li>
+      <li><a href="#teto"><b>09</b><span>Acima do teto</span></a></li>
+      <li><a href="#gabinetes"><b>10</b><span>Gabinetes</span></a></li>
+      <li><a href="#patrimonio"><b>11</b><span>Patrimônio</span></a></li>
+      <li><a href="#campanha"><b>12</b><span>Campanha 2022</span></a></li>
+      <li><a href="#candidaturas"><b>13</b><span>Candidaturas</span></a></li>
+      <li><a href="#viagens"><b>14</b><span>Viagens e cartão</span></a></li>
+      <li><a href="#sinais"><b>15</b><span>Sinais "para verificar"</span></a></li>
+      <li><a href="#fora"><b>16</b><span>O que fica de fora</span></a></li>
+      <li><a href="#corrigir"><b>17</b><span>Como corrigir um erro</span></a></li>
+    </ol>
+  </header>
+
+  <section id="estrutura">
+    <div class="eyebrow">Bloco 01</div>
+    <h2>Estrutura: órgãos, cargos e ligações</h2>
+    <p>A roda mostra órgãos, cargos de chefia e colegiados do governo federal, e as relações legais entre eles: quem elege, nomeia, sabatina, supervisiona, fiscaliza e integra quem. Cada nó e cada ligação citam a norma que os cria.</p>
+    <dl>
+      <dt>Fonte</dt><dd>SIORG (Sistema de Informações Organizacionais do Governo Federal) para a administração direta e indireta do Executivo. Arquivos YAML curados à mão para Legislativo, Judiciário, funções essenciais e para todas as ligações, cada uma com citação legal (Constituição, leis, decretos, regimentos).</dd>
+      <dt>Atualização</dt><dd>SIORG lido todo dia. YAML muda quando uma norma muda ou quando alguém aponta um erro.</dd>
+      <dt>Estimativa</dt><dd>Nenhuma. O campo <code>cite</code> de cada nó diz de onde vem. Nós vindos só do SIORG sem norma identificada trazem "ato normativo não informado".</dd>
+    </dl>
+    <p>O anel indica a distância do voto: chefia (1), cúpula (2), administração direta (3) e indireta (4). O setor segue o Poder ou a função (Legislativo, Executivo, Judiciário, funções essenciais e controle).</p>
+  </section>
+
+  <section id="ocupantes">
+    <div class="eyebrow">Bloco 02</div>
+    <h2>Ocupantes: quem está em cada cadeira</h2>
+    <p>Cada cargo mostra o nome de quem o ocupa hoje, desde quando e a fonte do nome. As fontes são consultadas nesta ordem; a primeira que responde vale.</p>
+    <ol>
+      <li>Página oficial do órgão (lista de ministros, diretoria, composição), lida e conferida com a data da consulta.</li>
+      <li>APIs de dados abertos da Câmara e do Senado, para deputados, senadores, mesas e comissões.</li>
+      <li>Diário Oficial da União, atos de nomeação e exoneração.</li>
+      <li>Wikipédia em português, infobox do cargo.</li>
+      <li>Wikidata, propriedade "ocupante do cargo".</li>
+    </ol>
+    <dl>
+      <dt>Marcação</dt><dd>Nomes que vêm só da Wikipédia ou do Wikidata, sem confirmação em página oficial, DOU ou API, aparecem como <strong>não conferido</strong>. Cargos sem nome encontrado aparecem como vagos ou sem informação.</dd>
+      <dt>Atualização</dt><dd>Diária. A data de conferência de cada nome fica no campo <code>checked_at</code>.</dd>
+      <dt>Estimativa</dt><dd>Nenhuma. "Interino" e "substituto" seguem o que a fonte diz.</dd>
+    </dl>
+  </section>
+
+  <section id="trajetoria">
+    <div class="eyebrow">Bloco 03</div>
+    <h2>Trajetória até o cargo</h2>
+    <p>Para cada ocupante, o Atlas mostra como chegou ao cargo: eleito, nomeado ou suplente; por quem; em que data; se passou por sabatina; e quando termina o mandato ou a permanência.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Quem nomeou: tabela de presidentes da República por data de posse, cruzada com a data de nomeação. Sabatinas: mensagens e votações do Senado Federal. Fim de mandato: norma do cargo (mandato fixo) ou aposentadoria compulsória aos 75 anos, calculada a partir da data de nascimento no Wikidata.</dd>
+      <dt>Atualização</dt><dd>Sabatinas lidas todo dia. Datas de nascimento lidas no build completo.</dd>
+      <dt>Estimativa</dt><dd>A data de aposentadoria aos 75 anos é um cálculo sobre a data de nascimento. Se a data de nascimento no Wikidata estiver errada, a projeção também estará.</dd>
+    </dl>
+  </section>
+
+  <section id="omissao">
+    <div class="eyebrow">Bloco 04</div>
+    <h2>Placar da omissão</h2>
+    <p>Lista decisões que a Constituição manda tomar em prazo e que ainda não foram tomadas: vetos sem votação, medidas provisórias perto de caducar e pedidos de CPI com assinaturas suficientes sem leitura.</p>
+    <dl>
+      <dt>Regras</dt><dd>
+        <ul>
+          <li>Veto: o Congresso deve apreciar em 30 dias a contar do recebimento (CF art. 66 §4º). Depois disso, o veto entra na ordem do dia com prioridade. O Atlas conta os dias desde o recebimento.</li>
+          <li>Medida provisória: vigência de 60 dias, prorrogável uma vez por mais 60 (CF art. 62 §§3º e 7º). Os dias em recesso não contam. O Atlas mostra o prazo final e os dias restantes.</li>
+          <li>CPI: cria-se com requerimento de 1/3 dos membros da Casa, ou seja, 171 deputados ou 27 senadores (CF art. 58 §3º). O Atlas mostra requerimentos com assinaturas iguais ou acima do mínimo ainda sem instalação.</li>
+        </ul>
+      </dd>
+      <dt>Fonte</dt><dd>Congresso Nacional (vetos e MPs), Câmara dos Deputados (requerimentos de CPI). Casos que a API não expõe entram por curadoria manual, com o campo <code>curated</code> e a fonte citada.</dd>
+      <dt>Atualização</dt><dd>Diária.</dd>
+      <dt>Estimativa</dt><dd>O prazo da MP segue o cálculo do Congresso quando disponível. O "responsável" é o cargo que a norma aponta para a próxima etapa, não uma atribuição de culpa.</dd>
+    </dl>
+  </section>
+
+  <section id="arrecadometro">
+    <div class="eyebrow">Bloco 05</div>
+    <h2>Arrecadômetro</h2>
+    <p>Mostra quanto a União arrecadou no ano até a data mais recente, a comparação com o mesmo período do ano anterior, o valor por habitante e um contador que avança em tempo real.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Portal da Transparência, receitas realizadas por data de lançamento. IPCA (IBGE) para a comparação em valores reais. População: projeção do IBGE para o ano. Juros da dívida: Banco Central, série SGS 4607.</dd>
+      <dt>Atualização</dt><dd>Diária. A data da última receita lançada aparece ao lado do valor.</dd>
+      <dt>Estimativa</dt><dd>O contador em tempo real é uma projeção: usa o ritmo médio dos três últimos meses fechados, dividido por segundo, a partir da última data com dado. O valor por habitante usa a população projetada. A comparação real usa o IPCA acumulado até o mês de referência informado.</dd>
+    </dl>
+  </section>
+
+  <section id="temas">
+    <div class="eyebrow">Bloco 06</div>
+    <h2>Temas</h2>
+    <p>Cada tema é uma pergunta pública ("o Congresso vai votar X?") ligada a um ou mais processos. O Atlas mostra o estado do processo, há quantos dias está parado e a atenção que recebe.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Lista de temas e palavras-chave curadas à mão. Processos: Câmara, Senado e Congresso Nacional. Atenção: notícias do próprio Atlas por semana (palavras-chave no título e no resumo) e visitas diárias ao verbete na Wikipédia (API Wikimedia, 90 dias).</dd>
+      <dt>Estados</dt><dd><strong>em movimento</strong> (andamento nos últimos 30 dias), <strong>parado</strong>, <strong>prazo vencido</strong>, <strong>encerrado</strong> (aprovado, rejeitado, arquivado ou caducou). O estado do tema é o do processo mais avançado ainda aberto.</dd>
+      <dt>Regra</dt><dd>"Silêncio com prazo vencido" acende quando as três condições ocorrem ao mesmo tempo: a atenção caiu mais de 80% em relação ao pico e ficou assim por 60 dias; o processo está parado há pelo menos 60 dias; e o prazo legal passou.</dd>
+      <dt>Atualização</dt><dd>Diária.</dd>
+      <dt>Estimativa</dt><dd>A contagem de notícias depende das palavras-chave escolhidas. Um tema pode estar na imprensa com outras palavras e não ser contado.</dd>
+    </dl>
+  </section>
+
+  <section id="emendas">
+    <div class="eyebrow">Bloco 07</div>
+    <h2>Emendas parlamentares</h2>
+    <p>Para cada parlamentar: valor empenhado e pago por ano, municípios que mais receberam, concentração nos cinco maiores e a relação com os municípios onde teve mais votos em 2022.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Portal da Transparência, emendas parlamentares por autor e pagamentos a favorecidos por município. Votos: TSE, resultados por município da eleição de 2022.</dd>
+      <dt>Método</dt><dd>O município é o do favorecido do pagamento, não o do objeto da emenda. Pagamentos a favorecidos em Brasília são excluídos para parlamentares que não são do DF, porque muitos órgãos federais e fundos têm sede lá e distorceriam a conta.</dd>
+      <dt>Atualização</dt><dd>Diária.</dd>
+      <dt>Estimativa</dt><dd>A parcela "sem município definido" não entra no cálculo de concentração. A comparação com os votos usa os 15 municípios de maior votação; é uma descrição, não uma inferência.</dd>
+    </dl>
+  </section>
+
+  <section id="renuncias">
+    <div class="eyebrow">Bloco 08</div>
+    <h2>Renúncias fiscais</h2>
+    <p>Quanto a União deixa de arrecadar por benefícios tributários, por função orçamentária e por gasto tributário.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Receita Federal, Demonstrativo de Gastos Tributários (DGT), previsão que acompanha o PLOA, Quadro IV.</dd>
+      <dt>Atualização</dt><dd>Anual, quando a Receita publica o demonstrativo.</dd>
+      <dt>Estimativa</dt><dd>Todo o valor é uma estimativa oficial. Benefícios fora do demonstrativo, como a isenção de lucros e dividendos, não entram.</dd>
+    </dl>
+  </section>
+
+  <section id="teto">
+    <div class="eyebrow">Bloco 09</div>
+    <h2>Acima do teto</h2>
+    <p>Quantos servidores tiveram remuneração bruta acima do teto constitucional, quanto foi cortado ("abate-teto") e quanto foi pago em verbas indenizatórias, por órgão.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Portal da Transparência, remuneração de servidores do SIAPE. Teto: R$ 46.366,19, subsídio de ministro do STF (Lei 15.081/2024, a partir de fev/2025).</dd>
+      <dt>Alcance</dt><dd>Servidores civis do Poder Executivo federal no SIAPE. Não inclui militares, Judiciário, Legislativo, Ministério Público nem estatais.</dd>
+      <dt>Atualização</dt><dd>Mensal, quando o Portal publica a folha.</dd>
+      <dt>Estimativa</dt><dd>Nenhuma. Verbas indenizatórias ficam fora do teto por lei; o Atlas as mostra separadas.</dd>
+    </dl>
+  </section>
+
+  <section id="gabinetes">
+    <div class="eyebrow">Bloco 10</div>
+    <h2>Gabinetes</h2>
+    <p>Para cada parlamentar: quantas pessoas trabalham no gabinete, a folha mensal, quantos entraram no ano e o custo total no ano (subsídio, cota parlamentar e gabinete).</p>
+    <dl>
+      <dt>Câmara</dt><dd>Lista de secretários parlamentares por deputado (dados abertos da Câmara) cruzada com a tabela de remuneração por nível. A folha é uma <strong>estimativa</strong>: o valor do nível, não o contracheque. A cota vem dos gastos da CEAP.</dd>
+      <dt>Senado</dt><dd>API administrativa do Senado: servidores por gabinete, com função, vínculo e remuneração real do último mês publicado. Inclui escritórios de apoio.</dd>
+      <dt>Atualização</dt><dd>Diária para a composição; a folha do Senado segue o mês publicado.</dd>
+      <dt>Estimativa</dt><dd>Toda a folha da Câmara. O custo no ano multiplica o subsídio pelos meses decorridos.</dd>
+    </dl>
+  </section>
+
+  <section id="patrimonio">
+    <div class="eyebrow">Bloco 11</div>
+    <h2>Patrimônio</h2>
+    <p>Bens declarados ao TSE nas candidaturas de 2018 e 2022, total, maiores itens e variação entre as duas declarações.</p>
+    <dl>
+      <dt>Fonte</dt><dd>TSE, bens dos candidatos, arquivos de 2018 e 2022. IPCA do IBGE de agosto de 2018 a agosto de 2022 para a variação real.</dd>
+      <dt>Método</dt><dd>Os bens são declarados pelo próprio candidato, a valor de aquisição, não de mercado. A declaração é ligada à pessoa pelo nome completo ou pelo nome de urna, quando único no arquivo e com a mesma UF; o campo <code>casado_por</code> registra o critério.</dd>
+      <dt>Atualização</dt><dd>Só muda em ano de eleição.</dd>
+      <dt>Estimativa</dt><dd>A variação real é um cálculo sobre valores de aquisição. Herança, venda, mudança de critério ou erro de preenchimento explicam variações grandes.</dd>
+    </dl>
+  </section>
+
+  <section id="campanha">
+    <div class="eyebrow">Bloco 12</div>
+    <h2>Campanha 2022: receitas</h2>
+    <p>Total recebido na campanha de 2022, origem dos recursos (partido, fundo, pessoas físicas, recursos próprios) e maiores doadores.</p>
+    <dl>
+      <dt>Fonte</dt><dd>TSE, prestação de contas eleitorais de 2022, receitas dos candidatos.</dd>
+      <dt>Regra</dt><dd>Pessoas físicas só aparecem nominalmente quando a doação soma R$ 50 mil ou mais. Abaixo disso, entram só no total por origem. Partidos, fundos e o próprio candidato aparecem sempre.</dd>
+      <dt>Atualização</dt><dd>Só muda em ano de eleição.</dd>
+      <dt>Estimativa</dt><dd>Nenhuma. Os valores são os declarados ao TSE.</dd>
+    </dl>
+  </section>
+
+  <section id="candidaturas">
+    <div class="eyebrow">Bloco 13</div>
+    <h2>Candidaturas</h2>
+    <p>Eleições disputadas pela pessoa, com cargo, partido, UF, nome de urna e resultado.</p>
+    <dl>
+      <dt>Fonte</dt><dd>TSE, arquivos de candidatos por eleição.</dd>
+      <dt>Método</dt><dd>O partido mostrado é o pelo qual concorreu naquela eleição, não a filiação atual. A pessoa é casada com o registro pelo nome completo, ou pelo nome de urna quando único no arquivo e com duas ou mais palavras, na mesma UF. Quando há data de nascimento conhecida, ela precisa bater.</dd>
+      <dt>Marcação</dt><dd>Nomes com até três palavras sem confirmação por data de nascimento aparecem como <strong>possível homônimo</strong>.</dd>
+      <dt>Atualização</dt><dd>Só muda em ano de eleição.</dd>
+      <dt>Estimativa</dt><dd>O casamento por nome é a parte incerta; a marcação de homônimo existe por isso.</dd>
+    </dl>
+  </section>
+
+  <section id="viagens">
+    <div class="eyebrow">Bloco 14</div>
+    <h2>Viagens e cartão corporativo</h2>
+    <p>Viagens a serviço no ano, com diárias, passagens, destinos e viagens ao exterior. Gastos com o cartão de pagamento do governo federal, por mês, com saques identificados.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Portal da Transparência: viagens a serviço (SCDP) e extratos mensais do cartão (CPGF).</dd>
+      <dt>Alcance</dt><dd>Só o Poder Executivo. Legislativo e Judiciário têm sistemas próprios que não entram. Portadores do cartão são ligados aos ocupantes pelo nome completo.</dd>
+      <dt>Atualização</dt><dd>Mensal, quando o Portal publica os arquivos.</dd>
+      <dt>Estimativa</dt><dd>Nenhuma. Saques são identificados pela descrição da transação.</dd>
+    </dl>
+  </section>
+
+  <section id="sinais">
+    <div class="eyebrow">Bloco 15</div>
+    <h2>Sinais "para verificar"</h2>
+    <p>Na página de cada pessoa, o Atlas pode mostrar sinais gerados por regras fixas sobre os dados acima. Um sinal é um convite a olhar mais de perto. Não é conclusão, não é acusação e não passa por revisão humana antes de aparecer.</p>
+    <h3>Regras</h3>
+    <ul>
+      <li><strong>Sobrenome em comum.</strong> Alguém da equipe do gabinete tem sobrenome igual ao do parlamentar. Sobrenome igual não prova parentesco. A Súmula Vinculante 13 do STF veda nomear cônjuge, companheiro ou parente até o 3º grau para cargo em comissão; só a comprovação do parentesco diz se a regra se aplica.</li>
+      <li><strong>Troca de equipe.</strong> Parte grande do gabinete começou no ano corrente. Em ano eleitoral isso tem explicações comuns; as datas de entrada estão na página.</li>
+      <li><strong>Emendas e votos.</strong> Percentual alto das emendas com município definido foi para os 15 municípios de maior votação em 2022. Emenda é instrumento legítimo de representação local; o número só indica onde está a base eleitoral.</li>
+      <li><strong>Patrimônio.</strong> O total declarado ao TSE mais que dobrou em valor real entre 2018 e 2022. Declarações são do próprio candidato, a valor de aquisição; herança, venda ou mudança de critério explicam muitas variações.</li>
+    </ul>
+    <div class="note">Cada sinal aparece com a nota que explica por que não é conclusão. Quem quiser apurar deve partir das fontes citadas, não do sinal.</div>
+  </section>
+
+  <section id="fora">
+    <div class="eyebrow">Bloco 16</div>
+    <h2>O que fica de fora</h2>
+    <p>Limites conhecidos dos dados e das fontes. Alguns podem mudar; outros dependem dos órgãos.</p>
+    <ul>
+      <li>Filiação partidária: o TSE não publica lista nominal de filiados em formato aberto. O Atlas mostra o partido pelo qual a pessoa concorreu ou o que a Câmara e o Senado informam para o mandato.</li>
+      <li>Impeachment: a API da Câmara não expõe as denúncias apresentadas contra o Presidente da República. Elas não entram no placar da omissão.</li>
+      <li>STF: não há dado aberto sobre pedidos de vista e o tempo de cada um. Processos parados no Supremo não são medidos.</li>
+      <li>Remuneração no Judiciário: em 2026 os tribunais restringiram a publicação individual de remuneração. O bloco "acima do teto" cobre só o Executivo (SIAPE).</li>
+      <li>CEAP da Câmara: a cota parlamentar vem de um arquivo anual, publicado com atraso; os meses mais recentes podem não estar.</li>
+      <li>TSE: o site bloqueia acesso automatizado. Os arquivos de candidaturas, bens, receitas e votos foram baixados à mão e são atualizados quando há eleição.</li>
+      <li>Viagens e cartão: só Executivo. Legislativo e Judiciário têm sistemas próprios.</li>
+      <li>Fotos: vêm de páginas oficiais, Câmara, Senado e Wikimedia Commons. Pessoas sem foto pública ficam sem foto.</li>
+    </ul>
+  </section>
+
+  <section id="corrigir">
+    <div class="eyebrow">Bloco 17</div>
+    <h2>Como corrigir um erro</h2>
+    <p>Abra um issue em <a href="https://github.com/culturabuilder/atlas-da-republica/issues/new">https://github.com/culturabuilder/atlas-da-republica/issues/new</a>. Informe a página, o dado errado e, se possível, a fonte oficial com o dado certo. Correções de estrutura e de ocupantes entram no YAML curado com a citação; correções de dados derivados entram no código do conector.</p>
+    <p>Os arquivos usados nesta página estão em <a href="__PREFIX__/dados/">Dados</a>, sob licença CC BY 4.0. A área educativa <a href="__PREFIX__/como-funciona/">Como funciona a República</a> explica a roda passo a passo.</p>
+  </section>
+
+  <div class="foot">Atlas da República · <a href="__PREFIX__/">roda completa</a> · <a href="__PREFIX__/como-funciona/">como funciona</a> · <a href="__PREFIX__/dados/">dados</a> · <a href="__PREFIX__/feeds/mudancas.xml">RSS</a></div>
+</main>
+<script>
+const root=document.documentElement,tb=document.getElementById('theme');
+tb.addEventListener('click',()=>{const dark=root.dataset.theme!=='light';root.dataset.theme=dark?'light':'dark';try{localStorage.setItem('atlas-theme',root.dataset.theme)}catch(e){}});
+</script>
+</html>

@@ -58,7 +58,8 @@ def page(n):
     kids = "".join(f'<li><a href="/br/{k}/">{esc(N[k]["name"])}</a></li>' for k in n.get("children", []) if k in N)
     ssr = f'''<div id="ssr"><article><h1>{esc(n["name"])}</h1><p>{esc(n.get("description") or "")}</p><p>Fonte legal: {esc(n.get("cite") or "")}</p>
 {("<h2>Ocupantes</h2><ul>" + people + "</ul>") if people else ""}{("<h2>Órgãos integrados e vinculados</h2><ul>" + kids + "</ul>") if kids else ""}<h2>Relações</h2><ul>{"".join(rels)}</ul><p><a href="/">Atlas da República</a></p></article></div>'''
-    head = f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc)}">\n<link rel="canonical" href="{url}">\n<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{url}"><meta property="og:type" content="website">\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
+    og_img = f"{BASE}{PREFIX}/og/{n['id']}.png" if n["id"] in OG_IDS else f"{BASE}{PREFIX}/og/atlas.png"
+    head = f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc)}">\n<link rel="canonical" href="{url}">\n<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{url}"><meta property="og:type" content="website"><meta property="og:image" content="{og_img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
     out = tpl.replace("<title>Atlas da República</title>\n", head, 1)
     out = out.replace('<div id="content"></div>', '<div id="content"></div>' + ssr, 1)
     out = out.replace("select(location.hash.slice(1));", f"select(location.hash.slice(1) || {json.dumps(n['id'])});", 1)
@@ -71,7 +72,8 @@ def person_page(p):
     ld = {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "url": url, "hasOccupation": [{"@type": "Role", "roleName": q["name"]} for q in p["positions"][:5]]}
     if p.get("party"): ld["memberOf"] = {"@type": "Organization", "name": p["party"]}
     if p.get("photo"): ld["image"] = f"{BASE}/img/{p['id']}.jpg"
-    head = f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc[:300])}">\n<link rel="canonical" href="{url}">\n<meta property="og:title" content="{esc(title)}"><meta property="og:url" content="{url}"><meta property="og:type" content="profile">\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
+    og_img = f"{BASE}{PREFIX}/og/{p['id']}.png" if p["id"] in OG_IDS else f"{BASE}{PREFIX}/og/atlas.png"
+    head = f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc[:300])}">\n<link rel="canonical" href="{url}">\n<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc[:300])}"><meta property="og:url" content="{url}"><meta property="og:type" content="profile"><meta property="og:image" content="{og_img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
     ssr = f'<div id="ssr"><article><h1>{esc(p["name"])}</h1><p>{esc(p.get("party") or "")} {esc(p.get("uf") or "")}</p><h2>Cargos</h2><ul>{pos}</ul><p><a href="/">Atlas da República</a></p></article></div>'
     out = tpl.replace("<title>Atlas da República</title>\n", head, 1).replace('<div id="content"></div>', '<div id="content"></div>' + ssr, 1)
     out = out.replace("select(location.hash.slice(1));", f"select(location.hash.slice(1) || {json.dumps(p['id'])});", 1)
@@ -79,7 +81,22 @@ def person_page(p):
 
 import importlib.util as _ilu
 _spec = _ilu.spec_from_file_location("build_como_funciona", ROOT / "scripts" / "build_como_funciona.py"); _cf = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_cf)
+def _mod(name):
+    sp = _ilu.spec_from_file_location(name, ROOT / "scripts" / f"{name}.py"); m = _ilu.module_from_spec(sp); sp.loader.exec_module(m); return m
 urls = [f"{BASE}/", _cf.build(site, PREFIX, BASE, G, WHEEL)]
+_met = (ROOT / "web" / "metodologia.html")
+if _met.exists():
+    (site / "metodologia").mkdir(parents=True, exist_ok=True)
+    (site / "metodologia" / "index.html").write_text(_met.read_text(encoding="utf-8").replace("__PREFIX__", PREFIX), encoding="utf-8"); urls.append(f"{BASE}/metodologia/")
+OG_IDS = set()
+for _name in ("build_comparar", "build_feeds", "build_dados", "build_og"):
+    if (ROOT / "scripts" / f"{_name}.py").exists():
+        try:
+            r = _mod(_name).build(site, PREFIX, BASE, G)
+            if isinstance(r, str): urls.append(r)
+            elif isinstance(r, list): urls += [u for u in r if isinstance(u, str) and u.startswith("http")]
+            elif isinstance(r, dict) and _name == "build_og": OG_IDS = set(r.keys())
+        except Exception as e: print(f"aviso: {_name} falhou:", e)
 PEOPLE = G.get("people", {})
 for p in PEOPLE.values():
     d = site / "br" / "pessoa" / p["id"]; d.mkdir(parents=True, exist_ok=True)
@@ -87,7 +104,7 @@ for p in PEOPLE.values():
 for n in N.values():
     d = site / "br" / n["id"]; d.mkdir(parents=True, exist_ok=True)
     (d / "index.html").write_text(page(n), encoding="utf-8"); urls.append(f"{BASE}/br/{n['id']}/")
-home = tpl.replace("<title>Atlas da República</title>\n", f'<title>Atlas da República</title>\n<meta name="description" content="Mapa navegável do governo federal brasileiro: órgãos, cargos, colegiados e as relações legais entre eles, com citação da norma.">\n<link rel="canonical" href="{BASE}/">\n', 1)
+home = tpl.replace("<title>Atlas da República</title>\n", f'<title>Atlas da República</title>\n<meta name="description" content="Mapa navegável do governo federal brasileiro: órgãos, cargos, colegiados e as relações legais entre eles, com citação da norma.">\n<link rel="canonical" href="{BASE}/">\n<meta property="og:title" content="Atlas da República"><meta property="og:description" content="Quem manda em quê no governo federal, com a lei que diz isso."><meta property="og:url" content="{BASE}/"><meta property="og:type" content="website"><meta property="og:image" content="{BASE}{PREFIX}/og/atlas.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">\n<link rel="alternate" type="application/rss+xml" title="Mudanças de cargo" href="{BASE}{PREFIX}/feeds/mudancas.xml"><link rel="alternate" type="application/rss+xml" title="Prazos vencendo" href="{BASE}{PREFIX}/feeds/prazos.xml"><link rel="alternate" type="application/rss+xml" title="Temas" href="{BASE}{PREFIX}/feeds/temas.xml">\n', 1)
 links = "".join(f'<li><a href="/br/{n["id"]}/">{esc(n["name"])}</a></li>' for n in sorted(N.values(), key=lambda x: x["name"]) if n["type"] != "dept_head")
 st = G["stats"]
 first = (f'<a class="card start" href="{PREFIX}/como-funciona/"><span class="eyebrow">Comece por aqui</span><b>Como funciona a República</b><span>Uma visita guiada de 9 minutos pela roda: quem você elege, quem nomeia quem, quem vigia quem. Para quem nunca precisou entender isso e agora quer.</span><span class="go">Começar →</span></a>'
@@ -96,7 +113,7 @@ first = (f'<a class="card start" href="{PREFIX}/como-funciona/"><span class="eye
 # os dois primeiros cartões da home já vêm no HTML (pintura imediata); o JS os substitui pelo painel completo
 home = home.replace('<div id="content"></div>', '<div id="content">' + first + '</div><div id="ssr" hidden><h1>Atlas da República</h1><ul>' + links + '</ul></div>', 1)
 if WHEEL: home = home.replace('<div id="graph"></div>', '<div id="graph">' + WHEEL + '</div>', 1)
-home = home.replace('href="/br/', f'href="{PREFIX}/br/').replace('href="/como-funciona/"', f'href="{PREFIX}/como-funciona/"')
+home = home.replace('href="/br/', f'href="{PREFIX}/br/').replace('href="/como-funciona/"', f'href="{PREFIX}/como-funciona/"').replace('href="/comparar/"', f'href="{PREFIX}/comparar/"').replace('href="/dados/"', f'href="{PREFIX}/dados/"').replace('href="/metodologia/"', f'href="{PREFIX}/metodologia/"').replace('href="/feeds/', f'href="{PREFIX}/feeds/')
 (site / "index.html").write_text(home, encoding="utf-8")
 (site / ".nojekyll").write_text("", encoding="utf-8")
 if a.cname: (site / "CNAME").write_text(a.cname + "\n", encoding="utf-8")
