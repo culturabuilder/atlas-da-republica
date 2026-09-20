@@ -356,6 +356,7 @@ function renderPerson(p){
   content.innerHTML = `<div class="card"><div class="phead"><span class="big">${avatar(p)}</span><div><h1 style="margin:0">${esc(p.name)}</h1><p style="margin:4px 0 0;color:var(--ink-3)">${[p.party,p.uf].filter(Boolean).join(' · ')||'Pessoa'}${pm?` · na notícia ${pm.articles}× em 90 dias, última ${fmtDate(pm.last)}`:''}</p></div></div>
     <h3>Cargos</h3><div class="list">${pos||'<span class="seat">Sem cargo registrado.</span>'}</div>
     ${activityHtml(p)}
+    ${gabHtml(p)}
     ${emendasHtml(p)}
     ${candHtml(p)}
     ${sab.length?`<h3>Sabatinas no Senado</h3>${sab.map(sb=>`<div class="sab"><span>${esc((sb.cargo||'').slice(0,90))}</span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:''}</span></div>`).join('')}`:''}
@@ -366,7 +367,7 @@ function renderPerson(p){
 function select(id){
   if (id && id.startsWith('news:')) { const a=(G.news||[]).find(x=>x.id===id.slice(5)); if (a) { current=null; renderNews(a); return; } }
   if (P[id]) { current = null;
-    if (G.people_base && !P[id]._full) { content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; fetch(G.people_base + id + '.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{ P[id]._full = d.positions || []; P[id]._activity = d.activity || null; P[id]._emendas = d.emendas || null; P[id]._cand = d.candidaturas || null; if (location.hash.slice(1)===id) select(id); }); return; }
+    if (G.people_base && !P[id]._full) { content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; fetch(G.people_base + id + '.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{ P[id]._full = d.positions || []; P[id]._activity = d.activity || null; P[id]._emendas = d.emendas || null; P[id]._cand = d.candidaturas || null; P[id]._gab = d.gabinete || null; if (location.hash.slice(1)===id) select(id); }); return; }
     const full = P[id]._full || (G.people&&G.people[id]&&G.people[id].positions) || [];
     const ids = full.length ? full.map(q=>q.id) : (P[id].positions||[]);
     const need = ids.filter(pid=>N[pid]&&N[pid].description===undefined&&G.detail_base); if (need.length) { Promise.all(need.map(loadDetail)).then(()=>renderPerson(P[id])); } else renderPerson(P[id]); return; }
@@ -468,6 +469,16 @@ function dinheiroHtml(){
     <div class="om">${stat(T.servidores.toLocaleString('pt-BR'),'servidores civis na folha')}${stat(T.com_abate_teto.toLocaleString('pt-BR'),'com salário bruto acima do teto (cortado pelo abate-teto)')}${stat(brl(T.valor_abatido_mes),'cortados no mês')}${stat(brl(T.indenizatorias_mes),'pagos fora do teto como verbas indenizatórias')}${stat(T.acima_do_teto_com_indenizatorias.toLocaleString('pt-BR'),'acima do teto contando as indenizatórias')}</div>
     <h4 style="margin:10px 0 4px;font-size:14px">Órgãos com mais servidores acima do teto</h4>${bars((T.orgaos||[]).slice(0,10), x=>x.orgao, x=>x.com_abate_teto, {fmt:(v,it)=>`${v.toLocaleString('pt-BR')} (${it.pct_com_abate}%)`, link:x=>x.node?'#'+x.node:null})}`; }
   return out+'</div>';
+}
+function gabHtml(p){
+  const gb=p._gab; const M=(G.stats.gabinetes||{}); const md=M.medianas||{}; if(!gb) return '';
+  const rel=(v,m)=>m?` (${(v/m).toLocaleString('pt-BR',{maximumFractionDigits:1})}× a mediana da Câmara)`:'';
+  const c=gb.custo_ano||{};
+  return `<h3>Gabinete e custo do mandato</h3><div class="din">
+  <div class="om">${[[gb.assessores,'secretários parlamentares'+rel(gb.assessores,md.assessores)],[brl(gb.folha_mensal_estimada),'folha mensal estimada do gabinete'+rel(gb.folha_mensal_estimada,md.folha_mensal_estimada)],[brl(c.total),`custo do mandato em ${new Date().getFullYear()} até agora`+rel(c.total,md.custo_ano_total)]].map(([n,l])=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join('')}</div>
+  <p style="font-size:13.5px;margin:4px 0 8px">Custo até agora: subsídio ${brl(c.subsidio)} (${c.meses} meses de ${brl(M.subsidio_mensal)}) + cota ${brl(c.cota)} + gabinete estimado ${brl(c.gabinete_estimado)}. ${gb.nomeados_no_ano?`${gb.nomeados_no_ano} ${gb.nomeados_no_ano===1?'nomeação':'nomeações'} no gabinete neste ano (mediana ${md.nomeados_no_ano}).`:''}</p>
+  <details class="rel"><summary>Equipe do gabinete · ${gb.assessores}</summary><div class="act">${(gb.equipe||[]).map(s=>`<div class="row"><span>${esc(s.nome)}<span class="d" style="display:block">${s.desde?'desde '+fmtDate(s.desde):''}</span></span><span class="v">${esc(s.nivel)}${s.grg?' + GRG':''} · ${brl(s.salario)}</span></div>`).join('')}</div></details>
+  <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">${esc(M.nota||'')} Fonte: ${esc(M.fonte||'Câmara dos Deputados, dados abertos de funcionários e tabela de remuneração')}, ${fmtDate(M.generated_at)}.</p></div>`;
 }
 function candHtml(p){
   const c=p._cand; if(!c||!c.length) return '';

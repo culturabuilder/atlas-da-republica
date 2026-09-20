@@ -24,6 +24,7 @@ echo "== Arrecadação";     $PY etl/arrecadacao.py || echo "arrecadação falho
 echo "== Atividade";       $PY etl/atividade.py || echo "atividade falhou (segue)"
 echo "== Votos 2022";      $PY etl/votos.py || echo "votos falhou (segue)"
 echo "== Candidaturas";    $PY etl/candidaturas.py || echo "candidaturas falhou (segue)"
+echo "== Gabinetes";       $PY etl/gabinetes.py || echo "gabinetes falhou (segue)"
 echo "== Emendas";         $PY etl/emendas.py || echo "emendas falhou (segue)"
 echo "== Renúncias";       $PY etl/renuncias.py || echo "renúncias falhou (segue)"
 echo "== Teto";            $PY etl/teto.py || echo "teto falhou (segue)"
