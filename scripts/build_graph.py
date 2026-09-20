@@ -537,6 +537,10 @@ _cd = _load_yaml("candidaturas.yaml"); _cd_people = (_cd.get("people") or {}) if
 _gb = _load_yaml("gabinetes.yaml"); _gb_people = (_gb.get("people") or {}) if _gb else {}
 _gs = _load_yaml("gabinetes-senado.yaml"); _gs_people = (_gs.get("people") or {}) if _gs else {}
 _pt = _load_yaml("patrimonio.yaml"); _pt_people = (_pt.get("people") or {}) if _pt else {}
+_rm = _load_yaml("remuneracao.yaml"); _rm_people = (_rm.get("people") or {}) if _rm else {}
+_do = _load_yaml("doadores-2022.yaml"); _do_people = (_do.get("people") or {}) if _do else {}
+if _do: stats["doadores"] = {"eleicao": _do.get("eleicao"), "fonte": _do.get("fonte"), "limiar_pf": _do.get("limiar_pf"), "generated_at": str(_do.get("generated_at"))}
+if _rm: stats["remuneracao"] = {"mes": _rm.get("mes"), "fonte": _rm.get("fonte"), "nota": _rm.get("nota"), "generated_at": str(_rm.get("generated_at"))}
 if _pt: stats["patrimonio"] = {"fonte": _pt.get("fonte"), "ipca_fator_2018_2022": _pt.get("ipca_fator_2018_2022"), "generated_at": str(_pt.get("generated_at"))}
 stats["gabinetes"] = {}
 if _gb: stats["gabinetes"]["camara"] = {"medianas": _gb.get("medianas"), "subsidio_mensal": _gb.get("subsidio_mensal"), "verba_gabinete_limite_mensal": _gb.get("verba_gabinete_limite_mensal"), "nota": _gb.get("nota"), "fonte": _gb.get("fonte"), "generated_at": str(_gb.get("generated_at"))}
@@ -546,6 +550,8 @@ for pid, rec in people_index.items():
     if pid in _em_people: rec["emendas"] = _em_people[pid]
     if pid in _cd_people: rec["candidaturas"] = _cd_people[pid]
     if pid in _pt_people: rec["patrimonio"] = _pt_people[pid]
+    if pid in _rm_people: rec["remuneracao"] = _rm_people[pid]
+    if pid in _do_people: rec["doadores"] = _do_people[pid]
     if pid in _gb_people: rec["gabinete"] = dict(_gb_people[pid], casa="camara")
     elif pid in _gs_people: rec["gabinete"] = _gs_people[pid]
 # por órgão: dirigentes/ministros que já foram candidatos, com o partido da candidatura mais recente (nunca "filiado")
@@ -580,7 +586,7 @@ core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), 
 # detalhe por pessoa (comissões, papéis, datas) carregado sob demanda
 _pp = OUT / "people"; _pp.mkdir(exist_ok=True)
 for pid, r in people_index.items():
-    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity"), "emendas": r.get("emendas"), "candidaturas": r.get("candidaturas"), "gabinete": r.get("gabinete"), "patrimonio": r.get("patrimonio")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity"), "emendas": r.get("emendas"), "candidaturas": r.get("candidaturas"), "gabinete": r.get("gabinete"), "patrimonio": r.get("patrimonio"), "remuneracao": r.get("remuneracao"), "doadores": r.get("doadores")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
 cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")
