@@ -187,9 +187,9 @@ p{margin:8px 0;color:var(--ink-2)}
 .tema .pr{font-size:13.5px;padding:4px 0;border-top:1px dashed var(--line-2)}.tema .pr .m{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
 .tema .flag{font-size:13px;background:var(--warn-soft);color:var(--warn);border-radius:6px;padding:6px 9px;margin:6px 0}
 .din h3{margin-top:14px}
-.din .bars{display:grid;grid-template-columns:minmax(120px,auto) 1fr auto;gap:4px 10px;align-items:center;font-size:13.5px}
-.din .bars .k{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.din .bars .b{height:8px;background:var(--line-2);border-radius:4px;overflow:hidden}.din .bars .b i{display:block;height:100%;background:var(--accent)}
-.din .bars .v{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap;text-align:right}
+.bars{display:grid;grid-template-columns:minmax(120px,auto) 1fr auto;gap:4px 10px;align-items:center;font-size:13.5px}
+.bars .k{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bars .b{height:8px;background:var(--line-2);border-radius:4px;overflow:hidden}.bars .b i{display:block;height:100%;background:var(--accent)}
+.bars .v{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap;text-align:right}
 .din .note{font-size:12.5px;color:var(--ink-3);margin:4px 0 8px}
 .din .cmp{display:grid;grid-template-columns:1fr auto auto;gap:3px 10px;font-size:13.5px}.din .cmp .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
 .din .cmp .n{font-family:var(--mono);font-size:12px;text-align:right;white-space:nowrap}
@@ -572,15 +572,15 @@ function agendaHtml(p){
   const ents=(a.entidades_top||[]).slice(0,8);
   const rec=(a.recentes||[]).slice(0,6);
   return `<h3>Agenda pública <span style="font-weight:400">· ${a.compromissos_90d} compromissos em ${a.janela_dias||90} dias</span></h3>
-  <p class="note" style="font-size:13px;color:var(--ink-2);margin:0 0 6px">Reuniões, audiências e viagens que o cargo obriga a publicar (Lei 12.813/2013). ${tipos?tipos+'. ':''}Fonte: <a href="https://eagendas.cgu.gov.br" target="_blank" rel="noopener">e-Agendas, CGU</a>, ${fmtDate(a.generated_at)}.</p>
+  <p class="note" style="font-size:13px;color:var(--ink-2);margin:0 0 6px">Reuniões, audiências e viagens que o cargo obriga a publicar (Lei 12.813/2013). ${tipos?tipos+'. ':''}${a.compromissos_ano?`${a.compromissos_ano} no ano. `:''}${a.ultimo?`Último publicado em ${fmtDate(a.ultimo)}. `:''}Fonte: <a href="${a.url||'https://eagendas.cgu.gov.br'}" target="_blank" rel="noopener">e-Agendas, CGU ↗</a>, ${fmtDate(a.generated_at)}.</p>
   ${ents.length?`<h4 style="margin:8px 0 4px;font-size:13px">Quem mais foi recebido</h4>${bars(ents, e=>e.nome, e=>e.n, {fmt:v=>v+'×'})}`:''}
-  ${rec.length?`<h4 style="margin:10px 0 4px;font-size:13px">Últimos compromissos</h4>${rec.map(r=>`<div class="om-it" style="padding:6px 0"><span class="t">${esc(r.titulo||r.tipo||'compromisso')}</span><span class="m">${fmtDate(r.data)}${r.hora?' '+esc(r.hora):''}${r.tipo?' · '+esc(r.tipo):''}${(r.participantes||[]).length?' · '+r.participantes.slice(0,5).map(q=>esc(q.nome)+(q.entidade?` (${esc(q.entidade)})`:'')).join(', ')+((r.participantes||[]).length>5?` e mais ${r.participantes.length-5}`:''):''}</span></div>`).join('')}`:''}`;
+  ${rec.length?`<h4 style="margin:10px 0 4px;font-size:13px">Últimos compromissos</h4>${rec.map(r=>`<div class="om-it" style="padding:6px 0"><span class="t">${esc(r.titulo||r.tipo||'compromisso')}</span><span class="m">${fmtDate(r.data)}${r.hora?' '+esc(r.hora):''}${r.tipo?' · '+esc(r.tipo):''}${r.local?' · '+esc(r.local.slice(0,60)):''}${(r.participantes||[]).length?' · '+r.participantes.slice(0,5).map(q=>esc(q.nome)+(q.entidade?` (${esc(q.entidade)})`:'')).join(', ')+((r.participantes||[]).length>5?` e mais ${r.participantes.length-5}`:''):''}</span></div>`).join('')}`:''}`;
 }
 function agendaOrgaoHtml(n){
   const a=n.agenda; if(!a||!a.compromissos_90d) return '';
   const ents=(a.entidades_top||[]).slice(0,8);
   return `<div class="card"><h2>Agenda pública dos dirigentes <span style="color:var(--ink-3);font-weight:500">· ${a.compromissos_90d} compromissos em ${a.janela_dias||90} dias</span></h2>
-  <p style="font-size:13px;color:var(--ink-2);margin:0 0 6px">Soma das agendas publicadas pelos ocupantes de cargos deste órgão no e-Agendas (CGU). Entidades mais recebidas:</p>${ents.length?bars(ents, e=>e.nome, e=>e.n, {fmt:v=>v+'×'}):''}</div>`;
+  <p style="font-size:13px;color:var(--ink-2);margin:0 0 6px">Soma das agendas que ${a.pessoas||''} ${a.pessoas===1?'dirigente deste órgão publicou':'dirigentes deste órgão publicaram'} no <a href="https://eagendas.cgu.gov.br" target="_blank" rel="noopener">e-Agendas (CGU) ↗</a>, ${fmtDate(a.generated_at)}. Entidades mais recebidas:</p>${ents.length?bars(ents, e=>e.nome, e=>e.n, {fmt:v=>v+'×'}):''}</div>`;
 }
 function activityHtml(p){
   const a=p._activity; if(!a) return ''; const pres=(p.positions||[]).some(q=>/presidente-d[ao]-(camara|senado)/.test(q));
