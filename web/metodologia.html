@@ -75,8 +75,11 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
       <li><a href="#candidaturas"><b>13</b><span>Candidaturas</span></a></li>
       <li><a href="#viagens"><b>14</b><span>Viagens e cartão</span></a></li>
       <li><a href="#sinais"><b>15</b><span>Sinais "para verificar"</span></a></li>
-      <li><a href="#fora"><b>16</b><span>O que fica de fora</span></a></li>
-      <li><a href="#corrigir"><b>17</b><span>Como corrigir um erro</span></a></li>
+      <li><a href="#historico"><b>16</b><span>Quem ocupou o cargo</span></a></li>
+      <li><a href="#agenda"><b>17</b><span>Agenda pública</span></a></li>
+      <li><a href="#segundo-escalao"><b>18</b><span>Segundo escalão</span></a></li>
+      <li><a href="#fora"><b>19</b><span>O que fica de fora</span></a></li>
+      <li><a href="#corrigir"><b>20</b><span>Como corrigir um erro</span></a></li>
     </ol>
   </header>
 
@@ -160,6 +163,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
       <dt>Regra</dt><dd>"Silêncio com prazo vencido" acende quando as três condições ocorrem ao mesmo tempo: a atenção caiu mais de 80% em relação ao pico e ficou assim por 60 dias; o processo está parado há pelo menos 60 dias; e o prazo legal passou.</dd>
       <dt>Atualização</dt><dd>Diária.</dd>
       <dt>Estimativa</dt><dd>A contagem de notícias depende das palavras-chave escolhidas. Um tema pode estar na imprensa com outras palavras e não ser contado.</dd>
+      <dt>Resumos automáticos</dt><dd>Os blocos "em palavras simples" nas abas Sem decisão e Temas são escritos por um modelo de linguagem (Claude, da Anthropic) a partir da ementa oficial, da situação e do prazo de cada item, com instrução de não opinar e não acrescentar fatos. São regenerados só quando a ementa ou a situação muda e ficam marcados como "resumo automático". Podem conter erros: a ementa oficial, com link, prevalece sempre.</dd>
     </dl>
   </section>
 
@@ -273,8 +277,44 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
     <div class="note">Cada sinal aparece com a nota que explica por que não é conclusão. Quem quiser apurar deve partir das fontes citadas, não do sinal.</div>
   </section>
 
-  <section id="fora">
+  <section id="historico">
     <div class="eyebrow">Bloco 16</div>
+    <h2>Quem ocupou o cargo</h2>
+    <p>Na página de cada cargo de cúpula, a lista de quem o ocupou desde a redemocratização (1985), com início, fim, duração e o presidente sob o qual a passagem começou; a mediana das durações e o número de trocas por governo.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Wikidata: declarações "cargo ocupado" (P39) das pessoas, com os qualificadores de início (P580), fim (P582) e função (P2868, para interinos); para autarquias e empresas, as declarações de dirigente (P488, P1037) no item do órgão. O item de cada cargo vem do mapa gerado em <code>data/generated/wikidata-map.yaml</code>, com correções manuais em <code>data/wikidata-overrides.yaml</code>.</dd>
+      <dt>Regra</dt><dd>Entram só passagens com data de início. Uma passagem iniciada antes de 1985 aparece se terminou depois de 15/03/1985. A mediana considera as passagens encerradas. O ocupante atual vem sempre da página oficial (bloco 02); quando o Wikidata ainda não o registra, a página avisa.</dd>
+      <dt>Atualização</dt><dd>Diária, com cache local; o Wikidata é lido pela API pública com identificação do projeto.</dd>
+      <dt>Estimativa</dt><dd>O Wikidata é colaborativo: pode faltar gente, faltar data ou haver homônimo. Datas com precisão de ano ou mês aparecem só com o ano. Cargos sem item no Wikidata não têm o bloco.</dd>
+    </dl>
+  </section>
+
+  <section id="agenda">
+    <div class="eyebrow">Bloco 17</div>
+    <h2>Agenda pública</h2>
+    <p>Na ficha de ministros, secretários e dirigentes do Executivo: quantos compromissos publicaram nos últimos 90 dias, de que tipo, quais entidades mais receberam e os últimos encontros com participantes. Na página do órgão, a soma das agendas dos seus dirigentes.</p>
+    <dl>
+      <dt>Fonte</dt><dd>e-Agendas, sistema da Controladoria-Geral da União onde agentes públicos obrigados pela Lei 12.813/2013 (conflito de interesses) e pelo Decreto 10.889/2021 registram audiências, reuniões e viagens, com participantes e entidades.</dd>
+      <dt>Regra</dt><dd>A pessoa do Atlas é casada com o agente do e-Agendas pelo nome completo, com o órgão como desempate. Participantes externos entram só com nome e entidade, como publicados; nunca e-mail, telefone ou CPF. As contagens por entidade somam participantes de cada compromisso.</dd>
+      <dt>Atualização</dt><dd>Diária.</dd>
+      <dt>Estimativa</dt><dd>A agenda é declarada pelo próprio agente: um número baixo pode significar poucos encontros ou pouca publicação. Entidades escritas de formas diferentes aparecem separadas. Pessoas sem correspondência no e-Agendas não têm o bloco.</dd>
+    </dl>
+  </section>
+
+  <section id="segundo-escalao">
+    <div class="eyebrow">Bloco 18</div>
+    <h2>Segundo escalão</h2>
+    <p>As secretarias de primeiro nível de cada ministério e órgão da Presidência (Secretaria-Executiva, secretarias nacionais e especiais) e quem as chefia, com página própria na roda, ligadas ao ministério.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Estrutura: SIORG, estrutura completa do Executivo (unidades de primeiro nível cujo nome começa por "Secretaria"; gabinetes, assessorias, consultorias, corregedorias e ouvidorias ficam de fora). Ocupantes: páginas "Quem é quem" e "Composição" de cada ministério no gov.br, com data da conferência; em segundo lugar, atos de nomeação e exoneração no DOU.</dd>
+      <dt>Regra</dt><dd>A Receita Federal e o Tesouro Nacional já existem como órgãos próprios e não são duplicados. Substitutos aparecem como interinos. Secretaria sem nome na página oficial fica sem ocupante, nunca com nome inferido.</dd>
+      <dt>Atualização</dt><dd>Diária, com releitura das páginas oficiais.</dd>
+      <dt>Estimativa</dt><dd>Os nomes dependem de o ministério manter a página atualizada. O gênero do título ("Secretária") vem da página ou do prenome e pode errar. O cargo é comissionado, de livre nomeação: a data de início vem do DOU quando houver ato registrado, senão fica em branco.</dd>
+    </dl>
+  </section>
+
+  <section id="fora">
+    <div class="eyebrow">Bloco 19</div>
     <h2>O que fica de fora</h2>
     <p>Limites conhecidos dos dados e das fontes. Alguns podem mudar; outros dependem dos órgãos.</p>
     <ul>
@@ -290,7 +330,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="corrigir">
-    <div class="eyebrow">Bloco 17</div>
+    <div class="eyebrow">Bloco 20</div>
     <h2>Como corrigir um erro</h2>
     <p>Abra um issue em <a href="https://github.com/culturabuilder/atlas-da-republica/issues/new">https://github.com/culturabuilder/atlas-da-republica/issues/new</a>. Informe a página, o dado errado e, se possível, a fonte oficial com o dado certo. Correções de estrutura e de ocupantes entram no YAML curado com a citação; correções de dados derivados entram no código do conector.</p>
     <p>Os arquivos usados nesta página estão em <a href="__PREFIX__/dados/">Dados</a>, sob licença CC BY 4.0. A área educativa <a href="__PREFIX__/como-funciona/">Como funciona a República</a> explica a roda passo a passo.</p>

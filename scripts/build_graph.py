@@ -89,6 +89,32 @@ if com_path.exists():
         if g["id"] in nodes: warn(f"comissão gerada {g['id']} colide com id curado; ignorada"); continue
         n = dict(g); n["_file"] = "generated/comissoes.yaml"; nodes[n["id"]] = n; merge_report["added"] += 1
 
+# ---- camada gerada (segundo escalão dos ministérios): secretarias + cargo de secretário + ocupantes das páginas oficiais
+se_path = DATA / "generated" / "segundo-escalao.yaml"
+_se_n = 0
+if se_path.exists():
+    se = yaml.safe_load(open(se_path, encoding="utf-8")) or {}
+    _skip = {x.get("no_existente") + "-sec" for x in (se.get("resumo") or {}).get("ja_no_grafo") or [] if x.get("no_existente")}
+    _skip_nm = {(x.get("orgao"), norm(x.get("unidade") or "")) for x in (se.get("resumo") or {}).get("ja_no_grafo") or []}
+    _added = set()
+    _dup = __import__("collections").Counter(norm(g.get("name") or "") for g in se.get("nodes") or [])
+    for g in se.get("nodes") or []:
+        if g["id"] in _skip or g["id"] in nodes or g.get("parent") not in nodes or (g.get("parent"), norm(g.get("name") or "")) in _skip_nm: continue
+        n = dict(g); n["_file"] = "generated/segundo-escalao.yaml"
+        if _dup[norm(n.get("name") or "")] > 1:  # "Secretaria-Executiva" existe em 40+ órgãos: o nome leva o órgão
+            pn = nodes[n["parent"]]["name"]; art = "do" if re.match(r"(Ministério|Gabinete)", pn) else "da"
+            n["aliases"] = list(dict.fromkeys((n.get("aliases") or []) + [n["name"]])); n["name"] = f"{n['name']} {art} {pn}"
+        nodes[n["id"]] = n; _added.add(n["id"]); merge_report["added"] += 1; _se_n += 1
+    for g in se.get("positions") or []:
+        if g["id"] in nodes or g.get("head_of") not in _added: continue
+        n = dict(g); n["_file"] = "generated/segundo-escalao.yaml"; ppl = n.pop("people", None) or []
+        for q in ppl:
+            if q.get("started_at") is not None: q["started_at"] = str(q["started_at"])
+            if q.get("checked_at") is not None: q["checked_at"] = str(q["checked_at"])
+            q.setdefault("source", "oficial"); q.setdefault("entry_mode", "nomeado")
+        if ppl: n["people"] = ppl
+        nodes[n["id"]] = n; merge_report["added"] += 1
+
 # ---- validação de nós
 for n in nodes.values():
     i = n["id"]
@@ -169,6 +195,35 @@ for _, ppl_path in sources:
         if nodes[pid].get("sector") == "executivo":
             people = [p for p in people if p.get("source") != "wikidata" or (p.get("started_at") or "") >= "2023-01-01"]
         if people: nodes[pid]["people"] = people
+
+# ---- histórico de ocupantes do cargo (Wikidata), anexado ao cargo
+_hi_p = DATA / "generated" / "historico.yaml"
+_hi_n = 0
+if _hi_p.exists():
+    _hi = (yaml.safe_load(open(_hi_p, encoding="utf-8")) or {}).get("cargos") or {}
+    for pid, h in _hi.items():
+        if pid not in nodes: continue
+        mand = [m for m in (h.get("mandatos") or []) if m.get("inicio")]
+        mand = sorted(mand, key=lambda m: str(m.get("inicio")))
+        mand = [m for m in mand if str(m.get("fim") or "9999") >= "1985-03-15"]
+        if not mand: continue
+        nodes[pid]["historico"] = {"qid": h.get("qid"), "rota": h.get("rota"), "ocupantes": len({m.get("qid") for m in mand}), "mediana_dias": h.get("mediana_dias"),
+                                   "por_presidente": h.get("por_presidente") or {}, "wikidata_atualizado": bool(h.get("wikidata_atualizado")),
+                                   "mandatos": [{k: m.get(k) for k in ("qid", "nome", "inicio", "fim", "dias", "interino", "presidente", "papel") if m.get(k) not in (None, False)} for m in mand[-40:]]}
+        _hi_n += 1
+    # ocupantes atuais conhecidos pela página oficial que o Wikidata ainda não registra entram com a data de posse oficial
+    def _sp(a, b):
+        ta, tb = norm(a).split(), norm(b).split()
+        return bool(ta) and (ta == tb or (len(ta) >= 2 and len(tb) >= 2 and ta[0] == tb[0] and ta[-1] == tb[-1]) or (len(ta) >= 2 and len(tb) >= 2 and all(t in tb for t in ta)) or all(t in ta for t in tb))
+    for pid, n in nodes.items():
+        h = n.get("historico")
+        if not h: continue
+        for p in n.get("people") or []:
+            if p.get("source") != "oficial" or not p.get("started_at"): continue
+            if any(_sp(m.get("nome") or "", p["name"]) for m in h["mandatos"]): continue
+            h["mandatos"].append({"nome": p["name"], "inicio": str(p["started_at"])[:10], "fonte": "oficial"})
+        h["mandatos"].sort(key=lambda m: str(m.get("inicio")))
+        h["ocupantes"] = len({(m.get("qid") or m.get("nome")) for m in h["mandatos"]})
 
 # ---- sabatinas (Senado) anexadas ao cargo
 sab_path = DATA / "generated" / "sabatinas.yaml"
@@ -509,12 +564,17 @@ if _ar:
     arrecadacao["kinds"] = _ar.get("kinds"); arrecadacao["juros"] = {k: v for k, v in (_ar.get("juros") or {}).items() if k != "months"}; arrecadacao["juros"]["months"] = {k: v for k, v in ((_ar.get("juros") or {}).get("months") or {}).items() if k >= f"{int(y)-1}-01"}
     _saude = next((n for n in nodes.values() if n["id"] == "br-ministerio-da-saude"), None); _edu = next((n for n in nodes.values() if n["id"] == "br-ministerio-da-educacao"), None)
     arrecadacao["compare"] = {"saude": ((_saude or {}).get("budget") or {}).get(y) or ((_saude or {}).get("budget") or {}).get(py), "educacao": ((_edu or {}).get("budget") or {}).get(y) or ((_edu or {}).get("budget") or {}).get(py)}
+_rs = (_load_yaml("resumos.yaml") or {}).get("resumos") or {}
+if omissao:
+    for x in omissao["vetos"] + omissao["mpvs"] + omissao["rcps"] + omissao["curated"]:
+        if x.get("id") in _rs: x["resumo"] = _rs[x["id"]]["resumo"]
 _tm = _load_yaml("temas.yaml")
 temas = None
 if _tm:
     order = {"prazo_vencido": 0, "parado": 1, "em_movimento": 2, "sem_processo": 3, "encerrado": 4}
     temas = {"generated_at": str(_tm.get("generated_at")), "temas": sorted([{k: v for k, v in t.items() if k != "keywords"} for t in _tm.get("temas") or []], key=lambda t: (0 if t.get("silent_and_stalled") else 1, order.get(t.get("state"), 9), -(t.get("stalled_days") or 0)))}
     for t in temas["temas"]:
+        if f"tema-{t.get('id')}" in _rs: t["resumo"] = _rs[f"tema-{t.get('id')}"]["resumo"]
         if t.get("curated") and omissao:
             c = next((x for x in omissao.get("curated") or [] if x.get("id") == t["curated"]), None)
             if c: t["curated_item"] = {k: c.get(k) for k in ("title", "summary", "signatures", "date", "days", "legal_deadline", "responsible_position", "responsible_name", "responsible_person", "responsible_person_id", "sources")}
@@ -600,12 +660,23 @@ def _sinais(rec):
 for pid, rec in people_index.items():
     s = _sinais(rec)
     if s: rec["sinais"] = s
+# ---- agenda pública (e-Agendas/CGU) por pessoa e por órgão
+_ag_p = DATA / "generated" / "agendas.yaml"
+_ag_n = 0
+if _ag_p.exists():
+    _ag = yaml.safe_load(open(_ag_p, encoding="utf-8")) or {}
+    for pid, a in (_ag.get("people") or {}).items():
+        if pid in people_index and a:
+            people_index[pid]["agenda"] = dict(a, generated_at=str(_ag.get("generated_at") or "")[:10], janela_dias=_ag.get("janela_dias")); _ag_n += 1
+    for nid, a in (_ag.get("orgaos") or {}).items():
+        if nid in nodes and a: nodes[nid]["agenda"] = dict(a, generated_at=str(_ag.get("generated_at") or "")[:10], janela_dias=_ag.get("janela_dias"))
+    stats["agendas_pessoas"] = _ag_n
 stats["sinais"] = {"pessoas": sum(1 for r in people_index.values() if r.get("sinais")), "por_tipo": dict(__import__("collections").Counter(x["tipo"] for r in people_index.values() for x in r.get("sinais") or []))}
-stats["omissao"] = (omissao or {}).get("summary"); stats["atividade_pessoas"] = len(atividade)
+stats["omissao"] = (omissao or {}).get("summary"); stats["resumos"] = len(_rs); stats["historico_cargos"] = _hi_n; stats["segundo_escalao"] = _se_n; stats["atividade_pessoas"] = len(atividade)
 stats["people"] = len(people_index)
 graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
-HEAVY = ("description", "siorg_description", "people", "sabatinas", "budget", "dou", "candidaturas", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
+HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "budget", "dou", "candidaturas", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
 core_nodes = {}
 (OUT / "nodes").mkdir(exist_ok=True)
@@ -622,7 +693,7 @@ core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), 
 # detalhe por pessoa (comissões, papéis, datas) carregado sob demanda
 _pp = OUT / "people"; _pp.mkdir(exist_ok=True)
 for pid, r in people_index.items():
-    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity"), "emendas": r.get("emendas"), "candidaturas": r.get("candidaturas"), "gabinete": r.get("gabinete"), "patrimonio": r.get("patrimonio"), "remuneracao": r.get("remuneracao"), "doadores": r.get("doadores"), "sinais": r.get("sinais"), "viagens": r.get("viagens"), "cartao": r.get("cartao"), "proposicoes": r.get("proposicoes")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity"), "emendas": r.get("emendas"), "candidaturas": r.get("candidaturas"), "gabinete": r.get("gabinete"), "patrimonio": r.get("patrimonio"), "remuneracao": r.get("remuneracao"), "doadores": r.get("doadores"), "sinais": r.get("sinais"), "viagens": r.get("viagens"), "cartao": r.get("cartao"), "proposicoes": r.get("proposicoes"), "agenda": r.get("agenda")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
 cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")
