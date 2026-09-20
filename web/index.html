@@ -177,8 +177,10 @@ p{margin:8px 0;color:var(--ink-2)}
 .tema .q{font-size:13.5px;color:var(--ink-3);margin:2px 0 6px}
 .tema .st{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap;background:var(--panel);border:1px solid var(--line-2);color:var(--ink-3)}
 .tema .st.mov{color:var(--ok);border-color:var(--ok)}.tema .st.par{color:var(--warn);border-color:var(--warn)}.tema .st.ven{color:var(--leg);border-color:var(--leg)}.tema .st.enc{color:var(--ink-3)}
-.tema .spark{display:flex;align-items:center;gap:10px;margin:4px 0 6px;font-family:var(--mono);font-size:11px;color:var(--ink-3)}
-.tema .spark svg{width:120px;height:26px}
+.tema .spark{display:grid;grid-template-columns:120px minmax(0,1fr);gap:4px 10px;align-items:center;margin:6px 0;font-family:var(--mono);font-size:11px;color:var(--ink-3);line-height:1.4}
+.tema .spark.nosvg{grid-template-columns:minmax(0,1fr)}
+.tema .spark svg{width:120px;height:26px;display:block;flex:none}
+.tema .spark span{min-width:0;overflow-wrap:anywhere}
 .tema .pr{font-size:13.5px;padding:4px 0;border-top:1px dashed var(--line-2)}.tema .pr .m{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
 .tema .flag{font-size:13px;background:var(--warn-soft);color:var(--warn);border-radius:6px;padding:6px 9px;margin:6px 0}
 .din h3{margin-top:14px}
@@ -231,7 +233,7 @@ a.card.start:hover{border-color:var(--ink-3)}
         <a role="menuitem" href="#" class="gm-item on"><b>Governo federal</b><span>União · 732 nós</span></a>
         <div class="gm-item off" aria-disabled="true"><b>Estado de São Paulo</b><span>em preparação</span></div>
         <div class="gm-item off" aria-disabled="true"><b>Cidade de São Paulo</b><span>em preparação</span></div>
-        <a role="menuitem" class="gm-item" href="https://github.com/atlas-da-republica/atlas/issues/new?title=Pe%C3%A7o%20um%20grafo%3A%20&body=Governo%20(estado%20ou%20cidade)%3A%20%0APor%20qu%C3%AA%3A%20" target="_blank" rel="noopener"><b>Peça um grafo</b><span>vote no próximo estado ou cidade</span></a>
+        <a role="menuitem" class="gm-item" href="https://github.com/culturabuilder/atlas-da-republica/issues/new?title=Pe%C3%A7o%20um%20grafo%3A%20&body=Governo%20(estado%20ou%20cidade)%3A%20%0APor%20qu%C3%AA%3A%20" target="_blank" rel="noopener"><b>Peça um grafo</b><span>vote no próximo estado ou cidade</span></a>
       </div>
     </div>
     <div class="search">
@@ -355,6 +357,7 @@ function renderPerson(p){
     <h3>Cargos</h3><div class="list">${pos||'<span class="seat">Sem cargo registrado.</span>'}</div>
     ${activityHtml(p)}
     ${emendasHtml(p)}
+    ${candHtml(p)}
     ${sab.length?`<h3>Sabatinas no Senado</h3>${sab.map(sb=>`<div class="sab"><span>${esc((sb.cargo||'').slice(0,90))}</span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:''}</span></div>`).join('')}`:''}
     ${na.length?`<h3>Na notícia</h3><div class="news">${na.map(a=>`<div class="it"><a class="t" href="#news:${a.id}">${esc(a.title)}</a><a class="ext" href="${a.url}" target="_blank" rel="noopener" title="Ler na fonte">fonte ↗</a>${(()=>{ const ps=(a.people||[]).filter(q=>q.id!==p.id).slice(0,4).map(q=>`<a href="#${P[q.id]?q.id:q.position}"><span class="av">${avatar(P[q.id]||{id:q.id,name:q.name})}</span>${esc(q.name)}</a>`); const es=(a.entities||[]).slice(0,3).map(id=>N[id]?`<a class="ent" href="#${id}">${esc(N[id].aliases&&N[id].aliases[0]&&N[id].aliases[0].length<=8?N[id].aliases[0]:N[id].name)}</a>`:'').filter(Boolean); return ps.length||es.length?`<span class="who">${ps.join('')}${es.join('')}</span>`:''; })()}<span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('')}</div>`:''}
   </div>`;
@@ -363,7 +366,7 @@ function renderPerson(p){
 function select(id){
   if (id && id.startsWith('news:')) { const a=(G.news||[]).find(x=>x.id===id.slice(5)); if (a) { current=null; renderNews(a); return; } }
   if (P[id]) { current = null;
-    if (G.people_base && !P[id]._full) { content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; fetch(G.people_base + id + '.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{ P[id]._full = d.positions || []; P[id]._activity = d.activity || null; P[id]._emendas = d.emendas || null; if (location.hash.slice(1)===id) select(id); }); return; }
+    if (G.people_base && !P[id]._full) { content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; fetch(G.people_base + id + '.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{ P[id]._full = d.positions || []; P[id]._activity = d.activity || null; P[id]._emendas = d.emendas || null; P[id]._cand = d.candidaturas || null; if (location.hash.slice(1)===id) select(id); }); return; }
     const full = P[id]._full || (G.people&&G.people[id]&&G.people[id].positions) || [];
     const ids = full.length ? full.map(q=>q.id) : (P[id].positions||[]);
     const need = ids.filter(pid=>N[pid]&&N[pid].description===undefined&&G.detail_base); if (need.length) { Promise.all(need.map(loadDetail)).then(()=>renderPerson(P[id])); } else renderPerson(P[id]); return; }
@@ -439,7 +442,7 @@ function temasHtml(){
     return `<div class="tema"><div class="hd"><div><div class="nm">${esc(t.name)}</div><div class="q">${esc(t.question||'')}</div></div><span class="st ${cls}">${lab}${t.stalled_days!=null&&t.state!=='encerrado'?` · ${t.stalled_days} d`:''}</span></div>
     ${t.silent_and_stalled?`<div class="flag">Silêncio com prazo vencido: a atenção caiu mais de 80% do pico há mais de 60 dias, e o processo segue sem decisão.</div>`:''}
     ${wk?`<div class="spark">${spark(wk.weekly)}<span>${wk.total_90d.toLocaleString('pt-BR')} visitas em 90 dias · ${wk.last7.toLocaleString('pt-BR')} na última semana · <a href="${wk.url}" target="_blank" rel="noopener">verbete ↗</a></span></div>`:''}
-    ${t.news_hits?`<div class="spark"><span>${t.news_hits} ${t.news_hits===1?'notícia':'notícias'} no Atlas${t.news_recent&&t.news_recent.length?': '+t.news_recent.slice(0,2).map(a=>`<a href="#news:${a.id}">${esc(a.title.slice(0,70))}${a.title.length>70?'…':''}</a>`).join(' · '):''}</span></div>`:''}
+    ${t.news_hits?`<div class="spark nosvg"><span>${t.news_hits} ${t.news_hits===1?'notícia':'notícias'} no Atlas${t.news_recent&&t.news_recent.length?': '+t.news_recent.slice(0,2).map(a=>`<a href="#news:${a.id}">${esc(a.title.slice(0,70))}${a.title.length>70?'…':''}</a>`).join(' · '):''}</span></div>`:''}
     ${(t.processes||[]).map(p=>`<div class="pr"><a href="${p.url}" target="_blank" rel="noopener"><b>${esc(p.id)}</b></a> ${esc((p.ementa||'').slice(0,110))}${(p.ementa||'').length>110?'…':''}<div class="m">${p.casa==='camara'?'Câmara':p.casa==='senado'?'Senado':'Congresso'} · ${esc(p.situation||'')}${p.last_move?` · último andamento ${fmtDate(p.last_move)}`:''}${p.deadline?` · prazo ${fmtDate(p.deadline)}`:''}${p.overdue?' · <span style="color:var(--leg)">prazo de 30 dias vencido</span>':''}</div></div>`).join('')}
     ${c?`<div class="pr"><b>${esc(c.title)}</b> ${esc(c.summary||'')}<div class="m">${c.signatures?`${c.signatures.camara} deputados e ${c.signatures.senado} senadores · `:''}protocolado em ${fmtLong(c.date)} · há ${c.days} dias${c.responsible_position&&N[c.responsible_position]?` · próximo passo cabe a <a href="#${c.responsible_position}">${esc(c.responsible_name||'')}</a>${c.responsible_person?` (<a href="#${c.responsible_person_id||''}">${esc(c.responsible_person)}</a>)`:''}`:''}</div></div>`:''}
   </div>`; }).join('');
@@ -453,6 +456,7 @@ function dinheiroHtml(){
     out+=`<h3>Emendas parlamentares</h3><p class="note">Dinheiro do orçamento que deputados e senadores destinam a obras, serviços e municípios. Ano eleitoral pesa: os pagamentos até o mês ${m} de ${y} somam ${brl(pg[y])}, contra ${brl(pg[py])} no mesmo período de ${py}${rk&&el[rk]?` (${el[rk].toLocaleString('pt-BR')}×)`:''}${r22&&el[r22]?`; em 2022, ${el[r22].toLocaleString('pt-BR')}× o de 2021`:''}. Fonte: Portal da Transparência, ${fmtDate(E.generated_at)}.</p>
     <div class="om">${stat(brl((E.por_ano[y]||{}).empenhado),'empenhado em '+y)}${stat(brl(pg[y]),'pago até o mês '+m)}${stat(rk&&el[rk]?el[rk].toLocaleString('pt-BR')+'×':'—','pago × mesmo período de '+py)}</div>
     <h4 style="margin:10px 0 4px;font-size:14px">Pagos até o mesmo mês, ano a ano</h4>${bars(Object.entries(pg).map(([k,v])=>({k,v})), x=>x.k, x=>x.v, {fmt:v=>brl(v)})}
+    ${E.voto_emenda&&E.voto_emenda.parlamentares?`<p class="note">Emenda vai para onde está o voto? Entre ${E.voto_emenda.parlamentares} parlamentares com pelo menos R$ 1 mi em emendas com município definido, a mediana destinou <b>${E.voto_emenda.mediana_emendas_nos_top15_pct.toLocaleString('pt-BR')}%</b> desse dinheiro aos 15 municípios onde teve mais votos em 2022 (que concentram, na mediana, ${E.voto_emenda.mediana_votos_top15_pct.toLocaleString('pt-BR')}% dos seus votos); ${E.voto_emenda.acima_de_50_pct} mandaram mais da metade para lá. Detalhe na página de cada um. Fontes: Portal da Transparência e TSE (votação por município, 2022).</p>`:''}
     <h4 style="margin:12px 0 4px;font-size:14px">Quem mais empenhou em ${y} (parlamentares)</h4>${bars((E.autores_top||[]).slice(0,10), x=>(P[x.person_id]||{}).name||x.autor, x=>x.empenhado, {link:x=>x.person_id?'#'+x.person_id:null})}
     ${E.coletivos_top&&E.coletivos_top.length?`<h4 style="margin:12px 0 4px;font-size:14px">Bancadas e comissões</h4>${bars(E.coletivos_top.slice(0,5), x=>x.autor, x=>x.empenhado)}`:''}
     <h4 style="margin:12px 0 4px;font-size:14px">Municípios que mais recebem por habitante em ${y}</h4>${bars((E.municipios_por_habitante_top||[]).slice(0,8), x=>x.nome, x=>x.por_habitante, {fmt:(v,it)=>`R$ ${Math.round(v).toLocaleString('pt-BR')}/hab · ${it.populacao.toLocaleString('pt-BR')} hab`})}`; }
@@ -465,9 +469,14 @@ function dinheiroHtml(){
     <h4 style="margin:10px 0 4px;font-size:14px">Órgãos com mais servidores acima do teto</h4>${bars((T.orgaos||[]).slice(0,10), x=>x.orgao, x=>x.com_abate_teto, {fmt:(v,it)=>`${v.toLocaleString('pt-BR')} (${it.pct_com_abate}%)`, link:x=>x.node?'#'+x.node:null})}`; }
   return out+'</div>';
 }
+function candHtml(p){
+  const c=p._cand; if(!c||!c.length) return '';
+  return `<h3>Candidaturas</h3><div class="act">${c.map(x=>`<div class="row"><span>${x.ano} · ${esc(x.cargo)} por ${esc(x.ue)}${x.uf&&x.ue.toLowerCase()!==x.uf.toLowerCase()?' ('+x.uf+')':''}<span class="d" style="display:block">${esc(x.resultado||x.situacao||'')}${x.possivel_homonimo?' · casamento por nome; possível homônimo':''}</span></span><span class="v">${esc(x.partido)}</span></div>`).join('')}<p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Partido pelo qual concorreu na eleição, não filiação. Fonte: TSE, candidatos 2022 e 2024.</p></div>`;
+}
 function emendasHtml(p){
   const e=p._emendas; if(!e) return ''; const anos=Object.entries(e.anos||{}); if(!anos.length) return '';
   return `<h3>Emendas parlamentares</h3><div class="din"><p style="margin:4px 0 6px;font-size:14px">Como autor de emendas (${esc(e.autor)}), empenhou ${brl((e.anos[String(new Date().getFullYear())]||{}).empenhado)} em ${new Date().getFullYear()}. ${e.municipios>=3?`Desde ${e.desde}, destinou recursos a ${e.municipios} municípios identificados; os cinco maiores concentram ${e.concentracao_top5_pct.toLocaleString('pt-BR')}%.`:`Desde ${e.desde}, a maior parte das emendas foi destinada ao estado como um todo, sem município definido na execução.`}</p>
+  ${e.votos_2022&&e.votos_2022.emendas_nos_top15_pct!=null?`<p style="margin:6px 0;font-size:14px;background:var(--panel);border:1px solid var(--line-2);border-radius:8px;padding:8px 10px">Em 2022 teve ${e.votos_2022.votos.toLocaleString('pt-BR')} votos; os 15 municípios onde foi mais votado somaram ${e.votos_2022.top15_votos_pct.toLocaleString('pt-BR')}% deles. Das emendas com município definido desde ${e.desde} (${brl(e.votos_2022.emendas_com_municipio)}), <b>${e.votos_2022.emendas_nos_top15_pct.toLocaleString('pt-BR')}%</b> foram para esses 15 municípios (${e.votos_2022.top15.slice(0,3).map(esc).join(', ')}…).</p>`:''}
   ${bars(anos.map(([k,v])=>({k,v:v.empenhado})), x=>x.k, x=>x.v)}
   ${e.top_municipios&&e.top_municipios.length>=2?`<h4 style="margin:10px 0 4px;font-size:14px">Municípios que mais receberam desde ${e.desde}</h4>${bars(e.top_municipios, x=>x.nome, x=>x.valor, {fmt:(v,it)=>`${brl(v)} · ${it.pct}%${it.populacao?` · ${it.populacao.toLocaleString('pt-BR')} hab`:''}`})}`:''}
   <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Fonte: Portal da Transparência, emendas parlamentares (valor empenhado por município de aplicação).</p></div>`;
@@ -566,7 +575,8 @@ function renderNode(n){
       const shown = people.length > 24 ? 24 : people.length;
       const vac = n.vacant_seats?`<div class="seat">${n.vacant_seats} ${n.vacant_seats>1?'vagas abertas':'vaga aberta'} segundo a página oficial.</div>`:'';
       const srcNote = people[0]&&people[0].source==='oficial'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Fonte: <a href="${people[0].source_url}" target="_blank" rel="noopener">página oficial</a>, conferida em ${fmtDate(people[0].checked_at)}.</p>`:people[0]&&people[0].source==='sabatina'?`<p style="font-size:12.5px;color:var(--jud);margin:2px 0 6px">Nome aprovado pelo Senado em sabatina; a posse ainda não foi conferida em página oficial.</p>`:people[0]&&people[0].source==='wikidata'?`<p style="font-size:12.5px;color:var(--jud);margin:2px 0 6px">Nome do ocupante obtido do Wikidata, ainda sem conferência em página oficial.</p>`:people[0]&&people[0].source==='wikipedia'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Nome do ocupante obtido da Wikipédia, ainda sem conferência em página oficial.</p>`:people[0]&&people[0].source==='dou'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Ocupante identificado pela assinatura dos atos do órgão no Diário Oficial.</p>`:'';
-      seats = `<h3>Ocupante${people.length>1?'s':''} <span style="font-weight:400">· ${people.length}${n.seats>people.length?` de ${n.seats}`:''}</span></h3>${srcNote}${vac}${bars}<div class="people">${people.slice(0,shown).map(item).join('')}</div>${people.length>shown?`<details class="rel"><summary>Ver todos os ${people.length}</summary><div class="people">${people.slice(shown).map(item).join('')}</div></details>`:''}`;
+      const cand = n.candidaturas && n.type!=='dept_head' && !/br-(camara-dos-deputados|senado-federal|congresso-nacional)/.test(n.id) ? `<p style="font-size:13px;color:var(--ink-2);margin:2px 0 6px">${n.candidaturas.ex_candidatos} ${n.candidaturas.ex_candidatos===1?'dos ocupantes concorreu':'dos ocupantes concorreram'} a cargo eletivo em 2022 ou 2024: ${Object.entries(n.candidaturas.partidos).map(([p,c])=>`${esc(p)} ${c}`).join(', ')}. Partido da candidatura, não filiação (TSE).</p>` : '';
+      seats = `<h3>Ocupante${people.length>1?'s':''} <span style="font-weight:400">· ${people.length}${n.seats>people.length?` de ${n.seats}`:''}</span></h3>${srcNote}${cand}${vac}${bars}<div class="people">${people.slice(0,shown).map(item).join('')}</div>${people.length>shown?`<details class="rel"><summary>Ver todos os ${people.length}</summary><div class="people">${people.slice(shown).map(item).join('')}</div></details>`:''}`;
     }
   }
   content.innerHTML = `<div class="card">

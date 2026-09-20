@@ -533,14 +533,27 @@ if _tt:
 _at = _load_yaml("atividade.yaml")
 atividade = (_at.get("people") or {}) if _at else {}
 _em_people = (_em.get("people") or {}) if _em else {}
+_cd = _load_yaml("candidaturas.yaml"); _cd_people = (_cd.get("people") or {}) if _cd else {}
 for pid, rec in people_index.items():
     if pid in atividade: rec["activity"] = atividade[pid]
     if pid in _em_people: rec["emendas"] = _em_people[pid]
+    if pid in _cd_people: rec["candidaturas"] = _cd_people[pid]
+# por órgão: dirigentes/ministros que já foram candidatos, com o partido da candidatura mais recente (nunca "filiado")
+for n in nodes.values():
+    if n["type"] == "dept_head": continue
+    parts = {}; total = 0
+    for pid in n.get("positions") or []:
+        for p in nodes[pid].get("people") or []:
+            if not p.get("id"): continue
+            total += 1; c = _cd_people.get(p["id"])
+            if c: parts[c[0]["partido"]] = parts.get(c[0]["partido"], 0) + 1
+    if parts: n["candidaturas"] = {"ocupantes": total, "ex_candidatos": sum(parts.values()), "partidos": dict(sorted(parts.items(), key=lambda kv: -kv[1]))}
+if _em and _em.get("voto_emenda") and emendas: emendas["voto_emenda"] = _em["voto_emenda"]
 stats["omissao"] = (omissao or {}).get("summary"); stats["atividade_pessoas"] = len(atividade)
 stats["people"] = len(people_index)
 graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
-HEAVY = ("description", "siorg_description", "people", "sabatinas", "budget", "dou", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
+HEAVY = ("description", "siorg_description", "people", "sabatinas", "budget", "dou", "candidaturas", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
 core_nodes = {}
 (OUT / "nodes").mkdir(exist_ok=True)
@@ -557,7 +570,7 @@ core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), 
 # detalhe por pessoa (comissões, papéis, datas) carregado sob demanda
 _pp = OUT / "people"; _pp.mkdir(exist_ok=True)
 for pid, r in people_index.items():
-    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity"), "emendas": r.get("emendas")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity"), "emendas": r.get("emendas"), "candidaturas": r.get("candidaturas")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
 cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")
