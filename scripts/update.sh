@@ -19,6 +19,7 @@ echo "== DOU assinaturas"; $PY etl/dou_assinaturas.py || echo "assinaturas falho
 echo "== Wikipédia";        $PY etl/wikipedia.py || echo "wikipedia falhou (segue)"
 echo "== Nascimentos";      $PY etl/nascimentos.py || echo "nascimentos falhou (segue)"
 echo "== Omissão";         $PY etl/omissao.py || echo "omissão falhou (segue)"
+echo "== Temas";           $PY etl/temas.py || echo "temas falhou (segue)"
 echo "== Arrecadação";     $PY etl/arrecadacao.py || echo "arrecadação falhou (segue)"
 echo "== Atividade";       $PY etl/atividade.py || echo "atividade falhou (segue)"
 echo "== Orçamento";        $PY etl/orcamento.py || echo "Orçamento falhou (sem chave?)"

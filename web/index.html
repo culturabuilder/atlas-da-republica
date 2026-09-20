@@ -171,6 +171,16 @@ p{margin:8px 0;color:var(--ink-2)}
 .arrec details{margin-top:10px;font-size:13px;color:var(--ink-2)}.arrec summary{cursor:pointer;color:var(--accent)}
 .act{font-size:14px}.act .row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:5px 0;border-bottom:1px dashed var(--line-2)}
 .act .row .d{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap}.act .v{font-family:var(--mono);font-size:11px;padding:1px 6px;border-radius:3px;background:var(--panel);border:1px solid var(--line-2)}
+.tema{padding:12px 0;border-bottom:1px solid var(--line-2)}
+.tema .hd{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start}
+.tema .nm{font-family:var(--disp);font-weight:700;font-size:16px;letter-spacing:-.01em}
+.tema .q{font-size:13.5px;color:var(--ink-3);margin:2px 0 6px}
+.tema .st{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap;background:var(--panel);border:1px solid var(--line-2);color:var(--ink-3)}
+.tema .st.mov{color:var(--ok);border-color:var(--ok)}.tema .st.par{color:var(--warn);border-color:var(--warn)}.tema .st.ven{color:var(--leg);border-color:var(--leg)}.tema .st.enc{color:var(--ink-3)}
+.tema .spark{display:flex;align-items:center;gap:10px;margin:4px 0 6px;font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.tema .spark svg{width:120px;height:26px}
+.tema .pr{font-size:13.5px;padding:4px 0;border-top:1px dashed var(--line-2)}.tema .pr .m{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.tema .flag{font-size:13px;background:var(--warn-soft);color:var(--warn);border-radius:6px;padding:6px 9px;margin:6px 0}
 .sab{font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line-2);display:grid;grid-template-columns:1fr auto;gap:2px 10px}
 .sab:last-child{border-bottom:0}
 .sab .r{font-family:var(--mono);font-size:11px;color:var(--ink-3);text-align:right}
@@ -412,6 +422,21 @@ function omissaoHtml(){
   if(vt.length) out+=`<h3>Vetos mais antigos sem votação</h3><p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">O Congresso tem 30 dias para votar um veto; vencido o prazo, ele passa a trancar a pauta das sessões conjuntas (CF art. 66 §§4º e 6º). Por ano: ${Object.entries(o.vetos_by_year||{}).sort().map(([y,n])=>`${y}: ${n}`).join(' · ')}.</p>`+vt.map(x=>`<div class="om-it"><span class="t"><a href="${x.url}" target="_blank" rel="noopener">${esc(x.title)}</a></span> ${esc((x.summary||'').slice(0,160))}<span class="m">${x.norma?esc(x.norma)+' · ':''}<span class="bad">há ${x.days} dias</span>, prazo de 30</span>${who(x)}</div>`).join('');
   return out;
 }
+function spark(weekly){ const vals=Object.values(weekly||{}); if(vals.length<2) return ''; const max=Math.max(...vals,1); const w=120,hh=26; const pts=vals.map((v,i)=>`${(i/(vals.length-1)*w).toFixed(1)},${(hh-2-(v/max)*(hh-4)).toFixed(1)}`).join(' '); return `<svg viewBox="0 0 ${w} ${hh}" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="var(--accent)" stroke-width="1.5"/><circle cx="${w}" cy="${(hh-2-(vals[vals.length-1]/max)*(hh-4)).toFixed(1)}" r="2" fill="var(--accent)"/></svg>`; }
+function temasHtml(){
+  const T=G.temas; if(!T||!T.temas||!T.temas.length) return '<p class="seat">Sem temas ainda.</p>';
+  const ST={em_movimento:['mov','em movimento'],parado:['par','parado'],prazo_vencido:['ven','prazo vencido'],encerrado:['enc','encerrado'],sem_processo:['enc','sem processo']};
+  let out=`<p style="font-size:14px;color:var(--ink-2);margin:0 0 10px">Temas em debate cruzados com o andamento dos processos. "Parado" é a distância desde o último andamento; "prazo vencido" é o prazo legal já passado. A linha mostra as visitas semanais ao verbete na Wikipédia nos últimos 90 dias. Fontes: Câmara, Senado, Wikimedia e as notícias do Atlas, ${fmtDate(T.generated_at)}.</p>`;
+  out+=T.temas.map(t=>{ const [cls,lab]=ST[t.state]||['enc',t.state]; const wk=t.wikipedia; const c=t.curated_item;
+    return `<div class="tema"><div class="hd"><div><div class="nm">${esc(t.name)}</div><div class="q">${esc(t.question||'')}</div></div><span class="st ${cls}">${lab}${t.stalled_days!=null&&t.state!=='encerrado'?` · ${t.stalled_days} d`:''}</span></div>
+    ${t.silent_and_stalled?`<div class="flag">Silêncio com prazo vencido: a atenção caiu mais de 80% do pico há mais de 60 dias, e o processo segue sem decisão.</div>`:''}
+    ${wk?`<div class="spark">${spark(wk.weekly)}<span>${wk.total_90d.toLocaleString('pt-BR')} visitas em 90 dias · ${wk.last7.toLocaleString('pt-BR')} na última semana · <a href="${wk.url}" target="_blank" rel="noopener">verbete ↗</a></span></div>`:''}
+    ${t.news_hits?`<div class="spark"><span>${t.news_hits} ${t.news_hits===1?'notícia':'notícias'} no Atlas${t.news_recent&&t.news_recent.length?': '+t.news_recent.slice(0,2).map(a=>`<a href="#news:${a.id}">${esc(a.title.slice(0,70))}${a.title.length>70?'…':''}</a>`).join(' · '):''}</span></div>`:''}
+    ${(t.processes||[]).map(p=>`<div class="pr"><a href="${p.url}" target="_blank" rel="noopener"><b>${esc(p.id)}</b></a> ${esc((p.ementa||'').slice(0,110))}${(p.ementa||'').length>110?'…':''}<div class="m">${p.casa==='camara'?'Câmara':p.casa==='senado'?'Senado':'Congresso'} · ${esc(p.situation||'')}${p.last_move?` · último andamento ${fmtDate(p.last_move)}`:''}${p.deadline?` · prazo ${fmtDate(p.deadline)}`:''}${p.overdue?' · <span style="color:var(--leg)">prazo de 30 dias vencido</span>':''}</div></div>`).join('')}
+    ${c?`<div class="pr"><b>${esc(c.title)}</b> ${esc(c.summary||'')}<div class="m">${c.signatures?`${c.signatures.camara} deputados e ${c.signatures.senado} senadores · `:''}protocolado em ${fmtLong(c.date)} · há ${c.days} dias${c.responsible_position&&N[c.responsible_position]?` · próximo passo cabe a <a href="#${c.responsible_position}">${esc(c.responsible_name||'')}</a>${c.responsible_person?` (<a href="#${c.responsible_person_id||''}">${esc(c.responsible_person)}</a>)`:''}`:''}</div></div>`:''}
+  </div>`; }).join('');
+  return out;
+}
 let arrecTimer=null;
 function startArrec(){ if(arrecTimer) clearInterval(arrecTimer); const a=G.arrecadacao; const el=document.getElementById('arrec-n'); if(!a||!el) return; const base=a.anchor.value; const t0=new Date(a.anchor.date+'T23:59:59'); const rate=a.rate_per_second;
   const tick=()=>{ const el=document.getElementById('arrec-n'); if(!el){ clearInterval(arrecTimer); return; } const dt=Math.max(0,(Date.now()-t0)/1000); el.textContent='R$ '+Math.round(base+rate*dt).toLocaleString('pt-BR'); }; tick(); arrecTimer=setInterval(tick,120); }
@@ -463,7 +488,7 @@ function renderHome(){
   const trans = `<div class="stats" style="margin-bottom:12px"><div class="stat"><div class="n">${apt.length}</div><div class="l">cargos nomeados pelo PR</div></div><div class="stat"><div class="n">${tot}</div><div class="l">cadeiras</div></div><div class="stat"><div class="n">${sab}</div><div class="l">passam pelo Senado</div></div></div>
     <p style="font-size:14px">A posse de 1º de janeiro de 2027 troca a cúpula do Executivo. Estes são os cargos de nomeação do Presidente da República mapeados no grafo, com quem os ocupa hoje. ${known} de ${tot} cadeiras têm ocupante conhecido.</p>
     ${Object.keys(ARC).filter(k=>bySec[k]).map(k=>`<h3 style="color:${COL[k]}">${SEC[k].name} · ${bySec[k].length}</h3><div class="list">${bySec[k].sort((a,b)=>a.name.localeCompare(b.name,'pt')).map(n=>{ const p=(n.people||[])[0]; const extra = n.seats>1?`${Math.min((n.people||[]).length,n.seats)}/${n.seats}`:(p?esc(p.name.split(' ').slice(0,2).join(' ')):'<span style="color:var(--jud)">sem dado</span>'); return `<a href="#${n.id}"><span class="dot" style="background:${COL[n.sector]}"></span><span>${esc(n.name)}</span><span class="sm">${n.sabatina?'senado · ':''}${extra}</span>`; }).join('')}</div>`).join('')}`;
-  const body = homeTab==='omissao' ? omissaoHtml() : homeTab==='transicao' ? trans : homeTab==='noticias' ? (news?`<div class="news">${news}</div><p style="font-size:13px;color:var(--ink-3)">${st.news_sources||0} fontes · ${st.articles_90d||0} artigos em 90 dias · entidades e pessoas reconhecidas por sigla e nome.</p>`:'<p>Sem notícias coletadas ainda.</p>')
+  const body = homeTab==='omissao' ? omissaoHtml() : homeTab==='temas' ? temasHtml() : homeTab==='transicao' ? trans : homeTab==='noticias' ? (news?`<div class="news">${news}</div><p style="font-size:13px;color:var(--ink-3)">${st.news_sources||0} fontes · ${st.articles_90d||0} artigos em 90 dias · entidades e pessoas reconhecidas por sigla e nome.</p>`:'<p>Sem notícias coletadas ainda.</p>')
     : homeTab==='poder' ? (power?`<div class="pm">${power}</div><p style="font-size:13px;color:var(--ink-3)">Pessoas do grafo mais citadas nos últimos 90 dias. Cresce a cada coleta diária.</p>`:'<p>Sem menções ainda.</p>')
     : `${counters}${bars}${chg||'<p>Sem mudanças nesta janela.</p>'}<p style="font-size:13px;color:var(--ink-3)">Sabatinas do Senado, posses, atos do Diário Oficial e entradas e saídas detectadas na comparação diária dos ocupantes.</p>`;
   content.innerHTML = `<a class="card start" href="/como-funciona/"><span class="eyebrow">Comece por aqui</span><b>Como funciona a República</b><span>Uma visita guiada de 9 minutos pela roda: quem você elege, quem nomeia quem, quem vigia quem. Para quem nunca precisou entender isso e agora quer.</span><span class="go">Começar →</span></a>`+`
@@ -471,7 +496,7 @@ function renderHome(){
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
     <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div></div>
   ${arrecCard()}
-  <div class="card"><div class="tabs" role="tablist">${tab('mudancas','Mudanças')}${tab('noticias','Notícias')}${tab('poder','Na notícia')}${tab('omissao','Sem decisão')}${tab('transicao','Transição 2027')}${homeTab!=='transicao'&&homeTab!=='omissao'?winSel:''}</div>${body}</div>
+  <div class="card"><div class="tabs" role="tablist">${tab('mudancas','Mudanças')}${tab('noticias','Notícias')}${tab('poder','Na notícia')}${tab('omissao','Sem decisão')}${tab('temas','Temas')}${tab('transicao','Transição 2027')}${!['transicao','omissao','temas'].includes(homeTab)?winSel:''}</div>${body}</div>
   <div class="card"><h2>Por poder</h2><div class="counts">${Object.keys(ARC).map(s=>`<span class="k"><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</span><span>${bs[s]||0}</span>`).join('')}</div>
     <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
     <h3>Cargos e colegiados</h3><div class="counts"><span>Cargos de chefia mapeados</span><span>${bt.dept_head||0}</span><span>Cadeiras (inclui 513 deputados e 81 senadores)</span><span>${st.seats_total}</span><span>Sabatinas do Senado desde 2023</span><span>${st.sabatinas||0}</span><span>Colegiados deliberativos</span><span>${bt.commission||0}</span></div></div>

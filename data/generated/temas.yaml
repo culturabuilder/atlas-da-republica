@@ -1,0 +1,457 @@
+# GERADO por etl/temas.py. Não edite à mão.
+generated_at: '2026-09-20'
+temas:
+- id: pec-da-blindagem
+  name: PEC da Blindagem
+  question: O Congresso pode exigir autorização prévia para processar parlamentares?
+  keywords:
+  - pec da blindagem
+  - blindagem parlamentar
+  - pec 3/2021
+  curated: null
+  news_hits: 0
+  news_weekly: {}
+  news_recent: []
+  wikipedia:
+    article: PEC_da_Blindagem
+    url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
+    weekly:
+      '2026-06-15': 14
+      '2026-06-22': 173
+      '2026-06-29': 80
+      '2026-07-06': 113
+      '2026-07-13': 131
+      '2026-07-20': 187
+      '2026-07-27': 216
+      '2026-08-03': 249
+      '2026-08-10': 240
+      '2026-08-17': 364
+      '2026-08-24': 447
+      '2026-08-31': 494
+      '2026-09-07': 456
+      '2026-09-14': 477
+    total_90d: 3641
+    last7: 543
+    peak_week: 494
+  processes:
+  - casa: camara
+    id: PEC 3/2021
+    ementa: Altera os arts. 14, 27, 53, 102 e 105 da Constituição Federal, para dispor sobre as prerrogativas parlamentares
+      e dá outras providências.
+    situation: Arquivada
+    last_move: '2025-09-17'
+    organ: MESA
+    closed: true
+    outcome: Arquivada
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2270800
+    requested: PEC 3/2021 (camara)
+  - casa: senado
+    id: PEC 3/2021
+    ementa: Altera os arts. 53 e 102 da Constituição Federal, para dispor sobre as prerrogativas parlamentares.
+    situation: Rejeitada
+    last_move: '2025-09-24'
+    closed: true
+    outcome: Rejeitada
+    url: https://www25.senado.leg.br/web/atividade/materias/-/materia/170519
+    requested: PEC 3/2021 (senado)
+  state: encerrado
+  stalled_days: null
+  silence_after_peak: false
+  silent_and_stalled: false
+- id: banco-master
+  name: Caso Banco Master
+  question: O Congresso vai investigar o caso Banco Master?
+  keywords:
+  - banco master
+  - cpmi do master
+  - cpi do master
+  - vorcaro
+  curated: cpmi-banco-master-2026
+  news_hits: 26
+  news_weekly:
+    '2026-09-14': 26
+  news_recent:
+  - id: 2ee91335d869a14f
+    title: PF encontra foto de Vorcaro e Gonet fumando charuto em Londres
+    date: '2026-09-19'
+    publication: Poder360
+  - id: 2af690c4a856b2fb
+    title: Advogado do Master encaminhou a Vorcaro foto de Gonet fumando charuto em Londres
+    date: '2026-09-19'
+    publication: Estadão
+  - id: a72124e19dcc414c
+    title: Foto no telefone de Daniel Vorcaro mostra Paulo Gonet fumando charuto com ex-banqueiro em Londres
+    date: '2026-09-19'
+    publication: g1 Política
+  - id: 2173ab43f3ffbe2c
+    title: Análise do celular de Vorcaro tem acesso restrito em gabinetes no STF; arquivo enviado pela PF tem 500 gigabytes
+    date: '2026-09-19'
+    publication: g1 Política
+  - id: ca468ee16e5d9c31
+    title: Oposição cobra afastamento de Gonet após foto com Vorcaro em Londres
+    date: '2026-09-19'
+    publication: Estadão
+  wikipedia:
+    article: Banco_Master
+    url: https://pt.wikipedia.org/wiki/Banco_Master
+    weekly:
+      '2026-06-15': 117
+      '2026-06-22': 1406
+      '2026-06-29': 430
+      '2026-07-06': 393
+      '2026-07-13': 384
+      '2026-07-20': 444
+      '2026-07-27': 450
+      '2026-08-03': 427
+      '2026-08-10': 484
+      '2026-08-17': 420
+      '2026-08-24': 806
+      '2026-08-31': 8813
+      '2026-09-07': 10630
+      '2026-09-14': 9103
+    total_90d: 34307
+    last7: 10942
+    peak_week: 10630
+  processes:
+  - casa: camara
+    id: RCP 1/2026
+    ementa: Requer a criação de Comissão Parlamentar de Inquérito para investigar as fraudes financeiras ocorridas na relação
+      entre o Banco Master e o Banco Regional de Brasília – BRB.
+    situation: Aguardando Despacho do Presidente da Câmara dos Deputados
+    last_move: '2026-07-20'
+    organ: MESA
+    closed: false
+    outcome: null
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
+    requested: RCP 1/2026 (camara)
+  state: parado
+  stalled_days: 62
+  silence_after_peak: false
+  silent_and_stalled: false
+- id: escala-6x1
+  name: Fim da escala 6x1
+  question: A jornada de seis dias por um de descanso vai mudar?
+  keywords:
+  - escala 6x1
+  - 6x1
+  - fim da escala
+  - jornada 6x1
+  curated: null
+  news_hits: 3
+  news_weekly:
+    '2026-09-14': 3
+  news_recent:
+  - id: 74f518d82928947e
+    title: Fim da escala 6x1 e de privatizações é prioridade de Hertz Dias
+    date: '2026-09-18'
+    publication: Agência Brasil
+  - id: 5cb49ba3da41d66a
+    title: MPT apresenta ação contra Luciano Hang por assédio eleitoral
+    date: '2026-09-18'
+    publication: Congresso em Foco
+  - id: c74a1eb7fa1d4d1e
+    title: Pesquisa aponta que solidão e exaustão ampliam abstenção nas urnas
+    date: '2026-09-17'
+    publication: Agência Brasil
+  wikipedia: null
+  processes:
+  - casa: camara
+    id: PEC 8/2025
+    ementa: Dá nova redação ao inciso XIII, do artigo 7° da Constituição Federal para dispor sobre a redução da jornada de
+      trabalho para quatro dias por semana no Brasil.
+    situation: Arquivada
+    last_move: '2026-05-27'
+    organ: MESA
+    closed: true
+    outcome: Arquivada
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2485341
+    requested: PEC 8/2025 (camara)
+  - casa: camara
+    id: PEC 221/2019
+    ementa: Altera o Art. 7º inciso XII da constituição Federal, reduzindo a jornada de trabalho a 36 horas semanais em 10
+      anos.
+    situation: Aguardando Apreciação pelo Senado Federal
+    last_move: '2026-05-28'
+    organ: MESA
+    closed: false
+    outcome: null
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2233802
+    requested: PEC 221/2019 (camara)
+  state: parado
+  stalled_days: 115
+  silence_after_peak: null
+  silent_and_stalled: false
+- id: isencao-ir
+  name: Isenção do IR até R$ 5 mil
+  question: Quem deixa de pagar imposto de renda e quem paga mais?
+  keywords:
+  - isencao do imposto de renda
+  - isencao do ir
+  - ir ate 5 mil
+  - imposto de renda ate r$ 5 mil
+  - pl 1087
+  curated: null
+  news_hits: 0
+  news_weekly: {}
+  news_recent: []
+  wikipedia: null
+  processes:
+  - casa: camara
+    id: PL 1087/2025
+    ementa: Altera a legislação do imposto sobre a renda para instituir a redução do imposto devido nas bases de cálculo mensal
+      e anual e a tributação mínima para as pessoas físicas que auferem altas rendas, e dá outras providências
+    situation: Transformado em Norma Jurídica
+    last_move: '2025-12-01'
+    organ: MESA
+    closed: true
+    outcome: Transformado em Norma Jurídica
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2487436
+    requested: PL 1087/2025 (camara)
+  - casa: senado
+    id: PL 1087/2025
+    ementa: 'Altera as Leis nºs 9.250, de 26 de dezembro de 1995, e 9.249, de 26 de dezembro de 1995, para instituir a redução
+      do imposto sobre a renda devido nas bases de cálculo mensal e anual e a tributação mínima para as pessoas '
+    situation: Transformada em norma jurídica
+    last_move: '2025-11-27'
+    closed: true
+    outcome: Transformada em norma jurídica
+    url: https://www25.senado.leg.br/web/atividade/materias/-/materia/170775
+    requested: PL 1087/2025 (senado)
+  state: encerrado
+  stalled_days: null
+  silence_after_peak: null
+  silent_and_stalled: false
+- id: anistia-8-de-janeiro
+  name: Anistia e dosimetria do 8 de janeiro
+  question: As penas dos condenados pelo 8 de janeiro vão mudar?
+  keywords:
+  - anistia
+  - dosimetria
+  - 8 de janeiro
+  - pl da dosimetria
+  - pl da anistia
+  curated: null
+  news_hits: 1
+  news_weekly:
+    '2026-09-14': 1
+  news_recent:
+  - id: 9904ca987c474ee9
+    title: 'Lula diz não aceitar classificação de facções como terroristas: ''Terrorismo foi o 8 de Janeiro'''
+    date: '2026-09-18'
+    publication: g1 Política
+  wikipedia:
+    article: Ataques_de_8_de_janeiro_de_2023
+    url: https://pt.wikipedia.org/wiki/Ataques_de_8_de_janeiro_de_2023
+    weekly:
+      '2026-06-22': 0
+      '2026-06-29': 0
+      '2026-07-13': 0
+      '2026-07-20': 0
+      '2026-08-10': 0
+      '2026-08-17': 0
+      '2026-08-24': 0
+      '2026-09-07': 0
+      '2026-09-14': 1
+    total_90d: 1
+    last7: 1
+    peak_week: 1
+  processes:
+  - casa: camara
+    id: PL 2162/2023
+    ementa: Concede anistia aos participantes das manifestações reivindicatórias de motivação política ocorridas entre o dia
+      30 de outubro de 2022 e o dia de entrada em vigor desta Lei, e dá outras providências.
+    situation: Aguardando Envio ao Senado Federal
+    last_move: '2026-05-08'
+    organ: PLEN
+    closed: false
+    outcome: null
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2358548
+    requested: PL 2162/2023 (camara)
+  - casa: senado
+    id: PL 2162/2023
+    ementa: Altera dispositivos da Lei nº 7.210, de 11 de julho de 1984 (Lei de Execução Penal) e do Decreto-Lei nº 2.848,
+      de 7 de dezembro de 1940 (Código Penal).
+    situation: Vetada
+    last_move: '2026-01-08'
+    closed: true
+    outcome: Vetada
+    url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
+    requested: PL 2162/2023 (senado)
+  state: parado
+  stalled_days: 135
+  silence_after_peak: false
+  silent_and_stalled: false
+- id: diesel-mp-1344
+  name: Subsídio ao diesel (MP 1.344)
+  question: Os R$ 10 bilhões para o diesel chegaram a ser gastos?
+  keywords:
+  - subsidio ao diesel
+  - mp do diesel
+  - mp 1.344
+  - mp 1344
+  - preco do diesel
+  curated: null
+  news_hits: 1
+  news_weekly:
+    '2026-09-14': 1
+  news_recent:
+  - id: 09c6fbd421a86ab7
+    title: FMI aprova empréstimo de US$ 1,9 bi à Bolívia e presidente anuncia fim do subsídio ao diesel
+    date: '2026-09-19'
+    publication: Estadão
+  wikipedia: null
+  processes:
+  - casa: congresso
+    id: MPV 1344/2026
+    ementa: Abre crédito extraordinário, em favor do Ministério de Minas e Energia, no valor de R$ 10.000.000.000,00, para
+      os fins que especifica.
+    situation: Sem eficácia
+    last_move: '2026-07-17'
+    closed: true
+    outcome: Sem eficácia
+    url: https://www25.senado.leg.br/web/atividade/materias/-/materia/173213
+    requested: MPV 1344/2026 (congresso)
+  state: encerrado
+  stalled_days: null
+  silence_after_peak: null
+  silent_and_stalled: false
+- id: vetos-lei-geral-do-esporte
+  name: Vetos à Lei Geral do Esporte
+  question: O Congresso vai votar os 340 dispositivos vetados?
+  keywords:
+  - lei geral do esporte
+  - veto 14/2023
+  curated: null
+  news_hits: 0
+  news_weekly: {}
+  news_recent: []
+  wikipedia: null
+  processes:
+  - casa: congresso
+    id: Veto 14/2023
+    ementa: Veto Parcial aposto ao Projeto de Lei do Senado nº 68, de 2017 (nº 1.825/2022, na Câmara dos Deputados), que "Institui
+      a Lei Geral do Esporte".
+    situation: em tramitação
+    last_move: '2023-06-14'
+    closed: false
+    outcome: null
+    deadline: null
+    days_left: null
+    overdue: true
+    url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
+    requested: VET 14/2023 (congresso)
+  state: prazo_vencido
+  stalled_days: 1194
+  silence_after_peak: null
+  silent_and_stalled: false
+- id: precatorios
+  name: PEC dos Precatórios
+  question: Como a União vai pagar as dívidas judiciais?
+  keywords:
+  - precatorios
+  - pec dos precatorios
+  curated: null
+  news_hits: 0
+  news_weekly: {}
+  news_recent: []
+  wikipedia:
+    article: Precatório
+    url: https://pt.wikipedia.org/wiki/Precatório
+    weekly:
+      '2026-06-15': 3
+      '2026-06-22': 20
+      '2026-06-29': 24
+      '2026-07-06': 26
+      '2026-07-13': 25
+      '2026-07-20': 32
+      '2026-07-27': 28
+      '2026-08-03': 25
+      '2026-08-10': 33
+      '2026-08-17': 30
+      '2026-08-24': 24
+      '2026-08-31': 80
+      '2026-09-07': 26
+      '2026-09-14': 62
+    total_90d: 438
+    last7: 67
+    peak_week: 80
+  processes:
+  - casa: camara
+    id: PEC 66/2023
+    ementa: Institui limite para o pagamento de precatórios pelos Municípios, abre novo prazo de parcelamento especial de
+      débitos dos Municípios com seus regimes próprios de previdência social e com o Regime Geral de Previdência Soc
+    situation: Transformado em Norma Jurídica
+    last_move: '2025-09-09'
+    organ: MESA
+    closed: true
+    outcome: Transformado em Norma Jurídica
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2454495
+    requested: PEC 66/2023 (camara)
+  - casa: senado
+    id: PEC 66/2023
+    ementa: Abre novo prazo de parcelamento especial de débitos dos municípios com seus Regimes Próprios de Previdência Social
+      dos Servidores Públicos e com o Regime Geral de Previdência Social.
+    situation: Remetida à câmara dos deputados
+    last_move: '2024-08-21'
+    closed: true
+    outcome: Remetida à câmara dos deputados
+    url: https://www25.senado.leg.br/web/atividade/materias/-/materia/161307
+    requested: PEC 66/2023 (senado)
+  state: encerrado
+  stalled_days: null
+  silence_after_peak: false
+  silent_and_stalled: false
+- id: emendas-parlamentares
+  name: Emendas parlamentares e transparência
+  question: As emendas vão ter rastreabilidade e critério?
+  keywords:
+  - emendas parlamentares
+  - emendas pix
+  - orcamento secreto
+  - emendas de comissao
+  curated: null
+  news_hits: 1
+  news_weekly:
+    '2026-09-14': 1
+  news_recent:
+  - id: bdf33aadb72d21ce
+    title: Nunes Marques nega pedido da PF para realizar busca contra ACM Neto dentro de investigação sobre desvio de emendas
+    date: '2026-09-17'
+    publication: g1 Política
+  wikipedia:
+    article: Orçamento_secreto
+    url: https://pt.wikipedia.org/wiki/Orçamento_secreto
+    weekly:
+      '2026-06-15': 44
+      '2026-06-22': 266
+      '2026-06-29': 164
+      '2026-07-06': 246
+      '2026-07-13': 390
+      '2026-07-20': 175
+      '2026-07-27': 183
+      '2026-08-03': 191
+      '2026-08-10': 202
+      '2026-08-17': 255
+      '2026-08-24': 346
+      '2026-08-31': 390
+      '2026-09-07': 303
+      '2026-09-14': 189
+    total_90d: 3344
+    last7: 214
+    peak_week: 390
+  processes:
+  - casa: camara
+    id: PLP 210/2024
+    ementa: Altera a Lei Complementar nº 200, de 30 de agosto de 2023, que institui regime fiscal sustentável para garantir
+      a estabilidade macroeconômica do País e criar as condições adequadas ao crescimento socioeconômico, e dá out
+    situation: Transformado em Norma Jurídica
+    last_move: '2024-12-30'
+    organ: MESA
+    closed: true
+    outcome: Transformado em Norma Jurídica
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2473389
+    requested: PLP 210/2024 (camara)
+  state: encerrado
+  stalled_days: null
+  silence_after_peak: false
+  silent_and_stalled: false

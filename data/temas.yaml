@@ -1,0 +1,68 @@
+# Temas acompanhados: atenção pública (notícias do Atlas + visitas à Wikipédia) cruzada com o andamento dos processos.
+# Os processos são verificados nas APIs da Câmara e do Senado a cada build; identificadores inexistentes são ignorados com aviso.
+# keywords: expressões buscadas no título e no resumo das notícias (sem acento, sem caixa). wikipedia: título do verbete em pt.
+- id: pec-da-blindagem
+  name: PEC da Blindagem
+  question: O Congresso pode exigir autorização prévia para processar parlamentares?
+  keywords: [pec da blindagem, blindagem parlamentar, pec 3/2021]
+  wikipedia: PEC_da_Blindagem
+  processes:
+    - {casa: camara, sigla: PEC, numero: 3, ano: 2021}
+    - {casa: senado, sigla: PEC, numero: 3, ano: 2021}
+- id: banco-master
+  name: Caso Banco Master
+  question: O Congresso vai investigar o caso Banco Master?
+  keywords: [banco master, cpmi do master, cpi do master, vorcaro]
+  wikipedia: Banco_Master
+  processes:
+    - {casa: camara, sigla: RCP, numero: 1, ano: 2026}
+  curated: cpmi-banco-master-2026
+- id: escala-6x1
+  name: Fim da escala 6x1
+  question: A jornada de seis dias por um de descanso vai mudar?
+  keywords: [escala 6x1, 6x1, fim da escala, jornada 6x1]
+  processes:
+    - {casa: camara, sigla: PEC, numero: 8, ano: 2025}
+    - {casa: camara, sigla: PEC, numero: 221, ano: 2019}
+- id: isencao-ir
+  name: Isenção do IR até R$ 5 mil
+  question: Quem deixa de pagar imposto de renda e quem paga mais?
+  keywords: [isencao do imposto de renda, isencao do ir, ir ate 5 mil, imposto de renda ate r$ 5 mil, pl 1087]
+  processes:
+    - {casa: camara, sigla: PL, numero: 1087, ano: 2025}
+    - {casa: senado, sigla: PL, numero: 1087, ano: 2025}
+- id: anistia-8-de-janeiro
+  name: Anistia e dosimetria do 8 de janeiro
+  question: As penas dos condenados pelo 8 de janeiro vão mudar?
+  keywords: [anistia, dosimetria, 8 de janeiro, pl da dosimetria, pl da anistia]
+  wikipedia: Ataques_de_8_de_janeiro_de_2023
+  processes:
+    - {casa: camara, sigla: PL, numero: 2162, ano: 2023}
+    - {casa: senado, sigla: PL, numero: 2162, ano: 2023}
+- id: diesel-mp-1344
+  name: Subsídio ao diesel (MP 1.344)
+  question: Os R$ 10 bilhões para o diesel chegaram a ser gastos?
+  keywords: [subsidio ao diesel, mp do diesel, mp 1.344, mp 1344, preco do diesel]
+  processes:
+    - {casa: congresso, sigla: MPV, numero: 1344, ano: 2026}
+- id: vetos-lei-geral-do-esporte
+  name: Vetos à Lei Geral do Esporte
+  question: O Congresso vai votar os 340 dispositivos vetados?
+  keywords: [lei geral do esporte, veto 14/2023]
+  processes:
+    - {casa: congresso, sigla: VET, numero: 14, ano: 2023}
+- id: precatorios
+  name: PEC dos Precatórios
+  question: Como a União vai pagar as dívidas judiciais?
+  keywords: [precatorios, pec dos precatorios]
+  wikipedia: Precatório
+  processes:
+    - {casa: camara, sigla: PEC, numero: 66, ano: 2023}
+    - {casa: senado, sigla: PEC, numero: 66, ano: 2023}
+- id: emendas-parlamentares
+  name: Emendas parlamentares e transparência
+  question: As emendas vão ter rastreabilidade e critério?
+  keywords: [emendas parlamentares, emendas pix, orcamento secreto, emendas de comissao]
+  wikipedia: Orçamento_secreto
+  processes:
+    - {casa: camara, sigla: PLP, numero: 210, ano: 2024}

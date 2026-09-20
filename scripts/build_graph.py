@@ -509,13 +509,22 @@ if _ar:
     arrecadacao["kinds"] = _ar.get("kinds"); arrecadacao["juros"] = {k: v for k, v in (_ar.get("juros") or {}).items() if k != "months"}; arrecadacao["juros"]["months"] = {k: v for k, v in ((_ar.get("juros") or {}).get("months") or {}).items() if k >= f"{int(y)-1}-01"}
     _saude = next((n for n in nodes.values() if n["id"] == "br-ministerio-da-saude"), None); _edu = next((n for n in nodes.values() if n["id"] == "br-ministerio-da-educacao"), None)
     arrecadacao["compare"] = {"saude": ((_saude or {}).get("budget") or {}).get(y) or ((_saude or {}).get("budget") or {}).get(py), "educacao": ((_edu or {}).get("budget") or {}).get(y) or ((_edu or {}).get("budget") or {}).get(py)}
+_tm = _load_yaml("temas.yaml")
+temas = None
+if _tm:
+    order = {"prazo_vencido": 0, "parado": 1, "em_movimento": 2, "sem_processo": 3, "encerrado": 4}
+    temas = {"generated_at": str(_tm.get("generated_at")), "temas": sorted([{k: v for k, v in t.items() if k != "keywords"} for t in _tm.get("temas") or []], key=lambda t: (0 if t.get("silent_and_stalled") else 1, order.get(t.get("state"), 9), -(t.get("stalled_days") or 0)))}
+    for t in temas["temas"]:
+        if t.get("curated") and omissao:
+            c = next((x for x in omissao.get("curated") or [] if x.get("id") == t["curated"]), None)
+            if c: t["curated_item"] = {k: c.get(k) for k in ("title", "summary", "signatures", "date", "days", "legal_deadline", "responsible_position", "responsible_name", "responsible_person", "responsible_person_id", "sources")}
 _at = _load_yaml("atividade.yaml")
 atividade = (_at.get("people") or {}) if _at else {}
 for pid, rec in people_index.items():
     if pid in atividade: rec["activity"] = atividade[pid]
 stats["omissao"] = (omissao or {}).get("summary"); stats["atividade_pessoas"] = len(atividade)
 stats["people"] = len(people_index)
-graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao}
+graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
 HEAVY = ("description", "siorg_description", "people", "sabatinas", "budget", "dou", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
@@ -535,7 +544,7 @@ core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), 
 _pp = OUT / "people"; _pp.mkdir(exist_ok=True)
 for pid, r in people_index.items():
     json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
-core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
+core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
 cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")
 print(f"   build/graph.core.js = {len(cjs)//1024} KB + {len(core_nodes)} arquivos de detalhe")
