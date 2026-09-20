@@ -358,6 +358,7 @@ function renderPerson(p){
   content.innerHTML = `<div class="card"><div class="phead"><span class="big">${avatar(p)}</span><div><h1 style="margin:0">${esc(p.name)}</h1><p style="margin:4px 0 0;color:var(--ink-3)">${[p.party,p.uf].filter(Boolean).join(' · ')||'Pessoa'}${pm?` · na notícia ${pm.articles}× em 90 dias, última ${fmtDate(pm.last)}`:''}</p></div></div>
     <h3>Cargos</h3><div class="list">${pos||'<span class="seat">Sem cargo registrado.</span>'}</div>
     ${activityHtml(p)}
+    ${propHtml(p)}
     ${gabHtml(p)}
     ${emendasHtml(p)}
     ${remHtml(p)}
@@ -376,7 +377,7 @@ function select(id){
   const ssr=document.getElementById('ssr'); if(ssr) ssr.remove();
   if (id && id.startsWith('news:')) { const a=(G.news||[]).find(x=>x.id===id.slice(5)); if (a) { current=null; renderNews(a); return; } }
   if (P[id]) { current = null;
-    if (G.people_base && !P[id]._full) { content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; fetch(G.people_base + id + '.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{ P[id]._full = d.positions || []; P[id]._activity = d.activity || null; P[id]._emendas = d.emendas || null; P[id]._cand = d.candidaturas || null; P[id]._gab = d.gabinete || null; P[id]._pat = d.patrimonio || null; P[id]._rem = d.remuneracao || null; P[id]._doa = d.doadores || null; P[id]._sin = d.sinais || null; P[id]._vg = d.viagens || null; P[id]._ct = d.cartao || null; if (!location.hash || location.hash.slice(1)===id) select(id); }); return; }
+    if (G.people_base && !P[id]._full) { content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; fetch(G.people_base + id + '.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{ P[id]._full = d.positions || []; P[id]._activity = d.activity || null; P[id]._emendas = d.emendas || null; P[id]._cand = d.candidaturas || null; P[id]._gab = d.gabinete || null; P[id]._pat = d.patrimonio || null; P[id]._rem = d.remuneracao || null; P[id]._doa = d.doadores || null; P[id]._sin = d.sinais || null; P[id]._vg = d.viagens || null; P[id]._ct = d.cartao || null; P[id]._pr = d.proposicoes || null; if (!location.hash || location.hash.slice(1)===id) select(id); }); return; }
     const full = P[id]._full || (G.people&&G.people[id]&&G.people[id].positions) || [];
     const ids = full.length ? full.map(q=>q.id) : (P[id].positions||[]);
     const need = ids.filter(pid=>N[pid]&&N[pid].description===undefined&&G.detail_base); if (need.length) { Promise.all(need.map(loadDetail)).then(()=>renderPerson(P[id])); } else renderPerson(P[id]); return; }
@@ -482,6 +483,15 @@ function dinheiroHtml(){
     <div class="om">${stat(T.servidores.toLocaleString('pt-BR'),'servidores civis na folha')}${stat(T.com_abate_teto.toLocaleString('pt-BR'),'com salário bruto acima do teto (cortado pelo abate-teto)')}${stat(brl(T.valor_abatido_mes),'cortados no mês')}${stat(brl(T.indenizatorias_mes),'pagos fora do teto como verbas indenizatórias')}${stat(T.acima_do_teto_com_indenizatorias.toLocaleString('pt-BR'),'acima do teto contando as indenizatórias')}</div>
     <h4 style="margin:10px 0 4px;font-size:14px">Órgãos com mais servidores acima do teto</h4>${bars((T.orgaos||[]).slice(0,10), x=>x.orgao, x=>x.com_abate_teto, {fmt:(v,it)=>`${v.toLocaleString('pt-BR')} (${it.pct_com_abate}%)`, link:x=>x.node?'#'+x.node:null})}`; }
   return out+'</div>';
+}
+function propHtml(p){
+  const r=p._pr; if(!r) return ''; const M=G.stats.proposicoes||{}; const tipos=Object.entries(r.por_tipo||{}).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  const med=(M.resumo&&M.resumo[(p.positions||[]).includes('br-senador')?'senado':'camara'])||{}; const m=med.mediana_apresentadas!=null?med.mediana_apresentadas:(med.mediana!=null?med.mediana:null);
+  const mp=med.mediana_projetos, mr=med.mediana_relatorias;
+  return `<h3>Proposições no ano legislativo</h3><div class="din"><div class="om">${[[r.projetos!=null?r.projetos:'—','projetos (PL, PEC, PLP, PDL…)'+(mp!=null?` · mediana ${mp}`:'')],[r.requerimentos!=null?r.requerimentos:'—','requerimentos'+(med.mediana_requerimentos!=null?` · mediana ${med.mediana_requerimentos}`:'')],[r.relatorias_projetos!=null?r.relatorias_projetos:(r.relatorias!=null?r.relatorias:'—'),'relatorias de projetos'+(r.relatorias!=null&&r.relatorias_projetos!=null&&r.relatorias!==r.relatorias_projetos?` (${r.relatorias} no total)`:'')],[r.virou_norma!=null?r.virou_norma:'—','viraram norma']].map(([n,l])=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join('')}</div>
+  <p style="font-size:13px;color:var(--ink-2);margin:4px 0 6px">${r.apresentadas} ${r.apresentadas===1?'proposição apresentada':'proposições apresentadas'} no ano${r.como_primeiro_autor!=null?` (${r.como_primeiro_autor} como primeiro autor)`:''}${tipos.length?`: ${tipos.map(([k,v])=>`${esc(k)} ${v}`).join(' · ')}`:''}.${r.temas&&r.temas.length?` Temas mais frequentes: ${r.temas.slice(0,4).map(t=>esc(typeof t==='string'?t:(t.tema||t.nome||''))).join(', ')}.`:''}</p>
+  ${r.ultimas&&r.ultimas.length?`<div class="act">${r.ultimas.map(u=>`<div class="row"><span>${u.url?`<a href="${u.url}" target="_blank" rel="noopener"><b>${esc(u.sigla)} ${esc(String(u.numero))}/${esc(String(u.ano))}</b></a>`:`<b>${esc(u.sigla)} ${esc(String(u.numero))}/${esc(String(u.ano))}</b>`} ${esc(u.ementa||'')}<span class="d" style="display:block">${esc(u.situacao||'')}${u.data?' · '+fmtDate(String(u.data).slice(0,10)):''}</span></span></div>`).join('')}</div>`:''}
+  <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">${M.desde?`Desde ${fmtDate(M.desde)}. `:''}Fonte: ${esc(M.fonte||'Câmara e Senado, dados abertos')}.</p></div>`;
 }
 function gabHtml(p){
   const gb=p._gab; if(!gb) return ''; const sen=gb.casa==='senado'; const M=((G.stats.gabinetes||{})[sen?'senado':'camara'])||{}; const md=M.medianas||{}; const casa=sen?'do Senado':'da Câmara';

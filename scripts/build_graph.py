@@ -539,6 +539,8 @@ _gs = _load_yaml("gabinetes-senado.yaml"); _gs_people = (_gs.get("people") or {}
 _pt = _load_yaml("patrimonio.yaml"); _pt_people = (_pt.get("people") or {}) if _pt else {}
 _rm = _load_yaml("remuneracao.yaml"); _rm_people = (_rm.get("people") or {}) if _rm else {}
 _do = _load_yaml("doadores-2022.yaml"); _do_people = (_do.get("people") or {}) if _do else {}
+_pp_ = _load_yaml("proposicoes.yaml"); _pr_people = (_pp_.get("people") or {}) if _pp_ else {}
+if _pp_: stats["proposicoes"] = {"resumo": _pp_.get("resumo"), "fonte": _pp_.get("fonte"), "generated_at": str(_pp_.get("generated_at")), "desde": str(_pp_.get("since") or "")}
 _vg = _load_yaml("viagens.yaml"); _vg_people = (_vg.get("people") or {}) if _vg else {}
 _ct = _load_yaml("cartao.yaml"); _ct_people = (_ct.get("people") or {}) if _ct else {}
 viagens = {k: _vg.get(k) for k in ("generated_at", "ano", "fonte", "orgaos", "total", "viagens_total", "nota")} if _vg else None
@@ -557,6 +559,7 @@ for pid, rec in people_index.items():
     if pid in _rm_people: rec["remuneracao"] = _rm_people[pid]
     if pid in _do_people: rec["doadores"] = _do_people[pid]
     if pid in _vg_people: rec["viagens"] = _vg_people[pid]
+    if pid in _pr_people: rec["proposicoes"] = _pr_people[pid]
     if pid in _ct_people: rec["cartao"] = _ct_people[pid]
     if pid in _gb_people: rec["gabinete"] = dict(_gb_people[pid], casa="camara")
     elif pid in _gs_people: rec["gabinete"] = _gs_people[pid]
@@ -619,7 +622,7 @@ core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), 
 # detalhe por pessoa (comissões, papéis, datas) carregado sob demanda
 _pp = OUT / "people"; _pp.mkdir(exist_ok=True)
 for pid, r in people_index.items():
-    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity"), "emendas": r.get("emendas"), "candidaturas": r.get("candidaturas"), "gabinete": r.get("gabinete"), "patrimonio": r.get("patrimonio"), "remuneracao": r.get("remuneracao"), "doadores": r.get("doadores"), "sinais": r.get("sinais"), "viagens": r.get("viagens"), "cartao": r.get("cartao")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity"), "emendas": r.get("emendas"), "candidaturas": r.get("candidaturas"), "gabinete": r.get("gabinete"), "patrimonio": r.get("patrimonio"), "remuneracao": r.get("remuneracao"), "doadores": r.get("doadores"), "sinais": r.get("sinais"), "viagens": r.get("viagens"), "cartao": r.get("cartao"), "proposicoes": r.get("proposicoes")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
 cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")
