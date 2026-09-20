@@ -153,7 +153,27 @@ temas:
     title: Pesquisa aponta que solidão e exaustão ampliam abstenção nas urnas
     date: '2026-09-17'
     publication: Agência Brasil
-  wikipedia: null
+  wikipedia:
+    article: PEC_do_Fim_da_Escala_6x1
+    url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
+    weekly:
+      '2026-06-15': 7
+      '2026-06-22': 179
+      '2026-06-29': 143
+      '2026-07-06': 113
+      '2026-07-13': 137
+      '2026-07-20': 161
+      '2026-07-27': 195
+      '2026-08-03': 243
+      '2026-08-10': 276
+      '2026-08-17': 368
+      '2026-08-24': 506
+      '2026-08-31': 827
+      '2026-09-07': 536
+      '2026-09-14': 558
+    total_90d: 4249
+    last7: 638
+    peak_week: 827
   processes:
   - casa: camara
     id: PEC 8/2025
@@ -179,7 +199,7 @@ temas:
     requested: PEC 221/2019 (camara)
   state: parado
   stalled_days: 115
-  silence_after_peak: null
+  silence_after_peak: false
   silent_and_stalled: false
 - id: isencao-ir
   name: Isenção do IR até R$ 5 mil
@@ -194,7 +214,27 @@ temas:
   news_hits: 0
   news_weekly: {}
   news_recent: []
-  wikipedia: null
+  wikipedia:
+    article: Imposto_de_Renda_de_Pessoa_Física
+    url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
+    weekly:
+      '2026-06-15': 2
+      '2026-06-22': 42
+      '2026-06-29': 29
+      '2026-07-06': 33
+      '2026-07-13': 28
+      '2026-07-20': 41
+      '2026-07-27': 34
+      '2026-08-03': 33
+      '2026-08-10': 29
+      '2026-08-17': 55
+      '2026-08-24': 104
+      '2026-08-31': 39
+      '2026-09-07': 121
+      '2026-09-14': 54
+    total_90d: 644
+    last7: 61
+    peak_week: 121
   processes:
   - casa: camara
     id: PL 1087/2025
@@ -219,7 +259,7 @@ temas:
     requested: PL 1087/2025 (senado)
   state: encerrado
   stalled_days: null
-  silence_after_peak: null
+  silence_after_peak: false
   silent_and_stalled: false
 - id: anistia-8-de-janeiro
   name: Anistia e dosimetria do 8 de janeiro
