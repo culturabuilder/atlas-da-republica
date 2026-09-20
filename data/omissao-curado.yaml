@@ -1,0 +1,18 @@
+# Casos que as APIs não cobrem (requerimentos de CPMI no Congresso, denúncias por crime de responsabilidade).
+# Cada item precisa de fonte oficial ou jornalística com data. O build junta com o que vem das APIs.
+- id: cpmi-banco-master-2026
+  kind: cpmi
+  title: CPMI do Banco Master
+  summary: >-
+    Requerimento de criação de comissão parlamentar mista de inquérito para investigar o caso do Banco Master.
+    Reúne 181 assinaturas de deputados e 35 de senadores, acima do mínimo de 171 e 27. O presidente do Congresso
+    não leu o requerimento em sessão conjunta, o que impede a instalação.
+  filed_at: 2026-04-30
+  signatures: {camara: 181, senado: 35, min_camara: 171, min_senado: 27}
+  responsible_position: br-presidente-do-senado-federal
+  legal_deadline: Leitura na sessão conjunta seguinte ao protocolo (Regimento Comum, art. 21; CF art. 58 §3º)
+  status: aguardando_leitura
+  sources:
+    - {title: "Pedido de criação da CPMI do Banco Master é protocolado", url: "https://www12.senado.leg.br/noticias/materias/2026/02/03/pedido-de-criacao-da-cpmi-do-banco-master-e-protocolado-no-congresso", date: 2026-02-03}
+    - {title: "Deputadas protocolam pedido de instalação de CPMI", url: "https://www.otempo.com.br/politica/congresso/2026/4/30/deputadas-protocolam-pedido-de-instalacao-de-cpmi-para-investigar-caso-do-banco-master", date: 2026-04-30}
+    - {title: "Alcolumbre barra CPMI do Master e diz que decisão é dele", url: "https://www.poder360.com.br/poder-congresso/alcolumbre-rejeita-abrir-cpmi-do-master-e-diz-que-decisao-e-dele/", date: 2026-05-13}

@@ -156,6 +156,21 @@ p{margin:8px 0;color:var(--ink-2)}
 .inv .why .p{display:block}
 .lvl{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:14px 0 4px}
 .person .av img{width:30px;height:30px;border-radius:50%;object-fit:cover;display:block}
+.om{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:8px 0 14px}
+.om .stat .n{font-size:22px}.om .stat .l{font-size:12px;color:var(--ink-3);line-height:1.3}
+.om-it{padding:9px 0;border-bottom:1px dashed var(--line-2);font-size:14px;line-height:1.4}
+.om-it .t{font-weight:600}.om-it .m{font-family:var(--mono);font-size:11px;color:var(--ink-3);display:block;margin-top:2px}
+.om-it .m b{color:var(--ink);font-weight:600}.om-it .m .bad{color:var(--leg);font-weight:600}.om-it .m .ok{color:var(--ok)}
+.om-it .who{font-size:13px;color:var(--ink-2);margin-top:3px}.om-it .who a{color:var(--accent)}
+.arrec .n{font-family:var(--disp);font-size:clamp(22px,3.2vw,30px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1;word-break:break-all}
+.arrec .cap{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:4px}
+.arrec .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-top:12px}
+.arrec .grid div{background:var(--panel);border:1px solid var(--line-2);border-radius:8px;padding:8px 10px;font-size:13px;color:var(--ink-3)}
+.arrec .grid b{display:block;font-family:var(--disp);font-size:18px;color:var(--ink);font-variant-numeric:tabular-nums}
+.arrec .grid b.up{color:var(--ok)}.arrec .grid b.down{color:var(--leg)}
+.arrec details{margin-top:10px;font-size:13px;color:var(--ink-2)}.arrec summary{cursor:pointer;color:var(--accent)}
+.act{font-size:14px}.act .row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:5px 0;border-bottom:1px dashed var(--line-2)}
+.act .row .d{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap}.act .v{font-family:var(--mono);font-size:11px;padding:1px 6px;border-radius:3px;background:var(--panel);border:1px solid var(--line-2)}
 .sab{font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line-2);display:grid;grid-template-columns:1fr auto;gap:2px 10px}
 .sab:last-child{border-bottom:0}
 .sab .r{font-family:var(--mono);font-size:11px;color:var(--ink-3);text-align:right}
@@ -321,6 +336,7 @@ function renderPerson(p){
   const sab=[]; for (const pid of posIds) for (const sb of (N[pid]&&N[pid].sabatinas)||[]) if (sb.name && samePerson(sb.name,p.name)) sab.push(sb);
   content.innerHTML = `<div class="card"><div class="phead"><span class="big">${avatar(p)}</span><div><h1 style="margin:0">${esc(p.name)}</h1><p style="margin:4px 0 0;color:var(--ink-3)">${[p.party,p.uf].filter(Boolean).join(' · ')||'Pessoa'}${pm?` · na notícia ${pm.articles}× em 90 dias, última ${fmtDate(pm.last)}`:''}</p></div></div>
     <h3>Cargos</h3><div class="list">${pos||'<span class="seat">Sem cargo registrado.</span>'}</div>
+    ${activityHtml(p)}
     ${sab.length?`<h3>Sabatinas no Senado</h3>${sab.map(sb=>`<div class="sab"><span>${esc((sb.cargo||'').slice(0,90))}</span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:''}</span></div>`).join('')}`:''}
     ${na.length?`<h3>Na notícia</h3><div class="news">${na.map(a=>`<div class="it"><a class="t" href="#news:${a.id}">${esc(a.title)}</a><a class="ext" href="${a.url}" target="_blank" rel="noopener" title="Ler na fonte">fonte ↗</a>${(()=>{ const ps=(a.people||[]).filter(q=>q.id!==p.id).slice(0,4).map(q=>`<a href="#${P[q.id]?q.id:q.position}"><span class="av">${avatar(P[q.id]||{id:q.id,name:q.name})}</span>${esc(q.name)}</a>`); const es=(a.entities||[]).slice(0,3).map(id=>N[id]?`<a class="ent" href="#${id}">${esc(N[id].aliases&&N[id].aliases[0]&&N[id].aliases[0].length<=8?N[id].aliases[0]:N[id].name)}</a>`:'').filter(Boolean); return ps.length||es.length?`<span class="who">${ps.join('')}${es.join('')}</span>`:''; })()}<span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('')}</div>`:''}
   </div>`;
@@ -329,7 +345,7 @@ function renderPerson(p){
 function select(id){
   if (id && id.startsWith('news:')) { const a=(G.news||[]).find(x=>x.id===id.slice(5)); if (a) { current=null; renderNews(a); return; } }
   if (P[id]) { current = null;
-    if (G.people_base && !P[id]._full) { content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; fetch(G.people_base + id + '.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{ P[id]._full = d.positions || []; if (location.hash.slice(1)===id) select(id); }); return; }
+    if (G.people_base && !P[id]._full) { content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; fetch(G.people_base + id + '.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{ P[id]._full = d.positions || []; P[id]._activity = d.activity || null; if (location.hash.slice(1)===id) select(id); }); return; }
     const full = P[id]._full || (G.people&&G.people[id]&&G.people[id].positions) || [];
     const ids = full.length ? full.map(q=>q.id) : (P[id].positions||[]);
     const need = ids.filter(pid=>N[pid]&&N[pid].description===undefined&&G.detail_base); if (need.length) { Promise.all(need.map(loadDetail)).then(()=>renderPerson(P[id])); } else renderPerson(P[id]); return; }
@@ -379,6 +395,43 @@ const P = G.people || {}; for (const p of Object.values(P)) { p.positions = (p.p
 function avatar(p, size){ const id = p && (p.id||p); const rec = P[id] || p || {}; const name = rec.name || p.name || '?'; const ini = esc(name.split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('')); const url = rec.photo_data ? rec.photo_data : (G.img_base && rec.photo) ? G.img_base + id + '.jpg' : (p.image_url || p.image_commons ? (p.image_url||p.image_commons)+(p.image_commons?'?width=96':'') : null); return url ? `<img src="${esc(url)}" alt="" loading="lazy" onerror="this.remove()">${ini}` : ini; }
 function dayKey(d){ return (d||'').slice(0,10); }
 function inWin(d){ if(!d) return false; const t=new Date(d+'T00:00:00'); return (Date.now()-t)/(86400000) <= win; }
+const brl = v => v==null?'—':(Math.abs(v)>=1e9?`R$ ${(v/1e9).toLocaleString('pt-BR',{maximumFractionDigits:1})} bi`:Math.abs(v)>=1e6?`R$ ${(v/1e6).toLocaleString('pt-BR',{maximumFractionDigits:0})} mi`:`R$ ${Math.round(v).toLocaleString('pt-BR')}`);
+const who = x => x.responsible_position&&N[x.responsible_position]?`<div class="who">Próximo passo cabe a <a href="#${x.responsible_position}">${esc(x.responsible_name||N[x.responsible_position].name)}</a>${x.responsible_person?` · <a href="#${x.responsible_person_id||''}">${esc(x.responsible_person)}</a>`:''}</div>`:'';
+function omissaoHtml(){
+  const o=G.omissao; if(!o) return '<p class="seat">Sem dados do placar ainda.</p>'; const s=o.summary||{};
+  const stat=(n,l)=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`;
+  let out=`<p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">Decisões que têm prazo ou rito definido e ainda não aconteceram. Fato, prazo, data e quem decide o próximo passo. Fontes: Senado e Câmara, dados abertos, ${fmtDate(o.generated_at)}.</p>
+  <div class="om">${stat(s.vetos_pendentes,'vetos sem votação')}${stat(s.vetos_vencidos,'vetos além dos 30 dias')}${stat(s.mpvs_ate_30_dias,'MPs a até 30 dias de caducar')}${stat(brl(s.mpvs_valor_em_risco),'em créditos que caducam junto')}${stat(s.rcps_com_assinaturas_aguardando,'pedidos de CPI com assinaturas suficientes sem despacho')}</div>`;
+  const mp=(o.mpvs||[]).filter(x=>x.days_left!=null).slice(0,8);
+  if(mp.length) out+=`<h3>Medidas provisórias perto do prazo</h3><p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">Uma MP vale 60 dias, prorrogáveis por mais 60, contados fora do recesso. Sem votação nas duas Casas, perde a validade (CF art. 62 §§3º e 7º).</p>`+mp.map(x=>`<div class="om-it"><span class="t"><a href="${x.url}" target="_blank" rel="noopener">${esc(x.title)}</a></span> ${esc(x.summary||'')}<span class="m">${x.days_left<=7?`<span class="bad">faltam ${x.days_left} dias</span>`:`faltam <b>${x.days_left}</b> dias`} · caduca em ${fmtLong(x.deadline)}${x.value?` · <b>${brl(x.value)}</b>`:''}${x.prorogued?' · prorrogada':''}${x.suspended?' · prazo suspenso no recesso':''} · ${esc((x.status||'').toLowerCase())}</span>${who(x)}</div>`).join('');
+  const rc=(o.rcps||[]).filter(x=>x.status==='aguardando'&&x.enough);
+  if(rc.length) out+=`<h3>Pedidos de CPI com assinaturas suficientes, sem despacho</h3><p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">Com um terço das assinaturas (171 deputados) a CPI deve ser criada; o presidente da Câmara decide quando a lê e a instala (CF art. 58 §3º; RICD art. 35).</p>`+rc.map(x=>`<div class="om-it"><span class="t"><a href="${x.url}" target="_blank" rel="noopener">${esc(x.title)}</a></span> ${esc((x.summary||'').replace(/^Requer(,| a Vossa Excelência,)?( nos termos d[^,]+,)?\s*/i,''))}<span class="m"><b>${x.signatures}</b> assinaturas · protocolado em ${fmtLong(x.date)} · <span class="bad">há ${x.days} dias</span> · ${esc(x.situation||'')}</span>${who(x)}</div>`).join('');
+  const cu=o.curated||[];
+  if(cu.length) out+=`<h3>Casos acompanhados</h3>`+cu.map(x=>`<div class="om-it"><span class="t">${esc(x.title)}</span> ${esc(x.summary||'')}<span class="m">${x.signatures?`<b>${x.signatures.camara}</b> deputados e <b>${x.signatures.senado}</b> senadores (mínimo ${x.signatures.min_camara} e ${x.signatures.min_senado}) · `:''}protocolado em ${fmtLong(x.date)} · <span class="bad">há ${x.days} dias</span> · ${esc(x.legal_deadline||'')}</span>${who(x)}<span class="m">Fontes: ${(x.sources||[]).map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${esc(s.title)}</a> (${fmtDate(String(s.date))})`).join(' · ')}</span></div>`).join('');
+  const vt=(o.vetos||[]).slice(0,6);
+  if(vt.length) out+=`<h3>Vetos mais antigos sem votação</h3><p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">O Congresso tem 30 dias para votar um veto; vencido o prazo, ele passa a trancar a pauta das sessões conjuntas (CF art. 66 §§4º e 6º). Por ano: ${Object.entries(o.vetos_by_year||{}).sort().map(([y,n])=>`${y}: ${n}`).join(' · ')}.</p>`+vt.map(x=>`<div class="om-it"><span class="t"><a href="${x.url}" target="_blank" rel="noopener">${esc(x.title)}</a></span> ${esc((x.summary||'').slice(0,160))}<span class="m">${x.norma?esc(x.norma)+' · ':''}<span class="bad">há ${x.days} dias</span>, prazo de 30</span>${who(x)}</div>`).join('');
+  return out;
+}
+let arrecTimer=null;
+function startArrec(){ if(arrecTimer) clearInterval(arrecTimer); const a=G.arrecadacao; const el=document.getElementById('arrec-n'); if(!a||!el) return; const base=a.anchor.value; const t0=new Date(a.anchor.date+'T23:59:59'); const rate=a.rate_per_second;
+  const tick=()=>{ const el=document.getElementById('arrec-n'); if(!el){ clearInterval(arrecTimer); return; } const dt=Math.max(0,(Date.now()-t0)/1000); el.textContent='R$ '+Math.round(base+rate*dt).toLocaleString('pt-BR'); }; tick(); arrecTimer=setInterval(tick,120); }
+function arrecCard(){
+  const a=G.arrecadacao; if(!a) return ''; const y=a.ytd||{}; const g=y.growth_real_pct; const j=a.juros||{}; const c=a.compare||{};
+  setTimeout(startArrec,0);
+  return `<div class="card arrec"><h2>Arrecadação da União em ${a.year}</h2><div class="n" id="arrec-n">R$ ${Math.round(a.anchor.value).toLocaleString('pt-BR')}</div><div class="cap">impostos, taxas e contribuições · dado oficial até ${fmtDate(a.source_date)}; depois, projeção pelo ritmo dos últimos 3 meses (${brl(a.rate_per_second)} por segundo)</div>
+  <div class="grid"><div><b class="${g>=0?'up':'down'}">${g==null?'—':(g>=0?'+':'')+g.toLocaleString('pt-BR',{maximumFractionDigits:1})}%</b>em valor real sobre o mesmo período de ${a.year-1} (IPCA)</div><div><b>${brl(y.prev_nominal)}</b>arrecadado até a mesma data em ${a.year-1}, sem correção</div><div><b>R$ ${Math.round(y.per_capita).toLocaleString('pt-BR')}</b>por habitante no ano (${(a.population/1e6).toFixed(0)} milhões)</div><div><b>${brl(j.ytd)}</b>de juros da dívida do governo federal em ${a.year}, até ${(j.last_month||'').slice(5,7)}/${(j.last_month||'').slice(2,4)}</div>${c.saude?`<div><b>${brl(c.saude.empenhado)}</b>empenhado pela Saúde no ano</div>`:''}${c.educacao?`<div><b>${brl(c.educacao.empenhado)}</b>empenhado pela Educação no ano</div>`:''}</div>
+  <details><summary>Como este número é calculado</summary><p style="margin:6px 0 0">Soma das receitas realizadas da União nas origens "Impostos, taxas e contribuições de melhoria" e "Contribuições", por data de lançamento, conforme o Portal da Transparência (CSV anual, atualizado diariamente). A comparação com ${a.year-1} usa os mesmos meses e, no mês corrente, só até o mesmo dia; o valor real corrige pelo IPCA (IBGE, número-índice de ${a.ipca_ref_month}). O contador que corre é uma projeção: ao valor oficial até ${fmtDate(a.source_date)} soma-se o ritmo médio por segundo dos meses ${(a.rate_months||[]).join(', ')}; quando o dado oficial chega, o número se corrige. Juros: Banco Central, série 4607 (juros nominais do governo federal, fluxo mensal). Saúde e Educação: despesa empenhada do órgão superior no ano, Portal da Transparência. Não inclui estados e municípios.</p></details></div>`;
+}
+function activityHtml(p){
+  const a=p._activity; if(!a) return ''; const pres=(p.positions||[]).some(q=>/presidente-d[ao]-(camara|senado)/.test(q));
+  const vlabel=v=>v==='Artigo 17'?'não vota (art. 17)':v;
+  let out=`<h3>Atividade em ${new Date().getFullYear()}</h3><div class="act">`;
+  if(a.pct!=null) out+=`<p style="margin:4px 0 6px">Votou em <b>${a.votou_em}</b> das <b>${a.votacoes_nominais}</b> votações nominais do plenário ${a.house==='camara'?'da Câmara':'do Senado'} desde 2 de fevereiro (<b>${a.pct.toLocaleString('pt-BR')}%</b>).${pres?' Quem preside a Casa, em regra, não vota.':''}</p>`;
+  if(a.ultimos&&a.ultimos.length) out+=a.ultimos.map(u=>`<div class="row"><span>${esc(u.desc||u.id)}<span class="d" style="display:block">${fmtDate(u.date)} · ${esc(u.id||'')}</span></span><span class="v">${esc(vlabel(u.voto))}</span></div>`).join('');
+  if(a.cota) out+=`<p style="margin:10px 0 4px">Cota parlamentar: <b>${brl(a.cota.total)}</b> em ${a.cota.meses} meses (média de ${brl(a.cota.media_mes)} por mês). Maiores gastos: ${a.cota.top.map(t=>`${esc(t.k.replace(/\.$/,''))} (${brl(t.v)})`).join(', ')}.</p>`;
+  out+=`<p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Fonte: ${a.house==='camara'?'Câmara dos Deputados, dados abertos (votações nominais e cota parlamentar)':'Senado Federal, dados abertos (votações nominais)'}.</p></div>`;
+  return out;
+}
 function renderHome(){
   const st = G.stats; const bt = st.by_type, bs = st.by_sector, bsub = st.by_subtype;
   const subRows = [['ministerio','Ministérios'],['orgao_presidencia','Órgãos da Presidência'],['agencia_reguladora','Agências reguladoras'],['autarquia','Autarquias'],['fundacao','Fundações'],['empresa_publica','Empresas públicas'],['sociedade_economia_mista','Sociedades de economia mista'],['tribunal','Tribunais'],['ministerio_publico','Ministério Público'],['forca_armada','Forças Armadas'],['instituicao_de_ensino','Universidades e institutos federais']];
@@ -410,14 +463,15 @@ function renderHome(){
   const trans = `<div class="stats" style="margin-bottom:12px"><div class="stat"><div class="n">${apt.length}</div><div class="l">cargos nomeados pelo PR</div></div><div class="stat"><div class="n">${tot}</div><div class="l">cadeiras</div></div><div class="stat"><div class="n">${sab}</div><div class="l">passam pelo Senado</div></div></div>
     <p style="font-size:14px">A posse de 1º de janeiro de 2027 troca a cúpula do Executivo. Estes são os cargos de nomeação do Presidente da República mapeados no grafo, com quem os ocupa hoje. ${known} de ${tot} cadeiras têm ocupante conhecido.</p>
     ${Object.keys(ARC).filter(k=>bySec[k]).map(k=>`<h3 style="color:${COL[k]}">${SEC[k].name} · ${bySec[k].length}</h3><div class="list">${bySec[k].sort((a,b)=>a.name.localeCompare(b.name,'pt')).map(n=>{ const p=(n.people||[])[0]; const extra = n.seats>1?`${Math.min((n.people||[]).length,n.seats)}/${n.seats}`:(p?esc(p.name.split(' ').slice(0,2).join(' ')):'<span style="color:var(--jud)">sem dado</span>'); return `<a href="#${n.id}"><span class="dot" style="background:${COL[n.sector]}"></span><span>${esc(n.name)}</span><span class="sm">${n.sabatina?'senado · ':''}${extra}</span>`; }).join('')}</div>`).join('')}`;
-  const body = homeTab==='transicao' ? trans : homeTab==='noticias' ? (news?`<div class="news">${news}</div><p style="font-size:13px;color:var(--ink-3)">${st.news_sources||0} fontes · ${st.articles_90d||0} artigos em 90 dias · entidades e pessoas reconhecidas por sigla e nome.</p>`:'<p>Sem notícias coletadas ainda.</p>')
+  const body = homeTab==='omissao' ? omissaoHtml() : homeTab==='transicao' ? trans : homeTab==='noticias' ? (news?`<div class="news">${news}</div><p style="font-size:13px;color:var(--ink-3)">${st.news_sources||0} fontes · ${st.articles_90d||0} artigos em 90 dias · entidades e pessoas reconhecidas por sigla e nome.</p>`:'<p>Sem notícias coletadas ainda.</p>')
     : homeTab==='poder' ? (power?`<div class="pm">${power}</div><p style="font-size:13px;color:var(--ink-3)">Pessoas do grafo mais citadas nos últimos 90 dias. Cresce a cada coleta diária.</p>`:'<p>Sem menções ainda.</p>')
     : `${counters}${bars}${chg||'<p>Sem mudanças nesta janela.</p>'}<p style="font-size:13px;color:var(--ink-3)">Sabatinas do Senado, posses, atos do Diário Oficial e entradas e saídas detectadas na comparação diária dos ocupantes.</p>`;
   content.innerHTML = `<a class="card start" href="/como-funciona/"><span class="eyebrow">Comece por aqui</span><b>Como funciona a República</b><span>Uma visita guiada de 9 minutos pela roda: quem você elege, quem nomeia quem, quem vigia quem. Para quem nunca precisou entender isso e agora quer.</span><span class="go">Começar →</span></a>`+`
   <div class="card"><h1>Quem manda em quê no governo federal</h1>
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
     <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div></div>
-  <div class="card"><div class="tabs" role="tablist">${tab('mudancas','Mudanças')}${tab('noticias','Notícias')}${tab('poder','Na notícia')}${tab('transicao','Transição 2027')}${homeTab!=='transicao'?winSel:''}</div>${body}</div>
+  ${arrecCard()}
+  <div class="card"><div class="tabs" role="tablist">${tab('mudancas','Mudanças')}${tab('noticias','Notícias')}${tab('poder','Na notícia')}${tab('omissao','Sem decisão')}${tab('transicao','Transição 2027')}${homeTab!=='transicao'&&homeTab!=='omissao'?winSel:''}</div>${body}</div>
   <div class="card"><h2>Por poder</h2><div class="counts">${Object.keys(ARC).map(s=>`<span class="k"><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</span><span>${bs[s]||0}</span>`).join('')}</div>
     <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
     <h3>Cargos e colegiados</h3><div class="counts"><span>Cargos de chefia mapeados</span><span>${bt.dept_head||0}</span><span>Cadeiras (inclui 513 deputados e 81 senadores)</span><span>${st.seats_total}</span><span>Sabatinas do Senado desde 2023</span><span>${st.sabatinas||0}</span><span>Colegiados deliberativos</span><span>${bt.commission||0}</span></div></div>

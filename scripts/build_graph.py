@@ -481,8 +481,41 @@ for rec in people_index.values():
     # protótipo publicado não carrega imagens externas: embute as fotos de quem não é parlamentar (poucas e pequenas)
     if f.exists() and rec.get("source") != "api":
         rec["photo_data"] = "data:image/jpeg;base64," + base64.b64encode(f.read_bytes()).decode()
+# ---- placar da omissão, arrecadômetro e atividade parlamentar (camadas geradas, compactas para o núcleo)
+def _plain(o):
+    if isinstance(o, dict): return {k: _plain(v) for k, v in o.items()}
+    if isinstance(o, list): return [_plain(v) for v in o]
+    if isinstance(o, (datetime.date, datetime.datetime)): return o.isoformat()
+    return o
+def _load_yaml(name):
+    p = DATA / "generated" / name
+    return _plain(yaml.safe_load(open(p, encoding="utf-8")) or {}) if p.exists() else {}
+_om = _load_yaml("omissao.yaml")
+omissao = None
+if _om:
+    _v = [x for x in _om.get("vetos") or []]; _m = [x for x in _om.get("mpvs") or [] if (x.get("days_left") is None or x["days_left"] >= -3) and "ANTES DA EC" not in (x.get("status") or "")]; _r = _om.get("rcps") or []
+    for x in _v + _m + _r + list(_om.get("curated") or []):
+        rp = x.get("responsible_position")
+        if rp and rp in nodes: x["responsible_name"] = nodes[rp]["name"]; x["responsible_person"] = ((nodes[rp].get("people") or [{}])[0]).get("name"); x["responsible_person_id"] = ((nodes[rp].get("people") or [{}])[0]).get("id")
+    omissao = {"generated_at": str(_om.get("generated_at")), "summary": _om.get("summary"), "vetos": _v[:12], "vetos_by_year": {}, "mpvs": sorted(_m, key=lambda x: (x.get("days_left") if x.get("days_left") is not None else 9999))[:15],
+               "rcps": [x for x in _r if x.get("status") in ("aguardando", "indeferido", "outro")][:15], "curated": _om.get("curated") or []}
+    for x in _v: omissao["vetos_by_year"][str(x.get("date") or "")[:4] or "?"] = omissao["vetos_by_year"].get(str(x.get("date") or "")[:4] or "?", 0) + 1
+_ar = _load_yaml("arrecadacao.yaml")
+arrecadacao = None
+if _ar:
+    y = str(_ar.get("year")); py = str(int(_ar["year"]) - 1)
+    arrecadacao = {k: _ar.get(k) for k in ("generated_at", "source_date", "year", "population", "population_year", "ipca_ref_month", "ytd", "rate_per_second", "rate_months", "anchor", "full_years", "prev_partial_month")}
+    arrecadacao["months"] = {y: _ar.get("months", {}).get(y, {}), py: _ar.get("months", {}).get(py, {})}
+    arrecadacao["kinds"] = _ar.get("kinds"); arrecadacao["juros"] = {k: v for k, v in (_ar.get("juros") or {}).items() if k != "months"}; arrecadacao["juros"]["months"] = {k: v for k, v in ((_ar.get("juros") or {}).get("months") or {}).items() if k >= f"{int(y)-1}-01"}
+    _saude = next((n for n in nodes.values() if n["id"] == "br-ministerio-da-saude"), None); _edu = next((n for n in nodes.values() if n["id"] == "br-ministerio-da-educacao"), None)
+    arrecadacao["compare"] = {"saude": ((_saude or {}).get("budget") or {}).get(y) or ((_saude or {}).get("budget") or {}).get(py), "educacao": ((_edu or {}).get("budget") or {}).get(y) or ((_edu or {}).get("budget") or {}).get(py)}
+_at = _load_yaml("atividade.yaml")
+atividade = (_at.get("people") or {}) if _at else {}
+for pid, rec in people_index.items():
+    if pid in atividade: rec["activity"] = atividade[pid]
+stats["omissao"] = (omissao or {}).get("summary"); stats["atividade_pessoas"] = len(atividade)
 stats["people"] = len(people_index)
-graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index}
+graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
 HEAVY = ("description", "siorg_description", "people", "sabatinas", "budget", "dou", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
@@ -501,8 +534,8 @@ core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), 
 # detalhe por pessoa (comissões, papéis, datas) carregado sob demanda
 _pp = OUT / "people"; _pp.mkdir(exist_ok=True)
 for pid, r in people_index.items():
-    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
-core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
+    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
 cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")
 print(f"   build/graph.core.js = {len(cjs)//1024} KB + {len(core_nodes)} arquivos de detalhe")
