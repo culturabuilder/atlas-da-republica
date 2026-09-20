@@ -177,10 +177,10 @@ p{margin:8px 0;color:var(--ink-2)}
 .tema .q{font-size:13.5px;color:var(--ink-3);margin:2px 0 6px}
 .tema .st{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap;background:var(--panel);border:1px solid var(--line-2);color:var(--ink-3)}
 .tema .st.mov{color:var(--ok);border-color:var(--ok)}.tema .st.par{color:var(--warn);border-color:var(--warn)}.tema .st.ven{color:var(--leg);border-color:var(--leg)}.tema .st.enc{color:var(--ink-3)}
-.tema .spark{display:grid;grid-template-columns:120px minmax(0,1fr);gap:4px 10px;align-items:center;margin:6px 0;font-family:var(--mono);font-size:11px;color:var(--ink-3);line-height:1.4}
-.tema .spark.nosvg{grid-template-columns:minmax(0,1fr)}
-.tema .spark svg{width:120px;height:26px;display:block;flex:none}
-.tema .spark span{min-width:0;overflow-wrap:anywhere}
+.tema .att{display:grid;grid-template-columns:120px minmax(0,1fr);gap:4px 10px;align-items:center;margin:6px 0;font-family:var(--mono);font-size:11px;color:var(--ink-3);line-height:1.4}
+.tema .att.nosvg{grid-template-columns:minmax(0,1fr)}
+.tema .att svg{width:120px;height:26px;display:block;flex:none}
+.tema .att span{min-width:0;overflow-wrap:anywhere}
 .tema .pr{font-size:13.5px;padding:4px 0;border-top:1px dashed var(--line-2)}.tema .pr .m{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
 .tema .flag{font-size:13px;background:var(--warn-soft);color:var(--warn);border-radius:6px;padding:6px 9px;margin:6px 0}
 .din h3{margin-top:14px}
@@ -441,8 +441,8 @@ function temasHtml(){
   out+=T.temas.map(t=>{ const [cls,lab]=ST[t.state]||['enc',t.state]; const wk=t.wikipedia; const c=t.curated_item;
     return `<div class="tema"><div class="hd"><div><div class="nm">${esc(t.name)}</div><div class="q">${esc(t.question||'')}</div></div><span class="st ${cls}">${lab}${t.stalled_days!=null&&t.state!=='encerrado'?` · ${t.stalled_days} d`:''}</span></div>
     ${t.silent_and_stalled?`<div class="flag">Silêncio com prazo vencido: a atenção caiu mais de 80% do pico há mais de 60 dias, e o processo segue sem decisão.</div>`:''}
-    ${wk?`<div class="spark">${spark(wk.weekly)}<span>${wk.total_90d.toLocaleString('pt-BR')} visitas em 90 dias · ${wk.last7.toLocaleString('pt-BR')} na última semana · <a href="${wk.url}" target="_blank" rel="noopener">verbete ↗</a></span></div>`:''}
-    ${t.news_hits?`<div class="spark nosvg"><span>${t.news_hits} ${t.news_hits===1?'notícia':'notícias'} no Atlas${t.news_recent&&t.news_recent.length?': '+t.news_recent.slice(0,2).map(a=>`<a href="#news:${a.id}">${esc(a.title.slice(0,70))}${a.title.length>70?'…':''}</a>`).join(' · '):''}</span></div>`:''}
+    ${wk?`<div class="att">${spark(wk.weekly)}<span>${wk.total_90d.toLocaleString('pt-BR')} visitas em 90 dias · ${wk.last7.toLocaleString('pt-BR')} na última semana · <a href="${wk.url}" target="_blank" rel="noopener">verbete ↗</a></span></div>`:''}
+    ${t.news_hits?`<div class="att nosvg"><span>${t.news_hits} ${t.news_hits===1?'notícia':'notícias'} no Atlas${t.news_recent&&t.news_recent.length?': '+t.news_recent.slice(0,2).map(a=>`<a href="#news:${a.id}">${esc(a.title.slice(0,70))}${a.title.length>70?'…':''}</a>`).join(' · '):''}</span></div>`:''}
     ${(t.processes||[]).map(p=>`<div class="pr"><a href="${p.url}" target="_blank" rel="noopener"><b>${esc(p.id)}</b></a> ${esc((p.ementa||'').slice(0,110))}${(p.ementa||'').length>110?'…':''}<div class="m">${p.casa==='camara'?'Câmara':p.casa==='senado'?'Senado':'Congresso'} · ${esc(p.situation||'')}${p.last_move?` · último andamento ${fmtDate(p.last_move)}`:''}${p.deadline?` · prazo ${fmtDate(p.deadline)}`:''}${p.overdue?' · <span style="color:var(--leg)">prazo de 30 dias vencido</span>':''}</div></div>`).join('')}
     ${c?`<div class="pr"><b>${esc(c.title)}</b> ${esc(c.summary||'')}<div class="m">${c.signatures?`${c.signatures.camara} deputados e ${c.signatures.senado} senadores · `:''}protocolado em ${fmtLong(c.date)} · há ${c.days} dias${c.responsible_position&&N[c.responsible_position]?` · próximo passo cabe a <a href="#${c.responsible_position}">${esc(c.responsible_name||'')}</a>${c.responsible_person?` (<a href="#${c.responsible_person_id||''}">${esc(c.responsible_person)}</a>)`:''}`:''}</div></div>`:''}
   </div>`; }).join('');
