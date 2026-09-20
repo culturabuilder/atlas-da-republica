@@ -518,13 +518,27 @@ if _tm:
         if t.get("curated") and omissao:
             c = next((x for x in omissao.get("curated") or [] if x.get("id") == t["curated"]), None)
             if c: t["curated_item"] = {k: c.get(k) for k in ("title", "summary", "signatures", "date", "days", "legal_deadline", "responsible_position", "responsible_name", "responsible_person", "responsible_person_id", "sources")}
+_em = _load_yaml("emendas.yaml")
+emendas = None
+if _em:
+    emendas = {k: _em.get(k) for k in ("generated_at", "year", "por_ano", "por_tipo_ano", "ano_eleitoral", "autores_top", "coletivos_top", "municipios_por_habitante_top", "autores_sem_pessoa")}
+    emendas["por_ano"] = {y: v for y, v in (emendas.get("por_ano") or {}).items() if int(y) >= 2014}
+_rn = _load_yaml("renuncias.yaml")
+renuncias = {k: _rn.get(k) for k in ("generated_at", "ano", "fonte", "fonte_url", "total", "por_funcao", "gastos_top", "compare", "nota")} if _rn else None
+_tt = _load_yaml("teto.yaml")
+teto = None
+if _tt:
+    teto = {k: _tt.get(k) for k in ("generated_at", "mes", "teto", "teto_fonte", "servidores", "com_abate_teto", "valor_abatido_mes", "indenizatorias_mes", "acima_do_teto_com_indenizatorias", "nota")}
+    teto["orgaos"] = (_tt.get("orgaos") or [])[:20]
 _at = _load_yaml("atividade.yaml")
 atividade = (_at.get("people") or {}) if _at else {}
+_em_people = (_em.get("people") or {}) if _em else {}
 for pid, rec in people_index.items():
     if pid in atividade: rec["activity"] = atividade[pid]
+    if pid in _em_people: rec["emendas"] = _em_people[pid]
 stats["omissao"] = (omissao or {}).get("summary"); stats["atividade_pessoas"] = len(atividade)
 stats["people"] = len(people_index)
-graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas}
+graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
 HEAVY = ("description", "siorg_description", "people", "sabatinas", "budget", "dou", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
@@ -543,8 +557,8 @@ core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), 
 # detalhe por pessoa (comissões, papéis, datas) carregado sob demanda
 _pp = OUT / "people"; _pp.mkdir(exist_ok=True)
 for pid, r in people_index.items():
-    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
-core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
+    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity"), "emendas": r.get("emendas")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
 cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")
 print(f"   build/graph.core.js = {len(cjs)//1024} KB + {len(core_nodes)} arquivos de detalhe")
