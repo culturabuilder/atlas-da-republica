@@ -31,6 +31,8 @@ echo "== Gabinetes SF";    $PY etl/gabinetes_senado.py || echo "gabinetes do Sen
 echo "== Emendas";         $PY etl/emendas.py || echo "emendas falhou (segue)"
 echo "== Renúncias";       $PY etl/renuncias.py || echo "renúncias falhou (segue)"
 echo "== Teto";            $PY etl/teto.py || echo "teto falhou (segue)"
+echo "== Viagens";         $PY etl/viagens.py || echo "viagens falhou (segue)"
+echo "== Cartão";          $PY etl/cartao.py || echo "cartão falhou (segue)"
 echo "== Remuneração";     $PY etl/remuneracao.py || echo "remuneração falhou (segue)"
 echo "== Orçamento";        $PY etl/orcamento.py || echo "Orçamento falhou (sem chave?)"
 echo "== Build (2/2)";     $PY scripts/build_graph.py

@@ -359,8 +359,10 @@ function renderPerson(p){
     ${gabHtml(p)}
     ${emendasHtml(p)}
     ${remHtml(p)}
+    ${viagensHtml(p)}
     ${patHtml(p)}
     ${doaHtml(p)}
+    ${sinaisHtml(p)}
     ${candHtml(p)}
     ${sab.length?`<h3>Sabatinas no Senado</h3>${sab.map(sb=>`<div class="sab"><span>${esc((sb.cargo||'').slice(0,90))}</span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:''}</span></div>`).join('')}`:''}
     ${na.length?`<h3>Na notícia</h3><div class="news">${na.map(a=>`<div class="it"><a class="t" href="#news:${a.id}">${esc(a.title)}</a><a class="ext" href="${a.url}" target="_blank" rel="noopener" title="Ler na fonte">fonte ↗</a>${(()=>{ const ps=(a.people||[]).filter(q=>q.id!==p.id).slice(0,4).map(q=>`<a href="#${P[q.id]?q.id:q.position}"><span class="av">${avatar(P[q.id]||{id:q.id,name:q.name})}</span>${esc(q.name)}</a>`); const es=(a.entities||[]).slice(0,3).map(id=>N[id]?`<a class="ent" href="#${id}">${esc(N[id].aliases&&N[id].aliases[0]&&N[id].aliases[0].length<=8?N[id].aliases[0]:N[id].name)}</a>`:'').filter(Boolean); return ps.length||es.length?`<span class="who">${ps.join('')}${es.join('')}</span>`:''; })()}<span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('')}</div>`:''}
@@ -370,7 +372,7 @@ function renderPerson(p){
 function select(id){
   if (id && id.startsWith('news:')) { const a=(G.news||[]).find(x=>x.id===id.slice(5)); if (a) { current=null; renderNews(a); return; } }
   if (P[id]) { current = null;
-    if (G.people_base && !P[id]._full) { content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; fetch(G.people_base + id + '.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{ P[id]._full = d.positions || []; P[id]._activity = d.activity || null; P[id]._emendas = d.emendas || null; P[id]._cand = d.candidaturas || null; P[id]._gab = d.gabinete || null; P[id]._pat = d.patrimonio || null; P[id]._rem = d.remuneracao || null; P[id]._doa = d.doadores || null; if (location.hash.slice(1)===id) select(id); }); return; }
+    if (G.people_base && !P[id]._full) { content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; fetch(G.people_base + id + '.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{ P[id]._full = d.positions || []; P[id]._activity = d.activity || null; P[id]._emendas = d.emendas || null; P[id]._cand = d.candidaturas || null; P[id]._gab = d.gabinete || null; P[id]._pat = d.patrimonio || null; P[id]._rem = d.remuneracao || null; P[id]._doa = d.doadores || null; P[id]._sin = d.sinais || null; P[id]._vg = d.viagens || null; P[id]._ct = d.cartao || null; if (location.hash.slice(1)===id) select(id); }); return; }
     const full = P[id]._full || (G.people&&G.people[id]&&G.people[id].positions) || [];
     const ids = full.length ? full.map(q=>q.id) : (P[id].positions||[]);
     const need = ids.filter(pid=>N[pid]&&N[pid].description===undefined&&G.detail_base); if (need.length) { Promise.all(need.map(loadDetail)).then(()=>renderPerson(P[id])); } else renderPerson(P[id]); return; }
@@ -468,6 +470,9 @@ function dinheiroHtml(){
     out+=`<h3>Renúncias fiscais em ${R.ano}</h3><p class="note">${esc(R.nota||'')} Fonte: <a href="${R.fonte_url}" target="_blank" rel="noopener">${esc(R.fonte)}</a>.</p><div class="om">${stat(brl(R.total),'que a União deixa de arrecadar em '+R.ano)}</div>
     <h4 style="margin:10px 0 4px;font-size:14px">Maiores benefícios</h4>${bars((R.gastos_top||[]).slice(0,10), x=>x.gasto, x=>x.valor)}
     ${cmp.length?`<h4 style="margin:12px 0 4px;font-size:14px">Renúncia por área × orçamento do ministério da área</h4><div class="cmp"><span class="h">área</span><span class="h">renúncia</span><span class="h">empenhado pelo ministério</span>${cmp.slice(0,8).map(c=>`<span>${esc(c.funcao)} · <a href="#${c.ministerio}">${esc((c.ministerio_nome||'').replace('Ministério ',''))}</a></span><span class="n">${brl(c.renuncia)}</span><span class="n">${brl(c.empenhado)} (${c.empenhado_ano})</span>`).join('')}</div>`:''}`; }
+  const V=G.viagens, C=G.cartao;
+  if(V&&V.orgaos){ out+=`<h3>Viagens a serviço no Executivo em ${V.ano}</h3><p class="note">${esc(V.nota||'')} Fonte: ${esc(V.fonte||'')}, ${fmtDate(V.generated_at)}.</p><div class="om">${stat(V.viagens_total.toLocaleString('pt-BR'),'viagens realizadas')}${stat(brl(V.total),'em diárias e passagens')}</div><h4 style="margin:10px 0 4px;font-size:14px">Órgãos que mais gastaram</h4>${bars((V.orgaos||[]).slice(0,10), x=>x.orgao, x=>x.total, {fmt:(v,it)=>`${brl(v)} · ${it.viagens.toLocaleString('pt-BR')} viagens`})}`; }
+  if(C&&C.orgaos){ out+=`<h3>Cartão corporativo em ${C.ano}</h3><p class="note">${esc(C.nota||'')} Fonte: ${esc(C.fonte||'')}, ${(C.meses||[]).length} meses.</p><div class="om">${stat(brl(C.total),'gastos no ano')}</div>${bars((C.orgaos||[]).slice(0,10), x=>x.orgao, x=>x.total, {fmt:(v,it)=>`${brl(v)} · ${it.portadores} portadores${it.saques?` · saques ${brl(it.saques)}`:''}`})}`; }
   if(T){ out+=`<h3>Acima do teto no Executivo federal · ${(T.mes||'').slice(4,6)}/${(T.mes||'').slice(0,4)}</h3><p class="note">${esc(T.nota||'')} Teto: R$ ${T.teto.toLocaleString('pt-BR')} (${esc(T.teto_fonte)}). Fonte: Portal da Transparência, folha de ${(T.mes||'').slice(4,6)}/${(T.mes||'').slice(0,4)}.</p>
     <div class="om">${stat(T.servidores.toLocaleString('pt-BR'),'servidores civis na folha')}${stat(T.com_abate_teto.toLocaleString('pt-BR'),'com salário bruto acima do teto (cortado pelo abate-teto)')}${stat(brl(T.valor_abatido_mes),'cortados no mês')}${stat(brl(T.indenizatorias_mes),'pagos fora do teto como verbas indenizatórias')}${stat(T.acima_do_teto_com_indenizatorias.toLocaleString('pt-BR'),'acima do teto contando as indenizatórias')}</div>
     <h4 style="margin:10px 0 4px;font-size:14px">Órgãos com mais servidores acima do teto</h4>${bars((T.orgaos||[]).slice(0,10), x=>x.orgao, x=>x.com_abate_teto, {fmt:(v,it)=>`${v.toLocaleString('pt-BR')} (${it.pct_com_abate}%)`, link:x=>x.node?'#'+x.node:null})}`; }
@@ -497,6 +502,19 @@ function doaHtml(p){
   ${orig.length?bars(orig.map(([k,v])=>({k,v})), x=>x.k, x=>x.v, {fmt:(v,it)=>`${brl(v)} · ${Math.round(100*v/d.total)}%`}):''}
   ${d.maiores&&d.maiores.length?`<h4 style="margin:10px 0 4px;font-size:14px">Maiores fontes</h4><div class="act">${d.maiores.map(m=>`<div class="row"><span>${esc(m.doador)}<span class="d" style="display:block">${esc(m.origem)}</span></span><span class="v">${brl(m.valor)} · ${m.pct}%</span></div>`).join('')}</div>`:''}
   <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Pessoas físicas só são nomeadas a partir de ${brl(M.limiar_pf||50000)}; doações menores entram apenas nos totais. Fonte: ${esc(M.fonte||'TSE')}.</p></div>`;
+}
+function viagensHtml(p){
+  const v=p._vg; const c=p._ct; if(!v&&!c) return ''; const V=G.viagens||{}; const C=G.cartao||{}; let out='';
+  if(v){ out+=`<h3>Viagens a serviço em ${V.ano||new Date().getFullYear()}</h3><div class="din"><div class="om">${[[v.viagens,'viagens realizadas'+(v.exterior?` (${v.exterior} ao exterior)`:'')],[brl(v.diarias),'em diárias'],[brl(v.passagens),'em passagens']].map(([n,l])=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join('')}</div>
+    ${v.destinos&&v.destinos.length?`<p style="font-size:13px;color:var(--ink-2);margin:4px 0 6px">Destinos mais frequentes: ${v.destinos.map(d=>`${esc(d.destino)} (${d.n})`).join(' · ')}.</p>`:''}
+    ${v.ultimas&&v.ultimas.length?`<div class="act">${v.ultimas.map(u=>`<div class="row"><span>${esc(u.destino)}<span class="d" style="display:block">${esc(u.inicio)}${u.fim&&u.fim!==u.inicio?' a '+esc(u.fim):''} · ${esc(u.motivo)}</span></span><span class="v">${brl(u.diarias+u.passagens)}</span></div>`).join('')}</div>`:''}
+    <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">${esc(V.nota||'')} Fonte: ${esc(V.fonte||'')}.</p></div>`; }
+  if(c){ out+=`<h3>Cartão corporativo em ${C.ano||new Date().getFullYear()}</h3><div class="din"><div class="om">${[[brl(c.total),'gastos no cartão'],[c.transacoes,'transações'],[brl(c.saques),'em saques']].map(([n,l])=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join('')}</div>${c.favorecidos&&c.favorecidos.length?`<p style="font-size:13px;color:var(--ink-2)">Maiores favorecidos: ${c.favorecidos.map(f=>`${esc(f.nome)} ${brl(f.valor)}`).join(' · ')}.</p>`:''}<p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Fonte: ${esc(C.fonte||'')}.</p></div>`; }
+  return out;
+}
+function sinaisHtml(p){
+  const s=p._sin; if(!s||!s.length) return '';
+  return `<h3>Para verificar</h3><div class="din"><p class="note">Cruzamentos automáticos que merecem conferência humana. São fatos com a fonte ao lado, não conclusões.</p>${s.map(x=>`<div class="om-it"><span class="t">${esc(x.texto)}</span><span class="m">${esc(x.nota)}</span></div>`).join('')}</div>`;
 }
 function patHtml(p){
   const pt=p._pat; if(!pt) return ''; const M=G.stats.patrimonio||{}; const y18=pt['2018'], y22=pt['2022']; if(!y18&&!y22) return '';

@@ -53,7 +53,7 @@ def main():
                     by_mun_year[cod][ano] += emp
     # pagamentos por ano/mês (arquivo por favorecido): permite comparar o mesmo período de anos diferentes
     fav = [n for n in z.namelist() if n.endswith("PorFavorecido.csv")]
-    by_ym = collections.defaultdict(float); fav_mun = collections.defaultdict(lambda: collections.defaultdict(float)); fav_names = {}
+    by_ym = collections.defaultdict(float); fav_mun = collections.defaultdict(lambda: collections.defaultdict(float)); fav_names = {}; fav_pj = collections.defaultdict(lambda: collections.defaultdict(float))
     if fav:
         with z.open(fav[0]) as f:
             for r in csv.DictReader(io.TextIOWrapper(f, encoding="latin1"), delimiter=";"):
@@ -62,6 +62,8 @@ def main():
                 a = r.get("Nome do Autor da Emenda") or ""; mun = (r.get("Município Favorecido") or "").strip(); uf = (r.get("UF Favorecido") or "").strip()
                 if len(ym) == 6 and int(ym[:4]) >= Y - 3 and a and mun and uf and len(uf) == 2 and v > 0:
                     key = (norm(mun), uf); fav_mun[norm(a)][key] += v; fav_names[key] = f"{mun.title()} ({uf})"
+                if len(ym) == 6 and int(ym[:4]) >= Y - 3 and a and v > 0 and (r.get("Tipo Favorecido") or "") == "Pessoa Jurídica":
+                    fav_pj[norm(a)][(r.get("Favorecido") or "").title()] += v
     last_ym = max(by_ym) if by_ym else None; last_m = int(last_ym[4:6]) if last_ym else 12
     def ytd(y): return sum(v for k, v in by_ym.items() if k.startswith(str(y)) and int(k[4:6]) <= last_m)
     pagos_ytd = {str(y): round(ytd(y), 2) for y in range(2018, Y + 1)}
@@ -78,6 +80,8 @@ def main():
         people[pid] = {"autor": names[k], "anos": {str(y): {"empenhado": round(v[0], 2), "pago": round(v[1], 2)} for y, v in sorted(yrs.items()) if y >= 2019},
                        "top_municipios": [{"nome": fav_names.get(c, c[0]), "valor": round(v, 2), "pct": round(100 * v / tot, 1)} for c, v in top],
                        "concentracao_top5_pct": round(100 * sum(v for _, v in top) / tot, 1), "municipios": len(muns), "desde": Y - 3, "base": "pagamentos a favorecidos por município"}
+        pj = sorted(fav_pj.get(k, {}).items(), key=lambda kv: -kv[1])[:40]
+        people[pid]["favorecidos_pj"] = [{"nome": n_, "valor": round(v_, 2)} for n_, v_ in pj]
         vt = votos.get(pid)
         if vt and muns:
             vkeys = {(norm(m["nome"]), m["uf"]) for m in vt["top"]}

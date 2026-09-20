@@ -539,6 +539,10 @@ _gs = _load_yaml("gabinetes-senado.yaml"); _gs_people = (_gs.get("people") or {}
 _pt = _load_yaml("patrimonio.yaml"); _pt_people = (_pt.get("people") or {}) if _pt else {}
 _rm = _load_yaml("remuneracao.yaml"); _rm_people = (_rm.get("people") or {}) if _rm else {}
 _do = _load_yaml("doadores-2022.yaml"); _do_people = (_do.get("people") or {}) if _do else {}
+_vg = _load_yaml("viagens.yaml"); _vg_people = (_vg.get("people") or {}) if _vg else {}
+_ct = _load_yaml("cartao.yaml"); _ct_people = (_ct.get("people") or {}) if _ct else {}
+viagens = {k: _vg.get(k) for k in ("generated_at", "ano", "fonte", "orgaos", "total", "viagens_total", "nota")} if _vg else None
+cartao = {k: _ct.get(k) for k in ("generated_at", "ano", "meses", "fonte", "orgaos", "total", "nota")} if _ct else None
 if _do: stats["doadores"] = {"eleicao": _do.get("eleicao"), "fonte": _do.get("fonte"), "limiar_pf": _do.get("limiar_pf"), "generated_at": str(_do.get("generated_at"))}
 if _rm: stats["remuneracao"] = {"mes": _rm.get("mes"), "fonte": _rm.get("fonte"), "nota": _rm.get("nota"), "generated_at": str(_rm.get("generated_at"))}
 if _pt: stats["patrimonio"] = {"fonte": _pt.get("fonte"), "ipca_fator_2018_2022": _pt.get("ipca_fator_2018_2022"), "generated_at": str(_pt.get("generated_at"))}
@@ -552,6 +556,8 @@ for pid, rec in people_index.items():
     if pid in _pt_people: rec["patrimonio"] = _pt_people[pid]
     if pid in _rm_people: rec["remuneracao"] = _rm_people[pid]
     if pid in _do_people: rec["doadores"] = _do_people[pid]
+    if pid in _vg_people: rec["viagens"] = _vg_people[pid]
+    if pid in _ct_people: rec["cartao"] = _ct_people[pid]
     if pid in _gb_people: rec["gabinete"] = dict(_gb_people[pid], casa="camara")
     elif pid in _gs_people: rec["gabinete"] = _gs_people[pid]
 # por órgão: dirigentes/ministros que já foram candidatos, com o partido da candidatura mais recente (nunca "filiado")
@@ -565,9 +571,36 @@ for n in nodes.values():
             if c: parts[c[0]["partido"]] = parts.get(c[0]["partido"], 0) + 1
     if parts: n["candidaturas"] = {"ocupantes": total, "ex_candidatos": sum(parts.values()), "partidos": dict(sorted(parts.items(), key=lambda kv: -kv[1]))}
 if _em and _em.get("voto_emenda") and emendas: emendas["voto_emenda"] = _em["voto_emenda"]
+# ---- sinais "para verificar": fatos cruzados que merecem conferência humana; redação neutra, com o dado que os gerou
+def _sinais(rec):
+    out = []
+    gb = rec.get("gabinete") or {}
+    if gb.get("mesmo_sobrenome"):
+        out.append({"tipo": "sobrenome", "texto": f"{len(gb['mesmo_sobrenome'])} {'pessoa da equipe tem' if len(gb['mesmo_sobrenome']) == 1 else 'pessoas da equipe têm'} sobrenome em comum com o parlamentar: {', '.join(gb['mesmo_sobrenome'][:4])}{'…' if len(gb['mesmo_sobrenome']) > 4 else ''}.",
+                    "nota": "Sobrenome igual não prova parentesco. A Súmula Vinculante 13 do STF veda nomear cônjuge, companheiro ou parente até o 3º grau para cargo em comissão."})
+    if gb.get("casa") == "camara" and gb.get("assessores") and gb.get("nomeados_no_ano") and gb["nomeados_no_ano"] >= max(6, 0.5 * gb["assessores"]):
+        out.append({"tipo": "equipe", "texto": f"{gb['nomeados_no_ano']} das {gb['assessores']} pessoas do gabinete começaram neste ano.", "nota": "Troca grande de equipe num ano eleitoral pode ter explicações comuns; vale olhar as datas."})
+    em = rec.get("emendas") or {}; vt = em.get("votos_2022") or {}
+    if vt.get("emendas_nos_top15_pct") is not None and vt["emendas_nos_top15_pct"] >= 80 and (vt.get("emendas_com_municipio") or 0) >= 1e6:
+        out.append({"tipo": "emendas_voto", "texto": f"{vt['emendas_nos_top15_pct']}% das emendas com município definido foram para os 15 municípios onde teve mais votos em 2022.", "nota": "Emenda é instrumento legítimo de representação local; a concentração só indica onde a base eleitoral está."})
+    do = rec.get("doadores") or {}
+    if do.get("maiores") and em.get("favorecidos_pj"):
+        dn = {norm(d["doador"]): d for d in do["maiores"] if "física" not in (d.get("origem") or "").lower()}
+        hits = [(f, dn[norm(f["nome"])]) for f in em["favorecidos_pj"] if norm(f["nome"]) in dn]
+        for f, d in hits[:3]:
+            out.append({"tipo": "doador_favorecido", "texto": f"{f['nome']} doou {d['valor']:,.0f} reais à campanha de 2022 e recebeu {f['valor']:,.0f} reais em pagamentos de emendas do mesmo parlamentar desde {em.get('desde')}.".replace(",", "."),
+                        "nota": "Coincidência entre doador e favorecido não indica irregularidade por si; pagamentos de emendas passam por convênio ou contrato público."})
+    pt = rec.get("patrimonio") or {}
+    if pt.get("variacao_real_pct") is not None and pt["variacao_real_pct"] >= 100 and (pt.get("2022") or {}).get("total", 0) >= 500000:
+        out.append({"tipo": "patrimonio", "texto": f"O patrimônio declarado ao TSE mais que dobrou em valor real entre 2018 e 2022 (+{pt['variacao_real_pct']}%).", "nota": "Declarações são do próprio candidato, a valor de aquisição; herança, venda de bens ou mudança de critério explicam muitas variações."})
+    return out
+for pid, rec in people_index.items():
+    s = _sinais(rec)
+    if s: rec["sinais"] = s
+stats["sinais"] = {"pessoas": sum(1 for r in people_index.values() if r.get("sinais")), "por_tipo": dict(__import__("collections").Counter(x["tipo"] for r in people_index.values() for x in r.get("sinais") or []))}
 stats["omissao"] = (omissao or {}).get("summary"); stats["atividade_pessoas"] = len(atividade)
 stats["people"] = len(people_index)
-graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias}
+graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
 HEAVY = ("description", "siorg_description", "people", "sabatinas", "budget", "dou", "candidaturas", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
@@ -586,8 +619,8 @@ core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), 
 # detalhe por pessoa (comissões, papéis, datas) carregado sob demanda
 _pp = OUT / "people"; _pp.mkdir(exist_ok=True)
 for pid, r in people_index.items():
-    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity"), "emendas": r.get("emendas"), "candidaturas": r.get("candidaturas"), "gabinete": r.get("gabinete"), "patrimonio": r.get("patrimonio"), "remuneracao": r.get("remuneracao"), "doadores": r.get("doadores")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
-core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
+    json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity"), "emendas": r.get("emendas"), "candidaturas": r.get("candidaturas"), "gabinete": r.get("gabinete"), "patrimonio": r.get("patrimonio"), "remuneracao": r.get("remuneracao"), "doadores": r.get("doadores"), "sinais": r.get("sinais"), "viagens": r.get("viagens"), "cartao": r.get("cartao")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
 cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")
 print(f"   build/graph.core.js = {len(cjs)//1024} KB + {len(core_nodes)} arquivos de detalhe")
