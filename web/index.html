@@ -417,7 +417,7 @@ const P = G.people || {}; for (const p of Object.values(P)) { p.positions = (p.p
 function avatar(p, size){ const id = p && (p.id||p); const rec = P[id] || p || {}; const name = rec.name || p.name || '?'; const ini = esc(name.split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('')); const url = rec.photo_data ? rec.photo_data : (G.img_base && rec.photo) ? G.img_base + id + '.jpg' : (p.image_url || p.image_commons ? (p.image_url||p.image_commons)+(p.image_commons?'?width=96':'') : null); return url ? `<img src="${esc(url)}" alt="" loading="lazy" onerror="this.remove()">${ini}` : ini; }
 function dayKey(d){ return (d||'').slice(0,10); }
 function inWin(d){ if(!d) return false; const t=new Date(d+'T00:00:00'); return (Date.now()-t)/(86400000) <= win; }
-const brl = v => v==null?'—':(Math.abs(v)>=1e9?`R$ ${(v/1e9).toLocaleString('pt-BR',{maximumFractionDigits:1})} bi`:Math.abs(v)>=1e6?`R$ ${(v/1e6).toLocaleString('pt-BR',{maximumFractionDigits:0})} mi`:`R$ ${Math.round(v).toLocaleString('pt-BR')}`);
+const brl = v => v==null?'—':(Math.abs(v)>=1e9?`R$ ${(v/1e9).toLocaleString('pt-BR',{maximumFractionDigits:1})} bi`:Math.abs(v)>=1e6?`R$ ${(v/1e6).toLocaleString('pt-BR',{maximumFractionDigits:Math.abs(v)<1e8?1:0})} mi`:`R$ ${Math.round(v).toLocaleString('pt-BR')}`);
 const who = x => x.responsible_position&&N[x.responsible_position]?`<div class="who">Próximo passo cabe a <a href="#${x.responsible_position}">${esc(x.responsible_name||N[x.responsible_position].name)}</a>${x.responsible_person?` · <a href="#${x.responsible_person_id||''}">${esc(x.responsible_person)}</a>`:''}</div>`:'';
 function omissaoHtml(){
   const o=G.omissao; if(!o) return '<p class="seat">Sem dados do placar ainda.</p>'; const s=o.summary||{};
@@ -471,14 +471,16 @@ function dinheiroHtml(){
   return out+'</div>';
 }
 function gabHtml(p){
-  const gb=p._gab; const M=(G.stats.gabinetes||{}); const md=M.medianas||{}; if(!gb) return '';
-  const rel=(v,m)=>m?` (${(v/m).toLocaleString('pt-BR',{maximumFractionDigits:1})}× a mediana da Câmara)`:'';
-  const c=gb.custo_ano||{};
+  const gb=p._gab; if(!gb) return ''; const sen=gb.casa==='senado'; const M=((G.stats.gabinetes||{})[sen?'senado':'camara'])||{}; const md=M.medianas||{}; const casa=sen?'do Senado':'da Câmara';
+  const rel=(v,m)=>(v!=null&&m)?` (${(v/m).toLocaleString('pt-BR',{maximumFractionDigits:1})}× a mediana ${casa})`:'';
+  const c=gb.custo_ano||{}; const folha=sen?gb.folha_mensal:gb.folha_mensal_estimada;
+  const cotas=sen&&gb.cotas?Object.entries(gb.cotas).sort((a,b)=>b[1]-a[1]).slice(0,4).map(([k,v])=>`${esc(k.replace(/, aquáticas e terrestres nacionais| ao parlamentar/g,''))} ${brl(v)}`).join(' · '):'';
   return `<h3>Gabinete e custo do mandato</h3><div class="din">
-  <div class="om">${[[gb.assessores,'secretários parlamentares'+rel(gb.assessores,md.assessores)],[brl(gb.folha_mensal_estimada),'folha mensal estimada do gabinete'+rel(gb.folha_mensal_estimada,md.folha_mensal_estimada)],[brl(c.total),`custo do mandato em ${new Date().getFullYear()} até agora`+rel(c.total,md.custo_ano_total)]].map(([n,l])=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join('')}</div>
-  <p style="font-size:13.5px;margin:4px 0 8px">Custo até agora: subsídio ${brl(c.subsidio)} (${c.meses} meses de ${brl(M.subsidio_mensal)}) + cota ${brl(c.cota)} + gabinete estimado ${brl(c.gabinete_estimado)}. ${gb.nomeados_no_ano?`${gb.nomeados_no_ano} ${gb.nomeados_no_ano===1?'nomeação':'nomeações'} no gabinete neste ano (mediana ${md.nomeados_no_ano}).`:''}</p>
-  <details class="rel"><summary>Equipe do gabinete · ${gb.assessores}</summary><div class="act">${(gb.equipe||[]).map(s=>`<div class="row"><span>${esc(s.nome)}<span class="d" style="display:block">${s.desde?'desde '+fmtDate(s.desde):''}</span></span><span class="v">${esc(s.nivel)}${s.grg?' + GRG':''} · ${brl(s.salario)}</span></div>`).join('')}</div></details>
-  <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">${esc(M.nota||'')} Fonte: ${esc(M.fonte||'Câmara dos Deputados, dados abertos de funcionários e tabela de remuneração')}, ${fmtDate(M.generated_at)}.</p></div>`;
+  <div class="om">${[[gb.assessores,(sen?`servidores no gabinete e nos escritórios de apoio${gb.assessores_gabinete_oficial!=null?` (${gb.assessores_gabinete_oficial} em Brasília, ${gb.escritorios_apoio||0} no estado)`:''}`:'secretários parlamentares')+rel(gb.assessores,md.assessores)],[brl(folha),(sen?`folha da equipe em ${(gb.folha_mes||'').slice(5,7)}/${(gb.folha_mes||'').slice(0,4)}`:'folha mensal estimada do gabinete')+rel(folha,md.folha_mensal_estimada)],[brl(c.total),`custo do mandato em ${new Date().getFullYear()} até agora`+rel(c.total,md.custo_ano_total)]].map(([n,l])=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join('')}</div>
+  <p style="font-size:13.5px;margin:4px 0 8px">Custo até agora: subsídio ${brl(c.subsidio)} (${(c.meses||0).toLocaleString('pt-BR')} meses de ${brl(M.subsidio_mensal)}) + ${sen?'cotas e gastos não inclusos':'cota'} ${brl(c.cota)} + gabinete ${sen?'':'estimado '}${brl(c.gabinete_estimado)}.${!sen&&gb.nomeados_no_ano?` ${gb.nomeados_no_ano} ${gb.nomeados_no_ano===1?'nomeação':'nomeações'} no gabinete neste ano (mediana ${md.nomeados_no_ano}).`:''}${sen?` Auxílio-moradia: ${esc((gb.auxilio_moradia||'—').toLowerCase())}; imóvel funcional: ${esc((gb.imovel_funcional||'—').toLowerCase())}.`:''}</p>
+  ${cotas?`<p style="font-size:13px;color:var(--ink-2);margin:0 0 8px">Maiores cotas no ano: ${cotas}.</p>`:''}
+  <details class="rel"><summary>Equipe do gabinete · ${gb.assessores}</summary><div class="act">${(gb.equipe||[]).map(s=>`<div class="row"><span>${esc(s.nome)}<span class="d" style="display:block">${sen?esc(s.funcao||s.vinculo||''):''}${s.desde?(sen?' · ':'')+'desde '+fmtDate(s.desde):''}</span></span><span class="v">${sen?(s.salario?brl(s.salario):'—'):`${esc(s.nivel)}${s.grg?' + GRG':''} · ${brl(s.salario)}`}</span></div>`).join('')}</div></details>
+  <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">${esc(M.nota||'')} Fonte: ${esc(M.fonte||'')}, ${fmtDate(M.generated_at)}.</p></div>`;
 }
 function candHtml(p){
   const c=p._cand; if(!c||!c.length) return '';

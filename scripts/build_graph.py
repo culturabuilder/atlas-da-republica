@@ -535,12 +535,16 @@ atividade = (_at.get("people") or {}) if _at else {}
 _em_people = (_em.get("people") or {}) if _em else {}
 _cd = _load_yaml("candidaturas.yaml"); _cd_people = (_cd.get("people") or {}) if _cd else {}
 _gb = _load_yaml("gabinetes.yaml"); _gb_people = (_gb.get("people") or {}) if _gb else {}
-if _gb: stats["gabinetes"] = {"medianas": _gb.get("medianas"), "subsidio_mensal": _gb.get("subsidio_mensal"), "verba_gabinete_limite_mensal": _gb.get("verba_gabinete_limite_mensal"), "nota": _gb.get("nota"), "generated_at": str(_gb.get("generated_at"))}
+_gs = _load_yaml("gabinetes-senado.yaml"); _gs_people = (_gs.get("people") or {}) if _gs else {}
+stats["gabinetes"] = {}
+if _gb: stats["gabinetes"]["camara"] = {"medianas": _gb.get("medianas"), "subsidio_mensal": _gb.get("subsidio_mensal"), "verba_gabinete_limite_mensal": _gb.get("verba_gabinete_limite_mensal"), "nota": _gb.get("nota"), "fonte": _gb.get("fonte"), "generated_at": str(_gb.get("generated_at"))}
+if _gs: stats["gabinetes"]["senado"] = {"medianas": _gs.get("medianas"), "subsidio_mensal": _gs.get("subsidio_mensal"), "folha_mes": _gs.get("folha_mes"), "nota": _gs.get("nota"), "fonte": _gs.get("fonte"), "generated_at": str(_gs.get("generated_at"))}
 for pid, rec in people_index.items():
     if pid in atividade: rec["activity"] = atividade[pid]
     if pid in _em_people: rec["emendas"] = _em_people[pid]
     if pid in _cd_people: rec["candidaturas"] = _cd_people[pid]
-    if pid in _gb_people: rec["gabinete"] = _gb_people[pid]
+    if pid in _gb_people: rec["gabinete"] = dict(_gb_people[pid], casa="camara")
+    elif pid in _gs_people: rec["gabinete"] = _gs_people[pid]
 # por órgão: dirigentes/ministros que já foram candidatos, com o partido da candidatura mais recente (nunca "filiado")
 for n in nodes.values():
     if n["type"] == "dept_head": continue
