@@ -116,6 +116,10 @@ a{color:var(--accent)}
 /* fim */
 .end{margin-top:40px;padding:20px;border:1px solid var(--line-2);border-radius:12px;background:var(--card)}
 .end a.cta{display:inline-block;margin-top:10px;background:var(--accent);color:var(--bg);text-decoration:none;font-family:var(--disp);font-weight:700;padding:10px 16px;border-radius:10px}
+body.curta .chapter:not(#c0):not(#c1):not(#c2):not(#c6):not(#c9){display:none}
+body.curta #prog a:not([data-ch="c0"]):not([data-ch="c1"]):not([data-ch="c2"]):not([data-ch="c6"]):not([data-ch="c9"]){display:none}
+body.curta .hero .toc a:not([href="#c0"]):not([href="#c1"]):not([href="#c2"]):not([href="#c6"]):not([href="#c9"]){opacity:.35}
+#curta[aria-pressed="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent)}
 @media (max-width:900px){
   .cf{grid-template-columns:1fr;gap:0;padding-inline:16px}
   .stage{order:-1;position:sticky;top:44px;height:auto;padding:6px 0;background:var(--bg);z-index:4;border-bottom:1px solid var(--line-2)}
@@ -134,6 +138,7 @@ a{color:var(--accent)}
 <div class="bar">
   <a class="brand" href="/"><span class="mark"></span>Atlas da República <span class="crumb">/ Como funciona</span></a>
   <nav class="prog" id="prog" aria-label="Capítulos"></nav>
+  <button class="btn" id="curta" aria-pressed="false" title="Só os capítulos 0, 1, 2, 6 e 9">Versão curta · 4 min</button>
   <button class="btn" id="theme" aria-label="Alternar tema claro e escuro">◐ Tema</button>
 </div>
 <div class="cf">
@@ -259,6 +264,10 @@ const tries = {
   explorar(el){ el.innerHTML = `<h3>Continue explorando</h3><div class="out">A roda completa tem ${G.stats.nodes} órgãos e cargos, ${G.stats.edges} ligações e ${Object.keys(P).length} pessoas. Cada uma com a lei que a criou.</div><div class="stepper"><a class="btn" href="${HOME}">Abrir a roda →</a><a class="btn" href="${HOME}#br-presidente-da-republica">Começar pelo Presidente</a><a class="btn" href="${HOME}#br-supremo-tribunal-federal">Começar pelo STF</a></div>`; }
 };
 document.querySelectorAll('.try').forEach(el => { const f = tries[el.dataset.try]; if (f) f(el); });
+// versão curta: capítulos 0, 1, 2, 6 e 9 (cerca de 4 minutos)
+const cb=document.getElementById('curta'); let curtaOn=false; try{ curtaOn=localStorage.getItem('atlas-curta')==='1'; }catch(e){}
+const applyCurta=()=>{ document.body.classList.toggle('curta',curtaOn); cb.setAttribute('aria-pressed',String(curtaOn)); cb.textContent=curtaOn?'Versão completa · 9 min':'Versão curta · 4 min'; };
+applyCurta(); cb.addEventListener('click',()=>{ curtaOn=!curtaOn; try{ localStorage.setItem('atlas-curta',curtaOn?'1':'0'); }catch(e){} applyCurta(); const first=document.querySelector('.step'); if(first) activate(first); });
 // tema
 const root = document.documentElement, tb = document.getElementById('theme');
 tb.addEventListener('click', () => { const dark = root.dataset.theme !== 'light'; root.dataset.theme = dark ? 'light' : 'dark'; try { localStorage.setItem('atlas-theme', root.dataset.theme); } catch(e){} });

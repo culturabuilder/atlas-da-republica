@@ -56,7 +56,7 @@ def page(n):
         rels.append(f'<li>{esc(n["name"]) if e["from"]==n["id"] else esc(o["name"])} <em>{REL.get(e["type"], e["type"])}</em> <a href="/br/{other}/">{esc(o["name"]) if e["from"]==n["id"] else esc(n["name"])}</a> <small>({esc(e.get("cite") or "")})</small></li>')
     people = "".join(f'<li>{esc(p.get("name") or "")}{(" · " + esc(p["party"])) if p.get("party") else ""}{(" · desde " + esc(p["started_at"])) if p.get("started_at") else ""}</li>' for p in (n.get("people") or [])[:600])
     kids = "".join(f'<li><a href="/br/{k}/">{esc(N[k]["name"])}</a></li>' for k in n.get("children", []) if k in N)
-    ssr = f'''<div id="ssr" hidden><article><h1>{esc(n["name"])}</h1><p>{esc(n.get("description") or "")}</p><p>Fonte legal: {esc(n.get("cite") or "")}</p>
+    ssr = f'''<div id="ssr"><article><h1>{esc(n["name"])}</h1><p>{esc(n.get("description") or "")}</p><p>Fonte legal: {esc(n.get("cite") or "")}</p>
 {("<h2>Ocupantes</h2><ul>" + people + "</ul>") if people else ""}{("<h2>Órgãos integrados e vinculados</h2><ul>" + kids + "</ul>") if kids else ""}<h2>Relações</h2><ul>{"".join(rels)}</ul><p><a href="/">Atlas da República</a></p></article></div>'''
     head = f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc)}">\n<link rel="canonical" href="{url}">\n<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{url}"><meta property="og:type" content="website">\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
     out = tpl.replace("<title>Atlas da República</title>\n", head, 1)
@@ -72,7 +72,7 @@ def person_page(p):
     if p.get("party"): ld["memberOf"] = {"@type": "Organization", "name": p["party"]}
     if p.get("photo"): ld["image"] = f"{BASE}/img/{p['id']}.jpg"
     head = f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc[:300])}">\n<link rel="canonical" href="{url}">\n<meta property="og:title" content="{esc(title)}"><meta property="og:url" content="{url}"><meta property="og:type" content="profile">\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
-    ssr = f'<div id="ssr" hidden><article><h1>{esc(p["name"])}</h1><p>{esc(p.get("party") or "")} {esc(p.get("uf") or "")}</p><h2>Cargos</h2><ul>{pos}</ul><p><a href="/">Atlas da República</a></p></article></div>'
+    ssr = f'<div id="ssr"><article><h1>{esc(p["name"])}</h1><p>{esc(p.get("party") or "")} {esc(p.get("uf") or "")}</p><h2>Cargos</h2><ul>{pos}</ul><p><a href="/">Atlas da República</a></p></article></div>'
     out = tpl.replace("<title>Atlas da República</title>\n", head, 1).replace('<div id="content"></div>', '<div id="content"></div>' + ssr, 1)
     out = out.replace("select(location.hash.slice(1));", f"select(location.hash.slice(1) || {json.dumps(p['id'])});", 1)
     return out.replace('href="/br/', f'href="{PREFIX}/br/').replace('href="/"', f'href="{PREFIX}/"')
