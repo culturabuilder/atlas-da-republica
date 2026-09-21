@@ -97,8 +97,11 @@
     ptrs[e.pointerId] = pt(e); var keys = Object.keys(ptrs);
     if (keys.length === 1) { drag = { x: e.clientX, y: e.clientY, tx: state.tx, ty: state.ty, rot: state.rot, a0: angTo(pt(e)) }; moved = 0; }
     else if (keys.length === 2) { var a = ptrs[keys[0]], b = ptrs[keys[1]]; pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), s: state.s, a0: Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI, rot: state.rot }; drag = null; }
-    try { (document.getElementById('graph') || svg).setPointerCapture(e.pointerId); } catch (err) {}
+    // sem captura aqui: capturar no pointerdown faz o clique cair no contêiner e o <a> do nó deixa de navegar.
+    if (keys.length === 2) capture(e.pointerId);
   }
+  var captured = {};
+  function capture(id) { if (captured[id]) return; try { (document.getElementById('graph') || svg).setPointerCapture(id); captured[id] = true; } catch (err) {} }
   function onMove(e) {
     if (!(e.pointerId in ptrs)) return; ptrs[e.pointerId] = pt(e); var keys = Object.keys(ptrs);
     if (keys.length === 2 && pinch) {
@@ -110,6 +113,7 @@
     }
     if (!drag) return;
     var k = screenScale(); var dx = e.clientX - drag.x, dy = e.clientY - drag.y; moved = Math.max(moved, Math.hypot(dx, dy));
+    if (moved > TAP) capture(e.pointerId); // só a partir daqui é arraste: captura para seguir fora da roda
     if (moved > TAP && state.mode === 'rotate') { // no modo rotação, segurar e mover gira a roda em torno do centro
       if (anim) { cancelAnimationFrame(anim); anim = null; }
       state.rot = drag.rot + (angTo(pt(e)) - drag.a0); apply(state); e.preventDefault(); return; }
@@ -118,7 +122,7 @@
       var rad = -state.rot * Math.PI / 180; var ux = dx * k, uy = dy * k;
       state.tx = drag.tx + (ux * Math.cos(rad) - uy * Math.sin(rad)) / state.s; state.ty = drag.ty + (ux * Math.sin(rad) + uy * Math.cos(rad)) / state.s; apply(state); e.preventDefault(); }
   }
-  function onUp(e) { delete ptrs[e.pointerId]; if (!Object.keys(ptrs).length) { drag = null; pinch = null; } else pinch = null; }
+  function onUp(e) { delete ptrs[e.pointerId]; delete captured[e.pointerId]; if (!Object.keys(ptrs).length) { drag = null; pinch = null; } else pinch = null; }
   function onClick(e) { if (moved > TAP) { e.preventDefault(); e.stopPropagation(); moved = 0; } }
   function onWheel(e) { if (!(e.ctrlKey || e.metaKey)) return; e.preventDefault(); zoom(e.deltaY < 0 ? 1.15 : 1 / 1.15); }
   function zoom(f) { if (anim) { cancelAnimationFrame(anim); anim = null; } state.s = Math.max(MIN_S, Math.min(MAX_S, state.s * f)); apply(state); }
