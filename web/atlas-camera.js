@@ -172,7 +172,7 @@
   function init() {
     if (!wrap()) return false;
     try { reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { reduced = false; }
-    var p = pref(); state.mode = (p.mode === 'focus' || p.mode === 'rotate' || p.mode === 'none') ? p.mode : (window.ATLAS_CAMERA_DEFAULT || 'none');
+    var p = pref(); state.mode = (p.mode === 'focus' || p.mode === 'rotate' || p.mode === 'none') ? p.mode : (window.ATLAS_CAMERA_DEFAULT || 'focus');
     buildUI(); setMode(state.mode, true);
     var h = document.getElementById('graph') || svg;
     h.addEventListener('pointerdown', onDown); h.addEventListener('pointermove', onMove, { passive: false });
