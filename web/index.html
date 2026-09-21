@@ -341,10 +341,19 @@ async function loadDetail(id){
 }
 function loadingCard(name){ return `<div class="card"><h1>${esc(name)}</h1><p aria-live="polite">Carregando…</p></div>`; }
 // destaque na roda: nó selecionado, vizinhos e arestas (ou limpa tudo quando id é vazio)
+// grupos recolhidos da roda: abre os grupos do nó selecionado (como pai, membro ou cargo de um membro) e fecha os demais
+function syncGroups(ids){
+  const open = new Set(); const GR = (typeof GROUPS !== 'undefined') ? GROUPS : {};
+  for (const id of (Array.isArray(ids) ? ids : [ids])) { if (!id) continue; const n = N[id];
+    for (const g of Object.values(GR)) { if (g.parent === id || g.members.includes(id)) open.add(g.id); }
+    if (n && n.type === 'dept_head' && n.head_of && typeof clusterOf !== 'undefined' && clusterOf[n.head_of]) open.add(clusterOf[n.head_of]); }
+  document.querySelectorAll('.grpwrap').forEach(w => w.classList.toggle('open', open.has(w.dataset.group)));
+}
 function wheelFocus(id){
   const svg = document.querySelector('svg.wheel'); const eg = document.getElementById('edges');
   document.querySelectorAll('.node').forEach(a => { a.classList.remove('sel','lit'); });
   if (eg) eg.innerHTML = '';
+  syncGroups(id);
   if (!svg) return;
   if (!id || !N[id]) { svg.classList.remove('dim'); return; }
   svg.classList.add('dim');
@@ -453,7 +462,7 @@ function renderPerson(p){
   const svg = document.querySelector('svg.wheel'); svg.classList.add('dim');
   document.querySelectorAll('.node').forEach(a => a.classList.remove('sel','lit'));
   const fullPos = p._full || (G.people&&G.people[p.id]&&G.people[p.id].positions) || []; const posIds = fullPos.length ? fullPos.map(q=>q.id) : (p.positions||[]);
-  posIds.forEach(pid=>{ const el=document.querySelector(`.node[data-id="${pid}"]`); if(el) el.classList.add('lit'); });
+  syncGroups(posIds); posIds.forEach(pid=>{ const el=document.querySelector(`.node[data-id="${pid}"]`); if(el) el.classList.add('lit'); });
   document.getElementById('edges').innerHTML='';
   const na=(G.news||[]).filter(a=>(a.people||[]).some(q=>q.id===p.id)).slice(0,8);
   const pm=(G.power||[]).find(q=>q.id===p.id);
@@ -868,7 +877,7 @@ window.addEventListener('hashchange', () => { closeSearch(); q.value=''; const h
 
 // ---------- tooltip, teclado ----------
 const tip = document.getElementById('tip'), stage = document.getElementById('stage');
-document.getElementById('graph').addEventListener('mousemove', e => { const a = e.target.closest('.node'); if (!a) { tip.hidden = true; return; } const n = N[a.dataset.id]; const r = stage.getBoundingClientRect(); if (!n) { tip.hidden = true; return; } tip.innerHTML = esc(n.name) + `<small>${TYPE_NAME[n.type]||''}</small>`; tip.style.left = (e.clientX - r.left) + 'px'; tip.style.top = (e.clientY - r.top) + 'px'; tip.hidden = false; });
+document.getElementById('graph').addEventListener('mousemove', e => { const a = e.target.closest('.node'); if (!a) { tip.hidden = true; return; } const n = N[a.dataset.id] || ((typeof GROUPS !== 'undefined') && GROUPS[a.dataset.id] && { name: GROUPS[a.dataset.id].members.length + ' unidades · ' + GROUPS[a.dataset.id].name, type: 'group' }); const r = stage.getBoundingClientRect(); if (!n) { tip.hidden = true; return; } tip.innerHTML = esc(n.name) + `<small>${TYPE_NAME[n.type]||''}</small>`; tip.style.left = (e.clientX - r.left) + 'px'; tip.style.top = (e.clientY - r.top) + 'px'; tip.hidden = false; });
 document.getElementById('graph').addEventListener('mouseleave', () => tip.hidden = true);
 document.addEventListener('keydown', e => { if (e.key==='Escape' && !q.value && document.activeElement !== q) { location.hash = ''; } if (e.key==='/' && document.activeElement !== q) { q.focus(); e.preventDefault(); } });
 
@@ -880,10 +889,10 @@ lbox.innerHTML = `<h3>Entidades</h3><div>${shapeSvg.elected} Órgão eletivo</di
   <h3>Relações</h3>${Object.keys(REL).map(t=>`<div>${legendSvg(t)} ${REL[t][0]}</div>`).join('')}
   <h3>Setores</h3>${Object.keys(ARC).map(s=>`<div><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</div>`).join('')}
   <details class="conv"><summary>O que significam os anéis e formas?</summary><ul>
-    <li><b>Anéis</b>: distância institucional do voto. É uma convenção de leitura, não uma medida de poder.</li>
+    <li><b>Anéis</b>: distância institucional do voto, de dentro para fora: <b>1</b> chefia · <b>2</b> cúpula · <b>3</b> administração direta · <b>4</b> administração indireta. É uma convenção de leitura, não uma medida de poder.</li>
     <li><b>Formas</b>: o tipo do nó (órgão, cargo, comissão ou colegiado, tribunal).</li>
     <li><b>Cores</b>: o setor (Legislativo, Executivo, Judiciário, funções essenciais).</li>
-    <li><b>Grupos de pontos</b>: unidades de um mesmo órgão (universidades, secretarias).</li>
+    <li><b>Círculo tracejado com número</b>: grupo de unidades de um mesmo órgão (secretarias, conselhos, universidades). Abre ao tocar nele ou ao selecionar o órgão.</li>
   </ul></details>`;
 lb.addEventListener('click', () => { const open = lbox.hidden; lbox.hidden = !open; lb.setAttribute('aria-expanded', String(open)); lb.textContent = open ? 'Legenda ▴' : 'Legenda ▾'; });
 const gb = document.getElementById('gov-btn'), gm = document.getElementById('gov-menu');

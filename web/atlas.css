@@ -29,6 +29,12 @@ svg.wheel{width:100%;max-width:min(96vh,980px);height:auto;display:block;margin:
 .sector-bg{fill-opacity:var(--sector-alpha);stroke:var(--ink);stroke-opacity:.12}
 .ring{fill:none;stroke:var(--ink);stroke-opacity:var(--ring-alpha);stroke-dasharray:2 5}
 .ring-label{font-size:8.5px;letter-spacing:.2em;fill:var(--ink);fill-opacity:.55}
+.ring-num{font-family:var(--mono);font-size:7.5px;fill:var(--ink);fill-opacity:.6;text-anchor:middle;paint-order:stroke;stroke:var(--bg);stroke-width:3px;stroke-linejoin:round}
+/* grupos recolhidos: marcador com contagem; membros só quando .grpwrap.open */
+.grpwrap .grp{display:none}.grpwrap.open .grp{display:inline}.grpwrap.open .group{display:none}
+.node.group .shape{stroke-width:1.2;stroke-dasharray:2.2 1.6}.node.group:hover .shape{stroke-dasharray:none}
+.node.group .gcount{font-family:var(--mono);font-size:6.2px;font-weight:600;fill:currentColor;text-anchor:middle;pointer-events:none}
+.dim .node.group:not(.lit) .gcount{opacity:.25}
 .sector-label{font-size:11px;letter-spacing:.28em;font-weight:600}
 .node{cursor:pointer}
 .node .shape{fill:var(--node-fill);stroke-width:1.4;transition:opacity .15s}
