@@ -13,9 +13,10 @@
   var DUR = 340;             // ms da transição (ponto de partida; ajustar com testes)
   var FOCUS_ZOOM = 1.18;     // aproximação do modo foco
   var FOCUS_PULL = 0.35;     // fração do deslocamento do nó até o centro
-  var ROT_ZOOM = 1.08;
+  var ROT_ZOOM = 1.0;        // rotação pura: a roda não sai do quadro
   var TARGET_ANGLE = 225;    // graus (0 = 3h, sentido horário na tela): alto à esquerda
   var MIN_S = 0.6, MAX_S = 4;
+  var TAP = 10;              // px: abaixo disso é toque/clique, não arraste
 
   var state = { mode: 'none', s: 1, tx: 0, ty: 0, rot: 0 };
   var C = 0, svg = null, cam = null, anim = null, reduced = false, stage = null, ui = null;
@@ -81,9 +82,7 @@
     } else {
       var ang = Math.atan2(dy, dx) * 180 / Math.PI; // ângulo do nó (0 = 3h)
       var rot = TARGET_ANGLE - ang;                  // gira para levá-lo ao alvo
-      var r = Math.hypot(dx, dy); var pull = r > 0 ? (r * 0.18) : 0;
-      var ta = TARGET_ANGLE * Math.PI / 180;
-      go({ s: ROT_ZOOM, tx: -Math.cos(ta) * pull, ty: -Math.sin(ta) * pull, rot: rot });
+      go({ s: ROT_ZOOM, tx: 0, ty: 0, rot: rot });
     }
   }
 
@@ -91,34 +90,48 @@
   var ptrs = {}, drag = null, moved = 0, pinch = null;
   function pt(e) { return { x: e.clientX, y: e.clientY }; }
   function screenScale() { var r = svg.getBoundingClientRect(); return (2 * C) / Math.max(1, r.width); } // unidades SVG por px
+  function center() { var r = svg.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; }
+  function angTo(p) { var c = center(); return Math.atan2(p.y - c.y, p.x - c.x) * 180 / Math.PI; }
   function onDown(e) {
     if (e.button != null && e.button !== 0) return;
     ptrs[e.pointerId] = pt(e); var keys = Object.keys(ptrs);
-    if (keys.length === 1) { drag = { x: e.clientX, y: e.clientY, tx: state.tx, ty: state.ty }; moved = 0; }
-    else if (keys.length === 2) { var a = ptrs[keys[0]], b = ptrs[keys[1]]; pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), s: state.s }; drag = null; }
-    try { svg.setPointerCapture(e.pointerId); } catch (err) {}
+    if (keys.length === 1) { drag = { x: e.clientX, y: e.clientY, tx: state.tx, ty: state.ty, rot: state.rot, a0: angTo(pt(e)) }; moved = 0; }
+    else if (keys.length === 2) { var a = ptrs[keys[0]], b = ptrs[keys[1]]; pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), s: state.s, a0: Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI, rot: state.rot }; drag = null; }
+    try { (document.getElementById('graph') || svg).setPointerCapture(e.pointerId); } catch (err) {}
   }
   function onMove(e) {
     if (!(e.pointerId in ptrs)) return; ptrs[e.pointerId] = pt(e); var keys = Object.keys(ptrs);
     if (keys.length === 2 && pinch) {
       var a = ptrs[keys[0]], b = ptrs[keys[1]]; var d = Math.hypot(a.x - b.x, a.y - b.y);
-      state.s = Math.max(MIN_S, Math.min(MAX_S, pinch.s * d / Math.max(1, pinch.d))); apply(state); moved = 99; e.preventDefault(); return;
+      state.s = Math.max(MIN_S, Math.min(MAX_S, pinch.s * d / Math.max(1, pinch.d)));
+      // dois dedos girando = gira a roda (em qualquer modo)
+      var a1 = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI; state.rot = pinch.rot + (a1 - pinch.a0);
+      apply(state); moved = 99; e.preventDefault(); return;
     }
     if (!drag) return;
-    var k = screenScale(); var dx = e.clientX - drag.x, dy = e.clientY - drag.y; moved = Math.max(moved, Math.abs(dx) + Math.abs(dy));
-    if (moved > 4) { if (anim) { cancelAnimationFrame(anim); anim = null; }
+    var k = screenScale(); var dx = e.clientX - drag.x, dy = e.clientY - drag.y; moved = Math.max(moved, Math.hypot(dx, dy));
+    if (moved > TAP && state.mode === 'rotate') { // no modo rotação, segurar e mover gira a roda em torno do centro
+      if (anim) { cancelAnimationFrame(anim); anim = null; }
+      state.rot = drag.rot + (angTo(pt(e)) - drag.a0); apply(state); e.preventDefault(); return; }
+    if (moved > TAP) { if (anim) { cancelAnimationFrame(anim); anim = null; }
       // desloca no referencial da tela: desfaz rotação/escala do grupo
       var rad = -state.rot * Math.PI / 180; var ux = dx * k, uy = dy * k;
       state.tx = drag.tx + (ux * Math.cos(rad) - uy * Math.sin(rad)) / state.s; state.ty = drag.ty + (ux * Math.sin(rad) + uy * Math.cos(rad)) / state.s; apply(state); e.preventDefault(); }
   }
   function onUp(e) { delete ptrs[e.pointerId]; if (!Object.keys(ptrs).length) { drag = null; pinch = null; } else pinch = null; }
-  function onClick(e) { if (moved > 4) { e.preventDefault(); e.stopPropagation(); moved = 0; } }
+  function onClick(e) { if (moved > TAP) { e.preventDefault(); e.stopPropagation(); moved = 0; } }
   function onWheel(e) { if (!(e.ctrlKey || e.metaKey)) return; e.preventDefault(); zoom(e.deltaY < 0 ? 1.15 : 1 / 1.15); }
   function zoom(f) { if (anim) { cancelAnimationFrame(anim); anim = null; } state.s = Math.max(MIN_S, Math.min(MAX_S, state.s * f)); apply(state); }
 
   // ---- interface ----
+  var hintEl = null, hintT = null;
+  function hint(msg) {
+    if (!stage) return; if (!hintEl) { hintEl = document.createElement('div'); hintEl.className = 'cam-hint'; hintEl.setAttribute('role', 'status'); stage.appendChild(hintEl); }
+    hintEl.textContent = msg; hintEl.classList.add('show'); clearTimeout(hintT); hintT = setTimeout(function () { hintEl.classList.remove('show'); }, 2600);
+  }
   function setMode(m, silent) {
     state.mode = m; save();
+    if (!silent && m !== 'none' && !nodePos(currentId())) hint(m === 'rotate' ? 'Toque num órgão para girar a roda até ele. Segure e arraste para girar à mão.' : 'Toque num órgão para aproximar. Arraste para mover, pince para ampliar.');
     if (ui) { var bs = ui.querySelectorAll('[data-mode]'); for (var i = 0; i < bs.length; i++) { var on = bs[i].getAttribute('data-mode') === m; bs[i].classList.toggle('on', on); bs[i].setAttribute('aria-pressed', on ? 'true' : 'false'); } }
     if (!silent) frame(currentId());
   }
@@ -132,7 +145,8 @@
       '.cam-ui button.on{background:var(--accent,#e07a3f);color:var(--card,#fff)}.cam-ui button:focus-visible{outline:2px solid var(--accent,#e07a3f);outline-offset:-2px}' +
       '.cam-ui .z button{min-width:32px;font-size:15px}' +
       'svg.wheel.cam-rot .ring-label{opacity:.35}' +
-      '@media (max-width:900px){.cam-ui{position:static;margin:0 0 6px}}' +
+      '.cam-stage{overflow:hidden}@media (max-width:900px){.cam-stage{border:1px solid var(--line-2,#8883);border-radius:14px;padding:8px}.cam-ui{position:relative;z-index:5;margin:0 0 6px}.previa-banner{font-size:11.5px;padding:5px 12px}}' +
+      '.cam-hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:var(--card,#fff);color:var(--ink-2,#444);border:1px solid var(--line-2,#8883);border-radius:999px;padding:6px 12px;font-size:12.5px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}.cam-hint.show{opacity:1}' +
       '.previa-banner{background:#b45309;color:#fff;font:13px/1.3 system-ui,sans-serif;padding:8px 16px;text-align:center}.previa-banner a{color:#fff}';
     document.head.appendChild(css);
     ui = document.createElement('div'); ui.className = 'cam-ui'; ui.setAttribute('role', 'group'); ui.setAttribute('aria-label', 'Movimento da roda');
@@ -156,15 +170,24 @@
     try { reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { reduced = false; }
     var p = pref(); state.mode = (p.mode === 'focus' || p.mode === 'rotate' || p.mode === 'none') ? p.mode : (window.ATLAS_CAMERA_DEFAULT || 'none');
     buildUI(); setMode(state.mode, true);
-    svg.addEventListener('pointerdown', onDown); svg.addEventListener('pointermove', onMove, { passive: false });
-    svg.addEventListener('pointerup', onUp); svg.addEventListener('pointercancel', onUp); svg.addEventListener('lostpointercapture', onUp);
-    svg.addEventListener('click', onClick, true); svg.addEventListener('wheel', onWheel, { passive: false });
-    svg.style.touchAction = 'none';
+    var h = document.getElementById('graph') || svg;
+    h.addEventListener('pointerdown', onDown); h.addEventListener('pointermove', onMove, { passive: false });
+    h.addEventListener('pointerup', onUp); h.addEventListener('pointercancel', onUp); h.addEventListener('lostpointercapture', onUp);
+    h.addEventListener('click', onClick, true); h.addEventListener('wheel', onWheel, { passive: false });
+    // Safari/iOS: sem isto a pinça vira zoom da página inteira em vez de zoom da roda
+    ['gesturestart', 'gesturechange', 'gestureend'].forEach(function (t) { h.addEventListener(t, function (e) { e.preventDefault(); }, { passive: false }); });
+    svg.style.touchAction = 'none'; svg.style.overflow = 'visible';
+    if (stage) { stage.classList.add('cam-stage'); }
     window.addEventListener('hashchange', function () { frame(currentId()); });
     frame(currentId());
     window.AtlasCamera = { setMode: setMode, frame: frame, reset: function () { go({ s: 1, tx: 0, ty: 0, rot: 0 }); }, state: state, disable: function () { if (cam) cam.removeAttribute('transform'); if (ui) ui.remove(); } };
     return true;
   }
-  // a roda pode ser desenhada pelo script da página depois deste módulo carregar
-  var tries = 0; (function wait() { if (init()) return; if (++tries < 300) requestAnimationFrame(wait); })();
+  // a roda pode ser desenhada pelo script da página depois deste módulo carregar (celular lento: até 60 s)
+  var tries = 0; (function wait() { if (init()) return; if (++tries < 240) setTimeout(wait, 250); })();
+  // se a página redesenhar o <svg>, envolve de novo e reaplica o estado
+  var host = document.getElementById('graph');
+  if (host && window.MutationObserver) new MutationObserver(function () {
+    var s2 = document.querySelector('svg.wheel'); if (s2 && s2 !== svg) { cam = null; if (wrap()) { svg.style.touchAction = 'none'; svg.style.overflow = 'visible'; apply(state); } }
+  }).observe(host, { childList: true });
 })();
