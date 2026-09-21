@@ -115,6 +115,16 @@ p{margin:8px 0;color:var(--ink-2)}
 .news .it a.t:hover{text-decoration:underline}
 .news .it .m{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:2px}
 .news .it .e{display:inline-block;font-size:12.5px;color:var(--accent);text-decoration:none;margin-right:8px}
+.acomp-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 10px}.acomp-h span{font-family:var(--mono);font-size:11px;color:var(--ink-3);font-weight:400}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:0 0 14px}
+.kpis [role=tab]{font:inherit;text-align:left;display:flex;flex-direction:column;gap:3px;padding:10px 11px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink-2);cursor:pointer;min-height:64px}
+.kpis [role=tab] .q{font-weight:600;font-size:13.5px;line-height:1.2;color:var(--ink);text-wrap:balance}.kpis [role=tab] .n{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);line-height:1.3}
+.kpis [role=tab][aria-selected=true]{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}.kpis [role=tab][aria-selected=true] .n{color:var(--accent)}
+.kpis [role=tab]:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+@media (max-width:900px){.kpis{grid-template-columns:1fr 1fr}}
+.ptools{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin:0 0 10px}.ptools .win{margin-left:0}
+h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid var(--line-2)}h2.sec.first{border-top:0;padding-top:0;margin-top:0}
+.arrec.inner{margin-bottom:6px}
 .tabs{display:flex;flex-wrap:wrap;gap:2px;align-items:center;border-bottom:1px solid var(--line-2);margin:0 -20px 12px;padding:0 12px 6px}
 .tabs [role=tablist]{display:flex;flex-wrap:wrap;gap:2px}
 #home-panel:focus-visible{outline:2px solid var(--focus);outline-offset:4px;border-radius:6px}
@@ -536,7 +546,7 @@ function entryHtml(e, n){
 function entryShort(p){ const e=p.entry; if(!e) return ''; const bits=[]; if(e.date) bits.push('desde '+fmtDate(e.date)); if(e.mode==='eleito') bits.push('eleito'); else if(e.mode==='eleito_pares') bits.push('eleito pelos pares'); else if(e.by_person) bits.push('por '+e.by_person); if(e.sabatina&&e.sabatina.sim!=null) bits.push(`senado ${e.sabatina.sim}×${e.sabatina.nao}`); if(e.term_kind==='compulsoria') bits.push('até '+e.term_end.slice(0,4)); return bits.join(' · '); }
 function fmtDate(d){ if(!d) return ''; const [y,m,dd]=d.split('-'); return `${dd}/${m}/${y.slice(2)}`; }
 function entLink(id){ const n=N[id]; return n?`<a class="e" href="#${id}">${esc(n.aliases&&n.aliases[0]&&n.aliases[0].length<=8?n.aliases[0]:n.name)}</a>`:''; }
-let homeTab = 'mudancas'; let win = 30;
+let homeTab = 'mudou'; let win = 30;
 const P = G.people || {}; for (const p of Object.values(P)) { p.positions = (p.positions||[]).map(q => q.id || q); }
 function avatar(p, size){ const id = p && (p.id||p); const rec = P[id] || p || {}; const name = rec.name || p.name || '?'; const ini = esc(name.split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('')); const url = rec.photo_data ? rec.photo_data : (G.img_base && rec.photo) ? G.img_base + id + '.jpg' : (p.image_url || p.image_commons ? (p.image_url||p.image_commons)+(p.image_commons?'?width=96':'') : null); return url ? `<img src="${esc(url)}" alt="" loading="lazy" onerror="this.remove()">${ini}` : ini; }
 function dayKey(d){ return (d||'').slice(0,10); }
@@ -669,10 +679,10 @@ function emendasHtml(p){
 let arrecTimer=null;
 function startArrec(){ if(arrecTimer) clearInterval(arrecTimer); const a=G.arrecadacao; const el=document.getElementById('arrec-n'); if(!a||!el) return; const base=a.anchor.value; const t0=new Date(a.anchor.date+'T23:59:59'); const rate=a.rate_per_second;
   const tick=()=>{ const el=document.getElementById('arrec-n'); if(!el){ clearInterval(arrecTimer); return; } const dt=Math.max(0,(Date.now()-t0)/1000); el.textContent='R$ '+Math.round(base+rate*dt).toLocaleString('pt-BR'); }; tick(); arrecTimer=setInterval(tick,120); }
-function arrecCard(){
+function arrecCard(inner){
   const a=G.arrecadacao; if(!a) return ''; const y=a.ytd||{}; const g=y.growth_real_pct; const j=a.juros||{}; const c=a.compare||{};
   setTimeout(startArrec,0);
-  return `<div class="card arrec"><h2>Arrecadação da União em ${a.year}</h2><div class="n" id="arrec-n">R$ ${Math.round(a.anchor.value).toLocaleString('pt-BR')}</div><div class="cap">impostos, taxas e contribuições · dado oficial até ${fmtDate(a.source_date)}; depois, projeção pelo ritmo dos últimos 3 meses (${brl(a.rate_per_second)} por segundo)</div>
+  return `<div class="${inner?'arrec inner':'card arrec'}"><h2 class="${inner?'sec first':''}">Arrecadação da União em ${a.year}</h2><div class="n" id="arrec-n">R$ ${Math.round(a.anchor.value).toLocaleString('pt-BR')}</div><div class="cap">impostos, taxas e contribuições · dado oficial até ${fmtDate(a.source_date)}; depois, projeção pelo ritmo dos últimos 3 meses (${brl(a.rate_per_second)} por segundo)</div>
   <div class="grid"><div><b class="${g>=0?'up':'down'}">${g==null?'—':(g>=0?'+':'')+g.toLocaleString('pt-BR',{maximumFractionDigits:1})}%</b>em valor real sobre o mesmo período de ${a.year-1} (IPCA)</div><div><b>${brl(y.prev_nominal)}</b>arrecadado até a mesma data em ${a.year-1}, sem correção</div><div><b>R$ ${Math.round(y.per_capita).toLocaleString('pt-BR')}</b>por habitante no ano (${(a.population/1e6).toFixed(0)} milhões)</div><div><b>${brl(j.ytd)}</b>de juros da dívida do governo federal em ${a.year}, até ${(j.last_month||'').slice(5,7)}/${(j.last_month||'').slice(2,4)}</div>${c.saude?`<div><b>${brl(c.saude.empenhado)}</b>empenhado pela Saúde no ano</div>`:''}${c.educacao?`<div><b>${brl(c.educacao.empenhado)}</b>empenhado pela Educação no ano</div>`:''}</div>
   <details><summary>Como este número é calculado</summary><p style="margin:6px 0 0">Soma das receitas realizadas da União nas origens "Impostos, taxas e contribuições de melhoria" e "Contribuições", por data de lançamento, conforme o Portal da Transparência (CSV anual, atualizado diariamente). A comparação com ${a.year-1} usa os mesmos meses e, no mês corrente, só até o mesmo dia; o valor real corrige pelo IPCA (IBGE, número-índice de ${a.ipca_ref_month}). O contador que corre é uma projeção: ao valor oficial até ${fmtDate(a.source_date)} soma-se o ritmo médio por segundo dos meses ${(a.rate_months||[]).join(', ')}; quando o dado oficial chega, o número se corrige. Juros: Banco Central, série 4607 (juros nominais do governo federal, fluxo mensal). Saúde e Educação: despesa empenhada do órgão superior no ano, Portal da Transparência. Não inclui estados e municípios.</p></details></div>`;
 }
@@ -703,8 +713,22 @@ function activityHtml(p){
   out+=`<p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Fonte: ${a.house==='camara'?'Câmara dos Deputados, dados abertos (votações nominais e cota parlamentar)':'Senado Federal, dados abertos (votações nominais)'}.</p></div>`;
   return out;
 }
-const HOME_TABS = [['mudancas','Mudanças'],['noticias','Notícias'],['poder','Na notícia'],['omissao','Sem decisão'],['temas','Temas'],['dinheiro','Dinheiro'],['transicao','Transição 2027']];
-const NO_WIN = ['transicao','omissao','temas','dinheiro'];
+// quatro perguntas em vez de sete abas: cada uma reúne blocos que antes ficavam separados
+const HOME_TABS = [['mudou','O que mudou'],['parado','O que está parado'],['dinheiro','Para onde vai o dinheiro'],['imprensa','Na imprensa']];
+const NO_WIN = ['parado','dinheiro'];
+let impView = 'artigos'; // na aba "Na imprensa": artigos | pessoas mais citadas
+// números da faixa de resumo (um por pergunta), sempre visíveis
+function homeKpis(){
+  const st = G.stats, om = (G.omissao||{}).summary||{}, a = G.arrecadacao;
+  const n30 = (G.changes||[]).filter(c => (Date.now()-new Date(dayKey(c.date)+'T00:00:00'))/86400000 <= 30).length;
+  const n7 = (G.news||[]).filter(x => (Date.now()-new Date(dayKey(x.date)+'T00:00:00'))/86400000 <= 7).length;
+  const short = v => v>=1e12?`R$ ${(v/1e12).toLocaleString('pt-BR',{maximumFractionDigits:2})} tri`:v>=1e9?`R$ ${(v/1e9).toLocaleString('pt-BR',{maximumFractionDigits:0})} bi`:brl(v);
+  const agora = a ? a.anchor.value + (a.rate_per_second||0)*Math.max(0,(Date.now()-new Date(a.anchor.date+'T23:59:59'))/1000) : 0;
+  return { mudou: n30 ? `${n30} nos últimos 30 dias` : (st.last_change ? `última em ${fmtDate(st.last_change)}` : 'sem registros'),
+    parado: om.mpvs_ate_30_dias ? `${om.mpvs_ate_30_dias} MPs perto do prazo` : `${om.vetos_pendentes||0} vetos sem votação`,
+    dinheiro: a ? `${short(agora)} em ${a.year}` : `${brl(((G.emendas||{}).por_ano||{})[String((G.emendas||{}).year)]?.empenhado)} em emendas`,
+    imprensa: `${n7} ${n7===1?'notícia':'notícias'} na semana` };
+}
 // conteúdo do painel da aba ativa (só o painel é recriado ao trocar de aba; os botões das abas ficam)
 function homeBody(){
   const st = G.stats;
@@ -734,28 +758,33 @@ function homeBody(){
   const trans = `<div class="stats" style="margin-bottom:12px"><div class="stat"><div class="n">${apt.length}</div><div class="l">cargos nomeados pelo PR</div></div><div class="stat"><div class="n">${tot}</div><div class="l">cadeiras</div></div><div class="stat"><div class="n">${sab}</div><div class="l">passam pelo Senado</div></div></div>
     <p style="font-size:14px">A posse de 1º de janeiro de 2027 troca a cúpula do Executivo. Estes são os cargos de nomeação do Presidente da República mapeados no grafo, com quem os ocupa hoje. ${known} de ${tot} cadeiras têm ocupante conhecido.</p>
     ${Object.keys(ARC).filter(k=>bySec[k]).map(k=>`<h3 style="color:${COL[k]}">${SEC[k].name} · ${bySec[k].length}</h3><div class="list">${bySec[k].sort((a,b)=>a.name.localeCompare(b.name,'pt')).map(n=>{ const p=(n.people||[])[0]; const extra = n.seats>1?`${Math.min((n.people||[]).length,n.seats)}/${n.seats}`:(p?esc(p.name.split(' ').slice(0,2).join(' ')):'<span style="color:var(--jud)">sem dado</span>'); return `<a href="#${n.id}"><span class="dot" style="background:${COL[n.sector]}"></span><span>${esc(n.name)}</span><span class="sm">${n.sabatina?'senado · ':''}${extra}</span>`; }).join('')}</div>`).join('')}`;
-  return homeTab==='omissao' ? omissaoHtml() : homeTab==='temas' ? temasHtml() : homeTab==='dinheiro' ? dinheiroHtml() : homeTab==='transicao' ? trans : homeTab==='noticias' ? (news?`<div class="news">${news}</div><p style="font-size:13px;color:var(--ink-3)">${st.news_sources||0} fontes · ${st.articles_90d||0} artigos em 90 dias · entidades e pessoas reconhecidas por sigla e nome.</p>`:'<p>Sem notícias coletadas ainda.</p>')
-    : homeTab==='poder' ? (power?`<div class="pm">${power}</div><p style="font-size:13px;color:var(--ink-3)">Pessoas do grafo mais citadas nos últimos 90 dias. Cresce a cada coleta diária.</p>`:'<p>Sem menções ainda.</p>')
-    : `${counters}${bars}${chg||'<p>Sem mudanças nesta janela.</p>'}<p style="font-size:13px;color:var(--ink-3)">Sabatinas do Senado, posses, atos do Diário Oficial e entradas e saídas detectadas na comparação diária dos ocupantes.</p>`;
+  const winSel = `<div class="ptools"><span class="win" id="win-sel" role="group" aria-label="Janela de tempo">${[7,30,90].map(w=>`<button type="button" aria-pressed="${win===w}" data-win="${w}">${w} dias</button>`).join('')}</span></div>`;
+  if (homeTab==='parado') return `<p class="lead">Decisões com prazo ou rito definido que ainda não aconteceram, e os temas em debate cruzados com o andamento dos processos.</p>${omissaoHtml()}<h2 class="sec">Temas em debate</h2>${temasHtml()}`;
+  if (homeTab==='dinheiro') return `${arrecCard(true)}<h2 class="sec">Emendas, renúncias, viagens, cartão e teto</h2>${dinheiroHtml()}`;
+  if (homeTab==='imprensa') { const sub = `<div class="ptools"><span class="win" role="group" aria-label="Ver"><button type="button" aria-pressed="${impView==='artigos'}" data-imp="artigos">Artigos</button><button type="button" aria-pressed="${impView==='pessoas'}" data-imp="pessoas">Pessoas mais citadas</button></span>${impView==='artigos'?winSel.replace('<div class="ptools">','').replace(/<\/div>$/,''):''}</div>`;
+    return sub + (impView==='pessoas' ? (power?`<div class="pm">${power}</div><p style="font-size:13px;color:var(--ink-3)">Pessoas do grafo mais citadas nos últimos 90 dias. Cresce a cada coleta diária.</p>`:'<p>Sem menções ainda.</p>')
+      : (news?`<div class="news">${news}</div><p style="font-size:13px;color:var(--ink-3)">${st.news_sources||0} fontes · ${st.articles_90d||0} artigos em 90 dias · entidades e pessoas reconhecidas por sigla e nome.</p>`:'<p>Sem notícias coletadas ainda.</p>')); }
+  return `${winSel}${counters}${bars}${chg||'<p>Sem mudanças nesta janela.</p>'}<p style="font-size:13px;color:var(--ink-3)">Sabatinas do Senado, posses, atos do Diário Oficial e entradas e saídas detectadas na comparação diária dos ocupantes.</p>
+    <h2 class="sec">Quem sai com a posse de 2027</h2>${trans}`;
 }
 function renderHomePanel(){
   const panel = document.getElementById('home-panel'); if (!panel) return;
   panel.innerHTML = homeBody();
   panel.setAttribute('aria-labelledby', 'tab-' + homeTab);
   document.querySelectorAll('#home-tablist [role=tab]').forEach(b => { const on = b.dataset.tab === homeTab; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
-  const ws = document.getElementById('win-sel'); if (ws) { ws.hidden = NO_WIN.includes(homeTab); ws.querySelectorAll('[data-win]').forEach(b => b.setAttribute('aria-pressed', String(win === +b.dataset.win))); }
+  panel.querySelectorAll('[data-win]').forEach(b => b.addEventListener('click', () => { win = +b.dataset.win; renderHomePanel(); }));
+  panel.querySelectorAll('[data-imp]').forEach(b => b.addEventListener('click', () => { impView = b.dataset.imp; renderHomePanel(); }));
 }
 function renderHome(){
   const st = G.stats; const bt = st.by_type||{}, bs = st.by_sector||{}, bsub = st.by_subtype||{};
   const subRows = [['ministerio','Ministérios'],['orgao_presidencia','Órgãos da Presidência'],['agencia_reguladora','Agências reguladoras'],['autarquia','Autarquias'],['fundacao','Fundações'],['empresa_publica','Empresas públicas'],['sociedade_economia_mista','Sociedades de economia mista'],['tribunal','Tribunais'],['ministerio_publico','Ministério Público'],['forca_armada','Forças Armadas'],['instituicao_de_ensino','Universidades e institutos federais']];
-  const tab = ([id,label])=>`<button type="button" role="tab" id="tab-${id}" aria-selected="${homeTab===id}" aria-controls="home-panel" tabindex="${homeTab===id?0:-1}" data-tab="${id}">${label}</button>`;
-  const winSel = `<span class="win" id="win-sel" role="group" aria-label="Janela de tempo"${NO_WIN.includes(homeTab)?' hidden':''}>${[7,30,90].map(w=>`<button type="button" aria-pressed="${win===w}" data-win="${w}">${w}D</button>`).join('')}</span>`;
+  const kp = homeKpis();
+  const tab = ([id,label])=>`<button type="button" role="tab" id="tab-${id}" aria-selected="${homeTab===id}" aria-controls="home-panel" tabindex="${homeTab===id?0:-1}" data-tab="${id}"><span class="q">${label}</span><span class="n">${esc(kp[id]||'')}</span></button>`;
   content.innerHTML = `<a class="card start" href="/como-funciona/"><span class="eyebrow">Comece por aqui</span><b>Como funciona a República</b><span>Uma visita guiada de 9 minutos pela roda: quem você elege, quem nomeia quem, quem vigia quem. Para quem nunca precisou entender isso e agora quer.</span><span class="go">Começar →</span></a><nav class="quick" aria-label="Outras páginas"><a href="/comparar/">Comparar parlamentares</a><a href="/dados/">Dados abertos</a><a href="/metodologia/">Metodologia</a><a href="/feeds/mudancas.xml">Feed RSS</a></nav>`+`
   <div class="card"><h1>Quem manda em quê no governo federal</h1>
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
     <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div></div>
-  ${arrecCard()}
-  <div class="card"><div class="tabs"><div role="tablist" id="home-tablist" aria-label="Painéis da página inicial">${HOME_TABS.map(tab).join('')}</div>${winSel}</div><div id="home-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-${homeTab}"></div></div>
+  <div class="card acomp"><h2 class="acomp-h">Acompanhar <span>lido em ${fmtDate(st.generated_at)}</span></h2><div class="kpis" role="tablist" id="home-tablist" aria-label="Painéis da página inicial">${HOME_TABS.map(tab).join('')}</div><div id="home-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-${homeTab}"></div></div>
   <div class="card"><h2>Por poder</h2><div class="counts">${Object.keys(ARC).map(s=>`<span class="k"><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</span><span>${bs[s]||0}</span>`).join('')}</div>
     <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
     <h3>Cargos e colegiados</h3><div class="counts"><span>Cargos de chefia mapeados</span><span>${bt.dept_head||0}</span><span>Cadeiras (inclui 513 deputados e 81 senadores)</span><span>${st.seats_total}</span><span>Sabatinas do Senado desde 2023</span><span>${st.sabatinas||0}</span><span>Colegiados deliberativos</span><span>${bt.commission||0}</span></div></div>
@@ -768,7 +797,6 @@ function renderHome(){
   tl.addEventListener('keydown', e => { const tabs = [...tl.querySelectorAll('[role=tab]')]; let i = tabs.findIndex(b => b.dataset.tab === homeTab); if (i < 0) i = 0;
     if (e.key === 'ArrowRight') i = (i + 1) % tabs.length; else if (e.key === 'ArrowLeft') i = (i - 1 + tabs.length) % tabs.length; else if (e.key === 'Home') i = 0; else if (e.key === 'End') i = tabs.length - 1; else return;
     e.preventDefault(); goTab(tabs[i]); });
-  document.getElementById('win-sel').addEventListener('click', e => { const b = e.target.closest('[data-win]'); if (!b) return; win = +b.dataset.win; renderHomePanel(); });
 }
 function historicoHtml(n){
   const h=n.historico; if(!h||!h.mandatos||!h.mandatos.length) return '';
