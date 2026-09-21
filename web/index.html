@@ -234,7 +234,7 @@ a.card.start:hover{border-color:var(--ink-3)}
 .seg button:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--card);font-weight:600;text-decoration:none;justify-content:center}
 .hero-m{display:none}
-.ftools{display:none;justify-content:flex-end;margin:-6px 0 6px}
+.ftools{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:-6px 0 8px}.ftools .home{text-decoration:none;font-weight:600}.ftools [data-act=leitura]{display:none}
 .ftools .btn{font-size:12.5px;padding:4px 8px}
 .legend .conv{grid-column:1/-1;font-size:13.5px;margin-top:4px}
 .legend .conv summary{cursor:pointer;color:var(--accent)}
@@ -242,7 +242,7 @@ a.card.start:hover{border-color:var(--ink-3)}
 .legend .conv li{margin:3px 0}
 .sheet{display:none}
 @media (min-width:1200px){
-  .ftools{display:flex}
+  .ftools [data-act=leitura]{display:inline-flex}
   body.leitura .app{grid-template-columns:720px 1fr}
   body.leitura svg.wheel{max-width:min(96vh,40vw)}
 }
@@ -370,7 +370,7 @@ function renderError(id){
   const head = n
     ? `<div class="chips">${sectorChip(n.sector)}<span class="chip">${TYPE_NAME[n.type]||''}${n.subtype?' · '+(SUB[n.subtype]||n.subtype):''}</span></div><h1>${esc(name)}</h1>${n.aliases&&n.aliases.length?`<p style="margin-top:-4px;font-size:14px;color:var(--ink-3)">${n.aliases.map(esc).join(' · ')}</p>`:''}${n.description?`<p>${esc(n.description)}</p>`:''}${n.cite?`<p class="cite">${esc(n.cite)}</p>`:''}`
     : `<div class="phead"><span class="big">${avatar(p)}</span><div><h1 style="margin:0">${esc(name)}</h1><p style="margin:4px 0 0;color:var(--ink-3)">${[p.party,p.uf].filter(Boolean).join(' · ')||'Pessoa'}</p></div></div>${(p.positions||[]).some(q=>N[q])?`<h3>Cargos</h3><div class="list">${(p.positions||[]).filter(q=>N[q]).map(q=>link(q)).join('')}</div>`:''}`;
-  content.innerHTML = `<div class="card">${head}<div class="err" role="alert"><span>Não foi possível carregar os detalhes deste item.</span><button type="button" data-act="retry" data-id="${esc(id)}">Tentar de novo</button></div></div>`;
+  content.innerHTML = `<div class="card">${leituraBtn()}${head}<div class="err" role="alert"><span>Não foi possível carregar os detalhes deste item.</span><button type="button" data-act="retry" data-id="${esc(id)}">Tentar de novo</button></div></div>`;
   setSheet(name, n ? (TYPE_NAME[n.type]||'') : 'Pessoa');
   document.getElementById('panel').scrollTo({top:0});
 }
@@ -383,7 +383,7 @@ function setSheet(name, type){
 }
 // leitura ampla no desktop (≥1200px): painel de 720px e roda a ~40% da largura; escolha guardada no navegador
 let leitura = false; try { leitura = localStorage.getItem('atlas-leitura') === '1'; } catch(e){}
-function leituraBtn(){ return `<div class="ftools"><button type="button" class="btn" data-act="leitura" aria-pressed="${leitura}">${leitura?'Leitura normal':'Ampliar leitura'}</button></div>`; }
+function leituraBtn(){ return `<div class="ftools"><a class="btn home" href="#" aria-label="Voltar ao início">← Início</a><button type="button" class="btn" data-act="leitura" aria-pressed="${leitura}">${leitura?'Leitura normal':'Ampliar leitura'}</button></div>`; }
 function applyLeitura(){ document.body.classList.toggle('leitura', leitura); document.querySelectorAll('[data-act=leitura]').forEach(b => { b.setAttribute('aria-pressed', String(leitura)); b.textContent = leitura ? 'Leitura normal' : 'Ampliar leitura'; }); }
 function toggleLeitura(){ leitura = !leitura; try { localStorage.setItem('atlas-leitura', leitura ? '1' : '0'); } catch(e){} applyLeitura(); }
 // ---------- notícia como nó: envolvidos a um e dois passos ----------
@@ -441,7 +441,7 @@ function renderNews(a){
   let lines=''; inv.usedEdges.forEach(eid=>{ const e=E[eid]; if(!e||!N[e.from]||!N[e.to]) return; const [x1,y1]=xy(e.from),[x2,y2]=xy(e.to); lines += `<path class="edge ${e.type}" d="${curve(x1,y1,x2,y2)}" stroke="${COL[N[e.from].sector]||'var(--povo)'}" marker-end="url(#m-${e.type})"/>`; });
   document.getElementById('edges').innerHTML = lines;
   const row = r => `<div class="inv"><span class="av">${avatar(r.p)}</span><span><span class="nm"><a href="#${r.p.id}">${esc(r.p.name)}</a>${r.p.party?` <span style="color:var(--ink-3);font-size:12.5px">· ${esc(r.p.party)}</span>`:''}</span><span class="why">${r.why.slice(0,3).map(w=>`<span class="p">${w.link&&N[w.link]?`<a href="#${w.link}">↳</a> `:''}${w.text}</span>`).join('')}</span></span></div>`;
-  content.innerHTML = `<div class="card"><div class="chips"><span class="chip">Notícia</span><span class="chip">${esc(a.publication)}</span><span class="chip">${fmtDate(a.date)}</span></div>
+  content.innerHTML = `<div class="card">${leituraBtn()}<div class="chips"><span class="chip">Notícia</span><span class="chip">${esc(a.publication)}</span><span class="chip">${fmtDate(a.date)}</span></div>
     <h1 style="font-size:21px">${esc(a.title)}</h1>${a.summary_html?`<p>${a.summary_html}</p>`:''}
     <div class="links"><a href="${a.url}" target="_blank" rel="noopener">Ler na fonte ↗</a></div>
     ${inv.ents.length?`<h3>Órgãos citados</h3><div class="list">${inv.ents.map(id=>link(id, SUB[N[id].subtype]||'')).join('')}</div>`:''}
@@ -873,6 +873,7 @@ rlist.addEventListener('click', e => { if (!e.target.closest('#sr-more')) return
 rlist.addEventListener('focusin', e => { const o = e.target.closest('[role=option]'); if (o) q.setAttribute('aria-activedescendant', o.id); });
 document.addEventListener('click', e => { if (!e.target.closest('.search')) closeSearch(); });
 // (a chamada inicial, no fim do script, é a que scripts/build_site.py troca por `select(hash || "<id>")`; por isso aqui a forma é outra)
+document.addEventListener('keydown', e => { if (e.key !== 'Escape' || e.defaultPrevented) return; const t = e.target; if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return; if (!res.hidden) return; if (location.hash) { location.hash = ''; } });
 window.addEventListener('hashchange', () => { closeSearch(); q.value=''; const h = location.hash.slice(1); select(h); });
 
 // ---------- tooltip, teclado ----------

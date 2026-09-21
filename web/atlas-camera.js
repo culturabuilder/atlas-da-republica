@@ -155,12 +155,12 @@
     document.head.appendChild(css);
     ui = document.createElement('div'); ui.className = 'cam-ui'; ui.setAttribute('role', 'group'); ui.setAttribute('aria-label', 'Movimento da roda');
     ui.innerHTML = '<div class="grp" role="group" aria-label="Modo"><button type="button" data-mode="none" aria-pressed="false" title="A roda fica parada">Sem movimento</button><button type="button" data-mode="focus" aria-pressed="false" title="Aproxima a seleção sem girar">Foco suave</button><button type="button" data-mode="rotate" aria-pressed="false" title="Experimental: gira a roda para orientar a seleção">Rotação</button></div>' +
-      '<div class="grp z" role="group" aria-label="Zoom"><button type="button" data-z="out" aria-label="Afastar">−</button><button type="button" data-z="in" aria-label="Aproximar">+</button><button type="button" data-z="reset">Visão geral</button></div>';
+      '<div class="grp z" role="group" aria-label="Zoom"><button type="button" data-z="out" aria-label="Afastar">−</button><button type="button" data-z="in" aria-label="Aproximar">+</button><button type="button" data-z="reset" title="Volta à roda inteira e à página inicial">⌂ Início</button></div>';
     stage.insertBefore(ui, stage.firstChild);
     ui.addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) return;
       if (b.dataset.mode) setMode(b.dataset.mode);
-      else if (b.dataset.z === 'in') zoom(1.25); else if (b.dataset.z === 'out') zoom(1 / 1.25); else go({ s: 1, tx: 0, ty: 0, rot: 0 });
+      else if (b.dataset.z === 'in') zoom(1.25); else if (b.dataset.z === 'out') zoom(1 / 1.25); else { go({ s: 1, tx: 0, ty: 0, rot: 0 }); if (location.hash) location.hash = ''; }
     });
     if (window.ATLAS_PREVIA) {
       var bn = document.createElement('div'); bn.className = 'previa-banner';
