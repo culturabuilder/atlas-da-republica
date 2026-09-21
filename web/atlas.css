@@ -5,6 +5,7 @@
   --accent:#1F5F4A; --accent-soft:#DDEBE3; --focus:#1F5F4A;
   --leg:#B8452E; --exe:#3B4C9B; --jud:#8A6C10; --ess:#5E3D7A; --povo:#C25A12;
   --sector-alpha:.10; --ring-alpha:.35; --node-fill:#FAFAF7;
+  --on-povo:#000; --on-sector:#fff;
   --mono:"JetBrains Mono",ui-monospace,Menlo,monospace; --sans:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif; --disp:"Archivo","Helvetica Neue",Arial,sans-serif;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
@@ -13,6 +14,7 @@
   --accent:#8CCBAF; --accent-soft:#1E3A2E; --focus:#8CCBAF;
   --leg:#F0907A; --exe:#9AA6EE; --jud:#E2C25A; --ess:#C9A3E6; --povo:#F2A063;
   --sector-alpha:.14; --ring-alpha:.4; --node-fill:#1A1C19;
+  --on-povo:#131412; --on-sector:#131412;
 }}
 :root[data-theme="dark"]{
   --ok:#8FD3A6; --ok-soft:#1B3324; --warn:#E9B860; --warn-soft:#3A2E14;
@@ -20,6 +22,7 @@
   --accent:#8CCBAF; --accent-soft:#1E3A2E; --focus:#8CCBAF;
   --leg:#F0907A; --exe:#9AA6EE; --jud:#E2C25A; --ess:#C9A3E6; --povo:#F2A063;
   --sector-alpha:.14; --ring-alpha:.4; --node-fill:#1A1C19;
+  --on-povo:#131412; --on-sector:#131412;
 }
 /* ---------- roda ---------- */
 svg.wheel{width:100%;max-width:min(96vh,980px);height:auto;display:block;margin:0 auto;font-family:var(--mono)}
@@ -42,7 +45,8 @@ svg.wheel{width:100%;max-width:min(96vh,980px);height:auto;display:block;margin:
 .edge.integra,.edge.membro_nato{stroke-dasharray:1.5 3}
 .edge.supervisiona,.edge.fiscaliza,.edge.aconselha{stroke-dasharray:8 3 2 3}
 .edge.elege{stroke-width:2.4}
-.center-label{font-family:var(--disp);font-weight:700;font-size:9.5px;fill:#fff;text-anchor:middle}
+/* texto sobre o laranja do centro: escuro nos dois temas (≥4,5:1); branco sobre #C25A12 dava 4,2:1 e sobre #F2A063 2,1:1 */
+.center-label{font-family:var(--disp);font-weight:700;font-size:9.5px;fill:var(--on-povo,#000);text-anchor:middle}
 .tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:13px;padding:5px 9px;border-radius:5px;white-space:nowrap;z-index:6;transform:translate(-50%,-140%)}
 .tip[hidden]{display:none}
 .tip small{opacity:.7;font-family:var(--mono);font-size:10px;margin-left:6px}

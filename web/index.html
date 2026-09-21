@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="pt-BR">
-<script>try{document.documentElement.dataset.theme=localStorage.getItem('atlas-theme')||'dark'}catch(e){document.documentElement.dataset.theme='dark'}</script>
+<script>try{var _t=localStorage.getItem('atlas-theme')||'dark';if(_t!=='auto')document.documentElement.dataset.theme=_t}catch(e){document.documentElement.dataset.theme='dark'}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atlas da República</title>
@@ -39,6 +39,11 @@ a.gm-item:hover,a.gm-item:focus{background:var(--panel);outline:none}
 .search svg{position:absolute;left:11px;top:11px;width:16px;height:16px;color:var(--ink-3)}
 .results{position:absolute;left:0;right:0;top:44px;background:var(--card);border:1px solid var(--line);border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,.18);z-index:10;max-height:360px;overflow:auto;padding:6px}
 .results[hidden]{display:none}
+.results .rcount{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);padding:4px 10px 6px}
+.results .rcount:empty{display:none}
+.results .rmore{display:block;width:100%;font:inherit;font-size:14px;text-align:left;padding:8px 10px;margin-top:4px;border:0;border-top:1px solid var(--line-2);background:none;color:var(--accent);cursor:pointer}
+.results .rmore:hover,.results .rmore:focus{background:var(--accent-soft);outline:none}
+.results [role=option][aria-selected=true]{background:var(--accent-soft)}
 .results a{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:15px}
 .results a:hover,.results a:focus{background:var(--accent-soft);outline:none}
 .results .t{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-left:auto;white-space:nowrap}
@@ -49,7 +54,7 @@ h3{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:upp
 p{margin:8px 0;color:var(--ink-2)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
 .chip{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:var(--panel);border:1px solid var(--line);color:var(--ink-2)}
-.chip.sec{border-color:transparent;color:#fff}
+.chip.sec{border-color:transparent;color:var(--on-sector,#fff)}
 .chip.warn{background:transparent;border-color:var(--jud);color:var(--jud)}
 .links{display:flex;gap:14px;flex-wrap:wrap;font-size:14px}
 .list{display:flex;flex-direction:column;gap:6px}
@@ -111,6 +116,9 @@ p{margin:8px 0;color:var(--ink-2)}
 .news .it .m{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:2px}
 .news .it .e{display:inline-block;font-size:12.5px;color:var(--accent);text-decoration:none;margin-right:8px}
 .tabs{display:flex;flex-wrap:wrap;gap:2px;align-items:center;border-bottom:1px solid var(--line-2);margin:0 -20px 12px;padding:0 12px 6px}
+.tabs [role=tablist]{display:flex;flex-wrap:wrap;gap:2px}
+#home-panel:focus-visible{outline:2px solid var(--focus);outline-offset:4px;border-radius:6px}
+.win[hidden]{display:none}
 .tabs button{font:inherit;font-size:13.5px;padding:8px 8px;white-space:nowrap;border:0;border-bottom:2px solid transparent;background:none;color:var(--ink-3);cursor:pointer}
 .tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent)}
 .tabs button:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
@@ -216,13 +224,54 @@ a.card.start b{font-family:var(--disp);font-size:19px;letter-spacing:-.01em}
 a.card.start span{font-size:14px;color:var(--ink-2)}
 a.card.start .go{color:var(--accent);font-weight:600;margin-top:4px}
 a.card.start:hover{border-color:var(--ink-3)}
+/* ---------- estados, controles e leitura ---------- */
+.err{background:var(--warn-soft);color:var(--warn);border-radius:8px;padding:10px 12px;font-size:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0 0}
+.err button{font:inherit;font-size:13.5px;padding:6px 10px;border:1px solid var(--warn);border-radius:6px;background:var(--card);color:var(--ink);cursor:pointer}
+.err button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.seg{display:flex;gap:2px;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--card)}
+.seg button{font:inherit;font-size:13px;padding:5px 9px;border:0;border-radius:6px;background:none;color:var(--ink-3);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--card);font-weight:600;text-decoration:none;justify-content:center}
+.hero-m{display:none}
+.ftools{display:none;justify-content:flex-end;margin:-6px 0 6px}
+.ftools .btn{font-size:12.5px;padding:4px 8px}
+.legend .conv{grid-column:1/-1;font-size:13.5px;margin-top:4px}
+.legend .conv summary{cursor:pointer;color:var(--accent)}
+.legend .conv ul{margin:6px 0 0;padding-left:18px;color:var(--ink-2)}
+.legend .conv li{margin:3px 0}
+.sheet{display:none}
+@media (min-width:1200px){
+  .ftools{display:flex}
+  body.leitura .app{grid-template-columns:720px 1fr}
+  body.leitura svg.wheel{max-width:min(96vh,40vw)}
+}
 @media (max-width:900px){
-  .app{grid-template-columns:1fr}
-  .panel{max-height:none;position:static;order:2}
-  .stage{order:1}
-  .topbar{top:16px;right:16px}
+  /* no celular a ordem é: marca, busca, chamada, roda (≤70vh), ficha; o painel vira display:contents para que seus filhos entrem na grade */
+  .app{grid-template-columns:1fr;gap:12px;padding:12px;overflow-x:clip}
+  .panel{display:contents}
+  .panel>*,.stage{min-width:0}
+  .panel>.card:first-child{order:1}
+  .search{order:2}
+  .hero-m{order:3;display:grid;gap:10px}
+  .hero-m .tagline{margin:0;font-family:var(--disp);font-size:20px;font-weight:700;letter-spacing:-.01em;line-height:1.2;color:var(--ink);text-wrap:balance}
+  .hero-m .hero-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .hero-m .hero-btns .btn{justify-content:center;text-decoration:none}
+  .stage{order:4;padding:0}
+  svg.wheel{max-width:min(100%,70vh)}
+  #content{order:5}
+  #ssr{order:5}
+  .foot{order:6}
+  .topbar{position:static;justify-content:flex-end;margin:0 0 8px} /* em fluxo, acima da roda: não cobre a barra da câmera nem o topo do gráfico */
   .legend{position:static;margin-top:8px}
   .legend .box{box-shadow:none}
+  .sheet{position:fixed;left:0;right:0;bottom:0;z-index:15;min-height:72px;display:flex;gap:10px;align-items:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--card);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(0,0,0,.18)}
+  .sheet[hidden]{display:none}
+  .sheet .sheet-txt{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}
+  .sheet .sheet-txt b{font-family:var(--disp);font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sheet .sheet-txt span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  .sheet .btn{flex:none}
+  body.has-sheet{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
 }
 @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
 </style>
@@ -242,15 +291,19 @@ a.card.start:hover{border-color:var(--ink-3)}
     </div>
     <div class="search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input id="q" type="search" placeholder="Buscar órgão, cargo, pessoa, sigla ou combinação (senador MG, deputada PT…)" autocomplete="off" aria-label="Buscar no grafo" role="combobox" aria-expanded="false" aria-controls="results">
-      <div id="results" class="results" role="listbox" hidden></div>
+      <input id="q" type="search" placeholder="Buscar órgão, cargo, pessoa, sigla ou combinação (senador MG, deputada PT…)" autocomplete="off" aria-label="Buscar no grafo" role="combobox" aria-expanded="false" aria-controls="results-list" aria-autocomplete="list">
+      <div id="results" class="results" hidden><div class="rcount" id="results-count" role="status" aria-live="polite"></div><div id="results-list" role="listbox" aria-label="Resultados da busca"></div></div>
+    </div>
+    <div class="hero-m">
+      <p class="tagline">Quem manda em quê no governo federal, com a lei que diz isso.</p>
+      <div class="hero-btns"><button type="button" class="btn primary" id="open-wheel">Abrir a roda ↓</button><a class="btn" href="/como-funciona/">Como funciona</a></div>
     </div>
     <div id="content"></div>
     <div class="foot">Curadoria com citação legal · SIORG, Câmara, Senado, Portal da Transparência, DOU, páginas oficiais, Wikipédia e Wikidata, nessa ordem de confiança · atualizado diariamente</div>
   </aside>
   <main class="stage" id="stage">
     <div class="topbar">
-      <button class="btn" id="theme" aria-label="Alternar tema claro e escuro">◐ Tema</button>
+      <div class="seg" id="theme" role="group" aria-label="Tema"><button type="button" data-theme="auto" aria-pressed="false">Auto</button><button type="button" data-theme="light" aria-pressed="false">Claro</button><button type="button" data-theme="dark" aria-pressed="false">Escuro</button></div>
     </div>
     <div class="tip" id="tip" hidden></div>
     <div id="graph"></div>
@@ -260,21 +313,69 @@ a.card.start:hover{border-color:var(--ink-3)}
     </div>
   </main>
 </div>
+<div class="sheet" id="sheet" role="region" aria-label="Item selecionado" hidden>
+  <div class="sheet-txt"><b id="sheet-name"></b><span id="sheet-type"></span></div>
+  <button type="button" class="btn primary" id="sheet-go">Ver ficha</button>
+  <button type="button" class="btn" id="sheet-x" aria-label="Voltar à visão geral">×</button>
+</div>
 
 <script src="graph.br.js" defer></script>
 <script src="atlas.js" defer></script>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
+// esc nulo-seguro dentro da app: nenhum campo renderiza "undefined" ou "null" (o esc global de atlas.js continua igual)
+const esc = v => (v == null) ? '' : window.esc(v);
 
 // ---------- seleção ----------
 let current = null;
+let selSeq = 0; // corrida de seleção: cada select() do usuário/hash incrementa; callbacks assíncronos só renderizam se ainda forem a última seleção
 const detailCache = {};
+// resolve com o JSON; 404 vira {} (renderiza só com o núcleo); erro de rede/5xx rejeita e NÃO fica no cache
+function fetchJson(url){ return fetch(url).then(r => { if (r.ok) return r.json(); if (r.status === 404) return {}; throw new Error('HTTP ' + r.status); }); }
 async function loadDetail(id){
   const n = N[id]; if (!n || n.description !== undefined || !G.detail_base) return n;
-  if (!detailCache[id]) detailCache[id] = fetch(G.detail_base + id + '.json').then(r => r.ok ? r.json() : {}).catch(() => ({}));
+  if (!detailCache[id]) detailCache[id] = fetchJson(G.detail_base + id + '.json').catch(err => { delete detailCache[id]; throw err; });
   const d = await detailCache[id]; Object.assign(n, d); if (n.description === undefined) n.description = '';
   return n;
 }
+function loadingCard(name){ return `<div class="card"><h1>${esc(name)}</h1><p aria-live="polite">Carregando…</p></div>`; }
+// destaque na roda: nó selecionado, vizinhos e arestas (ou limpa tudo quando id é vazio)
+function wheelFocus(id){
+  const svg = document.querySelector('svg.wheel'); const eg = document.getElementById('edges');
+  document.querySelectorAll('.node').forEach(a => { a.classList.remove('sel','lit'); });
+  if (eg) eg.innerHTML = '';
+  if (!svg) return;
+  if (!id || !N[id]) { svg.classList.remove('dim'); return; }
+  svg.classList.add('dim');
+  const n = N[id]; const me = document.querySelector(`.node[data-id="${id}"]`); if (me) me.classList.add('sel');
+  let lines = '';
+  for (const eid of (n.edges||[])) { const e = E[eid]; if (!e || !N[e.from] || !N[e.to]) continue; const other = e.from === id ? e.to : e.from; const o = document.querySelector(`.node[data-id="${other}"]`); if (o) o.classList.add('lit');
+    const [x1,y1] = xy(e.from), [x2,y2] = xy(e.to); const col = COL[N[e.from].sector] || 'var(--povo)';
+    lines += `<path class="edge ${e.type}" d="${curve(x1,y1,x2,y2)}" stroke="${col}" marker-end="url(#m-${e.type})"/>`; }
+  if (eg) eg.innerHTML = lines;
+}
+// erro de rede/5xx: mantém o que o núcleo já sabe (nome, tipo, descrição curta, cargos) e oferece tentar de novo
+function renderError(id){
+  const n = N[id], p = P[id]; const name = n ? n.name : p ? p.name : id;
+  const head = n
+    ? `<div class="chips">${sectorChip(n.sector)}<span class="chip">${TYPE_NAME[n.type]||''}${n.subtype?' · '+(SUB[n.subtype]||n.subtype):''}</span></div><h1>${esc(name)}</h1>${n.aliases&&n.aliases.length?`<p style="margin-top:-4px;font-size:14px;color:var(--ink-3)">${n.aliases.map(esc).join(' · ')}</p>`:''}${n.description?`<p>${esc(n.description)}</p>`:''}${n.cite?`<p class="cite">${esc(n.cite)}</p>`:''}`
+    : `<div class="phead"><span class="big">${avatar(p)}</span><div><h1 style="margin:0">${esc(name)}</h1><p style="margin:4px 0 0;color:var(--ink-3)">${[p.party,p.uf].filter(Boolean).join(' · ')||'Pessoa'}</p></div></div>${(p.positions||[]).some(q=>N[q])?`<h3>Cargos</h3><div class="list">${(p.positions||[]).filter(q=>N[q]).map(q=>link(q)).join('')}</div>`:''}`;
+  content.innerHTML = `<div class="card">${head}<div class="err" role="alert"><span>Não foi possível carregar os detalhes deste item.</span><button type="button" data-act="retry" data-id="${esc(id)}">Tentar de novo</button></div></div>`;
+  setSheet(name, n ? (TYPE_NAME[n.type]||'') : 'Pessoa');
+  document.getElementById('panel').scrollTo({top:0});
+}
+// barra fixa no rodapé (só aparece no celular, via CSS): resumo do item perto do toque
+const sheet = document.getElementById('sheet');
+function setSheet(name, type){
+  if (!name) { sheet.hidden = true; document.body.classList.remove('has-sheet'); return; }
+  document.getElementById('sheet-name').textContent = name; document.getElementById('sheet-type').textContent = type || '';
+  sheet.hidden = false; document.body.classList.add('has-sheet');
+}
+// leitura ampla no desktop (≥1200px): painel de 720px e roda a ~40% da largura; escolha guardada no navegador
+let leitura = false; try { leitura = localStorage.getItem('atlas-leitura') === '1'; } catch(e){}
+function leituraBtn(){ return `<div class="ftools"><button type="button" class="btn" data-act="leitura" aria-pressed="${leitura}">${leitura?'Leitura normal':'Ampliar leitura'}</button></div>`; }
+function applyLeitura(){ document.body.classList.toggle('leitura', leitura); document.querySelectorAll('[data-act=leitura]').forEach(b => { b.setAttribute('aria-pressed', String(leitura)); b.textContent = leitura ? 'Leitura normal' : 'Ampliar leitura'; }); }
+function toggleLeitura(){ leitura = !leitura; try { localStorage.setItem('atlas-leitura', leitura ? '1' : '0'); } catch(e){} applyLeitura(); }
 // ---------- notícia como nó: envolvidos a um e dois passos ----------
 let _posPeople = null;
 function holders(pid){ if (!_posPeople) { _posPeople = {}; for (const p of Object.values(P)) for (const q of (p.positions||[])) (_posPeople[q] = _posPeople[q]||[]).push(p.id); } return (_posPeople[pid]||[]).slice(0,12).map(id=>P[id]).filter(Boolean); }
@@ -323,6 +424,7 @@ function newsInvolved(a){
 }
 function renderNews(a){
   const inv = newsInvolved(a);
+  setSheet(null);
   const svg = document.querySelector('svg.wheel'); svg.classList.add('dim');
   document.querySelectorAll('.node').forEach(el => el.classList.remove('sel','lit'));
   inv.litNodes.forEach(id=>{ const el=document.querySelector(`.node[data-id="${id}"]`); if(el) el.classList.add('lit'); });
@@ -357,7 +459,8 @@ function renderPerson(p){
   const pos=posIds.map(pid=>{ const n=N[pid]; if(!n) return ''; const full=fullPos.find(q=>q.id===pid)||{}; const eh=entryHtml(full.entry, n); return link(pid, [full.role?esc(full.role):'', full.since&&!eh?'desde '+fmtDate(full.since):''].filter(Boolean).join(' · '))+(eh?`<div class="entry">${eh}${full.note&&full.source!=='senado'?` · ${esc(full.note)}`:''}</div>`:''); }).join('');
   const samePerson=(a,b)=>{ const ta=norm(a).split(' ').filter(Boolean), tb=norm(b).split(' ').filter(Boolean); if(!ta.length||!tb.length) return false; if(ta.join(' ')===tb.join(' ')) return true; const [s,l]=ta.length<=tb.length?[ta,tb]:[tb,ta]; if(s.length<2||s[0]!==l[0]) return false; let i=0; for(const w of s){ i=l.indexOf(w,i); if(i<0) return false; i++; } return true; };
   const sab=[]; for (const pid of posIds) for (const sb of (N[pid]&&N[pid].sabatinas)||[]) if (sb.name && samePerson(sb.name,p.name)) sab.push(sb);
-  content.innerHTML = `<div class="card"><div class="phead"><span class="big">${avatar(p)}</span><div><h1 style="margin:0">${esc(p.name)}</h1><p style="margin:4px 0 0;color:var(--ink-3)">${[p.party,p.uf].filter(Boolean).join(' · ')||'Pessoa'}${pm?` · na notícia ${pm.articles}× em 90 dias, última ${fmtDate(pm.last)}`:''}</p></div></div>
+  setSheet(p.name, 'Pessoa');
+  content.innerHTML = `<div class="card">${leituraBtn()}<div class="phead"><span class="big">${avatar(p)}</span><div><h1 style="margin:0">${esc(p.name)}</h1><p style="margin:4px 0 0;color:var(--ink-3)">${[p.party,p.uf].filter(Boolean).join(' · ')||'Pessoa'}${pm?` · na notícia ${pm.articles}× em 90 dias, última ${fmtDate(pm.last)}`:''}</p></div></div>
     <h3>Cargos</h3><div class="list">${pos||'<span class="seat">Sem cargo registrado.</span>'}</div>
     ${activityHtml(p)}
     ${agendaHtml(p)}
@@ -377,34 +480,31 @@ function renderPerson(p){
   document.getElementById('panel').scrollTo({top:0});
 }
 function select(id){
+  const seq = ++selSeq;
   const ssr=document.getElementById('ssr'); if(ssr) ssr.remove();
-  if (id && id.startsWith('news:')) { const a=(G.news||[]).find(x=>x.id===id.slice(5)); if (a) { current=null; renderNews(a); return; } }
+  if (id && id.startsWith('news:')) { const a=(G.news||[]).find(x=>x.id===id.slice(5)); if (a) { current=null; setSheet(null); renderNews(a); return; } }
   if (P[id]) { current = null;
-    if (G.people_base && !P[id]._full) { content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; fetch(G.people_base + id + '.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(d=>{ P[id]._full = d.positions || []; P[id]._activity = d.activity || null; P[id]._emendas = d.emendas || null; P[id]._cand = d.candidaturas || null; P[id]._gab = d.gabinete || null; P[id]._pat = d.patrimonio || null; P[id]._rem = d.remuneracao || null; P[id]._doa = d.doadores || null; P[id]._sin = d.sinais || null; P[id]._vg = d.viagens || null; P[id]._ct = d.cartao || null; P[id]._pr = d.proposicoes || null; P[id]._ag = d.agenda || null; if (!location.hash || location.hash.slice(1)===id) select(id); }); return; }
+    if (G.people_base && !P[id]._full) { content.innerHTML = loadingCard(P[id].name); wheelFocus('');
+      fetchJson(G.people_base + id + '.json').then(d=>{ P[id]._full = d.positions || []; P[id]._activity = d.activity || null; P[id]._emendas = d.emendas || null; P[id]._cand = d.candidaturas || null; P[id]._gab = d.gabinete || null; P[id]._pat = d.patrimonio || null; P[id]._rem = d.remuneracao || null; P[id]._doa = d.doadores || null; P[id]._sin = d.sinais || null; P[id]._vg = d.viagens || null; P[id]._ct = d.cartao || null; P[id]._pr = d.proposicoes || null; P[id]._ag = d.agenda || null; if (seq !== selSeq) return; select(id); },
+        () => { if (seq !== selSeq) return; renderError(id); }); return; }
     const full = P[id]._full || (G.people&&G.people[id]&&G.people[id].positions) || [];
     const ids = full.length ? full.map(q=>q.id) : (P[id].positions||[]);
-    const need = ids.filter(pid=>N[pid]&&N[pid].description===undefined&&G.detail_base); if (need.length) { Promise.all(need.map(loadDetail)).then(()=>renderPerson(P[id])); } else renderPerson(P[id]); return; }
-  if (N[id] && N[id].description === undefined && G.detail_base) { loadDetail(id).then(() => select(id)); content.innerHTML = '<div class="card"><p>Carregando…</p></div>'; return; }
+    const need = ids.filter(pid=>N[pid]&&N[pid].description===undefined&&G.detail_base);
+    // detalhe dos cargos é acessório: se falhar, a ficha da pessoa sai mesmo assim com o que o núcleo tem
+    if (need.length) { Promise.all(need.map(loadDetail)).then(()=>{ if (seq !== selSeq) return; renderPerson(P[id]); }, ()=>{ if (seq !== selSeq) return; renderPerson(P[id]); }); } else renderPerson(P[id]); return; }
+  if (N[id] && N[id].description === undefined && G.detail_base) { content.innerHTML = loadingCard(N[id].name); wheelFocus(id); setSheet(N[id].name, TYPE_NAME[N[id].type]||''); loadDetail(id).then(() => { if (seq !== selSeq) return; select(id); }, () => { if (seq !== selSeq) return; renderError(id); }); return; }
   current = N[id] ? id : null;
-  const svg = document.querySelector('svg.wheel'); const eg = document.getElementById('edges');
-  document.querySelectorAll('.node').forEach(a => { a.classList.remove('sel','lit'); });
-  eg.innerHTML = '';
-  if (!current) { svg.classList.remove('dim'); renderHome(); return; }
-  svg.classList.add('dim');
-  const n = N[current]; const me = document.querySelector(`.node[data-id="${current}"]`); if (me) me.classList.add('sel');
-  let lines = '';
-  for (const eid of n.edges) { const e = E[eid]; const other = e.from === current ? e.to : e.from; const o = document.querySelector(`.node[data-id="${other}"]`); if (o) o.classList.add('lit');
-    const [x1,y1] = xy(e.from), [x2,y2] = xy(e.to); const col = COL[N[e.from].sector] || 'var(--povo)';
-    lines += `<path class="edge ${e.type}" d="${curve(x1,y1,x2,y2)}" stroke="${col}" marker-end="url(#m-${e.type})"/>`; }
-  eg.innerHTML = lines;
+  wheelFocus(current);
+  if (!current) { setSheet(null); renderHome(); return; }
+  const n = N[current];
   renderNode(n);
   content.insertAdjacentHTML('beforeend', `<div class="card" style="padding:8px 16px">${reportLink('página', n.id, n.name).replace('margin:14px 0 0','margin:0')}</div>`);
 }
 
 // ---------- painel ----------
 const content = document.getElementById('content');
-function sectorChip(sid){ return sid ? `<span class="chip sec" style="background:${COL[sid]}">${SEC[sid].name}</span>` : ''; }
-function link(id, extra){ const n=N[id]; return `<a href="#${id}"><span class="dot" style="background:${COL[n.sector]||'var(--povo)'}"></span><span>${esc(n.name)}</span>${extra?`<span class="sm">${extra}</span>`:''}</a>`; }
+function sectorChip(sid){ return sid && COL[sid] ? `<span class="chip sec" style="background:${COL[sid]}">${esc(SEC[sid]?SEC[sid].name:sid)}</span>` : ''; }
+function link(id, extra){ const n=N[id]; if(!n) return ''; return `<a href="#${id}"><span class="dot" style="background:${COL[n.sector]||'var(--povo)'}"></span><span>${esc(n.name)}</span>${extra?`<span class="sm">${extra}</span>`:''}</a>`; }
 function fmtLong(d){ if(!d) return ''; const [y,m,dd]=d.split('-'); const M=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']; return dd&&m?`${+dd} ${M[+m-1]} ${y}`:y; }
 function whoLink(e){ if(!e.by_id&&!e.by_person) return ''; const body=e.by_id&&N[e.by_id]?`<a href="#${e.by_id}">${esc(e.by_name||N[e.by_id].name)}</a>`:esc(e.by_name||''); if(e.by_person){ const pl=e.by_person_id&&P[e.by_person_id]?`<a href="#${e.by_person_id}">${esc(e.by_person)}</a>`:`<b>${esc(e.by_person)}</b>`; return `${pl} (${body})`; } return body; }
 // Frase completa: quem chamou, quando, sabatina, posse, fim do mandato
@@ -437,10 +537,10 @@ function simples(x){ return x&&x.resumo?`<div class="simples">${esc(x.resumo)}<i
 function omissaoHtml(){
   const o=G.omissao; if(!o) return '<p class="seat">Sem dados do placar ainda.</p>'; const s=o.summary||{};
   const stat=(n,l)=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`;
-  let out=`<p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">Decisões que têm prazo ou rito definido e ainda não aconteceram. Fato, prazo, data e quem decide o próximo passo. Fontes: Senado e Câmara, dados abertos, ${fmtDate(o.generated_at)}.</p>
+  let out=`<p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">Decisões que têm prazo ou rito definido e ainda não aconteceram. Fato, prazo, data e quem decide o próximo passo. Fontes: Senado e Câmara, dados abertos, lidos em ${fmtDate(o.generated_at)}.</p>
   <div class="om">${stat(s.vetos_pendentes,'vetos sem votação')}${stat(s.vetos_vencidos,'vetos além dos 30 dias')}${stat(s.mpvs_ate_30_dias,'MPs a até 30 dias de caducar')}${stat(brl(s.mpvs_valor_em_risco),'em créditos que caducam junto')}${stat(s.rcps_com_assinaturas_aguardando,'pedidos de CPI com assinaturas suficientes sem despacho')}</div>`;
   const mp=(o.mpvs||[]).filter(x=>x.days_left!=null).slice(0,8);
-  if(mp.length) out+=`<h3>Medidas provisórias perto do prazo</h3><p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">Uma MP vale 60 dias, prorrogáveis por mais 60, contados fora do recesso. Sem votação nas duas Casas, perde a validade (CF art. 62 §§3º e 7º).</p>`+mp.map(x=>`<div class="om-it"><span class="t"><a href="${x.url}" target="_blank" rel="noopener">${esc(x.title)}</a></span> ${esc(x.summary||'')}<span class="m">${x.days_left<=7?`<span class="bad">faltam ${x.days_left} dias</span>`:`faltam <b>${x.days_left}</b> dias`} · caduca em ${fmtLong(x.deadline)}${x.value?` · <b>${brl(x.value)}</b>`:''}${x.prorogued?' · prorrogada':''}${x.suspended?' · prazo suspenso no recesso':''} · ${esc((x.status||'').toLowerCase())}</span>${simples(x)}${who(x)}</div>`).join('');
+  if(mp.length) out+=`<h3>Medidas provisórias perto do prazo</h3><p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">Uma MP vale 60 dias, prorrogáveis por mais 60, contados fora do recesso. Sem votação nas duas Casas, perde a validade (CF art. 62 §§3º e 7º).</p>`+mp.map(x=>`<div class="om-it"><span class="t"><a href="${x.url}" target="_blank" rel="noopener">${esc(x.title)}</a></span> ${esc(x.summary||'')}<span class="m">${x.days_left<=7?`<span class="bad">faltam ${x.days_left} dias</span>`:`faltam <b>${x.days_left}</b> dias`} · caduca em ${fmtLong(x.deadline)}${x.value>=1000?` · <b>${brl(x.value)}</b>`:''}${x.prorogued?' · prorrogada':''}${x.suspended?' · prazo suspenso no recesso':''} · ${esc((x.status||'').toLowerCase())}</span>${simples(x)}${who(x)}</div>`).join('');
   const rc=(o.rcps||[]).filter(x=>x.status==='aguardando'&&x.enough);
   if(rc.length) out+=`<h3>Pedidos de CPI com assinaturas suficientes, sem despacho</h3><p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">Com um terço das assinaturas (171 deputados) a CPI deve ser criada; o presidente da Câmara decide quando a lê e a instala (CF art. 58 §3º; RICD art. 35).</p>`+rc.map(x=>`<div class="om-it"><span class="t"><a href="${x.url}" target="_blank" rel="noopener">${esc(x.title)}</a></span> ${esc((x.summary||'').replace(/^Requer(,| a Vossa Excelência,)?( nos termos d[^,]+,)?\s*/i,''))}<span class="m"><b>${x.signatures}</b> assinaturas · protocolado em ${fmtLong(x.date)} · <span class="bad">há ${x.days} dias</span> · ${esc(x.situation||'')}</span>${simples(x)}${who(x)}</div>`).join('');
   const cu=o.curated||[];
@@ -453,7 +553,7 @@ function spark(weekly){ const vals=Object.values(weekly||{}); if(vals.length<2) 
 function temasHtml(){
   const T=G.temas; if(!T||!T.temas||!T.temas.length) return '<p class="seat">Sem temas ainda.</p>';
   const ST={em_movimento:['mov','em movimento'],parado:['par','parado'],prazo_vencido:['ven','prazo vencido'],encerrado:['enc','encerrado'],sem_processo:['enc','sem processo']};
-  let out=`<p style="font-size:14px;color:var(--ink-2);margin:0 0 10px">Temas em debate cruzados com o andamento dos processos. "Parado" é a distância desde o último andamento; "prazo vencido" é o prazo legal já passado. A linha mostra as visitas semanais ao verbete na Wikipédia nos últimos 90 dias. Fontes: Câmara, Senado, Wikimedia e as notícias do Atlas, ${fmtDate(T.generated_at)}.</p>`;
+  let out=`<p style="font-size:14px;color:var(--ink-2);margin:0 0 10px">Temas em debate cruzados com o andamento dos processos. "Parado" é a distância desde o último andamento; "prazo vencido" é o prazo legal já passado. A linha mostra as visitas semanais ao verbete na Wikipédia nos últimos 90 dias. Fontes: Câmara, Senado, Wikimedia e as notícias do Atlas, lidos em ${fmtDate(T.generated_at)}.</p>`;
   out+=T.temas.map(t=>{ const [cls,lab]=ST[t.state]||['enc',t.state]; const wk=t.wikipedia; const c=t.curated_item;
     return `<div class="tema"><div class="hd"><div><div class="nm">${esc(t.name)}</div><div class="q">${esc(t.question||'')}</div></div><span class="st ${cls}">${lab}${t.stalled_days!=null&&t.state!=='encerrado'?` · ${t.stalled_days} d`:''}</span></div>
     ${simples(t)}${t.silent_and_stalled?`<div class="flag">Silêncio com prazo vencido: a atenção caiu mais de 80% do pico há mais de 60 dias, e o processo segue sem decisão.</div>`:''}
@@ -469,7 +569,7 @@ function dinheiroHtml(){
   const E=G.emendas, T=G.teto, R=G.renuncias; if(!E&&!T&&!R) return '<p class="seat">Sem dados ainda.</p>';
   const stat=(n,l)=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`; let out='<div class="din">';
   if(E){ const el=E.ano_eleitoral||{}; const pg=el.pagos_ate_mesmo_mes||{}; const y=String(E.year), py=String(E.year-1); const m=(el.ultimo_mes||'').slice(4,6); const rk=Object.keys(el).find(k=>k.startsWith('pago_ate_mes')&&k.includes(y)); const r22=Object.keys(el).find(k=>k.startsWith('pago_ate_mes')&&k.includes('2022'));
-    out+=`<h3>Emendas parlamentares</h3><p class="note">Dinheiro do orçamento que deputados e senadores destinam a obras, serviços e municípios. Ano eleitoral pesa: os pagamentos até o mês ${m} de ${y} somam ${brl(pg[y])}, contra ${brl(pg[py])} no mesmo período de ${py}${rk&&el[rk]?` (${el[rk].toLocaleString('pt-BR')}×)`:''}${r22&&el[r22]?`; em 2022, ${el[r22].toLocaleString('pt-BR')}× o de 2021`:''}. Fonte: Portal da Transparência, ${fmtDate(E.generated_at)}.</p>
+    out+=`<h3>Emendas parlamentares</h3><p class="note">Dinheiro do orçamento que deputados e senadores destinam a obras, serviços e municípios. Ano eleitoral pesa: os pagamentos até o mês ${m} de ${y} somam ${brl(pg[y])}, contra ${brl(pg[py])} no mesmo período de ${py}${rk&&el[rk]?` (${el[rk].toLocaleString('pt-BR')}×)`:''}${r22&&el[r22]?`; em 2022, ${el[r22].toLocaleString('pt-BR')}× o de 2021`:''}. Fonte: Portal da Transparência, lido em ${fmtDate(E.generated_at)}.</p>
     <div class="om">${stat(brl((E.por_ano[y]||{}).empenhado),'empenhado em '+y)}${stat(brl(pg[y]),'pago até o mês '+m)}${stat(rk&&el[rk]?el[rk].toLocaleString('pt-BR')+'×':'—','pago × mesmo período de '+py)}</div>
     <h4 style="margin:10px 0 4px;font-size:14px">Pagos até o mesmo mês, ano a ano</h4>${bars(Object.entries(pg).map(([k,v])=>({k,v})), x=>x.k, x=>x.v, {fmt:v=>brl(v)})}
     ${E.voto_emenda&&E.voto_emenda.parlamentares?`<p class="note">Emenda vai para onde está o voto? Entre ${E.voto_emenda.parlamentares} parlamentares com pelo menos R$ 1 mi em emendas com município definido, a mediana destinou <b>${E.voto_emenda.mediana_emendas_nos_top15_pct.toLocaleString('pt-BR')}%</b> desse dinheiro aos 15 municípios onde teve mais votos em 2022 (que concentram, na mediana, ${E.voto_emenda.mediana_votos_top15_pct.toLocaleString('pt-BR')}% dos seus votos); ${E.voto_emenda.acima_de_50_pct} mandaram mais da metade para lá. Detalhe na página de cada um. Fontes: Portal da Transparência e TSE (votação por município, 2022).</p>`:''}
@@ -481,7 +581,7 @@ function dinheiroHtml(){
     <h4 style="margin:10px 0 4px;font-size:14px">Maiores benefícios</h4>${bars((R.gastos_top||[]).slice(0,10), x=>x.gasto, x=>x.valor)}
     ${cmp.length?`<h4 style="margin:12px 0 4px;font-size:14px">Renúncia por área × orçamento do ministério da área</h4><div class="cmp"><span class="h">área</span><span class="h">renúncia</span><span class="h">empenhado pelo ministério</span>${cmp.slice(0,8).map(c=>`<span>${esc(c.funcao)} · <a href="#${c.ministerio}">${esc((c.ministerio_nome||'').replace('Ministério ',''))}</a></span><span class="n">${brl(c.renuncia)}</span><span class="n">${brl(c.empenhado)} (${c.empenhado_ano})</span>`).join('')}</div>`:''}`; }
   const V=G.viagens, C=G.cartao;
-  if(V&&V.orgaos){ out+=`<h3>Viagens a serviço no Executivo em ${V.ano}</h3><p class="note">${esc(V.nota||'')} Fonte: ${esc(V.fonte||'')}, ${fmtDate(V.generated_at)}.</p><div class="om">${stat(V.viagens_total.toLocaleString('pt-BR'),'viagens realizadas')}${stat(brl(V.total),'em diárias e passagens')}</div><h4 style="margin:10px 0 4px;font-size:14px">Órgãos que mais gastaram</h4>${bars((V.orgaos||[]).slice(0,10), x=>x.orgao, x=>x.total, {fmt:(v,it)=>`${brl(v)} · ${it.viagens.toLocaleString('pt-BR')} viagens`})}`; }
+  if(V&&V.orgaos){ out+=`<h3>Viagens a serviço no Executivo em ${V.ano}</h3><p class="note">${esc(V.nota||'')} Fonte: ${esc(V.fonte||'')}, lido em ${fmtDate(V.generated_at)}.</p><div class="om">${stat(V.viagens_total.toLocaleString('pt-BR'),'viagens realizadas')}${stat(brl(V.total),'em diárias e passagens')}</div><h4 style="margin:10px 0 4px;font-size:14px">Órgãos que mais gastaram</h4>${bars((V.orgaos||[]).slice(0,10), x=>x.orgao, x=>x.total, {fmt:(v,it)=>`${brl(v)} · ${it.viagens.toLocaleString('pt-BR')} viagens`})}`; }
   if(C&&C.orgaos){ out+=`<h3>Cartão corporativo em ${C.ano}</h3><p class="note">${esc(C.nota||'')} Fonte: ${esc(C.fonte||'')}, ${(C.meses||[]).length} meses.</p><div class="om">${stat(brl(C.total),'gastos no ano')}</div>${bars((C.orgaos||[]).slice(0,10), x=>x.orgao, x=>x.total, {fmt:(v,it)=>`${brl(v)} · ${it.portadores} portadores${it.saques?` · saques ${brl(it.saques)}`:''}`})}`; }
   if(T){ out+=`<h3>Acima do teto no Executivo federal · ${(T.mes||'').slice(4,6)}/${(T.mes||'').slice(0,4)}</h3><p class="note">${esc(T.nota||'')} Teto: R$ ${T.teto.toLocaleString('pt-BR')} (${esc(T.teto_fonte)}). Fonte: Portal da Transparência, folha de ${(T.mes||'').slice(4,6)}/${(T.mes||'').slice(0,4)}.</p>
     <div class="om">${stat(T.servidores.toLocaleString('pt-BR'),'servidores civis na folha')}${stat(T.com_abate_teto.toLocaleString('pt-BR'),'com salário bruto acima do teto (cortado pelo abate-teto)')}${stat(brl(T.valor_abatido_mes),'cortados no mês')}${stat(brl(T.indenizatorias_mes),'pagos fora do teto como verbas indenizatórias')}${stat(T.acima_do_teto_com_indenizatorias.toLocaleString('pt-BR'),'acima do teto contando as indenizatórias')}</div>
@@ -507,7 +607,7 @@ function gabHtml(p){
   <p style="font-size:13.5px;margin:4px 0 8px">Custo até agora: subsídio ${brl(c.subsidio)} (${(c.meses||0).toLocaleString('pt-BR')} meses de ${brl(M.subsidio_mensal)}) + ${sen?'cotas e gastos não inclusos':'cota'} ${brl(c.cota)} + gabinete ${sen?'':'estimado '}${brl(c.gabinete_estimado)}.${!sen&&gb.nomeados_no_ano?` ${gb.nomeados_no_ano} ${gb.nomeados_no_ano===1?'nomeação':'nomeações'} no gabinete neste ano (mediana ${md.nomeados_no_ano}).`:''}${sen?` Auxílio-moradia: ${esc((gb.auxilio_moradia||'—').toLowerCase())}; imóvel funcional: ${esc((gb.imovel_funcional||'—').toLowerCase())}.`:''}</p>
   ${cotas?`<p style="font-size:13px;color:var(--ink-2);margin:0 0 8px">Maiores cotas no ano: ${cotas}.</p>`:''}
   <details class="rel"><summary>Equipe do gabinete · ${gb.assessores}</summary><div class="act">${(gb.equipe||[]).map(s=>`<div class="row"><span>${esc(s.nome)}<span class="d" style="display:block">${sen?esc(s.funcao||s.vinculo||''):''}${s.desde?(sen?' · ':'')+'desde '+fmtDate(s.desde):''}</span></span><span class="v">${sen?(s.salario?brl(s.salario):'—'):`${esc(s.nivel)}${s.grg?' + GRG':''} · ${brl(s.salario)}`}</span></div>`).join('')}</div></details>
-  <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">${esc(M.nota||'')} Fonte: ${esc(M.fonte||'')}, ${fmtDate(M.generated_at)}.</p></div>`;
+  <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">${esc(M.nota||'')} Fonte: ${esc(M.fonte||'')}, lido em ${fmtDate(M.generated_at)}.</p></div>`;
 }
 function remHtml(p){
   const r=p._rem; if(!r) return ''; const M=G.stats.remuneracao||{}; const mes=`${(r.mes||'').slice(4,6)}/${(r.mes||'').slice(0,4)}`;
@@ -572,7 +672,7 @@ function agendaHtml(p){
   const ents=(a.entidades_top||[]).slice(0,8); const locs=(a.locais_top||[]).slice(0,8);
   const rec=(a.recentes||[]).slice(0,6); const pl=a.fonte==='planalto';
   return `<h3>Agenda pública <span style="font-weight:400">· ${a.compromissos_90d} compromissos em ${a.janela_dias||90} dias</span></h3>
-  <p class="note" style="font-size:13px;color:var(--ink-2);margin:0 0 6px">${pl?`Agenda oficial publicada dia a dia pelo Planalto, com hora, título e local, sem lista de participantes${a.dias_com_agenda?` (${a.dias_com_agenda} dias com agenda)`:''}. `:'Reuniões, audiências e viagens que o cargo obriga a publicar (Lei 12.813/2013). '}${tipos?tipos+'. ':''}${a.compromissos_ano?`${a.compromissos_ano} no ano. `:''}${a.ultimo?`Último publicado em ${fmtDate(a.ultimo)}. `:''}Fonte: <a href="${a.url||'https://eagendas.cgu.gov.br'}" target="_blank" rel="noopener">${esc(a.fonte_nome||'e-Agendas, CGU')} ↗</a>, ${fmtDate(a.generated_at)}.</p>
+  <p class="note" style="font-size:13px;color:var(--ink-2);margin:0 0 6px">${pl?`Agenda oficial publicada dia a dia pelo Planalto, com hora, título e local, sem lista de participantes${a.dias_com_agenda?` (${a.dias_com_agenda} dias com agenda)`:''}. `:'Reuniões, audiências e viagens que o cargo obriga a publicar (Lei 12.813/2013). '}${tipos?tipos+'. ':''}${a.compromissos_ano?`${a.compromissos_ano} no ano. `:''}${a.ultimo?`Último publicado em ${fmtDate(a.ultimo)}. `:''}Fonte: <a href="${a.url||'https://eagendas.cgu.gov.br'}" target="_blank" rel="noopener">${esc(a.fonte_nome||'e-Agendas, CGU')} ↗</a>, lido em ${fmtDate(a.generated_at)}.</p>
   ${ents.length?`<h4 style="margin:8px 0 4px;font-size:13px">Quem mais foi recebido</h4>${bars(ents, e=>e.nome, e=>e.n, {fmt:v=>v+'×'})}`:''}
   ${locs.length?`<h4 style="margin:8px 0 4px;font-size:13px">Locais mais frequentes</h4>${bars(locs, e=>e.nome, e=>e.n, {fmt:v=>v+'×'})}`:''}
   ${rec.length?`<h4 style="margin:10px 0 4px;font-size:13px">Últimos compromissos</h4>${rec.map(r=>`<div class="om-it" style="padding:6px 0"><span class="t">${esc(r.titulo||r.tipo||'compromisso')}</span><span class="m">${fmtDate(r.data)}${r.hora?' '+esc(r.hora):''}${r.tipo?' · '+esc(r.tipo):''}${r.local?' · '+esc(r.local.slice(0,60)):''}${r.nota?' · '+esc(r.nota):''}${(r.participantes||[]).length?' · '+r.participantes.slice(0,5).map(q=>esc(q.nome)+(q.entidade?` (${esc(q.entidade)})`:'')).join(', ')+((r.participantes||[]).length>5?` e mais ${r.participantes.length-5}`:''):''}</span></div>`).join('')}`:''}`;
@@ -581,7 +681,7 @@ function agendaOrgaoHtml(n){
   const a=n.agenda; if(!a||!a.compromissos_90d) return '';
   const ents=(a.entidades_top||[]).slice(0,8);
   return `<div class="card"><h2>Agenda pública dos dirigentes <span style="color:var(--ink-3);font-weight:500">· ${a.compromissos_90d} compromissos em ${a.janela_dias||90} dias</span></h2>
-  <p style="font-size:13px;color:var(--ink-2);margin:0 0 6px">Soma das agendas que ${a.pessoas||''} ${a.pessoas===1?'dirigente deste órgão publicou':'dirigentes deste órgão publicaram'} no <a href="https://eagendas.cgu.gov.br" target="_blank" rel="noopener">e-Agendas (CGU) ↗</a>, ${fmtDate(a.generated_at)}. Entidades mais recebidas:</p>${ents.length?bars(ents, e=>e.nome, e=>e.n, {fmt:v=>v+'×'}):''}</div>`;
+  <p style="font-size:13px;color:var(--ink-2);margin:0 0 6px">Soma das agendas que ${a.pessoas||''} ${a.pessoas===1?'dirigente deste órgão publicou':'dirigentes deste órgão publicaram'} no <a href="https://eagendas.cgu.gov.br" target="_blank" rel="noopener">e-Agendas (CGU) ↗</a>, lido em ${fmtDate(a.generated_at)}. Entidades mais recebidas:</p>${ents.length?bars(ents, e=>e.nome, e=>e.n, {fmt:v=>v+'×'}):''}</div>`;
 }
 function activityHtml(p){
   const a=p._activity; if(!a) return ''; const pres=(p.positions||[]).some(q=>/presidente-d[ao]-(camara|senado)/.test(q));
@@ -593,9 +693,11 @@ function activityHtml(p){
   out+=`<p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Fonte: ${a.house==='camara'?'Câmara dos Deputados, dados abertos (votações nominais e cota parlamentar)':'Senado Federal, dados abertos (votações nominais)'}.</p></div>`;
   return out;
 }
-function renderHome(){
-  const st = G.stats; const bt = st.by_type, bs = st.by_sector, bsub = st.by_subtype;
-  const subRows = [['ministerio','Ministérios'],['orgao_presidencia','Órgãos da Presidência'],['agencia_reguladora','Agências reguladoras'],['autarquia','Autarquias'],['fundacao','Fundações'],['empresa_publica','Empresas públicas'],['sociedade_economia_mista','Sociedades de economia mista'],['tribunal','Tribunais'],['ministerio_publico','Ministério Público'],['forca_armada','Forças Armadas'],['instituicao_de_ensino','Universidades e institutos federais']];
+const HOME_TABS = [['mudancas','Mudanças'],['noticias','Notícias'],['poder','Na notícia'],['omissao','Sem decisão'],['temas','Temas'],['dinheiro','Dinheiro'],['transicao','Transição 2027']];
+const NO_WIN = ['transicao','omissao','temas','dinheiro'];
+// conteúdo do painel da aba ativa (só o painel é recriado ao trocar de aba; os botões das abas ficam)
+function homeBody(){
+  const st = G.stats;
   const chips = a => { const ps=(a.people||[]).slice(0,4).map(p=>`<a href="#${P[p.id]?p.id:p.position}" title="${esc(N[p.position]?N[p.position].name:'')}"><span class="av">${avatar(P[p.id]||{id:p.id,name:p.name})}</span>${esc(p.name)}</a>`); const es=(a.entities||[]).slice(0,3).map(id=>N[id]?`<a class="ent" href="#${id}">${esc(N[id].aliases&&N[id].aliases[0]&&N[id].aliases[0].length<=8?N[id].aliases[0]:N[id].name)}</a>`:'').filter(Boolean); return ps.length||es.length?`<span class="who">${ps.join('')}${es.join('')}</span>`:''; };
   const news = (G.news||[]).filter(a=>inWin(a.date)).slice(0,10).map(a=>`<div class="it"><a class="t" href="#news:${a.id}">${esc(a.title)}</a><a class="ext" href="${a.url}" target="_blank" rel="noopener" title="Ler na fonte">${esc(a.publication)} ↗</a>${a.summary_html?`<span class="s">${a.summary_html}</span>`:''}${chips(a)}<span class="m">${fmtDate(a.date)} · <a href="#news:${a.id}" style="color:var(--accent);text-decoration:none">quem está envolvido</a></span></div>`).join('');
   const allChg = (G.changes||[]);
@@ -608,14 +710,12 @@ function renderHome(){
   const perDay = days.map(d=>allChg.filter(c=>dayKey(c.date)===d).length); const mx = Math.max(1,...perDay);
   const bars = `<div class="tl" role="img" aria-label="Mudanças por dia nos últimos 30 dias">${perDay.map((v,i)=>`<i class="${v?'':'z'}" style="height:${Math.max(2,Math.round(40*v/mx))}px" title="${days[i]}: ${v}"></i>`).join('')}</div><div class="tlx"><span>30 dias atrás</span><span>20</span><span>10</span><span>hoje</span></div>`;
   const counters = `<div class="stats" style="margin-bottom:10px"><div class="stat"><div class="n">${st.vacant_seats_known||0}</div><div class="l">cadeiras vagas conhecidas</div></div><div class="stat"><div class="n">${st.acting_officials||0}</div><div class="l">interinos</div></div><div class="stat"><div class="n" style="font-size:18px">${st.last_change?fmtDate(st.last_change):'—'}</div><div class="l">última mudança</div></div></div>`;
-  const winSel = `<span class="win" role="group" aria-label="Janela de tempo">${[7,30,90].map(w=>`<button aria-pressed="${win===w}" data-win="${w}">${w}D</button>`).join('')}</span>`;
   const pw = (G.power||[]); const pmax = pw.length?pw[0].articles:1;
   const ago = d => { if(!d) return ''; const days=Math.round((Date.now()-new Date(d+'T00:00:00'))/86400000); return days<=0?'hoje':days===1?'ontem':`há ${days} dias`; };
   const spark = w => `<span class="spark" title="menções por semana, 12 semanas">${(w||[]).map(v=>`<i class="${v?'':'z'}" style="height:${Math.max(1,Math.round(14*v/Math.max(1,...(w||[1]))))}px"></i>`).join('')}</span>`;
   const pl = (G.power_links||[]); const byId = Object.fromEntries(pw.map(p=>[p.id,p]));
   const power = pw.slice(0,14).map(p=>{ const job = N[p.position] ? N[p.position].name : ''; const rel = pl.filter(l=>l.from===p.id||l.to===p.id).map(l=>{ const o = byId[l.from===p.id?l.to:l.from]; if(!o) return ''; return `${l.from===p.id?REL[l.type][0].toLowerCase():REL[l.type][1].toLowerCase()} <a href="#${o.id}">${esc(o.name.split(' ').slice(0,2).join(' '))}</a>`; }).filter(Boolean);
     return `<div class="row"><span class="av" style="border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;overflow:hidden">${avatar(p)}</span><span class="who"><a href="#${P[p.id]?p.id:p.position}" style="color:var(--ink);text-decoration:none">${esc(p.name)}</a><span class="job">${esc(job)}</span>${p.latest?`<span class="latest"><a href="${(G.news||[]).some(x=>x.url===p.latest.url)?'#news:'+(G.news||[]).find(x=>x.url===p.latest.url).id:p.latest.url}" ${(G.news||[]).some(x=>x.url===p.latest.url)?'':'target="_blank" rel="noopener"'}>${esc((p.latest.title||'').slice(0,90))}</a> · ${esc(p.latest.source||'')}</span>`:''}${rel.length?`<span class="plinks">${rel.slice(0,3).join(' · ')}</span>`:''}</span><span class="n">${p.articles} art.<br><span style="color:var(--povo)">${ago(p.last)}</span>${spark(p.weeks)}</span></div>`; }).join('');
-  const tab = (id,label)=>`<button role="tab" aria-selected="${homeTab===id}" data-tab="${id}">${label}</button>`;
   // Transição 2027: tudo que o Presidente nomeia (aresta nomeia a partir da Presidência), por setor
   const pr = 'br-presidente-da-republica';
   const apt = Object.values(E).filter(e=>e.type==='nomeia'&&e.from===pr).map(e=>N[e.to]).filter(Boolean);
@@ -624,22 +724,41 @@ function renderHome(){
   const trans = `<div class="stats" style="margin-bottom:12px"><div class="stat"><div class="n">${apt.length}</div><div class="l">cargos nomeados pelo PR</div></div><div class="stat"><div class="n">${tot}</div><div class="l">cadeiras</div></div><div class="stat"><div class="n">${sab}</div><div class="l">passam pelo Senado</div></div></div>
     <p style="font-size:14px">A posse de 1º de janeiro de 2027 troca a cúpula do Executivo. Estes são os cargos de nomeação do Presidente da República mapeados no grafo, com quem os ocupa hoje. ${known} de ${tot} cadeiras têm ocupante conhecido.</p>
     ${Object.keys(ARC).filter(k=>bySec[k]).map(k=>`<h3 style="color:${COL[k]}">${SEC[k].name} · ${bySec[k].length}</h3><div class="list">${bySec[k].sort((a,b)=>a.name.localeCompare(b.name,'pt')).map(n=>{ const p=(n.people||[])[0]; const extra = n.seats>1?`${Math.min((n.people||[]).length,n.seats)}/${n.seats}`:(p?esc(p.name.split(' ').slice(0,2).join(' ')):'<span style="color:var(--jud)">sem dado</span>'); return `<a href="#${n.id}"><span class="dot" style="background:${COL[n.sector]}"></span><span>${esc(n.name)}</span><span class="sm">${n.sabatina?'senado · ':''}${extra}</span>`; }).join('')}</div>`).join('')}`;
-  const body = homeTab==='omissao' ? omissaoHtml() : homeTab==='temas' ? temasHtml() : homeTab==='dinheiro' ? dinheiroHtml() : homeTab==='transicao' ? trans : homeTab==='noticias' ? (news?`<div class="news">${news}</div><p style="font-size:13px;color:var(--ink-3)">${st.news_sources||0} fontes · ${st.articles_90d||0} artigos em 90 dias · entidades e pessoas reconhecidas por sigla e nome.</p>`:'<p>Sem notícias coletadas ainda.</p>')
+  return homeTab==='omissao' ? omissaoHtml() : homeTab==='temas' ? temasHtml() : homeTab==='dinheiro' ? dinheiroHtml() : homeTab==='transicao' ? trans : homeTab==='noticias' ? (news?`<div class="news">${news}</div><p style="font-size:13px;color:var(--ink-3)">${st.news_sources||0} fontes · ${st.articles_90d||0} artigos em 90 dias · entidades e pessoas reconhecidas por sigla e nome.</p>`:'<p>Sem notícias coletadas ainda.</p>')
     : homeTab==='poder' ? (power?`<div class="pm">${power}</div><p style="font-size:13px;color:var(--ink-3)">Pessoas do grafo mais citadas nos últimos 90 dias. Cresce a cada coleta diária.</p>`:'<p>Sem menções ainda.</p>')
     : `${counters}${bars}${chg||'<p>Sem mudanças nesta janela.</p>'}<p style="font-size:13px;color:var(--ink-3)">Sabatinas do Senado, posses, atos do Diário Oficial e entradas e saídas detectadas na comparação diária dos ocupantes.</p>`;
+}
+function renderHomePanel(){
+  const panel = document.getElementById('home-panel'); if (!panel) return;
+  panel.innerHTML = homeBody();
+  panel.setAttribute('aria-labelledby', 'tab-' + homeTab);
+  document.querySelectorAll('#home-tablist [role=tab]').forEach(b => { const on = b.dataset.tab === homeTab; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
+  const ws = document.getElementById('win-sel'); if (ws) { ws.hidden = NO_WIN.includes(homeTab); ws.querySelectorAll('[data-win]').forEach(b => b.setAttribute('aria-pressed', String(win === +b.dataset.win))); }
+}
+function renderHome(){
+  const st = G.stats; const bt = st.by_type||{}, bs = st.by_sector||{}, bsub = st.by_subtype||{};
+  const subRows = [['ministerio','Ministérios'],['orgao_presidencia','Órgãos da Presidência'],['agencia_reguladora','Agências reguladoras'],['autarquia','Autarquias'],['fundacao','Fundações'],['empresa_publica','Empresas públicas'],['sociedade_economia_mista','Sociedades de economia mista'],['tribunal','Tribunais'],['ministerio_publico','Ministério Público'],['forca_armada','Forças Armadas'],['instituicao_de_ensino','Universidades e institutos federais']];
+  const tab = ([id,label])=>`<button type="button" role="tab" id="tab-${id}" aria-selected="${homeTab===id}" aria-controls="home-panel" tabindex="${homeTab===id?0:-1}" data-tab="${id}">${label}</button>`;
+  const winSel = `<span class="win" id="win-sel" role="group" aria-label="Janela de tempo"${NO_WIN.includes(homeTab)?' hidden':''}>${[7,30,90].map(w=>`<button type="button" aria-pressed="${win===w}" data-win="${w}">${w}D</button>`).join('')}</span>`;
   content.innerHTML = `<a class="card start" href="/como-funciona/"><span class="eyebrow">Comece por aqui</span><b>Como funciona a República</b><span>Uma visita guiada de 9 minutos pela roda: quem você elege, quem nomeia quem, quem vigia quem. Para quem nunca precisou entender isso e agora quer.</span><span class="go">Começar →</span></a><nav class="quick" aria-label="Outras páginas"><a href="/comparar/">Comparar parlamentares</a><a href="/dados/">Dados abertos</a><a href="/metodologia/">Metodologia</a><a href="/feeds/mudancas.xml">Feed RSS</a></nav>`+`
   <div class="card"><h1>Quem manda em quê no governo federal</h1>
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
     <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div></div>
   ${arrecCard()}
-  <div class="card"><div class="tabs" role="tablist">${tab('mudancas','Mudanças')}${tab('noticias','Notícias')}${tab('poder','Na notícia')}${tab('omissao','Sem decisão')}${tab('temas','Temas')}${tab('dinheiro','Dinheiro')}${tab('transicao','Transição 2027')}${!['transicao','omissao','temas','dinheiro'].includes(homeTab)?winSel:''}</div>${body}</div>
+  <div class="card"><div class="tabs"><div role="tablist" id="home-tablist" aria-label="Painéis da página inicial">${HOME_TABS.map(tab).join('')}</div>${winSel}</div><div id="home-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-${homeTab}"></div></div>
   <div class="card"><h2>Por poder</h2><div class="counts">${Object.keys(ARC).map(s=>`<span class="k"><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</span><span>${bs[s]||0}</span>`).join('')}</div>
     <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
     <h3>Cargos e colegiados</h3><div class="counts"><span>Cargos de chefia mapeados</span><span>${bt.dept_head||0}</span><span>Cadeiras (inclui 513 deputados e 81 senadores)</span><span>${st.seats_total}</span><span>Sabatinas do Senado desde 2023</span><span>${st.sabatinas||0}</span><span>Colegiados deliberativos</span><span>${bt.commission||0}</span></div></div>
   <div class="card"><h2>Como ler a roda</h2><div class="counts">${[1,2,3,4].map(r=>`<span><b>Anel ${r} · ${L.rings[r].name}</b><br><span style="color:var(--ink-3);font-size:13.5px">${L.rings[r].description}</span></span><span></span>`).join('')}</div>
-    <p style="font-size:13.5px;margin-top:10px">${st.siorg_matched||0} órgãos curados casados com o registro oficial do SIORG e ${st.from_siorg||0} importados dele. ${st.unverified} citações curadas ainda marcadas para conferência. Gerado em ${st.generated_at}.</p></div>`;
-  content.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{homeTab=b.dataset.tab; renderHome();}));
-  content.querySelectorAll('[data-win]').forEach(b=>b.addEventListener('click',()=>{win=+b.dataset.win; renderHome();}));
+    <p style="font-size:13.5px;margin-top:10px">${st.siorg_matched||0} órgãos curados casados com o registro oficial do SIORG e ${st.from_siorg||0} importados dele. ${st.unverified||0} citações curadas ainda marcadas para conferência. Dados lidos em ${fmtDate(st.generated_at)}.</p></div>`;
+  renderHomePanel();
+  const tl = document.getElementById('home-tablist');
+  const goTab = b => { homeTab = b.dataset.tab; renderHomePanel(); b.focus(); };
+  tl.addEventListener('click', e => { const b = e.target.closest('[role=tab]'); if (b) goTab(b); });
+  tl.addEventListener('keydown', e => { const tabs = [...tl.querySelectorAll('[role=tab]')]; let i = tabs.findIndex(b => b.dataset.tab === homeTab); if (i < 0) i = 0;
+    if (e.key === 'ArrowRight') i = (i + 1) % tabs.length; else if (e.key === 'ArrowLeft') i = (i - 1 + tabs.length) % tabs.length; else if (e.key === 'Home') i = 0; else if (e.key === 'End') i = tabs.length - 1; else return;
+    e.preventDefault(); goTab(tabs[i]); });
+  document.getElementById('win-sel').addEventListener('click', e => { const b = e.target.closest('[data-win]'); if (!b) return; win = +b.dataset.win; renderHomePanel(); });
 }
 function historicoHtml(n){
   const h=n.historico; if(!h||!h.mandatos||!h.mandatos.length) return '';
@@ -655,11 +774,11 @@ function historicoHtml(n){
 function renderNode(n){
   const isPos = n.type==='dept_head';
   const groups = {};
-  for (const eid of n.edges) { const e=E[eid]; const out = e.from===n.id; const key = e.type+(out?':out':':in'); (groups[key] = groups[key]||[]).push(e); }
+  for (const eid of (n.edges||[])) { const e=E[eid]; if(!e) continue; const out = e.from===n.id; const key = e.type+(out?':out':':in'); (groups[key] = groups[key]||[]).push(e); }
   const order = ['chefia','elege','nomeia','sabatina','indica','supervisiona','integra','fiscaliza','aconselha','membro_nato'];
   let rels = '';
   for (const t of order) for (const dir of [':out',':in']) { const list = groups[t+dir]; if(!list) continue; const label = REL[t][dir===':out'?0:1];
-    rels += `<details class="rel" open><summary><span class="dot" style="background:var(--ink-3)"></span>${label}<span class="n">${list.length}</span></summary><div class="list">${list.map(e=>{ const o = e.from===n.id?e.to:e.from; const extra = (e.seats&&e.seats>1?`${e.seats} vagas · `:'')+e.cite.split(';')[0]; return link(o, esc(extra)); }).join('')}</div></details>`; }
+    rels += `<details class="rel" open><summary><span class="dot" style="background:var(--ink-3)"></span>${label}<span class="n">${list.length}</span></summary><div class="list">${list.map(e=>{ const o = e.from===n.id?e.to:e.from; const extra = (e.seats&&e.seats>1?`${e.seats} vagas · `:'')+(e.cite||'').split(';')[0]; return link(o, esc(extra)); }).join('')}</div></details>`; }
   const head = n.head_of ? N[n.head_of] : null;
   const parent = n.parent ? N[n.parent] : null;
   const kids = (n.children||[]).map(id=>link(id, SUB[N[id].subtype]||'')).join('');
@@ -674,7 +793,7 @@ function renderNode(n){
       const max = top[0][1];
       const bars = (people.length >= 10 && people.some(p=>p.party)) ? `<div class="parties">${top.slice(0,14).map(([k,v])=>`<div class="pr"><span class="pk">${esc(k)}</span><span class="pb"><i style="width:${Math.round(100*v/max)}%"></i></span><span class="pv">${v}</span></div>`).join('')}${top.length>14?`<div class="pr" style="color:var(--ink-3)"><span class="pk">+${top.length-14}</span><span class="pb"></span><span class="pv">${top.slice(14).reduce((a,[,v])=>a+v,0)}</span></div>`:''}</div>` : '';
       const src = p => p.source==='oficial'?`página oficial${p.checked_at?' · conferido em '+fmtDate(p.checked_at):''}`:p.source==='wikidata'?'nome via Wikidata, sem conferência oficial':p.source==='wikipedia'?'nome via Wikipédia, sem conferência oficial':p.source==='dou'?'assina os atos do órgão no DOU':p.source==='portal'?'Portal da Transparência':p.source==='sabatina'?'aprovado pelo Senado; posse não conferida':p.source==='senado'||p.source==='camara'?'composição oficial da Casa':'';
-      const item = p => `<a class="person" href="${P[p.id]?'#'+p.id:(p.source_url||'#')}" ${P[p.id]?'':'target="_blank" rel="noopener"'} title="${esc([entryHtml(p.entry, n).replace(/<[^>]+>/g,''), src(p)].filter(Boolean).join(' — '))}"><span class="av" style="overflow:hidden">${avatar(p)}</span><span class="pn">${esc(p.name)}${p.role?` <em>${esc(p.role)}</em>`:''}</span><span class="pm">${[p.party,p.uf].filter(Boolean).join(' · ')}${p.entry_mode==='suplente'?' · suplente':''}${!p.party?entryShort(p):''}${p.source==='wikidata'?' · <span style="color:var(--jud)">wikidata</span>':''}${p.acting?' · interino':''}</span></a>`;
+      const item = p => `<a class="person" href="${P[p.id]?'#'+p.id:(p.source_url||'#')}" ${P[p.id]?'':'target="_blank" rel="noopener"'} title="${esc([entryHtml(p.entry, n).replace(/<[^>]+>/g,''), src(p)].filter(Boolean).join(' — '))}"><span class="av" style="overflow:hidden">${avatar(p)}</span><span class="pn">${esc(p.name||'')}${p.role?` <em>${esc(p.role)}</em>`:''}</span><span class="pm">${[p.party,p.uf].filter(Boolean).join(' · ')}${p.entry_mode==='suplente'?' · suplente':''}${!p.party?entryShort(p):''}${p.source==='wikidata'?' · <span style="color:var(--jud)">wikidata</span>':''}${p.acting?' · interino':''}</span></a>`;
       const shown = people.length > 24 ? 24 : people.length;
       const vac = n.vacant_seats?`<div class="seat">${n.vacant_seats} ${n.vacant_seats>1?'vagas abertas':'vaga aberta'} segundo a página oficial.</div>`:'';
       const srcNote = people[0]&&people[0].source==='oficial'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Fonte: <a href="${people[0].source_url}" target="_blank" rel="noopener">página oficial</a>, conferida em ${fmtDate(people[0].checked_at)}.</p>`:people[0]&&people[0].source==='sabatina'?`<p style="font-size:12.5px;color:var(--jud);margin:2px 0 6px">Nome aprovado pelo Senado em sabatina; a posse ainda não foi conferida em página oficial.</p>`:people[0]&&people[0].source==='wikidata'?`<p style="font-size:12.5px;color:var(--jud);margin:2px 0 6px">Nome do ocupante obtido do Wikidata, ainda sem conferência em página oficial.</p>`:people[0]&&people[0].source==='wikipedia'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Nome do ocupante obtido da Wikipédia, ainda sem conferência em página oficial.</p>`:people[0]&&people[0].source==='dou'?`<p style="font-size:12.5px;color:var(--ink-3);margin:2px 0 6px">Ocupante identificado pela assinatura dos atos do órgão no Diário Oficial.</p>`:'';
@@ -682,13 +801,14 @@ function renderNode(n){
       seats = `<h3>Ocupante${people.length>1?'s':''} <span style="font-weight:400">· ${people.length}${n.seats>people.length?` de ${n.seats}`:''}</span></h3>${srcNote}${cand}${vac}${bars}<div class="people">${people.slice(0,shown).map(item).join('')}</div>${people.length>shown?`<details class="rel"><summary>Ver todos os ${people.length}</summary><div class="people">${people.slice(shown).map(item).join('')}</div></details>`:''}`;
     }
   }
-  content.innerHTML = `<div class="card">
-    <div class="chips">${sectorChip(n.sector)}<span class="chip">${TYPE_NAME[n.type]}${n.subtype?' · '+(SUB[n.subtype]||n.subtype):''}</span>${n.ring?`<span class="chip">Anel ${n.ring} · ${L.rings[n.ring].name}</span>`:''}${n.source==='siorg'?'<span class="chip">via SIORG</span>':(n.verified===false?'<span class="chip warn">citação a conferir</span>':'')}</div>
+  setSheet(n.name, TYPE_NAME[n.type]||'');
+  content.innerHTML = `<div class="card">${leituraBtn()}
+    <div class="chips">${sectorChip(n.sector)}<span class="chip">${TYPE_NAME[n.type]||''}${n.subtype?' · '+(SUB[n.subtype]||n.subtype):''}</span>${n.ring?`<span class="chip">Anel ${n.ring} · ${L.rings[n.ring].name}</span>`:''}${n.source==='siorg'?'<span class="chip">via SIORG</span>':(n.verified===false?'<span class="chip warn">citação a conferir</span>':'')}</div>
     <h1>${esc(n.name)}</h1>
     ${n.aliases&&n.aliases.length?`<p style="margin-top:-4px;font-size:14px;color:var(--ink-3)">${n.aliases.map(esc).join(' · ')}</p>`:''}
-    <p>${esc(n.description)}</p>
+    ${n.description?`<p>${esc(n.description)}</p>`:''}
     <div class="links">${n.cite_url?`<a href="${n.cite_url}" target="_blank" rel="noopener">Fonte legal ↗</a>`:''}${n.official_url?`<a href="${n.official_url}" target="_blank" rel="noopener">Site oficial ↗</a>`:''}</div>
-    <p class="cite">${esc(n.cite)}${n.mandato_anos?` · mandato de ${n.mandato_anos} anos`:''}${n.siorg_code?` · <a href="https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/${n.siorg_code}" target="_blank" rel="noopener">SIORG ${n.siorg_code}</a>`:''}</p>
+    <p class="cite">${esc(n.cite||'')}${n.mandato_anos?` · mandato de ${n.mandato_anos} anos`:''}${n.siorg_code?` · <a href="https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/${n.siorg_code}" target="_blank" rel="noopener">SIORG ${n.siorg_code}</a>`:''}</p>
     ${n.siorg_description&&n.source!=='siorg'?`<details class="rel"><summary>Competência segundo o SIORG</summary><p style="font-size:14px">${esc(n.siorg_description)}</p></details>`:''}
     ${(()=>{ const b=n.budget; if(!b) return ''; const ys=Object.keys(b).sort().reverse(); const y=ys[0], v=b[y]; const fmt=x=>x>=1e9?`R$ ${(x/1e9).toLocaleString('pt-BR',{maximumFractionDigits:1})} bi`:x>=1e6?`R$ ${(x/1e6).toLocaleString('pt-BR',{maximumFractionDigits:0})} mi`:`R$ ${Math.round(x).toLocaleString('pt-BR')}`; const prev=ys[1]&&b[ys[1]]; return `<h3>Despesa ${y}</h3><div class="stats"><div class="stat"><div class="n" style="font-size:18px">${fmt(v.empenhado)}</div><div class="l">empenhado</div></div><div class="stat"><div class="n" style="font-size:18px">${fmt(v.liquidado)}</div><div class="l">liquidado</div></div><div class="stat"><div class="n" style="font-size:18px">${fmt(v.pago)}</div><div class="l">pago</div></div></div><p style="font-size:12.5px;color:var(--ink-3);margin:4px 0 0">${esc(v.escopo)}${prev?` · ${ys[1]}: ${fmt(prev.empenhado)} empenhado`:''} · <a href="https://portaldatransparencia.gov.br/orgaos" target="_blank" rel="noopener">Portal da Transparência</a></p>`; })()}
     ${head?`<h3>Chefia</h3><div class="list">${link(head.id, SUB[head.subtype]||'')}</div>`:''}
@@ -701,34 +821,53 @@ function renderNode(n){
   ${agendaOrgaoHtml(n)}
   ${n.sabatinas&&n.sabatinas.length?`<div class="card"><h2>Sabatinas no Senado <span style="color:var(--ink-3);font-weight:500">· ${n.sabatinas.length}</span></h2>${n.sabatinas.slice(0,12).map(sb=>`<div class="sab"><span><a href="${sb.url}" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:none">${esc(sb.name||sb.msf)}</a><br><span style="color:var(--ink-3);font-size:12.5px">${esc((sb.cargo||'').slice(0,90))}</span></span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:sb.resultado==='REJEITADO_PLENARIO'?'rejeitado':(sb.resultado||'').toLowerCase().replace(/_/g,' ')}</span></div>`).join('')}</div>`:''}
   ${(()=>{ const na=(G.news||[]).filter(a=>(a.entities||[]).includes(n.id)||(a.people||[]).some(p=>p.position===n.id)).slice(0,6); return na.length?`<div class="card"><h2>Na notícia</h2><div class="news">${na.map(a=>`<div class="it"><a class="t" href="#news:${a.id}">${esc(a.title)}</a><a class="ext" href="${a.url}" target="_blank" rel="noopener" title="Ler na fonte">fonte ↗</a>${(()=>{ const ps=(a.people||[]).filter(q=>q.position!==n.id).slice(0,4).map(q=>`<a href="#${P[q.id]?q.id:q.position}"><span class="av">${avatar(P[q.id]||{id:q.id,name:q.name})}</span>${esc(q.name)}</a>`); return ps.length?`<span class="who">${ps.join('')}</span>`:''; })()}<span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('')}</div></div>`:''; })()}
-  <div class="card"><h2>Relações <span style="color:var(--ink-3);font-weight:500">· ${n.edges.length}</span></h2>${rels||'<p>Nenhuma relação registrada.</p>'}</div>`;
+  <div class="card"><h2>Relações <span style="color:var(--ink-3);font-weight:500">· ${(n.edges||[]).length}</span></h2>${rels||'<p>Nenhuma relação registrada.</p>'}</div>`;
   document.getElementById('panel').scrollTo({top:0});
 }
 
 // ---------- busca ----------
-const q = document.getElementById('q'), res = document.getElementById('results');
+const q = document.getElementById('q'), res = document.getElementById('results'), rlist = document.getElementById('results-list'), rcount = document.getElementById('results-count');
 const norm = s => s.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
 const index = Object.values(N).map(n => ({id:n.id, name:n.name, type:n.type, sector:n.sector, hay: norm([n.name, ...(n.aliases||[])].join(' ')), al: norm((n.aliases||[]).join(' '))}));
 const UFN2 = {AC:'acre',AL:'alagoas',AM:'amazonas',AP:'amapa',BA:'bahia',CE:'ceara',DF:'distrito federal brasilia',ES:'espirito santo',GO:'goias',MA:'maranhao',MG:'minas gerais',MS:'mato grosso do sul',MT:'mato grosso',PA:'para',PB:'paraiba',PE:'pernambuco',PI:'piaui',PR:'parana',RJ:'rio de janeiro',RN:'rio grande do norte',RO:'rondonia',RR:'roraima',RS:'rio grande do sul',SC:'santa catarina',SE:'sergipe',SP:'sao paulo',TO:'tocantins'};
 for (const p of Object.values(P)) if (p.name) { const n = N[(p.positions||[])[0]] || {}; const cargos=(p.positions||[]).map(id=>N[id]?N[id].name:'').join(' '); const casa=(p.positions||[]).includes('br-deputado-federal')?'deputado deputada camara':(p.positions||[]).includes('br-senador')?'senador senadora senado':''; index.push({id:p.id, name:p.name, type:'pessoa', sub:[n.name, [p.party,p.uf].filter(Boolean).join('·')].filter(Boolean).join(' · '), sector:n.sector, hay:norm(p.name), al:'', meta:norm([p.party||'', p.uf||'', UFN2[p.uf]||'', casa, cargos].join(' '))}); }
+// abrir/fechar sempre por aqui, para aria-expanded, hidden e aria-activedescendant andarem juntos
+let sHits = [], sAll = false;
+function openSearch(){ res.hidden = false; q.setAttribute('aria-expanded','true'); }
+function closeSearch(){ res.hidden = true; q.setAttribute('aria-expanded','false'); q.removeAttribute('aria-activedescendant'); sAll = false; }
+const sOpts = () => [...rlist.querySelectorAll('[role=option]')];
+function focusOpt(el){ if (!el) return; sOpts().forEach(o => o.setAttribute('aria-selected', String(o === el))); q.setAttribute('aria-activedescendant', el.id); el.focus(); }
+function renderHits(){
+  const total = sHits.length; const shown = sHits.slice(0, sAll ? 60 : 14);
+  rcount.textContent = total ? `${shown.length} de ${total} ${total === 1 ? 'resultado' : 'resultados'}` : 'Nada encontrado. Tente a sigla (MF, STF, Anatel), ou combine: "senador MG", "deputada PT BA", "ministro fazenda".';
+  rlist.innerHTML = shown.map((h,i)=>`<a href="#${h.x.id}" role="option" id="sr-${i}" aria-selected="false"><span class="dot" style="background:${COL[h.x.sector]||'var(--povo)'}"></span><span>${esc(h.x.name)}${h.x.sub?` <span style="color:var(--ink-3);font-size:12.5px">· ${esc(h.x.sub)}</span>`:''}</span><span class="t">${TYPE_NAME[h.x.type]||''}</span></a>`).join('')
+    + (total > shown.length ? `<button type="button" class="rmore" role="option" id="sr-more" aria-selected="false">Ver todos os ${total}${total>60?' (até 60)':''}</button>` : '');
+  openSearch();
+}
 q.addEventListener('input', () => {
-  const v = norm(q.value.trim()); if (v.length < 2) { res.hidden = true; q.setAttribute('aria-expanded','false'); return; }
+  const v = norm(q.value.trim()); if (v.length < 2) { sHits = []; closeSearch(); return; }
   const toks = v.split(' ').filter(Boolean);
-  const hits = index.map(x => { let sc = 0; if (x.al.split(' ').includes(v)) sc = 100; else if (x.hay.startsWith(v)) sc = 60; else if (x.hay.includes(' '+v)) sc = 40; else if (x.hay.includes(v)) sc = 20;
+  sAll = false;
+  sHits = index.map(x => { let sc = 0; if (x.al.split(' ').includes(v)) sc = 100; else if (x.hay.startsWith(v)) sc = 60; else if (x.hay.includes(' '+v)) sc = 40; else if (x.hay.includes(v)) sc = 20;
     if (!sc && toks.length > 1) { const full = ' ' + x.hay + ' ' + (x.meta||'') + ' '; const hit = t => t.length <= 3 ? full.includes(' '+t+' ') : full.includes(t); if (toks.every(hit)) sc = 30 + toks.filter(t=>x.hay.includes(t)).length * 5; }
     else if (!sc && x.meta && toks.length === 1 && x.meta.split(' ').includes(v)) sc = 8;
-    if (x.type==='dept_head') sc -= 5; return {x, sc}; }).filter(h=>h.sc>0).sort((a,b)=>b.sc-a.sc).slice(0,14);
-  res.innerHTML = hits.length ? hits.map(h=>`<a href="#${h.x.id}" role="option"><span class="dot" style="background:${COL[h.x.sector]||'var(--povo)'}"></span><span>${esc(h.x.name)}${h.x.sub?` <span style="color:var(--ink-3);font-size:12.5px">· ${esc(h.x.sub)}</span>`:''}</span><span class="t">${TYPE_NAME[h.x.type]}</span></a>`).join('') : '<div style="padding:10px;color:var(--ink-3)">Nada encontrado. Tente a sigla (MF, STF, Anatel), ou combine: "senador MG", "deputada PT BA", "ministro fazenda".</div>';
-  res.hidden = false; q.setAttribute('aria-expanded','true');
+    if (x.type==='dept_head') sc -= 5; return {x, sc}; }).filter(h=>h.sc>0).sort((a,b)=>b.sc-a.sc);
+  renderHits();
 });
-q.addEventListener('keydown', e => { if (e.key==='Enter') { const a = res.querySelector('a'); if (a) { location.hash = a.getAttribute('href'); } } if (e.key==='Escape') { res.hidden = true; q.value=''; } if (e.key==='ArrowDown') { const a=res.querySelector('a'); if(a){a.focus(); e.preventDefault();} } });
-res.addEventListener('keydown', e => { const items=[...res.querySelectorAll('a')]; const i=items.indexOf(document.activeElement); if(e.key==='ArrowDown'&&items[i+1]){items[i+1].focus();e.preventDefault();} if(e.key==='ArrowUp'){ (items[i-1]||q).focus(); e.preventDefault(); } if(e.key==='Escape'){res.hidden=true;q.focus();} });
-document.addEventListener('click', e => { if (!e.target.closest('.search')) res.hidden = true; });
-window.addEventListener('hashchange', () => { res.hidden = true; q.value=''; select(location.hash.slice(1)); });
+q.addEventListener('keydown', e => { if (e.key==='Enter') { const a = rlist.querySelector('a[role=option]'); if (a) { location.hash = a.getAttribute('href'); } } if (e.key==='Escape') { closeSearch(); q.value=''; } if (e.key==='ArrowDown') { const a = sOpts()[0]; if (a) { focusOpt(a); e.preventDefault(); } } });
+rlist.addEventListener('keydown', e => { const items = sOpts(); const i = items.indexOf(document.activeElement);
+  if (e.key==='ArrowDown' && items[i+1]) { focusOpt(items[i+1]); e.preventDefault(); }
+  if (e.key==='ArrowUp') { if (items[i-1]) focusOpt(items[i-1]); else { q.removeAttribute('aria-activedescendant'); q.focus(); } e.preventDefault(); }
+  if (e.key==='Escape') { closeSearch(); q.focus(); } });
+rlist.addEventListener('click', e => { if (!e.target.closest('#sr-more')) return; sAll = true; renderHits(); focusOpt(sOpts()[14] || sOpts()[0]); });
+rlist.addEventListener('focusin', e => { const o = e.target.closest('[role=option]'); if (o) q.setAttribute('aria-activedescendant', o.id); });
+document.addEventListener('click', e => { if (!e.target.closest('.search')) closeSearch(); });
+// (a chamada inicial, no fim do script, é a que scripts/build_site.py troca por `select(hash || "<id>")`; por isso aqui a forma é outra)
+window.addEventListener('hashchange', () => { closeSearch(); q.value=''; const h = location.hash.slice(1); select(h); });
 
 // ---------- tooltip, teclado ----------
 const tip = document.getElementById('tip'), stage = document.getElementById('stage');
-document.getElementById('graph').addEventListener('mousemove', e => { const a = e.target.closest('.node'); if (!a) { tip.hidden = true; return; } const n = N[a.dataset.id]; const r = stage.getBoundingClientRect(); tip.innerHTML = esc(n.name) + `<small>${TYPE_NAME[n.type]}</small>`; tip.style.left = (e.clientX - r.left) + 'px'; tip.style.top = (e.clientY - r.top) + 'px'; tip.hidden = false; });
+document.getElementById('graph').addEventListener('mousemove', e => { const a = e.target.closest('.node'); if (!a) { tip.hidden = true; return; } const n = N[a.dataset.id]; const r = stage.getBoundingClientRect(); if (!n) { tip.hidden = true; return; } tip.innerHTML = esc(n.name) + `<small>${TYPE_NAME[n.type]||''}</small>`; tip.style.left = (e.clientX - r.left) + 'px'; tip.style.top = (e.clientY - r.top) + 'px'; tip.hidden = false; });
 document.getElementById('graph').addEventListener('mouseleave', () => tip.hidden = true);
 document.addEventListener('keydown', e => { if (e.key==='Escape' && !q.value && document.activeElement !== q) { location.hash = ''; } if (e.key==='/' && document.activeElement !== q) { q.focus(); e.preventDefault(); } });
 
@@ -738,19 +877,36 @@ function legendSvg(t){ const dash = {elege:'',nomeia:'',chefia:'',sabatina:'5 3'
 const shapeSvg = {elected:'<svg viewBox="0 0 22 14"><circle cx="11" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>', department:'<svg viewBox="0 0 22 14"><rect x="6" y="2" width="10" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>', tribunal:'<svg viewBox="0 0 22 14"><polygon points="11,1 16.7,5.1 14.5,11.9 7.5,11.9 5.3,5.1" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>', forca:'<svg viewBox="0 0 22 14"><polygon points="11,1 17,12 5,12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>', commission:'<svg viewBox="0 0 22 14"><polygon points="11,13 5.3,8.9 7.5,2.1 14.5,2.1 16.7,8.9" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>', advisory:'<svg viewBox="0 0 22 14"><polygon points="16,7 13.5,11.3 8.5,11.3 6,7 8.5,2.7 13.5,2.7" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>', dept_head:'<svg viewBox="0 0 22 14"><circle cx="11" cy="7" r="2.6" fill="currentColor"/></svg>'};
 lbox.innerHTML = `<h3>Entidades</h3><div>${shapeSvg.elected} Órgão eletivo</div><div>${shapeSvg.department} Órgão, autarquia, empresa</div><div>${shapeSvg.tribunal} Tribunal</div><div>${shapeSvg.forca} Força Armada</div><div>${shapeSvg.commission} Colegiado deliberativo</div><div>${shapeSvg.advisory} Conselho consultivo</div><div>${shapeSvg.dept_head} Cargo de chefia</div><div></div>
   <h3>Relações</h3>${Object.keys(REL).map(t=>`<div>${legendSvg(t)} ${REL[t][0]}</div>`).join('')}
-  <h3>Setores</h3>${Object.keys(ARC).map(s=>`<div><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</div>`).join('')}`;
+  <h3>Setores</h3>${Object.keys(ARC).map(s=>`<div><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</div>`).join('')}
+  <details class="conv"><summary>O que significam os anéis e formas?</summary><ul>
+    <li><b>Anéis</b>: distância institucional do voto. É uma convenção de leitura, não uma medida de poder.</li>
+    <li><b>Formas</b>: o tipo do nó (órgão, cargo, comissão ou colegiado, tribunal).</li>
+    <li><b>Cores</b>: o setor (Legislativo, Executivo, Judiciário, funções essenciais).</li>
+    <li><b>Grupos de pontos</b>: unidades de um mesmo órgão (universidades, secretarias).</li>
+  </ul></details>`;
 lb.addEventListener('click', () => { const open = lbox.hidden; lbox.hidden = !open; lb.setAttribute('aria-expanded', String(open)); lb.textContent = open ? 'Legenda ▴' : 'Legenda ▾'; });
 const gb = document.getElementById('gov-btn'), gm = document.getElementById('gov-menu');
 gb.addEventListener('click', e => { e.preventDefault(); const open = gm.hidden; gm.hidden = !open; gb.setAttribute('aria-expanded', String(open)); });
 document.addEventListener('click', e => { if (!e.target.closest('.brand') && !e.target.closest('#gov-menu')) { gm.hidden = true; gb.setAttribute('aria-expanded','false'); } });
 gm.querySelector('.gm-item.on').addEventListener('click', e => { e.preventDefault(); location.hash = ''; gm.hidden = true; });
-const root = document.documentElement, tb = document.getElementById('theme');
-// escuro por padrão; a escolha da pessoa (botão Tema) fica guardada no navegador
+const root = document.documentElement, tsel = document.getElementById('theme');
+// três estados: Automático (segue o sistema, sem data-theme), Claro, Escuro. Escuro por padrão quando não há preferência salva; chave 'atlas-theme'
+function applyTheme(t){ if (t === 'auto') delete root.dataset.theme; else root.dataset.theme = t; tsel.querySelectorAll('[data-theme]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.theme === t))); }
 let savedTheme = null; try { savedTheme = localStorage.getItem('atlas-theme'); } catch(e){}
-root.dataset.theme = savedTheme || 'dark';
-tb.addEventListener('click', () => { const dark = root.dataset.theme ? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; root.dataset.theme = dark ? 'light' : 'dark'; try { localStorage.setItem('atlas-theme', root.dataset.theme); } catch(e){} });
+applyTheme(['light','dark','auto'].includes(savedTheme) ? savedTheme : 'dark');
+tsel.addEventListener('click', e => { const b = e.target.closest('[data-theme]'); if (!b) return; applyTheme(b.dataset.theme); try { localStorage.setItem('atlas-theme', b.dataset.theme); } catch(e){} });
+
+// celular: chamada para a roda e barra fixa do item selecionado
+const scrollMode = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+document.getElementById('open-wheel').addEventListener('click', () => { stage.scrollIntoView({behavior: scrollMode(), block:'start'}); });
+document.getElementById('sheet-go').addEventListener('click', () => { const h = content.querySelector('h1'); content.scrollIntoView({behavior: scrollMode(), block:'start'}); if (h) { h.setAttribute('tabindex','-1'); h.focus({preventScroll:true}); } });
+document.getElementById('sheet-x').addEventListener('click', () => { if (location.hash) location.hash = ''; else select(''); });
+// cliques delegados dentro da ficha: tentar de novo, ampliar leitura
+content.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if (!b) return; if (b.dataset.act === 'retry') select(b.dataset.id); else if (b.dataset.act === 'leitura') toggleLeitura(); });
+applyLeitura();
 
 if (!document.querySelector('svg.wheel')) draw();
 select(location.hash.slice(1));
 });
+// camera-hook
 </script>
