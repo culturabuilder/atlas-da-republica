@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-09-20'
+generated_at: '2026-09-21'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-06-23'
+janela_inicio: '2026-06-24'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,13 +11,13 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 290
+    compromissos_90d: 284
     dias_com_agenda: 65
     por_tipo:
-      evento: 105
-      viagem: 89
-      audiencia: 79
-      reuniao: 12
+      evento: 100
+      viagem: 85
+      audiencia: 81
+      reuniao: 13
       outro: 5
     entidades_top:
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
@@ -46,23 +46,41 @@ people:
     - nome: Palácio da Alvorada
       n: 42
     - nome: Base Aérea de Brasília
-      n: 36
+      n: 35
     - nome: Palácio Itamaraty
       n: 5
     - nome: Esplanada dos Ministérios, Brasília
       n: 5
     - nome: Aeroporto Internacional de Macapá
       n: 4
-    - nome: Aeroporto Santos Dumont
-      n: 3
-    - nome: Base Aérea de São Paulo
-      n: 3
     - nome: Aeroporto Internacional de Ponta Porã
       n: 3
     - nome: Túnel Major Sales
       n: 3
-    ultimo: '2026-09-20'
+    - nome: Aeroporto de Juazeiro do Norte
+      n: 3
+    - nome: Aeroporto de Congonhas
+      n: 3
+    ultimo: '2026-09-21'
     recentes:
+    - data: '2026-09-21'
+      hora: '18:00'
+      titulo: Audiência ao Senador Bernie Sanders
+      tipo: audiencia
+      local: Residência Oficial, Nova York (EUA)
+      participantes: []
+    - data: '2026-09-21'
+      hora: '11:30'
+      titulo: Audiência ao Prefeito da Cidade de Nova York, Zohran Mamdani
+      tipo: audiencia
+      local: Residência Oficial, Nova York (EUA)
+      participantes: []
+    - data: '2026-09-21'
+      hora: '10:30'
+      titulo: Reunião com o Presidente da República Oriental do Uruguai, Yamandú Orsi
+      tipo: reuniao
+      local: Residência Oficial, Nova York (EUA)
+      participantes: []
     - data: '2026-09-20'
       hora: '18:15'
       titulo: Chegada a Nova York
@@ -93,55 +111,8 @@ people:
       tipo: evento
       local: BR-116, Km 163, Vigário Geral – Rio de Janeiro
       participantes: []
-    - data: '2026-09-18'
-      hora: '10:30'
-      titulo: Apresentação das forças de segurança que atuam no Estado do Rio de Janeiro
-      tipo: evento
-      local: Pátio do Complexo da Polícia Rodoviária Federal, BR-116, Km 163, Vigário Geral – Rio de Janeiro
-      participantes: []
-    - data: '2026-09-17'
-      hora: '17:00'
-      titulo: Intervenções no contexto da visita ao novo Complexo Industrial da Eurofarma
-      tipo: evento
-      local: Estrada da Produção – Montes Claros (MG)
-      participantes: []
-    - data: '2026-09-17'
-      hora: '16:45'
-      titulo: Foto com trabalhadores do Complexo Industrial da Eurofarma
-      tipo: evento
-      local: Estrada da Produção – Montes Claros (MG)
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-06-23:
-      - hora: '10:00'
-        titulo: Visita ao trecho reformado da BR-116 e desenlace da fita de inauguração
-        local: Via Dutra (BR-116), entre Paracambi e Piraí/RJ
-      - hora: '11:00'
-        titulo: Anúncio sobre a entrega de trecho da Nova Serra das Araras
-        local: Via Dutra (BR-116), entre Paracambi e Piraí/RJ
-      - hora: '13:10'
-        titulo: Partida para Guarulhos
-        local: Aeroporto Santos Dumont
-      - hora: '13:50'
-        titulo: Chegada a Guarulhos
-        local: Base Aérea de São Paulo
-      - hora: '14:15'
-        titulo: Anúncio sobre o Programa Celular Seguro
-        local: Base Aérea de São Paulo
-      - hora: '15:40'
-        titulo: Visita ao Hospital Santa Marcelina
-        local: Vila Carmosina, São Paulo/SP
-      - hora: '16:20'
-        titulo: Ato de Entrega de Equipamentos de Radioterapia no Hospital Santa Marcelina com Inauguração Simultânea de Outros
-          Dois Centros de Radioterapia
-        local: Vila Carmosina, São Paulo
-      - hora: '18:40'
-        titulo: Partida para Brasília
-        local: Base Aérea de São Paulo
-      - hora: '20:00'
-        titulo: Chegada a Brasília
-        local: Base Aérea de Brasília
       presidente/2026-06-24: []
       presidente/2026-06-25:
       - hora: 08:00
@@ -1109,6 +1080,16 @@ people:
       - hora: '18:15'
         titulo: Chegada a Nova York
         local: Aeroporto Internacional John F. Kennedy
+      presidente/2026-09-21:
+      - hora: '10:30'
+        titulo: Reunião com o Presidente da República Oriental do Uruguai, Yamandú Orsi
+        local: Residência Oficial, Nova York (EUA)
+      - hora: '11:30'
+        titulo: Audiência ao Prefeito da Cidade de Nova York, Zohran Mamdani
+        local: Residência Oficial, Nova York (EUA)
+      - hora: '18:00'
+        titulo: Audiência ao Senador Bernie Sanders
+        local: Residência Oficial, Nova York (EUA)
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -1116,11 +1097,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 93
-    dias_com_agenda: 54
+    compromissos_90d: 91
+    dias_com_agenda: 53
     por_tipo:
-      evento: 38
-      viagem: 27
+      evento: 37
+      viagem: 26
       audiencia: 17
       outro: 6
       reuniao: 5
@@ -1149,7 +1130,7 @@ people:
     - nome: Palácio do Planalto
       n: 20
     - nome: São Paulo/SP
-      n: 19
+      n: 17
     - nome: Palácio do Planalto, Anexo II
       n: 12
     - nome: Palácio da Alvorada
@@ -1217,14 +1198,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-06-23:
-      - hora: '15:00'
-        titulo: Visita ao Hospital Santa Marcelina e entrega de Novo Acelerador Linear
-        local: São Paulo/SP
-      - hora: '19:00'
-        titulo: Decolagem de São Paulo/SP para Brasília/DF
-        local: São Paulo/SP
-      vice/2026-06-23-b1: []
       vice/2026-06-24: []
       vice/2026-06-24-b1: []
       vice/2026-06-25:
@@ -1692,6 +1665,8 @@ people:
       vice/2026-09-19-b1: []
       vice/2026-09-20: []
       vice/2026-09-20-b1: []
+      vice/2026-09-21: []
+      vice/2026-09-21-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 290 compromissos em 65 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 93 compromissos em 54 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 284 compromissos em 65 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 91 compromissos em 53 dias (0 dias não lidos)'
