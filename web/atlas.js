@@ -38,16 +38,36 @@ for (const sid of Object.keys(ARC)) {
     for (const n of all) { if (n.cluster) { const k = n.parent || 'x'; (clusters[k] = clusters[k] || []).push(n); } else list.push(n); }
     for (const k of Object.keys(clusters)) list.push({id:'cluster:'+k+':'+ring, parent:k, name:'~', _cluster:clusters[k]});
     list.sort((a,b) => { const pa = a.parent && angle[a.parent] != null ? angle[a.parent] : 999, pb = b.parent && angle[b.parent] != null ? angle[b.parent] : 999; return pa - pb || String(a.name).localeCompare(String(b.name),'pt'); });
-    const span = (a1-a0) - 2*pad; const step = list.length > 1 ? span/(list.length-1) : 0;
+    // cada item ocupa uma fatia angular proporcional ao que precisa: um nó = 1; uma grade de cluster = metade das colunas + 0,5
+    // (antes cada cluster tinha a fatia de um nó só, e as grades de comissões e universidades se sobrepunham aos vizinhos)
+    const span = (a1-a0) - 2*pad;
+    const cols = n => Math.ceil(Math.sqrt(n._cluster.length*1.6));
+    const w = list.map(n => n._cluster ? Math.max(1.5, cols(n)*0.5 + 0.5) : 1); const totalW = w.reduce((x,y)=>x+y, 0);
     const dense = list.length > 48;
+    let cum = 0;
     list.forEach((n,i) => {
-      const a = list.length > 1 ? a0+pad+i*step : (a0+a1)/2;
-      if (n._cluster) { // grade de pontos ao redor do slot
-        const cols = Math.ceil(Math.sqrt(n._cluster.length*1.6)); n._cluster.forEach((m,j) => { const r = Math.floor(j/cols), c = j%cols; angle[m.id] = a + (c-(cols-1)/2)*1.05; radius[m.id] = RING_R[ring] + 14 + (r-2)*6.5; clusterOf[m.id] = n.id; }); return; }
+      const slice = span * w[i] / totalW; const a = list.length > 1 ? a0 + pad + (cum + w[i]/2) * span / totalW : (a0+a1)/2; cum += w[i];
+      if (n._cluster) { // grade de pontos centrada na fatia; colunas cabem na fatia, linhas se afastam do anel
+        const cc = cols(n); const rows = Math.ceil(n._cluster.length/cc); const stepA = Math.min(1.05, slice/cc);
+        n._cluster.forEach((m,j) => { const r = Math.floor(j/cc), c = j%cc; angle[m.id] = a + (c-(cc-1)/2)*stepA; radius[m.id] = RING_R[ring] + (r-(rows-1)/2)*6.5; clusterOf[m.id] = n.id; }); return; }
       angle[n.id] = a; radius[n.id] = RING_R[ring] + (dense ? (i%2 ? 12 : -12) : 0);
     });
   }
 }
+// comissões do Congresso (anel 3 do Legislativo): em vez de grades, três arcos concêntricos por Casa
+// (Senado por dentro, mistas no meio, Câmara por fora), cada um com espaçamento uniforme ao longo do setor.
+(function(){
+  const [a0,a1] = ARC.legislativo; const pad = 4; const span = (a1-a0) - 2*pad;
+  const all = orgs.filter(n => n.sector === 'legislativo' && n.ring === 3 && n.type === 'commission');
+  if (!all.length) return;
+  const groups = [['br-senado-federal', -26], ['br-congresso-nacional', 0], ['br-camara-dos-deputados', 26]];
+  for (const [parent, dr] of groups) {
+    const list = all.filter(n => n.parent === parent).sort((x,y) => (x.cluster?1:0)-(y.cluster?1:0) || (/^Mesa/.test(y.name)?1:0)-(/^Mesa/.test(x.name)?1:0) || String(x.name).localeCompare(String(y.name),'pt'));
+    if (!list.length) continue;
+    const step = list.length > 1 ? Math.min(span/(list.length-1), 6) : 0; const start = (a0+a1)/2 - step*(list.length-1)/2;
+    list.forEach((n,i) => { angle[n.id] = start + i*step; radius[n.id] = RING_R[3] + dr; delete clusterOf[n.id]; n._arc = true; });
+  }
+})();
 // cargos: mesmo ângulo do órgão, um pouco para dentro; vários cargos do mesmo órgão se espalham
 const posOf = {};
 for (const n of orgs) {
@@ -60,7 +80,7 @@ function shape(n, s){
   const t=n.type, k=(n.ring===1||n.ring===2)?1.25:1; s=s*k;
   if (t==='elected') return `<circle class="shape" r="${s}"/>`;
   if (t==='department') { const sub=n.subtype; if(n.cluster) return `<circle class="shape" r="2.2" style="fill:currentColor;fill-opacity:.55"/>`; if(sub==='tribunal') return `<polygon class="shape" points="${poly(5,s+1,-90)}"/>`; if(sub==='forca_armada') return `<polygon class="shape" points="${poly(3,s+2,-90)}"/>`; return `<rect class="shape" x="${-s}" y="${-s}" width="${2*s}" height="${2*s}" rx="1.5"/>`; }
-  if (t==='commission') return `<polygon class="shape" points="${poly(5,s+1,-90)}" transform="rotate(180)"/>`;
+  if (t==='commission') { if (n._arc) s = n.cluster ? 2.7 : 3.6; return `<polygon class="shape" points="${poly(5,s+1,-90)}" transform="rotate(180)"/>`; }
   if (t==='advisory') return `<polygon class="shape" points="${poly(6,s+1,0)}"/>`;
   if (t==='dept_head') return `<circle class="shape" r="2.6"/>`;
   return '';
@@ -79,7 +99,7 @@ function draw(){
     s += `<path id="sl-${sid}" d="${flip?ringArcRev(a0,a1,R_OUT+6):ringArc(a0,a1,R_OUT+13)}" fill="none"/><text class="sector-label" fill="${COL[sid]}"><textPath href="#sl-${sid}" startOffset="50%" text-anchor="middle">${lbl}</textPath></text>`; }
   // arcos de subgrupo (como "Cabinet"/"Congress" no CivLab)
   const SUBARCS = [['executivo',2,n=>n.subtype==='ministerio','ESPLANADA'],['judiciario',2,n=>n.subtype==='tribunal','TRIBUNAIS SUPERIORES'],['legislativo',3,n=>n.type==='commission','COMISSÕES'],['essenciais',3,n=>n.subtype==='ministerio_publico','RAMOS DO MPU']];
-  SUBARCS.forEach(([sid,ring,f,label],i)=>{ const as = orgs.filter(n=>n.sector===sid&&n.ring===ring&&f(n)&&angle[n.id]!=null).map(n=>angle[n.id]); if (as.length<3) return; const a0=Math.min(...as)-1.5, a1=Math.max(...as)+1.5; const r=RING_R[ring]+(ring>=3?26:22); const flip=(a0+a1)/2>90&&(a0+a1)/2<270; s += `<path d="${flip?ringArcRev(a0,a1,r):ringArc(a0,a1,r)}" fill="none" stroke="${COL[sid]}" stroke-opacity=".35" stroke-width="1"/><path id="sa${i}" d="${flip?ringArcRev(a0,a1,r+(flip?-4:6)):ringArc(a0,a1,r+6)}" fill="none"/><text class="ring-label" fill="${COL[sid]}" style="fill:${COL[sid]};fill-opacity:.85;font-size:8px"><textPath href="#sa${i}" startOffset="50%" text-anchor="middle">${label}</textPath></text>`; });
+  SUBARCS.forEach(([sid,ring,f,label],i)=>{ const as = orgs.filter(n=>n.sector===sid&&n.ring===ring&&f(n)&&angle[n.id]!=null).map(n=>angle[n.id]); if (as.length<3) return; const a0=Math.min(...as)-1.5, a1=Math.max(...as)+1.5; const rs = orgs.filter(n=>n.sector===sid&&n.ring===ring&&f(n)&&radius[n.id]!=null).map(n=>radius[n.id]); const r=Math.max(RING_R[ring]+(ring>=3?26:22), (rs.length?Math.max(...rs):0)+18); const flip=(a0+a1)/2>90&&(a0+a1)/2<270; s += `<path d="${flip?ringArcRev(a0,a1,r):ringArc(a0,a1,r)}" fill="none" stroke="${COL[sid]}" stroke-opacity=".35" stroke-width="1"/><path id="sa${i}" d="${flip?ringArcRev(a0,a1,r+(flip?-4:6)):ringArc(a0,a1,r+6)}" fill="none"/><text class="ring-label" fill="${COL[sid]}" style="fill:${COL[sid]};fill-opacity:.85;font-size:8px"><textPath href="#sa${i}" startOffset="50%" text-anchor="middle">${label}</textPath></text>`; });
   s += `<g id="edges"></g>`;
   s += `<a class="node center" href="#br-eleitorado" data-id="br-eleitorado" aria-label="Povo brasileiro, eleitorado"><polygon class="shape" points="${burst(52)}" style="fill:var(--povo);stroke:var(--povo)"/><text class="center-label" x="${C}" y="${C-3}">Povo</text><text class="center-label" x="${C}" y="${C+9}">brasileiro</text></a>`;
   for (const n of orgs) { const [x,y]=xy(n.id); s += `<a class="node" href="#${n.id}" data-id="${n.id}" aria-label="${esc(n.name)}, ${TYPE_NAME[n.type]}" style="color:${COL[n.sector]}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})"><g style="stroke:${COL[n.sector]}">${shape(n, n.ring<=2?6:4.6)}</g></a>`; }
