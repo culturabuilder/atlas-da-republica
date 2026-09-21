@@ -7,7 +7,7 @@ Uso: .venv/bin/python scripts/build_site.py [--base https://atlas.exemplo.br]
 """
 import json, pathlib, argparse, html, shutil, re, datetime
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-ap = argparse.ArgumentParser(); ap.add_argument("--base", default="https://atlasdarepublica.org"); ap.add_argument("--prefix", default=""); ap.add_argument("--cname", default=""); a = ap.parse_args()
+ap = argparse.ArgumentParser(); ap.add_argument("--base", default="https://atlasdarepublica.org"); ap.add_argument("--prefix", default=""); ap.add_argument("--cname", default=""); ap.add_argument("--previa", action="store_true", help="prévia de testes: noindex, faixa de aviso, câmera em foco suave por padrão"); a = ap.parse_args()
 PREFIX = a.prefix.rstrip("/")
 BASE = a.base.rstrip("/")
 G = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8")); N = G["nodes"]; E = G["edges"]
@@ -22,7 +22,11 @@ shutil.copytree(ROOT / "build" / "nodes", site / "nodes")
 shutil.copytree(ROOT / "build" / "people", site / "people")
 if (ROOT / "site_img_cache").exists(): pass
 tpl = tpl.replace('<script src="graph.br.js" defer></script>', f'<script src="{PREFIX}/graph.br.js" defer></script>').replace('<script src="atlas.js" defer></script>', f'<script src="{PREFIX}/atlas.js" defer></script>').replace('<link rel="stylesheet" href="atlas.css">', f'<link rel="stylesheet" href="{PREFIX}/atlas.css">')
-for f in ("atlas.js", "atlas.css"): shutil.copy(ROOT / "web" / f, site / f)
+for f in ("atlas.js", "atlas.css", "atlas-camera.js"): shutil.copy(ROOT / "web" / f, site / f)
+# câmera reversível da roda: módulo separado, só no navegador (render_wheel.js não o carrega)
+_cam_flags = '<script>window.ATLAS_PREVIA=true;window.ATLAS_CAMERA_DEFAULT="focus";</script>' if a.previa else ''
+tpl = tpl.replace(f'<script src="{PREFIX}/atlas.js" defer></script>', f'{_cam_flags}<script src="{PREFIX}/atlas.js" defer></script><script src="{PREFIX}/atlas-camera.js" defer></script>', 1)
+if a.previa: tpl = tpl.replace("<title>", '<meta name="robots" content="noindex,nofollow">\n<title>', 1)
 # atlas.css é pequeno: embutido para não bloquear a renderização com mais uma requisição
 for _form in (f'<link rel="stylesheet" href="{PREFIX}/atlas.css">', '<link rel="stylesheet" href="atlas.css">'):
     tpl = tpl.replace(_form, "<style>" + (ROOT / "web" / "atlas.css").read_text(encoding="utf-8") + "</style>", 1)
@@ -119,7 +123,7 @@ home = home.replace('href="/br/', f'href="{PREFIX}/br/').replace('href="/como-fu
 if a.cname: (site / "CNAME").write_text(a.cname + "\n", encoding="utf-8")
 today = datetime.date.today().isoformat()
 (site / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"<url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
-(site / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
+(site / "robots.txt").write_text("User-agent: *\nDisallow: /\n" if a.previa else f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
 (site / "404.html").write_text(tpl.replace("<title>Atlas da República</title>", "<title>Página não encontrada · Atlas da República</title>"), encoding="utf-8")
 (site / "vercel.json").write_text(json.dumps({"cleanUrls": True, "headers": [{"source": "/(.*)", "headers": [{"key": "X-Content-Type-Options", "value": "nosniff"}, {"key": "X-Frame-Options", "value": "SAMEORIGIN"}, {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"}, {"key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()"}]}, {"source": "/graph.br.js", "headers": [{"key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400"}]}]}, indent=1), encoding="utf-8")
 print(f"site/: {len(urls)} páginas ({len(PEOPLE)} de pessoas), sitemap, robots, 404, vercel.json")
