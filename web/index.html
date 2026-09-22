@@ -596,6 +596,9 @@ function temasHtml(){
 }
 // barra: rótulo e valor curto na primeira linha, barra na segunda, detalhe opcional na terceira.
 // Nenhum texto disputa largura com outro, então o comprimento do conteúdo nunca empurra nada para fora.
+// quem ocupa cada cargo, montado a partir do índice de pessoas: o núcleo não traz os ocupantes dentro do nó
+const holderOf = (() => { const m = {}; for (const p of Object.values(P)) for (const pid of (p.positions||[])) if (!m[pid]) m[pid] = p; return m; })();
+function holders(n){ return (n.people && n.people.length) ? n.people : (holderOf[n.id] ? [holderOf[n.id]] : []); }
 function bars(items, key, val, opts){ const o=opts||{}; const mx=Math.max(...items.map(val),1);
   return `<div class="bars">${items.map(it=>{ const sub=o.sub?o.sub(it, val(it)):'';
     return `<span class="k">${o.link&&o.link(it)?`<a href="${o.link(it)}" style="color:inherit;text-decoration:none">${esc(key(it))}</a>`:esc(key(it))}</span><span class="v">${o.fmt?o.fmt(val(it), it):brl(val(it))}</span><span class="b"><i style="width:${Math.round(100*val(it)/mx)}%"></i></span>${sub?`<span class="sb">${esc(sub)}</span>`:''}`; }).join('')}</div>`; }
@@ -780,10 +783,11 @@ function homeBody(){
   const pr = 'br-presidente-da-republica';
   const apt = Object.values(E).filter(e=>e.type==='nomeia'&&e.from===pr).map(e=>N[e.to]).filter(Boolean);
   const bySec = {}; apt.forEach(n=>{ (bySec[n.sector]=bySec[n.sector]||[]).push(n); });
-  const tot = apt.reduce((a,n)=>a+(n.seats||1),0), known = apt.reduce((a,n)=>a+Math.min((n.people||[]).length,n.seats||1),0), sab = apt.filter(n=>n.sabatina).reduce((a,n)=>a+(n.seats||1),0);
+  const nOcup = n => (n.n_people!=null ? n.n_people : holders(n).length);
+  const tot = apt.reduce((a,n)=>a+(n.seats||1),0), known = apt.reduce((a,n)=>a+Math.min(nOcup(n),n.seats||1),0), sab = apt.filter(n=>n.sabatina).reduce((a,n)=>a+(n.seats||1),0);
   const trans = `<div class="stats" style="margin-bottom:12px"><div class="stat"><div class="n">${apt.length}</div><div class="l">cargos nomeados pelo PR</div></div><div class="stat"><div class="n">${tot}</div><div class="l">cadeiras</div></div><div class="stat"><div class="n">${sab}</div><div class="l">passam pelo Senado</div></div></div>
     <p style="font-size:14px">A posse de 1º de janeiro de 2027 troca a cúpula do Executivo. Estes são os cargos de nomeação do Presidente da República mapeados no grafo, com quem os ocupa hoje. ${known} de ${tot} cadeiras têm ocupante conhecido.</p>
-    ${Object.keys(ARC).filter(k=>bySec[k]).map(k=>`<h3 style="color:${COL[k]}">${SEC[k].name} · ${bySec[k].length}</h3><div class="list">${bySec[k].sort((a,b)=>a.name.localeCompare(b.name,'pt')).map(n=>{ const p=(n.people||[])[0]; const extra = n.seats>1?`${Math.min((n.people||[]).length,n.seats)}/${n.seats}`:(p?esc(p.name.split(' ').slice(0,2).join(' ')):'<span style="color:var(--jud)">sem dado</span>'); return `<a href="#${n.id}"><span class="dot" style="background:${COL[n.sector]}"></span><span>${esc(n.name)}</span><span class="sm">${n.sabatina?'senado · ':''}${extra}</span>`; }).join('')}</div>`).join('')}`;
+    ${Object.keys(ARC).filter(k=>bySec[k]).map(k=>`<h3 style="color:${COL[k]}">${SEC[k].name} · ${bySec[k].length}</h3><div class="list">${bySec[k].sort((a,b)=>a.name.localeCompare(b.name,'pt')).map(n=>{ const p=holders(n)[0]; const extra = n.seats>1?`${Math.min(nOcup(n),n.seats)}/${n.seats}`:(p?esc(p.name.split(' ').slice(0,2).join(' ')):'<span style="color:var(--jud)">sem ocupante conhecido</span>'); return `<a href="#${n.id}"><span class="dot" style="background:${COL[n.sector]}"></span><span>${esc(n.name)}</span><span class="sm">${n.sabatina?'senado · ':''}${extra}</span>`; }).join('')}</div>`).join('')}`;
   const winSel = `<div class="ptools"><span class="win" id="win-sel" role="group" aria-label="Janela de tempo">${[7,30,90].map(w=>`<button type="button" aria-pressed="${win===w}" data-win="${w}">${w} dias</button>`).join('')}</span></div>`;
   if (homeTab==='parado') return `<p class="lead">Decisões com prazo ou rito definido que ainda não aconteceram, e os temas em debate cruzados com o andamento dos processos.</p>${omissaoHtml()}<h2 class="sec">Temas em debate</h2>${temasHtml()}`;
   if (homeTab==='dinheiro') return `${arrecCard(true)}<h2 class="sec">Emendas, renúncias, viagens, cartão e teto</h2>${dinheiroHtml()}`;
@@ -872,7 +876,7 @@ function composicaoHtml(n){
 }
 function historicoHtml(n){
   const h=n.historico; if(!h||!h.mandatos||!h.mandatos.length) return '';
-  const cur=(n.people||[])[0]; const ms=h.mandatos.slice().reverse();
+  const cur=holders(n)[0]; const ms=h.mandatos.slice().reverse();
   const yrs=d=>d?String(d).slice(0,4):''; const dur=m=>m.dias!=null?(m.dias>=730?`${(m.dias/365).toLocaleString('pt-BR',{maximumFractionDigits:1})} anos`:m.dias>=60?`${Math.round(m.dias/30)} meses`:`${m.dias} dias`):'';
   const med=h.mediana_dias!=null?(h.mediana_dias>=730?`${(h.mediana_dias/365).toLocaleString('pt-BR',{maximumFractionDigits:1})} anos`:`${Math.round(h.mediana_dias/30)} meses`):null;
   const pres=Object.entries(h.por_presidente||{}).filter(([k,v])=>v).map(([k,v])=>`${esc(k)}: ${v}`).join(' · ');
