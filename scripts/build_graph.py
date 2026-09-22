@@ -115,6 +115,24 @@ if se_path.exists():
         if ppl: n["people"] = ppl
         nodes[n["id"]] = n; merge_report["added"] += 1
 
+# ---- camada gerada (dirigentes de tribunais regionais, estatais, autarquias, fundações e instituições de ensino)
+di_path = DATA / "generated" / "dirigentes.yaml"
+_di_n = 0
+if di_path.exists():
+    di = yaml.safe_load(open(di_path, encoding="utf-8")) or {}
+    for g in di.get("nodes") or []:
+        if g["id"] in nodes: continue
+        n = dict(g); n["_file"] = "generated/dirigentes.yaml"; nodes[n["id"]] = n; merge_report["added"] += 1
+    for g in di.get("positions") or []:
+        if g["id"] in nodes or g.get("head_of") not in nodes: continue
+        n = dict(g); n["_file"] = "generated/dirigentes.yaml"; ppl = n.pop("people", None) or []
+        for q in ppl:
+            for k in ("started_at", "checked_at"):
+                if q.get(k) is not None: q[k] = str(q[k])
+            q.setdefault("source", "oficial"); q.setdefault("entry_mode", "nomeado")
+        if ppl: n["people"] = ppl
+        nodes[n["id"]] = n; merge_report["added"] += 1; _di_n += 1
+
 # ---- validação de nós
 for n in nodes.values():
     i = n["id"]
@@ -726,7 +744,7 @@ if _ap_p.exists():
         if pid in people_index and a and not people_index[pid].get("agenda"):
             people_index[pid]["agenda"] = dict({k: v for k, v in a.items() if k != "dias"}, generated_at=str(_ap.get("generated_at") or "")[:10], janela_dias=_ap.get("janela_dias")); stats["agendas_pessoas"] = stats.get("agendas_pessoas", 0) + 1
 stats["sinais"] = {"pessoas": sum(1 for r in people_index.values() if r.get("sinais")), "por_tipo": dict(__import__("collections").Counter(x["tipo"] for r in people_index.values() for x in r.get("sinais") or []))}
-stats["omissao"] = (omissao or {}).get("summary"); stats["resumos"] = len(_rs); stats["historico_cargos"] = _hi_n; stats["colegiados_com_composicao"] = _cg_n; stats["orgaos_com_programas"] = _pg_n; stats["orgaos_com_transferencias"] = _tr_n; stats["segundo_escalao"] = _se_n; stats["atividade_pessoas"] = len(atividade)
+stats["omissao"] = (omissao or {}).get("summary"); stats["resumos"] = len(_rs); stats["historico_cargos"] = _hi_n; stats["colegiados_com_composicao"] = _cg_n; stats["orgaos_com_programas"] = _pg_n; stats["dirigentes"] = _di_n; stats["orgaos_com_transferencias"] = _tr_n; stats["segundo_escalao"] = _se_n; stats["atividade_pessoas"] = len(atividade)
 stats["people"] = len(people_index)
 # ---- números do projeto: o README descreve o que existe hoje, gerado a partir deste build
 def _cobertura():

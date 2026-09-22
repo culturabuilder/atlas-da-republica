@@ -16,8 +16,12 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font
 a{color:var(--accent)}
 .app{display:grid;grid-template-columns:minmax(360px,440px) 1fr;min-height:100vh}
 /* ---------- painel ---------- */
-.panel{padding:16px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:100vh;position:sticky;top:0}
-.card{background:var(--card);border:1px solid var(--line-2);border-radius:10px;padding:18px 20px}
+.panel{padding:16px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;overflow-x:clip;max-height:100vh;position:sticky;top:0}
+/* contenção: em coluna estreita, todo item de grid/flex pode encolher (sem min-width:0 o conteúdo empurra para fora)
+   e qualquer palavra longa quebra em vez de transbordar. Vale para tudo que for renderizado dentro do painel. */
+.panel :where(div,section,article,span,a,p,h1,h2,h3,h4,li,dt,dd,details,summary,button,figure){min-width:0}
+.panel :where(p,span,a,b,em,h1,h2,h3,h4,li,dd,summary){overflow-wrap:anywhere}
+.card{background:var(--card);border:1px solid var(--line-2);border-radius:10px;padding:18px 20px;overflow:clip}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;font-size:17px;position:relative}
 .brand .mark{width:20px;height:20px;border-radius:50%;background:var(--povo);box-shadow:0 0 0 3px var(--card),0 0 0 4px var(--povo)}
 .brand .crumb{color:var(--ink-3);font-weight:500}
@@ -58,20 +62,22 @@ p{margin:8px 0;color:var(--ink-2)}
 .chip.warn{background:transparent;border-color:var(--jud);color:var(--jud)}
 .links{display:flex;gap:14px;flex-wrap:wrap;font-size:14px}
 .list{display:flex;flex-direction:column;gap:6px}
-.list a{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line-2);border-radius:8px;text-decoration:none;color:var(--ink);font-size:15px;background:var(--panel)}
+.list a{display:flex;align-items:center;gap:6px 10px;flex-wrap:wrap;padding:8px 10px;border:1px solid var(--line-2);border-radius:8px;text-decoration:none;color:var(--ink);font-size:15px;background:var(--panel)}
 .list a:hover{border-color:var(--accent)}
-.list a .sm{color:var(--ink-3);font-size:13px;margin-left:auto;white-space:nowrap}
+.list a .sm{color:var(--ink-3);font-size:13px;margin-left:auto;white-space:normal;text-align:right}
 .list .entry{font-size:13px;color:var(--ink-2);line-height:1.45;margin:-4px 0 8px;padding:0 10px 0 30px}
 .list .entry a{display:inline;padding:0;border:0;background:none;font-size:inherit;color:var(--accent,var(--ink));text-decoration:underline;text-underline-offset:2px}
 .list .entry b{font-weight:600;color:var(--ink)}
 .list .entry .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-right:6px}
 .seat{padding:8px 10px;border:1px dashed var(--line);border-radius:8px;font-size:14px;color:var(--ink-3);font-style:italic}
 .people{display:flex;flex-direction:column;gap:4px;margin-top:6px}
-.person{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;padding:5px 8px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:14.5px}
+.person{display:grid;grid-template-columns:30px minmax(0,1fr);gap:2px 10px;align-items:center;padding:6px 8px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:14.5px}
 .person:hover{background:var(--panel)}
 .person .av{width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center}
 .person .pn em{font-style:normal;color:var(--ink-3);font-size:12.5px;margin-left:4px}
-.person .pm{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);white-space:nowrap}
+.person .pm{grid-column:2;font-family:var(--mono);font-size:11.5px;color:var(--ink-3);white-space:normal;line-height:1.35}
+.person .pn{overflow-wrap:normal;word-break:normal}
+.person .av{flex:none;grid-row:span 2;align-self:start}
 .parties{display:grid;grid-template-columns:auto 1fr auto;gap:3px 10px;align-items:center;font-size:12.5px;margin:6px 0 10px}
 .parties .pr{display:contents}
 .parties .pk{font-family:var(--mono);font-size:11px}
@@ -182,7 +188,7 @@ h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid va
 .om-it .m b{color:var(--ink);font-weight:600}.om-it .m .bad{color:var(--leg);font-weight:600}.om-it .m .ok{color:var(--ok)}
 .om-it .who{font-size:13px;color:var(--ink-2);margin-top:3px}.om-it .who a{color:var(--accent)}
 .cmp{display:grid;gap:2px}.cmp-row{display:flex;justify-content:space-between;gap:12px;align-items:baseline;font-size:13.8px;padding:4px 0;border-bottom:1px solid var(--line-2)}
-.cmp-row .c a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}.cmp-row .t{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap}
+.cmp-row .c a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}.cmp-row .t{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:normal;text-align:right}
 .hist{display:grid;grid-template-columns:auto 1fr auto;gap:2px 12px;font-size:13.5px}.hist .hm{display:contents}.hist .hy{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);white-space:nowrap;padding-top:2px}.hist .hn a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}.hist .hn em{font-style:normal;font-size:11px;color:var(--ink-3);margin-left:4px}.hist .hd{font-size:12px;color:var(--ink-3);text-align:right;white-space:nowrap}.hist .cur .hn{font-weight:600}@media(max-width:520px){.hist{grid-template-columns:auto 1fr}.hist .hd{grid-column:2;text-align:left;margin-top:-2px;margin-bottom:4px}}
 .simples{font-size:13.5px;color:var(--ink-2);margin:4px 0 2px;padding-left:10px;border-left:2px solid var(--line-2);line-height:1.45}.simples i{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-left:6px}
 .arrec .n{font-family:var(--disp);font-size:clamp(22px,3.2vw,30px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1;word-break:break-all}
@@ -207,9 +213,11 @@ h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid va
 .tema .pr{font-size:13.5px;padding:4px 0;border-top:1px dashed var(--line-2)}.tema .pr .m{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
 .tema .flag{font-size:13px;background:var(--warn-soft);color:var(--warn);border-radius:6px;padding:6px 9px;margin:6px 0}
 .din h3{margin-top:14px}
-.bars{display:grid;grid-template-columns:minmax(120px,auto) 1fr auto;gap:4px 10px;align-items:center;font-size:13.5px}
-.bars .k{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bars .b{height:8px;background:var(--line-2);border-radius:4px;overflow:hidden}.bars .b i{display:block;height:100%;background:var(--accent)}
-.bars .v{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap;text-align:right}
+.bars{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;font-size:13.5px}
+.bars>*{min-width:0}
+.bars .k{grid-column:1;overflow-wrap:anywhere}.bars .b{grid-column:1/-1;height:7px;margin:1px 0 6px;background:var(--line-2);border-radius:4px;overflow:hidden}.bars .b i{display:block;height:100%;background:var(--accent)}
+.bars .sb{grid-column:1/-1;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin:-4px 0 6px;line-height:1.3}
+.bars .v{grid-column:2;font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:normal;text-align:right;line-height:1.35;overflow-wrap:anywhere}
 .din .note{font-size:12.5px;color:var(--ink-3);margin:4px 0 8px}
 .din .cmp{display:grid;grid-template-columns:1fr auto auto;gap:3px 10px;font-size:13.5px}.din .cmp .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
 .din .cmp .n{font-family:var(--mono);font-size:12px;text-align:right;white-space:nowrap}
@@ -586,7 +594,11 @@ function temasHtml(){
   </div>`; }).join('');
   return out;
 }
-function bars(items, key, val, opts){ const o=opts||{}; const mx=Math.max(...items.map(val),1); return `<div class="bars">${items.map(it=>`<span class="k">${o.link&&o.link(it)?`<a href="${o.link(it)}" style="color:inherit;text-decoration:none">${esc(key(it))}</a>`:esc(key(it))}</span><span class="b"><i style="width:${Math.round(100*val(it)/mx)}%"></i></span><span class="v">${o.fmt?o.fmt(val(it),it):brl(val(it))}</span>`).join('')}</div>`; }
+// barra: rótulo e valor curto na primeira linha, barra na segunda, detalhe opcional na terceira.
+// Nenhum texto disputa largura com outro, então o comprimento do conteúdo nunca empurra nada para fora.
+function bars(items, key, val, opts){ const o=opts||{}; const mx=Math.max(...items.map(val),1);
+  return `<div class="bars">${items.map(it=>{ const sub=o.sub?o.sub(it, val(it)):'';
+    return `<span class="k">${o.link&&o.link(it)?`<a href="${o.link(it)}" style="color:inherit;text-decoration:none">${esc(key(it))}</a>`:esc(key(it))}</span><span class="v">${o.fmt?o.fmt(val(it), it):brl(val(it))}</span><span class="b"><i style="width:${Math.round(100*val(it)/mx)}%"></i></span>${sub?`<span class="sb">${esc(sub)}</span>`:''}`; }).join('')}</div>`; }
 function dinheiroHtml(){
   const E=G.emendas, T=G.teto, R=G.renuncias; if(!E&&!T&&!R) return '<p class="seat">Sem dados ainda.</p>';
   const stat=(n,l)=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`; let out='<div class="din">';
@@ -603,11 +615,11 @@ function dinheiroHtml(){
     <h4 style="margin:10px 0 4px;font-size:14px">Maiores benefícios</h4>${bars((R.gastos_top||[]).slice(0,10), x=>x.gasto, x=>x.valor)}
     ${cmp.length?`<h4 style="margin:12px 0 4px;font-size:14px">Renúncia por área × orçamento do ministério da área</h4><div class="cmp"><span class="h">área</span><span class="h">renúncia</span><span class="h">empenhado pelo ministério</span>${cmp.slice(0,8).map(c=>`<span>${esc(c.funcao)} · <a href="#${c.ministerio}">${esc((c.ministerio_nome||'').replace('Ministério ',''))}</a></span><span class="n">${brl(c.renuncia)}</span><span class="n">${brl(c.empenhado)} (${c.empenhado_ano})</span>`).join('')}</div>`:''}`; }
   const V=G.viagens, C=G.cartao;
-  if(V&&V.orgaos){ out+=`<h3>Viagens a serviço no Executivo em ${V.ano}</h3><p class="note">${esc(V.nota||'')} Fonte: ${esc(V.fonte||'')}, lido em ${fmtDate(V.generated_at)}.</p><div class="om">${stat(V.viagens_total.toLocaleString('pt-BR'),'viagens realizadas')}${stat(brl(V.total),'em diárias e passagens')}</div><h4 style="margin:10px 0 4px;font-size:14px">Órgãos que mais gastaram</h4>${bars((V.orgaos||[]).slice(0,10), x=>x.orgao, x=>x.total, {fmt:(v,it)=>`${brl(v)} · ${it.viagens.toLocaleString('pt-BR')} viagens`})}`; }
+  if(V&&V.orgaos){ out+=`<h3>Viagens a serviço no Executivo em ${V.ano}</h3><p class="note">${esc(V.nota||'')} Fonte: ${esc(V.fonte||'')}, lido em ${fmtDate(V.generated_at)}.</p><div class="om">${stat(V.viagens_total.toLocaleString('pt-BR'),'viagens realizadas')}${stat(brl(V.total),'em diárias e passagens')}</div><h4 style="margin:10px 0 4px;font-size:14px">Órgãos que mais gastaram</h4>${bars((V.orgaos||[]).slice(0,10), x=>(x.node&&N[x.node]?N[x.node].name:x.orgao), x=>x.total, {fmt:v=>brl(v), sub:it=>`${it.viagens.toLocaleString('pt-BR')} viagens`})}`; }
   if(C&&C.orgaos){ const top=(C.orgaos||[])[0];
-    out+=`<h3>Cartão corporativo em ${C.ano}</h3><p class="note">${esc(C.nota||'')} Fonte: ${esc(C.fonte||'')}, ${(C.meses||[]).length} meses.</p><div class="om">${stat(brl(C.total),'gastos no ano')}${stat(brl((C.orgaos||[]).reduce((a,x)=>a+(x.saques||0),0)),'sacados em espécie')}</div>${bars((C.orgaos||[]).slice(0,10), x=>x.orgao, x=>x.total, {fmt:(v,it)=>`${brl(v)} · ${it.portadores} cartões${it.saques?` · saques ${brl(it.saques)}`:''}`, link:x=>x.node_id?'#'+x.node_id:null})}`;
-    if(top&&top.unidades_top&&top.unidades_top.length) out+=`<h4 style="margin:10px 0 4px;font-size:14px">Onde o gasto acontece, no órgão que mais gasta (${esc(top.orgao)})</h4>${bars(top.unidades_top, x=>x.nome, x=>x.valor, {fmt:v=>brl(v)})}`;
-    if(top&&top.favorecidos_top&&top.favorecidos_top.length) out+=`<h4 style="margin:10px 0 4px;font-size:14px">Quem mais recebeu desse órgão</h4>${bars(top.favorecidos_top, x=>x.nome, x=>x.valor, {fmt:v=>brl(v)})}`; }
+    out+=`<h3>Cartão corporativo em ${C.ano}</h3><p class="note">${esc(C.nota||'')} Fonte: ${esc(C.fonte||'')}, ${(C.meses||[]).length} meses.</p><div class="om">${stat(brl(C.total),'gastos no ano')}${stat(brl((C.orgaos||[]).reduce((a,x)=>a+(x.saques||0),0)),'sacados em espécie')}</div>${bars((C.orgaos||[]).slice(0,10), x=>(x.node_id&&N[x.node_id]?N[x.node_id].name:x.orgao), x=>x.total, {fmt:v=>brl(v), sub:it=>`${it.portadores} ${it.portadores===1?'cartão':'cartões'}${it.saques?` · saques ${brl(it.saques)}`:''}`, link:x=>x.node_id?'#'+x.node_id:null})}`;
+    if(top&&top.unidades_top&&top.unidades_top.length) out+=`<h4 style="margin:10px 0 4px;font-size:14px">Onde o gasto acontece, no órgão que mais gasta (${esc(top.orgao)})</h4>${bars(top.unidades_top, x=>tit(x.nome), x=>x.valor, {fmt:v=>brl(v)})}`;
+    if(top&&top.favorecidos_top&&top.favorecidos_top.length) out+=`<h4 style="margin:10px 0 4px;font-size:14px">Quem mais recebeu desse órgão</h4>${bars(top.favorecidos_top, x=>tit(x.nome), x=>x.valor, {fmt:v=>brl(v)})}`; }
   const TR=G.transferencias;
   if(TR&&TR.total_por_ano){ const a=Object.keys(TR.total_por_ano).sort().reverse()[0]; const d=TR.total_por_ano[a]; const so=(d.sem_orgao&&Object.values(d.sem_orgao).reduce((x,y)=>x+y,0))||0;
     out+=`<h3>Transferências a estados e municípios em ${a}</h3><p class="note">Dinheiro federal repassado a outros entes: ${brl(d.total)} em ${(d.meses||[]).length} meses. ${brl(d.com_orgao)} saem de um órgão identificável; ${brl(so)} são transferências constitucionais e royalties, que o Portal publica sem órgão. Fonte: ${esc(TR.fonte||'')}, lido em ${fmtDate(TR.generated_at)}.</p>
@@ -616,7 +628,7 @@ function dinheiroHtml(){
     <p style="font-size:12.5px;color:var(--ink-3);margin:6px 0 0">População do IBGE de ${esc(String(TR.populacao_ibge||''))}. ${esc(TR.criterio||'')}</p>`; }
   if(T){ out+=`<h3>Acima do teto no Executivo federal · ${(T.mes||'').slice(4,6)}/${(T.mes||'').slice(0,4)}</h3><p class="note">${esc(T.nota||'')} Teto: R$ ${T.teto.toLocaleString('pt-BR')} (${esc(T.teto_fonte)}). Fonte: Portal da Transparência, folha de ${(T.mes||'').slice(4,6)}/${(T.mes||'').slice(0,4)}.</p>
     <div class="om">${stat(T.servidores.toLocaleString('pt-BR'),'servidores civis na folha')}${stat(T.com_abate_teto.toLocaleString('pt-BR'),'com salário bruto acima do teto (cortado pelo abate-teto)')}${stat(brl(T.valor_abatido_mes),'cortados no mês')}${stat(brl(T.indenizatorias_mes),'pagos fora do teto como verbas indenizatórias')}${stat(T.acima_do_teto_com_indenizatorias.toLocaleString('pt-BR'),'acima do teto contando as indenizatórias')}</div>
-    <h4 style="margin:10px 0 4px;font-size:14px">Órgãos com mais servidores acima do teto</h4>${bars((T.orgaos||[]).slice(0,10), x=>x.orgao, x=>x.com_abate_teto, {fmt:(v,it)=>`${v.toLocaleString('pt-BR')} (${it.pct_com_abate}%)`, link:x=>x.node?'#'+x.node:null})}`; }
+    <h4 style="margin:10px 0 4px;font-size:14px">Órgãos com mais servidores acima do teto</h4>${bars((T.orgaos||[]).slice(0,10), x=>(x.node&&N[x.node]?N[x.node].name:x.orgao), x=>x.com_abate_teto, {fmt:(v,it)=>`${v.toLocaleString('pt-BR')} (${it.pct_com_abate}%)`, link:x=>x.node?'#'+x.node:null})}`; }
   return out+'</div>';
 }
 function propHtml(p){
@@ -649,7 +661,7 @@ function remHtml(p){
 function doaHtml(p){
   const d=p._doa; if(!d||!d.total) return ''; const M=G.stats.doadores||{}; const orig=Object.entries(d.origens||{});
   return `<h3>Campanha de ${M.eleicao||2022}: de onde veio o dinheiro</h3><div class="din"><div class="om"><div class="stat"><div class="n">${brl(d.total)}</div><div class="l">receita declarada ao TSE</div></div></div>
-  ${orig.length?bars(orig.map(([k,v])=>({k,v})), x=>x.k, x=>x.v, {fmt:(v,it)=>`${brl(v)} · ${Math.round(100*v/d.total)}%`}):''}
+  ${orig.length?bars(orig.map(([k,v])=>({k,v})), x=>x.k, x=>x.v, {fmt:v=>brl(v), sub:(it,v)=>`${Math.round(100*v/d.total)}% do total`}):''}
   ${d.maiores&&d.maiores.length?`<h4 style="margin:10px 0 4px;font-size:14px">Maiores fontes</h4><div class="act">${d.maiores.map(m=>`<div class="row"><span>${esc(m.doador)}<span class="d" style="display:block">${esc(m.origem)}</span></span><span class="v">${brl(m.valor)} · ${m.pct}%</span></div>`).join('')}</div>`:''}
   <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Pessoas físicas só são nomeadas a partir de ${brl(M.limiar_pf||50000)}; doações menores entram apenas nos totais. Fonte: ${esc(M.fonte||'TSE')}.</p></div>`;
 }
@@ -811,10 +823,10 @@ function renderHome(){
 }
 // o Portal publica os nomes de programa e ação sem acento e em caixa alta; este mapa devolve a grafia correta
 const ACC={acao:'ação',acoes:'ações',assistencia:'assistência',atencao:'atenção',atividades:'atividades',avaliacao:'avaliação',basica:'básica',beneficios:'benefícios',ciencia:'ciência',cidadania:'cidadania',complementacao:'complementação',comunicacao:'comunicação',conservacao:'conservação',construcao:'construção',contribuicao:'contribuição',credito:'crédito',defesa:'defesa',desenvolvimento:'desenvolvimento',divida:'dívida',educacao:'educação',eletrica:'elétrica',energetica:'energética',ensino:'ensino',especiais:'especiais',especifico:'específico',estrategicos:'estratégicos',execucao:'execução',farmaceutica:'farmacêutica',federacao:'federação',fiscalizacao:'fiscalização',formacao:'formação',funcionamento:'funcionamento',gestao:'gestão',hidricos:'hídricos',imunobiologicos:'imunobiológicos',indigena:'indígena',indigenas:'indígenas',informacao:'informação',infraestrutura:'infraestrutura',inovacao:'inovação',judiciais:'judiciais',juridica:'jurídica',manutencao:'manutenção',media:'média',medica:'médica',medicamentos:'medicamentos',militar:'militar',modernizacao:'modernização',municipios:'municípios',nutricional:'nutricional',operacoes:'operações',orcamentaria:'orçamentária',orgaos:'órgãos',participacao:'participação',pensoes:'pensões',pesquisa:'pesquisa',politica:'política',populacao:'população',precatorios:'precatórios',prevencao:'prevenção',previdencia:'previdência',primaria:'primária',producao:'produção',promocao:'promoção',protecao:'proteção',publica:'pública',publico:'público',publicos:'públicos',qualificacao:'qualificação',recuperacao:'recuperação',reducao:'redução',regiao:'região',regularizacao:'regularização',remuneracao:'remuneração',salarios:'salários',saneamento:'saneamento',saude:'saúde',seguranca:'segurança',sentencas:'sentenças',servicos:'serviços',servidores:'servidores',situacao:'situação',social:'social',solidaria:'solidária',tecnologia:'tecnologia',tecnologias:'tecnologias',transferencia:'transferência',transferencias:'transferências',transformacao:'transformação',uniao:'união',vencimentos:'vencimentos',vigilancia:'vigilância',aposentadorias:'aposentadorias',agencia:'agência',agricola:'agrícola',aquisicao:'aquisição',area:'área',areas:'áreas',basico:'básico',ciencias:'ciências',climaticas:'climáticas',combustiveis:'combustíveis',comercio:'comércio',condicoes:'condições',cooperacao:'cooperação',distribuicao:'distribuição',economica:'econômica',economico:'econômico',eletronica:'eletrônica',estatisticas:'estatísticas',exercito:'exército',familia:'família',financeira:'financeira',genero:'gênero',hospitalar:'hospitalar',implantacao:'implantação',inclusao:'inclusão',industria:'indústria',integracao:'integração',logistica:'logística',maritimo:'marítimo',nucleares:'nucleares',patrimonio:'patrimônio',pecuaria:'pecuária',periferia:'periferia',politicas:'políticas',portuaria:'portuária',proprios:'próprios',provisao:'provisão',recursos:'recursos',rodoviaria:'rodoviária',sanitaria:'sanitária',subsidios:'subsídios',territorial:'territorial',turismo:'turismo',urbana:'urbana',usuarios:'usuários',sao:'São',joao:'João',luis:'Luís',marica:'Maricá',goiania:'Goiânia',belem:'Belém',maceio:'Maceió',macae:'Macaé',niteroi:'Niterói',brasilia:'Brasília',vitoria:'Vitória',florianopolis:'Florianópolis',cuiaba:'Cuiabá',maraba:'Marabá',teofilo:'Teófilo',anapolis:'Anápolis',petrolina:'Petrolina',itaborai:'Itaboraí',guaruja:'Guarujá',jundiai:'Jundiaí',piracicaba:'Piracicaba',sorocaba:'Sorocaba',uberlandia:'Uberlândia',ribeirao:'Ribeirão',jose:'José',gama:'Gama',bernardo:'Bernardo',caucaia:'Caucaia',parauapebas:'Parauapebas',rondonopolis:'Rondonópolis'};
+function tit(t){ return deAcc(String(t||'')).toLowerCase().replace(/(^|[\s(\/-])([a-záéíóúâêôãõç])/g,(m,a,b)=>a+b.toUpperCase()).replace(/\bDo\b|\bDa\b|\bDe\b|\bDos\b|\bDas\b|\bE\b|\bEm\b|\bPara\b|\bA\b|\bAo\b|\bAos\b|\bNo\b|\bNa\b|\bNos\b|\bNas\b|\bCom\b|\bPor\b/g,x=>x.toLowerCase()); }
 function deAcc(t){ return String(t||'').replace(/[A-Za-zÀ-ÿ]+/g, w => { const k=w.toLowerCase(); return ACC[k] ? (w===w.toUpperCase()&&w.length>1 ? ACC[k].toUpperCase() : ACC[k]) : w; }); }
 function programasHtml(n){
   const g=n.programas, t=n.transferencias; if(!g&&!t) return '';
-  const tit=s=>deAcc(String(s||'')).toLowerCase().replace(/(^|[\s(\/-])([a-záéíóúâêôãõç])/g,(m,a,b)=>a+b.toUpperCase()).replace(/\bDo\b|\bDa\b|\bDe\b|\bDos\b|\bDas\b|\bE\b|\bEm\b|\bPara\b|\bA\b|\bAo\b|\bAos\b|\bNo\b|\bNa\b|\bNos\b|\bNas\b|\bCom\b|\bPor\b/g,x=>x.toLowerCase());
   let out='';
   if(g&&g.lista&&g.lista.length){ const ant=g.anterior&&g.anterior.total_pago;
     out+=`<h2>Para onde vai o orçamento em ${g.ano} <span style="color:var(--ink-3);font-weight:500">· ${brl(g.total_pago)} pagos</span></h2>
