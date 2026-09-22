@@ -108,7 +108,8 @@ def build(site_dir, prefix, base, G):
     write_csv(out / "viagens-por-pessoa.csv", ["id", "nome", "viagens", "diarias", "passagens", "total", "exterior"], via); files.append(("viagens-por-pessoa.csv", f"Viagens a serviço por pessoa em {(G.get('viagens') or {}).get('ano', '')}: diárias, passagens e total (Portal da Transparência).", len(via)))
 
     # índice
-    (out / "index.html").write_text(index_html(files, out, prefix, base, today), encoding="utf-8")
+    _h = index_html(files, out, prefix, base, today).replace("</html>", '<script>window.ATLAS_PREFIX="%s";</script><script src="%s/atlas-menu.js" defer></script>\n</html>' % (prefix, prefix))
+    (out / "index.html").write_text(_h, encoding="utf-8")
     return [f"{base}{prefix}/dados/"] + [f"{base}{prefix}/dados/{f}" for f, _, _ in files]
 
 

@@ -120,6 +120,8 @@ def build(site, prefix, base, G, wheel_svg=""):
     desc = cf["subtitle"]
     out = out.replace("<title>Como funciona a República · Atlas da República</title>", f'<title>Como funciona a República · Atlas da República</title>\n<meta name="description" content="{esc(desc)}">\n<link rel="canonical" href="{base}/como-funciona/">\n<meta property="og:title" content="Como funciona a República"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{base}/como-funciona/"><meta property="og:type" content="article"><meta property="og:image" content="{base}{prefix}/og/como-funciona.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">', 1)
     d = site / "como-funciona"; d.mkdir(parents=True, exist_ok=True)
+    _menu = '<script>window.ATLAS_PREFIX="%s";</script><script src="%s/atlas-menu.js" defer></script>\n' % (prefix, prefix)
+    out = out.replace("</html>", _menu + "</html>") if "</html>" in out else out + _menu
     (d / "index.html").write_text(out, encoding="utf-8")
     return f"{base}/como-funciona/"
 

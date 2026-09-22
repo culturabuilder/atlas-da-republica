@@ -90,6 +90,8 @@ def build(site, prefix, base, G):
     desc = f"Rankings e comparação lado a lado de {len(rows)} deputados e senadores: custo do mandato, presença, cota, equipe, emendas, patrimônio e receita de campanha, sempre contra a mediana da Casa."
     out = out.replace("<title>Comparar parlamentares · Atlas da República</title>", f'<title>Comparar parlamentares · Atlas da República</title>\n<meta name="description" content="{esc(desc)}">\n<link rel="canonical" href="{base}/comparar/">\n<meta property="og:title" content="Comparar parlamentares"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{base}/comparar/"><meta property="og:type" content="website"><meta property="og:image" content="{base}{prefix}/og/atlas.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">', 1)
     d = site / "comparar"; d.mkdir(parents=True, exist_ok=True)
+    _menu = '<script>window.ATLAS_PREFIX="%s";</script><script src="%s/atlas-menu.js" defer></script>\n' % (prefix, prefix)
+    out = out.replace("</html>", _menu + "</html>") if "</html>" in out else out + _menu
     (d / "index.html").write_text(out, encoding="utf-8")
     return f"{base}/comparar/"
 

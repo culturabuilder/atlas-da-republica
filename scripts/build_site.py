@@ -22,10 +22,10 @@ shutil.copytree(ROOT / "build" / "nodes", site / "nodes")
 shutil.copytree(ROOT / "build" / "people", site / "people")
 if (ROOT / "site_img_cache").exists(): pass
 tpl = tpl.replace('<script src="graph.br.js" defer></script>', f'<script src="{PREFIX}/graph.br.js" defer></script>').replace('<script src="atlas.js" defer></script>', f'<script src="{PREFIX}/atlas.js" defer></script>').replace('<link rel="stylesheet" href="atlas.css">', f'<link rel="stylesheet" href="{PREFIX}/atlas.css">')
-for f in ("atlas.js", "atlas.css", "atlas-camera.js"): shutil.copy(ROOT / "web" / f, site / f)
+for f in ("atlas.js", "atlas.css", "atlas-camera.js", "atlas-menu.js"): shutil.copy(ROOT / "web" / f, site / f)
 # câmera reversível da roda: módulo separado, só no navegador (render_wheel.js não o carrega)
 _cam_flags = '<script>window.ATLAS_PREVIA=true;window.ATLAS_CAMERA_DEFAULT="focus";</script>' if a.previa else ''
-tpl = tpl.replace(f'<script src="{PREFIX}/atlas.js" defer></script>', f'{_cam_flags}<script src="{PREFIX}/atlas.js" defer></script><script src="{PREFIX}/atlas-camera.js" defer></script>', 1)
+tpl = tpl.replace(f'<script src="{PREFIX}/atlas.js" defer></script>', f'{_cam_flags}<script>window.ATLAS_PREFIX="{PREFIX}";</script><script src="{PREFIX}/atlas.js" defer></script><script src="{PREFIX}/atlas-camera.js" defer></script><script src="{PREFIX}/atlas-menu.js" defer></script>', 1)
 if a.previa: tpl = tpl.replace("<title>", '<meta name="robots" content="noindex,nofollow">\n<title>', 1)
 # atlas.css é pequeno: embutido para não bloquear a renderização com mais uma requisição
 for _form in (f'<link rel="stylesheet" href="{PREFIX}/atlas.css">', '<link rel="stylesheet" href="atlas.css">'):
@@ -91,7 +91,7 @@ urls = [f"{BASE}/", _cf.build(site, PREFIX, BASE, G, WHEEL)]
 _met = (ROOT / "web" / "metodologia.html")
 if _met.exists():
     (site / "metodologia").mkdir(parents=True, exist_ok=True)
-    (site / "metodologia" / "index.html").write_text(_met.read_text(encoding="utf-8").replace("__PREFIX__", PREFIX), encoding="utf-8"); urls.append(f"{BASE}/metodologia/")
+    (site / "metodologia" / "index.html").write_text(_met.read_text(encoding="utf-8").replace("__PREFIX__", PREFIX).replace("</html>", f'<script>window.ATLAS_PREFIX="{PREFIX}";</script><script src="{PREFIX}/atlas-menu.js" defer></script>\n</html>'), encoding="utf-8"); urls.append(f"{BASE}/metodologia/")
 OG_IDS = set()
 for _name in ("build_comparar", "build_feeds", "build_dados", "build_og"):
     if (ROOT / "scripts" / f"{_name}.py").exists():
