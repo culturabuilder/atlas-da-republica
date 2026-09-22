@@ -44,6 +44,15 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
 .note{border-left:3px solid var(--accent);padding:8px 14px;margin:14px 0;color:var(--ink-2);background:var(--accent-soft);border-radius:0 8px 8px 0}
 .foot{margin-top:50px;padding-top:16px;border-top:1px solid var(--line-2);font-size:14px;color:var(--ink-3)}
 @media (max-width:600px){ .bar .crumb{display:none} dl{grid-template-columns:1fr;gap:2px 0} dt{margin-top:8px} }
+.fresh{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:18px 0}
+.fresh h2{font-size:16px;margin:0 0 4px}
+.fresh p{font-size:13.5px;color:var(--ink-2);margin:0 0 10px}
+.fresh .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:4px 16px}
+.fresh .it{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:3px 0;border-bottom:1px solid var(--line-2)}
+.fresh .it b{font-weight:600}
+.fresh .it span{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);white-space:nowrap}
+.fresh .it.old span{color:var(--warn,#9A5B00);font-weight:600}
+.fresh .it.miss span{color:var(--leg,#B8452E)}
 </style>
 
 <a href="#estrutura" class="skip">Pular para o conteúdo</a>
@@ -59,6 +68,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
     <h1>De onde vem cada número</h1>
     <p class="lead">Este texto descreve, bloco a bloco, o que o Atlas mostra, qual é a fonte oficial, com que frequência o dado é lido e o que é estimativa. Nada aqui é conclusão sobre pessoas.</p>
     <div class="meta"><span>atualização diária</span><span>fontes públicas</span><span>código aberto</span></div>
+    __ATUALIZACAO__
     <ol class="toc">
       <li><a href="#estrutura"><b>01</b><span>Estrutura</span></a></li>
       <li><a href="#ocupantes"><b>02</b><span>Ocupantes</span></a></li>
@@ -76,10 +86,11 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
       <li><a href="#viagens"><b>14</b><span>Viagens e cartão</span></a></li>
       <li><a href="#sinais"><b>15</b><span>Sinais "para verificar"</span></a></li>
       <li><a href="#historico"><b>16</b><span>Quem ocupou o cargo</span></a></li>
-      <li><a href="#agenda"><b>17</b><span>Agenda pública</span></a></li>
-      <li><a href="#segundo-escalao"><b>18</b><span>Segundo escalão</span></a></li>
-      <li><a href="#fora"><b>19</b><span>O que fica de fora</span></a></li>
-      <li><a href="#corrigir"><b>20</b><span>Como corrigir um erro</span></a></li>
+      <li><a href="#programas"><b>17</b><span>Orçamento por programa</span></a></li>
+      <li><a href="#agenda"><b>18</b><span>Agenda pública</span></a></li>
+      <li><a href="#segundo-escalao"><b>19</b><span>Segundo escalão</span></a></li>
+      <li><a href="#fora"><b>20</b><span>O que fica de fora</span></a></li>
+      <li><a href="#corrigir"><b>21</b><span>Como corrigir um erro</span></a></li>
     </ol>
   </header>
 
@@ -257,7 +268,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
     <p>Viagens a serviço no ano, com diárias, passagens, destinos e viagens ao exterior. Gastos com o cartão de pagamento do governo federal, por mês, com saques identificados.</p>
     <dl>
       <dt>Fonte</dt><dd>Portal da Transparência: viagens a serviço (SCDP) e extratos mensais do cartão (CPGF).</dd>
-      <dt>Alcance</dt><dd>Só o Poder Executivo. Legislativo e Judiciário têm sistemas próprios que não entram. Portadores do cartão são ligados aos ocupantes pelo nome completo.</dd>
+      <dt>Alcance</dt><dd>Só o Poder Executivo. Legislativo e Judiciário têm sistemas próprios que não entram. O extrato do cartão identifica o portador, em regra servidor de execução e não o dirigente: por isso o gasto aparece por órgão e por unidade gestora, nunca atribuído ao ocupante de um cargo.</dd>
       <dt>Atualização</dt><dd>Mensal, quando o Portal publica os arquivos.</dd>
       <dt>Estimativa</dt><dd>Nenhuma. Saques são identificados pela descrição da transação.</dd>
     </dl>
@@ -289,8 +300,20 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
     </dl>
   </section>
 
-  <section id="agenda">
+  <section id="programas">
     <div class="eyebrow">Bloco 17</div>
+    <h2>Orçamento por programa e transferências</h2>
+    <p>Na página de cada órgão: quanto já foi empenhado e pago no ano, quebrado por programa orçamentário e, dentro do maior programa, por ação; e quanto o órgão repassou a estados e municípios, com os que mais receberam. Na página inicial, o total repassado no ano, por habitante de cada estado e por município.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Portal da Transparência, arquivos mensais de Despesas (Execução) e de Transferências de Recursos, somados por exercício. A API não cruza órgão com programa, por isso o Atlas usa os arquivos completos. Programa e ação são os do orçamento federal (SIAFI); população por estado, IBGE.</dd>
+      <dt>Regra</dt><dd>Valores de execução, não de dotação: empenhado é o compromisso assumido, pago é o que saiu do caixa. O escopo de cada órgão segue o mesmo critério do bloco de despesa (órgão superior inclui as vinculadas), então somar órgãos conta duas vezes. Nas transferências, entram as modalidades destinadas a estados, ao Distrito Federal e a municípios.</dd>
+      <dt>Atualização</dt><dd>Mensal na origem, lida diariamente.</dd>
+      <dt>Estimativa</dt><dd>Transferências constitucionais e royalties são publicadas sem órgão de origem: elas entram no total e no valor por estado, mas não podem ser atribuídas a um ministério. Os nomes de programa e ação vêm em caixa alta e sem acento na fonte; o site os reescreve para leitura, sem alterar o sentido.</dd>
+    </dl>
+  </section>
+
+  <section id="agenda">
+    <div class="eyebrow">Bloco 18</div>
     <h2>Agenda pública</h2>
     <p>Na ficha de ministros, secretários e dirigentes do Executivo: quantos compromissos publicaram nos últimos 90 dias, de que tipo, quais entidades mais receberam e os últimos encontros com participantes. Na página do órgão, a soma das agendas dos seus dirigentes.</p>
     <dl>
@@ -302,7 +325,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="segundo-escalao">
-    <div class="eyebrow">Bloco 18</div>
+    <div class="eyebrow">Bloco 19</div>
     <h2>Segundo escalão</h2>
     <p>As secretarias de primeiro nível de cada ministério e órgão da Presidência (Secretaria-Executiva, secretarias nacionais e especiais) e quem as chefia, com página própria na roda, ligadas ao ministério.</p>
     <dl>
@@ -314,7 +337,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="fora">
-    <div class="eyebrow">Bloco 19</div>
+    <div class="eyebrow">Bloco 20</div>
     <h2>O que fica de fora</h2>
     <p>Limites conhecidos dos dados e das fontes. Alguns podem mudar; outros dependem dos órgãos.</p>
     <ul>
@@ -330,7 +353,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="corrigir">
-    <div class="eyebrow">Bloco 20</div>
+    <div class="eyebrow">Bloco 21</div>
     <h2>Como corrigir um erro</h2>
     <p>Abra um issue em <a href="https://github.com/culturabuilder/atlas-da-republica/issues/new">https://github.com/culturabuilder/atlas-da-republica/issues/new</a>. Informe a página, o dado errado e, se possível, a fonte oficial com o dado certo. Correções de estrutura e de ocupantes entram no YAML curado com a citação; correções de dados derivados entram no código do conector.</p>
     <p>Os arquivos usados nesta página estão em <a href="__PREFIX__/dados/">Dados</a>, sob licença CC BY 4.0. A área educativa <a href="__PREFIX__/como-funciona/">Como funciona a República</a> explica a roda passo a passo.</p>

@@ -91,7 +91,29 @@ urls = [f"{BASE}/", _cf.build(site, PREFIX, BASE, G, WHEEL)]
 _met = (ROOT / "web" / "metodologia.html")
 if _met.exists():
     (site / "metodologia").mkdir(parents=True, exist_ok=True)
-    (site / "metodologia" / "index.html").write_text(_met.read_text(encoding="utf-8").replace("__PREFIX__", PREFIX).replace("</html>", f'<script>window.ATLAS_PREFIX="{PREFIX}";</script><script src="{PREFIX}/atlas-menu.js" defer></script>\n</html>'), encoding="utf-8"); urls.append(f"{BASE}/metodologia/")
+    _mt = _met.read_text(encoding="utf-8").replace("__PREFIX__", PREFIX)
+    _ex = (G.get("stats") or {}).get("execucao") or {}
+    _bl = _ex.get("blocos") or {}
+    if _bl:
+        _hoje = datetime.date.today()
+        def _dias(d):
+            try: return (_hoje - datetime.date.fromisoformat(d)).days
+            except Exception: return None
+        _its = []
+        for _lbl, _v in _bl.items():
+            if not _v.get("existe"): _its.append(f'<div class="it miss"><b>{html.escape(_lbl)}</b><span>sem dado</span></div>'); continue
+            _d = _v.get("lido_em"); _n = _dias(_d) if _d else None
+            _cls = " old" if (_n is not None and _n > 7) else ""
+            _q = "hoje" if _n == 0 else ("ontem" if _n == 1 else (f"há {_n} dias" if _n is not None else "—"))
+            _its.append(f'<div class="it{_cls}"><b>{html.escape(_lbl)}</b><span>{_q}</span></div>')
+        _falhas = _ex.get("falhas") or []
+        _nota = ("Cada bloco é lido por um conector próprio; a data abaixo é a da última leitura bem-sucedida daquela fonte. "
+                 "Fontes com atualização mensal ou eleitoral aparecem com mais dias por natureza, não por falha.")
+        _alerta = (f'<p style="color:var(--leg,#B8452E);font-size:13.5px;margin:0 0 8px"><b>Conectores com falha na última rodada:</b> {html.escape(", ".join(_falhas))}.</p>' if _falhas else "")
+        _quadro = f'<div class="fresh"><h2>Quando cada bloco foi lido</h2><p>{_nota}</p>{_alerta}<div class="grid">{"".join(_its)}</div></div>'
+    else:
+        _quadro = ""
+    (site / "metodologia" / "index.html").write_text(_mt.replace("__ATUALIZACAO__", _quadro).replace("</html>", f'<script>window.ATLAS_PREFIX="{PREFIX}";</script><script src="{PREFIX}/atlas-menu.js" defer></script>\n</html>'), encoding="utf-8"); urls.append(f"{BASE}/metodologia/")
 OG_IDS = set()
 for _name in ("build_comparar", "build_feeds", "build_dados", "build_og"):
     if (ROOT / "scripts" / f"{_name}.py").exists():

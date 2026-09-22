@@ -36,6 +36,55 @@ INFOBOX = {
     "br-anm-dirigente": "Agência Nacional de Mineração", "br-anpd-dirigente": "Autoridade Nacional de Proteção de Dados", "br-diretor-geral-da-policia-federal": "Polícia Federal",
     "br-diretor-geral-da-abin": "Agência Brasileira de Inteligência", "br-defensor-publico-geral-federal": "Defensoria Pública da União", "br-presidente-do-senado-federal": "Senado Federal",
 }
+# ---- reaproveitamento de ids de pessoas já existentes nas camadas de cima
+# A Wikipédia é fonte secundária: quando a mesma pessoa já aparece no cadastro de parlamentares, nas
+# páginas oficiais (data/ocupantes-oficiais.yaml) ou nas assinaturas do DOU, reusamos aquele id em vez de
+# criar br-p-wp-<nome> — senão o grafo ganha duas pessoas com o mesmo nome (CNJ, STJ, TST, Anatel...).
+STOP = {"de", "da", "do", "dos", "das", "e"}
+def nkey(s):
+    s = unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode().lower()
+    return " ".join(w for w in re.sub(r"[^a-z0-9 ]+", " ", s).split() if w not in STOP)
+def _slug(s): return re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode().lower()).strip("-")
+
+def load_ids():
+    """Camadas de maior precedência, da mais forte para a mais fraca: [(nome normalizado → {ids})]."""
+    layers = []
+    p = ROOT / "data" / "generated" / "parlamentares.yaml"
+    if p.exists():
+        m = {}
+        for v in ((yaml.safe_load(open(p, encoding="utf-8")) or {}).get("positions") or {}).values():
+            for r in v or []:
+                for nm in (r.get("name"), r.get("full_name")):
+                    if r.get("id") and nkey(nm): m.setdefault(nkey(nm), set()).add(r["id"])
+        layers.append(m)
+    p = ROOT / "data" / "ocupantes-oficiais.yaml"
+    if p.exists():
+        m = {}
+        for block in yaml.safe_load(open(p, encoding="utf-8")) or []:
+            for people in (block.get("positions") or {}).values():
+                for r in people or []:
+                    nm = r if isinstance(r, str) else r.get("name")
+                    if nkey(nm): m.setdefault(nkey(nm), set()).add("br-p-" + _slug(nm))   # mesma regra de scripts/build_graph.py
+        layers.append(m)
+    p = ROOT / "data" / "generated" / "dou-assinaturas.yaml"
+    if p.exists():
+        m = {}
+        for v in ((yaml.safe_load(open(p, encoding="utf-8")) or {}).get("positions") or {}).values():
+            for r in v or []:
+                if r.get("id") and nkey(r.get("name")): m.setdefault(nkey(r["name"]), set()).add(r["id"])
+        layers.append(m)
+    return layers
+
+def person_id(nome, fallback, layers, stats):
+    """Id canônico se a pessoa já existir numa camada oficial; senão o br-p-wp-<nome> de sempre
+    (o fallback mantém a grafia histórica do id, referenciada em data/fotos-bloqueadas.yaml)."""
+    k = nkey(nome)
+    for m in layers:
+        ids = m.get(k) or set()
+        if len(ids) == 1:
+            i = next(iter(ids)); stats[nome] = i; return i
+    return fallback
+
 def wikitext(title):
     u = "https://pt.wikipedia.org/w/api.php?" + urllib.parse.urlencode({"action": "parse", "page": title, "prop": "wikitext", "format": "json", "formatversion": 2, "redirects": 1})
     for i in range(4):
@@ -72,6 +121,7 @@ def tables(h):
 
 def main():
     out = {}
+    layers = load_ids(); reaproveitadas = {}
     for pid, (title, sec_rx, name_col, date_rx) in MAP.items():
         h = page(title); time.sleep(3)
         if not h: print(pid, "sem página", file=sys.stderr); continue
@@ -107,7 +157,7 @@ def main():
         seen, uniq = set(), []
         for p in people:
             if p["name"] in seen: continue
-            seen.add(p["name"]); uniq.append(dict(p, id="br-p-wp-" + re.sub(r"[^a-z0-9]+", "-", p["name"].lower()), source="wikipedia", verified=False, entry_mode="nomeado",
+            seen.add(p["name"]); uniq.append(dict(p, id=person_id(p["name"], "br-p-wp-" + re.sub(r"[^a-z0-9]+", "-", p["name"].lower()), layers, reaproveitadas), source="wikipedia", verified=False, entry_mode="nomeado",
                                             source_url="https://pt.wikipedia.org/wiki/" + urllib.parse.quote(title.replace(" ", "_"))))
         if uniq: out[pid] = uniq
         print(pid, "->", len(uniq), [p["name"] for p in uniq[:3]], file=sys.stderr)
@@ -115,12 +165,14 @@ def main():
         wt = wikitext(title); time.sleep(2)
         nm, key = infobox_head(wt)
         if nm and pid not in out:
-            out[pid] = [{"id": "br-p-wp-" + re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", nm).encode("ascii", "ignore").decode().lower()), "name": nm, "started_at": None, "role": None,
+            out[pid] = [{"id": person_id(nm, "br-p-wp-" + re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", nm).encode("ascii", "ignore").decode().lower()), layers, reaproveitadas), "name": nm, "started_at": None, "role": None,
                          "source": "wikipedia", "verified": False, "entry_mode": "nomeado", "note": f"infocaixa da Wikipédia (campo {key})", "source_url": "https://pt.wikipedia.org/wiki/" + urllib.parse.quote(title.replace(" ", "_"))}]
         print(pid, "->", nm, file=sys.stderr)
     class D(yaml.SafeDumper):
         def increase_indent(self, flow=False, indentless=False): return super().increase_indent(flow, False)
     (ROOT / "data" / "generated" / "wikipedia.yaml").write_text("# GERADO por etl/wikipedia.py. Fonte secundária (Wikipédia), não editar à mão.\n" + yaml.dump({"positions": out}, Dumper=D, allow_unicode=True, sort_keys=False, width=110), encoding="utf-8")
     print("cargos:", len(out), "pessoas:", sum(len(v) for v in out.values()))
+    print("ids reaproveitados de camadas oficiais:", len(reaproveitadas))
+    for nm, i in sorted(reaproveitadas.items()): print("  ", nm, "->", i)
 
 if __name__ == "__main__": main()

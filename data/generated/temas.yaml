@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-09-20'
+generated_at: '2026-09-21'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,6 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-06-15': 14
       '2026-06-22': 173
       '2026-06-29': 80
       '2026-07-06': 113
@@ -29,10 +28,10 @@ temas:
       '2026-08-24': 447
       '2026-08-31': 494
       '2026-09-07': 456
-      '2026-09-14': 477
-    total_90d: 3641
-    last7: 543
-    peak_week: 494
+      '2026-09-14': 550
+    total_90d: 3700
+    last7: 550
+    peak_week: 550
   processes:
   - casa: camara
     id: PEC 3/2021
@@ -67,10 +66,23 @@ temas:
   - cpi do master
   - vorcaro
   curated: cpmi-banco-master-2026
-  news_hits: 26
+  news_hits: 30
   news_weekly:
-    '2026-09-14': 26
+    '2026-09-14': 29
+    '2026-09-21': 1
   news_recent:
+  - id: bfe93e4a86dc4056
+    title: Ex-ministros defendem que STF deve apurar relação de Vorcaro e Moraes, após vídeo de jatinho
+    date: '2026-09-21'
+    publication: g1 Política
+  - id: 580925f3990814a8
+    title: Vídeo mostra Moraes e esposa saindo de jatinho de empresa de Vorcaro em 2025; escritório Barci de Moraes nega irregularidade
+    date: '2026-09-20'
+    publication: g1 Política
+  - id: 0a276d05dc97e2f6
+    title: Porchat narra julgamento do STF como jogo de futebol e diverte a web
+    date: '2026-09-20'
+    publication: Congresso em Foco
   - id: 2ee91335d869a14f
     title: PF encontra foto de Vorcaro e Gonet fumando charuto em Londres
     date: '2026-09-19'
@@ -79,23 +91,10 @@ temas:
     title: Advogado do Master encaminhou a Vorcaro foto de Gonet fumando charuto em Londres
     date: '2026-09-19'
     publication: Estadão
-  - id: a72124e19dcc414c
-    title: Foto no telefone de Daniel Vorcaro mostra Paulo Gonet fumando charuto com ex-banqueiro em Londres
-    date: '2026-09-19'
-    publication: g1 Política
-  - id: 2173ab43f3ffbe2c
-    title: Análise do celular de Vorcaro tem acesso restrito em gabinetes no STF; arquivo enviado pela PF tem 500 gigabytes
-    date: '2026-09-19'
-    publication: g1 Política
-  - id: ca468ee16e5d9c31
-    title: Oposição cobra afastamento de Gonet após foto com Vorcaro em Londres
-    date: '2026-09-19'
-    publication: Estadão
   wikipedia:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-06-15': 117
       '2026-06-22': 1406
       '2026-06-29': 430
       '2026-07-06': 393
@@ -108,9 +107,9 @@ temas:
       '2026-08-24': 806
       '2026-08-31': 8813
       '2026-09-07': 10630
-      '2026-09-14': 9103
-    total_90d: 34307
-    last7: 10942
+      '2026-09-14': 9902
+    total_90d: 34989
+    last7: 9902
     peak_week: 10630
   processes:
   - casa: camara
@@ -125,7 +124,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
     requested: RCP 1/2026 (camara)
   state: parado
-  stalled_days: 62
+  stalled_days: 63
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -157,7 +156,6 @@ temas:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-06-15': 7
       '2026-06-22': 179
       '2026-06-29': 143
       '2026-07-06': 113
@@ -170,9 +168,9 @@ temas:
       '2026-08-24': 506
       '2026-08-31': 827
       '2026-09-07': 536
-      '2026-09-14': 558
-    total_90d: 4249
-    last7: 638
+      '2026-09-14': 677
+    total_90d: 4361
+    last7: 677
     peak_week: 827
   processes:
   - casa: camara
@@ -198,7 +196,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2233802
     requested: PEC 221/2019 (camara)
   state: parado
-  stalled_days: 115
+  stalled_days: 116
   silence_after_peak: false
   silent_and_stalled: false
 - id: isencao-ir
@@ -211,14 +209,18 @@ temas:
   - imposto de renda ate r$ 5 mil
   - pl 1087
   curated: null
-  news_hits: 0
-  news_weekly: {}
-  news_recent: []
+  news_hits: 1
+  news_weekly:
+    '2026-09-14': 1
+  news_recent:
+  - id: 7eaf39baa5c42c1b
+    title: Esperidião propõe reajuste anual da isenção do IR com base na inflação
+    date: '2026-09-18'
+    publication: Congresso em Foco
   wikipedia:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-06-15': 2
       '2026-06-22': 42
       '2026-06-29': 29
       '2026-07-06': 33
@@ -231,9 +233,9 @@ temas:
       '2026-08-24': 104
       '2026-08-31': 39
       '2026-09-07': 121
-      '2026-09-14': 54
-    total_90d: 644
-    last7: 61
+      '2026-09-14': 71
+    total_90d: 659
+    last7: 71
     peak_week: 121
   processes:
   - casa: camara
@@ -291,10 +293,10 @@ temas:
       '2026-08-17': 0
       '2026-08-24': 0
       '2026-09-07': 0
-      '2026-09-14': 1
-    total_90d: 1
-    last7: 1
-    peak_week: 1
+      '2026-09-14': 2
+    total_90d: 2
+    last7: 2
+    peak_week: 2
   processes:
   - casa: camara
     id: PL 2162/2023
@@ -318,7 +320,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 135
+  stalled_days: 136
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -381,7 +383,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1194
+  stalled_days: 1195
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -398,7 +400,6 @@ temas:
     article: Precatório
     url: https://pt.wikipedia.org/wiki/Precatório
     weekly:
-      '2026-06-15': 3
       '2026-06-22': 20
       '2026-06-29': 24
       '2026-07-06': 26
@@ -411,9 +412,9 @@ temas:
       '2026-08-24': 24
       '2026-08-31': 80
       '2026-09-07': 26
-      '2026-09-14': 62
-    total_90d: 438
-    last7: 67
+      '2026-09-14': 64
+    total_90d: 437
+    last7: 64
     peak_week: 80
   processes:
   - casa: camara
@@ -450,19 +451,26 @@ temas:
   - orcamento secreto
   - emendas de comissao
   curated: null
-  news_hits: 1
+  news_hits: 3
   news_weekly:
-    '2026-09-14': 1
+    '2026-09-14': 3
   news_recent:
+  - id: b0c95dcd0fbb5baa
+    title: Caiado promete cortar 100% das emendas impositivas e limitar gastos do governo para reduzir juros
+    date: '2026-09-20'
+    publication: g1 Política
   - id: bdf33aadb72d21ce
     title: Nunes Marques nega pedido da PF para realizar busca contra ACM Neto dentro de investigação sobre desvio de emendas
     date: '2026-09-17'
     publication: g1 Política
+  - id: 8c6a45c90edbb57c
+    title: Projeto prevê participação popular no destino de emendas
+    date: '2026-09-16'
+    publication: Congresso em Foco
   wikipedia:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-06-15': 44
       '2026-06-22': 266
       '2026-06-29': 164
       '2026-07-06': 246
@@ -475,8 +483,8 @@ temas:
       '2026-08-24': 346
       '2026-08-31': 390
       '2026-09-07': 303
-      '2026-09-14': 189
-    total_90d: 3344
+      '2026-09-14': 214
+    total_90d: 3325
     last7: 214
     peak_week: 390
   processes:

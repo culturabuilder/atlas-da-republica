@@ -419,7 +419,11 @@ def main():
 
     # ids: br-<slug do nome>; nomes repetidos entre órgãos (Secretaria-Executiva) ganham o apelido curto do órgão;
     # colisão com nó já existente no grafo ganha "-sec" (e fica listada em resumo.ja_no_grafo)
-    existing = set(nodes)
+    # idempotência: os nós que este próprio conector gerou na véspera já estão no grafo; colidir com eles
+    # geraria "-sec" a cada rodada e trocaria todos os ids. Eles não contam como colisão.
+    _meus = {i for i, n in nodes.items() if str(n.get("_file") or "").endswith("segundo-escalao.yaml")
+             or (n.get("cluster") == "secretaria" and n.get("source") == "siorg" and n.get("ring") == 3)}
+    existing = set(nodes) - _meus
     name_count = Counter(slug(u["name"]) for _, us in orgs_units for u in us)
     used = set(); ja_no_grafo = []
     for o, us in orgs_units:

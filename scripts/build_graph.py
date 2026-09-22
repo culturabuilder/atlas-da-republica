@@ -196,6 +196,54 @@ for _, ppl_path in sources:
             people = [p for p in people if p.get("source") != "wikidata" or (p.get("started_at") or "") >= "2023-01-01"]
         if people: nodes[pid]["people"] = people
 
+# ---- orçamento por programa (execução do SIAFI) e transferências a estados e municípios, anexados ao órgão
+_pg_p = DATA / "generated" / "programas.yaml"
+_pg_n = 0
+if _pg_p.exists():
+    _pg = yaml.safe_load(open(_pg_p, encoding="utf-8")) or {}
+    for _nid, _o in (_pg.get("orgaos") or {}).items():
+        if _nid not in nodes: continue
+        _ant = _o.get("anterior") or {}
+        nodes[_nid]["programas"] = {"ano": _o.get("ano"), "escopo": _o.get("escopo"), "codigo": _o.get("codigo"),
+                                    "total_empenhado": _o.get("total_empenhado"), "total_pago": _o.get("total_pago"),
+                                    "programas_total": _o.get("programas_total"), "outros": _o.get("outros"),
+                                    "lista": [{k: pr.get(k) for k in ("codigo", "nome", "empenhado", "pago", "acoes_top")} for pr in (_o.get("programas") or [])[:12]],
+                                    "anterior": {"ano": _ant.get("ano"), "total_pago": _ant.get("total_pago")} if _ant else None,
+                                    "fonte": _pg.get("fonte"), "generated_at": str(_pg.get("generated_at") or "")[:10]}
+        _pg_n += 1
+_tr_p = DATA / "generated" / "transferencias.yaml"
+transferencias = None
+_tr_n = 0
+if _tr_p.exists():
+    _tr = yaml.safe_load(open(_tr_p, encoding="utf-8")) or {}
+    for _nid, _o in (_tr.get("por_orgao") or {}).items():
+        if _nid not in nodes: continue
+        nodes[_nid]["transferencias"] = dict(_o, fonte=_tr.get("fonte"), generated_at=str(_tr.get("generated_at") or "")[:10])
+        _tr_n += 1
+    _rs = _tr.get("resumo") or {}
+    transferencias = {"generated_at": str(_tr.get("generated_at") or "")[:10], "fonte": _tr.get("fonte"), "fonte_url": _tr.get("fonte_url"),
+                      "anos": _tr.get("anos"), "por_uf": _tr.get("por_uf"),
+                      "total_por_ano": _rs.get("total_por_ano"), "maiores_municipios": (_rs.get("maiores_municipios") or [])[:12],
+                      "maiores_por_habitante": (_rs.get("maiores_por_habitante") or [])[:10], "criterio": _rs.get("criterio"),
+                      "populacao_ibge": _rs.get("populacao_ibge"), "orgaos": _tr_n}
+
+# ---- composição dos colegiados (norma que cria cada conselho), anexada ao nó
+_cg_p = DATA / "generated" / "colegiados.yaml"
+_cg_n = 0
+if _cg_p.exists():
+    _cg = yaml.safe_load(open(_cg_p, encoding="utf-8")) or {}
+    for _cid, _c in (_cg.get("colegiados") or {}).items():
+        if _cid not in nodes: warn(f"colegiados: nó inexistente {_cid}"); continue
+        _ms = _c.get("membros") or []
+        for _m in _ms:  # atualiza o ocupante a partir do estado atual do grafo, não do YAML
+            _cid2 = _m.get("cargo_id")
+            if _cid2 and _cid2 in nodes:
+                _pp = (nodes[_cid2].get("people") or [{}])[0]
+                _m["pessoa_nome"] = _pp.get("name"); _m["pessoa_id"] = _pp.get("id")
+        nodes[_cid]["composicao"] = {k: _c.get(k) for k in ("norma", "norma_url", "presidido_por", "presidido_por_nome", "nota", "atualizado_em", "vagas_sociedade", "assentos_cargo") if _c.get(k) is not None}
+        nodes[_cid]["composicao"]["membros"] = _ms
+        _cg_n += 1
+
 # ---- histórico de ocupantes do cargo (Wikidata), anexado ao cargo
 _hi_p = DATA / "generated" / "historico.yaml"
 _hi_n = 0
@@ -602,9 +650,9 @@ _do = _load_yaml("doadores-2022.yaml"); _do_people = (_do.get("people") or {}) i
 _pp_ = _load_yaml("proposicoes.yaml"); _pr_people = (_pp_.get("people") or {}) if _pp_ else {}
 if _pp_: stats["proposicoes"] = {"resumo": _pp_.get("resumo"), "fonte": _pp_.get("fonte"), "generated_at": str(_pp_.get("generated_at")), "desde": str(_pp_.get("since") or "")}
 _vg = _load_yaml("viagens.yaml"); _vg_people = (_vg.get("people") or {}) if _vg else {}
-_ct = _load_yaml("cartao.yaml"); _ct_people = (_ct.get("people") or {}) if _ct else {}
+_ct = _load_yaml("cartao.yaml"); _ct_people = {}  # o extrato do CPGF identifica o portador (servidor de execução), não o ocupante: sem bloco por pessoa
 viagens = {k: _vg.get(k) for k in ("generated_at", "ano", "fonte", "orgaos", "total", "viagens_total", "nota")} if _vg else None
-cartao = {k: _ct.get(k) for k in ("generated_at", "ano", "meses", "fonte", "orgaos", "total", "nota")} if _ct else None
+cartao = {k: _ct.get(k) for k in ("generated_at", "ano", "meses", "fonte", "orgaos", "total", "nota", "orgaos_casados")} if _ct else None
 if _do: stats["doadores"] = {"eleicao": _do.get("eleicao"), "fonte": _do.get("fonte"), "limiar_pf": _do.get("limiar_pf"), "generated_at": str(_do.get("generated_at"))}
 if _rm: stats["remuneracao"] = {"mes": _rm.get("mes"), "fonte": _rm.get("fonte"), "nota": _rm.get("nota"), "generated_at": str(_rm.get("generated_at"))}
 if _pt: stats["patrimonio"] = {"fonte": _pt.get("fonte"), "ipca_fator_2018_2022": _pt.get("ipca_fator_2018_2022"), "generated_at": str(_pt.get("generated_at"))}
@@ -678,11 +726,94 @@ if _ap_p.exists():
         if pid in people_index and a and not people_index[pid].get("agenda"):
             people_index[pid]["agenda"] = dict({k: v for k, v in a.items() if k != "dias"}, generated_at=str(_ap.get("generated_at") or "")[:10], janela_dias=_ap.get("janela_dias")); stats["agendas_pessoas"] = stats.get("agendas_pessoas", 0) + 1
 stats["sinais"] = {"pessoas": sum(1 for r in people_index.values() if r.get("sinais")), "por_tipo": dict(__import__("collections").Counter(x["tipo"] for r in people_index.values() for x in r.get("sinais") or []))}
-stats["omissao"] = (omissao or {}).get("summary"); stats["resumos"] = len(_rs); stats["historico_cargos"] = _hi_n; stats["segundo_escalao"] = _se_n; stats["atividade_pessoas"] = len(atividade)
+stats["omissao"] = (omissao or {}).get("summary"); stats["resumos"] = len(_rs); stats["historico_cargos"] = _hi_n; stats["colegiados_com_composicao"] = _cg_n; stats["orgaos_com_programas"] = _pg_n; stats["orgaos_com_transferencias"] = _tr_n; stats["segundo_escalao"] = _se_n; stats["atividade_pessoas"] = len(atividade)
 stats["people"] = len(people_index)
-graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao}
+# ---- números do projeto: o README descreve o que existe hoje, gerado a partir deste build
+def _cobertura():
+    _pos = [n for n in nodes.values() if n["type"] == "dept_head"]
+    _com = sum(1 for n in _pos if n.get("people"))
+    _heads = {n.get("head_of") for n in _pos}
+    _orgs = [n for n in nodes.values() if n["type"] == "department"]
+    _sem_chefia = [n for n in _orgs if n["id"] not in _heads]
+    _cole = [n for n in nodes.values() if n["type"] in ("commission", "advisory")]
+    _cole_sem = [n for n in _cole if not n.get("people")]
+    _nom = [(n, p) for n in _pos for p in (n.get("people") or []) if n.get("nomeado_por") or n.get("indicado_por")]
+    _sem_data = sum(1 for n, p in _nom if not p.get("started_at"))
+    return {"nos": stats["nodes"], "arestas": stats["edges"], "pessoas": len(people_index), "cargos": len(_pos), "cargos_com": _com,
+            "cargos_sem": len(_pos) - _com, "orgaos_sem_chefia": len(_sem_chefia), "colegiados": len(_cole), "colegiados_sem_membros": len(_cole_sem),
+            "nomeacoes": len(_nom), "nomeacoes_sem_data": _sem_data, "cadeiras": stats["seats_total"], "cadeiras_ocupadas": stats["seats_filled"]}
+
+_cov = _cobertura(); stats["cobertura"] = _cov
+
+# ---- registro de execução: o que cada conector fez na última rodada e quando cada bloco do site foi lido
+# (scripts/update.sh escreve build/_execucao.tsv; os "lido em" por bloco vêm do generated_at de cada arquivo)
+BLOCOS = {  # rótulo no site -> arquivo que o alimenta
+    "Ocupantes (Câmara e Senado)": "parlamentares.yaml", "Comissões do Congresso": "comissoes.yaml", "Estrutura (SIORG)": "siorg.yaml",
+    "Segundo escalão": "segundo-escalao.yaml", "Sabatinas": "sabatinas.yaml", "Notícias": "noticias.json", "Diário Oficial": "dou.json",
+    "Quem assina os atos": "dou-assinaturas.yaml", "Histórico dos cargos": "historico.yaml", "Sem decisão": "omissao.yaml",
+    "Temas": "temas.yaml", "Arrecadação": "arrecadacao.yaml", "Atividade parlamentar": "atividade.yaml", "Proposições": "proposicoes.yaml",
+    "Gabinetes": "gabinetes.yaml", "Gabinetes do Senado": "gabinetes-senado.yaml", "Emendas": "emendas.yaml", "Renúncias fiscais": "renuncias.yaml",
+    "Acima do teto": "teto.yaml", "Remuneração": "remuneracao.yaml", "Viagens": "viagens.yaml", "Cartão corporativo": "cartao.yaml",
+    "Orçamento": "orcamento.yaml", "Agenda pública": "agendas.yaml", "Agenda do Planalto": "agenda-planalto.yaml",
+    "Patrimônio (TSE)": "patrimonio.yaml", "Doadores (TSE)": "doadores-2022.yaml", "Candidaturas (TSE)": "candidaturas.yaml",
+    "Votos por município (TSE)": "votos-2022.yaml", "Resumos em linguagem simples": "resumos.yaml",
+}
+_ex_path = DATA / "generated" / "_execucao.yaml"
+_ant = (yaml.safe_load(open(_ex_path, encoding="utf-8")) if _ex_path.exists() else None) or {}
+_conectores = dict((_ant.get("conectores") or {}))
+_tsv = OUT / "_execucao.tsv"
+if _tsv.exists():
+    _hoje = datetime.date.today().isoformat()
+    for _ln in _tsv.read_text(encoding="utf-8").splitlines():
+        _pt = _ln.split("\t")
+        if len(_pt) != 3: continue
+        _nm, _st, _sg = _pt[0], _pt[1], int(_pt[2] or 0)
+        _r = _conectores.get(_nm) or {}
+        _r.update({"status": _st, "segundos": _sg, "rodou_em": _hoje})
+        if _st == "ok": _r["ok_em"] = _hoje
+        _conectores[_nm] = _r
+_blocos = {}
+for _lbl, _fn in BLOCOS.items():
+    _fp = DATA / "generated" / _fn
+    if not _fp.exists(): _blocos[_lbl] = {"arquivo": _fn, "existe": False}; continue
+    try:
+        _d = json.load(open(_fp, encoding="utf-8")) if _fn.endswith(".json") else yaml.safe_load(open(_fp, encoding="utf-8"))
+        _ga = str((_d or {}).get("generated_at") or "")[:10]
+    except Exception: _ga = ""
+    if not _ga: _ga = datetime.date.fromtimestamp(_fp.stat().st_mtime).isoformat()
+    _blocos[_lbl] = {"arquivo": _fn, "existe": True, "lido_em": _ga}
+_exec = {"generated_at": datetime.date.today().isoformat(),
+         "nota": "GERADO por scripts/build_graph.py a partir de build/_execucao.tsv (scripts/update.sh) e do generated_at de cada arquivo.",
+         "conectores": _conectores, "blocos": _blocos}
+_ex_path.write_text("# GERADO por scripts/build_graph.py. Não edite à mão.\n" + yaml.dump(_exec, allow_unicode=True, sort_keys=False, width=120), encoding="utf-8")
+_falhas = sorted(k for k, v in _conectores.items() if v.get("status") == "falhou")
+_velhos = sorted(k for k, v in _blocos.items() if v.get("lido_em") and v["lido_em"] < (datetime.date.today() - datetime.timedelta(days=7)).isoformat())
+stats["execucao"] = {"gerado_em": _exec["generated_at"], "conectores": len(_conectores), "falhas": _falhas, "blocos": _blocos, "blocos_velhos": _velhos}
+print(f"   execução: {len(_conectores)} conectores registrados, {len(_falhas)} com falha; {len(_velhos)} blocos com mais de 7 dias")
+_readme = ROOT / "README.md"
+if _readme.exists() and "<!-- ATLAS:NUMEROS -->" in _readme.read_text(encoding="utf-8"):
+    _t = _readme.read_text(encoding="utf-8")
+    _bloco = f"""<!-- ATLAS:NUMEROS -->
+<!-- Gerado por scripts/build_graph.py a cada build. Não edite à mão. -->
+| O que o grafo tem hoje | |
+|---|---|
+| Nós e relações | **{_cov['nos']}** nós · **{_cov['arestas']}** relações, cada uma com citação legal |
+| Pessoas | **{_cov['pessoas']}** ocupando **{_cov['cadeiras_ocupadas']}** de **{_cov['cadeiras']}** cadeiras |
+| Cargos de chefia | **{_cov['cargos_com']}** de **{_cov['cargos']}** com ocupante ({_cov['cargos_sem']} vazios) |
+| Órgãos sem cargo de chefia mapeado | **{_cov['orgaos_sem_chefia']}** (tribunais regionais, estatais, universidades) |
+| Colegiados sem composição registrada | **{_cov['colegiados_sem_membros']}** de **{_cov['colegiados']}** |
+| Nomeações sem data de posse | **{_cov['nomeacoes_sem_data']}** de **{_cov['nomeacoes']}** |
+
+Atualizado em {stats['generated_at']}.
+<!-- /ATLAS:NUMEROS -->"""
+    import re as _re
+    _t = _re.sub(r"<!-- ATLAS:NUMEROS -->.*?<!-- /ATLAS:NUMEROS -->", lambda _m: _bloco, _t, flags=_re.S)
+    _readme.write_text(_t, encoding="utf-8")
+    print("   README atualizado com os números deste build")
+
+graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao, "transferencias": transferencias}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
-HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "budget", "dou", "candidaturas", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
+HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "composicao", "programas", "transferencias", "budget", "dou", "candidaturas", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
 core_nodes = {}
 (OUT / "nodes").mkdir(exist_ok=True)
@@ -700,7 +831,7 @@ core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), 
 _pp = OUT / "people"; _pp.mkdir(exist_ok=True)
 for pid, r in people_index.items():
     json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity"), "emendas": r.get("emendas"), "candidaturas": r.get("candidaturas"), "gabinete": r.get("gabinete"), "patrimonio": r.get("patrimonio"), "remuneracao": r.get("remuneracao"), "doadores": r.get("doadores"), "sinais": r.get("sinais"), "viagens": r.get("viagens"), "cartao": r.get("cartao"), "proposicoes": r.get("proposicoes"), "agenda": r.get("agenda")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
-core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
+core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao, "transferencias": transferencias, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
 cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")
 print(f"   build/graph.core.js = {len(cjs)//1024} KB + {len(core_nodes)} arquivos de detalhe")

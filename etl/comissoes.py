@@ -37,6 +37,44 @@ def role_title(t):
     t = (t or "").strip(); t = t.replace("PRESIDENTE", "Presidente").replace("VICE-Presidente", "Vice-Presidente").replace("SECRETÁRIO", "Secretário").replace("SECRETÁRIA", "Secretária").replace("SUPLENTE", "Suplente")
     return t
 
+# ---- reaproveitamento de ids de pessoas já existentes (data/generated/parlamentares.yaml)
+# A API do Senado devolve, para as comissões mistas, o *código do parlamentar no Senado* também para
+# deputados — o que criava br-p-cd-<código do Senado> em paralelo ao br-p-cd-<id da Câmara> do cadastro
+# oficial (61 pessoas duplicadas no grafo). Aqui casamos por nome normalizado + UF + casa e reusamos o id.
+STOP = {"de", "da", "do", "dos", "das", "e"}
+def nkey(s):
+    s = unicodedata.normalize("NFKD", clean_name(s) or "").encode("ascii", "ignore").decode().lower()
+    return " ".join(w for w in re.sub(r"[^a-z0-9 ]+", " ", s).split() if w not in STOP)
+
+def load_parlamentares():
+    """Devolve (idx por id, índice (nome normalizado, UF, casa) → conjunto de ids) do cadastro oficial."""
+    p = ROOT / "data" / "generated" / "parlamentares.yaml"
+    if not p.exists(): return {}, {}
+    d = yaml.safe_load(open(p, encoding="utf-8")) or {}
+    idx, byname = {}, {}
+    for v in (d.get("positions") or {}).values():
+        for r in v or []:
+            i = r.get("id")
+            if not i: continue
+            idx[i] = r
+            casa = "cd" if i.startswith("br-p-cd-") else "sf" if i.startswith("br-p-sf-") else None
+            if not casa: continue
+            for nm in (r.get("name"), r.get("full_name")):
+                k = nkey(nm)
+                if k: byname.setdefault((k, (r.get("uf") or "").upper(), casa), set()).add(i)
+    return idx, byname
+
+def person_id(fallback, idx, byname, nome, uf, casa, stats):
+    """Id canônico da pessoa: mantém o fallback se ele já for um id do cadastro; senão tenta casar por nome+UF+casa."""
+    if fallback in idx: return fallback
+    ids = byname.get((nkey(nome), (uf or "").upper(), casa)) or set()
+    if len(ids) == 1:
+        novo = next(iter(ids)); stats["reaproveitadas"] += 1
+        if novo != fallback: stats["corrigidos"].setdefault(fallback, f"{novo} ({nome})")
+        return novo
+    stats["novas"].setdefault(nkey(nome) or nome, f"{nome} ({uf or '?'}/{casa})")
+    return fallback
+
 # ids curados em data/nodes/05-legislativo.yaml (sigla → id)
 CURATED = {"SF:CCJ": "br-comissao-de-constituicao-justica-e-cidadania-do-senado", "SF:CAE": "br-comissao-de-assuntos-economicos-do-senado",
            "SF:CRE": "br-comissao-de-relacoes-exteriores-e-defesa-nacional-do-senado", "SF:CI": "br-comissao-de-infraestrutura-do-senado",
@@ -46,13 +84,16 @@ CURATED = {"SF:CCJ": "br-comissao-de-constituicao-justica-e-cidadania-do-senado"
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--cache"); a = ap.parse_args()
     nodes, positions = [], {}
+    idx, byname = load_parlamentares()
+    stats = {"reaproveitadas": 0, "corrigidos": {}, "novas": {}}
 
     # ---- Mesa do Senado
     mesa = get("https://legis.senado.leg.br/dadosabertos/composicao/mesaSF", a.cache, "mesaSF.json")["MesaSenado"]["Colegiados"]["Colegiado"]
     mesa = lst(mesa)[0]; ppl = []
     for c in lst(mesa["Cargos"]["Cargo"]):
         role = role_title(" ".join(lst(c.get("Cargo")))); party, uf = bancada(c.get("Bancada"))
-        ppl.append({"id": f"br-p-sf-{c['Http']}", "name": clean_name(c["NomeParlamentar"]), "party": party, "uf": uf, "role": role, "entry_mode": "eleito", "source": "senado",
+        _nm = clean_name(c["NomeParlamentar"])
+        ppl.append({"id": person_id(f"br-p-sf-{c['Http']}", idx, byname, _nm, uf, "sf", stats), "name": _nm, "party": party, "uf": uf, "role": role, "entry_mode": "eleito", "source": "senado",
                     "source_url": "https://www25.senado.leg.br/web/senadores/mesa-diretora"})
     import datetime as _dt
     _t = _dt.date.today(); _y = _t.year if (_t.year % 2 == 1 and _t >= _dt.date(_t.year, 2, 1)) else (_t.year - 1 if _t.year % 2 == 0 else _t.year - 2)
@@ -76,7 +117,7 @@ def main():
             for m in lst((bl.get("MembrosSF") or {}).get("Membro")):
                 nm = clean_name(m["NomeParlamentar"])
                 if not m.get("CodigoParlamentar") or nm.upper() == "VAGO": continue
-                ppl.append({"id": f"br-p-sf-{m['CodigoParlamentar']}", "name": nm, "party": m.get("Partido"), "uf": m.get("SiglaUf"), "role": cargos.get(nm) or m.get("TipoVaga"),
+                ppl.append({"id": person_id(f"br-p-sf-{m['CodigoParlamentar']}", idx, byname, nm, m.get("SiglaUf"), "sf", stats), "name": nm, "party": m.get("Partido"), "uf": m.get("SiglaUf"), "role": cargos.get(nm) or m.get("TipoVaga"),
                             "entry_mode": "eleito", "source": "senado", "source_url": f"https://legis.senado.leg.br/comissoes/comissao?codcol={c['Codigo']}"})
         # presidente e vice primeiro, depois titulares, depois suplentes
         order = {"Presidente": 0, "Vice-Presidente": 1, "Titular": 2, "Suplente": 3}
@@ -101,7 +142,7 @@ def main():
             members += d
             if len(d) < 100: break
         sig = o["sigla"]; nid = CURATED.get(f"CD:{sig}") or f"br-{slug(o['nome'])}-da-camara"
-        ppl = [{"id": f"br-p-cd-{m['id']}", "name": m["nome"], "party": m.get("siglaPartido"), "uf": m.get("siglaUf"), "image_url": m.get("urlFoto"), "role": m.get("titulo"),
+        ppl = [{"id": person_id(f"br-p-cd-{m['id']}", idx, byname, m["nome"], m.get("siglaUf"), "cd", stats), "name": m["nome"], "party": m.get("siglaPartido"), "uf": m.get("siglaUf"), "image_url": m.get("urlFoto"), "role": m.get("titulo"),
                 "started_at": m.get("dataInicio"), "entry_mode": "eleito", "source": "camara", "source_url": m.get("uri")} for m in members]
         order = lambda r: 0 if r == "Presidente" else 1 if "Vice" in (r or "") else 2 if r == "Titular" else 3
         ppl.sort(key=lambda p: order(p["role"]))
@@ -134,7 +175,7 @@ def main():
                     if not isinstance(m, dict): continue
                     nm = clean_name(m["NomeParlamentar"])
                     if not m.get("CodigoParlamentar") or nm.upper() == "VAGO": continue
-                    ppl.append({"id": pre + str(m["CodigoParlamentar"]), "name": nm, "party": m.get("Partido"), "uf": m.get("SiglaUf"), "role": cargos.get(nm) or m.get("TipoVaga"),
+                    ppl.append({"id": person_id(pre + str(m["CodigoParlamentar"]), idx, byname, nm, m.get("SiglaUf"), casa, stats), "name": nm, "party": m.get("Partido"), "uf": m.get("SiglaUf"), "role": cargos.get(nm) or m.get("TipoVaga"),
                                 "entry_mode": "eleito", "source": "senado", "source_url": "https://www.congressonacional.leg.br/comissoes"})
         order = {"Presidente": 0, "Vice-Presidente": 1, "Titular": 2, "Suplente": 3}
         ppl.sort(key=lambda p: order.get(p["role"], 2))
@@ -152,20 +193,21 @@ def main():
             nodes.append({"id": nid, "_merge_only": True, "seats_count": int(q["Titulares"]) if q.get("Titulares") else None})
 
     # foto e nome completo vêm do cadastro de parlamentares (mesmos ids)
-    parl_p = ROOT / "data" / "generated" / "parlamentares.yaml"
-    if parl_p.exists():
-        parl = yaml.safe_load(open(parl_p, encoding="utf-8")) or {}
-        idx = {p["id"]: p for v in (parl.get("positions") or {}).values() for p in v if p.get("id")}
-        for ppl in positions.values():
-            for p in ppl:
-                q = idx.get(p["id"])
-                if q and not p.get("image_url") and q.get("image_url"): p["image_url"] = q["image_url"]
-    out = {"generated_from": "legis.senado.leg.br/dadosabertos + dadosabertos.camara.leg.br", "nodes": nodes, "positions": positions}
+    for ppl in positions.values():
+        for p in ppl:
+            q = idx.get(p["id"])
+            if q and not p.get("image_url") and q.get("image_url"): p["image_url"] = q["image_url"]
+    out = {"generated_from": "legis.senado.leg.br/dadosabertos + dadosabertos.camara.leg.br",
+           "pessoas_reaproveitadas": stats["reaproveitadas"],
+           "ids_corrigidos": dict(sorted(stats["corrigidos"].items())),
+           "pessoas_novas": sorted(stats["novas"].values()),
+           "nodes": nodes, "positions": positions}
     class D(yaml.SafeDumper):
         def increase_indent(self, flow=False, indentless=False): return super().increase_indent(flow, False)
     (ROOT / "data" / "generated" / "comissoes.yaml").write_text("# GERADO por etl/comissoes.py. Não edite à mão.\n" + yaml.dump(out, Dumper=D, allow_unicode=True, sort_keys=False, width=110), encoding="utf-8")
     new = [n for n in nodes if not n.get("_merge_only")]
     print(f"comissões: novas={len(new)} curadas atualizadas={len(nodes)-len(new)} posições={len(positions)} pessoas-vínculos={sum(len(v) for v in positions.values())}")
+    print(f"  ids reaproveitados de parlamentares.yaml: {stats['reaproveitadas']} ({len(stats['corrigidos'])} ids distintos corrigidos); sem casamento: {len(stats['novas'])}")
     for nid, ppl in positions.items():
         pres = [p["name"] for p in ppl if p.get("role") == "Presidente"]
         print(f"  {nid}: {len(ppl)} ({'presid. ' + pres[0] if pres else 'sem presidente'})")
