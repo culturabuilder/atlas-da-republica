@@ -171,6 +171,8 @@ p{margin:8px 0;color:var(--ink-2)}
 .om-it .t{font-weight:600}.om-it .m{font-family:var(--mono);font-size:11px;color:var(--ink-3);display:block;margin-top:2px}
 .om-it .m b{color:var(--ink);font-weight:600}.om-it .m .bad{color:var(--leg);font-weight:600}.om-it .m .ok{color:var(--ok)}
 .om-it .who{font-size:13px;color:var(--ink-2);margin-top:3px}.om-it .who a{color:var(--accent)}
+.cmp{display:grid;gap:2px}.cmp-row{display:flex;justify-content:space-between;gap:12px;align-items:baseline;font-size:13.8px;padding:4px 0;border-bottom:1px solid var(--line-2)}
+.cmp-row .c a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}.cmp-row .t{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap}
 .hist{display:grid;grid-template-columns:auto 1fr auto;gap:2px 12px;font-size:13.5px}.hist .hm{display:contents}.hist .hy{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);white-space:nowrap;padding-top:2px}.hist .hn a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}.hist .hn em{font-style:normal;font-size:11px;color:var(--ink-3);margin-left:4px}.hist .hd{font-size:12px;color:var(--ink-3);text-align:right;white-space:nowrap}.hist .cur .hn{font-weight:600}@media(max-width:520px){.hist{grid-template-columns:auto 1fr}.hist .hd{grid-column:2;text-align:left;margin-top:-2px;margin-bottom:4px}}
 .simples{font-size:13.5px;color:var(--ink-2);margin:4px 0 2px;padding-left:10px;border-left:2px solid var(--line-2);line-height:1.45}.simples i{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-left:6px}
 .arrec .n{font-family:var(--disp);font-size:clamp(22px,3.2vw,30px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1;word-break:break-all}
@@ -773,6 +775,19 @@ function renderHome(){
     e.preventDefault(); goTab(tabs[i]); });
   document.getElementById('win-sel').addEventListener('click', e => { const b = e.target.closest('[data-win]'); if (!b) return; win = +b.dataset.win; renderHomePanel(); });
 }
+function composicaoHtml(n){
+  const c=n.composicao; if(!c||!c.membros||!c.membros.length) return '';
+  const TP={nato:'membro nato',indicado:'indicado',eleito:'eleito',externo:'externo'};
+  const row=m=>{ const cargo = m.cargo_id&&N[m.cargo_id] ? `<a href="#${m.cargo_id}">${esc(m.cargo_nome||N[m.cargo_id].name)}</a>` : esc(m.cargo_texto||'');
+    const quem = m.pessoa_id&&P[m.pessoa_id] ? ` · <a href="#${m.pessoa_id}">${esc(m.pessoa_nome)}</a>` : (m.pessoa_nome?` · ${esc(m.pessoa_nome)}`:'');
+    return `<div class="cmp-row"><span class="c">${cargo}${quem}</span><span class="t">${m.assentos>1?m.assentos+' assentos · ':''}${TP[m.tipo]||esc(m.tipo||'')}</span></div>`; };
+  const nat=c.membros.filter(m=>m.tipo==='nato'), out2=c.membros.filter(m=>m.tipo!=='nato');
+  return `<div class="card"><h2>Quem compõe <span style="color:var(--ink-3);font-weight:500">· ${c.assentos_cargo||c.membros.length} ${((c.assentos_cargo||c.membros.length)===1?'assento':'assentos')}${c.vagas_sociedade?` + ${c.vagas_sociedade} da sociedade civil`:''}</span></h2>
+  <p style="font-size:13px;color:var(--ink-2);margin:0 0 8px">Composição definida em <a href="${c.norma_url||'#'}" target="_blank" rel="noopener">${esc(c.norma||'norma')} ↗</a>${c.presidido_por&&N[c.presidido_por]?`; presidido pelo <a href="#${c.presidido_por}">${esc(c.presidido_por_nome||N[c.presidido_por].name)}</a>`:''}. O nome ao lado do cargo é o ocupante de hoje, segundo o próprio Atlas.${c.nota?' '+esc(c.nota):''}</p>
+  ${nat.length?`<div class="cmp">${nat.map(row).join('')}</div>`:''}
+  ${out2.length?`<h4 style="margin:10px 0 4px;font-size:13px">Indicados, eleitos e externos</h4><div class="cmp">${out2.map(row).join('')}</div>`:''}
+  ${c.vagas_sociedade?`<p style="font-size:12.5px;color:var(--ink-3);margin:8px 0 0">${c.vagas_sociedade} assentos são de representação da sociedade civil, de entidades ou de outros entes federativos; o Atlas não nomeia essas pessoas.</p>`:''}</div>`;
+}
 function historicoHtml(n){
   const h=n.historico; if(!h||!h.mandatos||!h.mandatos.length) return '';
   const cur=(n.people||[])[0]; const ms=h.mandatos.slice().reverse();
@@ -830,6 +845,7 @@ function renderNode(n){
     ${poss?`<h3>Cargos</h3><div class="list">${poss}</div>`:''}
     ${kids?`<h3>Órgãos integrados e vinculados <span style="font-weight:400">· ${n.children.length}</span></h3><div class="list">${kids}</div>`:''}
   </div>
+  ${composicaoHtml(n)}
   ${historicoHtml(n)}
   ${agendaOrgaoHtml(n)}
   ${n.sabatinas&&n.sabatinas.length?`<div class="card"><h2>Sabatinas no Senado <span style="color:var(--ink-3);font-weight:500">· ${n.sabatinas.length}</span></h2>${n.sabatinas.slice(0,12).map(sb=>`<div class="sab"><span><a href="${sb.url}" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:none">${esc(sb.name||sb.msf)}</a><br><span style="color:var(--ink-3);font-size:12.5px">${esc((sb.cargo||'').slice(0,90))}</span></span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:sb.resultado==='REJEITADO_PLENARIO'?'rejeitado':(sb.resultado||'').toLowerCase().replace(/_/g,' ')}</span></div>`).join('')}</div>`:''}

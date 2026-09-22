@@ -21,6 +21,7 @@ run() {  # run "Nome visível" comando...
 run "SIORG" $PY etl/siorg.py ${FAST:+--no-full} --cache build
 run "Câmara/Senado" $PY etl/parlamentares.py --cache build
 run "Comissões" $PY etl/comissoes.py --cache build/cache-comissoes
+run "Colegiados" $PY etl/colegiados.py
 run "Build (1/2)" $PY scripts/build_graph.py > /dev/null
 run "Sabatinas" $PY etl/sabatinas.py
 [ -z "$FAST" ] && { run "Wikidata" $PY etl/wikidata.py || echo "Wikidata falhou (segue)"; }

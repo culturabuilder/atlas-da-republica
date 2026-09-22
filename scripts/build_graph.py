@@ -196,6 +196,23 @@ for _, ppl_path in sources:
             people = [p for p in people if p.get("source") != "wikidata" or (p.get("started_at") or "") >= "2023-01-01"]
         if people: nodes[pid]["people"] = people
 
+# ---- composição dos colegiados (norma que cria cada conselho), anexada ao nó
+_cg_p = DATA / "generated" / "colegiados.yaml"
+_cg_n = 0
+if _cg_p.exists():
+    _cg = yaml.safe_load(open(_cg_p, encoding="utf-8")) or {}
+    for _cid, _c in (_cg.get("colegiados") or {}).items():
+        if _cid not in nodes: warn(f"colegiados: nó inexistente {_cid}"); continue
+        _ms = _c.get("membros") or []
+        for _m in _ms:  # atualiza o ocupante a partir do estado atual do grafo, não do YAML
+            _cid2 = _m.get("cargo_id")
+            if _cid2 and _cid2 in nodes:
+                _pp = (nodes[_cid2].get("people") or [{}])[0]
+                _m["pessoa_nome"] = _pp.get("name"); _m["pessoa_id"] = _pp.get("id")
+        nodes[_cid]["composicao"] = {k: _c.get(k) for k in ("norma", "norma_url", "presidido_por", "presidido_por_nome", "nota", "atualizado_em", "vagas_sociedade", "assentos_cargo") if _c.get(k) is not None}
+        nodes[_cid]["composicao"]["membros"] = _ms
+        _cg_n += 1
+
 # ---- histórico de ocupantes do cargo (Wikidata), anexado ao cargo
 _hi_p = DATA / "generated" / "historico.yaml"
 _hi_n = 0
@@ -678,7 +695,7 @@ if _ap_p.exists():
         if pid in people_index and a and not people_index[pid].get("agenda"):
             people_index[pid]["agenda"] = dict({k: v for k, v in a.items() if k != "dias"}, generated_at=str(_ap.get("generated_at") or "")[:10], janela_dias=_ap.get("janela_dias")); stats["agendas_pessoas"] = stats.get("agendas_pessoas", 0) + 1
 stats["sinais"] = {"pessoas": sum(1 for r in people_index.values() if r.get("sinais")), "por_tipo": dict(__import__("collections").Counter(x["tipo"] for r in people_index.values() for x in r.get("sinais") or []))}
-stats["omissao"] = (omissao or {}).get("summary"); stats["resumos"] = len(_rs); stats["historico_cargos"] = _hi_n; stats["segundo_escalao"] = _se_n; stats["atividade_pessoas"] = len(atividade)
+stats["omissao"] = (omissao or {}).get("summary"); stats["resumos"] = len(_rs); stats["historico_cargos"] = _hi_n; stats["colegiados_com_composicao"] = _cg_n; stats["segundo_escalao"] = _se_n; stats["atividade_pessoas"] = len(atividade)
 stats["people"] = len(people_index)
 # ---- números do projeto: o README descreve o que existe hoje, gerado a partir deste build
 def _cobertura():
@@ -765,7 +782,7 @@ Atualizado em {stats['generated_at']}.
 
 graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
-HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "budget", "dou", "candidaturas", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
+HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "composicao", "budget", "dou", "candidaturas", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
 core_nodes = {}
 (OUT / "nodes").mkdir(exist_ok=True)

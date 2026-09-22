@@ -1,0 +1,445 @@
+# Composição por cargo dos colegiados do Executivo. Curado à mão a partir da norma que cria cada
+# colegiado (lei ou decreto), lida no texto compilado do Planalto — ou, quando a norma não é do
+# Planalto, na fonte oficial do órgão (Banco Central, Confaz).
+#
+# A composição desses conselhos é quase sempre POR CARGO (membro nato): o assento pertence ao cargo,
+# e o ocupante vem do grafo. Por isso aqui não se nomeia pessoa alguma.
+#
+# Campos de cada colegiado:
+#   id                 id do nó (commission/advisory) em build/graph.br.json
+#   norma / norma_url  norma e artigo que definem a composição, com a URL consultada
+#   checked_at         data em que o texto foi conferido na fonte
+#   presidido_por      id do cargo que preside, quando a norma nomear um cargo (senão ausente)
+#   membros[]          cargo_id (dept_head/elected do grafo, ou null), cargo_texto (texto da norma),
+#                      tipo (nato|indicado|eleito|externo), assentos, note
+#   vagas_sociedade    assentos de representação da sociedade civil, sem nomear pessoas
+#
+# REGRA DE CASAMENTO: cargo_id só é preenchido quando a norma nomeia um CARGO ("o Ministro de Estado
+# da Fazenda", "o Presidente do Banco Central"). Quando a norma dá o assento a um ÓRGÃO ou ENTIDADE
+# ("um representante do Ibama", "Ministério do Turismo"), o titular do assento não é um cargo do
+# grafo e cargo_id fica null — só o texto da norma é guardado. Nunca se infere composição.
+#
+# Gerado para o build por etl/colegiados.py → data/generated/colegiados.yaml
+
+fonte: Normas de criação e regulamentação de cada colegiado (Planalto, Banco Central, Confaz), lidas no texto compilado vigente
+
+colegiados:
+
+  # ─────────────────────────────────────────────────────────── dinheiro, juros e comércio
+
+  - id: br-conselho-monetario-nacional
+    norma: Lei 9.069/1995, art. 8º (redação da Lei 14.600/2023)
+    norma_url: https://www.planalto.gov.br/ccivil_03/leis/l9069.htm
+    checked_at: '2026-09-22'
+    presidido_por: br-ministro-de-estado-da-fazenda
+    vagas_sociedade: 0
+    nota: Órgão de três membros. Delibera por resolução; o Banco Central funciona como secretaria-executiva.
+    membros:
+      - {cargo_id: br-ministro-de-estado-da-fazenda, cargo_texto: "Ministro de Estado da Fazenda, que o presidirá", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-planejamento-e-orcamento, cargo_texto: "Ministro de Estado do Planejamento e Orçamento", tipo: nato, assentos: 1}
+      - {cargo_id: br-presidente-do-banco-central, cargo_texto: "Presidente do Banco Central do Brasil", tipo: nato, assentos: 1}
+
+  - id: br-comite-de-politica-monetaria
+    norma: Resolução BCB 61/2021, Regulamento anexo, art. 2º (presidência no art. 9º, II)
+    norma_url: https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?tipo=Resolu%C3%A7%C3%A3o%20BCB&numero=61
+    checked_at: '2026-09-22'
+    presidido_por: br-presidente-do-banco-central
+    vagas_sociedade: 0
+    nota: A Resolução não fixa o número de diretores; a Diretoria Colegiada do Banco Central tem nove membros, um deles o Presidente (LC 179/2021, art. 3º).
+    membros:
+      - {cargo_id: br-presidente-do-banco-central, cargo_texto: "Presidente do Banco Central do Brasil", tipo: nato, assentos: 1, note: "preside as reuniões e tem voto de qualidade (art. 6º)"}
+      - {cargo_id: br-diretor-do-banco-central, cargo_texto: "os Diretores do Banco Central do Brasil", tipo: nato, assentos: 8, note: "número deduzido da LC 179/2021, art. 3º (nove membros da Diretoria Colegiada, um deles o Presidente)"}
+
+  - id: br-camara-de-comercio-exterior
+    norma: Decreto 11.428/2023, art. 4º (Conselho Estratégico; incisos IX a XI com redação do Decreto 11.524/2023)
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/decreto/d11428.htm
+    checked_at: '2026-09-22'
+    presidido_por: br-vice-presidente-da-republica
+    vagas_sociedade: 0
+    nota: >-
+      Registrado aqui o Conselho Estratégico, órgão deliberativo da Camex (art. 4º). A Camex tem ainda
+      o Comitê-Executivo de Gestão (art. 7º, presidido pelo Ministro do Desenvolvimento, Indústria, Comércio
+      e Serviços e formado pelos Secretários-Executivos dos mesmos ministérios) e o Conselho Consultivo do
+      Setor Privado, cuja composição não é fixada no decreto.
+    membros:
+      - {cargo_id: br-vice-presidente-da-republica, cargo_texto: "Vice-Presidente da República, que o presidirá", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-chefe-casa-civil, cargo_texto: "Ministro de Estado da Casa Civil da Presidência da República", tipo: nato, assentos: 1, note: "substitui o Presidente do Conselho em suas ausências (§ 1º)"}
+      - {cargo_id: br-ministro-de-estado-do-desenvolvimento-industria-comercio-e-servicos, cargo_texto: "Ministro de Estado do Desenvolvimento, Indústria, Comércio e Serviços", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-das-relacoes-exteriores, cargo_texto: "Ministro de Estado das Relações Exteriores", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-fazenda, cargo_texto: "Ministro de Estado da Fazenda", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-agricultura-e-pecuaria, cargo_texto: "Ministro de Estado da Agricultura e Pecuária", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-planejamento-e-orcamento, cargo_texto: "Ministro de Estado do Planejamento e Orçamento", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-gestao, cargo_texto: "Ministro de Estado da Gestão e da Inovação em Serviços Públicos", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-defesa, cargo_texto: "Ministro de Estado da Defesa", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-de-minas-e-energia, cargo_texto: "Ministro de Estado de Minas e Energia", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-desenvolvimento-agrario, cargo_texto: "Ministro de Estado do Desenvolvimento Agrário e Agricultura Familiar", tipo: nato, assentos: 1}
+
+  - id: br-conselho-nacional-de-politica-fazendaria
+    norma: Convênio ICMS 133/1997 (Regimento do Confaz), art. 2º e art. 7º; base legal na LC 24/1975, art. 2º
+    norma_url: https://www.confaz.fazenda.gov.br/legislacao/convenios/1997/CV133_97
+    checked_at: '2026-09-22'
+    presidido_por: br-ministro-de-estado-da-fazenda
+    vagas_sociedade: 0
+    nota: Colegiado federativo. Os 27 assentos estaduais são ocupados pelos Secretários de Fazenda (ou Economia, Finanças, Receita ou Tributação) dos Estados e do Distrito Federal, que não são cargos federais e não existem no grafo.
+    membros:
+      - {cargo_id: br-ministro-de-estado-da-fazenda, cargo_texto: "um representante do Governo Federal", tipo: nato, assentos: 1, note: "o § 1º diz que representa o Governo Federal o Ministro de Estado da Fazenda, ou representante por ele indicado; é quem preside (art. 7º)"}
+      - {cargo_id: null, cargo_texto: "representante de cada Estado e Distrito Federal", tipo: externo, assentos: 27, note: "Secretários de Economia, Fazenda, Finanças, Receita ou Tributação dos Estados e do DF (§ 2º, redação do Convênio ICMS 157/2020)"}
+
+  # ─────────────────────────────────────────────────────────── energia, clima e meio ambiente
+
+  - id: br-conselho-nacional-de-politica-energetica
+    norma: Decreto 3.520/2000, art. 2º (alterações dos Decretos 11.418/2023 e 12.096/2024); base legal na Lei 9.478/1997, art. 2º
+    norma_url: https://www.planalto.gov.br/ccivil_03/decreto/d3520.htm
+    checked_at: '2026-09-22'
+    presidido_por: br-ministro-de-estado-de-minas-e-energia
+    vagas_sociedade: 4
+    nota: Dezoito membros natos mais cinco convidados com direito a voz e voto (§ 2º). Os incisos XI, XI-A, XI-B, XII, XIII e XIV estão revogados.
+    membros:
+      - {cargo_id: br-ministro-de-estado-de-minas-e-energia, cargo_texto: "o Ministro de Estado de Minas e Energia, que o presidirá", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-chefe-casa-civil, cargo_texto: "o Ministro de Estado da Casa Civil da Presidência da República", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-das-relacoes-exteriores, cargo_texto: "o Ministro de Estado das Relações Exteriores", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-fazenda, cargo_texto: "o Ministro de Estado da Fazenda", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-dos-transportes, cargo_texto: "o Ministro de Estado dos Transportes", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-agricultura-e-pecuaria, cargo_texto: "o Ministro de Estado da Agricultura e Pecuária", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-ciencia-tecnologia-e-inovacao, cargo_texto: "o Ministro de Estado da Ciência, Tecnologia e Inovação", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-meio-ambiente-e-mudanca-do-clima, cargo_texto: "o Ministro de Estado do Meio Ambiente e Mudança do Clima", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-integracao-e-do-desenvolvimento-regional, cargo_texto: "o Ministro de Estado da Integração e do Desenvolvimento Regional", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-das-cidades, cargo_texto: "o Ministro de Estado das Cidades", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-chefe-gabinete-de-seguranca-institucional, cargo_texto: "o Ministro de Estado Chefe do Gabinete de Segurança Institucional da Presidência da República", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-desenvolvimento-industria-comercio-e-servicos, cargo_texto: "o Ministro de Estado do Desenvolvimento, Indústria, Comércio e Serviços", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-desenvolvimento-agrario, cargo_texto: "o Ministro de Estado do Desenvolvimento Agrário e Agricultura Familiar", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-planejamento-e-orcamento, cargo_texto: "o Ministro de Estado do Planejamento e Orçamento", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-de-portos-e-aeroportos, cargo_texto: "o Ministro de Estado de Portos e Aeroportos", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-dos-povos-indigenas, cargo_texto: "o Ministro de Estado dos Povos Indígenas", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-gestao, cargo_texto: "o Ministro de Estado da Gestão e da Inovação em Serviços Públicos", tipo: nato, assentos: 1}
+      - {cargo_id: br-empresa-de-pesquisa-energetica-dirigente, cargo_texto: "o Presidente da Empresa de Pesquisa Energética", tipo: nato, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante dos Estados e do Distrito Federal indicado pelo Fórum Nacional de Secretários de Estado de Minas e Energia", tipo: externo, assentos: 1, note: "convidado com voz e voto, mandato de dois anos (§ 2º, I, e § 2º-A)"}
+      - {cargo_id: null, cargo_texto: "dois representantes da sociedade civil, especialistas em matéria de energia", tipo: indicado, assentos: 2, note: "escolhidos de lista tríplice, indicados pelo Ministro de Minas e Energia (§ 2º, II, e § 2º-C)"}
+      - {cargo_id: null, cargo_texto: "dois representantes de instituições acadêmicas brasileiras, especialistas em matéria de energia", tipo: indicado, assentos: 2, note: "mesma regra de lista tríplice (§ 2º, III)"}
+
+  - id: br-conselho-nacional-do-meio-ambiente
+    norma: Decreto 99.274/1990, art. 5º-A (incluído pelo Decreto 11.417/2023, que revogou o art. 5º)
+    norma_url: https://www.planalto.gov.br/ccivil_03/decreto/antigos/d99274.htm
+    checked_at: '2026-09-22'
+    presidido_por: br-ministro-de-estado-do-meio-ambiente-e-mudanca-do-clima
+    vagas_sociedade: 30
+    nota: Plenário de mais de cem assentos. O inciso VII, "a", dá um assento a cada Ministério, sem fixar número; o total acompanha a estrutura ministerial vigente.
+    membros:
+      - {cargo_id: br-ministro-de-estado-do-meio-ambiente-e-mudanca-do-clima, cargo_texto: "o Ministro de Estado do Meio Ambiente e Mudança do Clima, que o presidirá", tipo: nato, assentos: 1}
+      - {cargo_id: br-secretaria-executiva-meio-ambiente-secretario, cargo_texto: "o Secretário-Executivo do Ministério do Meio Ambiente e Mudança do Clima, que será o seu Secretário-Executivo", tipo: nato, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante do IBAMA", tipo: indicado, assentos: 1, note: "assento do órgão; representante indicado pelo seu titular (§ 2º)"}
+      - {cargo_id: null, cargo_texto: "um representante do Instituto Chico Mendes", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante do Serviço Florestal Brasileiro do Ministério do Meio Ambiente e Mudança do Clima", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante da Agência Nacional de Águas e Saneamento Básico - ANA", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante de cada um dos Ministérios", tipo: indicado, assentos: 1, note: "inciso VII, 'a': um assento por Ministério; a norma não fixa número, que acompanha a estrutura vigente"}
+      - {cargo_id: null, cargo_texto: "um representante de cada um dos seguintes órgãos da Presidência da República: Casa Civil; Secretaria-Geral; e Secretaria de Relações Institucionais", tipo: indicado, assentos: 3}
+      - {cargo_id: null, cargo_texto: "um representante de cada um dos Comandos do Ministério da Defesa: da Marinha; do Exército; e da Aeronáutica", tipo: indicado, assentos: 3}
+      - {cargo_id: null, cargo_texto: "um representante de cada um dos Governos estaduais e do Distrito Federal, indicados pelos respectivos Governadores", tipo: externo, assentos: 27}
+      - {cargo_id: null, cargo_texto: "oito representantes dos Governos municipais que possuam órgão ambiental estruturado e conselho de meio ambiente com caráter deliberativo", tipo: externo, assentos: 8, note: "um por região geográfica, um da Anamma e dois de entidades municipalistas nacionais"}
+      - {cargo_id: null, cargo_texto: "vinte e dois representantes de entidades de trabalhadores e da sociedade civil", tipo: externo, assentos: 22}
+      - {cargo_id: null, cargo_texto: "oito representantes de entidades empresariais", tipo: externo, assentos: 8}
+      - {cargo_id: null, cargo_texto: "um membro honorário indicado pelo Plenário", tipo: eleito, assentos: 1}
+      - {cargo_id: null, cargo_texto: "conselheiros convidados, sem direito a voto: um representante do Ministério Público Federal; um dos Ministérios Públicos Estaduais; um da Comissão de Meio Ambiente e Desenvolvimento Sustentável da Câmara; e um da Comissão de Meio Ambiente do Senado", tipo: externo, assentos: 4, note: "sem direito a voto (§ 1º)"}
+
+  - id: br-comite-interministerial-sobre-mudanca-do-clima
+    norma: Decreto 11.550/2023, art. 3º (redações dos Decretos 12.040/2024 e 12.144/2024)
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/decreto/d11550.htm
+    checked_at: '2026-09-22'
+    presidido_por: br-ministro-chefe-casa-civil
+    vagas_sociedade: 2
+    nota: Vinte e três Ministros de Estado com voto e seis membros permanentes sem voto (§ 2º).
+    membros:
+      - {cargo_id: br-ministro-chefe-casa-civil, cargo_texto: "Casa Civil da Presidência da República, que o presidirá", tipo: nato, assentos: 1}
+      - {cargo_id: br-advogado-geral-da-uniao, cargo_texto: "Advocacia-Geral da União", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-agricultura-e-pecuaria, cargo_texto: "Ministério da Agricultura e Pecuária", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-das-cidades, cargo_texto: "Ministério das Cidades", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-ciencia-tecnologia-e-inovacao, cargo_texto: "Ministério da Ciência, Tecnologia e Inovação", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-desenvolvimento-agrario, cargo_texto: "Ministério do Desenvolvimento Agrário e Agricultura Familiar", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-desenvolvimento-social, cargo_texto: "Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-desenvolvimento-industria-comercio-e-servicos, cargo_texto: "Ministério do Desenvolvimento, Indústria, Comércio e Serviços", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-educacao, cargo_texto: "Ministério da Educação", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-fazenda, cargo_texto: "Ministério da Fazenda", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-igualdade-racial, cargo_texto: "Ministério da Igualdade Racial", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-integracao-e-do-desenvolvimento-regional, cargo_texto: "Ministério da Integração e do Desenvolvimento Regional", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-meio-ambiente-e-mudanca-do-clima, cargo_texto: "Ministério do Meio Ambiente e Mudança do Clima", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-de-minas-e-energia, cargo_texto: "Ministério de Minas e Energia", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-das-mulheres, cargo_texto: "Ministério das Mulheres", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-planejamento-e-orcamento, cargo_texto: "Ministério do Planejamento e Orçamento", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-dos-povos-indigenas, cargo_texto: "Ministério dos Povos Indígenas", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-das-relacoes-exteriores, cargo_texto: "Ministério das Relações Exteriores", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-saude, cargo_texto: "Ministério da Saúde", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-trabalho-e-emprego, cargo_texto: "Ministério do Trabalho e Emprego", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-dos-transportes, cargo_texto: "Ministério dos Transportes", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-chefe-secretaria-geral-da-presidencia, cargo_texto: "Secretaria-Geral da Presidência da República", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-chefe-secretaria-de-relacoes-institucionais, cargo_texto: "Secretaria de Relações Institucionais da Presidência da República", tipo: nato, assentos: 1}
+      - {cargo_id: null, cargo_texto: "dois representantes indicados pela Câmara de Participação Social, dos quais um será o Coordenador-Executivo do Fórum Brasileiro de Mudança do Clima", tipo: externo, assentos: 2, note: "membros permanentes sem direito a voto (§ 2º, I)"}
+      - {cargo_id: null, cargo_texto: "dois representantes indicados pela Câmara de Articulação Interfederativa", tipo: externo, assentos: 2, note: "sem direito a voto (§ 2º, II)"}
+      - {cargo_id: null, cargo_texto: "dois representantes indicados pela Câmara de Assessoramento Científico, dos quais um será o Coordenador-Científico da Rede Clima", tipo: externo, assentos: 2, note: "sem direito a voto (§ 2º, III)"}
+
+  - id: br-conselho-nacional-de-recursos-hidricos
+    norma: Decreto 11.960/2024, art. 3º (revogou o Decreto 10.000/2019); base legal na Lei 9.433/1997, arts. 34 e 36
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/decreto/D11960.htm
+    checked_at: '2026-09-22'
+    presidido_por: br-ministro-de-estado-da-integracao-e-do-desenvolvimento-regional
+    vagas_sociedade: 15
+    nota: >-
+      Cinquenta assentos. Os assentos federais (25) são de representantes designados pelos Ministérios,
+      não de cargos nominados pela norma; por isso só a presidência casa com um cargo do grafo. A Lei
+      9.433/1997, parágrafo único do art. 34, limita o Executivo federal a metade mais um dos votos.
+    membros:
+      - {cargo_id: null, cargo_texto: "dois representantes do Ministério da Integração e do Desenvolvimento Regional", tipo: indicado, assentos: 2, note: "o § 1º do art. 3º dá a presidência ao Ministro de Estado da Integração e do Desenvolvimento Regional"}
+      - {cargo_id: null, cargo_texto: "um representante de cada um dos Ministérios da Agricultura e Pecuária, das Cidades, da Ciência, Tecnologia e Inovação, da Defesa, do Desenvolvimento Agrário e Agricultura Familiar, do Desenvolvimento e Assistência Social, do Desenvolvimento, Indústria, Comércio e Serviços, dos Direitos Humanos e da Cidadania, da Educação, da Fazenda, da Justiça e Segurança Pública, das Mulheres, da Pesca e Aquicultura, do Planejamento e Orçamento, de Portos e Aeroportos, dos Povos Indígenas, das Relações Exteriores, da Saúde e do Turismo", tipo: indicado, assentos: 19, note: "incisos II a XII e XV a XXII"}
+      - {cargo_id: null, cargo_texto: "dois representantes do Ministério do Meio Ambiente e Mudança do Clima", tipo: indicado, assentos: 2}
+      - {cargo_id: null, cargo_texto: "dois representantes do Ministério de Minas e Energia", tipo: indicado, assentos: 2}
+      - {cargo_id: null, cargo_texto: "dez representantes dos conselhos estaduais e distrital de recursos hídricos", tipo: externo, assentos: 10}
+      - {cargo_id: null, cargo_texto: "oito representantes dos setores usuários de recursos hídricos", tipo: externo, assentos: 8, note: "irrigantes, saneamento, geração de energia, setor hidroviário e portuário, indústria e mineração (dois), pescadores, lazer e turismo"}
+      - {cargo_id: null, cargo_texto: "sete representantes de organizações da sociedade civil de recursos hídricos", tipo: externo, assentos: 7, note: "ensino e pesquisa, ONGs, comitês de bacia de rios da União (dois), povos indígenas, comunidades tradicionais e representação nacional dos Municípios"}
+      - {cargo_id: null, cargo_texto: "Agência Nacional de Águas e Saneamento Básico", tipo: externo, assentos: 1, note: "participação permanente no Conselho e nas Câmaras Técnicas, sem direito a voto (art. 5º, § 2º)"}
+
+  # ─────────────────────────────────────────────────────────── política pública de alcance nacional
+
+  - id: br-conselho-de-governo
+    norma: Lei 14.600/2023, art. 9º, inciso I
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm
+    checked_at: '2026-09-22'
+    presidido_por: br-presidente-da-republica
+    vagas_sociedade: 0
+    nota: A lei não fixa número de assentos ministeriais; o Conselho é integrado por todos os Ministros de Estado da estrutura vigente. As Câmaras do Conselho de Governo são criadas em ato do Executivo (art. 9º, II).
+    membros:
+      - {cargo_id: br-presidente-da-republica, cargo_texto: "o Presidente da República", tipo: nato, assentos: 1, note: "preside; pode determinar que a presidência seja exercida pelo Ministro de Estado Chefe da Casa Civil"}
+      - {cargo_id: br-ministro-chefe-casa-civil, cargo_texto: "o Ministro de Estado Chefe da Casa Civil da Presidência da República", tipo: nato, assentos: 1, note: "preside por determinação do Presidente da República"}
+      - {cargo_id: null, cargo_texto: "os Ministros de Estado", tipo: nato, assentos: 1, note: "assento coletivo: todos os Ministros de Estado; a lei não fixa número"}
+      - {cargo_id: null, cargo_texto: "o titular do Gabinete Pessoal do Presidente da República", tipo: nato, assentos: 1}
+
+  - id: br-conselho-de-desenvolvimento-economico-social-sustentavel
+    norma: Decreto 11.454/2023, art. 3º; base legal na Lei 14.600/2023, art. 10, parágrafo único
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/decreto/d11454.htm
+    checked_at: '2026-09-22'
+    presidido_por: br-presidente-da-republica
+    vagas_sociedade: 0
+    nota: >-
+      O decreto não fixa o número de conselheiros do inciso IV: são cidadãos designados por livre escolha
+      do Presidente da República, em geral dirigentes de organizações sindicais, movimentos sociais,
+      sociedade civil e setor privado. O número concreto vem dos decretos de designação, não da norma de
+      composição, e por isso não é contado aqui como vaga de sociedade civil.
+    membros:
+      - {cargo_id: br-presidente-da-republica, cargo_texto: "o Presidente da República, que o presidirá", tipo: nato, assentos: 1}
+      - {cargo_id: br-vice-presidente-da-republica, cargo_texto: "o Vice-Presidente da República", tipo: nato, assentos: 1, note: "representa o Presidente da República em suas ausências (§ 4º)"}
+      - {cargo_id: br-ministro-chefe-secretaria-de-relacoes-institucionais, cargo_texto: "o Ministro de Estado da Secretaria de Relações Institucionais da Presidência da República", tipo: nato, assentos: 1}
+      - {cargo_id: null, cargo_texto: "cidadãos brasileiros de reconhecida liderança e representatividade, designados por livre escolha do Presidente da República para até dois anos de atuação como Conselheiros", tipo: indicado, assentos: 1, note: "assento coletivo: o decreto não fixa número (art. 3º, IV, e §§ 2º e 3º)"}
+
+  - id: br-conselho-nacional-de-ciencia-e-tecnologia
+    norma: Decreto 11.474/2023, art. 3º (redações do Decreto 12.140/2024)
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/decreto/d11474.htm
+    checked_at: '2026-09-22'
+    presidido_por: br-presidente-da-republica
+    vagas_sociedade: 18
+    nota: Na ausência do Presidente da República, o CCT é presidido pelo Ministro de Estado da Ciência, Tecnologia e Inovação, que exerce a vice-presidência (§ 1º).
+    membros:
+      - {cargo_id: br-presidente-da-republica, cargo_texto: "o Presidente da República", tipo: nato, assentos: 1, note: "preside o CCT (caput do art. 3º)"}
+      - {cargo_id: br-ministro-de-estado-da-ciencia-tecnologia-e-inovacao, cargo_texto: "Ministro de Estado da Ciência, Tecnologia e Inovação, que exercerá a vice-presidência do CCT", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-chefe-casa-civil, cargo_texto: "Ministro de Estado da Casa Civil da Presidência da República", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-chefe-secretaria-geral-da-presidencia, cargo_texto: "Ministro de Estado da Secretaria-Geral da Presidência da República", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-chefe-gabinete-de-seguranca-institucional, cargo_texto: "Ministro de Estado Chefe do Gabinete de Segurança Institucional da Presidência da República", tipo: nato, assentos: 1}
+      - {cargo_id: br-advogado-geral-da-uniao, cargo_texto: "Ministro de Estado da Advocacia-Geral da União", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-agricultura-e-pecuaria, cargo_texto: "Ministro de Estado da Agricultura e Pecuária", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-defesa, cargo_texto: "Ministro de Estado da Defesa", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-desenvolvimento-industria-comercio-e-servicos, cargo_texto: "Ministro de Estado do Desenvolvimento, Indústria, Comércio e Serviços", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-educacao, cargo_texto: "Ministro de Estado da Educação", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-fazenda, cargo_texto: "Ministro de Estado da Fazenda", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-gestao, cargo_texto: "Ministro de Estado da Gestão e da Inovação em Serviços Públicos", tipo: nato, assentos: 1, note: "alínea 'k' com redação do Decreto 12.140/2024"}
+      - {cargo_id: br-ministro-de-estado-do-meio-ambiente-e-mudanca-do-clima, cargo_texto: "Ministro de Estado do Meio Ambiente e Mudança do Clima", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-de-minas-e-energia, cargo_texto: "Ministro de Estado de Minas e Energia", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-do-planejamento-e-orcamento, cargo_texto: "Ministro de Estado do Planejamento e Orçamento", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-das-relacoes-exteriores, cargo_texto: "Ministro de Estado das Relações Exteriores", tipo: nato, assentos: 1}
+      - {cargo_id: br-ministro-de-estado-da-saude, cargo_texto: "Ministro de Estado da Saúde", tipo: nato, assentos: 1}
+      - {cargo_id: null, cargo_texto: "oito representantes dos produtores e dos usuários de ciência e tecnologia", tipo: indicado, assentos: 8, note: "designados pelo Ministro da Ciência, Tecnologia e Inovação; mandato de três anos, uma recondução (§§ 4º, 6º e 7º)"}
+      - {cargo_id: null, cargo_texto: "um representante de cada uma das seguintes entidades: Academia Brasileira de Ciências; Andifes; Confap; Consecti; Instituto Brasileiro de Cidades Humanas, Inteligentes, Criativas e Sustentáveis; SBPC; Conif; Abruem; Abruc; e ANPG", tipo: externo, assentos: 10, note: "inciso III; alíneas 'h', 'i' e 'j' com redação ou inclusão do Decreto 12.140/2024"}
+
+  - id: br-conselho-nacional-de-educacao
+    norma: Lei 4.024/1961, arts. 7º e 8º, na redação da Lei 9.131/1995
+    norma_url: https://www.planalto.gov.br/ccivil_03/leis/l9131.htm
+    checked_at: '2026-09-22'
+    vagas_sociedade: 0
+    nota: >-
+      Conselho Pleno de 24 conselheiros, doze na Câmara de Educação Básica e doze na Câmara de Educação
+      Superior. É presidido por um de seus membros, eleito pelos pares para mandato de dois anos (art. 7º,
+      § 3º); o Ministro de Estado da Educação preside as sessões a que comparecer (§ 4º). Pelo menos metade
+      dos conselheiros de cada Câmara sai de listas elaboradas mediante consulta a entidades da sociedade
+      civil, mas a lei não reserva assento a entidade alguma — por isso vagas_sociedade é 0.
+    membros:
+      - {cargo_id: br-secretaria-de-educacao-basica-secretario, cargo_texto: "o Secretário de Educação Fundamental", tipo: nato, assentos: 1, note: "membro nato da Câmara de Educação Básica; a lei mantém a denominação de 1995, hoje correspondente ao Secretário de Educação Básica do MEC"}
+      - {cargo_id: br-secretaria-de-educacao-superior-secretario, cargo_texto: "o Secretário de Educação Superior", tipo: nato, assentos: 1, note: "membro nato da Câmara de Educação Superior"}
+      - {cargo_id: null, cargo_texto: "conselheiros da Câmara de Educação Básica", tipo: indicado, assentos: 11, note: "nomeados pelo Presidente da República; ao menos metade da Câmara a partir de listas de entidades da sociedade civil (art. 8º, § 1º)"}
+      - {cargo_id: null, cargo_texto: "conselheiros da Câmara de Educação Superior", tipo: indicado, assentos: 11, note: "mesma regra de nomeação e de listas"}
+
+  - id: br-conselho-nacional-de-saude
+    norma: Decreto 5.839/2006, art. 3º (presidência no art. 6º); base legal na Lei 8.142/1990, art. 1º
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/decreto/d5839.htm
+    checked_at: '2026-09-22'
+    vagas_sociedade: 40
+    nota: >-
+      Quarenta e oito membros titulares, metade deles de usuários do SUS. Presidido por conselheiro titular
+      eleito em escrutínio secreto (art. 6º), não por cargo de governo. Os seis assentos do Governo Federal
+      são designados pelo Ministro de Estado da Saúde (art. 9º) sem que a norma nomeie os ministérios.
+    membros:
+      - {cargo_id: null, cargo_texto: "representantes de entidades e dos movimentos sociais de usuários do SUS", tipo: eleito, assentos: 24, note: "cinquenta por cento dos titulares (art. 3º, I); entidades escolhidas em processo eleitoral trienal"}
+      - {cargo_id: null, cargo_texto: "representantes de entidades de profissionais de saúde, incluída a comunidade científica da área de saúde", tipo: eleito, assentos: 12, note: "vinte e cinco por cento (§ 1º, I)"}
+      - {cargo_id: null, cargo_texto: "seis membros representantes do Governo Federal", tipo: indicado, assentos: 6, note: "designados pelo Ministro de Estado da Saúde (art. 9º); a norma não nomeia ministérios"}
+      - {cargo_id: null, cargo_texto: "um membro representante do CONASS", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um membro representante do CONASEMS", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "dois membros representantes de entidades de prestadores de serviços de saúde", tipo: eleito, assentos: 2}
+      - {cargo_id: null, cargo_texto: "dois membros representantes de entidades empresariais com atividades na área de saúde", tipo: eleito, assentos: 2}
+
+  - id: br-conselho-nacional-de-assistencia-social
+    norma: Lei 8.742/1993 (Loas), art. 17, caput e §§ 1º e 2º
+    norma_url: https://www.planalto.gov.br/ccivil_03/leis/l8742.htm
+    checked_at: '2026-09-22'
+    vagas_sociedade: 9
+    nota: Composição paritária de dezoito membros, nomeados pelo Presidente da República para mandato de dois anos. Presidido por um dos integrantes, eleito pelos pares para um ano (§ 2º).
+    membros:
+      - {cargo_id: null, cargo_texto: "nove representantes governamentais, incluindo um representante dos Estados e um dos Municípios", tipo: indicado, assentos: 9, note: "a lei não nomeia os órgãos federais"}
+      - {cargo_id: null, cargo_texto: "nove representantes da sociedade civil, dentre representantes dos usuários ou de organizações de usuários, das entidades e organizações de assistência social e dos trabalhadores do setor", tipo: eleito, assentos: 9, note: "escolhidos em foro próprio sob fiscalização do Ministério Público Federal"}
+
+  - id: br-conselho-nacional-de-previdencia-social
+    norma: Lei 8.213/1991, art. 3º (redação da Lei 8.619/1993)
+    norma_url: https://www.planalto.gov.br/ccivil_03/leis/l8213cons.htm
+    checked_at: '2026-09-22'
+    vagas_sociedade: 9
+    nota: Quinze membros, nomeados pelo Presidente da República. Nem a Lei 8.213/1991 nem o Decreto 3.048/1999 (art. 295) nomeiam o cargo que preside.
+    membros:
+      - {cargo_id: null, cargo_texto: "seis representantes do Governo Federal", tipo: indicado, assentos: 6, note: "a lei não nomeia os órgãos"}
+      - {cargo_id: null, cargo_texto: "três representantes dos aposentados e pensionistas", tipo: externo, assentos: 3, note: "indicados pelas centrais sindicais e confederações nacionais; mandato de dois anos (§§ 1º e 2º)"}
+      - {cargo_id: null, cargo_texto: "três representantes dos trabalhadores em atividade", tipo: externo, assentos: 3, note: "indicados pelas centrais sindicais e confederações nacionais"}
+      - {cargo_id: null, cargo_texto: "três representantes dos empregadores", tipo: externo, assentos: 3, note: "indicados pelas centrais sindicais e confederações nacionais"}
+
+  - id: br-conselho-nacional-de-previdencia-complementar
+    norma: Decreto 7.123/2010, art. 6º; base legal na Lei 12.154/2009, arts. 13 e 14
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/decreto/d7123.htm
+    checked_at: '2026-09-22'
+    presidido_por: br-ministro-de-estado-da-previdencia-social
+    vagas_sociedade: 3
+    nota: >-
+      Órgão regulador das entidades fechadas de previdência complementar. O art. 14 da Lei 12.154/2009 fala
+      em oito integrantes com direito a voto (cinco do poder público e três indicados); o Decreto 7.123/2010
+      lista o Ministro que preside mais oito representantes. O inciso V ainda cita o Ministério do
+      Planejamento, Orçamento e Gestão, denominação não atualizada no texto do decreto.
+    membros:
+      - {cargo_id: br-ministro-de-estado-da-previdencia-social, cargo_texto: "Ministro de Estado da Previdência Social, que o presidirá", tipo: nato, assentos: 1, note: "tem voto ordinário e voto de qualidade (§ 1º)"}
+      - {cargo_id: null, cargo_texto: "um representante da Superintendência Nacional de Previdência Complementar - Previc", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante da Secretaria de Políticas de Previdência Complementar do Ministério da Previdência Social", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante da Casa Civil da Presidência da República", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante do Ministério da Fazenda", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante do Ministério do Planejamento, Orçamento e Gestão", tipo: indicado, assentos: 1, note: "denominação literal de 2010, não atualizada no decreto"}
+      - {cargo_id: null, cargo_texto: "um representante das entidades fechadas de previdência complementar", tipo: externo, assentos: 1, note: "indicado pela Abrapp (§ 4º, II)"}
+      - {cargo_id: null, cargo_texto: "um representante dos patrocinadores e instituidores de planos de benefícios das entidades fechadas de previdência complementar", tipo: externo, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante dos participantes e assistidos de planos de benefícios das entidades fechadas de previdência complementar", tipo: externo, assentos: 1, note: "indicado pela Anapar (§ 4º, IV)"}
+
+  - id: br-conselho-nacional-dos-direitos-humanos
+    norma: Lei 12.986/2014, art. 3º
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/lei/l12986.htm
+    checked_at: '2026-09-22'
+    vagas_sociedade: 11
+    nota: Vinte e dois assentos. A lei remete as regras de funcionamento, inclusive a escolha do Presidente e do Vice-Presidente, ao regimento interno (art. 3º, § 5º).
+    membros:
+      - {cargo_id: br-ministro-de-estado-dos-direitos-humanos-e-da-cidadania, cargo_texto: "Secretário Especial dos Direitos Humanos", tipo: nato, assentos: 1, note: "a lei nomeia o cargo na denominação de 2014; hoje corresponde ao Ministro de Estado dos Direitos Humanos e da Cidadania"}
+      - {cargo_id: br-procurador-geral-da-republica, cargo_texto: "Procurador-Geral da República", tipo: nato, assentos: 1}
+      - {cargo_id: null, cargo_texto: "dois Deputados Federais", tipo: indicado, assentos: 2, note: "designados pelo Presidente da Câmara no início de cada legislatura, com paridade entre situação e oposição (§ 4º)"}
+      - {cargo_id: null, cargo_texto: "dois Senadores", tipo: indicado, assentos: 2, note: "designados pelo Presidente do Senado, com paridade entre situação e oposição (§ 4º)"}
+      - {cargo_id: null, cargo_texto: "um representante de entidade de magistrados", tipo: externo, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante do Ministério das Relações Exteriores", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante do Ministério da Justiça", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante da Polícia Federal", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante da Defensoria Pública da União", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante da Ordem dos Advogados do Brasil, indicado pelo Conselho Federal da entidade", tipo: externo, assentos: 1}
+      - {cargo_id: null, cargo_texto: "nove representantes de organizações da sociedade civil de abrangência nacional e com relevantes atividades relacionadas à defesa dos direitos humanos", tipo: eleito, assentos: 9, note: "eleitos em encontro nacional para mandato de dois anos (§ 2º)"}
+      - {cargo_id: null, cargo_texto: "um representante do Conselho Nacional dos Procuradores-Gerais do Ministério Público dos Estados e da União", tipo: externo, assentos: 1}
+
+  - id: br-conselho-nacional-de-seguranca-publica-e-defesa-social
+    norma: Decreto 9.489/2018, art. 35 (redação do Decreto 9.876/2019); base legal na Lei 13.675/2018, art. 20
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/decreto/d9489.htm
+    checked_at: '2026-09-22'
+    presidido_por: br-ministro-de-estado-da-justica-e-seguranca-publica
+    vagas_sociedade: 4
+    nota: >-
+      A Lei 13.675/2018 não lista os membros: o art. 20, § 1º, remete a regulamento, e a composição está no
+      art. 35 do Decreto 9.489/2018. O texto compilado ainda cita o "Ministério da Mulher, da Família e dos
+      Direitos Humanos", denominação não atualizada.
+    membros:
+      - {cargo_id: br-ministro-de-estado-da-justica-e-seguranca-publica, cargo_texto: "o Ministro de Estado da Justiça e Segurança Pública, que o presidirá", tipo: nato, assentos: 1}
+      - {cargo_id: br-secretaria-executiva-justica-secretario, cargo_texto: "o Secretário-Executivo do Ministério da Justiça e Segurança Pública, que exercerá a vice-presidência", tipo: nato, assentos: 1, note: "substitui o Presidente em suas ausências e impedimentos"}
+      - {cargo_id: br-diretor-geral-da-policia-federal, cargo_texto: "o Diretor-Geral da Polícia Federal", tipo: nato, assentos: 1}
+      - {cargo_id: br-diretor-geral-da-policia-rodoviaria-federal, cargo_texto: "o Diretor-Geral da Polícia Rodoviária Federal", tipo: nato, assentos: 1}
+      - {cargo_id: null, cargo_texto: "o Diretor-Geral do Departamento Penitenciário Nacional", tipo: nato, assentos: 1, note: "cargo ainda não mapeado no grafo"}
+      - {cargo_id: br-secretaria-nacional-de-seguranca-publica-secretario, cargo_texto: "o Secretário Nacional de Segurança Pública", tipo: nato, assentos: 1}
+      - {cargo_id: br-secretaria-nacional-de-protecao-e-defesa-civil-secretario, cargo_texto: "o Secretário Nacional de Proteção e Defesa Civil", tipo: nato, assentos: 1}
+      - {cargo_id: br-secretaria-nacional-de-politicas-sobre-drogas-e-gestao-de-ativos-secretario, cargo_texto: "o Secretário Nacional de Políticas sobre Drogas", tipo: nato, assentos: 1, note: "hoje Secretaria Nacional de Políticas sobre Drogas e Gestão de Ativos"}
+      - {cargo_id: null, cargo_texto: "o Secretário de Operações Integradas do Ministério da Justiça e Segurança Pública", tipo: nato, assentos: 1, note: "inciso XXI, incluído pelo Decreto 9.876/2019; cargo não mapeado no grafo"}
+      - {cargo_id: null, cargo_texto: "um representante da Casa Civil da Presidência da República", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante do Ministério da Defesa", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante do Ministério da Mulher, da Família e dos Direitos Humanos", tipo: indicado, assentos: 1, note: "denominação do Decreto 9.876/2019, não atualizada no texto compilado"}
+      - {cargo_id: null, cargo_texto: "um representante do Gabinete de Segurança Institucional da Presidência da República", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "representantes estaduais e distrital das polícias civis, das polícias militares, dos corpos de bombeiros militares, das secretarias de segurança pública, dos institutos de criminalística e medicina legal e dos agentes penitenciários", tipo: externo, assentos: 6, note: "inciso X, um assento por conselho ou colégio nacional indicado"}
+      - {cargo_id: null, cargo_texto: "representantes dos agentes de trânsito, das guardas municipais e da Guarda Portuária", tipo: externo, assentos: 3, note: "indicados por conselho nacional devidamente constituído"}
+      - {cargo_id: null, cargo_texto: "um representante do Poder Judiciário, indicado pelo Conselho Nacional de Justiça", tipo: externo, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante do Ministério Público, indicado pelo Conselho Nacional do Ministério Público", tipo: externo, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante da Defensoria Pública, indicado pelo Colégio Nacional de Defensores Públicos Gerais", tipo: externo, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante da Ordem dos Advogados do Brasil, indicado pelo Conselho Federal da Ordem dos Advogados do Brasil", tipo: externo, assentos: 1}
+      - {cargo_id: null, cargo_texto: "dois representantes de entidades da sociedade civil organizada cuja finalidade esteja relacionada com políticas de segurança pública e defesa social", tipo: eleito, assentos: 2, note: "eleitos em processo aberto com convocação pública (§§ 3º e 4º)"}
+      - {cargo_id: null, cargo_texto: "dois representantes de entidades de profissionais de segurança pública", tipo: eleito, assentos: 2, note: "eleitos em processo aberto com convocação pública"}
+      - {cargo_id: null, cargo_texto: "até oito representantes com notórios conhecimentos na área de políticas de segurança pública e defesa social, além de um representante do Poder Judiciário e um do Ministério Público", tipo: indicado, assentos: 10, note: "inciso XX: livre escolha e designação pelo Ministro de Estado da Justiça e Segurança Pública; o limite de oito do item 'c' é máximo"}
+
+  - id: br-conselho-nacional-de-turismo
+    norma: Decreto 11.623/2023, art. 3º
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/decreto/d11623.htm
+    checked_at: '2026-09-22'
+    presidido_por: br-ministro-de-estado-do-turismo
+    vagas_sociedade: 48
+    nota: >-
+      Colegiado de 96 assentos. A norma dá cada assento a um órgão ou entidade ("composto por representantes
+      dos seguintes órgãos e entidades"), não a um cargo nominado, salvo a presidência, que o § 1º atribui ao
+      Ministro de Estado do Turismo (substituído pelo Secretário-Executivo da pasta, § 2º).
+    membros:
+      - {cargo_id: null, cargo_texto: "Ministério do Turismo, que o presidirá", tipo: nato, assentos: 1, note: "a presidência é exercida pelo Ministro de Estado do Turismo (§ 1º)"}
+      - {cargo_id: null, cargo_texto: "Casa Civil da Presidência da República e os Ministérios da Agricultura e Pecuária, da Ciência, Tecnologia e Inovação, da Cultura, da Defesa, do Desenvolvimento Agrário e Agricultura Familiar, do Desenvolvimento e Assistência Social, do Desenvolvimento, Indústria, Comércio e Serviços, dos Direitos Humanos e da Cidadania, da Educação, da Fazenda, da Igualdade Racial, da Integração e do Desenvolvimento Regional, da Justiça e Segurança Pública, do Meio Ambiente e Mudança do Clima, das Mulheres, do Planejamento e Orçamento, de Portos e Aeroportos, dos Povos Indígenas, das Relações Exteriores, do Trabalho e Emprego e dos Transportes", tipo: nato, assentos: 22, note: "incisos II a XXIII, um representante por órgão"}
+      - {cargo_id: null, cargo_texto: "Anac, Banco da Amazônia, Banco do Brasil, Banco do Nordeste, BNDES, Caixa Econômica Federal, Infraero, Suframa e Embratur", tipo: nato, assentos: 9, note: "incisos XXIV a XXXII, um representante por entidade da administração indireta"}
+      - {cargo_id: null, cargo_texto: "Sebrae, Senac e Sesc", tipo: externo, assentos: 3, note: "incisos XXXIII a XXXV, entidades do Sistema S"}
+      - {cargo_id: null, cargo_texto: "Fornatur, Anseditur e Confederação Nacional dos Municípios", tipo: externo, assentos: 3, note: "incisos XXXVI a XXXVIII, gestores estaduais e municipais de turismo"}
+      - {cargo_id: null, cargo_texto: "Comissão de Turismo da Câmara dos Deputados, Comissão de Desenvolvimento Regional e Turismo do Senado Federal e Conselho Nacional de Justiça", tipo: externo, assentos: 3, note: "incisos XXXIX a XLI"}
+      - {cargo_id: null, cargo_texto: "quarenta e oito de organizações da sociedade civil legalmente constituídas, que atuem no setor de turismo", tipo: eleito, assentos: 48, note: "escolhidas por processo seletivo público, doze categorias, mandato de dois anos com uma recondução (§§ 9º e 12)"}
+      - {cargo_id: null, cargo_texto: "quatro brasileiros com notório saber na área de turismo", tipo: indicado, assentos: 4, note: "dois indicados pelo Presidente da República e dois pelo Ministro de Estado do Turismo, sem suplentes (§ 4º)"}
+
+  - id: br-conselho-deliberativo-do-fundo-nacional-do-meio-ambiente
+    norma: Decreto 10.224/2020, art. 5º (redação do Decreto 11.372/2023)
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2020/decreto/D10224.htm
+    checked_at: '2026-09-22'
+    presidido_por: br-ministro-de-estado-do-meio-ambiente-e-mudanca-do-clima
+    vagas_sociedade: 10
+    nota: >-
+      Vinte e dois assentos: a presidência mais vinte e um representantes de órgãos e entidades. O Decreto
+      13.013/2026 alterou o Decreto 10.224/2020 sem tocar no art. 5º. A redação de 2023 restabeleceu a
+      participação da sociedade civil retirada pela redação original de 2020 (vide ADPF 651).
+    membros:
+      - {cargo_id: br-ministro-de-estado-do-meio-ambiente-e-mudanca-do-clima, cargo_texto: "pelo Ministro de Estado do Meio Ambiente e Mudança do Clima, que o presidirá", tipo: nato, assentos: 1}
+      - {cargo_id: null, cargo_texto: "três representantes do Ministério do Meio Ambiente e Mudança do Clima", tipo: indicado, assentos: 3, note: "indicados pelo titular do órgão (§ 1º)"}
+      - {cargo_id: null, cargo_texto: "um representante do Ministério do Planejamento e Orçamento", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante do Ministério dos Povos Indígenas", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante da Secretaria Nacional de Juventude da Secretaria-Geral da Presidência da República", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis - IBAMA", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante do Instituto Chico Mendes de Conservação da Biodiversidade", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante da Agência Nacional de Águas - ANA", tipo: indicado, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante da Associação Brasileira de Entidades do Meio Ambiente - ABEMA", tipo: externo, assentos: 1, note: "associação de órgãos ambientais estaduais; mandato de dois anos (§§ 1º e 4º)"}
+      - {cargo_id: null, cargo_texto: "um representante da Associação Nacional de Municípios e Meio Ambiente - ANAMMA", tipo: externo, assentos: 1, note: "associação de órgãos ambientais municipais"}
+      - {cargo_id: null, cargo_texto: "um representante do Fórum Brasileiro de ONGs e Movimentos Sociais para o Meio Ambiente e o Desenvolvimento - FBOMS", tipo: externo, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante da Sociedade Brasileira para o Progresso da Ciência - SBPC", tipo: externo, assentos: 1}
+      - {cargo_id: null, cargo_texto: "um representante de organização da sociedade civil, de âmbito nacional, indicada pelo Conselho Nacional do Meio Ambiente - CONAMA", tipo: externo, assentos: 1}
+      - {cargo_id: null, cargo_texto: "cinco representantes de organizações não-governamentais ambientalistas, na proporção de um representante para cada região geográfica do País", tipo: eleito, assentos: 5, note: "eleitos entre as entidades do Cadastro Nacional de Entidades Ambientalistas (§ 2º)"}
+      - {cargo_id: null, cargo_texto: "um representante de povos indígenas", tipo: externo, assentos: 1, note: "seleção disciplinada em portaria do Ministro de Estado do Meio Ambiente e Mudança do Clima (§ 3º)"}
+      - {cargo_id: null, cargo_texto: "um representante de povos e comunidades tradicionais", tipo: externo, assentos: 1, note: "seleção disciplinada em portaria do Ministro de Estado do Meio Ambiente e Mudança do Clima (§ 3º)"}
+
+nao_resolvidos:
+  - id: br-conselho-nacional-da-amazonia-legal
+    motivo: >-
+      Não há norma de composição vigente. O Decreto 10.239/2020 e o Decreto 10.450/2020, que dispunham sobre
+      o Conselho, foram expressamente revogados pelo art. 15, II e IV, do Decreto 11.367/2023, e nenhuma norma
+      posterior recriou o colegiado. O nó segue no grafo por vir do registro do SIORG.
