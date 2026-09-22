@@ -245,6 +245,16 @@ if _tr_p.exists():
                       "maiores_por_habitante": (_rs.get("maiores_por_habitante") or [])[:10], "criterio": _rs.get("criterio"),
                       "populacao_ibge": _rs.get("populacao_ibge"), "orgaos": _tr_n}
 
+# ---- quanto o cargo paga, segundo a lei (subsídio e benefícios), anexado ao cargo
+_sb_p = DATA / "generated" / "subsidios.yaml"
+_sb_n = 0
+if _sb_p.exists():
+    _sb = yaml.safe_load(open(_sb_p, encoding="utf-8")) or {}
+    for _cid, _c in (_sb.get("cargos") or {}).items():
+        if _cid not in nodes: continue
+        nodes[_cid]["subsidio"] = {k: _c.get(k) for k in ("subsidio_mensal_bruto", "vigencia_desde", "norma", "norma_url", "beneficios", "familia", "checked_at", "observacao") if _c.get(k) is not None}
+        _sb_n += 1
+
 # ---- composição dos colegiados (norma que cria cada conselho), anexada ao nó
 _cg_p = DATA / "generated" / "colegiados.yaml"
 _cg_n = 0
@@ -744,7 +754,7 @@ if _ap_p.exists():
         if pid in people_index and a and not people_index[pid].get("agenda"):
             people_index[pid]["agenda"] = dict({k: v for k, v in a.items() if k != "dias"}, generated_at=str(_ap.get("generated_at") or "")[:10], janela_dias=_ap.get("janela_dias")); stats["agendas_pessoas"] = stats.get("agendas_pessoas", 0) + 1
 stats["sinais"] = {"pessoas": sum(1 for r in people_index.values() if r.get("sinais")), "por_tipo": dict(__import__("collections").Counter(x["tipo"] for r in people_index.values() for x in r.get("sinais") or []))}
-stats["omissao"] = (omissao or {}).get("summary"); stats["resumos"] = len(_rs); stats["historico_cargos"] = _hi_n; stats["colegiados_com_composicao"] = _cg_n; stats["orgaos_com_programas"] = _pg_n; stats["dirigentes"] = _di_n; stats["orgaos_com_transferencias"] = _tr_n; stats["segundo_escalao"] = _se_n; stats["atividade_pessoas"] = len(atividade)
+stats["omissao"] = (omissao or {}).get("summary"); stats["resumos"] = len(_rs); stats["historico_cargos"] = _hi_n; stats["colegiados_com_composicao"] = _cg_n; stats["orgaos_com_programas"] = _pg_n; stats["dirigentes"] = _di_n; stats["cargos_com_subsidio"] = _sb_n; stats["orgaos_com_transferencias"] = _tr_n; stats["segundo_escalao"] = _se_n; stats["atividade_pessoas"] = len(atividade)
 stats["people"] = len(people_index)
 # ---- números do projeto: o README descreve o que existe hoje, gerado a partir deste build
 def _cobertura():
@@ -831,7 +841,7 @@ Atualizado em {stats['generated_at']}.
 
 graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao, "transferencias": transferencias}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
-HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "composicao", "programas", "transferencias", "budget", "dou", "candidaturas", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
+HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "composicao", "subsidio", "programas", "transferencias", "budget", "dou", "candidaturas", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
 core_nodes = {}
 (OUT / "nodes").mkdir(exist_ok=True)

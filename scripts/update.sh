@@ -52,6 +52,7 @@ run "Renúncias" $PY etl/renuncias.py
 run "Teto" $PY etl/teto.py
 run "Viagens" $PY etl/viagens.py
 run "Cartão" $PY etl/cartao.py
+run "Subsídios" $PY etl/subsidios.py
 run "Remuneração" $PY etl/remuneracao.py
 run "Orçamento" $PY etl/orcamento.py
 run "Programas" $PY etl/programas.py

@@ -79,18 +79,19 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
       <li><a href="#emendas"><b>07</b><span>Emendas</span></a></li>
       <li><a href="#renuncias"><b>08</b><span>Renúncias fiscais</span></a></li>
       <li><a href="#teto"><b>09</b><span>Acima do teto</span></a></li>
-      <li><a href="#gabinetes"><b>10</b><span>Gabinetes</span></a></li>
-      <li><a href="#patrimonio"><b>11</b><span>Patrimônio</span></a></li>
-      <li><a href="#campanha"><b>12</b><span>Campanha 2022</span></a></li>
-      <li><a href="#candidaturas"><b>13</b><span>Candidaturas</span></a></li>
-      <li><a href="#viagens"><b>14</b><span>Viagens e cartão</span></a></li>
-      <li><a href="#sinais"><b>15</b><span>Sinais "para verificar"</span></a></li>
-      <li><a href="#historico"><b>16</b><span>Quem ocupou o cargo</span></a></li>
-      <li><a href="#programas"><b>17</b><span>Orçamento por programa</span></a></li>
-      <li><a href="#agenda"><b>18</b><span>Agenda pública</span></a></li>
-      <li><a href="#segundo-escalao"><b>19</b><span>Segundo escalão</span></a></li>
-      <li><a href="#fora"><b>20</b><span>O que fica de fora</span></a></li>
-      <li><a href="#corrigir"><b>21</b><span>Como corrigir um erro</span></a></li>
+      <li><a href="#pagamento"><b>10</b><span>Salário e benefícios</span></a></li>
+      <li><a href="#gabinetes"><b>11</b><span>Gabinetes</span></a></li>
+      <li><a href="#patrimonio"><b>12</b><span>Patrimônio</span></a></li>
+      <li><a href="#campanha"><b>13</b><span>Campanha 2022</span></a></li>
+      <li><a href="#candidaturas"><b>14</b><span>Candidaturas</span></a></li>
+      <li><a href="#viagens"><b>15</b><span>Viagens e cartão</span></a></li>
+      <li><a href="#sinais"><b>16</b><span>Sinais "para verificar"</span></a></li>
+      <li><a href="#historico"><b>17</b><span>Quem ocupou o cargo</span></a></li>
+      <li><a href="#programas"><b>18</b><span>Orçamento por programa</span></a></li>
+      <li><a href="#agenda"><b>19</b><span>Agenda pública</span></a></li>
+      <li><a href="#segundo-escalao"><b>20</b><span>Segundo escalão</span></a></li>
+      <li><a href="#fora"><b>21</b><span>O que fica de fora</span></a></li>
+      <li><a href="#corrigir"><b>22</b><span>Como corrigir um erro</span></a></li>
     </ol>
   </header>
 
@@ -213,8 +214,21 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
     </dl>
   </section>
 
-  <section id="gabinetes">
+  <section id="pagamento">
     <div class="eyebrow">Bloco 10</div>
+    <h2>Quanto o cargo paga e quanto a pessoa recebeu</h2>
+    <p>São duas coisas diferentes, e o Atlas separa. Na página do cargo: o subsídio bruto mensal fixado em lei e os benefícios previstos para aquele cargo. Na ficha da pessoa: o que a folha publicou como pago no mês, com a composição entre salário base, gratificações, verbas eventuais e verbas indenizatórias.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Do cargo: a norma que fixa o subsídio (lei, decreto legislativo ou resolução), citada com link em cada bloco. Da pessoa: Portal da Transparência, folha do SIAPE para o Executivo civil; folha mensal do Senado Federal para senadores.</dd>
+      <dt>Alcance</dt><dd>A folha nominal cobre o Executivo civil e o Senado. Não existe folha nominal pública para deputados: a Câmara publica o consolidado sem identificar a pessoa. O Judiciário restringiu a publicação individual em 2026. Estatais, Banco Central e Ministério Público têm folha própria e ficam de fora. Para esses casos vale o subsídio do cargo.</dd>
+      <dt>Regra</dt><dd>O nome do ocupante é casado com a folha pelo nome completo e pelo órgão; casamentos por aproximação são marcados na própria ficha e nunca são feitos quando há ambiguidade. Verba indenizatória reembolsa despesa, fica fora do teto por lei e nunca é somada ao salário.</dd>
+      <dt>Atualização</dt><dd>Mensal, com o atraso da publicação da folha (hoje, dois meses).</dd>
+      <dt>Estimativa</dt><dd>Nenhuma. Quando o valor não é publicado, o bloco não aparece; o cargo continua mostrando o que a lei fixa.</dd>
+    </dl>
+  </section>
+
+  <section id="gabinetes">
+    <div class="eyebrow">Bloco 11</div>
     <h2>Gabinetes</h2>
     <p>Para cada parlamentar: quantas pessoas trabalham no gabinete, a folha mensal, quantos entraram no ano e o custo total no ano (subsídio, cota parlamentar e gabinete).</p>
     <dl>
@@ -226,7 +240,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="patrimonio">
-    <div class="eyebrow">Bloco 11</div>
+    <div class="eyebrow">Bloco 12</div>
     <h2>Patrimônio</h2>
     <p>Bens declarados ao TSE nas candidaturas de 2018 e 2022, total, maiores itens e variação entre as duas declarações.</p>
     <dl>
@@ -238,7 +252,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="campanha">
-    <div class="eyebrow">Bloco 12</div>
+    <div class="eyebrow">Bloco 13</div>
     <h2>Campanha 2022: receitas</h2>
     <p>Total recebido na campanha de 2022, origem dos recursos (partido, fundo, pessoas físicas, recursos próprios) e maiores doadores.</p>
     <dl>
@@ -250,7 +264,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="candidaturas">
-    <div class="eyebrow">Bloco 13</div>
+    <div class="eyebrow">Bloco 14</div>
     <h2>Candidaturas</h2>
     <p>Eleições disputadas pela pessoa, com cargo, partido, UF, nome de urna e resultado.</p>
     <dl>
@@ -263,7 +277,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="viagens">
-    <div class="eyebrow">Bloco 14</div>
+    <div class="eyebrow">Bloco 15</div>
     <h2>Viagens e cartão corporativo</h2>
     <p>Viagens a serviço no ano, com diárias, passagens, destinos e viagens ao exterior. Gastos com o cartão de pagamento do governo federal, por mês, com saques identificados.</p>
     <dl>
@@ -275,7 +289,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="sinais">
-    <div class="eyebrow">Bloco 15</div>
+    <div class="eyebrow">Bloco 16</div>
     <h2>Sinais "para verificar"</h2>
     <p>Na página de cada pessoa, o Atlas pode mostrar sinais gerados por regras fixas sobre os dados acima. Um sinal é um convite a olhar mais de perto. Não é conclusão, não é acusação e não passa por revisão humana antes de aparecer.</p>
     <h3>Regras</h3>
@@ -289,7 +303,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="historico">
-    <div class="eyebrow">Bloco 16</div>
+    <div class="eyebrow">Bloco 17</div>
     <h2>Quem ocupou o cargo</h2>
     <p>Na página de cada cargo de cúpula, a lista de quem o ocupou desde a redemocratização (1985), com início, fim, duração e o presidente sob o qual a passagem começou; a mediana das durações e o número de trocas por governo.</p>
     <dl>
@@ -301,7 +315,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="programas">
-    <div class="eyebrow">Bloco 17</div>
+    <div class="eyebrow">Bloco 18</div>
     <h2>Orçamento por programa e transferências</h2>
     <p>Na página de cada órgão: quanto já foi empenhado e pago no ano, quebrado por programa orçamentário e, dentro do maior programa, por ação; e quanto o órgão repassou a estados e municípios, com os que mais receberam. Na página inicial, o total repassado no ano, por habitante de cada estado e por município.</p>
     <dl>
@@ -313,7 +327,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="agenda">
-    <div class="eyebrow">Bloco 18</div>
+    <div class="eyebrow">Bloco 19</div>
     <h2>Agenda pública</h2>
     <p>Na ficha de ministros, secretários e dirigentes do Executivo: quantos compromissos publicaram nos últimos 90 dias, de que tipo, quais entidades mais receberam e os últimos encontros com participantes. Na página do órgão, a soma das agendas dos seus dirigentes.</p>
     <dl>
@@ -325,7 +339,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="segundo-escalao">
-    <div class="eyebrow">Bloco 19</div>
+    <div class="eyebrow">Bloco 20</div>
     <h2>Segundo escalão</h2>
     <p>As secretarias de primeiro nível de cada ministério e órgão da Presidência (Secretaria-Executiva, secretarias nacionais e especiais) e quem as chefia, com página própria na roda, ligadas ao ministério.</p>
     <dl>
@@ -337,7 +351,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="fora">
-    <div class="eyebrow">Bloco 20</div>
+    <div class="eyebrow">Bloco 21</div>
     <h2>O que fica de fora</h2>
     <p>Limites conhecidos dos dados e das fontes. Alguns podem mudar; outros dependem dos órgãos.</p>
     <ul>
@@ -353,7 +367,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="corrigir">
-    <div class="eyebrow">Bloco 21</div>
+    <div class="eyebrow">Bloco 22</div>
     <h2>Como corrigir um erro</h2>
     <p>Abra um issue em <a href="https://github.com/culturabuilder/atlas-da-republica/issues/new">https://github.com/culturabuilder/atlas-da-republica/issues/new</a>. Informe a página, o dado errado e, se possível, a fonte oficial com o dado certo. Correções de estrutura e de ocupantes entram no YAML curado com a citação; correções de dados derivados entram no código do conector.</p>
     <p>Os arquivos usados nesta página estão em <a href="__PREFIX__/dados/">Dados</a>, sob licença CC BY 4.0. A área educativa <a href="__PREFIX__/como-funciona/">Como funciona a República</a> explica a roda passo a passo.</p>
