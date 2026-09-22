@@ -53,6 +53,8 @@ run "Viagens" $PY etl/viagens.py
 run "Cartão" $PY etl/cartao.py
 run "Remuneração" $PY etl/remuneracao.py
 run "Orçamento" $PY etl/orcamento.py
+run "Programas" $PY etl/programas.py
+run "Transferências" $PY etl/transferencias.py
 run "Build (2/2)" $PY scripts/build_graph.py
 run "Site" $PY scripts/build_site.py --base "${SITE_BASE:-https://atlasdarepublica.org}" --prefix "${SITE_PREFIX:-}" --cname "${SITE_CNAME:-}"
 printf '%s\t%s\t%s\n' "Site" "ok" "0" >> "$EXEC_LOG"

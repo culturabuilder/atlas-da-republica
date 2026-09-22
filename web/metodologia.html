@@ -86,10 +86,11 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
       <li><a href="#viagens"><b>14</b><span>Viagens e cartão</span></a></li>
       <li><a href="#sinais"><b>15</b><span>Sinais "para verificar"</span></a></li>
       <li><a href="#historico"><b>16</b><span>Quem ocupou o cargo</span></a></li>
-      <li><a href="#agenda"><b>17</b><span>Agenda pública</span></a></li>
-      <li><a href="#segundo-escalao"><b>18</b><span>Segundo escalão</span></a></li>
-      <li><a href="#fora"><b>19</b><span>O que fica de fora</span></a></li>
-      <li><a href="#corrigir"><b>20</b><span>Como corrigir um erro</span></a></li>
+      <li><a href="#programas"><b>17</b><span>Orçamento por programa</span></a></li>
+      <li><a href="#agenda"><b>18</b><span>Agenda pública</span></a></li>
+      <li><a href="#segundo-escalao"><b>19</b><span>Segundo escalão</span></a></li>
+      <li><a href="#fora"><b>20</b><span>O que fica de fora</span></a></li>
+      <li><a href="#corrigir"><b>21</b><span>Como corrigir um erro</span></a></li>
     </ol>
   </header>
 
@@ -299,8 +300,20 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
     </dl>
   </section>
 
-  <section id="agenda">
+  <section id="programas">
     <div class="eyebrow">Bloco 17</div>
+    <h2>Orçamento por programa e transferências</h2>
+    <p>Na página de cada órgão: quanto já foi empenhado e pago no ano, quebrado por programa orçamentário e, dentro do maior programa, por ação; e quanto o órgão repassou a estados e municípios, com os que mais receberam. Na página inicial, o total repassado no ano, por habitante de cada estado e por município.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Portal da Transparência, arquivos mensais de Despesas (Execução) e de Transferências de Recursos, somados por exercício. A API não cruza órgão com programa, por isso o Atlas usa os arquivos completos. Programa e ação são os do orçamento federal (SIAFI); população por estado, IBGE.</dd>
+      <dt>Regra</dt><dd>Valores de execução, não de dotação: empenhado é o compromisso assumido, pago é o que saiu do caixa. O escopo de cada órgão segue o mesmo critério do bloco de despesa (órgão superior inclui as vinculadas), então somar órgãos conta duas vezes. Nas transferências, entram as modalidades destinadas a estados, ao Distrito Federal e a municípios.</dd>
+      <dt>Atualização</dt><dd>Mensal na origem, lida diariamente.</dd>
+      <dt>Estimativa</dt><dd>Transferências constitucionais e royalties são publicadas sem órgão de origem: elas entram no total e no valor por estado, mas não podem ser atribuídas a um ministério. Os nomes de programa e ação vêm em caixa alta e sem acento na fonte; o site os reescreve para leitura, sem alterar o sentido.</dd>
+    </dl>
+  </section>
+
+  <section id="agenda">
+    <div class="eyebrow">Bloco 18</div>
     <h2>Agenda pública</h2>
     <p>Na ficha de ministros, secretários e dirigentes do Executivo: quantos compromissos publicaram nos últimos 90 dias, de que tipo, quais entidades mais receberam e os últimos encontros com participantes. Na página do órgão, a soma das agendas dos seus dirigentes.</p>
     <dl>
@@ -312,7 +325,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="segundo-escalao">
-    <div class="eyebrow">Bloco 18</div>
+    <div class="eyebrow">Bloco 19</div>
     <h2>Segundo escalão</h2>
     <p>As secretarias de primeiro nível de cada ministério e órgão da Presidência (Secretaria-Executiva, secretarias nacionais e especiais) e quem as chefia, com página própria na roda, ligadas ao ministério.</p>
     <dl>
@@ -324,7 +337,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="fora">
-    <div class="eyebrow">Bloco 19</div>
+    <div class="eyebrow">Bloco 20</div>
     <h2>O que fica de fora</h2>
     <p>Limites conhecidos dos dados e das fontes. Alguns podem mudar; outros dependem dos órgãos.</p>
     <ul>
@@ -340,7 +353,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="corrigir">
-    <div class="eyebrow">Bloco 20</div>
+    <div class="eyebrow">Bloco 21</div>
     <h2>Como corrigir um erro</h2>
     <p>Abra um issue em <a href="https://github.com/culturabuilder/atlas-da-republica/issues/new">https://github.com/culturabuilder/atlas-da-republica/issues/new</a>. Informe a página, o dado errado e, se possível, a fonte oficial com o dado certo. Correções de estrutura e de ocupantes entram no YAML curado com a citação; correções de dados derivados entram no código do conector.</p>
     <p>Os arquivos usados nesta página estão em <a href="__PREFIX__/dados/">Dados</a>, sob licença CC BY 4.0. A área educativa <a href="__PREFIX__/como-funciona/">Como funciona a República</a> explica a roda passo a passo.</p>
