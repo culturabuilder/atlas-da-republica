@@ -20,7 +20,7 @@ entre eles (quem elege, nomeia, sabatina, supervisiona, fiscaliza). Réplica, ad
 | Cargos de chefia | **332** de **351** com ocupante (19 vazios) |
 | Órgãos sem cargo de chefia mapeado | **221** (tribunais regionais, estatais, universidades) |
 | Colegiados sem composição registrada | **220** de **270** |
-| Nomeações sem data de posse | **327** de **480** |
+| Nomeações sem data de posse | **325** de **480** |
 
 Atualizado em 2026-09-22.
 <!-- /ATLAS:NUMEROS -->
