@@ -1,0 +1,1349 @@
+# Quanto cada CARGO do grafo paga, segundo a lei — curado à mão, uma entrada por família de cargos.
+#
+# Regras editoriais:
+#   - `subsidio_mensal_bruto` é sempre BRUTO e MENSAL, em reais, e vem sempre com `norma` + `norma_url`.
+#   - Sem norma localizada, `subsidio_mensal_bruto: null` e `observacao` explicando. Nunca se estima valor.
+#   - `teto: true` quando a norma fixa um limite, não um valor fixo pago a todos.
+#   - `beneficios` nunca entram no subsídio. Os `indenizatoria` são reembolso ou custeio e não são renda;
+#     os `remuneratoria` são parcelas da remuneração. Não se soma benefício a subsídio.
+#   - Sem comparação e sem juízo: o arquivo diz quanto a lei manda pagar e onde isso está escrito.
+#
+# Casamento com o grafo (etl/subsidios.py):
+#   `cargos`        ids exatos ou padrões glob ("*-reitor", "br-ministro-de-estado-*")
+#   `orgao_subtype` todo cargo que chefia um órgão daquele subtype ("sociedade_economia_mista")
+#   `nome_padrao`   regex sobre o nome do cargo, para refinar o conjunto acima
+#   `excluir`       ids a tirar do conjunto
+#
+# Âncora de quase tudo: o subsídio de Ministro do STF, R$ 46.366,19 desde 1º/2/2025 (Lei 14.520/2023),
+# que é o teto do art. 37, XI, da Constituição. Não houve reajuste em 2025 nem em 2026.
+#
+# Corte de 2026 no Judiciário e no Ministério Público: em 25/3/2026 o Supremo fixou tese de repercussão geral
+# unificando o teto e extinguindo a maior parte dos pagamentos extras de magistrados e membros do Ministério
+# Público — auxílio-alimentação, assistência pré-escolar, auxílio-creche, licença compensatória por acúmulo de
+# acervo e outros. A Resolução Conjunta CNJ/CNMP 14, de 6/4/2026, regulamentou o que resta: subsídio mais, no
+# máximo, 35% em parcela de antiguidade e 35% em verbas indenizatórias. Efeitos desde o mês-base abril de 2026.
+# Os benefícios extintos ficam registrados nas famílias com valor zero, para que a mudança fique legível.
+
+familias:
+
+  # ————————————————————————————————— EXECUTIVO: TOPO —————————————————————————————————
+
+  - familia: presidente-e-vice-presidente-da-republica
+    cargos: [br-presidente-da-republica, br-vice-presidente-da-republica]
+    subsidio_mensal_bruto: 46366.19
+    moeda: BRL
+    vigencia_desde: 2025-02-01
+    norma: Decreto Legislativo 172/2022 (4ª e última parcela, a partir de 1º/2/2025); CF art. 49 VIII e art. 39 §4º
+    norma_url: https://www2.camara.leg.br/legin/fed/decleg/2022/decretolegislativo-172-21-dezembro-2022-793529-publicacaooriginal-166604-pl.html
+    checked_at: 2026-09-22
+    observacao: >-
+      Fixado por decreto legislativo do Congresso, na mesma escada do subsídio de Ministro do STF: R$ 39.293,32
+      (1º/1/2023), R$ 41.650,92 (1º/4/2023), R$ 44.008,52 (1º/2/2024) e R$ 46.366,19 (1º/2/2025). A tabela oficial
+      do Ministério da Gestão registra os mesmos valores para os três cargos, em
+      https://www.gov.br/servidor/pt-br/observatorio-de-pessoal-govbr/remuneracao-do-presidente-da-republica-vice-e-ministros-de-estado
+      Remuneração exclusivamente por subsídio em parcela única (CF art. 39 §4º): nada de gratificação, abono ou
+      verba de representação em dinheiro — o art. 39 §4º veda a verba de representação com todas as letras.
+      Residência oficial, transporte e segurança são estrutura do cargo, não remuneração.
+    beneficios:
+      - nome: Auxílio-alimentação
+        valor_mensal_ou_teto: 1192.0
+        natureza: indenizatoria
+        norma: Portaria MGI 2.756/2026, de 31/3/2026 (efeitos a partir de 1º/4/2026); Lei 8.460/1992 art. 22
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+        note: Valor único para todo o Executivo federal.
+      - nome: Diárias em viagem a serviço
+        valor_mensal_ou_teto: 900.0
+        natureza: indenizatoria
+        norma: Decreto 5.992/2006 Anexo I, na redação do Decreto 11.872/2023 (efeitos de 15/2/2024)
+        norma_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/decreto/d5992.htm
+        note: >-
+          Valor por dia, não por mês: R$ 900,00 em Brasília, Manaus, Rio de Janeiro e São Paulo; R$ 800,00 nas
+          demais capitais; R$ 750,00 nos demais deslocamentos.
+
+  - familia: ministro-de-estado
+    cargos: [br-ministro-de-estado-*, br-ministro-chefe-*]
+    subsidio_mensal_bruto: 46366.19
+    moeda: BRL
+    vigencia_desde: 2025-02-01
+    norma: Decreto Legislativo 172/2022 (4ª parcela, a partir de 1º/2/2025); CF art. 39 §4º
+    norma_url: https://www2.camara.leg.br/legin/fed/decleg/2022/decretolegislativo-172-21-dezembro-2022-793529-publicacaooriginal-166604-pl.html
+    checked_at: 2026-09-22
+    observacao: >-
+      Mesmo valor do Presidente e do Vice. Alcança os ministros titulares de pasta e os Ministros-Chefes de órgãos
+      da Presidência (Casa Civil, Secretaria-Geral, Secretaria de Relações Institucionais, Secretaria de Comunicação
+      Social e Gabinete de Segurança Institucional), que a Lei 14.600/2023 art. 18 lista como Ministros de Estado.
+      Subsídio em parcela única: vedado qualquer acréscimo. Valor confirmado na tabela oficial do Ministério da
+      Gestão, em
+      https://www.gov.br/servidor/pt-br/observatorio-de-pessoal-govbr/remuneracao-do-presidente-da-republica-vice-e-ministros-de-estado
+    beneficios:
+      - nome: Auxílio-alimentação
+        valor_mensal_ou_teto: 1192.0
+        natureza: indenizatoria
+        norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+        note: null
+      - nome: Diárias em viagem a serviço
+        valor_mensal_ou_teto: 900.0
+        natureza: indenizatoria
+        norma: Decreto 5.992/2006 Anexo I, na redação do Decreto 11.872/2023 (efeitos de 15/2/2024)
+        norma_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/decreto/d5992.htm
+        note: >-
+          Valor por dia, não por mês: R$ 900,00 em Brasília, Manaus, Rio de Janeiro e São Paulo; R$ 800,00 nas
+          demais capitais; R$ 750,00 nos demais deslocamentos. Metade quando não há pernoite.
+
+  # ————————————————————————————————— LEGISLATIVO —————————————————————————————————
+
+  - familia: deputado-federal
+    cargos: [br-deputado-federal, br-presidente-da-camara-dos-deputados]
+    subsidio_mensal_bruto: 46366.19
+    moeda: BRL
+    vigencia_desde: 2025-02-01
+    norma: Decreto Legislativo 172/2022 (4ª parcela, a partir de 1º/2/2025); CF art. 49 VII e art. 39 §4º
+    norma_url: https://www2.camara.leg.br/legin/fed/decleg/2022/decretolegislativo-172-21-dezembro-2022-793529-publicacaooriginal-166604-pl.html
+    checked_at: 2026-09-22
+    observacao: >-
+      O Presidente da Câmara recebe o mesmo subsídio dos demais deputados: não há verba de representação em
+      dinheiro, vedada pelo art. 39 §4º da Constituição. Não há norma que conceda 13º salário, férias ou
+      adicional de férias a parlamentar; o que existe são as duas ajudas de custo por mandato listadas abaixo.
+    beneficios:
+      - nome: CEAP — Cota para o Exercício da Atividade Parlamentar
+        valor_mensal_ou_teto: 58474.70
+        natureza: indenizatoria
+        norma: Ato da Mesa 43/2009; limites de 2026 recompostos pelo Ato da Mesa 244, de 20/2/2026
+        norma_url: https://www2.camara.leg.br/legin/int/atomes/2026/atodamesa-244-20-fevereiro-2026-798720-norma-cd-mesa.html
+        note: >-
+          Teto mensal de reembolso, não valor pago. Varia com o estado de representação, pelo preço da passagem
+          aérea até Brasília: de R$ 41.612,55 (DF) a R$ 58.474,70 (RR). O valor aqui é o maior da tabela.
+      - nome: Verba de gabinete (folha dos secretários parlamentares)
+        valor_mensal_ou_teto: 165806.07
+        natureza: indenizatoria
+        norma: Ato da Mesa 243, de 20/2/2026; contratação pelo Ato da Mesa 72/1997
+        norma_url: https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/verba-de-gabinete
+        note: >-
+          Teto da folha do gabinete, de 5 a 25 secretários parlamentares. É salário de terceiros pago pela
+          Câmara, não renda do deputado.
+      - nome: Auxílio-moradia
+        valor_mensal_ou_teto: 4253.0
+        natureza: indenizatoria
+        norma: Ato da Mesa 3/2015, que alterou o valor do Ato da Mesa 15/1979
+        norma_url: https://www2.camara.leg.br/transparencia/acesso-a-informacao/copy_of_perguntas-frequentes/auxilio-moradia
+        note: >-
+          Teto, só para quem não ocupa apartamento funcional. Pode ser reembolso com recibo (sem IR) ou valor
+          fixo em folha sem comprovação (com IR). A Câmara mantém 432 apartamentos funcionais.
+      - nome: Ajuda de custo de início e de fim de mandato
+        valor_mensal_ou_teto: 46366.19
+        natureza: indenizatoria
+        norma: Decreto Legislativo 172/2022; o Decreto Legislativo 569/2012 extinguiu a ajuda por sessão legislativa
+        norma_url: https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/direitos-dos-deputados
+        note: >-
+          Não é mensal: equivale a um subsídio e é paga duas vezes em quatro anos, no início e no fim do mandato,
+          para cobrir mudança e transporte.
+      - nome: Passagens aéreas fora da cota
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Regra divulgada pela Câmara dos Deputados; o ato que a fixa não foi localizado
+        norma_url: https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/cota-parlamentar
+        note: Até oito passagens por mês entre o estado de representação e Brasília, além do que a CEAP cobre.
+      - nome: Assistência à saúde
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Ato da Mesa 89/2013 (reembolso médico-hospitalar) e Ato da Mesa 75/2006 (Pró-Saúde)
+        norma_url: https://prosaude.camara.leg.br/o-pro-saude/legislacao-e-regulamento/
+        note: >-
+          Sem valor mensal fixo. O Pró-Saúde é de adesão facultativa e com contribuição do parlamentar por faixa
+          etária; o reembolso do Ato da Mesa 89/2013 depende de deliberação da Mesa caso a caso.
+
+  - familia: senador
+    cargos: [br-senador, br-presidente-do-senado-federal]
+    subsidio_mensal_bruto: 46366.19
+    moeda: BRL
+    vigencia_desde: 2025-02-01
+    norma: Decreto Legislativo 172/2022 (4ª parcela, a partir de 1º/2/2025); CF art. 49 VII e art. 39 §4º
+    norma_url: https://www2.camara.leg.br/legin/fed/decleg/2022/decretolegislativo-172-21-dezembro-2022-793529-publicacaooriginal-166604-pl.html
+    checked_at: 2026-09-22
+    observacao: >-
+      Subsídio idêntico ao do deputado federal, por força do mesmo decreto legislativo. O Presidente do Senado
+      recebe o mesmo que os demais senadores. As verbas de apoio do Senado seguem regras próprias, diferentes
+      das da Câmara, e estão abaixo.
+    beneficios:
+      - nome: CEAPS — Cota para o Exercício da Atividade Parlamentar dos Senadores
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Ato da Comissão Diretora 3/2003, regulamentado pelo Ato do Primeiro-Secretário 5/2014
+        norma_url: https://www12.senado.leg.br/perguntas-frequentes/canais-de-atendimento/senadores/os-senadores-recebem-mais-alguma-verba-alem-do-subsidio
+        note: >-
+          O Senado publica a fórmula, não a tabela: R$ 15.000,00 de verba indenizatória fixa mais o valor de cinco
+          trechos aéreos entre Brasília e a capital do estado, pela tabela IATA de tarifa governamental. O total
+          muda de senador para senador e não há tabela oficial consolidada por unidade da Federação.
+      - nome: Auxílio-moradia
+        valor_mensal_ou_teto: 5500.0
+        natureza: indenizatoria
+        norma: Regra publicada pelo Senado Federal; o ato da Comissão Diretora que fixa o valor não foi localizado
+        norma_url: https://www12.senado.leg.br/transparencia/sen/coapat/auxilio-moradia-e-imoveis-funcionais
+        note: >-
+          Teto, só para quem não ocupa apartamento funcional e só por reembolso, com nota fiscal de hotel ou
+          recibo de aluguel.
+      - nome: Ajuda de custo de início e de fim de mandato
+        valor_mensal_ou_teto: 33763.0
+        natureza: indenizatoria
+        norma: Decreto Legislativo 276/2014
+        norma_url: https://www12.senado.leg.br/perguntas-frequentes/canais-de-atendimento/senadores/os-senadores-recebem-mais-alguma-verba-alem-do-subsidio
+        note: >-
+          Não é mensal: paga no início e no fim do mandato de oito anos, para mudança e transporte. O valor está
+          congelado desde 2014 e, ao contrário do da Câmara, não acompanha o subsídio.
+      - nome: Verba de pessoal do gabinete
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Estrutura de cargos publicada pelo Senado Federal; o ato que fixa o teto da folha não foi localizado
+        norma_url: https://www12.senado.leg.br/publicacoes/guias/parl_guia_old/gestao-administrativa/gabinete-parlamentar/composicao
+        note: >-
+          O Senado publica a composição do gabinete e as faixas dos cargos, não um teto único de folha como a
+          Câmara. Até 50 comissionados por gabinete, por desmembramento dos cargos.
+      - nome: Assistência à saúde (SIS)
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Regulamento do Sistema Integrado de Saúde do Senado Federal
+        norma_url: https://www12.senado.leg.br/institucional/sis/entenda-o-plano/sis
+        note: Plano de autogestão, com contribuição mensal do parlamentar por faixa etária. Sem valor fixo publicado.
+
+  # ————————————————————————————————— JUDICIÁRIO —————————————————————————————————
+
+  - familia: ministro-do-supremo-tribunal-federal
+    cargos: [br-supremo-tribunal-federal-ministro, br-supremo-tribunal-federal-presidente]
+    subsidio_mensal_bruto: 46366.19
+    moeda: BRL
+    vigencia_desde: 2025-02-01
+    norma: Lei 14.520/2023 art. 1º III; CF art. 48 XV e art. 37 XI
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14520.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      É o teto remuneratório de todo o serviço público brasileiro (CF art. 37, XI). A lei implantou o valor em
+      três parcelas: R$ 41.650,92 (1º/4/2023), R$ 44.008,52 (1º/2/2024) e R$ 46.366,19 (1º/2/2025). O Presidente
+      do STF recebe o mesmo subsídio dos demais ministros.
+    beneficios:
+      - nome: Parcela por antiguidade
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: Resolução Conjunta CNJ/CNMP 14, de 6/4/2026, art. 3º; LC 35/1979 (Loman) art. 65 VIII
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          5% do subsídio a cada cinco anos de atividade jurídica, até o limite de 35%. Criada na reorganização de
+          2026, quando o Supremo unificou o teto e extinguiu a maior parte dos pagamentos extras.
+      - nome: Auxílio-saúde
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 5º "d"; Resolução CNMP 268, de 8/8/2023
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Não é valor fixo: é reembolso do que foi efetivamente pago e comprovado, limitado a 15% do subsídio,
+          com os dependentes dentro desse limite. O Supremo proibiu expressamente o pagamento em valor fixo.
+      - nome: Diárias em deslocamento a serviço
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 6º; LC 75/1993 art. 227 II; Resolução CNJ 73, de 28/4/2009
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Por dia, não por mês, e só fora da comarca, sede ou circunscrição. O piso legal é um trinta avos dos
+          vencimentos; cada tribunal fixa a própria tabela, com teto na diária paga a ministro do STF.
+      - nome: Ajuda de custo de remoção, promoção ou nomeação
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 8º; LC 75/1993 art. 227 I "a"; LC 35/1979 art. 65 I
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Até três meses de vencimentos, uma única vez, e só quando há efetiva mudança de domicílio legal.
+          Não é parcela mensal.
+      - nome: Auxílio-moradia
+        valor_mensal_ou_teto: 4377.73
+        natureza: indenizatoria
+        norma: Resolução CNJ 274, de 18/12/2018 art. 4º; Resolução Conjunta CNJ/CNMP 14/2026 art. 7º
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/2792
+        note: >-
+          Teto de reembolso, em hipótese hoje restritíssima: só para quem é convocado a servir fora da comarca de
+          origem, sem imóvel funcional disponível e sem ser proprietário no município, mediante comprovação da
+          despesa. O auxílio-moradia geral foi extinto pelo Supremo em 2026. A Resolução CNJ 274/2018 fixa o teto
+          em R$ 4.377,73 e a Resolução CNMP 194/2018, aplicável ao Ministério Público, o fixa em 25% do subsídio
+          do Procurador-Geral da República; as duas seguem publicadas como vigentes.
+      - nome: Décimo terceiro e terço constitucional de férias
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Não são parcelas mensais e, por decisão do Supremo de 2026, não se somam entre si nem à remuneração do
+          mês em que são pagas, embora nenhuma possa isoladamente ultrapassar o teto. As férias de magistrado e
+          de membro do Ministério Público são de sessenta dias por ano; a indenização de férias não gozadas está
+          limitada a trinta dias por exercício.
+      - nome: Benefícios extintos em 2026
+        valor_mensal_ou_teto: 0.0
+        natureza: indenizatoria
+        norma: >-
+          Tese de repercussão geral do STF de 25/3/2026 (Rcl 88.319, ADI 6.601, ADI 6.604, ADI 6.606, RE 968.646
+          e RE 1.059.466), item 7; Resolução Conjunta CNJ/CNMP 14/2026 art. 2º
+        norma_url: https://noticias.stf.jus.br/postsnoticias/stf-aprova-tese-que-unifica-teto-salarial-e-extingue-pagamentos-extras-para-magistratura-e-mp/
+        note: >-
+          Registro do que deixou de existir a partir da folha de maio de 2026, mês-base abril: auxílio-alimentação
+          (que valia R$ 1.784,42), assistência pré-escolar e auxílio-creche (R$ 1.235,77 por dependente), auxílio
+          natalino, auxílio-combustível, licença compensatória e indenização por acúmulo de acervo, gratificação
+          por localidade, indenização de serviços de telecomunicação e auxílio-natalidade. Também ficou vedada a
+          conversão de licenças em dinheiro. A verba criada em substituição à pré-escolar, a gratificação de
+          proteção à primeira infância de 3% do subsídio, teve o pagamento suspenso pela Corregedoria Nacional
+          de Justiça.
+
+  - familia: ministro-de-tribunal-superior
+    cargos:
+      - br-superior-tribunal-de-justica-ministro
+      - br-superior-tribunal-de-justica-presidente
+      - br-tribunal-superior-do-trabalho-ministro
+      - br-tribunal-superior-do-trabalho-presidente
+      - br-superior-tribunal-militar-ministro
+      - br-superior-tribunal-militar-presidente
+    subsidio_mensal_bruto: 44047.88
+    moeda: BRL
+    vigencia_desde: 2025-02-01
+    norma: >-
+      CF art. 93 V ("o subsídio dos Ministros dos Tribunais Superiores corresponderá a noventa e cinco por cento
+      do subsídio mensal fixado para os Ministros do Supremo Tribunal Federal"), aplicado sobre a Lei 14.520/2023;
+      Lei 10.474/2002 art. 1º §2º (escalonamento de 5% entre os níveis da magistratura da União)
+    norma_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      95% do subsídio de Ministro do STF, por determinação literal da Constituição. Alcança STJ, TST e STM.
+      A estrutura remuneratória publicada pelo Superior Tribunal de Justiça com vigência de 1º/7/2026 registra
+      "Ministro de Tribunal Superior — 44.047,88", em
+      https://transparencia.stj.jus.br/wp-content/uploads/Anexo-III-c-Magistratura-Res-102-Vigencia-1-1-2026.pdf
+      Presidentes desses tribunais recebem o mesmo que os demais ministros: o regime é de subsídio em parcela
+      única e a presidência não acrescenta nada.
+    beneficios:
+      - nome: Parcela por antiguidade
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: Resolução Conjunta CNJ/CNMP 14, de 6/4/2026, art. 3º; LC 35/1979 (Loman) art. 65 VIII
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          5% do subsídio a cada cinco anos de atividade jurídica, até o limite de 35%. Criada na reorganização de
+          2026, quando o Supremo unificou o teto e extinguiu a maior parte dos pagamentos extras.
+      - nome: Auxílio-saúde
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 5º "d"; Resolução CNMP 268, de 8/8/2023
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Não é valor fixo: é reembolso do que foi efetivamente pago e comprovado, limitado a 15% do subsídio,
+          com os dependentes dentro desse limite. O Supremo proibiu expressamente o pagamento em valor fixo.
+      - nome: Diárias em deslocamento a serviço
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 6º; LC 75/1993 art. 227 II; Resolução CNJ 73, de 28/4/2009
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Por dia, não por mês, e só fora da comarca, sede ou circunscrição. O piso legal é um trinta avos dos
+          vencimentos; cada tribunal fixa a própria tabela, com teto na diária paga a ministro do STF.
+      - nome: Ajuda de custo de remoção, promoção ou nomeação
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 8º; LC 75/1993 art. 227 I "a"; LC 35/1979 art. 65 I
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Até três meses de vencimentos, uma única vez, e só quando há efetiva mudança de domicílio legal.
+          Não é parcela mensal.
+      - nome: Auxílio-moradia
+        valor_mensal_ou_teto: 4377.73
+        natureza: indenizatoria
+        norma: Resolução CNJ 274, de 18/12/2018 art. 4º; Resolução Conjunta CNJ/CNMP 14/2026 art. 7º
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/2792
+        note: >-
+          Teto de reembolso, em hipótese hoje restritíssima: só para quem é convocado a servir fora da comarca de
+          origem, sem imóvel funcional disponível e sem ser proprietário no município, mediante comprovação da
+          despesa. O auxílio-moradia geral foi extinto pelo Supremo em 2026. A Resolução CNJ 274/2018 fixa o teto
+          em R$ 4.377,73 e a Resolução CNMP 194/2018, aplicável ao Ministério Público, o fixa em 25% do subsídio
+          do Procurador-Geral da República; as duas seguem publicadas como vigentes.
+      - nome: Décimo terceiro e terço constitucional de férias
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Não são parcelas mensais e, por decisão do Supremo de 2026, não se somam entre si nem à remuneração do
+          mês em que são pagas, embora nenhuma possa isoladamente ultrapassar o teto. As férias de magistrado e
+          de membro do Ministério Público são de sessenta dias por ano; a indenização de férias não gozadas está
+          limitada a trinta dias por exercício.
+      - nome: Benefícios extintos em 2026
+        valor_mensal_ou_teto: 0.0
+        natureza: indenizatoria
+        norma: >-
+          Tese de repercussão geral do STF de 25/3/2026 (Rcl 88.319, ADI 6.601, ADI 6.604, ADI 6.606, RE 968.646
+          e RE 1.059.466), item 7; Resolução Conjunta CNJ/CNMP 14/2026 art. 2º
+        norma_url: https://noticias.stf.jus.br/postsnoticias/stf-aprova-tese-que-unifica-teto-salarial-e-extingue-pagamentos-extras-para-magistratura-e-mp/
+        note: >-
+          Registro do que deixou de existir a partir da folha de maio de 2026, mês-base abril: auxílio-alimentação
+          (que valia R$ 1.784,42), assistência pré-escolar e auxílio-creche (R$ 1.235,77 por dependente), auxílio
+          natalino, auxílio-combustível, licença compensatória e indenização por acúmulo de acervo, gratificação
+          por localidade, indenização de serviços de telecomunicação e auxílio-natalidade. Também ficou vedada a
+          conversão de licenças em dinheiro. A verba criada em substituição à pré-escolar, a gratificação de
+          proteção à primeira infância de 3% do subsídio, teve o pagamento suspenso pela Corregedoria Nacional
+          de Justiça.
+
+  - familia: ministro-do-tribunal-superior-eleitoral
+    cargos: [br-tribunal-superior-eleitoral-ministro, br-tribunal-superior-eleitoral-presidente]
+    subsidio_mensal_bruto: null
+    moeda: BRL
+    vigencia_desde: null
+    norma: CF art. 119; Lei 8.350/1991 art. 2º, com a redação da Lei 11.143/2005
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2005/lei/l11143.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      O TSE não tem quadro próprio de ministros: é composto por três ministros do STF, dois do STJ e dois juristas
+      nomeados pelo Presidente da República, todos em mandato temporário. Cada um continua recebendo o subsídio do
+      tribunal de origem — R$ 46.366,19 no STF, R$ 44.047,88 no STJ — de modo que não existe um único valor de
+      cargo. A Lei 10.474/2002 art. 1º §1º ainda determina que as parcelas anuais recebidas por ministro do STF em
+      razão do exercício temporário no TSE não entrem no cômputo dos limites remuneratórios. Não foi localizada
+      norma vigente que fixe um valor mensal próprio do cargo de Ministro do TSE, nem para os dois juristas
+      vindos da advocacia, que não têm cargo de origem no Judiciário.
+    beneficios:
+      - nome: Gratificação de presença nas sessões do TSE
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: Lei 8.350/1991 art. 1º I; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º "c"; CF art. 121 §2º
+        norma_url: https://www.planalto.gov.br/ccivil_03/leis/L8350.htm
+        note: >-
+          3% do vencimento básico de ministro do STF por sessão a que o ministro comparece, no máximo oito por
+          mês e quinze nos noventa dias antes e depois de eleição geral. Foi uma das poucas verbas preservadas
+          pelo Supremo na decisão de 2026 sobre o teto, e fica fora dele. Não foi localizado ato que publique o
+          valor em reais para 2026.
+
+  - familia: presidente-de-tribunal-regional
+    cargos:
+      - br-tribunal-regional-federal-*-presidente
+      - br-tribunal-regional-do-trabalho-*-presidente
+      - br-tribunal-regional-eleitoral-*-presidente
+      - br-tribunal-de-justica-do-distrito-federal-e-dos-territorios-presidente
+    subsidio_mensal_bruto: 41845.49
+    moeda: BRL
+    vigencia_desde: 2025-02-01
+    norma: >-
+      CF art. 93 V e art. 37 XI; Lei 10.474/2002 art. 1º §2º (escalonamento de 5% entre os níveis da magistratura
+      da União), aplicado sobre o subsídio de Ministro do STF da Lei 14.520/2023
+    norma_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+    checked_at: 2026-09-22
+    teto: true
+    observacao: >-
+      90,25% do subsídio de Ministro do STF — 95% dos 95% —: é o subsídio de desembargador de tribunal de segundo
+      grau, e o subteto do Judiciário no nível regional. Vale para TRFs, TRTs, TREs e o TJDFT. A tabela publicada
+      pelo TJDFT registra "Desembargador do TJDFT — 41.845,49", em
+      https://www.tjdft.jus.br/transparencia/pessoal/estruturas-remuneratorias/magistrados-02-2025.pdf
+      Abaixo vêm R$ 39.753,21 para juiz federal, do trabalho ou de direito e R$ 37.765,55 para juiz substituto.
+      A presidência do tribunal é
+      função exercida por um desembargador e não acrescenta subsídio; nos TREs, os desembargadores são cedidos
+      do TRF ou do tribunal de justiça e recebem do tribunal de origem, mais a gratificação eleitoral da
+      Lei 8.350/1991.
+    beneficios:
+      - nome: Gratificação de presença na Justiça Eleitoral
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: Lei 8.350/1991 art. 1º II; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º "c"; CF art. 121 §2º
+        norma_url: https://www.planalto.gov.br/ccivil_03/leis/L8350.htm
+        note: >-
+          Só para quem atua na Justiça Eleitoral, por sessão a que comparece: 3% do vencimento básico de juiz de
+          tribunal regional federal, no máximo oito sessões por mês e quinze nos noventa dias antes e depois de
+          eleição geral. Foi uma das poucas verbas preservadas pelo Supremo em 2026, e fica fora do teto. Não
+          foi localizado ato que publique o valor em reais para 2026.
+      - nome: Parcela por antiguidade
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: Resolução Conjunta CNJ/CNMP 14, de 6/4/2026, art. 3º; LC 35/1979 (Loman) art. 65 VIII
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          5% do subsídio a cada cinco anos de atividade jurídica, até o limite de 35%. Criada na reorganização de
+          2026, quando o Supremo unificou o teto e extinguiu a maior parte dos pagamentos extras.
+      - nome: Auxílio-saúde
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 5º "d"; Resolução CNMP 268, de 8/8/2023
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Não é valor fixo: é reembolso do que foi efetivamente pago e comprovado, limitado a 15% do subsídio,
+          com os dependentes dentro desse limite. O Supremo proibiu expressamente o pagamento em valor fixo.
+      - nome: Diárias em deslocamento a serviço
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 6º; LC 75/1993 art. 227 II; Resolução CNJ 73, de 28/4/2009
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Por dia, não por mês, e só fora da comarca, sede ou circunscrição. O piso legal é um trinta avos dos
+          vencimentos; cada tribunal fixa a própria tabela, com teto na diária paga a ministro do STF.
+      - nome: Ajuda de custo de remoção, promoção ou nomeação
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 8º; LC 75/1993 art. 227 I "a"; LC 35/1979 art. 65 I
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Até três meses de vencimentos, uma única vez, e só quando há efetiva mudança de domicílio legal.
+          Não é parcela mensal.
+      - nome: Auxílio-moradia
+        valor_mensal_ou_teto: 4377.73
+        natureza: indenizatoria
+        norma: Resolução CNJ 274, de 18/12/2018 art. 4º; Resolução Conjunta CNJ/CNMP 14/2026 art. 7º
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/2792
+        note: >-
+          Teto de reembolso, em hipótese hoje restritíssima: só para quem é convocado a servir fora da comarca de
+          origem, sem imóvel funcional disponível e sem ser proprietário no município, mediante comprovação da
+          despesa. O auxílio-moradia geral foi extinto pelo Supremo em 2026. A Resolução CNJ 274/2018 fixa o teto
+          em R$ 4.377,73 e a Resolução CNMP 194/2018, aplicável ao Ministério Público, o fixa em 25% do subsídio
+          do Procurador-Geral da República; as duas seguem publicadas como vigentes.
+      - nome: Décimo terceiro e terço constitucional de férias
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Não são parcelas mensais e, por decisão do Supremo de 2026, não se somam entre si nem à remuneração do
+          mês em que são pagas, embora nenhuma possa isoladamente ultrapassar o teto. As férias de magistrado e
+          de membro do Ministério Público são de sessenta dias por ano; a indenização de férias não gozadas está
+          limitada a trinta dias por exercício.
+      - nome: Benefícios extintos em 2026
+        valor_mensal_ou_teto: 0.0
+        natureza: indenizatoria
+        norma: >-
+          Tese de repercussão geral do STF de 25/3/2026 (Rcl 88.319, ADI 6.601, ADI 6.604, ADI 6.606, RE 968.646
+          e RE 1.059.466), item 7; Resolução Conjunta CNJ/CNMP 14/2026 art. 2º
+        norma_url: https://noticias.stf.jus.br/postsnoticias/stf-aprova-tese-que-unifica-teto-salarial-e-extingue-pagamentos-extras-para-magistratura-e-mp/
+        note: >-
+          Registro do que deixou de existir a partir da folha de maio de 2026, mês-base abril: auxílio-alimentação
+          (que valia R$ 1.784,42), assistência pré-escolar e auxílio-creche (R$ 1.235,77 por dependente), auxílio
+          natalino, auxílio-combustível, licença compensatória e indenização por acúmulo de acervo, gratificação
+          por localidade, indenização de serviços de telecomunicação e auxílio-natalidade. Também ficou vedada a
+          conversão de licenças em dinheiro. A verba criada em substituição à pré-escolar, a gratificação de
+          proteção à primeira infância de 3% do subsídio, teve o pagamento suspenso pela Corregedoria Nacional
+          de Justiça.
+
+
+  - familia: conselheiro-do-conselho-nacional-de-justica
+    cargos: [br-conselheiro-do-cnj, br-presidente-do-cnj]
+    subsidio_mensal_bruto: 44047.88
+    moeda: BRL
+    vigencia_desde: 2025-02-01
+    norma: Lei 11.365/2006 art. 1º, combinada com a Lei 14.520/2023 e o art. 93 V da Constituição
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11365.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      "Os membros do Conselho Nacional de Justiça perceberão mensalmente o equivalente ao subsídio de Ministro de
+      Tribunal Superior" (art. 1º). Quem já é ministro do STF, do STJ ou do TST mantém o subsídio da própria corte,
+      sem acréscimo no Conselho; quem tem vínculo efetivo com o poder público mantém a remuneração de origem
+      acrescida apenas da diferença até esse valor; advogados e cidadãos indicados sem vínculo público recebem o
+      valor integral. O Presidente do CNJ é o Presidente do STF e recebe pelo STF.
+    beneficios:
+      - nome: Diárias e passagens
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Lei 11.365/2006 art. 1º §4º
+        norma_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11365.htm
+        note: Equivalentes às pagas a Ministro do STJ, por deslocamento a serviço. Não são mensais.
+      - nome: Demais verbas, na forma da reorganização de 2026
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14, de 6/4/2026
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Conselheiro que é magistrado ou membro do Ministério Público segue o regime da carreira: parcela de
+          antiguidade e verbas indenizatórias limitadas a 35% do subsídio em cada bloco, auxílio-saúde por
+          reembolso comprovado até 15%, e nada de auxílio-alimentação ou assistência pré-escolar, extintos pelo
+          Supremo em 2026.
+
+  # ————————————————— FUNÇÕES ESSENCIAIS À JUSTIÇA: MINISTÉRIO PÚBLICO —————————————————
+
+  - familia: procurador-geral-da-republica
+    cargos: [br-procurador-geral-da-republica]
+    subsidio_mensal_bruto: 46366.19
+    moeda: BRL
+    vigencia_desde: 2025-02-01
+    norma: Lei 14.521/2023 art. 1º III; CF art. 128 §1º
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14521.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      Lei própria, sancionada no mesmo dia da Lei 14.520/2023 e com a mesma escada: R$ 41.650,92 (1º/4/2023),
+      R$ 44.008,52 (1º/2/2024) e R$ 46.366,19 (1º/2/2025). O PGR é o único membro do Ministério Público que
+      recebe o mesmo que um ministro do STF; os demais graus da carreira seguem escalonados abaixo dele, como
+      registra a tabela oficial do Ministério Público Federal em
+      https://transparencia.mpf.mp.br/conteudo/gestao-de-pessoas/plano-de-carreira/tabelas-procuradores-2015_2025-lei-14521-de-22-11-2023.pdf
+    beneficios:
+      - nome: Parcela por antiguidade
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: Resolução Conjunta CNJ/CNMP 14, de 6/4/2026, art. 3º; LC 35/1979 (Loman) art. 65 VIII
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          5% do subsídio a cada cinco anos de atividade jurídica, até o limite de 35%. Criada na reorganização de
+          2026, quando o Supremo unificou o teto e extinguiu a maior parte dos pagamentos extras.
+      - nome: Auxílio-saúde
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 5º "d"; Resolução CNMP 268, de 8/8/2023
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Não é valor fixo: é reembolso do que foi efetivamente pago e comprovado, limitado a 15% do subsídio,
+          com os dependentes dentro desse limite. O Supremo proibiu expressamente o pagamento em valor fixo.
+      - nome: Diárias em deslocamento a serviço
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 6º; LC 75/1993 art. 227 II; Resolução CNJ 73, de 28/4/2009
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Por dia, não por mês, e só fora da comarca, sede ou circunscrição. O piso legal é um trinta avos dos
+          vencimentos; cada tribunal fixa a própria tabela, com teto na diária paga a ministro do STF.
+      - nome: Ajuda de custo de remoção, promoção ou nomeação
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 8º; LC 75/1993 art. 227 I "a"; LC 35/1979 art. 65 I
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Até três meses de vencimentos, uma única vez, e só quando há efetiva mudança de domicílio legal.
+          Não é parcela mensal.
+      - nome: Auxílio-moradia
+        valor_mensal_ou_teto: 4377.73
+        natureza: indenizatoria
+        norma: Resolução CNJ 274, de 18/12/2018 art. 4º; Resolução Conjunta CNJ/CNMP 14/2026 art. 7º
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/2792
+        note: >-
+          Teto de reembolso, em hipótese hoje restritíssima: só para quem é convocado a servir fora da comarca de
+          origem, sem imóvel funcional disponível e sem ser proprietário no município, mediante comprovação da
+          despesa. O auxílio-moradia geral foi extinto pelo Supremo em 2026. A Resolução CNJ 274/2018 fixa o teto
+          em R$ 4.377,73 e a Resolução CNMP 194/2018, aplicável ao Ministério Público, o fixa em 25% do subsídio
+          do Procurador-Geral da República; as duas seguem publicadas como vigentes.
+      - nome: Décimo terceiro e terço constitucional de férias
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Não são parcelas mensais e, por decisão do Supremo de 2026, não se somam entre si nem à remuneração do
+          mês em que são pagas, embora nenhuma possa isoladamente ultrapassar o teto. As férias de magistrado e
+          de membro do Ministério Público são de sessenta dias por ano; a indenização de férias não gozadas está
+          limitada a trinta dias por exercício.
+      - nome: Benefícios extintos em 2026
+        valor_mensal_ou_teto: 0.0
+        natureza: indenizatoria
+        norma: >-
+          Tese de repercussão geral do STF de 25/3/2026 (Rcl 88.319, ADI 6.601, ADI 6.604, ADI 6.606, RE 968.646
+          e RE 1.059.466), item 7; Resolução Conjunta CNJ/CNMP 14/2026 art. 2º
+        norma_url: https://noticias.stf.jus.br/postsnoticias/stf-aprova-tese-que-unifica-teto-salarial-e-extingue-pagamentos-extras-para-magistratura-e-mp/
+        note: >-
+          Registro do que deixou de existir a partir da folha de maio de 2026, mês-base abril: auxílio-alimentação
+          (que valia R$ 1.784,42), assistência pré-escolar e auxílio-creche (R$ 1.235,77 por dependente), auxílio
+          natalino, auxílio-combustível, licença compensatória e indenização por acúmulo de acervo, gratificação
+          por localidade, indenização de serviços de telecomunicação e auxílio-natalidade. Também ficou vedada a
+          conversão de licenças em dinheiro. A verba criada em substituição à pré-escolar, a gratificação de
+          proteção à primeira infância de 3% do subsídio, teve o pagamento suspenso pela Corregedoria Nacional
+          de Justiça.
+
+
+  # ————————————————————————————————— ESTATAIS —————————————————————————————————
+
+  - familia: dirigente-de-empresa-estatal
+    orgao_subtype: [empresa_publica, sociedade_economia_mista]
+    subsidio_mensal_bruto: null
+    moeda: BRL
+    vigencia_desde: null
+    norma: Lei 13.303/2016 art. 8º; Lei 6.404/1976 art. 152; CF art. 37 §9º
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2016/lei/l13303.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      Não existe lei que fixe quanto paga o cargo de presidente ou diretor de empresa estatal federal. A
+      remuneração da diretoria é aprovada a cada ano pela assembleia geral de acionistas (Lei 6.404/1976 art. 152),
+      sob parâmetros da Secretaria de Coordenação e Governança das Empresas Estatais do Ministério da Gestão, e
+      divulgada depois nos documentos societários de cada empresa — ata de assembleia, relatório da administração
+      e, nas companhias abertas, o Formulário de Referência da CVM. Por isso o valor é diferente em cada estatal e
+      muda todo ano. O teto do art. 37, XI, só alcança as estatais dependentes de recursos do Tesouro
+      (CF art. 37 §9º), e não as que se custeiam com receita própria. Para saber o valor de uma empresa
+      específica, a fonte é o documento societário dela, não uma norma geral.
+    beneficios: []
+
+  - familia: advogado-geral-da-uniao
+    cargos: [br-advogado-geral-da-uniao]
+    subsidio_mensal_bruto: 46366.19
+    moeda: BRL
+    vigencia_desde: 2025-02-01
+    norma: >-
+      Lei 14.600/2023 art. 18 VII (o Advogado-Geral da União é Ministro de Estado), combinada com o
+      Decreto Legislativo 172/2022, que fixa o subsídio de Ministro de Estado; CF art. 131 §1º
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      "São Ministros de Estado: [...] VII - o Advogado-Geral da União" (Lei 14.600/2023 art. 18). Por isso recebe
+      o subsídio de Ministro de Estado, e não o da carreira da Advocacia-Geral da União. É cargo de livre nomeação
+      pelo Presidente da República, sem exigência de ser membro da carreira.
+    beneficios:
+      - nome: Auxílio-alimentação
+        valor_mensal_ou_teto: 1192.0
+        natureza: indenizatoria
+        norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+        note: null
+
+  # ——————————————— EXECUTIVO: CARGOS COMISSIONADOS EXECUTIVOS (CCE) ———————————————
+  # A Lei 14.204/2021 substituiu o antigo DAS pelos Cargos Comissionados Executivos. O valor de cada nível está
+  # na tabela do Ministério da Gestão (Anexo I da Lei 14.204/2021, valores atualizados pela Lei 15.141/2025),
+  # vigente desde janeiro de 2026. O valor do nível é o que recebe quem não tem vínculo com a administração;
+  # o servidor efetivo, o empregado público ou o militar nomeado pode optar pela remuneração do cargo de origem
+  # acrescida de percentual do CCE (art. 14 da Lei 14.204/2021), e aí o total é outro.
+
+  - familia: secretario-executivo-de-ministerio
+    cargos: ['*-secretario']
+    nome_padrao: ['^Secretári[oa]-Executiv[oa]\b']
+    subsidio_mensal_bruto: 31919.27
+    moeda: BRL
+    vigencia_desde: 2026-01-01
+    norma: >-
+      Lei 14.204/2021 Anexo I (nível CCE 1.18), valores atualizados pela Lei 15.141/2025; tabela de remuneração
+      de cargos comissionados do Ministério da Gestão e da Inovação em Serviços Públicos, janeiro de 2026
+    norma_url: https://www.gov.br/servidor/pt-br/observatorio-de-pessoal-govbr/retribuicao-pelo-exercicio-de-cargos-e-funcoes-de-confianca
+    checked_at: 2026-09-22
+    observacao: >-
+      O secretário-executivo é o número dois do ministério e ocupa o topo da escala, o CCE 1.18, que só pode ser
+      criado por lei ou pela transformação de um cargo de Natureza Especial. O valor vale integralmente para quem
+      entra sem vínculo com a administração pública; o servidor efetivo que é nomeado pode optar por manter o
+      vencimento do cargo de origem mais um percentual do CCE, e nesse caso recebe outro total.
+    beneficios:
+      - nome: Auxílio-alimentação
+        valor_mensal_ou_teto: 1192.0
+        natureza: indenizatoria
+        norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+        note: null
+      - nome: Assistência à saúde suplementar (per capita)
+        valor_mensal_ou_teto: 464.89
+        natureza: indenizatoria
+        norma: Portaria MGI 2.778, de 2/4/2026; Lei 8.112/1990 art. 230
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.778-de-2-de-abril-de-2026-697395044
+        note: >-
+          Teto, não valor pago. É o per capita mensal com que a União ressarce parte do plano de saúde, numa tabela
+          de faixa de renda por faixa etária: vai de R$ 120,55 a R$ 464,89, e quanto maior a renda, menor o valor.
+          Quem ocupa cargo do topo fica na faixa mais baixa da tabela.
+      - nome: Assistência pré-escolar
+        valor_mensal_ou_teto: 526.64
+        natureza: indenizatoria
+        norma: Portaria MGI 2.785, de 2/4/2026; Decreto 977/1993 art. 8º
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.785-de-2-de-abril-de-2026-697385222
+        note: Por dependente de até seis anos de idade.
+      - nome: Ajuda de custo de posse em outra localidade
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Lei 8.112/1990 arts. 53 a 57
+        norma_url: https://www.planalto.gov.br/ccivil_03/leis/l8112cons.htm
+        note: >-
+          Só para quem muda de sede para assumir. Limitada a três vezes a remuneração e paga uma única vez,
+          não mensalmente.
+      - nome: Diárias em viagem a serviço
+        valor_mensal_ou_teto: 800.0
+        natureza: indenizatoria
+        norma: Decreto 5.992/2006 Anexo I, na redação do Decreto 11.872/2023 (efeitos de 15/2/2024)
+        norma_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/decreto/d5992.htm
+        note: >-
+          Valor por dia, não por mês. Para cargo de Natureza Especial e CCE-18: R$ 800,00 em Brasília, Manaus,
+          Rio de Janeiro e São Paulo; R$ 700,00 nas demais capitais; R$ 650,00 nos demais deslocamentos. Para
+          CCE-17 a CCE-13, R$ 600,00 / R$ 515,00 / R$ 455,00.
+
+  - familia: secretario-nacional-ou-finalistico-de-ministerio
+    cargos: ['*-secretario']
+    nome_padrao: ['^Secretári[oa](?!-Executiv[oa]\b)(?!\s+(Especial|Extraordinári[oa])\b)(?!-Geral\b)']
+    subsidio_mensal_bruto: 27943.17
+    moeda: BRL
+    vigencia_desde: 2026-01-01
+    norma: >-
+      Lei 14.204/2021 Anexo I (nível CCE 1.17), valores atualizados pela Lei 15.141/2025; tabela de remuneração
+      de cargos comissionados do Ministério da Gestão e da Inovação em Serviços Públicos, janeiro de 2026
+    norma_url: https://www.gov.br/servidor/pt-br/observatorio-de-pessoal-govbr/retribuicao-pelo-exercicio-de-cargos-e-funcoes-de-confianca
+    checked_at: 2026-09-22
+    observacao: >-
+      Secretários nacionais e secretários finalísticos de ministério ocupam em regra o CCE 1.17, o nível imediatamente
+      abaixo do secretário-executivo — é o que registram as páginas "Quem é quem" dos ministérios, que publicam o
+      código do cargo ao lado do nome do titular. O nível exato de cada secretaria é definido pelo decreto de
+      estrutura regimental do órgão e pode divergir em casos isolados. Como no CCE 1.18, quem tem vínculo efetivo
+      pode optar por vencimento de origem mais percentual do CCE.
+    beneficios:
+      - nome: Auxílio-alimentação
+        valor_mensal_ou_teto: 1192.0
+        natureza: indenizatoria
+        norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+        note: null
+      - nome: Assistência à saúde suplementar (per capita)
+        valor_mensal_ou_teto: 464.89
+        natureza: indenizatoria
+        norma: Portaria MGI 2.778, de 2/4/2026; Lei 8.112/1990 art. 230
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.778-de-2-de-abril-de-2026-697395044
+        note: >-
+          Teto, não valor pago: o per capita cai conforme sobe a renda, numa tabela de faixa de renda por faixa
+          etária que vai de R$ 120,55 a R$ 464,89.
+      - nome: Assistência pré-escolar
+        valor_mensal_ou_teto: 526.64
+        natureza: indenizatoria
+        norma: Portaria MGI 2.785, de 2/4/2026; Decreto 977/1993 art. 8º
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.785-de-2-de-abril-de-2026-697385222
+        note: Por dependente de até seis anos de idade.
+      - nome: Diárias em viagem a serviço
+        valor_mensal_ou_teto: 600.0
+        natureza: indenizatoria
+        norma: Decreto 5.992/2006 Anexo I, na redação do Decreto 11.872/2023 (efeitos de 15/2/2024)
+        norma_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/decreto/d5992.htm
+        note: >-
+          Valor por dia, não por mês. Faixa de CCE-17 a CCE-13: R$ 600,00 em Brasília, Manaus, Rio de Janeiro e
+          São Paulo; R$ 515,00 nas demais capitais; R$ 455,00 nos demais deslocamentos.
+
+  - familia: secretario-especial-extraordinario-ou-geral
+    cargos: ['*-secretario']
+    nome_padrao: ['^Secretári[oa](\s+(Especial|Extraordinári[oa])|-Geral)\b']
+    subsidio_mensal_bruto: null
+    moeda: BRL
+    vigencia_desde: null
+    norma: Lei 14.204/2021 arts. 3º e 14 e Anexo I; decreto de estrutura regimental de cada órgão
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/L14204.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      Secretarias especiais e extraordinárias da Presidência e dos ministérios, e as secretarias-gerais das
+      Relações Exteriores e da Defesa. São cargos CCE, mas o nível de cada um é fixado no decreto de estrutura
+      regimental do respectivo órgão, e não há norma única que os situe todos na mesma faixa. Sem conferir
+      decreto por decreto, não se atribui valor. Para referência, os dois níveis do topo da tabela de janeiro de
+      2026 são o CCE 1.18, R$ 31.919,27, e o CCE 1.17, R$ 27.943,17.
+    beneficios:
+      - nome: Auxílio-alimentação
+        valor_mensal_ou_teto: 1192.0
+        natureza: indenizatoria
+        norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+        note: null
+
+  - familia: ministro-do-tribunal-de-contas-da-uniao
+    cargos: [br-ministro-do-tcu, br-presidente-do-tcu]
+    subsidio_mensal_bruto: 44047.88
+    moeda: BRL
+    vigencia_desde: 2025-02-01
+    norma: >-
+      CF art. 73 §3º (os Ministros do TCU têm as mesmas garantias, prerrogativas, impedimentos, vencimentos e
+      vantagens dos Ministros do STJ), aplicado sobre o subsídio de Ministro de Tribunal Superior
+    norma_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      A Constituição equipara o ministro do TCU ao ministro do STJ, de modo que o valor acompanha o subsídio de
+      Ministro de Tribunal Superior, 95% do subsídio de ministro do STF. O Presidente do TCU é eleito entre os
+      ministros e recebe o mesmo que eles. A tese do Supremo de 2026 sobre o teto alcança expressamente os
+      tribunais de contas.
+    beneficios:
+      - nome: Parcela por antiguidade
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: Resolução Conjunta CNJ/CNMP 14, de 6/4/2026, art. 3º; LC 35/1979 (Loman) art. 65 VIII
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          5% do subsídio a cada cinco anos de atividade jurídica, até o limite de 35%. Criada na reorganização de
+          2026, quando o Supremo unificou o teto e extinguiu a maior parte dos pagamentos extras.
+      - nome: Auxílio-saúde
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 5º "d"; Resolução CNMP 268, de 8/8/2023
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Não é valor fixo: é reembolso do que foi efetivamente pago e comprovado, limitado a 15% do subsídio,
+          com os dependentes dentro desse limite. O Supremo proibiu expressamente o pagamento em valor fixo.
+      - nome: Diárias em deslocamento a serviço
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 6º; LC 75/1993 art. 227 II; Resolução CNJ 73, de 28/4/2009
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Por dia, não por mês, e só fora da comarca, sede ou circunscrição. O piso legal é um trinta avos dos
+          vencimentos; cada tribunal fixa a própria tabela, com teto na diária paga a ministro do STF.
+      - nome: Ajuda de custo de remoção, promoção ou nomeação
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 8º; LC 75/1993 art. 227 I "a"; LC 35/1979 art. 65 I
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Até três meses de vencimentos, uma única vez, e só quando há efetiva mudança de domicílio legal.
+          Não é parcela mensal.
+      - nome: Auxílio-moradia
+        valor_mensal_ou_teto: 4377.73
+        natureza: indenizatoria
+        norma: Resolução CNJ 274, de 18/12/2018 art. 4º; Resolução Conjunta CNJ/CNMP 14/2026 art. 7º
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/2792
+        note: >-
+          Teto de reembolso, em hipótese hoje restritíssima: só para quem é convocado a servir fora da comarca de
+          origem, sem imóvel funcional disponível e sem ser proprietário no município, mediante comprovação da
+          despesa. O auxílio-moradia geral foi extinto pelo Supremo em 2026. A Resolução CNJ 274/2018 fixa o teto
+          em R$ 4.377,73 e a Resolução CNMP 194/2018, aplicável ao Ministério Público, o fixa em 25% do subsídio
+          do Procurador-Geral da República; as duas seguem publicadas como vigentes.
+      - nome: Décimo terceiro e terço constitucional de férias
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Não são parcelas mensais e, por decisão do Supremo de 2026, não se somam entre si nem à remuneração do
+          mês em que são pagas, embora nenhuma possa isoladamente ultrapassar o teto. As férias de magistrado e
+          de membro do Ministério Público são de sessenta dias por ano; a indenização de férias não gozadas está
+          limitada a trinta dias por exercício.
+      - nome: Benefícios extintos em 2026
+        valor_mensal_ou_teto: 0.0
+        natureza: indenizatoria
+        norma: >-
+          Tese de repercussão geral do STF de 25/3/2026 (Rcl 88.319, ADI 6.601, ADI 6.604, ADI 6.606, RE 968.646
+          e RE 1.059.466), item 7; Resolução Conjunta CNJ/CNMP 14/2026 art. 2º
+        norma_url: https://noticias.stf.jus.br/postsnoticias/stf-aprova-tese-que-unifica-teto-salarial-e-extingue-pagamentos-extras-para-magistratura-e-mp/
+        note: >-
+          Registro do que deixou de existir a partir da folha de maio de 2026, mês-base abril: auxílio-alimentação
+          (que valia R$ 1.784,42), assistência pré-escolar e auxílio-creche (R$ 1.235,77 por dependente), auxílio
+          natalino, auxílio-combustível, licença compensatória e indenização por acúmulo de acervo, gratificação
+          por localidade, indenização de serviços de telecomunicação e auxílio-natalidade. Também ficou vedada a
+          conversão de licenças em dinheiro. A verba criada em substituição à pré-escolar, a gratificação de
+          proteção à primeira infância de 3% do subsídio, teve o pagamento suspenso pela Corregedoria Nacional
+          de Justiça.
+
+
+  - familia: presidente-e-diretor-do-banco-central
+    cargos: [br-presidente-do-banco-central, br-diretor-do-banco-central]
+    subsidio_mensal_bruto: 31919.27
+    moeda: BRL
+    vigencia_desde: 2026-01-01
+    norma: >-
+      Lei 15.141/2025, Anexo CCXCVII, alínea "a" (cargos de Natureza Especial — Presidente e Diretor do Banco
+      Central do Brasil), que dá nova redação ao Anexo I da Lei 11.526/2007; LC 179/2021 art. 9º
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/Anexo/Anexo254a323-Lei15141.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      Com a autonomia do Banco Central, a LC 179/2021 art. 9º transformou o cargo de "Ministro de Estado
+      Presidente do Banco Central do Brasil" no cargo de Natureza Especial de Presidente do Banco Central, que
+      deixou de ser ministério. O presidente e os oito diretores recebem o mesmo valor, fixado numa linha própria
+      da tabela: R$ 24.553,28 a partir de 1º/2/2025 e R$ 31.919,27 a partir de 1º/1/2026. Mandatos fixos de quatro
+      anos, não coincidentes com o mandato presidencial.
+    beneficios:
+      - nome: Auxílio-alimentação
+        valor_mensal_ou_teto: 1192.0
+        natureza: indenizatoria
+        norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+        note: null
+
+  - familia: dirigente-maximo-de-agencia-reguladora
+    orgao_subtype: [agencia_reguladora]
+    nome_padrao: ['^(Diretor-Presidente|Diretor-Geral|Presidente)\b']
+    subsidio_mensal_bruto: 32111.76
+    moeda: BRL
+    vigencia_desde: 2026-01-01
+    norma: >-
+      Lei 9.986/2000 art. 5º (o Presidente, Diretor-Presidente ou Diretor-Geral ocupa Cargo Comissionado de
+      Direção CD I); valor no Anexo CCXCVII da Lei 15.141/2025, alínea "d"
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/Anexo/Anexo254a323-Lei15141.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      As agências reguladoras têm tabela própria, separada da dos CCE: o dirigente máximo ocupa o CD I, que passou
+      de R$ 24.701,35 em 1º/2/2025 para R$ 32.111,76 em 1º/1/2026. São nomeados pelo Presidente da República após
+      sabatina do Senado, para mandato fixo. Aplica-se às onze agências do grafo: ANA, Anac, Anatel, Ancine,
+      Aneel, ANM, ANP, ANS, Antaq, ANTT e Anvisa.
+    beneficios:
+      - nome: Remuneração compensatória da quarentena
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: Lei 9.986/2000 art. 8º
+        norma_url: https://www.planalto.gov.br/ccivil_03/leis/l9986.htm
+        note: >-
+          Depois de deixar o cargo, o ex-dirigente fica impedido de atuar no setor regulado por seis meses e, nesse
+          período, continua vinculado à agência recebendo remuneração equivalente à do cargo que ocupava.
+      - nome: Auxílio-alimentação
+        valor_mensal_ou_teto: 1192.0
+        natureza: indenizatoria
+        norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+        note: null
+
+  - familia: diretor-de-agencia-reguladora
+    orgao_subtype: [agencia_reguladora]
+    nome_padrao: ['^(Diretor|Conselheiro) d']
+    subsidio_mensal_bruto: 27309.34
+    moeda: BRL
+    vigencia_desde: 2026-01-01
+    norma: >-
+      Lei 9.986/2000 art. 5º (os demais membros do Conselho Diretor ou da Diretoria Colegiada ocupam Cargo
+      Comissionado de Direção CD II); valor no Anexo CCXCVII da Lei 15.141/2025, alínea "d"
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/Anexo/Anexo254a323-Lei15141.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      Diretores e conselheiros que não presidem a agência ocupam o CD II: R$ 22.202,72 a partir de 1º/2/2025 e
+      R$ 27.309,34 a partir de 1º/1/2026. Também passam por sabatina do Senado e têm mandato fixo não coincidente.
+      O nó do grafo é um cargo colegiado: representa todas as cadeiras de diretor da agência, não uma só.
+    beneficios:
+      - nome: Remuneração compensatória da quarentena
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: Lei 9.986/2000 art. 8º
+        norma_url: https://www.planalto.gov.br/ccivil_03/leis/l9986.htm
+        note: Seis meses de impedimento após a saída, com remuneração equivalente à do cargo que ocupava.
+      - nome: Auxílio-alimentação
+        valor_mensal_ou_teto: 1192.0
+        natureza: indenizatoria
+        norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+        note: null
+
+  # ————————————————— EXECUTIVO: AUTARQUIAS, FUNDAÇÕES E ENSINO —————————————————
+
+  - familia: dirigente-de-autarquia-ou-fundacao-federal
+    orgao_subtype: [autarquia, fundacao]
+    excluir: [br-presidente-do-banco-central, br-diretor-do-banco-central]
+    subsidio_mensal_bruto: 27943.17
+    moeda: BRL
+    vigencia_desde: 2026-01-01
+    norma: >-
+      Lei 14.204/2021 (nível CCE 1.17), valor no Anexo CCXCVII da Lei 15.141/2025, alínea "f"; o nível de cada
+      cargo está no quadro demonstrativo anexo ao decreto de estrutura regimental da entidade
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/Anexo/Anexo254a323-Lei15141.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      Presidentes e dirigentes máximos de autarquias e fundações federais ocupam em regra o CCE 1.17, o mesmo
+      nível de secretário nacional. Conferido no quadro demonstrativo de cargos dos decretos de estrutura de
+      Ibama (Decreto 12.130/2024), INSS (Decreto 10.995/2022), Funai (Decreto 11.226/2022), IBGE
+      (Decreto 11.177/2022) e Fiocruz (Decreto 11.228/2022), todos com "1 Presidente CCE 1.17". O nível de cada
+      entidade é fixado no seu próprio decreto e pode variar em casos isolados; nas entidades com diretoria
+      colegiada, os diretores costumam ficar um ou dois níveis abaixo (CCE 1.15, R$ 20.327,48). Quem é servidor
+      efetivo pode optar por manter o vencimento de origem mais 60% do CCE (Lei 14.204/2021 art. 14 IV), e aí o
+      total é outro. Autarquias e fundações estão sujeitas ao teto do art. 37, XI, da Constituição.
+    beneficios:
+      - nome: Auxílio-alimentação
+        valor_mensal_ou_teto: 1192.0
+        natureza: indenizatoria
+        norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+        note: null
+      - nome: Assistência à saúde suplementar (per capita)
+        valor_mensal_ou_teto: 464.89
+        natureza: indenizatoria
+        norma: Portaria MGI 2.778, de 2/4/2026; Lei 8.112/1990 art. 230
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.778-de-2-de-abril-de-2026-697395044
+        note: >-
+          Teto, não valor pago: o per capita cai conforme sobe a renda, numa tabela de faixa de renda por faixa
+          etária que vai de R$ 120,55 a R$ 464,89.
+
+  - familia: reitor-de-instituicao-federal-de-ensino
+    orgao_subtype: [instituicao_de_ensino]
+    subsidio_mensal_bruto: null
+    moeda: BRL
+    vigencia_desde: null
+    norma: >-
+      Lei 12.772/2012 arts. 16, 17 e 21 (carreira do Magistério Superior), com os anexos na redação da
+      Lei 15.141/2025; Lei 11.526/2007 art. 2º (opção de remuneração); Lei 8.168/1991 (Cargos de Direção)
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12772.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      Não existe um valor de cargo para reitor de universidade federal. O reitor é professor da carreira do
+      Magistério Superior e sua remuneração é a soma de parcelas tabeladas que dependem da classe, do nível, da
+      titulação e do regime de trabalho dele, mais o Cargo de Direção CD-1, e ainda da opção que ele faz entre as
+      três formas do art. 2º da Lei 11.526/2007. Dois reitores de universidades diferentes recebem valores
+      diferentes, e o mesmo reitor recebe outro valor ao progredir na carreira. As parcelas estão listadas em
+      `beneficios` como componentes remuneratórios, com os valores da tabela. Um reitor professor titular em
+      dedicação exclusiva, doutor, que opte pelos 60% do CD-1, soma R$ 12.245,03 de vencimento básico,
+      R$ 14.081,78 de retribuição por titulação e R$ 13.331,78 de CD-1, num bruto de R$ 39.658,59 — mas esse é
+      um caso, não o valor do cargo. Tudo fica abaixo do teto de R$ 46.366,19. Esta família cobre também os
+      diretores-gerais dos CEFET e o reitor do Colégio Pedro II, que é da carreira do magistério do ensino
+      básico, técnico e tecnológico, com tabela própria, e não da do magistério superior.
+    beneficios:
+      - nome: Vencimento básico da carreira do Magistério Superior (Titular 1, dedicação exclusiva)
+        valor_mensal_ou_teto: 12245.03
+        natureza: remuneratoria
+        norma: Lei 12.772/2012 Anexo III, na redação do Anexo LXXIX da Lei 15.141/2025 (efeitos de 1º/4/2026)
+        norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/Anexo/Anexo1a100-Lei15141.htm
+        note: >-
+          Uma linha entre muitas: a tabela tem três regimes (20h, 40h, dedicação exclusiva) e as classes de
+          Assistente a Titular. Associado 1 em dedicação exclusiva, por exemplo, são R$ 9.616,10.
+      - nome: Retribuição por Titulação (doutorado, Titular 1, dedicação exclusiva)
+        valor_mensal_ou_teto: 14081.78
+        natureza: remuneratoria
+        norma: Lei 12.772/2012 art. 17 e Anexo IV, na redação do Anexo LXXX da Lei 15.141/2025 (efeitos de 1º/4/2026)
+        norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/Anexo/Anexo1a100-Lei15141.htm
+        note: >-
+          Não é cumulativa entre titulações. Varia por classe, nível e regime: Associado 1 doutor em dedicação
+          exclusiva recebe R$ 11.058,51.
+      - nome: Cargo de Direção CD-1
+        valor_mensal_ou_teto: 22219.64
+        natureza: remuneratoria
+        norma: Lei 15.141/2025, Anexo CCXCVII, alínea "c" (efeitos de 1º/1/2026); Lei 8.168/1991
+        norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/Anexo/Anexo254a323-Lei15141.htm
+        note: >-
+          Valor integral do CD-1. O docente em dedicação exclusiva quase sempre opta pelo vencimento do cargo
+          efetivo mais 60% do CD-1, R$ 13.331,78 (Lei 11.526/2007 art. 2º III e §1º), porque o total sai maior.
+          CD-2 são R$ 16.806,33; CD-3, R$ 12.291,61; CD-4, R$ 8.315,71.
+      - nome: Auxílio-alimentação
+        valor_mensal_ou_teto: 1192.0
+        natureza: indenizatoria
+        norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+        note: null
+      - nome: Adicional de férias (um terço) e gratificação natalina
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Lei 8.112/1990 arts. 63 e 76
+        norma_url: https://www.planalto.gov.br/ccivil_03/leis/l8112cons.htm
+        note: >-
+          Ao contrário dos detentores de mandato e dos remunerados por subsídio em parcela única, o servidor
+          estatutário recebe 13º salário e um terço de férias. Não são parcelas mensais.
+
+  - familia: dirigente-de-orgao-singular-do-executivo
+    orgao_subtype: [orgao_singular]
+    subsidio_mensal_bruto: null
+    moeda: BRL
+    vigencia_desde: null
+    norma: Lei 14.204/2021 e Anexo CCXCVII da Lei 15.141/2025; decreto de estrutura regimental de cada órgão
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/Anexo/Anexo254a323-Lei15141.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      Cobre o Secretário Especial da Receita Federal, o Secretário do Tesouro Nacional e os diretores-gerais da
+      Polícia Federal, da Polícia Rodoviária Federal e da Abin. São cargos CCE, mas o nível de cada um está no
+      quadro demonstrativo anexo ao decreto de estrutura regimental do órgão, e no texto consolidado do Planalto
+      as linhas correspondentes aparecem riscadas, sinal de alteração posterior que não foi possível conferir na
+      versão vigente. Sem essa conferência não se atribui valor. Para referência, os dois níveis do topo da
+      tabela de janeiro de 2026 são o CCE 1.18, R$ 31.919,27, e o CCE 1.17, R$ 27.943,17.
+    beneficios:
+      - nome: Auxílio-alimentação
+        valor_mensal_ou_teto: 1192.0
+        natureza: indenizatoria
+        norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+        note: null
+
+  - familia: defensor-publico-geral-federal
+    cargos: [br-defensor-publico-geral-federal]
+    subsidio_mensal_bruto: 37628.65
+    moeda: BRL
+    vigencia_desde: 2025-02-01
+    norma: Lei 14.522/2023 art. 1º III; CF art. 134 §4º e art. 39 §4º
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14522.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      Lei própria, sancionada no mesmo dia das leis do STF e do PGR, com implantação em três parcelas:
+      R$ 35.423,58 (1º/2/2023), R$ 36.529,16 (1º/2/2024) e R$ 37.628,65 (1º/2/2025). O art. 2º fixa em 95% desse
+      valor o subsídio do Subdefensor Público-Geral Federal, do Corregedor-Geral e dos membros da Categoria
+      Especial, com escalonamento de 10% entre as demais categorias da carreira. É o único dos chefes de
+      instituição do grafo cujo subsídio está abaixo do de ministro de tribunal superior.
+    beneficios:
+      - nome: Auxílio-alimentação
+        valor_mensal_ou_teto: 1192.0
+        natureza: indenizatoria
+        norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+        note: >-
+          A Defensoria Pública da União não está sob o Conselho Nacional de Justiça nem sob o Conselho Nacional
+          do Ministério Público, e por isso não foi alcançada pela resolução conjunta de 2026 que extinguiu o
+          auxílio-alimentação de magistrados e membros do Ministério Público.
+      - nome: Décimo terceiro e terço constitucional de férias
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º
+        norma_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+        note: Não são parcelas mensais.
+
+  # ————————————————————————————————— FORÇAS ARMADAS —————————————————————————————————
+
+  - familia: comandante-de-forca-armada
+    orgao_subtype: [forca_armada]
+    subsidio_mensal_bruto: null
+    moeda: BRL
+    vigencia_desde: null
+    norma: >-
+      Lei 13.954/2019, que reestruturou a remuneração dos militares, com a tabela de soldos do Anexo VI na
+      redação da Lei 15.167/2025; MP 2.215-10/2001 (adicional militar)
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/Lei/L15167.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      Militar não recebe subsídio em parcela única: recebe soldo mais adicionais em percentuais do soldo, e o
+      total depende do posto, da habilitação e do tempo de serviço de cada oficial. Os comandantes da Marinha, do
+      Exército e da Aeronáutica são, respectivamente, Almirante de Esquadra, General de Exército e
+      Tenente-Brigadeiro do Ar — o posto mais alto, com soldo de R$ 14.711,00 desde 1º/1/2026. Somadas as
+      parcelas em percentual do soldo listadas abaixo, um oficial-general desse posto com Altos Estudos
+      Categoria I chega a cerca de R$ 37.000 brutos mensais, mas esse total é cálculo a partir das tabelas, não
+      um valor publicado em norma, e por isso não é registrado aqui como valor do cargo. Não foi localizado ato
+      vigente que classifique o cargo civil de Comandante numa tabela de cargo comissionado: nas redações
+      antigas do Anexo I da Lei 11.526/2007 os três comandos constavam entre os cargos de Natureza Especial, e
+      hoje só o Banco Central permanece nessa tabela.
+    beneficios:
+      - nome: Soldo do posto de Almirante de Esquadra, General de Exército ou Tenente-Brigadeiro
+        valor_mensal_ou_teto: 14711.0
+        natureza: remuneratoria
+        norma: Lei 13.954/2019 Anexo VI, na redação da Lei 15.167/2025 (efeitos de 1º/1/2026)
+        norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/Lei/L15167.htm
+        note: >-
+          Base de cálculo de todas as demais parcelas. Era R$ 13.471,00 até 31/3/2025 e R$ 14.077,00 de 1º/4/2025
+          a 31/12/2025.
+      - nome: Adicional militar (oficial-general)
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: MP 2.215-10/2001, Anexo II, Tabela II
+        norma_url: https://www.planalto.gov.br/ccivil_03/mpv/2215-10.htm
+        note: 28% do soldo.
+      - nome: Adicional de compensação por disponibilidade militar (ACDM)
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: Lei 13.954/2019 art. 8º e Anexo II
+        norma_url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/lei/L13954.htm
+        note: >-
+          41% do soldo no posto mais alto. Compensa a disponibilidade permanente e a proibição de greve e de
+          sindicalização; não pode ser acumulado com adicional de tempo de serviço.
+      - nome: Adicional de habilitação (Altos Estudos Categoria I)
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: Lei 13.954/2019 Anexo III
+        norma_url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/lei/L13954.htm
+        note: 73% do soldo desde 1º/7/2023 na Categoria I; 68% na Categoria II.
+      - nome: Gratificação de representação (oficial-general)
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: Lei 13.954/2019 art. 10 e Anexo IV
+        norma_url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/lei/L13954.htm
+        note: 10% do soldo.
+
+  - familia: chefia-de-ramo-do-ministerio-publico-da-uniao
+    orgao_subtype: [ministerio_publico]
+    excluir: [br-procurador-geral-da-republica]
+    subsidio_mensal_bruto: 44047.88
+    moeda: BRL
+    vigencia_desde: 2025-02-01
+    norma: >-
+      Lei 14.521/2023, com o escalonamento da carreira do Ministério Público da União (nível II, 95% do subsídio
+      do Procurador-Geral da República); CF art. 129 §4º, que manda aplicar o art. 93 V
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14521.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      Procurador-Geral do Trabalho, Procurador-Geral da Justiça Militar e Procurador-Geral de Justiça do Distrito
+      Federal e Territórios chefiam ramos do Ministério Público da União e ficam no nível II da tabela de
+      subsídios do MPU, ao lado dos subprocuradores-gerais: 95% do subsídio do Procurador-Geral da República.
+      A tabela oficial publicada pelo Ministério Público Federal está em
+      https://transparencia.mpf.mp.br/conteudo/gestao-de-pessoas/plano-de-carreira/tabelas-procuradores-2015_2025-lei-14521-de-22-11-2023.pdf
+      Os níveis seguintes são R$ 41.845,49 (procurador regional) e R$ 39.753,22 (procurador da República).
+      Não há acréscimo pelo exercício da chefia: o regime é de subsídio em parcela única.
+    beneficios:
+      - nome: Parcela por antiguidade
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: Resolução Conjunta CNJ/CNMP 14, de 6/4/2026, art. 3º; LC 35/1979 (Loman) art. 65 VIII
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          5% do subsídio a cada cinco anos de atividade jurídica, até o limite de 35%. Criada na reorganização de
+          2026, quando o Supremo unificou o teto e extinguiu a maior parte dos pagamentos extras.
+      - nome: Auxílio-saúde
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 5º "d"; Resolução CNMP 268, de 8/8/2023
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Não é valor fixo: é reembolso do que foi efetivamente pago e comprovado, limitado a 15% do subsídio,
+          com os dependentes dentro desse limite. O Supremo proibiu expressamente o pagamento em valor fixo.
+      - nome: Diárias em deslocamento a serviço
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 6º; LC 75/1993 art. 227 II; Resolução CNJ 73, de 28/4/2009
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Por dia, não por mês, e só fora da comarca, sede ou circunscrição. O piso legal é um trinta avos dos
+          vencimentos; cada tribunal fixa a própria tabela, com teto na diária paga a ministro do STF.
+      - nome: Ajuda de custo de remoção, promoção ou nomeação
+        valor_mensal_ou_teto: null
+        natureza: indenizatoria
+        norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 8º; LC 75/1993 art. 227 I "a"; LC 35/1979 art. 65 I
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Até três meses de vencimentos, uma única vez, e só quando há efetiva mudança de domicílio legal.
+          Não é parcela mensal.
+      - nome: Auxílio-moradia
+        valor_mensal_ou_teto: 4377.73
+        natureza: indenizatoria
+        norma: Resolução CNJ 274, de 18/12/2018 art. 4º; Resolução Conjunta CNJ/CNMP 14/2026 art. 7º
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/2792
+        note: >-
+          Teto de reembolso, em hipótese hoje restritíssima: só para quem é convocado a servir fora da comarca de
+          origem, sem imóvel funcional disponível e sem ser proprietário no município, mediante comprovação da
+          despesa. O auxílio-moradia geral foi extinto pelo Supremo em 2026. A Resolução CNJ 274/2018 fixa o teto
+          em R$ 4.377,73 e a Resolução CNMP 194/2018, aplicável ao Ministério Público, o fixa em 25% do subsídio
+          do Procurador-Geral da República; as duas seguem publicadas como vigentes.
+      - nome: Décimo terceiro e terço constitucional de férias
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º
+        norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
+        note: >-
+          Não são parcelas mensais e, por decisão do Supremo de 2026, não se somam entre si nem à remuneração do
+          mês em que são pagas, embora nenhuma possa isoladamente ultrapassar o teto. As férias de magistrado e
+          de membro do Ministério Público são de sessenta dias por ano; a indenização de férias não gozadas está
+          limitada a trinta dias por exercício.
+      - nome: Benefícios extintos em 2026
+        valor_mensal_ou_teto: 0.0
+        natureza: indenizatoria
+        norma: >-
+          Tese de repercussão geral do STF de 25/3/2026 (Rcl 88.319, ADI 6.601, ADI 6.604, ADI 6.606, RE 968.646
+          e RE 1.059.466), item 7; Resolução Conjunta CNJ/CNMP 14/2026 art. 2º
+        norma_url: https://noticias.stf.jus.br/postsnoticias/stf-aprova-tese-que-unifica-teto-salarial-e-extingue-pagamentos-extras-para-magistratura-e-mp/
+        note: >-
+          Registro do que deixou de existir a partir da folha de maio de 2026, mês-base abril: auxílio-alimentação
+          (que valia R$ 1.784,42), assistência pré-escolar e auxílio-creche (R$ 1.235,77 por dependente), auxílio
+          natalino, auxílio-combustível, licença compensatória e indenização por acúmulo de acervo, gratificação
+          por localidade, indenização de serviços de telecomunicação e auxílio-natalidade. Também ficou vedada a
+          conversão de licenças em dinheiro. A verba criada em substituição à pré-escolar, a gratificação de
+          proteção à primeira infância de 3% do subsídio, teve o pagamento suspenso pela Corregedoria Nacional
+          de Justiça.
+
+
+  - familia: conselheiro-do-conselho-nacional-do-ministerio-publico
+    cargos: [br-conselheiro-do-cnmp]
+    subsidio_mensal_bruto: null
+    moeda: BRL
+    vigencia_desde: null
+    norma: CF art. 130-A; Lei 11.372/2006
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11372.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      A Lei 11.372/2006, que estrutura o Conselho Nacional do Ministério Público, não tem artigo sobre
+      remuneração — ao contrário da Lei 11.365/2006, que faz isso para o Conselho Nacional de Justiça e equipara
+      o conselheiro ao Ministro de Tribunal Superior. Diz apenas, no art. 10, que "aos Conselheiros são
+      asseguradas as prerrogativas conferidas em lei aos membros do Ministério Público". Os vetos de 2006 ao
+      projeto trataram de estrutura organizacional, não de remuneração. Não existe, portanto, norma que fixe o
+      subsídio do conselheiro do CNMP: o colegiado reúne membros do Ministério Público da União e dos Estados,
+      juízes, advogados indicados pela OAB e cidadãos indicados pelo Congresso, e cada um mantém o que recebe no
+      órgão de origem. A Resolução Conjunta CNJ/CNMP 14/2026, que reorganizou os pagamentos do Judiciário e do
+      Ministério Público depois da decisão do Supremo sobre o teto, também alcança os conselheiros.
+    beneficios: []
+
+  - familia: chefia-da-advocacia-publica-federal
+    orgao_subtype: [advocacia]
+    excluir: [br-advogado-geral-da-uniao]
+    subsidio_mensal_bruto: 31919.27
+    moeda: BRL
+    vigencia_desde: 2026-01-01
+    norma: >-
+      Decreto 12.540/2025 Anexo II (Procurador-Geral da União e Procurador-Geral Federal, CCE 1.18) e
+      Decreto 11.907/2024 Anexo II (Procurador-Geral da Fazenda Nacional, CCE 1.18); valor no Anexo CCXCVII da
+      Lei 15.141/2025, alínea "f"
+    norma_url: https://www.planalto.gov.br/ccivil_03/_Ato2023-2026/2025/Decreto/D12540.htm
+    checked_at: 2026-09-22
+    observacao: >-
+      Procurador-Geral da União, Procurador-Geral Federal e Procurador-Geral da Fazenda Nacional chefiam os
+      órgãos da Advocacia-Geral da União abaixo do Advogado-Geral. Não têm subsídio próprio fixado em lei: os
+      decretos de estrutura os classificam como CCE 1.18, o nível mais alto da tabela de cargos comissionados,
+      e é esse o valor do cargo. A LC 73/1993 art. 55 e a Lei 10.480/2002 art. 11 ainda os descrevem como cargos
+      de natureza especial, denominação que a Lei 14.204/2021 converteu em CCE-18. Quem os ocupa é escolhido
+      entre membros das carreiras de Advogado da União, Procurador Federal e Procurador da Fazenda Nacional e
+      pode optar por manter o subsídio da carreira acrescido de 60% do CCE (Lei 11.526/2007 art. 2º III), caso
+      em que o total é outro: a categoria especial da carreira está em R$ 35.423,96 desde 1º/4/2026
+      (Lei 13.327/2016 Anexo XXXV, na redação da Lei 15.141/2025).
+    beneficios:
+      - nome: Honorários advocatícios de sucumbência
+        valor_mensal_ou_teto: null
+        natureza: remuneratoria
+        norma: Lei 13.327/2016 arts. 29 a 36
+        norma_url: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2016/lei/l13327.htm
+        note: >-
+          Rateio entre os ocupantes das carreiras jurídicas da União do que se arrecada em sucumbência e em
+          encargo legal da dívida ativa. Varia mês a mês com a arrecadação e não tem valor fixado em norma. Por
+          lei não integra o subsídio nem serve de base de cálculo para outras vantagens; o STF examinou o regime
+          na ADI 6053.
+      - nome: Auxílio-alimentação
+        valor_mensal_ou_teto: 1192.0
+        natureza: indenizatoria
+        norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
+        norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+        note: null

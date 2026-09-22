@@ -245,6 +245,10 @@ if _tr_p.exists():
                       "maiores_por_habitante": (_rs.get("maiores_por_habitante") or [])[:10], "criterio": _rs.get("criterio"),
                       "populacao_ibge": _rs.get("populacao_ibge"), "orgaos": _tr_n}
 
+# ---- data do ato de nomeação encontrada no Diário Oficial (etl/posses.py), para ocupantes sem data
+_ps_p = DATA / "generated" / "posses.yaml"
+_posses = ((yaml.safe_load(open(_ps_p, encoding="utf-8")) or {}).get("posses") or {}) if _ps_p.exists() else {}
+
 # ---- quanto o cargo paga, segundo a lei (subsídio e benefícios), anexado ao cargo
 _sb_p = DATA / "generated" / "subsidios.yaml"
 _sb_n = 0
@@ -252,7 +256,12 @@ if _sb_p.exists():
     _sb = yaml.safe_load(open(_sb_p, encoding="utf-8")) or {}
     for _cid, _c in (_sb.get("cargos") or {}).items():
         if _cid not in nodes: continue
-        nodes[_cid]["subsidio"] = {k: _c.get(k) for k in ("subsidio_mensal_bruto", "vigencia_desde", "norma", "norma_url", "beneficios", "familia", "checked_at", "observacao") if _c.get(k) is not None}
+        def _iso(v):
+            if isinstance(v, (datetime.date, datetime.datetime)): return v.isoformat()
+            if isinstance(v, dict): return {k2: _iso(v2) for k2, v2 in v.items()}
+            if isinstance(v, list): return [_iso(x) for x in v]
+            return v
+        nodes[_cid]["subsidio"] = {k: _iso(_c.get(k)) for k in ("subsidio_mensal_bruto", "vigencia_desde", "norma", "norma_url", "beneficios", "familia", "checked_at", "observacao") if _c.get(k) is not None}
         _sb_n += 1
 
 # ---- composição dos colegiados (norma que cria cada conselho), anexada ao nó
@@ -548,6 +557,10 @@ for n in nodes.values():
         if sab:
             s = max(sab, key=lambda s: str(s["deliberacao"]))
             e["sabatina"] = {"date": str(s["deliberacao"]), "sim": s.get("votos_sim"), "nao": s.get("votos_nao"), "msf": s.get("msf"), "url": s.get("url"), "resultado": s.get("resultado")}
+        _pos = _posses.get(f"{n['id']}#{p.get('id')}") or _posses.get(n["id"])
+        if _pos and _pos.get("data") and (not p.get("started_at")) and same_person(_pos.get("pessoa_nome") or "", p.get("name") or ""):
+            e["dou"] = {"date": str(_pos["data"]), "url": _pos.get("dou_url"), "act": _pos.get("ato")}
+            e["date"] = str(_pos["data"]); p["started_at"] = e["date"]; p["started_at_source"] = "dou"; e["date_is_ato"] = True
         dou = [d for d in n.get("dou") or [] if d.get("name") and same_person(d["name"], p.get("name") or "") and d.get("verb") in ("NOMEAR", "DESIGNAR")]
         if dou:
             d = max(dou, key=lambda d: str(d["date"])); e["dou"] = {"date": str(d["date"]), "url": d.get("url"), "act": d.get("act")}

@@ -28,6 +28,7 @@ run "Sabatinas" $PY etl/sabatinas.py
 run "Notícias" $PY etl/noticias.py
 run "DOU" $PY etl/dou.py
 run "DOU assinaturas" $PY etl/dou_assinaturas.py
+run "Posses" $PY etl/posses.py
 run "Segundo escalão" $PY etl/segundo_escalao.py
 run "Dirigentes" $PY etl/dirigentes.py
 run "Wikipédia" $PY etl/wikipedia.py

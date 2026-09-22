@@ -187,8 +187,8 @@ h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid va
 .om-it .t{font-weight:600}.om-it .m{font-family:var(--mono);font-size:11px;color:var(--ink-3);display:block;margin-top:2px}
 .om-it .m b{color:var(--ink);font-weight:600}.om-it .m .bad{color:var(--leg);font-weight:600}.om-it .m .ok{color:var(--ok)}
 .om-it .who{font-size:13px;color:var(--ink-2);margin-top:3px}.om-it .who a{color:var(--accent)}
-.cmp{display:grid;gap:2px}.cmp-row{display:flex;justify-content:space-between;gap:12px;align-items:baseline;font-size:13.8px;padding:4px 0;border-bottom:1px solid var(--line-2)}
-.cmp-row .c a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}.cmp-row .t{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:normal;text-align:right}
+.cmp{display:grid;gap:2px}.cmp-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px;align-items:baseline;font-size:13.8px;padding:4px 0;border-bottom:1px solid var(--line-2)}
+.cmp-row .c a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}.cmp-row .t{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap;text-align:right;margin-left:auto}
 .hist{display:grid;grid-template-columns:auto 1fr auto;gap:2px 12px;font-size:13.5px}.hist .hm{display:contents}.hist .hy{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);white-space:nowrap;padding-top:2px}.hist .hn a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}.hist .hn em{font-style:normal;font-size:11px;color:var(--ink-3);margin-left:4px}.hist .hd{font-size:12px;color:var(--ink-3);text-align:right;white-space:nowrap}.hist .cur .hn{font-weight:600}@media(max-width:520px){.hist{grid-template-columns:auto 1fr}.hist .hd{grid-column:2;text-align:left;margin-top:-2px;margin-bottom:4px}}
 .simples{font-size:13.5px;color:var(--ink-2);margin:4px 0 2px;padding-left:10px;border-left:2px solid var(--line-2);line-height:1.45}.simples i{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-left:6px}
 .arrec .n{font-family:var(--disp);font-size:clamp(22px,3.2vw,30px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1;word-break:break-all}
@@ -547,7 +547,7 @@ function entryHtml(e, n){
     if(e.sabatina){ const s=e.sabatina; const ok=s.resultado==='APROVADA_NO_PLENARIO'; parts.push(`${ok?'aprovado':'rejeitado'} pelo Senado em ${fmtLong(s.date)}${s.sim!=null?` por ${s.sim} a ${s.nao}`:''}${s.url?` <a href="${s.url}" target="_blank" rel="noopener">↗</a>`:''}`); }
     else if(n&&n.sabatina) parts.push(`cargo sujeito a sabatina no Senado`);
     if(e.dou) parts.push(`nomeação publicada no DOU em ${fmtLong(e.dou.date)}${e.dou.url?` <a href="${e.dou.url}" target="_blank" rel="noopener">↗</a>`:''}`);
-    if(e.date) parts.push(`no cargo desde ${fmtLong(e.date)}`); else if(e.sabatina) parts.push(`data de posse ainda não conferida`); else parts.push(`data de posse não informada`);
+    if(e.date) parts.push(e.date_is_ato?`no cargo desde a publicação do ato, em ${fmtLong(e.date)}`:`no cargo desde ${fmtLong(e.date)}`); else if(e.sabatina) parts.push(`data de posse ainda não conferida`); else parts.push(`data de posse não informada`);
     if(e.term_kind==='compulsoria') parts.push(`cargo vitalício; aposentadoria compulsória aos 75 anos, em ${fmtLong(e.term_end)}`); else if(e.term_end) parts.push(`mandato até ${fmtLong(e.term_end)}`); else if(e.term_note) parts.push(e.term_note); }
   else { if(e.date) parts.push(`no cargo desde ${fmtLong(e.date)}`); }
   if(e.acting) parts.unshift(`<span class="tag">interino</span>`);
@@ -832,7 +832,7 @@ function subsidioHtml(n){
   const b=n.subsidio; if(!b) return '';
   const v=b.subsidio_mensal_bruto;
   const bens=(b.beneficios||[]);
-  const nat=x=>x.natureza==='indenizatoria'?'verba indenizatória':'parte da remuneração';
+  const nat=x=>x.natureza==='indenizatoria'?'indenizatória':'remuneração';
   return `<div class="card"><h2>Quanto o cargo paga${v?` <span style="color:var(--ink-3);font-weight:500">· ${brl(v)} por mês</span>`:''}</h2>
   <p style="font-size:13px;color:var(--ink-2);margin:0 0 8px">${v?`Subsídio bruto mensal fixado em ${esc(b.norma||'lei')}${b.vigencia_desde?`, vigente desde ${fmtDate(b.vigencia_desde)}`:''}. Valor de direito, antes de descontos; o que foi pago de fato aparece na ficha de quem ocupa o cargo, quando a folha publica o nome.`:`O valor não está fixado em norma única. ${esc(b.observacao||'')}`} ${b.norma_url?`<a href="${b.norma_url}" target="_blank" rel="noopener">Ver a norma ↗</a>`:''}</p>
   ${bens.length?`<h4 style="margin:8px 0 4px;font-size:13px">Além do subsídio</h4><div class="cmp">${bens.map(x=>`<div class="cmp-row"><span class="c">${esc(x.nome)}${x.norma?` <span style="color:var(--ink-3);font-size:12px">${esc(x.norma)}</span>`:''}</span><span class="t">${x.valor_mensal_ou_teto?brl(x.valor_mensal_ou_teto):''}${x.valor_mensal_ou_teto?' · ':''}${nat(x)}</span></div>`).join('')}</div>
