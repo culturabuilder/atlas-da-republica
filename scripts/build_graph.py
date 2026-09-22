@@ -602,9 +602,9 @@ _do = _load_yaml("doadores-2022.yaml"); _do_people = (_do.get("people") or {}) i
 _pp_ = _load_yaml("proposicoes.yaml"); _pr_people = (_pp_.get("people") or {}) if _pp_ else {}
 if _pp_: stats["proposicoes"] = {"resumo": _pp_.get("resumo"), "fonte": _pp_.get("fonte"), "generated_at": str(_pp_.get("generated_at")), "desde": str(_pp_.get("since") or "")}
 _vg = _load_yaml("viagens.yaml"); _vg_people = (_vg.get("people") or {}) if _vg else {}
-_ct = _load_yaml("cartao.yaml"); _ct_people = (_ct.get("people") or {}) if _ct else {}
+_ct = _load_yaml("cartao.yaml"); _ct_people = {}  # o extrato do CPGF identifica o portador (servidor de execução), não o ocupante: sem bloco por pessoa
 viagens = {k: _vg.get(k) for k in ("generated_at", "ano", "fonte", "orgaos", "total", "viagens_total", "nota")} if _vg else None
-cartao = {k: _ct.get(k) for k in ("generated_at", "ano", "meses", "fonte", "orgaos", "total", "nota")} if _ct else None
+cartao = {k: _ct.get(k) for k in ("generated_at", "ano", "meses", "fonte", "orgaos", "total", "nota", "orgaos_casados")} if _ct else None
 if _do: stats["doadores"] = {"eleicao": _do.get("eleicao"), "fonte": _do.get("fonte"), "limiar_pf": _do.get("limiar_pf"), "generated_at": str(_do.get("generated_at"))}
 if _rm: stats["remuneracao"] = {"mes": _rm.get("mes"), "fonte": _rm.get("fonte"), "nota": _rm.get("nota"), "generated_at": str(_rm.get("generated_at"))}
 if _pt: stats["patrimonio"] = {"fonte": _pt.get("fonte"), "ipca_fator_2018_2022": _pt.get("ipca_fator_2018_2022"), "generated_at": str(_pt.get("generated_at"))}
@@ -680,6 +680,89 @@ if _ap_p.exists():
 stats["sinais"] = {"pessoas": sum(1 for r in people_index.values() if r.get("sinais")), "por_tipo": dict(__import__("collections").Counter(x["tipo"] for r in people_index.values() for x in r.get("sinais") or []))}
 stats["omissao"] = (omissao or {}).get("summary"); stats["resumos"] = len(_rs); stats["historico_cargos"] = _hi_n; stats["segundo_escalao"] = _se_n; stats["atividade_pessoas"] = len(atividade)
 stats["people"] = len(people_index)
+# ---- números do projeto: o README descreve o que existe hoje, gerado a partir deste build
+def _cobertura():
+    _pos = [n for n in nodes.values() if n["type"] == "dept_head"]
+    _com = sum(1 for n in _pos if n.get("people"))
+    _heads = {n.get("head_of") for n in _pos}
+    _orgs = [n for n in nodes.values() if n["type"] == "department"]
+    _sem_chefia = [n for n in _orgs if n["id"] not in _heads]
+    _cole = [n for n in nodes.values() if n["type"] in ("commission", "advisory")]
+    _cole_sem = [n for n in _cole if not n.get("people")]
+    _nom = [(n, p) for n in _pos for p in (n.get("people") or []) if n.get("nomeado_por") or n.get("indicado_por")]
+    _sem_data = sum(1 for n, p in _nom if not p.get("started_at"))
+    return {"nos": stats["nodes"], "arestas": stats["edges"], "pessoas": len(people_index), "cargos": len(_pos), "cargos_com": _com,
+            "cargos_sem": len(_pos) - _com, "orgaos_sem_chefia": len(_sem_chefia), "colegiados": len(_cole), "colegiados_sem_membros": len(_cole_sem),
+            "nomeacoes": len(_nom), "nomeacoes_sem_data": _sem_data, "cadeiras": stats["seats_total"], "cadeiras_ocupadas": stats["seats_filled"]}
+
+_cov = _cobertura(); stats["cobertura"] = _cov
+
+# ---- registro de execução: o que cada conector fez na última rodada e quando cada bloco do site foi lido
+# (scripts/update.sh escreve build/_execucao.tsv; os "lido em" por bloco vêm do generated_at de cada arquivo)
+BLOCOS = {  # rótulo no site -> arquivo que o alimenta
+    "Ocupantes (Câmara e Senado)": "parlamentares.yaml", "Comissões do Congresso": "comissoes.yaml", "Estrutura (SIORG)": "siorg.yaml",
+    "Segundo escalão": "segundo-escalao.yaml", "Sabatinas": "sabatinas.yaml", "Notícias": "noticias.json", "Diário Oficial": "dou.json",
+    "Quem assina os atos": "dou-assinaturas.yaml", "Histórico dos cargos": "historico.yaml", "Sem decisão": "omissao.yaml",
+    "Temas": "temas.yaml", "Arrecadação": "arrecadacao.yaml", "Atividade parlamentar": "atividade.yaml", "Proposições": "proposicoes.yaml",
+    "Gabinetes": "gabinetes.yaml", "Gabinetes do Senado": "gabinetes-senado.yaml", "Emendas": "emendas.yaml", "Renúncias fiscais": "renuncias.yaml",
+    "Acima do teto": "teto.yaml", "Remuneração": "remuneracao.yaml", "Viagens": "viagens.yaml", "Cartão corporativo": "cartao.yaml",
+    "Orçamento": "orcamento.yaml", "Agenda pública": "agendas.yaml", "Agenda do Planalto": "agenda-planalto.yaml",
+    "Patrimônio (TSE)": "patrimonio.yaml", "Doadores (TSE)": "doadores-2022.yaml", "Candidaturas (TSE)": "candidaturas.yaml",
+    "Votos por município (TSE)": "votos-2022.yaml", "Resumos em linguagem simples": "resumos.yaml",
+}
+_ex_path = DATA / "generated" / "_execucao.yaml"
+_ant = (yaml.safe_load(open(_ex_path, encoding="utf-8")) if _ex_path.exists() else None) or {}
+_conectores = dict((_ant.get("conectores") or {}))
+_tsv = OUT / "_execucao.tsv"
+if _tsv.exists():
+    _hoje = datetime.date.today().isoformat()
+    for _ln in _tsv.read_text(encoding="utf-8").splitlines():
+        _pt = _ln.split("\t")
+        if len(_pt) != 3: continue
+        _nm, _st, _sg = _pt[0], _pt[1], int(_pt[2] or 0)
+        _r = _conectores.get(_nm) or {}
+        _r.update({"status": _st, "segundos": _sg, "rodou_em": _hoje})
+        if _st == "ok": _r["ok_em"] = _hoje
+        _conectores[_nm] = _r
+_blocos = {}
+for _lbl, _fn in BLOCOS.items():
+    _fp = DATA / "generated" / _fn
+    if not _fp.exists(): _blocos[_lbl] = {"arquivo": _fn, "existe": False}; continue
+    try:
+        _d = json.load(open(_fp, encoding="utf-8")) if _fn.endswith(".json") else yaml.safe_load(open(_fp, encoding="utf-8"))
+        _ga = str((_d or {}).get("generated_at") or "")[:10]
+    except Exception: _ga = ""
+    if not _ga: _ga = datetime.date.fromtimestamp(_fp.stat().st_mtime).isoformat()
+    _blocos[_lbl] = {"arquivo": _fn, "existe": True, "lido_em": _ga}
+_exec = {"generated_at": datetime.date.today().isoformat(),
+         "nota": "GERADO por scripts/build_graph.py a partir de build/_execucao.tsv (scripts/update.sh) e do generated_at de cada arquivo.",
+         "conectores": _conectores, "blocos": _blocos}
+_ex_path.write_text("# GERADO por scripts/build_graph.py. Não edite à mão.\n" + yaml.dump(_exec, allow_unicode=True, sort_keys=False, width=120), encoding="utf-8")
+_falhas = sorted(k for k, v in _conectores.items() if v.get("status") == "falhou")
+_velhos = sorted(k for k, v in _blocos.items() if v.get("lido_em") and v["lido_em"] < (datetime.date.today() - datetime.timedelta(days=7)).isoformat())
+stats["execucao"] = {"gerado_em": _exec["generated_at"], "conectores": len(_conectores), "falhas": _falhas, "blocos": _blocos, "blocos_velhos": _velhos}
+print(f"   execução: {len(_conectores)} conectores registrados, {len(_falhas)} com falha; {len(_velhos)} blocos com mais de 7 dias")
+_readme = ROOT / "README.md"
+if _readme.exists() and "<!-- ATLAS:NUMEROS -->" in _readme.read_text(encoding="utf-8"):
+    _t = _readme.read_text(encoding="utf-8")
+    _bloco = f"""<!-- ATLAS:NUMEROS -->
+<!-- Gerado por scripts/build_graph.py a cada build. Não edite à mão. -->
+| O que o grafo tem hoje | |
+|---|---|
+| Nós e relações | **{_cov['nos']}** nós · **{_cov['arestas']}** relações, cada uma com citação legal |
+| Pessoas | **{_cov['pessoas']}** ocupando **{_cov['cadeiras_ocupadas']}** de **{_cov['cadeiras']}** cadeiras |
+| Cargos de chefia | **{_cov['cargos_com']}** de **{_cov['cargos']}** com ocupante ({_cov['cargos_sem']} vazios) |
+| Órgãos sem cargo de chefia mapeado | **{_cov['orgaos_sem_chefia']}** (tribunais regionais, estatais, universidades) |
+| Colegiados sem composição registrada | **{_cov['colegiados_sem_membros']}** de **{_cov['colegiados']}** |
+| Nomeações sem data de posse | **{_cov['nomeacoes_sem_data']}** de **{_cov['nomeacoes']}** |
+
+Atualizado em {stats['generated_at']}.
+<!-- /ATLAS:NUMEROS -->"""
+    import re as _re
+    _t = _re.sub(r"<!-- ATLAS:NUMEROS -->.*?<!-- /ATLAS:NUMEROS -->", lambda _m: _bloco, _t, flags=_re.S)
+    _readme.write_text(_t, encoding="utf-8")
+    print("   README atualizado com os números deste build")
+
 graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
 HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "budget", "dou", "candidaturas", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")

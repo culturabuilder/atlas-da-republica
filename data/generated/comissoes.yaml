@@ -1,5 +1,70 @@
 # GERADO por etl/comissoes.py. Não edite à mão.
 generated_from: legis.senado.leg.br/dadosabertos + dadosabertos.camara.leg.br
+pessoas_reaproveitadas: 61
+ids_corrigidos:
+  br-p-cd-353: br-p-cd-73788 (Ricardo Barros)
+  br-p-cd-3695: br-p-cd-74858 (Lindbergh Farias)
+  br-p-cd-3883: br-p-cd-74158 (Mário Heringer)
+  br-p-cd-4602: br-p-cd-141408 (Cleber Verde)
+  br-p-cd-4650: br-p-cd-141421 (Eduardo da Fonte)
+  br-p-cd-4676: br-p-cd-141450 (Hugo Leal)
+  br-p-cd-4690: br-p-cd-141555 (Vinicius Carvalho)
+  br-p-cd-4693: br-p-cd-141459 (João Maia)
+  br-p-cd-4738: br-p-cd-141456 (Jilmar Tatto)
+  br-p-cd-4807: br-p-cd-150418 (Márcio Marinho)
+  br-p-cd-5215: br-p-cd-160666 (Félix Mendonça Júnior)
+  br-p-cd-5222: br-p-cd-160600 (Arthur Oliveira Maia)
+  br-p-cd-5234: br-p-cd-143632 (Domingos Neto)
+  br-p-cd-5259: br-p-cd-160632 (Zé Silva)
+  br-p-cd-5270: br-p-cd-160758 (Domingos Sávio)
+  br-p-cd-5300: br-p-cd-160592 (Zeca Dirceu)
+  br-p-cd-552: br-p-cd-74090 (Átila Lins)
+  br-p-cd-5642: br-p-cd-69871 (Bacelar)
+  br-p-cd-5693: br-p-cd-178858 (Mário Negromonte Jr.)
+  br-p-cd-5766: br-p-cd-178931 (Luciano Ducci)
+  br-p-cd-5779: br-p-cd-178945 (Rosangela Gomes)
+  br-p-cd-5788: br-p-cd-178954 (Lucio Mosquini)
+  br-p-cd-5796: br-p-cd-178962 (Carlos Gomes)
+  br-p-cd-5804: br-p-cd-178970 (João Daniel)
+  br-p-cd-5817: br-p-cd-178983 (Marcio Alvino)
+  br-p-cd-5834: br-p-cd-179000 (Marcelo Álvaro Antônio)
+  br-p-cd-6043: br-p-cd-98057 (Lafayette de Andrada)
+  br-p-cd-6053: br-p-cd-143084 (Tiago Dimas)
+  br-p-cd-6054: br-p-cd-156190 (Marcel van Hattem)
+  br-p-cd-6059: br-p-cd-198197 (Greyce Elias)
+  br-p-cd-6105: br-p-cd-204396 (Vermelho)
+  br-p-cd-6125: br-p-cd-204419 (Glaustin da Fokus)
+  br-p-cd-613: br-p-cd-74295 (Inácio Arruda)
+  br-p-cd-6130: br-p-cd-204425 (Silvio Costa Filho)
+  br-p-cd-6158: br-p-cd-204455 (Luiz Lima)
+  br-p-cd-6175: br-p-cd-204473 (General Girão)
+  br-p-cd-6188: br-p-cd-204486 (Mauro Benevides Filho)
+  br-p-cd-6209: br-p-cd-204508 (Igor Timo)
+  br-p-cd-6218: br-p-cd-204517 (Zé Vitor)
+  br-p-cd-6227: br-p-cd-204526 (Luiz Philippe de Orleans e Bragança)
+  br-p-cd-6250: br-p-cd-204549 (AJ Albuquerque)
+  br-p-cd-6267: br-p-cd-204566 (Marreca Filho)
+  br-p-cd-6408: br-p-cd-123086 (Átila Lira)
+  br-p-cd-6409: br-p-cd-153423 (Renilce Nicodemos)
+  br-p-cd-6410: br-p-cd-160161 (Marcelo Queiroz)
+  br-p-cd-6444: br-p-cd-220553 (Denise Pessôa)
+  br-p-cd-6458: br-p-cd-220568 (Gustavo Gayer)
+  br-p-cd-6461: br-p-cd-220571 (Daniel Agrobom)
+  br-p-cd-6462: br-p-cd-220572 (Marussa Boldrin)
+  br-p-cd-6477: br-p-cd-220588 (Roberto Duarte)
+  br-p-cd-6489: br-p-cd-220602 (Dimas Gadelha)
+  br-p-cd-6494: br-p-cd-220607 (Max Lemos)
+  br-p-cd-6511: br-p-cd-220624 (Robinson Faria)
+  br-p-cd-6515: br-p-cd-220628 (Mauricio do Vôlei)
+  br-p-cd-6547: br-p-cd-220662 (Lucas Ramos)
+  br-p-cd-6564: br-p-cd-220682 (Tadeu Veneri)
+  br-p-cd-6565: br-p-cd-220683 (Beto Richa)
+  br-p-cd-6576: br-p-cd-220694 (Ricardo Maia)
+  br-p-cd-6585: br-p-cd-220703 (Neto Carletto)
+  br-p-cd-6597: br-p-cd-221338 (Professora Luciene Cavalcante)
+pessoas_novas:
+  - Ana Paula Lobato (MA/sf)
+  - Eduardo Girão (?/sf)
 nodes:
   - id: br-comissao-de-assuntos-economicos-do-senado
     _merge_only: true
@@ -19653,7 +19718,7 @@ positions:
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
       image_url: http://www.senado.leg.br/senadores/img/fotos-oficiais/senador5985.jpg
-    - id: br-p-cd-6227
+    - id: br-p-cd-204526
       name: Luiz Philippe de Orleans e Bragança
       party: PL
       uf: SP
@@ -19661,6 +19726,7 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/204526.jpg
     - id: br-p-sf-5748
       name: Veneziano Vital do Rêgo
       party: MDB
@@ -19706,7 +19772,7 @@ positions:
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
       image_url: http://www.senado.leg.br/senadores/img/fotos-oficiais/senador22.jpg
-    - id: br-p-cd-6130
+    - id: br-p-cd-204425
       name: Silvio Costa Filho
       party: REPUBLICANOS
       uf: PE
@@ -19714,7 +19780,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6458
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/204425.jpg
+    - id: br-p-cd-220568
       name: Gustavo Gayer
       party: PL
       uf: GO
@@ -19722,7 +19789,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6175
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220568.jpg
+    - id: br-p-cd-204473
       name: General Girão
       party: PL
       uf: RN
@@ -19730,7 +19798,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-5693
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/204473.jpg
+    - id: br-p-cd-178858
       name: Mário Negromonte Jr.
       party: PSB
       uf: BA
@@ -19738,7 +19807,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6054
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/178858.jpg
+    - id: br-p-cd-156190
       name: Marcel van Hattem
       party: NOVO
       uf: RS
@@ -19746,8 +19816,9 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/156190.jpg
   br-comissao-mista-de-orcamento:
-    - id: br-p-cd-5234
+    - id: br-p-cd-143632
       name: Domingos Neto
       party: PSD
       uf: CE
@@ -19755,6 +19826,7 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/143632.jpg
     - id: br-p-sf-4994
       name: Eduardo Braga
       party: MDB
@@ -19854,7 +19926,7 @@ positions:
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
       image_url: http://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg
-    - id: br-p-cd-5222
+    - id: br-p-cd-160600
       name: Arthur Oliveira Maia
       party: UNIÃO
       uf: BA
@@ -19862,7 +19934,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6188
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/160600.jpg
+    - id: br-p-cd-204486
       name: Mauro Benevides Filho
       party: UNIÃO
       uf: CE
@@ -19870,7 +19943,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6209
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/204486.jpg
+    - id: br-p-cd-204508
       name: Igor Timo
       party: UNIÃO
       uf: MG
@@ -19878,7 +19952,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-4650
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/204508.jpg
+    - id: br-p-cd-141421
       name: Eduardo da Fonte
       party: PP
       uf: PE
@@ -19886,7 +19961,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-353
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/141421.jpg
+    - id: br-p-cd-73788
       name: Ricardo Barros
       party: PP
       uf: PR
@@ -19894,7 +19970,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6250
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/73788.jpg
+    - id: br-p-cd-204549
       name: AJ Albuquerque
       party: PP
       uf: CE
@@ -19902,7 +19979,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-552
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/204549.jpg
+    - id: br-p-cd-74090
       name: Átila Lins
       party: PSD
       uf: AM
@@ -19910,7 +19988,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-4676
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/74090.jpg
+    - id: br-p-cd-141450
       name: Hugo Leal
       party: PSD
       uf: RJ
@@ -19918,7 +19997,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-5796
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/141450.jpg
+    - id: br-p-cd-178962
       name: Carlos Gomes
       party: REPUBLICANOS
       uf: RS
@@ -19926,7 +20006,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-5779
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/178962.jpg
+    - id: br-p-cd-178945
       name: Rosangela Gomes
       party: REPUBLICANOS
       uf: RJ
@@ -19934,7 +20015,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6477
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/178945.jpg
+    - id: br-p-cd-220588
       name: Roberto Duarte
       party: REPUBLICANOS
       uf: AC
@@ -19942,7 +20024,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6409
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220588.jpg
+    - id: br-p-cd-153423
       name: Renilce Nicodemos
       party: MDB
       uf: PA
@@ -19950,7 +20033,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-4602
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/153423.jpg
+    - id: br-p-cd-141408
       name: Cleber Verde
       party: MDB
       uf: MA
@@ -19958,7 +20042,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6565
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/141408.jpg
+    - id: br-p-cd-220683
       name: Beto Richa
       party: PSDB
       uf: PR
@@ -19966,7 +20051,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6053
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220683.jpg
+    - id: br-p-cd-143084
       name: Tiago Dimas
       party: PODE
       uf: TO
@@ -19974,7 +20060,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6218
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/143084.jpg
+    - id: br-p-cd-204517
       name: Zé Vitor
       party: PL
       uf: MG
@@ -19982,7 +20069,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-5834
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/204517.jpg
+    - id: br-p-cd-179000
       name: Marcelo Álvaro Antônio
       party: PL
       uf: MG
@@ -19990,7 +20078,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-5270
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/179000.jpg
+    - id: br-p-cd-160758
       name: Domingos Sávio
       party: PL
       uf: MG
@@ -19998,7 +20087,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6515
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/160758.jpg
+    - id: br-p-cd-220628
       name: Mauricio do Vôlei
       party: PL
       uf: MG
@@ -20006,7 +20096,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6105
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220628.jpg
+    - id: br-p-cd-204396
       name: Vermelho
       party: PL
       uf: PR
@@ -20014,7 +20105,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-4738
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/204396.jpg
+    - id: br-p-cd-141456
       name: Jilmar Tatto
       party: PT
       uf: SP
@@ -20022,7 +20114,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-3695
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/141456.jpg
+    - id: br-p-cd-74858
       name: Lindbergh Farias
       party: PT
       uf: RJ
@@ -20030,7 +20123,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6564
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/74858.jpg
+    - id: br-p-cd-220682
       name: Tadeu Veneri
       party: PT
       uf: PR
@@ -20038,7 +20132,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-613
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220682.jpg
+    - id: br-p-cd-74295
       name: Inácio Arruda
       party: PCdoB
       uf: CE
@@ -20046,7 +20141,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6585
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/74295.jpg
+    - id: br-p-cd-220703
       name: Neto Carletto
       party: AVANTE
       uf: BA
@@ -20054,7 +20150,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-3883
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220703.jpg
+    - id: br-p-cd-74158
       name: Mário Heringer
       party: PDT
       uf: MG
@@ -20062,7 +20159,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6547
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/74158.jpg
+    - id: br-p-cd-220662
       name: Lucas Ramos
       party: PSB
       uf: PE
@@ -20070,7 +20168,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6054
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220662.jpg
+    - id: br-p-cd-156190
       name: Marcel van Hattem
       party: NOVO
       uf: RS
@@ -20078,6 +20177,7 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/156190.jpg
     - id: br-p-sf-742
       name: Marcelo Castro
       party: MDB
@@ -20150,7 +20250,7 @@ positions:
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
       image_url: http://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg
-    - id: br-p-cd-5259
+    - id: br-p-cd-160632
       name: Zé Silva
       party: UNIÃO
       uf: MG
@@ -20158,7 +20258,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6494
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/160632.jpg
+    - id: br-p-cd-220607
       name: Max Lemos
       party: UNIÃO
       uf: RJ
@@ -20166,7 +20267,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-4693
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220607.jpg
+    - id: br-p-cd-141459
       name: João Maia
       party: PP
       uf: RN
@@ -20174,7 +20276,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6511
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/141459.jpg
+    - id: br-p-cd-220624
       name: Robinson Faria
       party: PP
       uf: RN
@@ -20182,7 +20285,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6408
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220624.jpg
+    - id: br-p-cd-123086
       name: Átila Lira
       party: PP
       uf: PI
@@ -20190,7 +20294,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6461
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/123086.jpg
+    - id: br-p-cd-220571
       name: Daniel Agrobom
       party: PSD
       uf: GO
@@ -20198,7 +20303,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6462
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220571.jpg
+    - id: br-p-cd-220572
       name: Marussa Boldrin
       party: REPUBLICANOS
       uf: GO
@@ -20206,7 +20312,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-4807
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220572.jpg
+    - id: br-p-cd-150418
       name: Márcio Marinho
       party: REPUBLICANOS
       uf: BA
@@ -20214,7 +20321,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6576
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/150418.jpg
+    - id: br-p-cd-220694
       name: Ricardo Maia
       party: MDB
       uf: BA
@@ -20222,7 +20330,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6410
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220694.jpg
+    - id: br-p-cd-160161
       name: Marcelo Queiroz
       party: PSDB
       uf: RJ
@@ -20230,7 +20339,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6125
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/160161.jpg
+    - id: br-p-cd-204419
       name: Glaustin da Fokus
       party: PODE
       uf: GO
@@ -20238,7 +20348,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-5817
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/204419.jpg
+    - id: br-p-cd-178983
       name: Marcio Alvino
       party: PL
       uf: SP
@@ -20246,7 +20357,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6043
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/178983.jpg
+    - id: br-p-cd-98057
       name: Lafayette de Andrada
       party: PL
       uf: MG
@@ -20254,7 +20366,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6059
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/98057.jpg
+    - id: br-p-cd-198197
       name: Greyce Elias
       party: PL
       uf: MG
@@ -20262,7 +20375,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-5788
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/198197.jpg
+    - id: br-p-cd-178954
       name: Lucio Mosquini
       party: PL
       uf: RO
@@ -20270,7 +20384,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-4690
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/178954.jpg
+    - id: br-p-cd-141555
       name: Vinicius Carvalho
       party: PL
       uf: SP
@@ -20278,7 +20393,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6444
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/141555.jpg
+    - id: br-p-cd-220553
       name: Denise Pessôa
       party: PT
       uf: RS
@@ -20286,7 +20402,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-5300
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220553.jpg
+    - id: br-p-cd-160592
       name: Zeca Dirceu
       party: PT
       uf: PR
@@ -20294,7 +20411,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-5804
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/160592.jpg
+    - id: br-p-cd-178970
       name: João Daniel
       party: PT
       uf: SE
@@ -20302,7 +20420,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6489
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/178970.jpg
+    - id: br-p-cd-220602
       name: Dimas Gadelha
       party: PT
       uf: RJ
@@ -20310,7 +20429,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-5642
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220602.jpg
+    - id: br-p-cd-69871
       name: Bacelar
       party: PV
       uf: BA
@@ -20318,7 +20438,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6267
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/69871.jpg
+    - id: br-p-cd-204566
       name: Marreca Filho
       party: PRD
       uf: MA
@@ -20326,7 +20447,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-5215
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/204566.jpg
+    - id: br-p-cd-160666
       name: Félix Mendonça Júnior
       party: PDT
       uf: BA
@@ -20334,7 +20456,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-5766
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/160666.jpg
+    - id: br-p-cd-178931
       name: Luciano Ducci
       party: PSB
       uf: PR
@@ -20342,7 +20465,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6597
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/178931.jpg
+    - id: br-p-cd-221338
       name: Professora Luciene Cavalcante
       party: PSOL
       uf: SP
@@ -20350,7 +20474,8 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-    - id: br-p-cd-6158
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/221338.jpg
+    - id: br-p-cd-204455
       name: Luiz Lima
       party: NOVO
       uf: RJ
@@ -20358,3 +20483,4 @@ positions:
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/204455.jpg

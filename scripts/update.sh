@@ -7,39 +7,52 @@ PY=.venv/bin/python
 mkdir -p build build/cache-comissoes
 [ -f .env ] && set -a && . ./.env && set +a
 FAST=${1:-}
-echo "== SIORG";           $PY etl/siorg.py ${FAST:+--no-full} --cache build || echo "SIORG falhou (segue com os dados do último dia)"
-echo "== Câmara/Senado";   $PY etl/parlamentares.py --cache build || echo "Câmara/Senado falhou (segue com os dados do último dia)"
-echo "== Comissões";       $PY etl/comissoes.py --cache build/cache-comissoes || echo "comissões falhou (segue)"
-echo "== Build (1/2)";     $PY scripts/build_graph.py > /dev/null
-echo "== Sabatinas";       $PY etl/sabatinas.py || echo "Sabatinas falhou (segue com os dados do último dia)"
-[ -z "$FAST" ] && { echo "== Wikidata"; $PY etl/wikidata.py || echo "Wikidata falhou (segue)"; }
-echo "== Notícias";        $PY etl/noticias.py || echo "Notícias falhou (segue com os dados do último dia)"
-echo "== DOU";             $PY etl/dou.py || echo "DOU falhou (segue)"
-echo "== DOU assinaturas"; $PY etl/dou_assinaturas.py || echo "assinaturas falhou (segue)"
-echo "== Segundo escalão"; $PY etl/segundo_escalao.py || echo "segundo escalão falhou (segue)"
-echo "== Wikipédia";        $PY etl/wikipedia.py || echo "wikipedia falhou (segue)"
-echo "== Nascimentos";      $PY etl/nascimentos.py || echo "nascimentos falhou (segue)"
-echo "== Histórico";       $PY etl/historico.py || echo "histórico falhou (segue)"
-echo "== Omissão";         $PY etl/omissao.py || echo "omissão falhou (segue)"
-echo "== Temas";           $PY etl/temas.py || echo "temas falhou (segue)"
-echo "== Resumos";         $PY etl/resumos.py --limit 120 || echo "resumos falhou (segue)"
-echo "== Arrecadação";     $PY etl/arrecadacao.py || echo "arrecadação falhou (segue)"
-echo "== Atividade";       $PY etl/atividade.py || echo "atividade falhou (segue)"
-echo "== Votos 2022";      $PY etl/votos.py || echo "votos falhou (segue)"
-echo "== Patrimônio";      $PY etl/patrimonio.py || echo "patrimônio falhou (segue)"
-echo "== Doadores";        $PY etl/doadores.py || echo "doadores falhou (segue)"
-echo "== Candidaturas";    $PY etl/candidaturas.py || echo "candidaturas falhou (segue)"
-echo "== Proposições";     $PY etl/proposicoes.py || echo "proposições falhou (segue)"
-echo "== Gabinetes";       $PY etl/gabinetes.py || echo "gabinetes falhou (segue)"
-echo "== Gabinetes SF";    $PY etl/gabinetes_senado.py || echo "gabinetes do Senado falhou (segue)"
-echo "== Agendas";         $PY etl/agendas.py || echo "agendas falhou (segue)"
-echo "== Agenda Planalto"; $PY etl/agenda_planalto.py || echo "agenda do Planalto falhou (segue)"
-echo "== Emendas";         $PY etl/emendas.py || echo "emendas falhou (segue)"
-echo "== Renúncias";       $PY etl/renuncias.py || echo "renúncias falhou (segue)"
-echo "== Teto";            $PY etl/teto.py || echo "teto falhou (segue)"
-echo "== Viagens";         $PY etl/viagens.py || echo "viagens falhou (segue)"
-echo "== Cartão";          $PY etl/cartao.py || echo "cartão falhou (segue)"
-echo "== Remuneração";     $PY etl/remuneracao.py || echo "remuneração falhou (segue)"
-echo "== Orçamento";        $PY etl/orcamento.py || echo "Orçamento falhou (sem chave?)"
-echo "== Build (2/2)";     $PY scripts/build_graph.py
-echo "== Site";            $PY scripts/build_site.py --base "${SITE_BASE:-https://atlasdarepublica.org}" --prefix "${SITE_PREFIX:-}" --cname "${SITE_CNAME:-}"
+# registro de execução: cada conector vira uma linha "nome<TAB>status<TAB>segundos" em build/_execucao.tsv,
+# que scripts/build_graph.py transforma em data/generated/_execucao.yaml e o site mostra como "atualizado em".
+EXEC_LOG=build/_execucao.tsv
+: > "$EXEC_LOG"
+run() {  # run "Nome visível" comando...
+  local nome="$1"; shift
+  local t0=$(date +%s)
+  echo "== $nome"
+  if "$@"; then local st=ok; else local st=falhou; echo "$nome falhou (segue com os dados do último dia)"; fi
+  printf '%s\t%s\t%s\n' "$nome" "$st" "$(( $(date +%s) - t0 ))" >> "$EXEC_LOG"
+}
+run "SIORG" $PY etl/siorg.py ${FAST:+--no-full} --cache build
+run "Câmara/Senado" $PY etl/parlamentares.py --cache build
+run "Comissões" $PY etl/comissoes.py --cache build/cache-comissoes
+run "Build (1/2)" $PY scripts/build_graph.py > /dev/null
+run "Sabatinas" $PY etl/sabatinas.py
+[ -z "$FAST" ] && { run "Wikidata" $PY etl/wikidata.py || echo "Wikidata falhou (segue)"; }
+run "Notícias" $PY etl/noticias.py
+run "DOU" $PY etl/dou.py
+run "DOU assinaturas" $PY etl/dou_assinaturas.py
+run "Segundo escalão" $PY etl/segundo_escalao.py
+run "Wikipédia" $PY etl/wikipedia.py
+run "Nascimentos" $PY etl/nascimentos.py
+run "Histórico" $PY etl/historico.py
+run "Omissão" $PY etl/omissao.py
+run "Temas" $PY etl/temas.py
+run "Resumos" $PY etl/resumos.py --limit 120
+run "Arrecadação" $PY etl/arrecadacao.py
+run "Atividade" $PY etl/atividade.py
+run "Votos 2022" $PY etl/votos.py
+run "Patrimônio" $PY etl/patrimonio.py
+run "Doadores" $PY etl/doadores.py
+run "Candidaturas" $PY etl/candidaturas.py
+run "Proposições" $PY etl/proposicoes.py
+run "Gabinetes" $PY etl/gabinetes.py
+run "Gabinetes SF" $PY etl/gabinetes_senado.py
+run "Agendas" $PY etl/agendas.py
+run "Agenda Planalto" $PY etl/agenda_planalto.py
+run "Emendas" $PY etl/emendas.py
+run "Renúncias" $PY etl/renuncias.py
+run "Teto" $PY etl/teto.py
+run "Viagens" $PY etl/viagens.py
+run "Cartão" $PY etl/cartao.py
+run "Remuneração" $PY etl/remuneracao.py
+run "Orçamento" $PY etl/orcamento.py
+run "Build (2/2)" $PY scripts/build_graph.py
+run "Site" $PY scripts/build_site.py --base "${SITE_BASE:-https://atlasdarepublica.org}" --prefix "${SITE_PREFIX:-}" --cname "${SITE_CNAME:-}"
+printf '%s\t%s\t%s\n' "Site" "ok" "0" >> "$EXEC_LOG"
+echo "registro de execução em data/generated/_execucao.yaml"
