@@ -200,6 +200,8 @@ if _sab_p.exists():
     _sab_out.write_text("# GERADO por scripts/build_graph.py a partir de sabatinas.yaml. Não edite à mão.\n" + yaml.dump({"positions": _by_pos}, allow_unicode=True, sort_keys=False, width=110), encoding="utf-8")
     sources.append(("generated", _sab_out))
 sources.append(("generated", DATA / "generated" / "ocupantes.yaml"))
+# último recurso: o ato de nomeação no Diário Oficial, buscado pelo nome do cargo (etl/ocupantes_dou.py)
+sources.append(("generated", DATA / "generated" / "ocupantes-dou.yaml"))
 for _, ppl_path in sources:
     if not ppl_path.exists(): continue
     ppl = yaml.safe_load(open(ppl_path, encoding="utf-8")) or {}
