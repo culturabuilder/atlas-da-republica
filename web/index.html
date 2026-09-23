@@ -187,6 +187,9 @@ h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid va
 .om-it .t{font-weight:600}.om-it .m{font-family:var(--mono);font-size:11px;color:var(--ink-3);display:block;margin-top:2px}
 .om-it .m b{color:var(--ink);font-weight:600}.om-it .m .bad{color:var(--leg);font-weight:600}.om-it .m .ok{color:var(--ok)}
 .om-it .who{font-size:13px;color:var(--ink-2);margin-top:3px}.om-it .who a{color:var(--accent)}
+.cmpv{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;margin:0 0 6px}
+.cmpv .l{font-size:13.5px}.cmpv .v{font-family:var(--mono);font-size:12px;color:var(--ink-2);text-align:right}
+.cmpv .bar{grid-column:1/-1;height:12px;background:var(--line-2);border-radius:6px;overflow:hidden}.cmpv .bar i{display:block;height:100%}
 .cmp{display:grid;gap:2px}.cmp-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px;align-items:baseline;font-size:13.8px;padding:4px 0;border-bottom:1px solid var(--line-2)}
 .cmp-row .c a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}.cmp-row .t{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap;text-align:right;margin-left:auto}
 .hist{display:grid;grid-template-columns:auto 1fr auto;gap:2px 12px;font-size:13.5px}.hist .hm{display:contents}.hist .hy{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);white-space:nowrap;padding-top:2px}.hist .hn a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}.hist .hn em{font-style:normal;font-size:11px;color:var(--ink-3);margin-left:4px}.hist .hd{font-size:12px;color:var(--ink-3);text-align:right;white-space:nowrap}.hist .cur .hn{font-weight:600}@media(max-width:520px){.hist{grid-template-columns:auto 1fr}.hist .hd{grid-column:2;text-align:left;margin-top:-2px;margin-bottom:4px}}
@@ -716,6 +719,34 @@ function arrecCard(inner){
   <div class="grid"><div><b class="${g>=0?'up':'down'}">${g==null?'—':(g>=0?'+':'')+g.toLocaleString('pt-BR',{maximumFractionDigits:1})}%</b>em valor real sobre o mesmo período de ${a.year-1} (IPCA)</div><div><b>${brl(y.prev_nominal)}</b>arrecadado até a mesma data em ${a.year-1}, sem correção</div><div><b>R$ ${Math.round(y.per_capita).toLocaleString('pt-BR')}</b>por habitante no ano (${(a.population/1e6).toFixed(0)} milhões)</div><div><b>${brl(j.ytd)}</b>de juros da dívida do governo federal em ${a.year}, até ${(j.last_month||'').slice(5,7)}/${(j.last_month||'').slice(2,4)}</div>${c.saude?`<div><b>${brl(c.saude.empenhado)}</b>empenhado pela Saúde no ano</div>`:''}${c.educacao?`<div><b>${brl(c.educacao.empenhado)}</b>empenhado pela Educação no ano</div>`:''}</div>
   <details><summary>Como este número é calculado</summary><p style="margin:6px 0 0">Soma das receitas realizadas da União nas origens "Impostos, taxas e contribuições de melhoria" e "Contribuições", por data de lançamento, conforme o Portal da Transparência (CSV anual, atualizado diariamente). A comparação com ${a.year-1} usa os mesmos meses e, no mês corrente, só até o mesmo dia; o valor real corrige pelo IPCA (IBGE, número-índice de ${a.ipca_ref_month}). O contador que corre é uma projeção: ao valor oficial até ${fmtDate(a.source_date)} soma-se o ritmo médio por segundo dos meses ${(a.rate_months||[]).join(', ')}; quando o dado oficial chega, o número se corrige. Juros: Banco Central, série 4607 (juros nominais do governo federal, fluxo mensal). Saúde e Educação: despesa empenhada do órgão superior no ano, Portal da Transparência. Não inclui estados e municípios.</p></details></div>`;
 }
+// classifica um benefício: vai para a pessoa (auxílios, ajudas de custo, adicionais) ou paga a estrutura do cargo
+const BEN_ESTRUTURA=/cota|gabinete|secret[áa]ri|passage|correio|escrit[óo]rio|imóvel|imovel|di[áa]ria|deslocamento|viagem|verba de representa/i;
+function benPessoal(b){ const n=(b&&b.nome)||''; if(BEN_ESTRUTURA.test(n)) return false; return true; }
+// periodicidade do benefício: mensal (×12), anual (×1) ou eventual (fora da conta anual)
+function benPeriodo(b){ const t=((b&&b.nome)||'')+' '+((b&&b.note)||'');
+  if(/n[ãa]o [ée] mensal|ajuda de custo|posse em outra localidade|remo[çc][ãa]o|quarentena|uma [úu]nica vez|por ocorr[êe]ncia/i.test(t)) return 'eventual';
+  if(/d[ée]cimo terceiro|natalina|ter[çc]o constitucional|adicional de f[ée]rias|anual/i.test(t)) return 'anual';
+  return 'mensal';
+}
+// projeção anual: mensais ×12, anuais ×1; eventuais aparecem à parte, sem entrar na soma
+function anualHtml(p, base, salarioMes, bens, mesLabel){
+  if(!salarioMes) return '';
+  const sal=salarioMes*12;
+  const uteis=bens.filter(b=>b.valor_mensal_ou_teto&&benPessoal(b)).map(b=>({nome:b.nome, per:benPeriodo(b), v:b.valor_mensal_ou_teto}));
+  const itens=uteis.filter(x=>x.per!=='eventual').map(x=>({nome:x.nome, ano:x.per==='mensal'?x.v*12:x.v, per:x.per}));
+  const eventuais=uteis.filter(x=>x.per==='eventual');
+  const benAno=itens.reduce((a,x)=>a+x.ano,0);
+  const tot=sal+benAno; const pct=sal?Math.round(100*benAno/sal):0;
+  const mx=Math.max(tot,1);
+  const barra=(l,v,cor)=>`<div class="cmpv"><span class="l">${l}</span><span class="bar"><i style="width:${Math.round(100*v/mx)}%;background:${cor}"></i></span><span class="v">${brl(v)}</span></div>`;
+  return `<h4 style="margin:12px 0 4px;font-size:13px">No ano, em valores de hoje</h4>
+  ${barra('Só o salário', sal, 'var(--accent)')}
+  ${benAno?barra('Salário + benefícios', tot, 'var(--povo)'):''}
+  ${benAno?`<p style="font-size:12.5px;color:var(--ink-2);margin:4px 0 6px">Os benefícios acrescentam <b>${brl(benAno)}</b> por ano, ou <b>${pct}%</b> sobre o salário.</p>
+  <div class="cmp">${itens.sort((a,b)=>b.ano-a.ano).map(x=>`<div class="cmp-row"><span class="c">${esc(x.nome)} <span style="color:var(--ink-3);font-size:12px">${x.per==='mensal'?'mensal':'uma vez por ano'}</span></span><span class="t">${brl(x.ano)} no ano</span></div>`).join('')}</div>`:'<p style="font-size:12.5px;color:var(--ink-3);margin:4px 0 0">Não há benefício pessoal mensal com valor fixado em norma para este cargo.</p>'}
+  ${eventuais.length?`<p style="font-size:12.5px;color:var(--ink-2);margin:8px 0 0">Fora da conta anual, porque não é pagamento regular: ${eventuais.map(x=>`${esc(x.nome)} (${brl(x.v)} por ocorrência)`).join(' · ')}.</p>`:''}
+  <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Projeção de 12 meses ${base==='folha'?`a partir da folha de ${mesLabel}`:'pelo valor que a lei fixa'}, sem 13º nem férias, que variam por regime. Benefícios são valores de direito: nem todo ocupante recebe todos, e alguns dependem de comprovação de despesa.</p>`;
+}
 // resumo do dinheiro por pessoa: separa o que vai para ela do que paga a estrutura do cargo.
 function dinheiroPessoaHtml(p){
   const r=p._rem, gb=p._gab, at=p._activity, vg=p._vg;
@@ -747,6 +778,7 @@ function dinheiroPessoaHtml(p){
   <p class="note" style="font-size:13px;color:var(--ink-2);margin:0 0 6px">Duas coisas diferentes: o que é pago à pessoa e o que paga a estrutura do cargo. O segundo grupo não vai para o bolso de ninguém.</p>
   ${pessoa.length?`<h4 style="margin:6px 0 2px;font-size:13px">Pago à pessoa</h4><div class="cmp">${pessoa.map(linha).join('')}</div>`:''}
   ${estrutura.length?`<h4 style="margin:10px 0 2px;font-size:13px">Estrutura do cargo</h4><div class="cmp">${estrutura.map(linha).join('')}</div>`:''}
+  ${anualHtml(p, r?'folha':'lei', r?r.bruto:(sub&&sub.subsidio_mensal_bruto), (sub&&sub.beneficios)||[], mes)}
   <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">${semFolha?'A folha com o nome desta pessoa não é publicada, então aparece o valor que a lei fixa para o cargo. ':''}Detalhe de cada item nos blocos abaixo. Verba indenizatória reembolsa despesa e não é salário.</p>`;
 }
 function agendaHtml(p){
