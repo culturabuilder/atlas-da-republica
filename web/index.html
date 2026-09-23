@@ -638,7 +638,7 @@ function dinheiroHtml(){
     out+=`<h3>Cartão corporativo em ${C.ano}</h3><p class="note">${esc(C.nota||'')} Fonte: ${esc(C.fonte||'')}, ${(C.meses||[]).length} meses.</p><div class="om">${stat(brl(C.total),'gastos no ano')}${stat(brl((C.orgaos||[]).reduce((a,x)=>a+(x.saques||0),0)),'sacados em espécie')}</div>${bars((C.orgaos||[]).slice(0,10), x=>(x.node_id&&N[x.node_id]?N[x.node_id].name:x.orgao), x=>x.total, {fmt:v=>brl(v), sub:it=>`${it.portadores} ${it.portadores===1?'cartão':'cartões'}${it.saques?` · saques ${brl(it.saques)}`:''}`, link:x=>x.node_id?'#'+x.node_id:null})}`;
     if(top&&top.unidades_top&&top.unidades_top.length) out+=`<h4 style="margin:10px 0 4px;font-size:14px">Onde o gasto acontece, no órgão que mais gasta (${esc(top.orgao)})</h4>${bars(top.unidades_top, x=>tit(x.nome), x=>x.valor, {fmt:v=>brl(v)})}`;
     if(top&&top.favorecidos_top&&top.favorecidos_top.length) out+=`<h4 style="margin:10px 0 4px;font-size:14px">Quem mais recebeu desse órgão</h4>${bars(top.favorecidos_top, x=>tit(x.nome), x=>x.valor, {fmt:v=>brl(v)})}`; }
-  const CT=G.stats.custos_top;
+  const CT=window.ATLAS_CUSTO_OK ? G.stats.custos_top : null;  // em revisão: ver custoHtml
   if(CT&&CT.length){ const mx=Math.max(...CT.map(x=>x.total_ano));
     out+=`<h3>Quanto custa cada tipo de cadeira por ano</h3><p class="note">Salário é só uma parte. A barra soma o que vai para a pessoa, o que paga a equipe e o que reembolsa despesa do mandato, com valores medianos entre quem ocupa o cargo. Encargos previdenciários, imóvel funcional, segurança e estrutura predial não entram.</p>
     <div class="custos">${CT.map(x=>`<div class="ct"><a class="nm" href="#${x.id}">${esc(x.nome)}</a><span class="tt">${brl(x.total_ano)}<span class="sal"> · salário ${x.pct_salario}%</span></span>
@@ -748,6 +748,7 @@ function benPeriodo(b){ const t=((b&&b.nome)||'')+' '+((b&&b.note)||'');
 }
 // projeção anual: mensais ×12, anuais ×1; eventuais aparecem à parte, sem entrar na soma
 function anualHtml(p, base, salarioMes, bens, mesLabel){
+  if (!window.ATLAS_CUSTO_OK) return '';  // em revisão junto com o custo da cadeira
   if(!salarioMes) return '';
   const sal=salarioMes*12;
   const uteis=bens.filter(b=>b.valor_mensal_ou_teto&&benPessoal(b)).map(b=>({nome:b.nome, per:benPeriodo(b), v:b.valor_mensal_ou_teto}));
@@ -919,6 +920,10 @@ function deAcc(t){ return String(t||'').replace(/[A-Za-zÀ-ÿ]+/g, w => { const 
 const CUSTO_COR={pessoa:'var(--accent)',equipe:'var(--exe)',despesa:'var(--povo)'};
 const CUSTO_NAT={pessoa:'vai para a pessoa',equipe:'paga outras pessoas',despesa:'reembolsa despesa'};
 function custoHtml(n){
+  // EM REVISÃO (23/09/2026): a auditoria interna encontrou erros no cálculo — extrapolação de um mês para o ano,
+  // dupla contagem de parcelas que já vêm na folha, teto usado como gasto e medianas de amostra mínima.
+  // O bloco fica fora do ar até o cálculo ser refeito; ver scratchpad/eval-numeros.md.
+  if (!window.ATLAS_CUSTO_OK) return '';
   const c=n.custo; if(!c||!c.total_ano) return '';
   const cam=c.camadas||[]; const tot=c.total_ano;
   const faixa=cam.map(x=>`<i style="width:${(100*x.ano/tot).toFixed(2)}%;background:${CUSTO_COR[x.natureza]}" title="${esc(x.nome)}: ${brl(x.ano)}"></i>`).join('');
