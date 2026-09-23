@@ -492,6 +492,7 @@ function renderPerson(p){
   setSheet(p.name, 'Pessoa');
   content.innerHTML = `<div class="card">${leituraBtn()}<div class="phead"><span class="big">${avatar(p)}</span><div><h1 style="margin:0">${esc(p.name)}</h1><p style="margin:4px 0 0;color:var(--ink-3)">${[p.party,p.uf].filter(Boolean).join(' · ')||'Pessoa'}${pm?` · na notícia ${pm.articles}× em 90 dias, última ${fmtDate(pm.last)}`:''}</p></div></div>
     <h3>Cargos</h3><div class="list">${pos||'<span class="seat">Sem cargo registrado.</span>'}</div>
+    ${dinheiroPessoaHtml(p)}
     ${activityHtml(p)}
     ${agendaHtml(p)}
     ${propHtml(p)}
@@ -714,6 +715,39 @@ function arrecCard(inner){
   return `<div class="${inner?'arrec inner':'card arrec'}"><h2 class="${inner?'sec first':''}">Arrecadação da União em ${a.year}</h2><div class="n" id="arrec-n">R$ ${Math.round(a.anchor.value).toLocaleString('pt-BR')}</div><div class="cap">impostos, taxas e contribuições · dado oficial até ${fmtDate(a.source_date)}; depois, projeção pelo ritmo dos últimos 3 meses (${brl(a.rate_per_second)} por segundo)</div>
   <div class="grid"><div><b class="${g>=0?'up':'down'}">${g==null?'—':(g>=0?'+':'')+g.toLocaleString('pt-BR',{maximumFractionDigits:1})}%</b>em valor real sobre o mesmo período de ${a.year-1} (IPCA)</div><div><b>${brl(y.prev_nominal)}</b>arrecadado até a mesma data em ${a.year-1}, sem correção</div><div><b>R$ ${Math.round(y.per_capita).toLocaleString('pt-BR')}</b>por habitante no ano (${(a.population/1e6).toFixed(0)} milhões)</div><div><b>${brl(j.ytd)}</b>de juros da dívida do governo federal em ${a.year}, até ${(j.last_month||'').slice(5,7)}/${(j.last_month||'').slice(2,4)}</div>${c.saude?`<div><b>${brl(c.saude.empenhado)}</b>empenhado pela Saúde no ano</div>`:''}${c.educacao?`<div><b>${brl(c.educacao.empenhado)}</b>empenhado pela Educação no ano</div>`:''}</div>
   <details><summary>Como este número é calculado</summary><p style="margin:6px 0 0">Soma das receitas realizadas da União nas origens "Impostos, taxas e contribuições de melhoria" e "Contribuições", por data de lançamento, conforme o Portal da Transparência (CSV anual, atualizado diariamente). A comparação com ${a.year-1} usa os mesmos meses e, no mês corrente, só até o mesmo dia; o valor real corrige pelo IPCA (IBGE, número-índice de ${a.ipca_ref_month}). O contador que corre é uma projeção: ao valor oficial até ${fmtDate(a.source_date)} soma-se o ritmo médio por segundo dos meses ${(a.rate_months||[]).join(', ')}; quando o dado oficial chega, o número se corrige. Juros: Banco Central, série 4607 (juros nominais do governo federal, fluxo mensal). Saúde e Educação: despesa empenhada do órgão superior no ano, Portal da Transparência. Não inclui estados e municípios.</p></details></div>`;
+}
+// resumo do dinheiro por pessoa: separa o que vai para ela do que paga a estrutura do cargo.
+function dinheiroPessoaHtml(p){
+  const r=p._rem, gb=p._gab, at=p._activity, vg=p._vg;
+  const posIds=(p._full||[]).map(q=>q.id).concat(p.positions||[]);
+  const sub=(posIds.map(id=>N[id]&&N[id].subsidio).filter(x=>x&&x.subsidio_mensal_bruto)[0])||null;
+  const cota=at&&at.cota, ger=r||sub||cota||gb||vg; if(!ger) return '';
+  const mes=r?`${(r.mes||'').slice(4,6)}/${(r.mes||'').slice(0,4)}`:'';
+  const pessoa=[], estrutura=[];
+  if(r){ pessoa.push(['Salário bruto no mês', r.bruto, `folha de ${mes}`]);
+    const c=r.componentes||{};
+    if(c.gratificacoes) pessoa.push(['Gratificações', c.gratificacoes, 'dentro do bruto']);
+    if(c.eventuais) pessoa.push(['Verbas eventuais', c.eventuais, 'dentro do bruto']);
+    if(c.indenizatorias) pessoa.push(['Verbas indenizatórias', c.indenizatorias, 'reembolso, fora do teto']);
+  } else if(sub){ pessoa.push(['Subsídio do cargo', sub.subsidio_mensal_bruto, 'fixado em lei; a folha nominal não é publicada']); }
+  const ca=gb&&gb.custo_ano, meses=(ca&&ca.meses)||9;
+  if(cota&&cota.media_mes) estrutura.push(['Cota parlamentar', cota.media_mes, `média mensal em ${cota.ano}`]);
+  else if(ca&&ca.cota) estrutura.push(['Cota para o exercício do mandato', ca.cota/meses, `média mensal; ${brl(ca.cota)} no ano`]);
+  const folha=(gb&&(gb.folha_mensal_estimada||gb.folha_mensal))||0;
+  if(folha) estrutura.push(['Equipe do gabinete', folha, `${gb.assessores||0} pessoas, folha ${gb.casa==='camara'?'estimada pela tabela de níveis':'do mês'}`]);
+  else if(gb&&gb.assessores) estrutura.push(['Equipe do gabinete', null, `${gb.assessores} pessoas; a folha do mês não veio na fonte`]);
+  if(gb&&gb.nao_inclusos_total) estrutura.push(['Fora da cota (diárias, passagens, correios)', gb.nao_inclusos_total/meses, `média mensal; ${brl(gb.nao_inclusos_total)} no ano`]);
+  if(gb&&gb.imovel_funcional==='Utilizou') estrutura.push(['Imóvel funcional', null, 'usa imóvel funcional em vez de auxílio-moradia']);
+  else if(gb&&gb.auxilio_moradia&&gb.auxilio_moradia!=='Não utilizou') estrutura.push(['Auxílio-moradia', null, esc(String(gb.auxilio_moradia))]);
+  if(vg&&vg.total) estrutura.push(['Viagens a serviço', vg.total/ (vg.meses||9), `média mensal; ${vg.viagens||0} viagens no ano`]);
+  if(!pessoa.length&&!estrutura.length) return '';
+  const linha=([l,v,nota])=>`<div class="cmp-row"><span class="c">${esc(l)} <span style="color:var(--ink-3);font-size:12px">${nota}</span></span><span class="t">${v==null?'—':brl(v)}</span></div>`;
+  const semFolha=!r&&sub;
+  return `<h3>Dinheiro no mês${mes?` · ${mes}`:''}</h3>
+  <p class="note" style="font-size:13px;color:var(--ink-2);margin:0 0 6px">Duas coisas diferentes: o que é pago à pessoa e o que paga a estrutura do cargo. O segundo grupo não vai para o bolso de ninguém.</p>
+  ${pessoa.length?`<h4 style="margin:6px 0 2px;font-size:13px">Pago à pessoa</h4><div class="cmp">${pessoa.map(linha).join('')}</div>`:''}
+  ${estrutura.length?`<h4 style="margin:10px 0 2px;font-size:13px">Estrutura do cargo</h4><div class="cmp">${estrutura.map(linha).join('')}</div>`:''}
+  <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">${semFolha?'A folha com o nome desta pessoa não é publicada, então aparece o valor que a lei fixa para o cargo. ':''}Detalhe de cada item nos blocos abaixo. Verba indenizatória reembolsa despesa e não é salário.</p>`;
 }
 function agendaHtml(p){
   const a=p._ag; if(!a||!a.compromissos_90d) return '';
