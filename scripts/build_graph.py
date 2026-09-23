@@ -751,6 +751,104 @@ def _sinais(rec):
 for pid, rec in people_index.items():
     s = _sinais(rec)
     if s: rec["sinais"] = s
+
+# ---- custo anual de cada cadeira: salário, benefícios da pessoa, equipe, custeio e viagens
+# Cada camada vem de dado real quando existe (mediana entre os ocupantes do cargo) e, quando não existe,
+# do valor que a norma fixa. O total nunca mistura o que vai para a pessoa com o que paga a estrutura.
+_BEN_ESTRUTURA = re.compile(r"cota|gabinete|secret[áa]ri|passage|correio|escrit[óo]rio|im[óo]vel|di[áa]ria|deslocamento|viagem|verba de representa", re.I)
+_BEN_EVENTUAL = re.compile(r"n[ãa]o [ée] mensal|ajuda de custo|posse em outra localidade|remo[çc][ãa]o|quarentena|uma [úu]nica vez|por ocorr[êe]ncia", re.I)
+_BEN_ANUAL = re.compile(r"d[ée]cimo terceiro|natalina|ter[çc]o constitucional|adicional de f[ée]rias", re.I)
+
+def _mediana(vals):
+    vals = sorted(v for v in vals if v)
+    if not vals: return None
+    n = len(vals); return vals[n // 2] if n % 2 else (vals[n // 2 - 1] + vals[n // 2]) / 2
+
+def _custo_cadeira(n):
+    ocupantes = [people_index.get(x.get("id")) for x in (n.get("people") or [])]
+    ocupantes = [o for o in ocupantes if o]
+    sub = n.get("subsidio") or {}
+    rem = _mediana([(o.get("remuneracao") or {}).get("bruto") for o in ocupantes])
+    salario_mes = rem or sub.get("subsidio_mensal_bruto")
+    if not salario_mes: return None
+    camadas = [{"k": "salario", "nome": "Salário da pessoa", "natureza": "pessoa",
+                "ano": round(salario_mes * 12, 2), "base": "folha" if rem else "lei", "n": len(ocupantes) if rem else 0}]
+    ben = 0.0; ben_itens = []
+    for b in (sub.get("beneficios") or []):
+        v = b.get("valor_mensal_ou_teto"); nome = (b.get("nome") or "") + " " + (b.get("note") or "")
+        if not v or _BEN_ESTRUTURA.search(nome) or _BEN_EVENTUAL.search(nome): continue
+        val = v if _BEN_ANUAL.search(nome) else v * 12
+        ben += val; ben_itens.append({"nome": b.get("nome"), "ano": round(val, 2)})
+    if ben: camadas.append({"k": "beneficios", "nome": "Benefícios da pessoa", "natureza": "pessoa", "ano": round(ben, 2), "base": "lei", "itens": ben_itens[:6]})
+    folha = _mediana([((o.get("gabinete") or {}).get("folha_mensal_estimada") or (o.get("gabinete") or {}).get("folha_mensal")) for o in ocupantes])
+    faltando = []
+    if folha: camadas.append({"k": "equipe", "nome": "Equipe do gabinete", "natureza": "equipe", "ano": round(folha * 12, 2), "base": "folha", "n": sum(1 for o in ocupantes if (o.get("gabinete") or {}).get("folha_mensal_estimada") or (o.get("gabinete") or {}).get("folha_mensal"))})
+    elif any((o.get("gabinete") or {}).get("assessores") for o in ocupantes):
+        _eq = _mediana([(o.get("gabinete") or {}).get("assessores") for o in ocupantes])
+        faltando.append(f"a folha da equipe não é publicada com valor (mediana de {int(_eq)} pessoas por gabinete)")
+    def _cota(o):
+        c = ((o.get("activity") or {}).get("cota") or {}).get("media_mes")
+        if c: return c
+        ca = (o.get("gabinete") or {}).get("custo_ano") or {}
+        return (ca.get("cota") / ca["meses"]) if ca.get("cota") and ca.get("meses") else None
+    cota = _mediana([_cota(o) for o in ocupantes])
+    if cota: camadas.append({"k": "custeio", "nome": "Custeio do mandato", "natureza": "despesa", "ano": round(cota * 12, 2), "base": "gasto real", "n": sum(1 for o in ocupantes if _cota(o))})
+    vg = _mediana([((o.get("viagens") or {}).get("total") / 9) for o in ocupantes if (o.get("viagens") or {}).get("total")])
+    if vg: camadas.append({"k": "viagens", "nome": "Viagens a serviço", "natureza": "despesa", "ano": round(vg * 12, 2), "base": "gasto real", "n": sum(1 for o in ocupantes if (o.get("viagens") or {}).get("total"))})
+    total = round(sum(c["ano"] for c in camadas), 2)
+    pes = round(sum(c["ano"] for c in camadas if c["natureza"] == "pessoa"), 2)
+    seats = n.get("seats") or 1
+    return {"total_ano": total, "pessoa_ano": pes, "pct_salario": round(100 * camadas[0]["ano"] / total) if total else None,
+            "camadas": camadas, "cadeiras": seats, "total_colegiado_ano": round(total * seats, 2), "faltando": faltando,
+            "fora": ["encargos previdenciários do empregador", "imóvel funcional, segurança e transporte oficial", "estrutura predial e serviços gerais", "aposentadoria futura"]}
+
+_cu_n = 0
+for _n in nodes.values():
+    if _n["type"] != "dept_head": continue
+    _c = _custo_cadeira(_n)
+    if _c: _n["custo"] = _c; _cu_n += 1
+stats["cargos_com_custo"] = _cu_n
+FAMILIA_ROTULO = {
+    "deputado-federal": "Deputado federal", "senador": "Senador", "ministro-de-estado": "Ministro de Estado",
+    "presidente-e-vice-presidente-da-republica": "Presidente e vice-presidente", "advogado-geral-da-uniao": "Advogado-Geral da União",
+    "ministro-do-supremo-tribunal-federal": "Ministro do Supremo", "ministro-de-tribunal-superior": "Ministro de tribunal superior",
+    "ministro-do-tribunal-de-contas-da-uniao": "Ministro do Tribunal de Contas", "presidente-de-tribunal-regional": "Presidente de tribunal regional",
+    "conselheiro-do-cnj": "Conselheiro do Conselho Nacional de Justiça", "procurador-geral-da-republica": "Procurador-Geral da República",
+    "chefia-de-ramo-do-mpu": "Chefia de ramo do Ministério Público", "chefia-da-advocacia-publica-federal": "Chefia da advocacia pública federal",
+    "defensor-publico-geral-federal": "Defensor Público-Geral", "secretario-executivo": "Secretário-executivo de ministério",
+    "secretario-nacional-ou-finalistico": "Secretário nacional", "secretario-especial-extraordinario-ou-geral": "Secretário especial",
+    "banco-central": "Presidente e diretores do Banco Central", "dirigente-maximo-de-agencia-reguladora": "Presidente de agência reguladora",
+    "diretor-de-agencia-reguladora": "Diretor de agência reguladora", "dirigente-de-autarquia-ou-fundacao": "Dirigente de autarquia ou fundação",
+    "reitor-de-instituicao-federal-de-ensino": "Reitor de universidade ou instituto federal",
+    "comandante-de-forca-armada": "Comandante de Força Armada", "dirigente-de-orgao-singular-do-executivo": "Dirigente de órgão singular",
+    "dirigente-de-estatal": "Dirigente de estatal",
+}
+# comparação entre famílias de cargo (deputado, senador, ministro, ministro do STF…), não cargo a cargo:
+# a mediana dentro da família responde "quanto custa uma cadeira deste tipo", e a soma dá o custo do conjunto.
+_fam = {}
+for _n in nodes.values():
+    _c = _n.get("custo")
+    if not _c or not (_n.get("people") or []): continue
+    _f = (_n.get("subsidio") or {}).get("familia") or _n.get("name")
+    _d = _fam.setdefault(_f, {"familia": _f, "totais": [], "cadeiras": 0, "cargos": 0, "exemplo": _n["id"], "exemplo_seats": 0, "camadas": {}})
+    if (_c["cadeiras"] or 1) > _d["exemplo_seats"]: _d["exemplo"] = _n["id"]; _d["exemplo_seats"] = _c["cadeiras"] or 1
+    _d["totais"].append(_c["total_ano"]); _d["cadeiras"] += _c["cadeiras"]; _d["cargos"] += 1
+    for _x in _c["camadas"]: _d["camadas"].setdefault(_x["k"], {"natureza": _x["natureza"], "vals": []})["vals"].append(_x["ano"])
+_top = []
+for _f, _d in _fam.items():
+    _med = _mediana(_d["totais"])
+    if not _med: continue
+    _cam = [{"k": k, "natureza": v["natureza"], "ano": round(_mediana(v["vals"]) or 0, 2)} for k, v in _d["camadas"].items()]
+    _cam = [c for c in _cam if c["ano"]]
+    _soma = round(sum(c["ano"] for c in _cam), 2) or _med
+    _sal = next((c["ano"] for c in _cam if c["k"] == "salario"), 0)
+    _rot = FAMILIA_ROTULO.get(_f) or (_f[:1].upper() + _f[1:]).replace("-", " ")
+    _top.append({"id": _d["exemplo"], "nome": _rot, "familia": _f, "total_ano": _soma, "pct_salario": round(100 * _sal / _soma) if _soma else None,
+                 "cadeiras": _d["cadeiras"], "cargos": _d["cargos"], "total_colegiado_ano": round(_soma * _d["cadeiras"], 2), "camadas": _cam})
+_top.sort(key=lambda x: -x["total_ano"])
+stats["custos_top"] = _top[:12]
+stats["custo_total_colegiados"] = round(sum(n["custo"]["total_colegiado_ano"] for n in nodes.values() if n.get("custo")), 2)
+
 # ---- agenda pública (e-Agendas/CGU) por pessoa e por órgão
 _ag_p = DATA / "generated" / "agendas.yaml"
 _ag_n = 0
@@ -856,7 +954,7 @@ Atualizado em {stats['generated_at']}.
 
 graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao, "transferencias": transferencias}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
-HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "composicao", "subsidio", "programas", "transferencias", "budget", "dou", "candidaturas", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
+HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "composicao", "subsidio", "custo", "programas", "transferencias", "budget", "dou", "candidaturas", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
 core_nodes = {}
 (OUT / "nodes").mkdir(exist_ok=True)

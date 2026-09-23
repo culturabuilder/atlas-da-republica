@@ -187,6 +187,17 @@ h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid va
 .om-it .t{font-weight:600}.om-it .m{font-family:var(--mono);font-size:11px;color:var(--ink-3);display:block;margin-top:2px}
 .om-it .m b{color:var(--ink);font-weight:600}.om-it .m .bad{color:var(--leg);font-weight:600}.om-it .m .ok{color:var(--ok)}
 .om-it .who{font-size:13px;color:var(--ink-2);margin-top:3px}.om-it .who a{color:var(--accent)}
+.custos{display:grid;gap:10px;margin:8px 0 0}
+.custos .ct{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:baseline}
+.custos .nm{font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}
+.custos .tt{font-family:var(--mono);font-size:12px;color:var(--ink-2);text-align:right;white-space:nowrap}
+.custos .tt .sal{color:var(--ink-3)}
+.custos .stack{grid-column:1/-1;height:14px}
+.custos .cd{grid-column:1/-1;font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.custos .bar2{display:none}
+.stack{display:flex;height:18px;border-radius:9px;overflow:hidden;background:var(--line-2)}
+.stack i{display:block;height:100%}
+.cmp-row .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:baseline}
 .cmpv{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;margin:0 0 6px}
 .cmpv .l{font-size:13.5px}.cmpv .v{font-family:var(--mono);font-size:12px;color:var(--ink-2);text-align:right}
 .cmpv .bar{grid-column:1/-1;height:12px;background:var(--line-2);border-radius:6px;overflow:hidden}.cmpv .bar i{display:block;height:100%}
@@ -627,6 +638,13 @@ function dinheiroHtml(){
     out+=`<h3>Cartão corporativo em ${C.ano}</h3><p class="note">${esc(C.nota||'')} Fonte: ${esc(C.fonte||'')}, ${(C.meses||[]).length} meses.</p><div class="om">${stat(brl(C.total),'gastos no ano')}${stat(brl((C.orgaos||[]).reduce((a,x)=>a+(x.saques||0),0)),'sacados em espécie')}</div>${bars((C.orgaos||[]).slice(0,10), x=>(x.node_id&&N[x.node_id]?N[x.node_id].name:x.orgao), x=>x.total, {fmt:v=>brl(v), sub:it=>`${it.portadores} ${it.portadores===1?'cartão':'cartões'}${it.saques?` · saques ${brl(it.saques)}`:''}`, link:x=>x.node_id?'#'+x.node_id:null})}`;
     if(top&&top.unidades_top&&top.unidades_top.length) out+=`<h4 style="margin:10px 0 4px;font-size:14px">Onde o gasto acontece, no órgão que mais gasta (${esc(top.orgao)})</h4>${bars(top.unidades_top, x=>tit(x.nome), x=>x.valor, {fmt:v=>brl(v)})}`;
     if(top&&top.favorecidos_top&&top.favorecidos_top.length) out+=`<h4 style="margin:10px 0 4px;font-size:14px">Quem mais recebeu desse órgão</h4>${bars(top.favorecidos_top, x=>tit(x.nome), x=>x.valor, {fmt:v=>brl(v)})}`; }
+  const CT=G.stats.custos_top;
+  if(CT&&CT.length){ const mx=Math.max(...CT.map(x=>x.total_ano));
+    out+=`<h3>Quanto custa cada tipo de cadeira por ano</h3><p class="note">Salário é só uma parte. A barra soma o que vai para a pessoa, o que paga a equipe e o que reembolsa despesa do mandato, com valores medianos entre quem ocupa o cargo. Encargos previdenciários, imóvel funcional, segurança e estrutura predial não entram.</p>
+    <div class="custos">${CT.map(x=>`<div class="ct"><a class="nm" href="#${x.id}">${esc(x.nome)}</a><span class="tt">${brl(x.total_ano)}<span class="sal"> · salário ${x.pct_salario}%</span></span>
+      <span class="stack" style="width:${Math.max(6,Math.round(100*x.total_ano/mx))}%">${x.camadas.map(c=>`<i style="width:${(100*c.ano/x.total_ano).toFixed(2)}%;background:${CUSTO_COR[c.natureza]}" title="${esc(c.k)}"></i>`).join('')}</span>
+      ${x.cadeiras>1?`<span class="cd">${x.cadeiras} cadeiras · ${brl(x.total_colegiado_ano)} no conjunto</span>`:''}</div>`).join('')}</div>
+    <p style="font-size:12.5px;color:var(--ink-3);margin:6px 0 0">Legenda: <span class="sw" style="background:${CUSTO_COR.pessoa}"></span> vai para a pessoa · <span class="sw" style="background:${CUSTO_COR.equipe}"></span> paga outras pessoas · <span class="sw" style="background:${CUSTO_COR.despesa}"></span> reembolsa despesa.</p>`; }
   const TR=G.transferencias;
   if(TR&&TR.total_por_ano){ const a=Object.keys(TR.total_por_ano).sort().reverse()[0]; const d=TR.total_por_ano[a]; const so=(d.sem_orgao&&Object.values(d.sem_orgao).reduce((x,y)=>x+y,0))||0;
     out+=`<h3>Transferências a estados e municípios em ${a}</h3><p class="note">Dinheiro federal repassado a outros entes: ${brl(d.total)} em ${(d.meses||[]).length} meses. ${brl(d.com_orgao)} saem de um órgão identificável; ${brl(so)} são transferências constitucionais e royalties, que o Portal publica sem órgão. Fonte: ${esc(TR.fonte||'')}, lido em ${fmtDate(TR.generated_at)}.</p>
@@ -898,6 +916,22 @@ function renderHome(){
 const ACC={acao:'ação',acoes:'ações',assistencia:'assistência',atencao:'atenção',atividades:'atividades',avaliacao:'avaliação',basica:'básica',beneficios:'benefícios',ciencia:'ciência',cidadania:'cidadania',complementacao:'complementação',comunicacao:'comunicação',conservacao:'conservação',construcao:'construção',contribuicao:'contribuição',credito:'crédito',defesa:'defesa',desenvolvimento:'desenvolvimento',divida:'dívida',educacao:'educação',eletrica:'elétrica',energetica:'energética',ensino:'ensino',especiais:'especiais',especifico:'específico',estrategicos:'estratégicos',execucao:'execução',farmaceutica:'farmacêutica',federacao:'federação',fiscalizacao:'fiscalização',formacao:'formação',funcionamento:'funcionamento',gestao:'gestão',hidricos:'hídricos',imunobiologicos:'imunobiológicos',indigena:'indígena',indigenas:'indígenas',informacao:'informação',infraestrutura:'infraestrutura',inovacao:'inovação',judiciais:'judiciais',juridica:'jurídica',manutencao:'manutenção',media:'média',medica:'médica',medicamentos:'medicamentos',militar:'militar',modernizacao:'modernização',municipios:'municípios',nutricional:'nutricional',operacoes:'operações',orcamentaria:'orçamentária',orgaos:'órgãos',participacao:'participação',pensoes:'pensões',pesquisa:'pesquisa',politica:'política',populacao:'população',precatorios:'precatórios',prevencao:'prevenção',previdencia:'previdência',primaria:'primária',producao:'produção',promocao:'promoção',protecao:'proteção',publica:'pública',publico:'público',publicos:'públicos',qualificacao:'qualificação',recuperacao:'recuperação',reducao:'redução',regiao:'região',regularizacao:'regularização',remuneracao:'remuneração',salarios:'salários',saneamento:'saneamento',saude:'saúde',seguranca:'segurança',sentencas:'sentenças',servicos:'serviços',servidores:'servidores',situacao:'situação',social:'social',solidaria:'solidária',tecnologia:'tecnologia',tecnologias:'tecnologias',transferencia:'transferência',transferencias:'transferências',transformacao:'transformação',uniao:'união',vencimentos:'vencimentos',vigilancia:'vigilância',aposentadorias:'aposentadorias',agencia:'agência',agricola:'agrícola',aquisicao:'aquisição',area:'área',areas:'áreas',basico:'básico',ciencias:'ciências',climaticas:'climáticas',combustiveis:'combustíveis',comercio:'comércio',condicoes:'condições',cooperacao:'cooperação',distribuicao:'distribuição',economica:'econômica',economico:'econômico',eletronica:'eletrônica',estatisticas:'estatísticas',exercito:'exército',familia:'família',financeira:'financeira',genero:'gênero',hospitalar:'hospitalar',implantacao:'implantação',inclusao:'inclusão',industria:'indústria',integracao:'integração',logistica:'logística',maritimo:'marítimo',nucleares:'nucleares',patrimonio:'patrimônio',pecuaria:'pecuária',periferia:'periferia',politicas:'políticas',portuaria:'portuária',proprios:'próprios',provisao:'provisão',recursos:'recursos',rodoviaria:'rodoviária',sanitaria:'sanitária',subsidios:'subsídios',territorial:'territorial',turismo:'turismo',urbana:'urbana',usuarios:'usuários',sao:'São',joao:'João',luis:'Luís',marica:'Maricá',goiania:'Goiânia',belem:'Belém',maceio:'Maceió',macae:'Macaé',niteroi:'Niterói',brasilia:'Brasília',vitoria:'Vitória',florianopolis:'Florianópolis',cuiaba:'Cuiabá',maraba:'Marabá',teofilo:'Teófilo',anapolis:'Anápolis',petrolina:'Petrolina',itaborai:'Itaboraí',guaruja:'Guarujá',jundiai:'Jundiaí',piracicaba:'Piracicaba',sorocaba:'Sorocaba',uberlandia:'Uberlândia',ribeirao:'Ribeirão',jose:'José',gama:'Gama',bernardo:'Bernardo',caucaia:'Caucaia',parauapebas:'Parauapebas',rondonopolis:'Rondonópolis'};
 function tit(t){ return deAcc(String(t||'')).toLowerCase().replace(/(^|[\s(\/-])([a-záéíóúâêôãõç])/g,(m,a,b)=>a+b.toUpperCase()).replace(/\bDo\b|\bDa\b|\bDe\b|\bDos\b|\bDas\b|\bE\b|\bEm\b|\bPara\b|\bA\b|\bAo\b|\bAos\b|\bNo\b|\bNa\b|\bNos\b|\bNas\b|\bCom\b|\bPor\b/g,x=>x.toLowerCase()); }
 function deAcc(t){ return String(t||'').replace(/[A-Za-zÀ-ÿ]+/g, w => { const k=w.toLowerCase(); return ACC[k] ? (w===w.toUpperCase()&&w.length>1 ? ACC[k].toUpperCase() : ACC[k]) : w; }); }
+const CUSTO_COR={pessoa:'var(--accent)',equipe:'var(--exe)',despesa:'var(--povo)'};
+const CUSTO_NAT={pessoa:'vai para a pessoa',equipe:'paga outras pessoas',despesa:'reembolsa despesa'};
+function custoHtml(n){
+  const c=n.custo; if(!c||!c.total_ano) return '';
+  const cam=c.camadas||[]; const tot=c.total_ano;
+  const faixa=cam.map(x=>`<i style="width:${(100*x.ano/tot).toFixed(2)}%;background:${CUSTO_COR[x.natureza]}" title="${esc(x.nome)}: ${brl(x.ano)}"></i>`).join('');
+  const linha=x=>`<div class="cmp-row"><span class="c"><span class="sw" style="background:${CUSTO_COR[x.natureza]}"></span>${esc(x.nome)} <span style="color:var(--ink-3);font-size:12px">${CUSTO_NAT[x.natureza]}${x.base==='lei'?', valor fixado em lei':x.base==='gasto real'?`, gasto real${x.n?` de ${x.n}`:''}`:x.n?`, folha de ${x.n}`:''}</span></span><span class="t">${brl(x.ano)} · ${Math.round(100*x.ano/tot)}%</span></div>`;
+  const sm=Math.round(tot/(12*1518)); // salários mínimos de 2026 (R$ 1.518)
+  return `<div class="card"><h2>Quanto custa esta cadeira por ano <span style="color:var(--ink-3);font-weight:500">· ${brl(tot)}</span></h2>
+  <p style="font-size:13.5px;color:var(--ink-2);margin:0 0 8px">O salário é <b>${c.pct_salario}%</b> do custo. O resto paga equipe, custeio do mandato e deslocamentos.${c.cadeiras>1?` São ${c.cadeiras} cadeiras: <b>${brl(c.total_colegiado_ano)}</b> por ano no conjunto.`:''}</p>
+  <div class="stack" role="img" aria-label="Composição do custo anual">${faixa}</div>
+  <div class="cmp" style="margin-top:8px">${cam.map(linha).join('')}</div>
+  <p style="font-size:12.5px;color:var(--ink-2);margin:10px 0 0">Equivale a <b>${sm.toLocaleString('pt-BR')}</b> salários mínimos por ano.</p>
+  ${(c.faltando||[]).length?`<p style="font-size:12.5px;color:var(--warn,#9A5B00);margin:6px 0 0">Não entra na conta porque a fonte não publica: ${c.faltando.map(esc).join('; ')}.</p>`:''}
+  <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Também fica de fora: ${(c.fora||[]).map(esc).join(', ')}. Valores medianos entre quem ocupa o cargo, anualizados a partir do dado mais recente de cada fonte.</p></div>`;
+}
 function subsidioHtml(n){
   const b=n.subsidio; if(!b) return '';
   const v=b.subsidio_mensal_bruto;
@@ -997,6 +1031,7 @@ function renderNode(n){
     ${poss?`<h3>Cargos</h3><div class="list">${poss}</div>`:''}
     ${kids?`<h3>Órgãos integrados e vinculados <span style="font-weight:400">· ${n.children.length}</span></h3><div class="list">${kids}</div>`:''}
   </div>
+  ${custoHtml(n)}
   ${subsidioHtml(n)}
   ${programasHtml(n)}
   ${composicaoHtml(n)}
