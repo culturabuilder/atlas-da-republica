@@ -115,7 +115,7 @@ if _met.exists():
         _quadro = ""
     (site / "metodologia" / "index.html").write_text(_mt.replace("__ATUALIZACAO__", _quadro).replace("</html>", f'<script>window.ATLAS_PREFIX="{PREFIX}";</script><script src="{PREFIX}/atlas-menu.js" defer></script>\n</html>'), encoding="utf-8"); urls.append(f"{BASE}/metodologia/")
 OG_IDS = set()
-for _name in ("build_comparar", "build_feeds", "build_dados", "build_og"):
+for _name in ("build_do_zero", "build_comparar", "build_feeds", "build_dados", "build_og"):
     if (ROOT / "scripts" / f"{_name}.py").exists():
         try:
             r = _mod(_name).build(site, PREFIX, BASE, G)
