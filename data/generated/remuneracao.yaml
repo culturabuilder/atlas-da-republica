@@ -1,19 +1,19 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-09-22'
+generated_at: '2026-09-24'
 mes: '202607'
 mes_senado: '202608'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1141
-  com_remuneracao: 438
+  ocupantes_no_grafo: 1223
+  com_remuneracao: 516
   por_setor:
     executivo:
-      ocupantes: 403
-      antes: 330
-      depois: 354
-      pct_antes: 81.9
-      pct_depois: 87.8
+      ocupantes: 485
+      antes: 403
+      depois: 432
+      pct_antes: 83.1
+      pct_depois: 89.1
     essenciais:
       ocupantes: 30
       antes: 4
@@ -33,25 +33,25 @@ resumo:
       pct_antes: 0.0
       pct_depois: 0.0
   por_criterio:
-    nome_completo+orgao: 324
-    nome_completo: 86
+    nome_completo+orgao: 400
+    nome_completo: 88
     primeiro_ultimo+orgao: 19
     subsequencia_no_orgao: 6
     primeiro_ultimo_unico: 1
     nome_sem_sufixo: 1
     subsequencia_subsidio: 1
   por_confianca:
-    alta: 411
+    alta: 489
     media: 27
   sem_remuneracao:
-    total: 76
+    total: 80
     por_motivo:
-      ausente na folha: 21
+      ausente na folha: 22
       órgão fora do SIAPE (empresa publica com folha própria): 14
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
-      só há homônimo por primeiro+último sobrenome fora do órgão (...): 10
+      só há homônimo por primeiro+último sobrenome fora do órgão (...): 12
       no cadastro do SIAPE mas sem linha de remuneração no mês: 9
-      órgão fora do SIAPE (sociedade economia mista com folha própria): 5
+      órgão fora do SIAPE (sociedade economia mista com folha própria): 6
       vários servidores compatíveis no órgão (...) sem desempate: 2
       a entidade não aparece como órgão na folha do SIAPE (folha própria): 1
       ausente na folha do Senado no mês (licença/afastamento ou nome divergente): 1
@@ -4645,6 +4645,38 @@ people:
     eventuais: 0.0
     cargo: Inválido
     funcao: Sem informação
+  br-p-daniel-gomes-de-almeida-filho:
+    mes: '202607'
+    bruto: 27943.17
+    abate_teto: 0.0
+    bruto_apos_abate: 27943.17
+    liquido: 20451.18
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Ministério da Ciência, Tecnologia, Inovações e Comunicações
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo
+    confianca: alta
+    nome_na_folha: DANIEL GOMES DE ALMEIDA FILHO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3943158
+    position: br-secretaria-de-desenvolvimento-tecnologico-e-inovacao-secretario
+    position_name: Secretário de Desenvolvimento Tecnológico e Inovação do Ministério da Ciência, Tecnologia e Inovação
+    bruta: 27943.17
+    liquida: 20451.18
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-andrea-brito-latge:
     mes: '202607'
     bruto: 52559.95
@@ -5671,6 +5703,38 @@ people:
     eventuais: 1444.69
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-cledisson-geraldo-dos-santos-junior:
+    mes: '202607'
+    bruto: 27943.17
+    abate_teto: 0.0
+    bruto_apos_abate: 27943.17
+    liquido: 20503.32
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1718.64
+    orgao: MINISTERIO DA IGUALDADE RACIAL
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CLEDISSON GERALDO DOS SANTOS JUNIOR
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/605660
+    position: br-secretaria-de-gestao-do-sistema-nacional-de-promocao-da-igualdade-racial-secretario
+    position_name: Secretário de Gestão do Sistema Nacional de Promoção da Igualdade Racial do Ministério da Igualdade Racial
+    bruta: 27943.17
+    liquida: 20503.32
+    indenizatorias: 1718.64
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-ronaldo-dos-santos:
     mes: '202607'
     bruto: 41257.56
@@ -6059,6 +6123,38 @@ people:
     eventuais: 0.0
     cargo: PROCURADOR FEDERAL
     funcao: Sem informação
+  br-p-andre-de-albuquerque-garcia:
+    mes: '202607'
+    bruto: 16765.9
+    abate_teto: 16760.18
+    bruto_apos_abate: 5.72
+    liquido: 5.72
+    componentes:
+      basica: 16765.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Ministério da Justiça e Segurança Pública
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ANDRE DE ALBUQUERQUE GARCIA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3857707
+    position: br-secretaria-nacional-de-politicas-penais-secretario
+    position_name: Secretário Nacional de Políticas Penais do Ministério da Justiça e Segurança Pública
+    bruta: 16765.9
+    liquida: 5.72
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-marta-rodriguez-de-assis-machado:
     mes: '202607'
     bruto: 33567.84
@@ -6217,6 +6313,38 @@ people:
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 14831.04
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-cristiano-wellington-noberto-ramalho:
+    mes: '202607'
+    bruto: 46819.34
+    abate_teto: 0.0
+    bruto_apos_abate: 46819.34
+    liquido: 34109.98
+    componentes:
+      basica: 40699.34
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 6120.0
+      indenizatorias: 1636.15
+    orgao: MINISTERIO DA PESCA E AQUICULTURA
+    orgao_superior: Sem informação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CRISTIANO WELLINGTON NOBERTO RAMALHO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1069535
+    position: br-secretaria-nacional-de-pesca-artesanal-secretario
+    position_name: Secretário Nacional de Pesca Artesanal do Ministério da Pesca e Aquicultura
+    bruta: 40699.34
+    liquida: 34109.98
+    indenizatorias: 1636.15
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 6120.0
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
   br-p-carlos-mello:
@@ -7964,6 +8092,104 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-tiago-nicacio-pereira:
+    mes: '202607'
+    bruto: 45941.4
+    abate_teto: 0.0
+    bruto_apos_abate: 45941.4
+    liquido: 34948.05
+    componentes:
+      basica: 36561.4
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 9380.0
+      indenizatorias: 2438.17
+    orgao: MIN EMPREEND MICROEMP EMP PEQUENO PORTE
+    orgao_superior: Sem informação
+    cargo_na_folha: ANALISTA DE INFRA-ESTRUTURA
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: TIAGO NICACIO PEREIRA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2599185
+    position: br-secretaria-executiva-empreendedorismo-secretario
+    position_name: Secretário-Executivo do Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte
+    bruta: 36561.4
+    liquida: 34948.05
+    indenizatorias: 2438.17
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 9380.0
+    cargo: ANALISTA DE INFRA-ESTRUTURA
+    funcao: Sem informação
+  br-p-mauricio-pinto-pereira-juvenal:
+    mes: '202607'
+    bruto: 39157.17
+    abate_teto: 0.0
+    bruto_apos_abate: 39157.17
+    liquido: 31769.46
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 11214.0
+      indenizatorias: 1192.0
+    orgao: MIN EMPREEND MICROEMP EMP PEQUENO PORTE
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MAURICIO PINTO PEREIRA JUVENAL
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1930076
+    position: br-secretaria-nacional-de-ambiente-de-negocios-secretario
+    position_name: Secretário Nacional de Ambiente de Negócios do Ministério do Empreendedorismo, da Microempresa e da Empresa
+      de Pequeno Porte
+    bruta: 27943.17
+    liquida: 31769.46
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 11214.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-danilo-jorge-de-barros-cabral:
+    mes: '202607'
+    bruto: 27943.17
+    abate_teto: 0.0
+    bruto_apos_abate: 27943.17
+    liquido: 20451.18
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: MIN EMPREEND MICROEMP EMP PEQUENO PORTE
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: DANILO JORGE DE BARROS CABRAL
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2610230
+    position: br-secretaria-nacional-de-inclusao-socioprodutiva-artesanato-e-microempreendedor-individual-secretario
+    position_name: Secretário Nacional de Inclusão Socioprodutiva, Artesanato e Microempreendedor Individual do Ministério
+      do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte
+    bruta: 27943.17
+    liquida: 20451.18
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-ivo-de-almeida-ico-filho:
     mes: '202607'
     bruto: 42559.02
@@ -8638,6 +8864,38 @@ people:
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 6100.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-fernando-zamban:
+    mes: '202607'
+    bruto: 27943.17
+    abate_teto: 0.0
+    bruto_apos_abate: 27943.17
+    liquido: 20451.18
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: MINISTERIO DO TRABALHO E EMPREGO
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: FERNANDO ZAMBAN
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3861500
+    position: br-secretaria-nacional-de-economia-popular-e-solidaria-secretario
+    position_name: Secretário Nacional de Economia Popular e Solidária do Ministério do Trabalho e Emprego
+    bruta: 27943.17
+    liquida: 20451.18
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-henrique-eduardo-medeiros-aquino:
@@ -9376,6 +9634,38 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-rogerio-da-veiga:
+    mes: '202607'
+    bruto: 53459.9
+    abate_teto: 7093.7
+    bruto_apos_abate: 46366.2
+    liquido: 34519.63
+    componentes:
+      basica: 53459.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 0.0
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ROGERIO DA VEIGA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/462425
+    position: br-secretaria-de-articulacao-e-monitoramento-secretario
+    position_name: Secretário de Articulação e Monitoramento da Casa Civil da Presidência da República
+    bruta: 53459.9
+    liquida: 34519.63
+    indenizatorias: 0.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-washington-rocha-triani:
     mes: '202607'
     bruto: 19151.56
@@ -9402,6 +9692,39 @@ people:
     position_name: Secretário-Executivo do Gabinete de Segurança Institucional da Presidência da República
     bruta: 19151.56
     liquida: 7703.8
+    indenizatorias: 0.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-alex-azevedo-urbancg:
+    mes: '202607'
+    bruto: 16765.9
+    abate_teto: 5315.56
+    bruto_apos_abate: 11450.34
+    liquido: 9377.21
+    componentes:
+      basica: 16765.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 0.0
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ALEX AZEVEDO URBANCG
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/518092
+    position: br-secretaria-de-acompanhamento-e-gestao-de-assuntos-estrategicos-secretario
+    position_name: Secretário de Acompanhamento e Gestão de Assuntos Estratégicos do Gabinete de Segurança Institucional da
+      Presidência da República
+    bruta: 16765.9
+    liquida: 9377.21
     indenizatorias: 0.0
     gratificacao_natalina: 0.0
     ferias: 0.0
@@ -9991,6 +10314,38 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-alessandro-facure-neves-de-salles-soares:
+    mes: '202607'
+    bruto: 42147.6
+    abate_teto: 0.0
+    bruto_apos_abate: 42147.6
+    liquido: 28251.43
+    componentes:
+      basica: 42147.6
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 3873.5
+    orgao: Comissão Nacional de Energia Nuclear
+    orgao_superior: Ministério da Ciência, Tecnologia, Inovações e Comunicações
+    cargo_na_folha: TECNOLOGISTA
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo
+    confianca: alta
+    nome_na_folha: ALESSANDRO FACURE NEVES DE SALLES SOARES
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/517274
+    position: br-autoridade-nacional-de-seguranca-nuclear-diretor-presidente
+    position_name: Diretor-Presidente da Autoridade Nacional de Segurança Nuclear
+    bruta: 42147.6
+    liquida: 28251.43
+    indenizatorias: 3873.5
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: TECNOLOGISTA
+    funcao: Sem informação
   br-p-alexandre-de-souza-santini-rodrigues:
     mes: '202607'
     bruto: 27943.17
@@ -10084,6 +10439,38 @@ people:
     indenizatorias: 1192.0
     gratificacao_natalina: 0.0
     ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-jose-cloves-da-silva:
+    mes: '202607'
+    bruto: 37257.56
+    abate_teto: 0.0
+    bruto_apos_abate: 37257.56
+    liquido: 28279.83
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 9314.39
+      indenizatorias: 0.0
+    orgao: Fundação Jorge Duprat Figueiredo, de Segurança e Medicina do Trabalho
+    orgao_superior: MINISTERIO DO TRABALHO E EMPREGO
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JOSE CLOVES DA SILVA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1302419
+    position: br-fundacao-jorge-duprat-figueiredo-de-seguranca-e-medicina-do-trabalho-presidente
+    position_name: Presidente da Fundação Jorge Duprat Figueiredo, de Segurança e Medicina do Trabalho
+    bruta: 27943.17
+    liquida: 28279.83
+    indenizatorias: 0.0
+    gratificacao_natalina: 0.0
+    ferias: 9314.39
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
@@ -10215,6 +10602,70 @@ people:
     eventuais: 4007.09
     cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
     funcao: Sem informação
+  br-p-carla-simone-chamon:
+    mes: '202607'
+    bruto: 36655.51
+    abate_teto: 0.0
+    bruto_apos_abate: 36655.51
+    liquido: 24690.45
+    componentes:
+      basica: 36655.51
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Centro Federal de Educação Tecnológica de Minas Gerais
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CARLA SIMONE CHAMON
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2786160
+    position: br-centro-federal-de-educacao-tecnologica-de-minas-gerais-diretor-geral
+    position_name: Diretor-Geral do Centro Federal de Educação Tecnológica de Minas Gerais
+    bruta: 36655.51
+    liquida: 24690.45
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-ana-paula-giraux-leitao:
+    mes: '202607'
+    bruto: 42368.96
+    abate_teto: 0.0
+    bruto_apos_abate: 42368.96
+    liquido: 29027.33
+    componentes:
+      basica: 38712.35
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3656.61
+      indenizatorias: 1192.0
+    orgao: Colégio Pedro II
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ANA PAULA GIRAUX LEITAO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2778638
+    position: br-colegio-pedro-ii-reitor
+    position_name: Reitor do Colégio Pedro II
+    bruta: 38712.35
+    liquida: 29027.33
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3656.61
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
   br-p-tanara-lauschner:
     mes: '202607'
     bruto: 36125.54
@@ -10279,6 +10730,70 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-jenifer-saffi:
+    mes: '202607'
+    bruto: 39658.59
+    abate_teto: 0.0
+    bruto_apos_abate: 39658.59
+    liquido: 26896.98
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Universidade Federal de Ciências da Saúde de Porto Alegre
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JENIFER SAFFI
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2352356
+    position: br-fundacao-universidade-federal-de-ciencias-da-saude-de-porto-alegre-reitor
+    position_name: Reitor da Fundação Universidade Federal de Ciências da Saúde de Porto Alegre
+    bruta: 39658.59
+    liquida: 26896.98
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-marluce-aparecida-souza-e-silva:
+    mes: '202607'
+    bruto: 43966.44
+    abate_teto: 0.0
+    bruto_apos_abate: 43966.44
+    liquido: 29976.23
+    componentes:
+      basica: 40093.09
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3873.35
+      indenizatorias: 1374.71
+    orgao: Universidade Federal de Mato Grosso
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MARLUCE APARECIDA SOUZA E SILVA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1164205
+    position: br-fundacao-universidade-federal-de-mato-grosso-reitor
+    position_name: Reitor da Fundação Universidade Federal de Mato Grosso
+    bruta: 40093.09
+    liquida: 29976.23
+    indenizatorias: 1374.71
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3873.35
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
   br-p-camila-celeste-brandao-ferreira-itavo:
     mes: '202607'
     bruto: 39658.59
@@ -10306,6 +10821,38 @@ people:
     bruta: 39658.59
     liquida: 26896.98
     indenizatorias: 1637.82
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-luciano-campos-da-silva:
+    mes: '202607'
+    bruto: 37265.22
+    abate_teto: 0.0
+    bruto_apos_abate: 37265.22
+    liquido: 25500.23
+    componentes:
+      basica: 37265.22
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1513.07
+    orgao: Fundação Universidade Federal de Ouro Preto
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: LUCIANO CAMPOS DA SILVA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1433211
+    position: br-fundacao-universidade-federal-de-ouro-preto-reitor
+    position_name: Reitor da Fundação Universidade Federal de Ouro Preto
+    bruta: 37265.22
+    liquida: 25500.23
+    indenizatorias: 1513.07
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 0.0
@@ -10343,6 +10890,38 @@ people:
     eventuais: 3873.35
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
+  br-p-marilia-lima-pimentel-cotinguiba:
+    mes: '202607'
+    bruto: 43471.33
+    abate_teto: 0.0
+    bruto_apos_abate: 43471.33
+    liquido: 29661.21
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3812.74
+      indenizatorias: 1518.13
+    orgao: Fundação Universidade Federal de Rondônia
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MARILIA LIMA PIMENTEL COTINGUIBA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3371435
+    position: br-fundacao-universidade-federal-de-rondonia-reitor
+    position_name: Reitor da Fundação Universidade Federal de Rondônia
+    bruta: 39658.59
+    liquida: 29661.21
+    indenizatorias: 1518.13
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3812.74
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
   br-p-jose-geraldo-ticianeli:
     mes: '202607'
     bruto: 30209.01
@@ -10374,6 +10953,134 @@ people:
     ferias: 0.0
     eventuais: 0.0
     cargo: Inválido
+    funcao: Sem informação
+  br-p-ana-beatriz-de-oliveira:
+    mes: '202607'
+    bruto: 39658.59
+    abate_teto: 0.0
+    bruto_apos_abate: 39658.59
+    liquido: 27069.52
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1351.27
+    orgao: Universidade Federal de São Carlos - SP
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ANA BEATRIZ DE OLIVEIRA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1111911
+    position: br-fundacao-universidade-federal-de-sao-carlos-reitor
+    position_name: Reitor da Fundação Universidade Federal de São Carlos
+    bruta: 39658.59
+    liquida: 27069.52
+    indenizatorias: 1351.27
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-marcelo-pereira-de-andrade:
+    mes: '202607'
+    bruto: 39658.59
+    abate_teto: 0.0
+    bruto_apos_abate: 39658.59
+    liquido: 27352.74
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1641.21
+    orgao: Fundação Universidade Federal de São João del-Rei
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MARCELO PEREIRA DE ANDRADE
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2300184
+    position: br-fundacao-universidade-federal-de-sao-joao-del-rei-reitor
+    position_name: Reitor da Fundação Universidade Federal de São João Del Rei
+    bruta: 39658.59
+    liquida: 27352.74
+    indenizatorias: 1641.21
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-andre-mauricio-conceicao-de-souza:
+    mes: '202607'
+    bruto: 41484.44
+    abate_teto: 0.0
+    bruto_apos_abate: 41484.44
+    liquido: 30646.56
+    componentes:
+      basica: 41484.44
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1478.55
+    orgao: Fundação Universidade Federal de Sergipe
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ANDRE MAURICIO CONCEICAO DE SOUZA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2546928
+    position: br-fundacao-universidade-federal-de-sergipe-reitor
+    position_name: Reitor da Fundação Universidade Federal de Sergipe
+    bruta: 41484.44
+    liquida: 30646.56
+    indenizatorias: 1478.55
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-demetrius-david-da-silva:
+    mes: '202607'
+    bruto: 40270.84
+    abate_teto: 0.0
+    bruto_apos_abate: 40270.84
+    liquido: 27267.62
+    componentes:
+      basica: 40270.84
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1679.64
+    orgao: Universidade Federal de Viçosa - MG
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: DEMETRIUS DAVID DA SILVA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/483451
+    position: br-fundacao-universidade-federal-de-vicosa-reitor
+    position_name: Reitor da Fundação Universidade Federal de Viçosa
+    bruta: 40270.84
+    liquida: 27267.62
+    indenizatorias: 1679.64
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
   br-p-paula-homem-de-mello:
     mes: '202607'
@@ -10439,6 +11146,102 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-antonio-sabino-da-silva-neto:
+    mes: '202607'
+    bruto: 15308.15
+    abate_teto: 0.0
+    bruto_apos_abate: 15308.15
+    liquido: 11450.5
+    componentes:
+      basica: 15308.15
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1354.72
+    orgao: Fundação Universidade Federal do Amapá
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ANTONIO SABINO DA SILVA NETO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/67646
+    position: br-fundacao-universidade-federal-do-amapa-reitor
+    position_name: Reitor da Fundação Universidade Federal do Amapá
+    bruta: 15308.15
+    liquida: 11450.5
+    indenizatorias: 1354.72
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-fernando-carvalho-silva:
+    mes: '202607'
+    bruto: 44041.95
+    abate_teto: 0.0
+    bruto_apos_abate: 44041.95
+    liquido: 30016.32
+    componentes:
+      basica: 40148.39
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3893.56
+      indenizatorias: 1539.04
+    orgao: Fundação Universidade Federal do Maranhão
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: FERNANDO CARVALHO SILVA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2837889
+    position: br-fundacao-universidade-federal-do-maranhao-reitor
+    position_name: Reitor da Fundação Universidade Federal do Maranhão
+    bruta: 40148.39
+    liquida: 30016.32
+    indenizatorias: 1539.04
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3893.56
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-edward-frederico-castro-pessano:
+    mes: '202607'
+    bruto: 35756.39
+    abate_teto: 0.0
+    bruto_apos_abate: 35756.39
+    liquido: 25381.69
+    componentes:
+      basica: 34006.39
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 1750.0
+      indenizatorias: 1592.37
+    orgao: Fundação Universidade Federal do Pampa
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: EDWARD FREDERICO CASTRO PESSANO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/471427
+    position: br-fundacao-universidade-federal-do-pampa-reitor
+    position_name: Reitor da Fundação Universidade Federal do Pampa
+    bruta: 34006.39
+    liquida: 25381.69
+    indenizatorias: 1592.37
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 1750.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
   br-p-nadir-do-nascimento-nogueira:
     mes: '202607'
     bruto: 45325.83
@@ -10471,6 +11274,166 @@ people:
     eventuais: 4075.39
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
+  br-p-suzane-da-rocha-vieira-goncalves:
+    mes: '202607'
+    bruto: 36125.54
+    abate_teto: 0.0
+    bruto_apos_abate: 36125.54
+    liquido: 24758.15
+    componentes:
+      basica: 36125.54
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1351.27
+    orgao: Universidade Federal do Rio Grande - RS
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: SUZANE DA ROCHA VIEIRA GONCALVES
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2892662
+    position: br-fundacao-universidade-federal-do-rio-grande-reitor
+    position_name: Reitor da Fundação Universidade Federal do Rio Grande
+    bruta: 36125.54
+    liquida: 24758.15
+    indenizatorias: 1351.27
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-maria-santana-ferreira-dos-santos-milhomem:
+    mes: '202607'
+    bruto: 35040.12
+    abate_teto: 0.0
+    bruto_apos_abate: 35040.12
+    liquido: 24205.35
+    componentes:
+      basica: 35040.12
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1474.35
+    orgao: Fundação Universidade Federal do Tocantins
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MARIA SANTANA FERREIRA DOS SANTOS MILHOMEM
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1588451
+    position: br-fundacao-universidade-federal-do-tocantins-reitor
+    position_name: Reitor da Fundação Universidade Federal do Tocantins
+    bruta: 35040.12
+    liquida: 24205.35
+    indenizatorias: 1474.35
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-telio-nobre-leite:
+    mes: '202607'
+    bruto: 39658.59
+    abate_teto: 0.0
+    bruto_apos_abate: 39658.59
+    liquido: 27053.39
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1872.19
+    orgao: Universidade Federal do Vale do São Francisco
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: TELIO NOBRE LEITE
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1079775
+    position: br-fundacao-universidade-federal-do-vale-do-sao-francisco-reitor
+    position_name: Reitor da Fundação Universidade Federal do Vale do São Francisco
+    bruta: 39658.59
+    liquida: 27053.39
+    indenizatorias: 1872.19
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-ozenice-silva-dos-santos:
+    mes: '202607'
+    bruto: 43987.63
+    abate_teto: 0.0
+    bruto_apos_abate: 43987.63
+    liquido: 30086.79
+    componentes:
+      basica: 40101.77
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3885.86
+      indenizatorias: 1374.71
+    orgao: Instituto Federal Baiano
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: OZENICE SILVA DOS SANTOS
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2041565
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-baiano-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia Baiano
+    bruta: 40101.77
+    liquida: 30086.79
+    indenizatorias: 1374.71
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3885.86
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
+  br-p-rudinei-kock-exterckoter:
+    mes: '202607'
+    bruto: 45213.5
+    abate_teto: 0.0
+    bruto_apos_abate: 45213.5
+    liquido: 32504.02
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 5554.91
+      indenizatorias: 1631.09
+    orgao: Instituto Federal Catarinense
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: RUDINEI KOCK EXTERCKOTER
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3743147
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-catarinense-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia Catarinense
+    bruta: 39658.59
+    liquida: 32504.02
+    indenizatorias: 1631.09
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 5554.91
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
   br-p-luzia-matos-mota:
     mes: '202607'
     bruto: 44041.95
@@ -10501,6 +11464,102 @@ people:
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 3893.56
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
+  br-p-mary-roberta-meira-marinho:
+    mes: '202607'
+    bruto: 43899.29
+    abate_teto: 0.0
+    bruto_apos_abate: 43899.29
+    liquido: 29927.54
+    componentes:
+      basica: 40025.94
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3873.35
+      indenizatorias: 1192.0
+    orgao: Instituto Federal da Paraíba
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MARY ROBERTA MEIRA MARINHO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1532312
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-da-paraiba-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia da Paraíba
+    bruta: 40025.94
+    liquida: 29927.54
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3873.35
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-carlos-guedes-de-lacerda:
+    mes: '202607'
+    bruto: 37793.68
+    abate_teto: 0.0
+    bruto_apos_abate: 37793.68
+    liquido: 25768.01
+    componentes:
+      basica: 37793.68
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Instituto Federal de Alagoas
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CARLOS GUEDES DE LACERDA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3177008
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-alagoas-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia de Alagoas
+    bruta: 37793.68
+    liquida: 25768.01
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-veruska-ribeiro-machado:
+    mes: '202607'
+    bruto: 37265.22
+    abate_teto: 0.0
+    bruto_apos_abate: 37265.22
+    liquido: 25448.09
+    componentes:
+      basica: 37265.22
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Instituto Federal de Brasília
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: VERUSKA RIBEIRO MACHADO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2836109
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-brasilia-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia de Brasília
+    bruta: 37265.22
+    liquida: 25448.09
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
     cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
     funcao: Sem informação
   br-p-oneida-cristina-gomes-barcelos-irigon:
@@ -10535,6 +11594,38 @@ people:
     eventuais: 3417.83
     cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
     funcao: Sem informação
+  br-p-julio-cesar-dos-santos:
+    mes: '202607'
+    bruto: 36125.54
+    abate_teto: 0.0
+    bruto_apos_abate: 36125.54
+    liquido: 24758.15
+    componentes:
+      basica: 36125.54
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Instituto Federal de Mato Grosso
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JULIO CESAR DOS SANTOS
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2690127
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-mato-grosso-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+    bruta: 36125.54
+    liquida: 24758.15
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
   br-p-elaine-borges-monteiro-cassiano:
     mes: '202607'
     bruto: 55897.83
@@ -10565,6 +11656,166 @@ people:
     gratificacao_natalina: 0.0
     ferias: 18632.61
     eventuais: 0.0
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
+  br-p-rafael-bastos-teixeira:
+    mes: '202607'
+    bruto: 43802.85
+    abate_teto: 0.0
+    bruto_apos_abate: 43802.85
+    liquido: 31041.24
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 4144.26
+      indenizatorias: 1192.0
+    orgao: Instituto Federal de Minas Gerais
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: RAFAEL BASTOS TEIXEIRA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2280330
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-minas-gerais-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais
+    bruta: 39658.59
+    liquida: 31041.24
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 4144.26
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-jose-carlos-de-sa-junior:
+    mes: '202607'
+    bruto: 37265.22
+    abate_teto: 0.0
+    bruto_apos_abate: 37265.22
+    liquido: 25500.23
+    componentes:
+      basica: 37265.22
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1636.15
+    orgao: Instituto Federal de Pernambuco
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JOSE CARLOS DE SA JUNIOR
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2836870
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-pernambuco-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco
+    bruta: 37265.22
+    liquida: 25500.23
+    indenizatorias: 1636.15
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-moises-jose-rosa-souza:
+    mes: '202607'
+    bruto: 38540.12
+    abate_teto: 0.0
+    bruto_apos_abate: 38540.12
+    liquido: 27705.35
+    componentes:
+      basica: 35040.12
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3500.0
+      indenizatorias: 1474.35
+    orgao: Instituto Federal de Rondônia
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MOISES JOSE ROSA SOUZA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/201092
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-rondonia-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia de Rondônia
+    bruta: 35040.12
+    liquida: 27705.35
+    indenizatorias: 1474.35
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3500.0
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
+  br-p-nilra-jane-filgueira-bezerra:
+    mes: '202607'
+    bruto: 45566.24
+    abate_teto: 1956.57
+    bruto_apos_abate: 43609.67
+    liquido: 29422.15
+    componentes:
+      basica: 41470.64
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 4095.6
+      indenizatorias: 1192.0
+    orgao: Instituto Federal de Roraima
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: NILRA JANE FILGUEIRA BEZERRA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2373748
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-roraima-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia de Roraima
+    bruta: 41470.64
+    liquida: 29422.15
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 4095.6
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
+  br-p-zizimo-moreira-filho:
+    mes: '202607'
+    bruto: 33809.69
+    abate_teto: 0.0
+    bruto_apos_abate: 33809.69
+    liquido: 23648.61
+    componentes:
+      basica: 31365.34
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 2444.35
+      indenizatorias: 1192.0
+    orgao: Instituto Federal de Santa Catarina
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ZIZIMO MOREIRA FILHO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1634054
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-santa-catarina-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina
+    bruta: 31365.34
+    liquida: 23648.61
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 2444.35
     cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
     funcao: Sem informação
   br-p-silmario-batista-dos-santos:
@@ -10631,6 +11882,134 @@ people:
     eventuais: 0.0
     cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
     funcao: Sem informação
+  br-p-fabio-storch-de-oliveira:
+    mes: '202607'
+    bruto: 35040.12
+    abate_teto: 0.0
+    bruto_apos_abate: 35040.12
+    liquido: 24257.48
+    componentes:
+      basica: 35040.12
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Instituto Federal do Acre
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: FABIO STORCH DE OLIVEIRA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/256074
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-acre-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Acre
+    bruta: 35040.12
+    liquida: 24257.48
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
+  br-p-romaro-antonio-silva:
+    mes: '202607'
+    bruto: 30209.01
+    abate_teto: 0.0
+    bruto_apos_abate: 30209.01
+    liquido: 22093.92
+    componentes:
+      basica: 30209.01
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1903.67
+    orgao: Instituto Federal do Amapá
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ROMARO ANTONIO SILVA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2288097
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-amapa-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Amapá
+    bruta: 30209.01
+    liquida: 22093.92
+    indenizatorias: 1903.67
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-jaime-cavalcante-alves:
+    mes: '202607'
+    bruto: 37487.85
+    abate_teto: 0.0
+    bruto_apos_abate: 37487.85
+    liquido: 26692.44
+    componentes:
+      basica: 37487.85
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Instituto Federal do Amazonas
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JAIME CAVALCANTE ALVES
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3218045
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-amazonas-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Amazonas
+    bruta: 37487.85
+    liquida: 26692.44
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
+  br-p-jose-wally-mendonca-menezes:
+    mes: '202607'
+    bruto: 37265.22
+    abate_teto: 0.0
+    bruto_apos_abate: 37265.22
+    liquido: 25448.09
+    componentes:
+      basica: 37265.22
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1356.33
+    orgao: Instituto Federal do Ceará
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JOSE WALLY MENDONCA MENEZES
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1558774
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-ceara-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Ceará
+    bruta: 37265.22
+    liquida: 25448.09
+    indenizatorias: 1356.33
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
   br-p-adriana-pionttkovsky-barcellos:
     mes: '202607'
     bruto: 45239.11
@@ -10663,6 +12042,38 @@ people:
     eventuais: 5554.91
     cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
     funcao: Sem informação
+  br-p-carlos-cesar-teixeira-ferreira:
+    mes: '202607'
+    bruto: 39658.59
+    abate_teto: 0.0
+    bruto_apos_abate: 39658.59
+    liquido: 27053.39
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 2401.36
+    orgao: Instituto Federal do Maranhão
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CARLOS CESAR TEIXEIRA FERREIRA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3111520
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-maranhao-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Maranhão
+    bruta: 39658.59
+    liquida: 27053.39
+    indenizatorias: 2401.36
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
   br-p-joaquina-aparecida-nobre-da-silva:
     mes: '202607'
     bruto: 42816.24
@@ -10823,6 +12234,70 @@ people:
     eventuais: 5332.72
     cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
     funcao: Sem informação
+  br-p-jose-arnobio-de-araujo-filho:
+    mes: '202607'
+    bruto: 37710.49
+    abate_teto: 0.0
+    bruto_apos_abate: 37710.49
+    liquido: 25731.4
+    componentes:
+      basica: 37710.49
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1520.66
+    orgao: Instituto Federal do Rio Grande do Norte
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JOSE ARNOBIO DE ARAUJO FILHO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1331654
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-grande-do-norte-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte
+    bruta: 37710.49
+    liquida: 25731.4
+    indenizatorias: 1520.66
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
+  br-p-julio-xandro-heck:
+    mes: '202607'
+    bruto: 42758.59
+    abate_teto: 0.0
+    bruto_apos_abate: 42758.59
+    liquido: 30049.11
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3100.0
+      indenizatorias: 1636.15
+    orgao: Instituto Federal do Rio Grande do Sul
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JULIO XANDRO HECK
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1957359
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-grande-do-sul-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul
+    bruta: 39658.59
+    liquida: 30049.11
+    indenizatorias: 1636.15
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3100.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
   br-p-jean-carlos-coelho-de-alencar:
     mes: '202607'
     bruto: 34006.39
@@ -10853,6 +12328,70 @@ people:
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 0.0
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
+  br-p-valdir-jose-da-silva:
+    mes: '202607'
+    bruto: 44939.74
+    abate_teto: 0.0
+    bruto_apos_abate: 44939.74
+    liquido: 32234.85
+    componentes:
+      basica: 37265.22
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 7674.52
+      indenizatorias: 1557.42
+    orgao: Instituto Federal do Sudeste de Minas Gerais
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: VALDIR JOSE DA SILVA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2524952
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sudeste-de-minas-gerais-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Sudeste de Minas Gerais
+    bruta: 37265.22
+    liquida: 32234.85
+    indenizatorias: 1557.42
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 7674.52
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-cleber-avila-barbosa:
+    mes: '202607'
+    bruto: 41979.65
+    abate_teto: 0.0
+    bruto_apos_abate: 41979.65
+    liquido: 30214.66
+    componentes:
+      basica: 37265.22
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 4714.43
+      indenizatorias: 1495.98
+    orgao: Instituto Federal do Sul de Minas Gerais
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CLEBER AVILA BARBOSA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/95240
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sul-de-minas-gerais-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Sul de Minas Gerais
+    bruta: 37265.22
+    liquida: 30214.66
+    indenizatorias: 1495.98
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 4714.43
     cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
     funcao: Sem informação
   br-p-paula-karini-dias-ferreira-amorim:
@@ -10887,6 +12426,70 @@ people:
     eventuais: 0.0
     cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
     funcao: Sem informação
+  br-p-marcelo-ponciano-da-silva:
+    mes: '202607'
+    bruto: 37265.22
+    abate_teto: 0.0
+    bruto_apos_abate: 37265.22
+    liquido: 28302.69
+    componentes:
+      basica: 37265.22
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1835.14
+    orgao: Instituto Federal do Triângulo Mineiro
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MARCELO PONCIANO DA SILVA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/374046
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-triangulo-mineiro-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Triângulo Mineiro
+    bruta: 37265.22
+    liquida: 28302.69
+    indenizatorias: 1835.14
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-nidia-heringer:
+    mes: '202607'
+    bruto: 37265.22
+    abate_teto: 0.0
+    bruto_apos_abate: 37265.22
+    liquido: 25448.09
+    componentes:
+      basica: 37265.22
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1536.51
+    orgao: Instituto Federal Farroupilha
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: NIDIA HERINGER
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3732604
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-farroupilha-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia Farroupilha
+    bruta: 37265.22
+    liquida: 25448.09
+    indenizatorias: 1536.51
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
   br-p-victor-barbosa-saraiva:
     mes: '202607'
     bruto: 39658.59
@@ -10914,6 +12517,70 @@ people:
     bruta: 39658.59
     liquida: 27082.65
     indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
+  br-p-elias-de-padua-monteiro:
+    mes: '202607'
+    bruto: 44184.6
+    abate_teto: 0.0
+    bruto_apos_abate: 44184.6
+    liquido: 30157.23
+    componentes:
+      basica: 40270.84
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3913.76
+      indenizatorias: 1520.66
+    orgao: Instituto Federal Goiano
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ELIAS DE PADUA MONTEIRO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1213725
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-goiano-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia Goiano
+    bruta: 40270.84
+    liquida: 30157.23
+    indenizatorias: 1520.66
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3913.76
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
+  br-p-carlos-jesus-anghinoni-correa:
+    mes: '202607'
+    bruto: 37599.17
+    abate_teto: 0.0
+    bruto_apos_abate: 37599.17
+    liquido: 25702.4
+    componentes:
+      basica: 37599.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1533.98
+    orgao: Instituto Federal Sul-rio-grandense
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CARLOS JESUS ANGHINONI CORREA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3705375
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-sul-rio-grandense-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia Sul-Rio-Grandense
+    bruta: 37599.17
+    liquida: 25702.4
+    indenizatorias: 1533.98
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 0.0
@@ -10983,6 +12650,38 @@ people:
     eventuais: 4003.42
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
+  br-p-joao-alfredo-braida:
+    mes: '202607'
+    bruto: 40148.39
+    abate_teto: 0.0
+    bruto_apos_abate: 40148.39
+    liquido: 27193.49
+    componentes:
+      basica: 40148.39
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1539.04
+    orgao: Universidade Federal da Fronteira Sul
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JOAO ALFREDO BRAIDA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1483685
+    position: br-universidade-federal-da-fronteira-sul-reitor
+    position_name: Reitor da Universidade Federal da Fronteira Sul
+    bruta: 40148.39
+    liquida: 27193.49
+    indenizatorias: 1539.04
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
   br-p-diana-araujo-pereira:
     mes: '202607'
     bruto: 36125.54
@@ -11047,6 +12746,230 @@ people:
     eventuais: 3954.17
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
+  br-p-josealdo-tonholo:
+    mes: '202607'
+    bruto: 60222.58
+    abate_teto: 0.0
+    bruto_apos_abate: 60222.58
+    liquido: 42822.99
+    componentes:
+      basica: 40148.39
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 20074.19
+      indenizatorias: 1476.88
+    orgao: Universidade Federal de Alagoas
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JOSEALDO TONHOLO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1329175
+    position: br-universidade-federal-de-alagoas-reitor
+    position_name: Reitor da Universidade Federal de Alagoas
+    bruta: 40148.39
+    liquida: 42822.99
+    indenizatorias: 1476.88
+    gratificacao_natalina: 0.0
+    ferias: 20074.19
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-alessandro-antonio-costa-pereira:
+    mes: '202607'
+    bruto: 39658.59
+    abate_teto: 0.0
+    bruto_apos_abate: 39658.59
+    liquido: 27143.14
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1557.42
+    orgao: Universidade Federal de Alfenas - MG
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ALESSANDRO ANTONIO COSTA PEREIRA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1625234
+    position: br-universidade-federal-de-alfenas-reitor
+    position_name: Reitor da Universidade Federal de Alfenas
+    bruta: 39658.59
+    liquida: 27143.14
+    indenizatorias: 1557.42
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-camilo-allyson-simoes-de-farias:
+    mes: '202607'
+    bruto: 39658.59
+    abate_teto: 0.0
+    bruto_apos_abate: 39658.59
+    liquido: 27157.66
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1994.41
+    orgao: Universidade Federal de Campina Grande - PB
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CAMILO ALLYSON SIMOES DE FARIAS
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1080655
+    position: br-universidade-federal-de-campina-grande-reitor
+    position_name: Reitor da Universidade Federal de Campina Grande
+    bruta: 39658.59
+    liquida: 27157.66
+    indenizatorias: 1994.41
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-roselma-lucchese:
+    mes: '202607'
+    bruto: 43471.33
+    abate_teto: 0.0
+    bruto_apos_abate: 43471.33
+    liquido: 29661.21
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3812.74
+      indenizatorias: 1539.04
+    orgao: UNIVERSIDADE FEDERAL DE CATALAO
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ROSELMA LUCCHESE
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2259879
+    position: br-universidade-federal-de-catalao-reitor
+    position_name: Reitor da Universidade Federal de Catalão
+    bruta: 39658.59
+    liquida: 29661.21
+    indenizatorias: 1539.04
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3812.74
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-sandramara-matias-chaves:
+    mes: '202607'
+    bruto: 41523.58
+    abate_teto: 6234.98
+    bruto_apos_abate: 35288.6
+    liquido: 23654.52
+    componentes:
+      basica: 37986.7
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3536.88
+      indenizatorias: 1374.71
+    orgao: Universidade Federal de Goiás
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: SANDRAMARA MATIAS CHAVES
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/624499
+    position: br-universidade-federal-de-goias-reitor
+    position_name: Reitor da Universidade Federal de Goiás
+    bruta: 37986.7
+    liquida: 23654.52
+    indenizatorias: 1374.71
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3536.88
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-marcel-fernando-da-costa-parentoni:
+    mes: '202607'
+    bruto: 37265.22
+    abate_teto: 0.0
+    bruto_apos_abate: 37265.22
+    liquido: 27608.32
+    componentes:
+      basica: 37265.22
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1351.27
+    orgao: Universidade Federal de Itajubá - MG
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MARCEL FERNANDO DA COSTA PARENTONI
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1675050
+    position: br-universidade-federal-de-itajuba-reitor
+    position_name: Reitor da Universidade Federal de Itajubá
+    bruta: 37265.22
+    liquida: 27608.32
+    indenizatorias: 1351.27
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-christiano-peres-coelho:
+    mes: '202607'
+    bruto: 36125.54
+    abate_teto: 0.0
+    bruto_apos_abate: 36125.54
+    liquido: 24937.82
+    componentes:
+      basica: 36125.54
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1631.09
+    orgao: UNIVERSIDADE FEDERAL DE JATAI
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CHRISTIANO PERES COELHO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/548271
+    position: br-universidade-federal-de-jatai-reitor
+    position_name: Reitor da Universidade Federal de Jataí
+    bruta: 36125.54
+    liquida: 24937.82
+    indenizatorias: 1631.09
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
   br-p-girlene-alves-da-silva:
     mes: '202607'
     bruto: 43613.98
@@ -11079,6 +13002,38 @@ people:
     eventuais: 3832.94
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
+  br-p-jose-roberto-soares-scolforo:
+    mes: '202607'
+    bruto: 46493.91
+    abate_teto: 0.0
+    bruto_apos_abate: 46493.91
+    liquido: 31594.36
+    componentes:
+      basica: 42253.08
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 4240.83
+      indenizatorias: 1557.42
+    orgao: Universidade Federal de Lavras - MG
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JOSE ROBERTO SOARES SCOLFORO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2949911
+    position: br-universidade-federal-de-lavras-reitor
+    position_name: Reitor da Universidade Federal de Lavras
+    bruta: 42253.08
+    liquida: 31594.36
+    indenizatorias: 1557.42
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 4240.83
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
   br-p-alessandro-fernandes-moreira:
     mes: '202607'
     bruto: 40270.84
@@ -11106,6 +13061,102 @@ people:
     bruta: 40270.84
     liquida: 27319.76
     indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-alfredo-macedo-gomes:
+    mes: '202607'
+    bruto: 40025.94
+    abate_teto: 0.0
+    bruto_apos_abate: 40025.94
+    liquido: 29356.71
+    componentes:
+      basica: 40025.94
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1519.42
+    orgao: Universidade Federal de Pernambuco
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ALFREDO MACEDO GOMES
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2105256
+    position: br-universidade-federal-de-pernambuco-reitor
+    position_name: Reitor da Universidade Federal de Pernambuco
+    bruta: 40025.94
+    liquida: 29356.71
+    indenizatorias: 1519.42
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-analy-castilho-polizel-de-souza:
+    mes: '202607'
+    bruto: 39658.59
+    abate_teto: 0.0
+    bruto_apos_abate: 39658.59
+    liquido: 27001.25
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1633.62
+    orgao: UNIVERSIDADE FEDERAL DE RONDONOPOLIS
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ANALY CASTILHO POLIZEL DE SOUZA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3709851
+    position: br-universidade-federal-de-rondonopolis-reitor
+    position_name: Reitor da Universidade Federal de Rondonópolis
+    bruta: 39658.59
+    liquida: 27001.25
+    indenizatorias: 1633.62
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-amir-antonio-martins-de-oliveira-junior:
+    mes: '202607'
+    bruto: 38313.05
+    abate_teto: 0.0
+    bruto_apos_abate: 38313.05
+    liquido: 25921.46
+    componentes:
+      basica: 38313.05
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1539.04
+    orgao: Universidade Federal de Santa Catarina
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: AMIR ANTONIO MARTINS DE OLIVEIRA JUNIOR
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/267774
+    position: br-universidade-federal-de-santa-catarina-reitor
+    position_name: Reitor da Universidade Federal de Santa Catarina
+    bruta: 38313.05
+    liquida: 25921.46
+    indenizatorias: 1539.04
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 0.0
@@ -11173,6 +13224,38 @@ people:
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-carlos-henrique-de-carvalho:
+    mes: '202607'
+    bruto: 43471.33
+    abate_teto: 0.0
+    bruto_apos_abate: 43471.33
+    liquido: 29713.35
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3812.74
+      indenizatorias: 1536.51
+    orgao: Fundação Universidade Federal Uberlândia
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CARLOS HENRIQUE DE CARVALHO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/982911
+    position: br-universidade-federal-de-uberlandia-reitor
+    position_name: Reitor da Universidade Federal de Uberlândia
+    bruta: 39658.59
+    liquida: 29713.35
+    indenizatorias: 1536.51
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3812.74
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
   br-p-airon-aparecido-silva-de-melo:
@@ -11271,6 +13354,38 @@ people:
     eventuais: 0.0
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
+  br-p-joao-paulo-sales-macedo:
+    mes: '202607'
+    bruto: 37265.22
+    abate_teto: 0.0
+    bruto_apos_abate: 37265.22
+    liquido: 25552.37
+    componentes:
+      basica: 37265.22
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1751.64
+    orgao: UNIV. FEDERAL DO DELTA DO PARNAIBA
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JOAO PAULO SALES MACEDO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/406406
+    position: br-universidade-federal-do-delta-do-parnaiba-reitor
+    position_name: Reitor da Universidade Federal do Delta do Parnaíba
+    bruta: 37265.22
+    liquida: 25552.37
+    indenizatorias: 1751.64
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
   br-p-paulo-sergio-de-paula-vargas:
     mes: '202607'
     bruto: 28625.06
@@ -11303,6 +13418,102 @@ people:
     eventuais: 3598.24
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
+  br-p-jose-da-costa-filho:
+    mes: '202607'
+    bruto: 44469.91
+    abate_teto: 0.0
+    bruto_apos_abate: 44469.91
+    liquido: 30282.65
+    componentes:
+      basica: 40515.74
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3954.17
+      indenizatorias: 1192.0
+    orgao: Universidade Federal do Estado do Rio de Janeiro
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JOSE DA COSTA FILHO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/24629
+    position: br-universidade-federal-do-estado-do-rio-de-janeiro-reitor
+    position_name: Reitor da Universidade Federal do Estado do Rio de Janeiro
+    bruta: 40515.74
+    liquida: 30282.65
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3954.17
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-airton-sieben:
+    mes: '202607'
+    bruto: 36125.54
+    abate_teto: 0.0
+    bruto_apos_abate: 36125.54
+    liquido: 24862.43
+    componentes:
+      basica: 36125.54
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1754.17
+    orgao: UNIVERSIDADE FEDERAL NORTE DO TOCANTINS
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: AIRTON SIEBEN
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1663433
+    position: br-universidade-federal-do-norte-do-tocantins-reitor
+    position_name: Reitor da Universidade Federal do Norte do Tocantins
+    bruta: 36125.54
+    liquida: 24862.43
+    indenizatorias: 1754.17
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-jacques-antonio-de-miranda:
+    mes: '202607'
+    bruto: 39658.59
+    abate_teto: 0.0
+    bruto_apos_abate: 39658.59
+    liquido: 27001.25
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Universidade Federal do Oeste da Bahia
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JACQUES ANTONIO DE MIRANDA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/987513
+    position: br-universidade-federal-do-oeste-da-bahia-reitor
+    position_name: Reitor da Universidade Federal do Oeste da Bahia
+    bruta: 39658.59
+    liquida: 27001.25
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
   br-p-aldenize-ruela-xavier:
     mes: '202607'
     bruto: 36125.54
@@ -11335,6 +13546,38 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-gilmar-pereira-da-silva:
+    mes: '202607'
+    bruto: 43613.98
+    abate_teto: 0.0
+    bruto_apos_abate: 43613.98
+    liquido: 29815.33
+    componentes:
+      basica: 39781.04
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3832.94
+      indenizatorias: 1192.0
+    orgao: Universidade Federal do Pará
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: GILMAR PEREIRA DA SILVA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/991758
+    position: br-universidade-federal-do-para-reitor
+    position_name: Reitor da Universidade Federal do Pará
+    bruta: 39781.04
+    liquida: 29815.33
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3832.94
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
   br-p-marcos-sfair-sunye:
     mes: '202607'
     bruto: 40488.89
@@ -11362,6 +13605,38 @@ people:
     bruta: 40488.89
     liquida: 27399.62
     indenizatorias: 1557.42
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-georgina-goncalves-dos-santos:
+    mes: '202607'
+    bruto: 39658.59
+    abate_teto: 0.0
+    bruto_apos_abate: 39658.59
+    liquido: 26896.98
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1374.71
+    orgao: Universidade Federal do Recôncavo da Bahia
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: GEORGINA GONCALVES DOS SANTOS
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/454192
+    position: br-universidade-federal-do-reconcavo-da-bahia-reitor
+    position_name: Reitor da Universidade Federal do Recôncavo da Bahia
+    bruta: 39658.59
+    liquida: 26896.98
+    indenizatorias: 1374.71
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 0.0
@@ -11431,6 +13706,102 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-marcia-cristina-bernardes-barbosa:
+    mes: '202607'
+    bruto: 44327.25
+    abate_teto: 0.0
+    bruto_apos_abate: 44327.25
+    liquido: 30193.87
+    componentes:
+      basica: 40393.29
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3933.96
+      indenizatorias: 1374.71
+    orgao: Universidade Federal do Rio Grande do Sul
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MARCIA CRISTINA BERNARDES BARBOSA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2893316
+    position: br-universidade-federal-do-rio-grande-do-sul-reitor
+    position_name: Reitor da Universidade Federal do Rio Grande do Sul
+    bruta: 40393.29
+    liquida: 30193.87
+    indenizatorias: 1374.71
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3933.96
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-fabricio-berton-zanchi:
+    mes: '202607'
+    bruto: 40340.12
+    abate_teto: 0.0
+    bruto_apos_abate: 40340.12
+    liquido: 29401.07
+    componentes:
+      basica: 35040.12
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 5300.0
+      indenizatorias: 1616.53
+    orgao: Universidade Federal do Sul da Bahia
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: FABRICIO BERTON ZANCHI
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3668394
+    position: br-universidade-federal-do-sul-da-bahia-reitor
+    position_name: Reitor da Universidade Federal do Sul da Bahia
+    bruta: 35040.12
+    liquida: 29401.07
+    indenizatorias: 1616.53
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 5300.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-francisco-ribeiro-da-costa:
+    mes: '202607'
+    bruto: 27910.97
+    abate_teto: 0.0
+    bruto_apos_abate: 27910.97
+    liquido: 19837.4
+    componentes:
+      basica: 27910.97
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1633.62
+    orgao: Universidade Federal do Sul e Sudeste do Pará
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: FRANCISCO RIBEIRO DA COSTA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1079386
+    position: br-universidade-federal-do-sul-e-sudeste-do-para-reitor
+    position_name: Reitor da Universidade Federal do Sul e Sudeste do Pará
+    bruta: 27910.97
+    liquida: 19837.4
+    indenizatorias: 1633.62
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
   br-p-marinalva-vieira-barbosa:
     mes: '202607'
     bruto: 39658.59
@@ -11458,6 +13829,38 @@ people:
     bruta: 39658.59
     liquida: 27001.25
     indenizatorias: 1597.43
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-heron-laiber-bonadiman:
+    mes: '202607'
+    bruto: 34006.39
+    abate_teto: 0.0
+    bruto_apos_abate: 34006.39
+    liquido: 25326.18
+    componentes:
+      basica: 34006.39
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 2249.16
+    orgao: Universidade Federal dos Vales do Jequitinhonha e Mucuri
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: HERON LAIBER BONADIMAN
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2870128
+    position: br-universidade-federal-dos-vales-do-jequitinhonha-e-mucuri-reitor
+    position_name: Reitor da Universidade Federal dos Vales do Jequitinhonha e Mucuri
+    bruta: 34006.39
+    liquida: 25326.18
+    indenizatorias: 2249.16
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 0.0
@@ -11495,6 +13898,38 @@ people:
     eventuais: 4072.87
     cargo: Sem informaç
     funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-gracialda-costa-ferreira:
+    mes: '202607'
+    bruto: 33701.78
+    abate_teto: 0.0
+    bruto_apos_abate: 33701.78
+    liquido: 22630.43
+    componentes:
+      basica: 33701.78
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Universidade Federal Rural da Amazônia
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: GRACIALDA COSTA FERREIRA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2849098
+    position: br-universidade-federal-rural-da-amazonia-reitor
+    position_name: Reitor da Universidade Federal Rural da Amazônia
+    bruta: 33701.78
+    liquida: 22630.43
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
   br-p-maria-jose-de-sena:
     mes: '202607'
     bruto: 44184.6
@@ -11525,6 +13960,70 @@ people:
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 3913.76
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-roberto-de-souza-rodrigues:
+    mes: '202607'
+    bruto: 37265.22
+    abate_teto: 0.0
+    bruto_apos_abate: 37265.22
+    liquido: 25448.09
+    componentes:
+      basica: 37265.22
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Universidade Federal Rural do Rio de Janeiro
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ROBERTO DE SOUZA RODRIGUES
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3063475
+    position: br-universidade-federal-rural-do-rio-de-janeiro-reitor
+    position_name: Reitor da Universidade Federal Rural do Rio de Janeiro
+    bruta: 37265.22
+    liquida: 25448.09
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
+  br-p-rodrigo-nogueira-de-codes:
+    mes: '202607'
+    bruto: 37265.22
+    abate_teto: 0.0
+    bruto_apos_abate: 37265.22
+    liquido: 25604.5
+    componentes:
+      basica: 37265.22
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1751.64
+    orgao: Universidade Federal Rural do Semi-Árido - RN
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: RODRIGO NOGUEIRA DE CODES
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2916302
+    position: br-universidade-federal-rural-do-semi-arido-reitor
+    position_name: Reitor da Universidade Federal Rural do Semi-Árido
+    bruta: 37265.22
+    liquida: 25604.5
+    indenizatorias: 1751.64
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO DE DIRECAO - CD - IFES
   br-p-everton-ricardi-lozano-da-silva:
@@ -14470,6 +16969,11 @@ nao_encontrados:
   cargo: Secretária Nacional de Gestão Ambiental e Territorial Indígena do Ministério dos Povos Indígenas
   setor: executivo
   motivo: ausente na folha
+- id: br-p-claudio-augusto-vieira-da-silva
+  nome: Cláudio Augusto Vieira da Silva
+  cargo: Secretário Nacional dos Direitos da Criança e do Adolescente do Ministério dos Direitos Humanos e da Cidadania
+  setor: executivo
+  motivo: só há homônimo por primeiro+último sobrenome fora do órgão (190)
 - id: br-p-debora-freire
   nome: Débora Freire
   cargo: Secretária de Política Econômica do Ministério da Fazenda
@@ -14503,6 +17007,11 @@ nao_encontrados:
 - id: br-p-wp-gilneu-francisco-astolfi-vivan
   nome: Gilneu Francisco Astolfi Vivan
   cargo: Diretor do Banco Central do Brasil
+  setor: executivo
+  motivo: ausente na folha
+- id: br-p-inacio-francisco-de-assis-nunes-arruda
+  nome: Inácio Francisco de Assis Nunes Arruda
+  cargo: Secretário de Ciência e Tecnologia para o Desenvolvimento Social do Ministério da Ciência, Tecnologia e Inovação
   setor: executivo
   motivo: ausente na folha
 - id: br-p-wp-izabela-moreira-correa
@@ -14625,6 +17134,11 @@ nao_encontrados:
   cargo: Presidente da Infraero
   setor: executivo
   motivo: órgão fora do SIAPE (empresa publica com folha própria)
+- id: br-p-romildo-carneiro-rolim
+  nome: Romildo Carneiro Rolim
+  cargo: Presidente do Banco do Nordeste do Brasil S.A.
+  setor: executivo
+  motivo: órgão fora do SIAPE (sociedade economia mista com folha própria)
 - id: br-p-wp-silvia-massruha
   nome: Silvia Massruhá
   cargo: Presidente da Embrapa
@@ -14645,6 +17159,11 @@ nao_encontrados:
   cargo: Conselheiro da Anatel
   setor: executivo
   motivo: ausente na folha
+- id: br-p-wallace-nunes-da-silva
+  nome: Wallace Nunes da Silva
+  cargo: Secretário-Executivo do Ministério do Turismo
+  setor: executivo
+  motivo: só há homônimo por primeiro+último sobrenome fora do órgão (28)
 - id: br-p-dou-wilton-itaiguara-goncalves-mota
   nome: Wilton Itaiguara Gonçalves Mota
   cargo: Diretor-Presidente do Serpro

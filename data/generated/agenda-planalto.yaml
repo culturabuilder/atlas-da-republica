@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-09-21'
+generated_at: '2026-09-24'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-06-24'
+janela_inicio: '2026-06-27'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,13 +11,13 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 284
+    compromissos_90d: 272
     dias_com_agenda: 65
     por_tipo:
-      evento: 100
-      viagem: 85
+      evento: 95
       audiencia: 81
-      reuniao: 13
+      viagem: 77
+      reuniao: 14
       outro: 5
     entidades_top:
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
@@ -46,23 +46,53 @@ people:
     - nome: Palácio da Alvorada
       n: 42
     - nome: Base Aérea de Brasília
-      n: 35
+      n: 32
     - nome: Palácio Itamaraty
       n: 5
     - nome: Esplanada dos Ministérios, Brasília
       n: 5
     - nome: Aeroporto Internacional de Macapá
       n: 4
-    - nome: Aeroporto Internacional de Ponta Porã
-      n: 3
     - nome: Túnel Major Sales
       n: 3
     - nome: Aeroporto de Juazeiro do Norte
       n: 3
     - nome: Aeroporto de Congonhas
       n: 3
-    ultimo: '2026-09-21'
+    - nome: Instituto Mauá de Tecnologia (IMT), São Caetano do Sul (SP)
+      n: 3
+    ultimo: '2026-09-24'
     recentes:
+    - data: '2026-09-24'
+      hora: '10:10'
+      titulo: Intervenções acerca das obras de melhoria na BR-116/RJ
+      tipo: evento
+      local: Ginásio do SESC Nova Iguaçu – Nova Iguaçu (RJ)
+      participantes: []
+    - data: '2026-09-22'
+      hora: '23:40'
+      titulo: Chegada a Brasília
+      tipo: viagem
+      local: Base Aérea de Brasília
+      participantes: []
+    - data: '2026-09-22'
+      hora: '13:50'
+      titulo: Partida para Brasília
+      tipo: viagem
+      local: Aeroporto Internacional John F. Kennedy
+      participantes: []
+    - data: '2026-09-22'
+      hora: 09:00
+      titulo: Abertura do Debate Geral de Alto Nível da 81.ª Sessão Ordinária da Assembleia Geral das Nações Unidas
+      tipo: evento
+      local: Sede das Nações Unidas , Nova York
+      participantes: []
+    - data: '2026-09-22'
+      hora: 08:40
+      titulo: Encontro com o Secretário-Geral das Nações Unidas, António Guterres
+      tipo: reuniao
+      local: Sede das Nações Unidas, Nova York
+      participantes: []
     - data: '2026-09-21'
       hora: '18:00'
       titulo: Audiência ao Senador Bernie Sanders
@@ -81,93 +111,8 @@ people:
       tipo: reuniao
       local: Residência Oficial, Nova York (EUA)
       participantes: []
-    - data: '2026-09-20'
-      hora: '18:15'
-      titulo: Chegada a Nova York
-      tipo: viagem
-      local: Aeroporto Internacional John F. Kennedy
-      participantes: []
-    - data: '2026-09-20'
-      hora: '10:30'
-      titulo: Partida para Nova York, Estados Unidos da América
-      tipo: viagem
-      local: Base Aérea de Brasília
-      participantes: []
-    - data: '2026-09-18'
-      hora: '15:15'
-      titulo: Chegada a São Paulo
-      tipo: viagem
-      local: Aeroporto de Congonhas – São Paulo
-      participantes: []
-    - data: '2026-09-18'
-      hora: '14:15'
-      titulo: Partida para São Paulo
-      tipo: viagem
-      local: III COMAR – Rio de Janeiro
-      participantes: []
-    - data: '2026-09-18'
-      hora: '11:30'
-      titulo: Intervenções no contexto das ações integradas de Segurança Pública no Estado do Rio de Janeiro
-      tipo: evento
-      local: BR-116, Km 163, Vigário Geral – Rio de Janeiro
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-06-24: []
-      presidente/2026-06-25:
-      - hora: 08:00
-        titulo: Partida para Três Lagoas
-        local: Base Aérea de Brasília
-      - hora: 08:10
-        titulo: Chegada a Três Lagoas
-        local: Aeroporto Municipal Plínio Alarcon
-      - hora: 09:00
-        titulo: Visita às instalações da Unidade de Fertilizantes Nitrogenados de Três Lagoas (UFN-3), da Petrobras
-        local: BR-158, Km 301, Três Lagoas (MS)
-      - hora: 09:40
-        titulo: Anúncio da Retomada das Obras da Fábrica de Fertilizantes Nitrogenados da Petrobras
-        local: BR-158, Km 301, Três Lagoas (MS)
-      - hora: '11:35'
-        titulo: Partida para Ponta Porã (MS)
-        local: Aeroporto Municipal Plínio Alarcon
-      - hora: '12:25'
-        titulo: Chegada a Ponta Porã
-        local: Aeroporto Internacional de Ponta Porã
-      - hora: '12:55'
-        titulo: Visita ao Assentamento Itamarati
-        local: Distrito de Nova Itamarati, MS-164, km 40, Ponta Porã (MS)
-      - hora: '13:30'
-        titulo: Cerimônia de Anúncios da Reforma Agrária para o Mato Grosso do Sul
-        local: Distrito de Nova Itamarati, MS-164, km 40, Ponta Porã (MS)
-      - hora: '15:00'
-        titulo: Anúncio da Entrega das Obras de Ampliação e Modernização da Fase 1-B dos Aeroportos concedidos no Estado do
-          Mato Grosso do Sul
-        local: Aeroporto Internacional de Ponta Porã
-      - hora: '15:50'
-        titulo: Partida para Brasília
-        local: Aeroporto Internacional de Ponta Porã
-      - hora: '18:20'
-        titulo: Chegada a Brasília
-        local: Base Aérea de Brasília
-      presidente/2026-06-26:
-      - hora: 08:00
-        titulo: Partida para Navegantes
-        local: Base Aérea de Brasília
-      - hora: 09:45
-        titulo: Chegada a Navegantes
-        local: Aeroporto Internacional de Navegantes - SC
-      - hora: '11:00'
-        titulo: Cerimônia de Lançamento da Fragata “Cunha Moreira”
-        local: Rua Eugênio Pezzini, 355, Cordeiros, Itajaí (SC)
-      - hora: '13:30'
-        titulo: Anúncio das obras de retomada da indústria naval e ‘offshore’ brasileira em Santa Catarina
-        local: Estaleiro Detroit – Salseiros, Itajaí (SC)
-      - hora: '15:15'
-        titulo: Partida para Brasília
-        local: Aeroporto Internacional de Navegantes - SC
-      - hora: '17:00'
-        titulo: Chegada a Brasília
-        local: Base Aérea de Brasília
       presidente/2026-06-27: []
       presidente/2026-06-28: []
       presidente/2026-06-29:
@@ -1090,6 +1035,24 @@ people:
       - hora: '18:00'
         titulo: Audiência ao Senador Bernie Sanders
         local: Residência Oficial, Nova York (EUA)
+      presidente/2026-09-22:
+      - hora: 08:40
+        titulo: Encontro com o Secretário-Geral das Nações Unidas, António Guterres
+        local: Sede das Nações Unidas, Nova York
+      - hora: 09:00
+        titulo: Abertura do Debate Geral de Alto Nível da 81.ª Sessão Ordinária da Assembleia Geral das Nações Unidas
+        local: Sede das Nações Unidas , Nova York
+      - hora: '13:50'
+        titulo: Partida para Brasília
+        local: Aeroporto Internacional John F. Kennedy
+      - hora: '23:40'
+        titulo: Chegada a Brasília
+        local: Base Aérea de Brasília
+      presidente/2026-09-23: []
+      presidente/2026-09-24:
+      - hora: '10:10'
+        titulo: Intervenções acerca das obras de melhoria na BR-116/RJ
+        local: Ginásio do SESC Nova Iguaçu – Nova Iguaçu (RJ)
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -1097,19 +1060,17 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 91
-    dias_com_agenda: 53
+    compromissos_90d: 89
+    dias_com_agenda: 52
     por_tipo:
-      evento: 37
-      viagem: 26
+      evento: 36
+      viagem: 25
       audiencia: 17
       outro: 6
       reuniao: 5
     entidades_top:
     - nome: Luiz Inácio Lula da Silva (Presidente da República)
       n: 6
-    - nome: João Nobre (Assessor da Secretaria Executiva do Ministério da Fazenda)
-      n: 1
     - nome: George Santoro (Ministro de Estado dos Transportes)
       n: 1
     - nome: João Eduardo Salles (Presidente da Sociedade Brasileira de Diabetes/SP)
@@ -1125,12 +1086,12 @@ people:
     - nome: Sérgio Leite (Presidente da Federação dos Trabalhadores nas Indústrias Químicas e Fa)
       n: 1
     locais_top:
-    - nome: Brasília/DF
-      n: 20
     - nome: Palácio do Planalto
       n: 20
+    - nome: Brasília/DF
+      n: 19
     - nome: São Paulo/SP
-      n: 17
+      n: 16
     - nome: Palácio do Planalto, Anexo II
       n: 12
     - nome: Palácio da Alvorada
@@ -1145,8 +1106,14 @@ people:
       n: 1
     - nome: Franca/SP
       n: 1
-    ultimo: '2026-09-18'
+    ultimo: '2026-09-23'
     recentes:
+    - data: '2026-09-23'
+      hora: '15:00'
+      titulo: Prof. Dr. Paulo Fernando de Almeida, do Instituto de Ciências e Saúde da Universidade Federal da Bahia (ICS)
+      tipo: audiencia
+      local: Palácio do Planalto, Anexo II
+      participantes: []
     - data: '2026-09-18'
       hora: 09:00
       titulo: Reunião com prefeitos de municípios atingidos pelas chuvas no Vale do Ribeira
@@ -1190,30 +1157,8 @@ people:
       tipo: evento
       local: Palácio do Planalto
       participantes: []
-    - data: '2026-09-07'
-      hora: 09:00
-      titulo: Desfile Cívico-Militar de 7 de Setembro
-      tipo: evento
-      local: Esplanada dos Ministérios, Brasília/DF
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-06-24: []
-      vice/2026-06-24-b1: []
-      vice/2026-06-25:
-      - hora: '16:00'
-        titulo: João Nobre, Assessor da Secretaria Executiva do Ministério da Fazenda
-        local: Palácio do Planalto, Anexo II
-      vice/2026-06-25-b1: []
-      vice/2026-06-26:
-      - hora: 08:00
-        titulo: Embarque de Brasília/DF para São Paulo/SP
-        local: Brasília/DF
-      - hora: '11:00'
-        titulo: 'Seminário: “Conexões Produtivas: Oportunidades para a Indústria no Acordo Mercosul-União Europeia”, Organizado
-          pela Apexbrasil'
-        local: São Paulo/SP
-      vice/2026-06-26-b1: []
       vice/2026-06-27:
       - hora: '12:00'
         titulo: Decolagem de São Paulo/SP para Franca/SP
@@ -1667,6 +1612,15 @@ people:
       vice/2026-09-20-b1: []
       vice/2026-09-21: []
       vice/2026-09-21-b1: []
+      vice/2026-09-22: []
+      vice/2026-09-22-b1: []
+      vice/2026-09-23:
+      - hora: '15:00'
+        titulo: Prof. Dr. Paulo Fernando de Almeida, do Instituto de Ciências e Saúde da Universidade Federal da Bahia (ICS)
+        local: Palácio do Planalto, Anexo II
+      vice/2026-09-23-b1: []
+      vice/2026-09-24: []
+      vice/2026-09-24-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 284 compromissos em 65 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 91 compromissos em 53 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 272 compromissos em 65 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 89 compromissos em 52 dias (0 dias não lidos)'
