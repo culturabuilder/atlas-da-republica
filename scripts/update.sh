@@ -43,8 +43,8 @@ run() {  # run "Nome visível" comando...   (LIM=1800 run ... para um limite mai
 LIM=1800 run "SIORG" $PY etl/siorg.py ${FAST:+--no-full} --cache build
 run "Câmara/Senado" $PY etl/parlamentares.py --cache build
 run "Comissões" $PY etl/comissoes.py --cache build/cache-comissoes
-run "Colegiados" $PY etl/colegiados.py
 INICIO_ORC=$INICIO; INICIO=$(date +%s); LIM=1800 run "Build (1/2)" $PY scripts/build_graph.py > /dev/null; INICIO=$INICIO_ORC
+run "Colegiados" $PY etl/colegiados.py   # lê build/graph.br.json: só roda depois do primeiro build
 run "Sabatinas" $PY etl/sabatinas.py
 [ -z "$FAST" ] && { run "Wikidata" $PY etl/wikidata.py || echo "Wikidata falhou (segue)"; }
 run "Notícias" $PY etl/noticias.py

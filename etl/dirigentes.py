@@ -625,6 +625,16 @@ def finalidade(txt, n=190):
 def build_orgs(graph, blocos):
     nodes = graph["nodes"]
     headed = {n.get("head_of") for n in nodes.values() if n.get("type") == "dept_head"}
+    # o grafo já traz os cargos que ESTE conector gerou ontem: se eles contarem como "órgão já chefiado",
+    # a lista de faltantes fica vazia e o arquivo é reescrito com zero cargos, apagando o trabalho anterior.
+    proprios = set()
+    if OUT.exists():
+        try:
+            ant = yaml.safe_load(open(OUT, encoding="utf-8")) or {}
+            proprios = {q.get("head_of") for q in (ant.get("positions") or []) if q.get("head_of")}
+        except Exception:
+            proprios = set()
+    headed -= proprios
     missing = [n for i, n in nodes.items() if n.get("type") == "department" and i not in headed]
     orgs, fora = [], []
 
@@ -817,6 +827,7 @@ def main():
     ap.add_argument("--bloco", choices=["tribunais", "estatais", "ensino"], help="um bloco só")
     ap.add_argument("--no-web", action="store_true", help="não busca ocupantes")
     ap.add_argument("--refresh", action="store_true", help="ignora o cache HTTP")
+    ap.add_argument("--force-shrink", action="store_true", help="aceita gravar bem menos cargos que o arquivo atual")
     args = ap.parse_args()
     t0 = time.time()
 
@@ -913,6 +924,24 @@ def main():
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     yaml.add_representer(OrderedDict, lambda d, x: d.represent_mapping("tag:yaml.org,2002:map", x.items()))
+    # nunca encolher sem aviso: se o resultado tem menos da metade dos cargos do arquivo anterior,
+    # é sinal de fonte fora do ar ou de colisão com o próprio dado — mantém o que já estava lá.
+    if OUT.exists() and not args.force_shrink:
+        try:
+            ant = yaml.safe_load(open(OUT, encoding="utf-8")) or {}
+            n_ant = len(ant.get("positions") or [])
+        except Exception:
+            n_ant = 0
+        oc_ant = sum(1 for q in (ant.get("positions") or []) if q.get("people"))
+        oc_novo = sum(1 for q in positions if q.get("people"))
+        if n_ant and len(positions) < n_ant / 2:
+            print(f"ABORTADO: sairiam {len(positions)} cargos contra {n_ant} do arquivo atual. "
+                  f"Mantido o anterior; use --force-shrink se a queda for real.", file=sys.stderr)
+            sys.exit(1)
+        if oc_ant and oc_novo < oc_ant / 2:
+            print(f"ABORTADO: sairiam {oc_novo} ocupantes contra {oc_ant} do arquivo atual "
+                  f"(sites fora do ar, ou --no-web sem querer). Mantido o anterior; use --force-shrink se a queda for real.", file=sys.stderr)
+            sys.exit(1)
     with open(OUT, "w", encoding="utf-8") as fh:
         fh.write("# GERADO por etl/dirigentes.py. Não edite à mão.\n")
         yaml.dump(doc, fh, allow_unicode=True, sort_keys=False, width=120)
