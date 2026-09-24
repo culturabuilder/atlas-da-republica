@@ -1,13 +1,1244 @@
 # GERADO por etl/ocupantes_dou.py. Não edite à mão.
-generated_at: '2026-09-24T19:28:54'
+generated_at: '2026-09-22T17:34:13'
 fonte: Diário Oficial da União — busca pública www.in.gov.br/consulta (todas as seções), consulta pelo nome do cargo
 nota: 'Ocupante achado buscando o CARGO no DOU (o inverso de etl/posses.py, que busca o nome). started_at = dia da PUBLICAÇÃO do ato de nomeação/designação/recondução, não o da posse. Só entra quando o
   cargo citado no ato casa com o cargo do grafo em todos os termos significativos; confiança alta = cargo e órgão casam, média = só o cargo casa (órgão vindo da sigla ou da hierarquia do ato) ou a nomeação
   é interina. Ato de exoneração/dispensa posterior descarta a pessoa. Em reitoria e estatal, ato anterior a quatro anos e meio cai para média: é o mais recente do DOU, mas o mandato já venceu.'
 janela:
   de: '2018-01-01'
-  ate: '2026-09-24'
-positions: {}
+  ate: '2026-09-22'
+positions:
+  br-autoridade-nacional-de-seguranca-nuclear-diretor-presidente:
+  - id: br-p-alessandro-facure-neves-de-salles-soares
+    name: Alessandro Facure Neves De Salles Soares
+    started_at: '2025-08-29'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-29-de-agosto-de-2025-652030468
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: DECRETOS DE 29 DE AGOSTO DE 2025 (DO2_EXTRA_A, 2025-08-29)
+    cargo_no_ato: Diretor-Presidente da Autoridade Nacional de Segurança Nuclear
+    note: 'NOMEAR publicado no DOU em 29/08/2025; cargo no ato: "Diretor-Presidente da Autoridade Nacional de Segurança Nuclear". Data = publicação do ato, não a posse.'
+  br-banco-do-nordeste-do-brasil-s-a-presidente:
+  - id: br-p-romildo-carneiro-rolim
+    name: Romildo Carneiro Rolim
+    started_at: '2018-04-13'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-12-de-abril-de-2018-10309759
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: media
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: DECRETO DE 12 DE ABRIL DE 2018 (DO2, 2018-04-13)
+    cargo_no_ato: Presidente do Banco do Nordeste do Brasil S
+    note: 'NOMEAR publicado no DOU em 13/04/2018; cargo no ato: "Presidente do Banco do Nordeste do Brasil S". Data = publicação do ato, não a posse. É o ato mais recente do cargo no DOU, mas o mandato
+      de quatro anos já venceu: pode haver sucessor não publicado com esta redação.'
+  br-centro-federal-de-educacao-tecnologica-de-minas-gerais-diretor-geral:
+  - id: br-p-carla-simone-chamon
+    name: Carla Simone Chamon
+    started_at: '2024-03-15'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portaria-n-106-de-13-de-marco-de-2024-548524242
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIA Nº 106, DE 13 DE MARÇO DE 2024 (DO2, 2024-03-15)
+    cargo_no_ato: Diretora-Geral do Centro Federal de Educação Tecnológica de Minas Gerais
+    note: 'NOMEIA publicado no DOU em 15/03/2024; cargo no ato: "Diretora-Geral do Centro Federal de Educação Tecnológica de Minas Gerais". Data = publicação do ato, não a posse.'
+  br-colegio-pedro-ii-reitor:
+  - id: br-p-ana-paula-giraux-leitao
+    name: Ana Paula Giraux Leitão
+    started_at: '2022-10-19'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-18-de-outubro-de-2022-437288858
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Colégio Pedro II)
+    ato: DECRETOS DE 18 DE OUTUBRO DE 2022 (DO2, 2022-10-19)
+    cargo_no_ato: Reitora do referido Colégio
+    note: 'NOMEAR publicado no DOU em 19/10/2022; cargo no ato: "Reitora do referido Colégio". Data = publicação do ato, não a posse.'
+  br-fundacao-jorge-duprat-figueiredo-de-seguranca-e-medicina-do-trabalho-presidente:
+  - id: br-p-jose-cloves-da-silva
+    name: José Cloves Da Silva
+    started_at: '2026-04-27'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-24-de-abril-de-2026-701491155
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 24 DE ABRIL DE 2026 (DO2, 2026-04-27)
+    cargo_no_ato: Presidente da Fundação Jorge Duprat Figueiredo, de Segurança e Medicina do Trabalho
+    note: 'NOMEAR publicado no DOU em 27/04/2026; cargo no ato: "Presidente da Fundação Jorge Duprat Figueiredo, de Segurança e Medicina do Trabalho". Data = publicação do ato, não a posse.'
+  br-fundacao-universidade-federal-de-ciencias-da-saude-de-porto-alegre-reitor:
+  - id: br-p-jenifer-saffi
+    name: Jenifer Saffi
+    started_at: '2025-03-14'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-13-de-marco-de-2025-617890733
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Ciências da Saúde de Porto Alegre)
+    ato: DECRETO DE 13 DE MARÇO DE 2025 (DO2, 2025-03-14)
+    cargo_no_ato: Reitora da referida Universidade
+    note: 'NOMEAR publicado no DOU em 14/03/2025; cargo no ato: "Reitora da referida Universidade". Data = publicação do ato, não a posse.'
+  br-fundacao-universidade-federal-de-mato-grosso-reitor:
+  - id: br-p-marluce-aparecida-souza-e-silva
+    name: Marluce Aparecida Souza e Silva
+    started_at: '2024-10-10'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-9-de-outubro-de-2024-589455882
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Mato Grosso)
+    ato: DECRETO DE 9 DE OUTUBRO DE 2024 (DO2, 2024-10-10)
+    cargo_no_ato: Reitora da referida Universidade
+    note: 'NOMEAR publicado no DOU em 10/10/2024; cargo no ato: "Reitora da referida Universidade". Data = publicação do ato, não a posse.'
+  br-fundacao-universidade-federal-de-ouro-preto-reitor:
+  - id: br-p-luciano-campos-da-silva
+    name: Luciano Campos Da Silva
+    started_at: '2025-02-07'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-6-de-fevereiro-de-2025-611367703
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Ouro Preto)
+    ato: DECRETO DE 6 DE FEVEREIRO DE 2025 (DO2, 2025-02-07)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 07/02/2025; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-fundacao-universidade-federal-de-rondonia-reitor:
+  - id: br-p-marilia-lima-pimentel-cotinguiba
+    name: Marília Lima Pimentel Cotinguiba
+    started_at: '2024-03-01'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-29-de-fevereiro-de-2024-545922589
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Rondônia)
+    ato: DECRETO DE 29 DE FEVEREIRO DE 2024 (DO2, 2024-03-01)
+    cargo_no_ato: Reitora da referida Universidade
+    note: 'NOMEAR publicado no DOU em 01/03/2024; cargo no ato: "Reitora da referida Universidade". Data = publicação do ato, não a posse.'
+  br-fundacao-universidade-federal-de-sao-carlos-reitor:
+  - id: br-p-ana-beatriz-de-oliveira
+    name: Ana Beatriz De Oliveira
+    started_at: '2024-12-23'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-20-de-dezembro-de-2024-603375661
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de São Carlos)
+    ato: DECRETOS DE 20 DE DEZEMBRO DE 2024 (DO2, 2024-12-23)
+    cargo_no_ato: Reitora da referida Universidade
+    note: 'RECONDUZIR publicado no DOU em 23/12/2024; cargo no ato: "Reitora da referida Universidade". Data = publicação do ato, não a posse.'
+  br-fundacao-universidade-federal-de-sao-joao-del-rei-reitor:
+  - id: br-p-marcelo-pereira-de-andrade
+    name: Marcelo Pereira De Andrade
+    started_at: '2024-04-23'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-22-de-abril-de-2024-555665788
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de São João del-Rei)
+    ato: DECRETOS DE 22 DE ABRIL DE 2024 (DO2, 2024-04-23)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'RECONDUZIR publicado no DOU em 23/04/2024; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-fundacao-universidade-federal-de-sergipe-reitor:
+  - id: br-p-andre-mauricio-conceicao-de-souza
+    name: André Maurício Conceição De Souza
+    started_at: '2025-05-07'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-6-de-maio-de-2025-627666753
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Sergipe)
+    ato: DECRETO DE 6 DE MAIO DE 2025 (DO2, 2025-05-07)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 07/05/2025; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-fundacao-universidade-federal-de-vicosa-reitor:
+  - id: br-p-demetrius-david-da-silva
+    name: Demetrius David Da Silva
+    started_at: '2023-05-25'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-24-de-maio-de-2023-485627263
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Viçosa)
+    ato: DECRETOS DE 24 DE MAIO DE 2023 (DO2, 2023-05-25)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'RECONDUZIR publicado no DOU em 25/05/2023; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-fundacao-universidade-federal-do-amapa-reitor:
+  - id: br-p-antonio-sabino-da-silva-neto
+    name: Antônio Sabino Da Silva Neto
+    started_at: '2026-09-03'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-2-de-setembro-de-2026-729892273
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Amapá)
+    ato: DECRETO DE 2 DE SETEMBRO DE 2026 (DO2, 2026-09-03)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 03/09/2026; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-fundacao-universidade-federal-do-maranhao-reitor:
+  - id: br-p-fernando-carvalho-silva
+    name: Fernando Carvalho Silva
+    started_at: '2023-11-10'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-9-de-novembro-de-2023-522087766
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Maranhão)
+    ato: DECRETO DE 9 DE NOVEMBRO DE 2023 (DO2, 2023-11-10)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 10/11/2023; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-fundacao-universidade-federal-do-pampa-reitor:
+  - id: br-p-edward-frederico-castro-pessano
+    name: Edward Frederico Castro Pessano
+    started_at: '2023-12-18'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-15-de-dezembro-de-2023-531045832
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Pampa)
+    ato: DECRETO DE 15 DE DEZEMBRO DE 2023 (DO2, 2023-12-18)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 18/12/2023; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-fundacao-universidade-federal-do-rio-grande-reitor:
+  - id: br-p-suzane-da-rocha-vieira-goncalves
+    name: Suzane Da Rocha Vieira Gonçalves
+    started_at: '2024-12-05'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-4-de-dezembro-de-2024-599923526
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Rio Grande)
+    ato: DECRETOS DE 4 DE DEZEMBRO DE 2024 (DO2, 2024-12-05)
+    cargo_no_ato: Reitora da referida Universidade
+    note: 'NOMEAR publicado no DOU em 05/12/2024; cargo no ato: "Reitora da referida Universidade". Data = publicação do ato, não a posse.'
+  br-fundacao-universidade-federal-do-tocantins-reitor:
+  - id: br-p-maria-santana-ferreira-dos-santos-milhomem
+    name: Maria Santana Ferreira Dos Santos Milhomem
+    started_at: '2025-08-29'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-28-de-agosto-de-2025-651738490
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Tocantins)
+    ato: DECRETOS DE 28 DE AGOSTO DE 2025 (DO2, 2025-08-29)
+    cargo_no_ato: Reitora da referida Universidade
+    note: 'NOMEAR publicado no DOU em 29/08/2025; cargo no ato: "Reitora da referida Universidade". Data = publicação do ato, não a posse.'
+  br-fundacao-universidade-federal-do-vale-do-sao-francisco-reitor:
+  - id: br-p-telio-nobre-leite
+    name: Telio Nobre Leite
+    started_at: '2023-04-06'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-5-de-abril-de-2023-475707290
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Vale do São Francisco)
+    ato: DECRETO DE 5 DE ABRIL DE 2023 (DO2, 2023-04-06)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 06/04/2023; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-baiano-reitor:
+  - id: br-p-ozenice-silva-dos-santos
+    name: Ozenice Silva Dos Santos
+    started_at: '2026-05-21'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-20-de-maio-de-2026-706936925
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia Baiano)
+    ato: DECRETOS DE 20 DE MAIO DE 2026 (DO2, 2026-05-21)
+    cargo_no_ato: Reitora do referido Instituto
+    note: 'NOMEAR publicado no DOU em 21/05/2026; cargo no ato: "Reitora do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-catarinense-reitor:
+  - id: br-p-rudinei-kock-exterckoter
+    name: Rudinei Kock Exterckoter
+    started_at: '2024-01-16'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-15-de-janeiro-de-2024-537631194
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia Catarinense)
+    ato: DECRETO DE 15 DE JANEIRO DE 2024 (DO2, 2024-01-16)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'NOMEAR publicado no DOU em 16/01/2024; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-da-paraiba-reitor:
+  - id: br-p-mary-roberta-meira-marinho
+    name: Mary Roberta Meira Marinho
+    started_at: '2022-10-19'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-18-de-outubro-de-2022-437288858
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia da Paraíba)
+    ato: DECRETOS DE 18 DE OUTUBRO DE 2022 (DO2, 2022-10-19)
+    cargo_no_ato: Reitora do referido Instituto
+    note: 'NOMEAR publicado no DOU em 19/10/2022; cargo no ato: "Reitora do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-alagoas-reitor:
+  - id: br-p-carlos-guedes-de-lacerda
+    name: Carlos Guedes De Lacerda
+    started_at: '2023-06-14'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-13-de-junho-de-2023-489496407
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia de Alagoas)
+    ato: DECRETOS DE 13 DE JUNHO DE 2023 (DO2, 2023-06-14)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'RECONDUZIR publicado no DOU em 14/06/2023; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-brasilia-reitor:
+  - id: br-p-veruska-ribeiro-machado
+    name: Veruska Ribeiro Machado
+    started_at: '2023-08-03'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-2-de-agosto-de-2023-500569129
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia de Brasília)
+    ato: DECRETOS DE 2 DE AGOSTO DE 2023 (DO2, 2023-08-03)
+    cargo_no_ato: Reitora do referido Instituto
+    note: 'NOMEAR publicado no DOU em 03/08/2023; cargo no ato: "Reitora do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-mato-grosso-reitor:
+  - id: br-p-julio-cesar-dos-santos
+    name: Julio César Dos Santos
+    started_at: '2025-04-17'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-17-de-abril-de-2025-624925589
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso)
+    ato: DECRETO DE 17 DE ABRIL DE 2025 (DO2_EXTRA_A, 2025-04-17)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'RECONDUZIR publicado no DOU em 17/04/2025; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-minas-gerais-reitor:
+  - id: br-p-rafael-bastos-teixeira
+    name: Rafael Bastos Teixeira
+    started_at: '2023-09-12'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-11-de-setembro-de-2023-508847490
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais)
+    ato: DECRETOS DE 11 DE SETEMBRO DE 2023 (DO2, 2023-09-12)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'NOMEAR publicado no DOU em 12/09/2023; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-pernambuco-reitor:
+  - id: br-p-jose-carlos-de-sa-junior
+    name: José Carlos De Sá Junior
+    started_at: '2024-04-24'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-23-de-abril-de-2024-555730339
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco)
+    ato: DECRETO DE 23 DE ABRIL DE 2024 (DO2, 2024-04-24)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'RECONDUZIR publicado no DOU em 24/04/2024; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-rondonia-reitor:
+  - id: br-p-moises-jose-rosa-souza
+    name: Moisés José Rosa Souza
+    started_at: '2023-06-14'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-13-de-junho-de-2023-489496407
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia de Rondônia)
+    ato: DECRETOS DE 13 DE JUNHO DE 2023 (DO2, 2023-06-14)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'NOMEAR publicado no DOU em 14/06/2023; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-roraima-reitor:
+  - id: br-p-nilra-jane-filgueira-bezerra
+    name: Nilra Jane Filgueira Bezerra
+    started_at: '2024-12-03'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-2-de-dezembro-de-2024-599156909
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia de Roraima)
+    ato: DECRETOS DE 2 DE DEZEMBRO DE 2024 (DO2, 2024-12-03)
+    cargo_no_ato: Reitora do referido Instituto
+    note: 'RECONDUZIR publicado no DOU em 03/12/2024; cargo no ato: "Reitora do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-santa-catarina-reitor:
+  - id: br-p-zizimo-moreira-filho
+    name: Zízimo Moreira Filho
+    started_at: '2025-08-07'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-6-de-agosto-de-2025-646815711
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina)
+    ato: DECRETO DE 6 DE AGOSTO DE 2025 (DO2, 2025-08-07)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'NOMEAR publicado no DOU em 07/08/2025; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-acre-reitor:
+  - id: br-p-fabio-storch-de-oliveira
+    name: Fábio Storch De Oliveira
+    started_at: '2024-10-01'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-30-de-setembro-de-2024-587521371
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia do Acre)
+    ato: DECRETO DE 30 DE SETEMBRO DE 2024 (DO2, 2024-10-01)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'NOMEAR publicado no DOU em 01/10/2024; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-amapa-reitor:
+  - id: br-p-romaro-antonio-silva
+    name: Romaro Antonio Silva
+    started_at: '2024-01-31'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-30-de-janeiro-de-2024-540575019
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia do Amapá)
+    ato: DECRETOS DE 30 DE JANEIRO DE 2024 (DO2, 2024-01-31)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'NOMEAR publicado no DOU em 31/01/2024; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-amazonas-reitor:
+  - id: br-p-jaime-cavalcante-alves
+    name: Jaime Cavalcante Alves
+    started_at: '2023-06-21'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-21-de-junho-de-2023-491259475
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia do Amazonas)
+    ato: DECRETO DE 21 DE JUNHO DE 2023 (DO2_EXTRA_A, 2023-06-21)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'RECONDUZIR publicado no DOU em 21/06/2023; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-ceara-reitor:
+  - id: br-p-jose-wally-mendonca-menezes
+    name: José Wally Mendonça Menezes
+    started_at: '2025-02-19'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-18-de-fevereiro-de-2025-613474909
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia do Ceará)
+    ato: DECRETO DE 18 DE FEVEREIRO DE 2025 (DO2, 2025-02-19)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'RECONDUZIR publicado no DOU em 19/02/2025; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-maranhao-reitor:
+  - id: br-p-carlos-cesar-teixeira-ferreira
+    name: Carlos Cesar Teixeira Ferreira
+    started_at: '2024-11-04'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-1-de-novembro-de-2024-593699453
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia do Maranhão)
+    ato: DECRETO DE 1º DE NOVEMBRO DE 2024 (DO2, 2024-11-04)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'RECONDUZIR publicado no DOU em 04/11/2024; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-grande-do-norte-reitor:
+  - id: br-p-jose-arnobio-de-araujo-filho
+    name: José Arnóbio De Araújo Filho
+    started_at: '2024-12-20'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-20-de-dezembro-de-2024-603294416
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do N)
+    ato: DECRETO DE 20 DE DEZEMBRO DE 2024 (DO2_EXTRA_A, 2024-12-20)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'RECONDUZIR publicado no DOU em 20/12/2024; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-grande-do-sul-reitor:
+  - id: br-p-julio-xandro-heck
+    name: Júlio Xandro Heck
+    started_at: '2024-02-15'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-14-de-fevereiro-de-2024-542790480
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do S)
+    ato: DECRETO DE 14 DE FEVEREIRO DE 2024 (DO2, 2024-02-15)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'RECONDUZIR publicado no DOU em 15/02/2024; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sudeste-de-minas-gerais-reitor:
+  - id: br-p-valdir-jose-da-silva
+    name: Valdir José Da Silva
+    started_at: '2025-04-30'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-29-de-abril-de-2025-626928914
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia do Sudeste de Mina)
+    ato: DECRETO DE 29 DE ABRIL DE 2025 (DO2, 2025-04-30)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'NOMEAR publicado no DOU em 30/04/2025; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sul-de-minas-gerais-reitor:
+  - id: br-p-cleber-avila-barbosa
+    name: Cleber Ávila Barbosa
+    started_at: '2026-08-13'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-12-de-agosto-de-2026-725025105
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia do Sul de Minas Ge)
+    ato: DECRETOS DE 12 DE AGOSTO DE 2026 (DO2, 2026-08-13)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'RECONDUZIR publicado no DOU em 13/08/2026; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-triangulo-mineiro-reitor:
+  - id: br-p-marcelo-ponciano-da-silva
+    name: Marcelo Ponciano Da Silva
+    started_at: '2024-03-15'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portaria-n-106-de-13-de-marco-de-2024-548524242
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia do Triângulo Minei)
+    ato: PORTARIA Nº 106, DE 13 DE MARÇO DE 2024 (DO2, 2024-03-15)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'NOMEIA publicado no DOU em 15/03/2024; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-farroupilha-reitor:
+  - id: br-p-nidia-heringer
+    name: Nídia Heringer
+    started_at: '2025-01-31'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-30-de-janeiro-de-2025-610209269
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia Farroupilha)
+    ato: DECRETOS DE 30 DE JANEIRO DE 2025 (DO2, 2025-01-31)
+    cargo_no_ato: Reitora do referido Instituto
+    note: 'RECONDUZIR publicado no DOU em 31/01/2025; cargo no ato: "Reitora do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-goiano-reitor:
+  - id: br-p-elias-de-padua-monteiro
+    name: Elias De Pádua Monteiro
+    started_at: '2024-03-08'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-7-de-marco-de-2024-547042389
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia Goiano)
+    ato: DECRETO DE 7 DE MARÇO DE 2024 (DO2, 2024-03-08)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'RECONDUZIR publicado no DOU em 08/03/2024; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-sul-rio-grandense-reitor:
+  - id: br-p-carlos-jesus-anghinoni-correa
+    name: Carlos Jesus Anghinoni Correa
+    started_at: '2025-06-18'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-18-de-junho-de-2025-637188782
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia Sul-Rio-Grandense)
+    ato: DECRETO DE 18 DE JUNHO DE 2025 (DO2_EXTRA_A, 2025-06-18)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'NOMEAR publicado no DOU em 18/06/2025; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-secretaria-de-acompanhamento-e-gestao-de-assuntos-estrategicos-secretario:
+  - id: br-p-alex-azevedo-urbancg
+    name: Alex Azevedo Urbancg
+    started_at: '2025-11-19'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-18-de-novembro-de-2025-669852615
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: DECRETOS DE 18 DE NOVEMBRO DE 2025 (DO2, 2025-11-19)
+    cargo_no_ato: Secretário de Acompanhamento e Gestão de Assuntos Estratégicos do Gabinete de Segurança Institucional da Presidência da República
+    note: 'NOMEAR publicado no DOU em 19/11/2025; cargo no ato: "Secretário de Acompanhamento e Gestão de Assuntos Estratégicos do Gabinete de Segurança In". Data = publicação do ato, não a posse.'
+  br-secretaria-de-articulacao-e-monitoramento-secretario:
+  - id: br-p-rogerio-da-veiga
+    name: Rogério Da Veiga
+    started_at: '2026-04-07'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-6-de-abril-de-2026-697636871
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 6 DE ABRIL DE 2026 (DO2, 2026-04-07)
+    cargo_no_ato: Secretário de Articulação e Monitoramento da Casa Civil da Presidência da República
+    note: 'NOMEAR publicado no DOU em 07/04/2026; cargo no ato: "Secretário de Articulação e Monitoramento da Casa Civil da Presidência da República". Data = publicação do ato, não a posse.'
+  br-secretaria-de-ciencia-e-tecnologia-para-o-desenvolvimento-social-secretario:
+  - id: br-p-inacio-francisco-de-assis-nunes-arruda
+    name: Inácio Francisco De Assis Nunes Arruda
+    started_at: '2023-03-28'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-27-de-marco-de-2023-473052459
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 27 DE MARÇO DE 2023 (DO2, 2023-03-28)
+    cargo_no_ato: Secretário de Ciência e Tecnologia para o Desenvolvimento Social do Ministério da Ciência, Tecnologia e Inovação
+    note: 'NOMEAR publicado no DOU em 28/03/2023; cargo no ato: "Secretário de Ciência e Tecnologia para o Desenvolvimento Social do Ministério da Ciência,". Data = publicação do ato, não a posse.'
+  br-secretaria-de-desenvolvimento-tecnologico-e-inovacao-secretario:
+  - id: br-p-daniel-gomes-de-almeida-filho
+    name: Daniel Gomes De Almeida Filho
+    started_at: '2024-08-14'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-13-de-agosto-de-2024-578169254
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 13 DE AGOSTO DE 2024 (DO2, 2024-08-14)
+    cargo_no_ato: Secretário de Desenvolvimento Tecnológico e Inovação do Ministério da Ciência, Tecnologia e Inovação
+    note: 'NOMEAR publicado no DOU em 14/08/2024; cargo no ato: "Secretário de Desenvolvimento Tecnológico e Inovação do Ministério da Ciência, Tecnologia ". Data = publicação do ato, não a posse.'
+  br-secretaria-de-gestao-do-sistema-nacional-de-promocao-da-igualdade-racial-secretario:
+  - id: br-p-cledisson-geraldo-dos-santos-junior
+    name: Cledisson Geraldo Dos Santos Junior
+    started_at: '2024-10-23'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-22-de-outubro-de-2024-591909715
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 22 DE OUTUBRO DE 2024 (DO2, 2024-10-23)
+    cargo_no_ato: Secretário de Gestão do Sistema Nacional de Promoção da Igualdade Racial do Ministério da Igualdade Racial
+    note: 'NOMEAR publicado no DOU em 23/10/2024; cargo no ato: "Secretário de Gestão do Sistema Nacional de Promoção da Igualdade Racial do Ministério da ". Data = publicação do ato, não a posse.'
+  br-secretaria-executiva-empreendedorismo-secretario:
+  - id: br-p-tiago-nicacio-pereira
+    name: Tiago Nicácio Pereira
+    started_at: '2026-05-21'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-20-de-maio-de-2026-706958737
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: DECRETO DE 20 DE MAIO DE 2026 (DO2, 2026-05-21)
+    cargo_no_ato: Secretário-Executivo do Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte
+    note: 'NOMEAR publicado no DOU em 21/05/2026; cargo no ato: "Secretário-Executivo do Ministério do Empreendedorismo, da Microempresa e da Empresa de Pe". Data = publicação do ato, não a posse.'
+  br-secretaria-executiva-turismo-secretario:
+  - id: br-p-wallace-nunes-da-silva
+    name: Wallace Nunes Da Silva
+    started_at: '2023-01-12'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-12-de-janeiro-de-2023-457601559
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: DECRETO DE 12 DE JANEIRO DE 2023 (DO2_EXTRA_A, 2023-01-12)
+    cargo_no_ato: Secretário-Executivo do Ministério do Turismo
+    note: 'NOMEAR publicado no DOU em 12/01/2023; cargo no ato: "Secretário-Executivo do Ministério do Turismo". Data = publicação do ato, não a posse.'
+  br-secretaria-nacional-de-ambiente-de-negocios-secretario:
+  - id: br-p-mauricio-pinto-pereira-juvenal
+    name: Maurício Pinto Pereira Juvenal
+    started_at: '2026-05-21'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-20-de-maio-de-2026-706950625
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 20 DE MAIO DE 2026 (DO2, 2026-05-21)
+    cargo_no_ato: Secretário Nacional de Ambiente de Negócios do Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte
+    note: 'NOMEAR publicado no DOU em 21/05/2026; cargo no ato: "Secretário Nacional de Ambiente de Negócios do Ministério do Empreendedorismo, da Microemp". Data = publicação do ato, não a posse.'
+  br-secretaria-nacional-de-economia-popular-e-solidaria-secretario:
+  - id: br-p-fernando-zamban
+    name: Fernando Zamban
+    started_at: '2026-04-06'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-2-de-abril-de-2026-697422576
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 2 DE ABRIL DE 2026 (DO2, 2026-04-06)
+    cargo_no_ato: Secretário Nacional de Economia Popular e Solidária do Ministério do Trabalho e Emprego
+    note: 'NOMEAR publicado no DOU em 06/04/2026; cargo no ato: "Secretário Nacional de Economia Popular e Solidária do Ministério do Trabalho e Emprego". Data = publicação do ato, não a posse.'
+  br-secretaria-nacional-de-inclusao-socioprodutiva-artesanato-e-microempreendedor-individual-secretario:
+  - id: br-p-danilo-jorge-de-barros-cabral
+    name: Danilo Jorge De Barros Cabral
+    started_at: '2026-06-10'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-9-de-junho-de-2026-711116758
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 9 DE JUNHO DE 2026 (DO2, 2026-06-10)
+    cargo_no_ato: Secretário Nacional de Inclusão Socioprodutiva, Artesanato e Microempreendedor Individual do Ministério do Empreendedorismo, da Microempresa e da Empresa de Peq
+    note: 'NOMEAR publicado no DOU em 10/06/2026; cargo no ato: "Secretário Nacional de Inclusão Socioprodutiva, Artesanato e Microempreendedor Individual ". Data = publicação do ato, não a posse.'
+  br-secretaria-nacional-de-pesca-artesanal-secretario:
+  - id: br-p-cristiano-wellington-noberto-ramalho
+    name: Cristiano Wellington Noberto Ramalho
+    started_at: '2023-01-24'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-23-de-janeiro-de-2023-459688190
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 23 DE JANEIRO DE 2023 (DO2, 2023-01-24)
+    cargo_no_ato: Secretário Nacional de Pesca Artesanal do Ministério da Pesca e Aquicultura
+    note: 'NOMEAR publicado no DOU em 24/01/2023; cargo no ato: "Secretário Nacional de Pesca Artesanal do Ministério da Pesca e Aquicultura". Data = publicação do ato, não a posse.'
+  br-secretaria-nacional-de-politicas-penais-secretario:
+  - id: br-p-andre-de-albuquerque-garcia
+    name: André De Albuquerque Garcia
+    started_at: '2024-02-09'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-8-de-fevereiro-de-2024-542284635
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 8 DE FEVEREIRO DE 2024 (DO2, 2024-02-09)
+    cargo_no_ato: Secretário Nacional de Políticas Penais do Ministério da Justiça e Segurança Pública
+    note: 'NOMEAR publicado no DOU em 09/02/2024; cargo no ato: "Secretário Nacional de Políticas Penais do Ministério da Justiça e Segurança Pública". Data = publicação do ato, não a posse.'
+  br-secretaria-nacional-dos-direitos-da-crianca-e-do-adolescente-secretario:
+  - id: br-p-claudio-augusto-vieira-da-silva
+    name: Cláudio Augusto Vieira Da Silva
+    started_at: '2023-05-19'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-18-de-maio-de-2023-484248887
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 18 DE MAIO DE 2023 (DO2, 2023-05-19)
+    cargo_no_ato: Secretário Nacional dos Direitos da Criança e do Adolescente do Ministério dos Direitos Humanos e da Cidadania
+    note: 'NOMEAR publicado no DOU em 19/05/2023; cargo no ato: "Secretário Nacional dos Direitos da Criança e do Adolescente do Ministério dos Direitos Hu". Data = publicação do ato, não a posse.'
+  br-universidade-federal-da-fronteira-sul-reitor:
+  - id: br-p-joao-alfredo-braida
+    name: João Alfredo Braida
+    started_at: '2023-08-31'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-30-de-agosto-de-2023-506678529
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal da Fronteira Sul)
+    ato: DECRETO DE 30 DE AGOSTO DE 2023 (DO2, 2023-08-31)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 31/08/2023; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-de-alagoas-reitor:
+  - id: br-p-josealdo-tonholo
+    name: Josealdo Tonholo
+    started_at: '2024-01-31'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-30-de-janeiro-de-2024-540575019
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Alagoas)
+    ato: DECRETOS DE 30 DE JANEIRO DE 2024 (DO2, 2024-01-31)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'RECONDUZIR publicado no DOU em 31/01/2024; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-de-alfenas-reitor:
+  - id: br-p-alessandro-antonio-costa-pereira
+    name: Alessandro Antônio Costa Pereira
+    started_at: '2026-02-23'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-20-de-fevereiro-de-2026-688186204
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Alfenas)
+    ato: DECRETO DE 20 DE FEVEREIRO DE 2026 (DO2, 2026-02-23)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 23/02/2026; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-de-campina-grande-reitor:
+  - id: br-p-camilo-allyson-simoes-de-farias
+    name: Camilo Allyson Simões De Farias
+    started_at: '2025-02-14'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-14-de-fevereiro-de-2025-612908263
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Campina Grande)
+    ato: DECRETO DE 14 DE FEVEREIRO DE 2025 (DO2_EXTRA_A, 2025-02-14)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 14/02/2025; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-de-catalao-reitor:
+  - id: br-p-roselma-lucchese
+    name: Roselma Lucchese
+    started_at: '2024-01-31'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-30-de-janeiro-de-2024-540575019
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Catalão)
+    ato: DECRETOS DE 30 DE JANEIRO DE 2024 (DO2, 2024-01-31)
+    cargo_no_ato: Reitora da referida Universidade
+    note: 'NOMEAR publicado no DOU em 31/01/2024; cargo no ato: "Reitora da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-de-goias-reitor:
+  - id: br-p-sandramara-matias-chaves
+    name: Sandramara Matias Chaves
+    started_at: '2025-11-19'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-18-de-novembro-de-2025-669875027
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Goiás)
+    ato: DECRETO DE 18 DE NOVEMBRO DE 2025 (DO2, 2025-11-19)
+    cargo_no_ato: Reitora da referida Universidade
+    note: 'NOMEAR publicado no DOU em 19/11/2025; cargo no ato: "Reitora da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-de-itajuba-reitor:
+  - id: br-p-marcel-fernando-da-costa-parentoni
+    name: Marcel Fernando Da Costa Parentoni
+    started_at: '2024-12-05'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-4-de-dezembro-de-2024-599923526
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Itajubá)
+    ato: DECRETOS DE 4 DE DEZEMBRO DE 2024 (DO2, 2024-12-05)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 05/12/2024; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-de-jatai-reitor:
+  - id: br-p-christiano-peres-coelho
+    name: Christiano Peres Coelho
+    started_at: '2024-01-31'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-30-de-janeiro-de-2024-540575019
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Jataí)
+    ato: DECRETOS DE 30 DE JANEIRO DE 2024 (DO2, 2024-01-31)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 31/01/2024; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-de-lavras-reitor:
+  - id: br-p-jose-roberto-soares-scolforo
+    name: José Roberto Soares Scolforo
+    started_at: '2024-04-23'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-22-de-abril-de-2024-555665788
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Lavras)
+    ato: DECRETOS DE 22 DE ABRIL DE 2024 (DO2, 2024-04-23)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 23/04/2024; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-de-pernambuco-reitor:
+  - id: br-p-alfredo-macedo-gomes
+    name: Alfredo Macedo Gomes
+    started_at: '2023-10-11'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-10-de-outubro-de-2023-515813502
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Pernambuco)
+    ato: DECRETO DE 10 DE OUTUBRO DE 2023 (DO2, 2023-10-11)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'RECONDUZIR publicado no DOU em 11/10/2023; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-de-rondonopolis-reitor:
+  - id: br-p-analy-castilho-polizel-de-souza
+    name: Analy Castilho Polizel De Souza
+    started_at: '2023-12-27'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-26-de-dezembro-de-2023-533483658
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Rondonópolis)
+    ato: DECRETO DE 26 DE DEZEMBRO DE 2023 (DO2, 2023-12-27)
+    cargo_no_ato: Reitora da referida Universidade
+    note: 'NOMEAR publicado no DOU em 27/12/2023; cargo no ato: "Reitora da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-de-santa-catarina-reitor:
+  - id: br-p-amir-antonio-martins-de-oliveira-junior
+    name: Amir Antônio Martins De Oliveira Junior
+    started_at: '2026-07-06'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-3-de-julho-de-2026-716904355
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Santa Catarina)
+    ato: DECRETO DE 3 DE JULHO DE 2026 (DO2, 2026-07-06)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 06/07/2026; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-de-uberlandia-reitor:
+  - id: br-p-carlos-henrique-de-carvalho
+    name: Carlos Henrique De Carvalho
+    started_at: '2024-12-23'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-20-de-dezembro-de-2024-603375661
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Uberlândia)
+    ato: DECRETOS DE 20 DE DEZEMBRO DE 2024 (DO2, 2024-12-23)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 23/12/2024; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-do-delta-do-parnaiba-reitor:
+  - id: br-p-joao-paulo-sales-macedo
+    name: João Paulo Sales Macedo
+    started_at: '2024-01-24'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-23-de-janeiro-de-2024-539136418
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Delta do Parnaíba)
+    ato: DECRETO DE 23 DE JANEIRO DE 2024 (DO2, 2024-01-24)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 24/01/2024; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-do-estado-do-rio-de-janeiro-reitor:
+  - id: br-p-jose-da-costa-filho
+    name: José Da Costa Filho
+    started_at: '2023-06-21'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-20-de-junho-de-2023-491045670
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Estado do Rio de Janeiro)
+    ato: DECRETO DE 20 DE JUNHO DE 2023 (DO2, 2023-06-21)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 21/06/2023; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-do-norte-do-tocantins-reitor:
+  - id: br-p-airton-sieben
+    name: Airton Sieben
+    started_at: '2024-04-09'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-8-de-abril-de-2024-552816439
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Norte do Tocantins)
+    ato: DECRETOS DE 8 DE ABRIL DE 2024 (DO2, 2024-04-09)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 09/04/2024; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-do-oeste-da-bahia-reitor:
+  - id: br-p-jacques-antonio-de-miranda
+    name: Jacques Antônio De Miranda
+    started_at: '2023-09-12'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-11-de-setembro-de-2023-508847490
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Oeste da Bahia)
+    ato: DECRETOS DE 11 DE SETEMBRO DE 2023 (DO2, 2023-09-12)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'RECONDUZIR publicado no DOU em 12/09/2023; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-do-para-reitor:
+  - id: br-p-gilmar-pereira-da-silva
+    name: Gilmar Pereira Da Silva
+    started_at: '2024-09-23'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-20-de-setembro-de-2024-585878157
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Pará)
+    ato: DECRETOS DE 20 DE SETEMBRO DE 2024 (DO2, 2024-09-23)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 23/09/2024; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-do-reconcavo-da-bahia-reitor:
+  - id: br-p-georgina-goncalves-dos-santos
+    name: Georgina Gonçalves Dos Santos
+    started_at: '2023-08-02'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-1-de-agosto-de-2023-500246064
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Recôncavo da Bahia)
+    ato: DECRETO DE 1º DE AGOSTO DE 2023 (DO2, 2023-08-02)
+    cargo_no_ato: Reitora da referida Universidade
+    note: 'NOMEAR publicado no DOU em 02/08/2023; cargo no ato: "Reitora da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-do-rio-grande-do-sul-reitor:
+  - id: br-p-marcia-cristina-bernardes-barbosa
+    name: Marcia Cristina Bernardes Barbosa
+    started_at: '2024-09-17'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-16-de-setembro-de-2024-584744977
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Rio Grande do Sul)
+    ato: DECRETOS DE 16 DE SETEMBRO DE 2024 (DO2, 2024-09-17)
+    cargo_no_ato: Reitora da referida Universidade
+    note: 'NOMEAR publicado no DOU em 17/09/2024; cargo no ato: "Reitora da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-do-sul-da-bahia-reitor:
+  - id: br-p-fabricio-berton-zanchi
+    name: Fabrício Berton Zanchi
+    started_at: '2026-05-26'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-25-de-maio-de-2026-708042712
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Sul da Bahia)
+    ato: DECRETO DE 25 DE MAIO DE 2026 (DO2, 2026-05-26)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 26/05/2026; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-do-sul-e-sudeste-do-para-reitor:
+  - id: br-p-francisco-ribeiro-da-costa
+    name: Francisco Ribeiro Da Costa
+    started_at: '2024-09-17'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-16-de-setembro-de-2024-584744977
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal do Sul e Sudeste do Pará)
+    ato: DECRETOS DE 16 DE SETEMBRO DE 2024 (DO2, 2024-09-17)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'RECONDUZIR publicado no DOU em 17/09/2024; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-dos-vales-do-jequitinhonha-e-mucuri-reitor:
+  - id: br-p-heron-laiber-bonadiman
+    name: Heron Laiber Bonadiman
+    started_at: '2023-08-03'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-2-de-agosto-de-2023-500569129
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal dos Vales do Jequitinhonha e Mucuri)
+    ato: DECRETOS DE 2 DE AGOSTO DE 2023 (DO2, 2023-08-03)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 03/08/2023; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-rural-da-amazonia-reitor:
+  - id: br-p-gracialda-costa-ferreira
+    name: Gracialda Costa Ferreira
+    started_at: '2026-08-24'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-21-de-agosto-de-2026-727188177
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal Rural da Amazônia)
+    ato: DECRETOS DE 21 DE AGOSTO DE 2026 (DO2, 2026-08-24)
+    cargo_no_ato: Reitora da referida Universidade
+    note: 'NOMEAR publicado no DOU em 24/08/2026; cargo no ato: "Reitora da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-rural-do-rio-de-janeiro-reitor:
+  - id: br-p-roberto-de-souza-rodrigues
+    name: Roberto De Souza Rodrigues
+    started_at: '2025-03-18'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-17-de-marco-de-2025-618256461
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal Rural do Rio de Janeiro)
+    ato: DECRETO DE 17 DE MARÇO DE 2025 (DO2, 2025-03-18)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'RECONDUZIR publicado no DOU em 18/03/2025; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-universidade-federal-rural-do-semi-arido-reitor:
+  - id: br-p-rodrigo-nogueira-de-codes
+    name: Rodrigo Nogueira De Codes
+    started_at: '2024-08-08'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-7-de-agosto-de-2024-577066258
+    checked_at: '2026-09-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal Rural do Semi-Árido)
+    ato: DECRETO DE 7 DE AGOSTO DE 2024 (DO2, 2024-08-08)
+    cargo_no_ato: Reitor da referida Universidade
+    note: 'NOMEAR publicado no DOU em 08/08/2024; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
 nao_encontrados:
 - br-amazonia-azul-tecnologias-de-defesa-s-a-presidente
 - br-banco-da-amazonia-s-a-presidente
@@ -37,7 +1268,13 @@ nao_encontrados:
 - br-industrias-nucleares-do-brasil-s-a-presidente
 - br-infra-sa-dirigente
 - br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sertao-paraibano-reitor
+- br-secretaria-de-estrategias-e-redes-secretario
+- br-secretaria-de-integridade-publica-secretario
+- br-secretaria-executiva-cgu-secretario
+- br-secretaria-nacional-de-enfrentamento-a-violencia-contra-mulheres-secretario
+- br-secretaria-nacional-de-geologia-mineracao-e-transformacao-mineral-secretario
 - br-universidade-federal-do-esporte-reitor
+- br-universidade-federal-indigena-reitor
 - br-veiculo-de-desestatizacao-mg-investimentos-s-a-presidente
 nao_encontrados_detalhe:
 - cargo_id: br-caixa-de-construcoes-de-casas-para-o-pessoal-da-marinha-diretor
@@ -200,7 +1437,7 @@ nao_encontrados_detalhe:
   cargo: Diretor-Presidente da Fundação Habitacional do Exército
   tipo: fundacao
   consultas: 6
-  atos_lidos: 37
+  atos_lidos: 6
   motivo: cargo do ato (Diretor-Presidente da Codevasf) não casa em todos os termos
 - cargo_id: br-fundacao-osorio-diretor
   cargo: Diretor da Fundação Osório
@@ -212,7 +1449,7 @@ nao_encontrados_detalhe:
   cargo: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Sertão Paraibano
   tipo: reitoria
   consultas: 4
-  atos_lidos: 186
+  atos_lidos: 0
   motivo: papel casa mas o órgão do ato (Universidade Federal do Amapá) não é o do grafo
 - cargo_id: br-universidade-federal-do-esporte-reitor
   cargo: Reitor da Universidade Federal do Esporte
@@ -220,16 +1457,59 @@ nao_encontrados_detalhe:
   consultas: 4
   atos_lidos: 0
   motivo: papel casa mas o órgão do ato (Universidade Federal do Amapá) não é o do grafo
+- cargo_id: br-universidade-federal-indigena-reitor
+  cargo: Reitor da Universidade Federal Indígena
+  tipo: reitoria
+  consultas: 4
+  atos_lidos: 0
+  motivo: papel casa mas o órgão do ato (Universidade Federal do Amapá) não é o do grafo
+- cargo_id: br-secretaria-de-estrategias-e-redes-secretario
+  cargo: Secretário de Estratégias e Redes da Secretaria de Comunicação Social da Presidência da República
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
+- cargo_id: br-secretaria-de-integridade-publica-secretario
+  cargo: Secretário de Integridade Pública da Controladoria-Geral da União
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
+- cargo_id: br-secretaria-executiva-cgu-secretario
+  cargo: Secretário-Executivo da Controladoria-Geral da União
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 60
+  motivo: cargo do ato (secretário executivo, para exercer a função de titular da Unidade Seto) não casa em todos os termos
+- cargo_id: br-secretaria-nacional-de-enfrentamento-a-violencia-contra-mulheres-secretario
+  cargo: Secretário Nacional de Enfrentamento à Violência contra Mulheres do Ministério das Mulheres
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
+- cargo_id: br-secretaria-nacional-de-geologia-mineracao-e-transformacao-mineral-secretario
+  cargo: Secretário Nacional de Geologia, Mineração e Transformação Mineral do Ministério de Minas e Energia
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 1
+  motivo: cargo do ato (Assessora Especial da Secretaria-Executiva da Secretaria de Relações I) não casa em todos os termos
 resumo:
-  cargos_alvo: 36
+  cargos_alvo: 118
   cargos_alvo_por_tipo:
-    autarquia: 2
-    estatal: 24
-    fundacao: 2
-    reitoria: 3
-    secretaria: 5
-  cargos_processados: 36
-  resolvidos: 0
-  por_confianca: {}
-  por_tipo: {}
-  sem_ato: 30
+    autarquia: 3
+    estatal: 25
+    fundacao: 3
+    reitoria: 69
+    secretaria: 18
+  cargos_processados: 118
+  resolvidos: 82
+  por_confianca:
+    alta: 81
+    media: 1
+  por_tipo:
+    autarquia: 1
+    estatal: 1
+    fundacao: 1
+    reitoria: 66
+    secretaria: 13
+  sem_ato: 36
