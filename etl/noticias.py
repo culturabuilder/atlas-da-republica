@@ -16,7 +16,8 @@ FEEDS = [
     ("Poder360", "https://www.poder360.com.br/feed/"),
     ("Congresso em Foco", "https://congressoemfoco.uol.com.br/feed/"),
     ("JOTA", "https://www.jota.info/feed"),
-    ("Estadão", "https://www.estadao.com.br/arc/outboundfeeds/rss/?outputType=xml"),
+    # o feed geral do Estadão trazia receita, futebol e oferta de celular: 376 artigos, 14% com alguma ligação.
+    ("Estadão", "https://www.estadao.com.br/arc/outboundfeeds/feeds/rss/sections/politica/?outputType=xml"),
     ("Planalto", "https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/RSS"),
 ]
 UA = {"User-Agent": "Mozilla/5.0 atlas-da-republica/0.1"}
