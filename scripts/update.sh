@@ -19,6 +19,19 @@ INICIO=$(date +%s)
 # Um conector que estoura o tempo é cortado e o site segue com o dado do último dia que deu certo.
 LIMITE=${ATLAS_LIMITE:-900}          # segundos por conector; LIM=1800 run ... aumenta para um só
 ORCAMENTO=${ATLAS_ORCAMENTO:-12600}  # 3h30 para todos os conectores; depois disso vai direto para o build
+# Quatro conectores varrem centenas de páginas oficiais uma a uma e passam de 15 minutos: posses, ocupantes
+# pelo DOU, segundo escalão e agendas. O que eles medem muda devagar, então rodam uma vez por semana, com
+# prazo folgado, em vez de serem cortados todo dia. ATLAS_SEMANAL=1 força; ATLAS_SEMANAL=0 pula.
+DIA_SEMANAL=${ATLAS_DIA_SEMANAL:-7}   # 7 = domingo
+if [ -n "${ATLAS_SEMANAL:-}" ]; then SEMANAL=$ATLAS_SEMANAL
+elif [ "$(date +%u)" = "$DIA_SEMANAL" ]; then SEMANAL=1
+else SEMANAL=0; fi
+semanal() {  # semanal <segundos> "Nome" comando...
+  local lim="$1"; shift
+  if [ "$SEMANAL" = 1 ]; then LIM=$lim run "$@"
+  else echo "== $1 fora do dia semanal (roda no dia $DIA_SEMANAL da semana)"
+       printf '%s\t%s\t%s\n' "$1" "fora do dia semanal" "0" >> "$EXEC_LOG"; fi
+}
 _tempo() {  # timeout portátil: GNU timeout no Linux, perl no macOS
   local s="$1"; shift
   if command -v timeout >/dev/null 2>&1; then timeout -k 20 "$s" "$@"
@@ -61,9 +74,9 @@ run "Sabatinas" $PY etl/sabatinas.py
 run "Notícias" $PY etl/noticias.py
 LIM=1200 run "DOU" $PY etl/dou.py
 LIM=1200 run "DOU assinaturas" $PY etl/dou_assinaturas.py
-run "Posses" $PY etl/posses.py
-run "Ocupantes pelo DOU" $PY etl/ocupantes_dou.py
-run "Segundo escalão" $PY etl/segundo_escalao.py
+semanal 2700 "Posses" $PY etl/posses.py
+semanal 2700 "Ocupantes pelo DOU" $PY etl/ocupantes_dou.py
+semanal 2700 "Segundo escalão" $PY etl/segundo_escalao.py
 run "Dirigentes" $PY etl/dirigentes.py
 run "Wikipédia" $PY etl/wikipedia.py
 run "Nascimentos" $PY etl/nascimentos.py
@@ -80,7 +93,7 @@ run "Candidaturas" $PY etl/candidaturas.py
 run "Proposições" $PY etl/proposicoes.py
 run "Gabinetes" $PY etl/gabinetes.py
 run "Gabinetes SF" $PY etl/gabinetes_senado.py
-run "Agendas" $PY etl/agendas.py
+semanal 2700 "Agendas" $PY etl/agendas.py
 LIM=1800 run "Agenda Planalto" $PY etl/agenda_planalto.py
 run "Emendas" $PY etl/emendas.py
 run "Renúncias" $PY etl/renuncias.py
