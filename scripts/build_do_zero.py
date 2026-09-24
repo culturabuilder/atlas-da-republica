@@ -188,12 +188,17 @@ def visual_de(cid, G, prefix):
         return fotos(ms, prefix, 12) + f'<p class="cap-viz">São {tot} ministérios hoje. Cada um cuida de uma área, e o presidente escolhe quem chefia.</p>'
 
     if cid == "quem-escreve-as-leis":
-        cd = "".join(f'<circle class="pp" cx="{12+(i%29)*10.6}" cy="{34+(i//29)*10.6}" r="3.4" style="--d:{i*.003}s"/>' for i in range(513))
-        sf = "".join(f'<circle class="pp" cx="{12+(i%29)*10.6}" cy="{150+(i//29)*10.6}" r="3.4" style="--d:{i*.004}s"/>' for i in range(81))
+        # uma bolinha por cadeira: 513 deputados em 38 colunas, 81 senadores logo abaixo, na mesma escala
+        def _grade(total, x0, y0, cols=38, passo=8.0, atraso=0.004):
+            return "".join(
+                f'<circle class="pp" cx="{x0 + (i % cols) * passo:.1f}" cy="{y0 + (i // cols) * passo:.1f}" '
+                f'r="2.8" style="--d:{i * atraso:.2f}s"/>' for i in range(total))
+        cd = _grade(513, 10, 26)
+        sf = _grade(81, 10, 166)
         return svg(f'<g fill="currentColor">{cd}</g><g fill="currentColor">{sf}</g>'
-                   '<text x="12" y="22" class="lb">513 deputados · quanto mais gente no estado, mais deputados</text>'
-                   '<text x="12" y="140" class="lb">81 senadores · três por estado, do maior ao menor</text>',
-                   "0 0 320 190", "513 deputados e 81 senadores")
+                   '<text x="10" y="14" class="lb">513 deputados · quanto mais gente no estado, mais deputados</text>'
+                   '<text x="10" y="154" class="lb">81 senadores · três por estado, do maior ao menor</text>',
+                   "0 0 320 196", "513 deputados e 81 senadores, uma bolinha por cadeira")
 
     if cid == "deputado-e-senador":
         return svg('<g class="dr" fill="none" stroke="currentColor" stroke-width="2">'
@@ -218,7 +223,7 @@ def visual_de(cid, G, prefix):
                    '<g class="dr" style="--d:.7s" fill="none" stroke="currentColor" stroke-width="1.8">'
                    '<path d="M244 84 V106"/><path d="M244 106 H110" marker-end="url(#dzc)"/></g>'
                    '<text x="286" y="72" class="lb" text-anchor="middle">vira lei</text>'
-                   '<text x="110" y="124" class="lb" text-anchor="middle">se vetar, volta ao Congresso, que pode derrubar o veto</text>'
+                   '<text x="10" y="124" class="lb sm">se vetar, volta ao Congresso, que pode derrubar o veto</text>'
                    '<defs><marker id="dzc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" '
                    'orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>',
                    "0 0 320 140", "Caminho de um projeto até virar lei")
