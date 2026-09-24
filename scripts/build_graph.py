@@ -468,9 +468,14 @@ if news_path.exists():
 stats["sabatinas"] = len(sabatinas)
 # mudanças: sabatinas deliberadas + posses recentes (started_at) como eventos
 changes = []
+_sab_orfas = 0
 for r in sabatinas:
+    # o cargo pode ter sido extinto ou renomeado entre a sabatina e o build: a mudança sai da lista, não derruba o build
     if r.get("deliberacao") and r.get("position_id"):
-        changes.append({"kind": "sabatina", "date": r["deliberacao"], "personName": r.get("name"), "positionId": r["position_id"], "positionName": nodes[r["position_id"]]["name"], "result": r.get("resultado"), "votes": [r.get("votos_sim"), r.get("votos_nao")], "sourceUrl": r.get("url")})
+        _nd = nodes.get(r["position_id"])
+        if not _nd: _sab_orfas += 1; continue
+        changes.append({"kind": "sabatina", "date": r["deliberacao"], "personName": r.get("name"), "positionId": r["position_id"], "positionName": _nd["name"], "result": r.get("resultado"), "votes": [r.get("votos_sim"), r.get("votos_nao")], "sourceUrl": r.get("url")})
+if _sab_orfas: print(f"   aviso: {_sab_orfas} sabatina(s) apontam para cargo que não existe mais; fora da lista de mudanças")
 for n in nodes.values():
     if n["type"] != "dept_head" and n["type"] != "elected": continue
     for p in n.get("people") or []:
@@ -752,55 +757,260 @@ for pid, rec in people_index.items():
     s = _sinais(rec)
     if s: rec["sinais"] = s
 
-# ---- custo anual de cada cadeira: salário, benefícios da pessoa, equipe, custeio e viagens
-# Cada camada vem de dado real quando existe (mediana entre os ocupantes do cargo) e, quando não existe,
-# do valor que a norma fixa. O total nunca mistura o que vai para a pessoa com o que paga a estrutura.
-_BEN_ESTRUTURA = re.compile(r"cota|gabinete|secret[áa]ri|passage|correio|escrit[óo]rio|im[óo]vel|di[áa]ria|deslocamento|viagem|verba de representa", re.I)
-_BEN_EVENTUAL = re.compile(r"n[ãa]o [ée] mensal|ajuda de custo|posse em outra localidade|remo[çc][ãa]o|quarentena|uma [úu]nica vez|por ocorr[êe]ncia", re.I)
-_BEN_ANUAL = re.compile(r"d[ée]cimo terceiro|natalina|ter[çc]o constitucional|adicional de f[ée]rias", re.I)
+# ---- custo anual de cada cadeira: o que a lei permite (ficha B) e o que a cadeira custa por ano (ficha C)
+#
+# O que a auditoria de 23/9/2026 fixou e este bloco implementa:
+#   1. Nunca multiplicar por 12 às cegas. Cada família tem um fator anual escrito em norma (décimo terceiro,
+#      terço de férias) e o fator vai publicado ao lado do número, com a norma que o justifica.
+#   2. Nada marcado `papel: componente_do_salario` é somado ao salário: já está dentro do contracheque.
+#      Era daí que vinham os reitores como segunda cadeira mais cara do país.
+#   3. Limite da lei (`tipo_valor: teto`) nunca entra numa soma com gasto real: vira o topo de um intervalo.
+#   4. Quando há folha, a base é o bruto DEPOIS do abate-teto, sem as rubricas eventuais — que são 13º,
+#      terço e retroativos e seriam multiplicadas de novo pelo fator.
+#   5. Regra de amostra: 5 ocupantes ou mais viram mediana; 3 ou 4 viram faixa; 2 ou menos não projetam nada.
+#   6. Total acumulado vira média mensal dividindo pelos meses COMPLETOS do arquivo, não pelos do calendário.
+_TETO_CONSTITUCIONAL = 46366.19  # subsídio de Ministro do STF; art. 37, XI, da Constituição
+
+_NOTA_1333 = "doze meses, mais décimo terceiro, mais um terço de férias"
+_NOTA_1367 = ("doze meses, mais décimo terceiro, mais dois terços de férias — as férias são de sessenta dias em "
+              "dois períodos e o terço incide uma vez por período")
+_NOTA_13 = ("doze meses, mais décimo terceiro — a folha paga a gratificação natalina em duas metades, em junho e "
+            "em dezembro; não há terço de férias, porque parlamentar tem recesso, não férias remuneradas")
+_NOTA_12 = "doze meses; não foi localizada norma que institua décimo terceiro ou terço de férias para o cargo"
+
+_F_8112 = "Lei 8.112/1990, arts. 63 e 76"
+_F_MILITAR = "CF art. 142 §3º VIII; Decreto 4.307/2002, arts. 80 e 81"
+_F_MAGISTRADO = ("Tese de repercussão geral do STF de 25/3/2026, item 6; Resolução Conjunta CNJ/CNMP 14/2026, "
+                 "art. 4º; LC 75/1993, art. 220 §2º")
+_F_PARLAMENTAR = ("Folha da Câmara e do Senado de 2025, rubrica Gratificação Natalina em junho e em dezembro; "
+                  "nenhuma norma a institui — o Decreto Legislativo 172/2022 fixa apenas subsídio mensal")
+_F_NAO_LOCALIZADA = "norma não localizada"
+
+# família → (fator anual, o que o fator soma, norma que o justifica)
+_FATOR_ANUAL = {f: (13.33, _NOTA_1333, _F_8112) for f in (
+    "secretario-executivo-de-ministerio", "secretario-nacional-ou-finalistico-de-ministerio",
+    "secretario-especial-extraordinario-ou-geral", "dirigente-de-autarquia-ou-fundacao-federal",
+    "dirigente-maximo-de-agencia-reguladora", "diretor-de-agencia-reguladora",
+    "presidente-e-diretor-do-banco-central", "reitor-de-instituicao-federal-de-ensino",
+    "dirigente-de-orgao-singular-do-executivo", "dirigente-de-empresa-estatal",
+    "chefia-da-advocacia-publica-federal")}
+_FATOR_ANUAL.update({f: (13.67, _NOTA_1367, _F_MAGISTRADO) for f in (
+    "ministro-do-supremo-tribunal-federal", "ministro-de-tribunal-superior",
+    "ministro-do-tribunal-superior-eleitoral", "presidente-de-tribunal-regional",
+    "conselheiro-do-conselho-nacional-de-justica", "procurador-geral-da-republica",
+    "chefia-de-ramo-do-ministerio-publico-da-uniao", "conselheiro-do-conselho-nacional-do-ministerio-publico",
+    "ministro-do-tribunal-de-contas-da-uniao")})
+_FATOR_ANUAL.update({f: (13.0, _NOTA_13, _F_PARLAMENTAR) for f in ("deputado-federal", "senador")})
+_FATOR_ANUAL.update({f: (12.0, _NOTA_12, _F_NAO_LOCALIZADA) for f in (
+    "ministro-de-estado", "presidente-e-vice-presidente-da-republica", "advogado-geral-da-uniao")})
+_FATOR_ANUAL["comandante-de-forca-armada"] = (13.33, _NOTA_1333, _F_MILITAR)
+_FATOR_ANUAL["defensor-publico-geral-federal"] = (13.33, _NOTA_1333, _F_8112 + " (regra do servidor federal; a "
+                                                  "norma própria da Defensoria Pública da União não foi conferida)")
+
+# mandato em anos, para amortizar a ajuda de custo de início e de fim em vez de lançá-la como pico anual
+_MANDATO_ANOS = {"deputado-federal": 4, "senador": 8, "presidente-e-vice-presidente-da-republica": 4}
+
+# Encargos da equipe do gabinete: 13º, terço de férias e auxílio-alimentação dos secretários parlamentares são
+# pagos pela Casa FORA do teto da verba de gabinete. O Instituto Millenium mediu R$ 49.624,89/mês sobre uma
+# verba de R$ 125.478,70 (~40%), com memória de cálculo publicada. Como esses 40% já contêm o 13º e o terço,
+# a folha da equipe é anualizada por 12 e não pelo fator da família — somar os dois contaria o 13º duas vezes.
+_ENCARGOS_EQUIPE = 0.40
+# Folha reconstruída dos gabinetes do Senado: `gabinetes-senado.yaml` traz `folha_mensal: 0` para 81 de 81
+# senadores (a API devolve a composição sem valor). A auditoria casou os 3.259 nomes das equipes com a folha
+# nominal de ago/2026 do Senado (98,7% dos nomes casam, nenhum nome em dois gabinetes): mediana por gabinete.
+_SENADO_FOLHA_GABINETE_MES = 505649.0
+_SENADO_FOLHA_FONTE = ("folha nominal do Senado de ago/2026 casada com a composição dos gabinetes "
+                       "(mediana de 81 gabinetes, 37 pessoas cada)")
+# Meses completos equivalentes de cada arquivo acumulado do ano corrente = total do arquivo ÷ média dos meses
+# completos. A cota da Câmara tem 9 meses com lançamento mas só 6,55 completos (os últimos chegam com
+# defasagem); o SCDP tem 7,18. Dividir pelos meses do calendário subestima a cota em 37% e as viagens em 25%.
+_MESES_CEAP = 6.55
+_MESES_SCDP = 7.18
+
+_FORA_PADRAO = ["encargos previdenciários do empregador sobre o salário de quem ocupa o cargo",
+                "imóvel funcional, segurança e transporte oficial",
+                "estrutura predial e serviços gerais",
+                "aposentadoria futura"]
 
 def _mediana(vals):
     vals = sorted(v for v in vals if v)
     if not vals: return None
     n = len(vals); return vals[n // 2] if n % 2 else (vals[n // 2 - 1] + vals[n // 2]) / 2
 
+def _amostra_de(n):
+    """Regra de publicação da auditoria: mediana só com 5 ou mais; faixa com 3 ou 4; abaixo disso não se projeta."""
+    return "mediana" if n >= 5 else ("faixa" if n >= 3 else "insuficiente")
+
+def _bloco_real(k, nome, vals, base, itens, faltando, motivo):
+    """Bloco apoiado em dado real de ocupantes. Devolve None e registra a lacuna quando a amostra não dá."""
+    vals = sorted(v for v in vals if v)
+    n = len(vals); a = _amostra_de(n)
+    if a == "insuficiente":
+        faltando.append(f"{motivo} ({n} ocupante com dado; a regra exige 3)" if n == 1
+                        else f"{motivo} ({n} ocupantes com dado; a regra exige 3)" if n
+                        else motivo)
+        return None
+    lo = hi = _mediana(vals) if a == "mediana" else None
+    if a == "faixa": lo, hi = vals[0], vals[-1]
+    return {"k": k, "nome": nome, "ano_min": round(lo, 2), "ano_max": round(hi, 2), "base": base,
+            "n": n, "amostra": a, "itens": itens(lo, hi, n)}
+
+def _salario_mes_da_folha(o):
+    """Remuneração mensal depois do abate-teto e sem as rubricas eventuais (13º, terço, retroativos).
+
+    Multiplicar o `bruto` cru pelo fator anual contaria o 13º duas vezes quando o mês tem 13º e nenhuma vez
+    quando não tem; e o que a Constituição permite pagar é o valor DEPOIS do abate, não antes.
+    """
+    r = o.get("remuneracao") or {}
+    b = r.get("bruto_apos_abate")
+    if b is None: b = r.get("bruto")
+    if not b: return None
+    v = b - ((r.get("componentes") or {}).get("eventuais") or 0.0)
+    if v <= 0: return None
+    return min(v, _TETO_CONSTITUCIONAL)  # trava do art. 37, XI: nenhum salário mensal passa do teto
+
+def _folha_gabinete_mes(o):
+    """Folha mensal da equipe do gabinete, e de onde ela veio."""
+    g = o.get("gabinete") or {}
+    v = g.get("folha_mensal_estimada") or g.get("folha_mensal")
+    if v: return float(v), g.get("assessores")
+    if g.get("casa") == "senado" and g.get("assessores"):
+        return _SENADO_FOLHA_GABINETE_MES, g.get("assessores")
+    return None, None
+
+def _cota_mes(o):
+    """Custeio do mandato por mês, dividido pelos meses COMPLETOS do arquivo, nunca pelos meses decorridos."""
+    c = (o.get("activity") or {}).get("cota") or {}
+    if c.get("total"): return c["total"] / _MESES_CEAP
+    ca = (o.get("gabinete") or {}).get("custo_ano") or {}
+    if ca.get("cota") and ca.get("meses"): return ca["cota"] / ca["meses"]
+    return None
+
 def _custo_cadeira(n):
+    sub = n.get("subsidio") or {}
+    fam = sub.get("familia")
+    fator, fator_nota, fator_fonte = _FATOR_ANUAL.get(fam, (12.0, _NOTA_12, _F_NAO_LOCALIZADA))
     ocupantes = [people_index.get(x.get("id")) for x in (n.get("people") or [])]
     ocupantes = [o for o in ocupantes if o]
-    sub = n.get("subsidio") or {}
-    rem = _mediana([(o.get("remuneracao") or {}).get("bruto") for o in ocupantes])
-    salario_mes = rem or sub.get("subsidio_mensal_bruto")
-    if not salario_mes: return None
-    camadas = [{"k": "salario", "nome": "Salário da pessoa", "natureza": "pessoa",
-                "ano": round(salario_mes * 12, 2), "base": "folha" if rem else "lei", "n": len(ocupantes) if rem else 0}]
-    ben = 0.0; ben_itens = []
-    for b in (sub.get("beneficios") or []):
-        v = b.get("valor_mensal_ou_teto"); nome = (b.get("nome") or "") + " " + (b.get("note") or "")
-        if not v or _BEN_ESTRUTURA.search(nome) or _BEN_EVENTUAL.search(nome): continue
-        val = v if _BEN_ANUAL.search(nome) else v * 12
-        ben += val; ben_itens.append({"nome": b.get("nome"), "ano": round(val, 2)})
-    if ben: camadas.append({"k": "beneficios", "nome": "Benefícios da pessoa", "natureza": "pessoa", "ano": round(ben, 2), "base": "lei", "itens": ben_itens[:6]})
-    folha = _mediana([((o.get("gabinete") or {}).get("folha_mensal_estimada") or (o.get("gabinete") or {}).get("folha_mensal")) for o in ocupantes])
-    faltando = []
-    if folha: camadas.append({"k": "equipe", "nome": "Equipe do gabinete", "natureza": "equipe", "ano": round(folha * 12, 2), "base": "folha", "n": sum(1 for o in ocupantes if (o.get("gabinete") or {}).get("folha_mensal_estimada") or (o.get("gabinete") or {}).get("folha_mensal"))})
+    seats = n.get("seats") or 1
+    beneficios = sub.get("beneficios") or []
+
+    # ---- ficha B: o que o cargo permite, parcela a parcela, sem somar nada
+    parcelas = [{"nome": b.get("nome"), "papel": b.get("papel"), "tipo": b.get("tipo_valor") or "sem_valor",
+                 "valor": b.get("valor_mensal_ou_teto"), "periodicidade": b.get("periodicidade"),
+                 "norma": b.get("norma"), "url": b.get("norma_url"), "nota": b.get("note")} for b in beneficios]
+    lei = {"salario_mes": sub.get("subsidio_mensal_bruto"), "salario_norma": sub.get("norma"),
+           "salario_url": sub.get("norma_url"), "parcelas": parcelas}
+
+    # ---- ficha C: quanto custa a cadeira por ano
+    blocos, faltando, fora = [], [], list(_FORA_PADRAO)
+
+    # salário: folha quando a amostra permite; senão o valor que a norma fixa
+    sal_mes = [v for v in (_salario_mes_da_folha(o) for o in ocupantes) if v]
+    bl = None
+    if sal_mes:
+        bl = _bloco_real("pessoa", "Salário da pessoa", [v * fator for v in sal_mes], "folha",
+                         lambda lo, hi, k: [{"nome": f"remuneração da folha depois do abate-teto, sem as parcelas "
+                                                     f"eventuais, × {fator}", "ano": round(lo, 2)}],
+                         [], "")
+    if bl is None and lei["salario_mes"]:
+        v = round(lei["salario_mes"] * fator, 2)
+        bl = {"k": "pessoa", "nome": "Salário da pessoa", "ano_min": v, "ano_max": v, "base": "lei",
+              "n": len(sal_mes), "amostra": "insuficiente",
+              "itens": [{"nome": f"subsídio fixado em norma × {fator}", "ano": v}]}
+        if sal_mes:
+            faltando.append(f"o salário vem da norma, não da folha: só {len(sal_mes)} ocupante"
+                            f"{'s' if len(sal_mes) != 1 else ''} deste cargo aparece na folha nominal")
+    if bl is None:
+        # Sem salário não há cadeira a custear: publicar só benefícios e custeio daria um número menor que a
+        # verdade e ordenaria o cargo como "barato" por falta de dado. O cargo sai da conta inteiro.
+        return None
+    blocos.append(bl)
+
+    # benefícios que viram renda da pessoa: `beneficio` e a ajuda de custo amortizada pelo mandato.
+    # `componente_do_salario` fica de fora por definição (já está no salário) e `equipe`/`custeio` têm bloco próprio.
+    ben_min = ben_max = 0.0; ben_itens = []; sem_valor = []
+    anos_mandato = _MANDATO_ANOS.get(fam) or n.get("mandato_anos")
+    for b in beneficios:
+        papel, tipo, per, v = b.get("papel"), b.get("tipo_valor"), b.get("periodicidade"), b.get("valor_mensal_ou_teto")
+        if papel == "beneficio":
+            if tipo == "sem_valor" or not v:
+                if tipo == "sem_valor": sem_valor.append(b.get("nome"))
+                continue
+            ano = v * 12 if per == "mensal" else (v if per == "anual" else None)
+            if ano is None: continue
+            ben_max += ano
+            if tipo == "teto":
+                ben_itens.append({"nome": f"{b.get('nome')} — limite da lei, não gasto medido", "ano": round(ano, 2)})
+            else:
+                ben_min += ano; ben_itens.append({"nome": b.get("nome"), "ano": round(ano, 2)})
+        elif papel == "eventual" and per == "por_mandato" and v and anos_mandato:
+            ano = v * 2 / anos_mandato  # início e fim do mandato, amortizados pelos anos do mandato
+            ben_min += ano; ben_max += ano
+            ben_itens.append({"nome": f"{b.get('nome')}: duas parcelas amortizadas em {anos_mandato} anos de mandato",
+                              "ano": round(ano, 2)})
+    if ben_max:
+        blocos.append({"k": "pessoa", "nome": "Benefícios da pessoa", "ano_min": round(ben_min, 2),
+                       "ano_max": round(ben_max, 2), "base": "lei", "n": 0, "amostra": "insuficiente",
+                       "itens": ben_itens[:8]})
+    if sem_valor:
+        faltando.append("a norma prevê sem publicar valor: " + ", ".join(sem_valor[:4]).lower())
+
+    # equipe do gabinete: folha mensal × 12 × (1 + encargos). O 13º e o terço da equipe estão dentro dos encargos.
+    eq = [_folha_gabinete_mes(o) for o in ocupantes]
+    eq_vals = [v for v, _ in eq if v]
+    eq_pes = _mediana([p for v, p in eq if v and p])
+    senado = any((o.get("gabinete") or {}).get("casa") == "senado" for o in ocupantes)
+    if eq_vals:
+        def _itens_eq(lo, hi, k, _pes=eq_pes, _sen=senado):
+            folha = lo / (1 + _ENCARGOS_EQUIPE)
+            base = (_SENADO_FOLHA_FONTE if _sen else
+                    "folha do gabinete reconstruída pela tabela de níveis de secretário parlamentar da Câmara")
+            return [{"nome": f"{base}{f', {int(_pes)} pessoas' if _pes else ''}, doze meses", "ano": round(folha, 2)},
+                    {"nome": "encargos com a equipe, 40% sobre a folha: décimo terceiro, terço de férias e "
+                             "auxílio-alimentação dos assessores, pagos pela Casa fora do teto da verba",
+                     "ano": round(lo - folha, 2)}]
+        b = _bloco_real("equipe", "Equipe do gabinete", [v * 12 * (1 + _ENCARGOS_EQUIPE) for v in eq_vals],
+                        "folha", _itens_eq, faltando,
+                        "a folha da equipe do gabinete não entra na conta")
+        if b: blocos.append(b)
     elif any((o.get("gabinete") or {}).get("assessores") for o in ocupantes):
         _eq = _mediana([(o.get("gabinete") or {}).get("assessores") for o in ocupantes])
         faltando.append(f"a folha da equipe não é publicada com valor (mediana de {int(_eq)} pessoas por gabinete)")
-    def _cota(o):
-        c = ((o.get("activity") or {}).get("cota") or {}).get("media_mes")
-        if c: return c
-        ca = (o.get("gabinete") or {}).get("custo_ano") or {}
-        return (ca.get("cota") / ca["meses"]) if ca.get("cota") and ca.get("meses") else None
-    cota = _mediana([_cota(o) for o in ocupantes])
-    if cota: camadas.append({"k": "custeio", "nome": "Custeio do mandato", "natureza": "despesa", "ano": round(cota * 12, 2), "base": "gasto real", "n": sum(1 for o in ocupantes if _cota(o))})
-    vg = _mediana([((o.get("viagens") or {}).get("total") / 9) for o in ocupantes if (o.get("viagens") or {}).get("total")])
-    if vg: camadas.append({"k": "viagens", "nome": "Viagens a serviço", "natureza": "despesa", "ano": round(vg * 12, 2), "base": "gasto real", "n": sum(1 for o in ocupantes if (o.get("viagens") or {}).get("total"))})
-    total = round(sum(c["ano"] for c in camadas), 2)
-    pes = round(sum(c["ano"] for c in camadas if c["natureza"] == "pessoa"), 2)
-    seats = n.get("seats") or 1
-    return {"total_ano": total, "pessoa_ano": pes, "pct_salario": round(100 * camadas[0]["ano"] / total) if total else None,
-            "camadas": camadas, "cadeiras": seats, "total_colegiado_ano": round(total * seats, 2), "faltando": faltando,
-            "fora": ["encargos previdenciários do empregador", "imóvel funcional, segurança e transporte oficial", "estrutura predial e serviços gerais", "aposentadoria futura"]}
+
+    # custeio do mandato (cota parlamentar)
+    cota = [v for v in (_cota_mes(o) for o in ocupantes) if v]
+    if cota:
+        b = _bloco_real("custeio", "Custeio do mandato", [v * 12 for v in cota], "gasto real",
+                        lambda lo, hi, k: [{"nome": "gasto real da cota, dividido pelos meses completos do "
+                                                    "arquivo e não pelos meses decorridos", "ano": round(lo, 2)}],
+                        faltando, "o custeio do mandato não entra na conta")
+        if b: blocos.append(b)
+        if senado:
+            faltando.append("a cota do Senado é divulgada como total acumulado, sem quebra mensal: não dá para "
+                            "medir quantos meses do arquivo estão completos, como se faz com a da Câmara")
+
+    # viagens a serviço (SCDP)
+    vg = [(o.get("viagens") or {}).get("total") for o in ocupantes]
+    vg = [v for v in vg if v]
+    if vg:
+        b = _bloco_real("custeio", "Viagens a serviço", [v / _MESES_SCDP * 12 for v in vg], "gasto real",
+                        lambda lo, hi, k: [{"nome": "diárias e passagens pagas no ano, divididas pelos meses "
+                                                    "completos do arquivo do SCDP", "ano": round(lo, 2)}],
+                        faltando, "as viagens a serviço não entram na conta")
+        if b: blocos.append(b)
+
+    if not blocos: return None
+    total_min = round(sum(b["ano_min"] for b in blocos), 2)
+    total_max = round(sum(b["ano_max"] for b in blocos), 2)
+    if any(p.get("tipo") == "teto" and p.get("papel") in ("custeio", "equipe") for p in parcelas):
+        fora.append("o teto da cota e o da verba de gabinete são limite, não gasto: a conta usa o gasto medido")
+    if fam in ("deputado-federal", "senador"):
+        fora.append("a execução orçamentária da Câmara e do Senado não é publicada por cadeira")
+    return {"familia": fam, "fator_anual": fator, "fator_nota": fator_nota, "fator_fonte": fator_fonte, "lei": lei,
+            "cadeira": {"blocos": blocos, "total_min": total_min, "total_max": total_max,
+                        "intervalo": total_max > total_min, "cadeiras": seats,
+                        "faltando": faltando, "fora": fora}}
 
 _cu_n = 0
 for _n in nodes.values():
@@ -808,46 +1018,63 @@ for _n in nodes.values():
     _c = _custo_cadeira(_n)
     if _c: _n["custo"] = _c; _cu_n += 1
 stats["cargos_com_custo"] = _cu_n
+stats["cargos_sem_custo_por_amostra"] = sum(
+    1 for _n in nodes.values() if _n["type"] == "dept_head" and not _n.get("custo"))
 FAMILIA_ROTULO = {
     "deputado-federal": "Deputado federal", "senador": "Senador", "ministro-de-estado": "Ministro de Estado",
     "presidente-e-vice-presidente-da-republica": "Presidente e vice-presidente", "advogado-geral-da-uniao": "Advogado-Geral da União",
     "ministro-do-supremo-tribunal-federal": "Ministro do Supremo", "ministro-de-tribunal-superior": "Ministro de tribunal superior",
     "ministro-do-tribunal-de-contas-da-uniao": "Ministro do Tribunal de Contas", "presidente-de-tribunal-regional": "Presidente de tribunal regional",
-    "conselheiro-do-cnj": "Conselheiro do Conselho Nacional de Justiça", "procurador-geral-da-republica": "Procurador-Geral da República",
-    "chefia-de-ramo-do-mpu": "Chefia de ramo do Ministério Público", "chefia-da-advocacia-publica-federal": "Chefia da advocacia pública federal",
-    "defensor-publico-geral-federal": "Defensor Público-Geral", "secretario-executivo": "Secretário-executivo de ministério",
-    "secretario-nacional-ou-finalistico": "Secretário nacional", "secretario-especial-extraordinario-ou-geral": "Secretário especial",
-    "banco-central": "Presidente e diretores do Banco Central", "dirigente-maximo-de-agencia-reguladora": "Presidente de agência reguladora",
-    "diretor-de-agencia-reguladora": "Diretor de agência reguladora", "dirigente-de-autarquia-ou-fundacao": "Dirigente de autarquia ou fundação",
+    "conselheiro-do-conselho-nacional-de-justica": "Conselheiro do Conselho Nacional de Justiça", "procurador-geral-da-republica": "Procurador-Geral da República",
+    "chefia-de-ramo-do-ministerio-publico-da-uniao": "Chefia de ramo do Ministério Público", "chefia-da-advocacia-publica-federal": "Chefia da advocacia pública federal",
+    "defensor-publico-geral-federal": "Defensor Público-Geral", "secretario-executivo-de-ministerio": "Secretário-executivo de ministério",
+    "secretario-nacional-ou-finalistico-de-ministerio": "Secretário nacional", "secretario-especial-extraordinario-ou-geral": "Secretário especial",
+    "presidente-e-diretor-do-banco-central": "Presidente e diretores do Banco Central", "dirigente-maximo-de-agencia-reguladora": "Presidente de agência reguladora",
+    "diretor-de-agencia-reguladora": "Diretor de agência reguladora", "dirigente-de-autarquia-ou-fundacao-federal": "Dirigente de autarquia ou fundação",
     "reitor-de-instituicao-federal-de-ensino": "Reitor de universidade ou instituto federal",
     "comandante-de-forca-armada": "Comandante de Força Armada", "dirigente-de-orgao-singular-do-executivo": "Dirigente de órgão singular",
-    "dirigente-de-estatal": "Dirigente de estatal",
+    "dirigente-de-empresa-estatal": "Dirigente de estatal",
 }
-# comparação entre famílias de cargo (deputado, senador, ministro, ministro do STF…), não cargo a cargo:
-# a mediana dentro da família responde "quanto custa uma cadeira deste tipo", e a soma dá o custo do conjunto.
+# Comparação entre famílias de cargo. Duas perguntas diferentes, e o Atlas publicava as duas com o mesmo número:
+# a mediana entre os cargos responde "quanto custa uma cadeira deste tipo"; o custo do colegiado é a SOMA dos
+# cargos vezes as cadeiras de cada um — nunca a mediana multiplicada pelo total de cadeiras, que distorcia 7,6%
+# no Senado. A ordenação é pelo custo da cadeira, não pelo número de camadas que cada família conseguiu medir.
 _fam = {}
 for _n in nodes.values():
     _c = _n.get("custo")
     if not _c or not (_n.get("people") or []): continue
-    _f = (_n.get("subsidio") or {}).get("familia") or _n.get("name")
-    _d = _fam.setdefault(_f, {"familia": _f, "totais": [], "cadeiras": 0, "cargos": 0, "exemplo": _n["id"], "exemplo_seats": 0, "camadas": {}})
-    if (_c["cadeiras"] or 1) > _d["exemplo_seats"]: _d["exemplo"] = _n["id"]; _d["exemplo_seats"] = _c["cadeiras"] or 1
-    _d["totais"].append(_c["total_ano"]); _d["cadeiras"] += _c["cadeiras"]; _d["cargos"] += 1
-    for _x in _c["camadas"]: _d["camadas"].setdefault(_x["k"], {"natureza": _x["natureza"], "vals": []})["vals"].append(_x["ano"])
+    _f = _c.get("familia") or _n.get("name")
+    _ca = _c["cadeira"]
+    _d = _fam.setdefault(_f, {"familia": _f, "cadeiras": 0, "cargos": 0, "colegiado": 0.0, "colegiado_max": 0.0,
+                              "exemplo": _n["id"], "exemplo_seats": 0, "blocos": {}, "faltando": set()})
+    _s = _ca["cadeiras"] or 1
+    if _s > _d["exemplo_seats"]: _d["exemplo"] = _n["id"]; _d["exemplo_seats"] = _s
+    _d["cadeiras"] += _ca["cadeiras"]; _d["cargos"] += 1
+    _d["colegiado"] += _ca["total_min"] * _s; _d["colegiado_max"] += _ca["total_max"] * _s
+    _d["faltando"].update(_ca["faltando"])
+    for _x in _ca["blocos"]:
+        _b = _d["blocos"].setdefault((_x["k"], _x["nome"]), {"k": _x["k"], "nome": _x["nome"], "min": 0.0, "max": 0.0})
+        _b["min"] += _x["ano_min"] * _s; _b["max"] += _x["ano_max"] * _s
 _top = []
 for _f, _d in _fam.items():
-    _med = _mediana(_d["totais"])
-    if not _med: continue
-    _cam = [{"k": k, "natureza": v["natureza"], "ano": round(_mediana(v["vals"]) or 0, 2)} for k, v in _d["camadas"].items()]
-    _cam = [c for c in _cam if c["ano"]]
-    _soma = round(sum(c["ano"] for c in _cam), 2) or _med
-    _sal = next((c["ano"] for c in _cam if c["k"] == "salario"), 0)
+    _cad = _d["cadeiras"] or 1
+    # a cadeira típica da família é o custo do colegiado dividido pelas cadeiras, e não a mediana entre cargos:
+    # a mediana entre dois cargos de tamanhos muito diferentes (81 senadores e 1 Presidente do Senado) não
+    # reproduz a soma e fazia o Atlas publicar dois totais divergentes para a mesma família.
+    _mn, _mx = _d["colegiado"] / _cad, _d["colegiado_max"] / _cad
+    if not _mx: continue
+    _bl = [{"k": v["k"], "nome": v["nome"], "ano_min": round(v["min"] / _cad, 2), "ano_max": round(v["max"] / _cad, 2)}
+           for v in _d["blocos"].values()]
+    _bl = [b for b in _bl if b["ano_max"]]
     _rot = FAMILIA_ROTULO.get(_f) or (_f[:1].upper() + _f[1:]).replace("-", " ")
-    _top.append({"id": _d["exemplo"], "nome": _rot, "familia": _f, "total_ano": _soma, "pct_salario": round(100 * _sal / _soma) if _soma else None,
-                 "cadeiras": _d["cadeiras"], "cargos": _d["cargos"], "total_colegiado_ano": round(_soma * _d["cadeiras"], 2), "camadas": _cam})
-_top.sort(key=lambda x: -x["total_ano"])
+    _top.append({"id": _d["exemplo"], "nome": _rot, "familia": _f, "total_min": round(_mn, 2), "total_max": round(_mx, 2),
+                 "cadeiras": _d["cadeiras"], "cargos": _d["cargos"],
+                 "total_colegiado_ano": round(_d["colegiado"], 2), "blocos": _bl, "faltando": sorted(_d["faltando"])[:3]})
+_top.sort(key=lambda x: -(x["total_min"] or x["total_max"]))
 stats["custos_top"] = _top[:12]
-stats["custo_total_colegiados"] = round(sum(n["custo"]["total_colegiado_ano"] for n in nodes.values() if n.get("custo")), 2)
+stats["custo_total_colegiados"] = round(
+    sum(n["custo"]["cadeira"]["total_min"] * (n["custo"]["cadeira"]["cadeiras"] or 1)
+        for n in nodes.values() if n.get("custo")), 2)
 
 # ---- agenda pública (e-Agendas/CGU) por pessoa e por órgão
 _ag_p = DATA / "generated" / "agendas.yaml"

@@ -30,8 +30,13 @@ TIPOS = ("dept_head", "elected")
 # Nós 'elected' que são instituições, não cargos: os cargos correspondentes são dept_head
 # (br-deputado-federal, br-senador, br-presidente-da-camara-dos-deputados, br-presidente-do-senado-federal).
 NAO_SAO_CARGOS = ("br-congresso-nacional", "br-camara-dos-deputados", "br-senado-federal")
-CAMPOS_BENEFICIO = ("nome", "valor_mensal_ou_teto", "natureza", "norma", "norma_url", "note")
+CAMPOS_BENEFICIO = ("nome", "valor_mensal_ou_teto", "natureza", "papel", "periodicidade", "tipo_valor", "norma", "norma_url", "note")
 NATUREZAS = ("indenizatoria", "remuneratoria")
+# `papel` diz para onde o dinheiro vai e é o que o cálculo de custo usa; `tipo_valor` diz se o número
+# publicado é valor fixo, limite máximo ou inexistente. Ver o cabeçalho de data/subsidios.yaml.
+PAPEIS = ("componente_do_salario", "beneficio", "equipe", "custeio", "eventual")
+PERIODICIDADES = ("mensal", "anual", "por_mandato", "eventual")
+TIPOS_VALOR = ("fixo", "teto", "sem_valor")
 CAMPOS_FAMILIA = ("familia", "cargos", "orgao_subtype", "nome_padrao", "excluir", "subsidio_mensal_bruto", "moeda",
                   "teto", "vigencia_desde", "norma", "norma_url", "checked_at", "observacao", "beneficios")
 
@@ -113,6 +118,14 @@ def validar_familia(f, i):
         nome = b.get("nome") or "(sem nome)"
         if b.get("natureza") not in NATUREZAS:
             erros.append(f"{quem}/{nome}: natureza deve ser {' ou '.join(NATUREZAS)}")
+        if b.get("papel") not in PAPEIS:
+            erros.append(f"{quem}/{nome}: papel deve ser um de {', '.join(PAPEIS)}")
+        if b.get("periodicidade") not in PERIODICIDADES:
+            erros.append(f"{quem}/{nome}: periodicidade deve ser uma de {', '.join(PERIODICIDADES)}")
+        if b.get("tipo_valor") not in TIPOS_VALOR:
+            erros.append(f"{quem}/{nome}: tipo_valor deve ser um de {', '.join(TIPOS_VALOR)}")
+        if (b.get("tipo_valor") == "sem_valor") != (b.get("valor_mensal_ou_teto") is None):
+            erros.append(f"{quem}/{nome}: tipo_valor 'sem_valor' e valor_mensal_ou_teto têm de concordar")
         if not b.get("norma"):
             erros.append(f"{quem}/{nome}: benefício sem norma")
         for k in b:

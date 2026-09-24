@@ -203,6 +203,30 @@ h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid va
 .cmpv .bar{grid-column:1/-1;height:12px;background:var(--line-2);border-radius:6px;overflow:hidden}.cmpv .bar i{display:block;height:100%}
 .cmp{display:grid;gap:2px}.cmp-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px;align-items:baseline;font-size:13.8px;padding:4px 0;border-bottom:1px solid var(--line-2)}
 .cmp-row .c a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}.cmp-row .t{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap;text-align:right;margin-left:auto}
+/* fichas de dinheiro: A (pessoa), B (cargo), C (cadeira) */
+.big-sal{font-family:var(--disp);font-size:clamp(28px,4.4vw,40px);font-weight:800;letter-spacing:-.025em;line-height:1.05;font-variant-numeric:tabular-nums;margin:2px 0 2px;overflow-wrap:anywhere}
+.mini{font-size:12.5px;color:var(--ink-3);margin:4px 0 8px;line-height:1.45;max-width:62ch}
+.cmp-row .sub,.tres .nm .sub{font-size:12px;color:var(--ink-3)}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-left:6px;white-space:nowrap}
+.tres{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,1fr);gap:3px 14px;font-size:13.5px;margin:6px 0 8px;align-items:baseline}
+.tres .th{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);padding-bottom:3px;border-bottom:1px solid var(--line-2)}
+.tres .nm{padding:5px 0;border-bottom:1px solid var(--line-2);overflow-wrap:anywhere}
+.tres .nm a{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);text-decoration:none}
+.tres .c1,.tres .c2{padding:5px 0;border-bottom:1px solid var(--line-2);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.tres .c2.np{color:var(--ink-3);font-style:italic}
+@media(min-width:621px){.tres .tag{display:block;margin-left:0;margin-top:1px;white-space:normal}}
+@media(max-width:620px){.tres{grid-template-columns:1fr;gap:0}.tres .th{display:none}.tres .nm{border-bottom:0;padding:8px 0 0;font-weight:600}
+ .tres .c1::before{content:"a lei permite: ";font-family:var(--mono);font-size:10.5px;color:var(--ink-3);text-transform:uppercase}
+ .tres .c2::before{content:"esta pessoa: ";font-family:var(--mono);font-size:10.5px;color:var(--ink-3);text-transform:uppercase}
+ .tres .c1{border-bottom:0;padding:2px 0}.tres .c2{padding:2px 0 6px}}
+details.estr,details.cadeira{margin:8px 0 0;border-top:1px solid var(--line-2);padding-top:8px}
+details.estr>summary,details.cadeira>summary{cursor:pointer;font-size:13.5px;color:var(--ink-2);list-style:none}
+details.estr>summary::-webkit-details-marker,details.cadeira>summary::-webkit-details-marker{display:none}
+details.estr>summary::before,details.cadeira>summary::before,details.fora>summary::before{content:"▸ ";color:var(--ink-3)}
+details.estr[open]>summary::before,details.cadeira[open]>summary::before,details.fora[open]>summary::before{content:"▾ "}
+details.fora{margin-top:6px}details.fora>summary{cursor:pointer;font-family:var(--mono);font-size:11px;color:var(--ink-3);list-style:none}
+details.fora>summary::-webkit-details-marker{display:none}
+.aviso{font-size:12.5px;color:var(--warn);background:var(--warn-soft);border-radius:8px;padding:8px 10px;margin:6px 0 8px;line-height:1.45}
 .hist{display:grid;grid-template-columns:auto 1fr auto;gap:2px 12px;font-size:13.5px}.hist .hm{display:contents}.hist .hy{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);white-space:nowrap;padding-top:2px}.hist .hn a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}.hist .hn em{font-style:normal;font-size:11px;color:var(--ink-3);margin-left:4px}.hist .hd{font-size:12px;color:var(--ink-3);text-align:right;white-space:nowrap}.hist .cur .hn{font-weight:600}@media(max-width:520px){.hist{grid-template-columns:auto 1fr}.hist .hd{grid-column:2;text-align:left;margin-top:-2px;margin-bottom:4px}}
 .simples{font-size:13.5px;color:var(--ink-2);margin:4px 0 2px;padding-left:10px;border-left:2px solid var(--line-2);line-height:1.45}.simples i{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-left:6px}
 .arrec .n{font-family:var(--disp);font-size:clamp(22px,3.2vw,30px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1;word-break:break-all}
@@ -640,13 +664,19 @@ function dinheiroHtml(){
     out+=`<h3>Cartão corporativo em ${C.ano}</h3><p class="note">${esc(C.nota||'')} Fonte: ${esc(C.fonte||'')}, ${(C.meses||[]).length} meses.</p><div class="om">${stat(brl(C.total),'gastos no ano')}${stat(brl((C.orgaos||[]).reduce((a,x)=>a+(x.saques||0),0)),'sacados em espécie')}</div>${bars((C.orgaos||[]).slice(0,10), x=>(x.node_id&&N[x.node_id]?N[x.node_id].name:x.orgao), x=>x.total, {fmt:v=>brl(v), sub:it=>`${it.portadores} ${it.portadores===1?'cartão':'cartões'}${it.saques?` · saques ${brl(it.saques)}`:''}`, link:x=>x.node_id?'#'+x.node_id:null})}`;
     if(top&&top.unidades_top&&top.unidades_top.length) out+=`<h4 style="margin:10px 0 4px;font-size:14px">Onde o gasto acontece, no órgão que mais gasta (${esc(top.orgao)})</h4>${bars(top.unidades_top, x=>tit(x.nome), x=>x.valor, {fmt:v=>brl(v)})}`;
     if(top&&top.favorecidos_top&&top.favorecidos_top.length) out+=`<h4 style="margin:10px 0 4px;font-size:14px">Quem mais recebeu desse órgão</h4>${bars(top.favorecidos_top, x=>tit(x.nome), x=>x.valor, {fmt:v=>brl(v)})}`; }
-  const CT=window.ATLAS_CUSTO_OK ? G.stats.custos_top : null;  // em revisão: ver custoHtml
-  if(CT&&CT.length){ const mx=Math.max(...CT.map(x=>x.total_ano));
-    out+=`<h3>Quanto custa cada tipo de cadeira por ano</h3><p class="note">Salário é só uma parte. A barra soma o que vai para a pessoa, o que paga a equipe e o que reembolsa despesa do mandato, com valores medianos entre quem ocupa o cargo. Encargos previdenciários, imóvel funcional, segurança e estrutura predial não entram.</p>
-    <div class="custos">${CT.map(x=>`<div class="ct"><a class="nm" href="#${x.id}">${esc(x.nome)}</a><span class="tt">${brl(x.total_ano)}<span class="sal"> · salário ${x.pct_salario}%</span></span>
-      <span class="stack" style="width:${Math.max(6,Math.round(100*x.total_ano/mx))}%">${x.camadas.map(c=>`<i style="width:${(100*c.ano/x.total_ano).toFixed(2)}%;background:${CUSTO_COR[c.natureza]}" title="${esc(c.k)}"></i>`).join('')}</span>
-      ${x.cadeiras>1?`<span class="cd">${x.cadeiras} cadeiras · ${brl(x.total_colegiado_ano)} no conjunto</span>`:''}</div>`).join('')}</div>
-    <p style="font-size:12.5px;color:var(--ink-3);margin:6px 0 0">Legenda: <span class="sw" style="background:${CUSTO_COR.pessoa}"></span> vai para a pessoa · <span class="sw" style="background:${CUSTO_COR.equipe}"></span> paga outras pessoas · <span class="sw" style="background:${CUSTO_COR.despesa}"></span> reembolsa despesa.</p>`; }
+  const CT=G.stats.custos_top;
+  if(CT&&CT.length){ const vmax=x=>x.total_max||x.total_min||x.total_ano||0; const mx=Math.max(...CT.map(vmax));
+    const cobre=x=>{ const ks=new Set((x.blocos||[]).map(c=>c.k)); return ks.has('pessoa')&&ks.has('equipe')&&ks.has('custeio'); };
+    const ord=(a,c)=>vmax(c)-vmax(a);
+    const completos=CT.filter(cobre).sort(ord), parciais=CT.filter(x=>!cobre(x)).sort(ord);
+    const ct=x=>{ const v=vmax(x), bl=x.blocos||[];
+      return `<div class="ct"><a class="nm" href="#${x.id}">${esc(x.nome)}</a><span class="tt">${faixaTxt(x.total_min,v)}</span>
+      <span class="stack" style="width:${Math.max(6,Math.round(100*v/mx))}%">${bl.map(c=>`<i style="width:${(100*(c.ano_max||c.ano_min||0)/v).toFixed(2)}%;background:${DEST[c.k]||'var(--ink-3)'}" title="${esc(c.nome||c.k)}"></i>`).join('')}</span>
+      ${x.cadeiras>1?`<span class="cd">${x.cadeiras} cadeiras</span>`:''}</div>`; };
+    out+=`<h3>Quanto custa cada tipo de cadeira por ano</h3><p class="note">A barra separa três destinos que nunca se somam na leitura: o que vira renda de quem ocupa o cargo, o que paga a folha da equipe e o que reembolsa despesa do mandato. Cadeiras com menos dados públicos parecem mais baratas: as incompletas estão no segundo grupo.</p>
+    <div class="custos">${completos.map(ct).join('')}</div>
+    ${parciais.length?`<h4 style="margin:12px 0 4px;font-size:13px">Cadeiras sem as três camadas publicadas, fora da comparação</h4><div class="custos">${parciais.map(ct).join('')}</div>`:''}
+    <p style="font-size:12.5px;color:var(--ink-3);margin:6px 0 0">Legenda: <span class="sw" style="background:${DEST.pessoa}"></span> para quem ocupa o cargo · <span class="sw" style="background:${DEST.equipe}"></span> para as pessoas da equipe · <span class="sw" style="background:${DEST.custeio}"></span> para despesas, contra nota fiscal.</p>`; }
   const TR=G.transferencias;
   if(TR&&TR.total_por_ano){ const a=Object.keys(TR.total_por_ano).sort().reverse()[0]; const d=TR.total_por_ano[a]; const so=(d.sem_orgao&&Object.values(d.sem_orgao).reduce((x,y)=>x+y,0))||0;
     out+=`<h3>Transferências a estados e municípios em ${a}</h3><p class="note">Dinheiro federal repassado a outros entes: ${brl(d.total)} em ${(d.meses||[]).length} meses. ${brl(d.com_orgao)} saem de um órgão identificável; ${brl(so)} são transferências constitucionais e royalties, que o Portal publica sem órgão. Fonte: ${esc(TR.fonte||'')}, lido em ${fmtDate(TR.generated_at)}.</p>
@@ -739,69 +769,119 @@ function arrecCard(inner){
   <div class="grid"><div><b class="${g>=0?'up':'down'}">${g==null?'—':(g>=0?'+':'')+g.toLocaleString('pt-BR',{maximumFractionDigits:1})}%</b>em valor real sobre o mesmo período de ${a.year-1} (IPCA)</div><div><b>${brl(y.prev_nominal)}</b>arrecadado até a mesma data em ${a.year-1}, sem correção</div><div><b>R$ ${Math.round(y.per_capita).toLocaleString('pt-BR')}</b>por habitante no ano (${(a.population/1e6).toFixed(0)} milhões)</div><div><b>${brl(j.ytd)}</b>de juros da dívida do governo federal em ${a.year}, até ${(j.last_month||'').slice(5,7)}/${(j.last_month||'').slice(2,4)}</div>${c.saude?`<div><b>${brl(c.saude.empenhado)}</b>empenhado pela Saúde no ano</div>`:''}${c.educacao?`<div><b>${brl(c.educacao.empenhado)}</b>empenhado pela Educação no ano</div>`:''}</div>
   <details><summary>Como este número é calculado</summary><p style="margin:6px 0 0">Soma das receitas realizadas da União nas origens "Impostos, taxas e contribuições de melhoria" e "Contribuições", por data de lançamento, conforme o Portal da Transparência (CSV anual, atualizado diariamente). A comparação com ${a.year-1} usa os mesmos meses e, no mês corrente, só até o mesmo dia; o valor real corrige pelo IPCA (IBGE, número-índice de ${a.ipca_ref_month}). O contador que corre é uma projeção: ao valor oficial até ${fmtDate(a.source_date)} soma-se o ritmo médio por segundo dos meses ${(a.rate_months||[]).join(', ')}; quando o dado oficial chega, o número se corrige. Juros: Banco Central, série 4607 (juros nominais do governo federal, fluxo mensal). Saúde e Educação: despesa empenhada do órgão superior no ano, Portal da Transparência. Não inclui estados e municípios.</p></details></div>`;
 }
-// classifica um benefício: vai para a pessoa (auxílios, ajudas de custo, adicionais) ou paga a estrutura do cargo
-const BEN_ESTRUTURA=/cota|gabinete|secret[áa]ri|passage|correio|escrit[óo]rio|imóvel|imovel|di[áa]ria|deslocamento|viagem|verba de representa/i;
-function benPessoal(b){ const n=(b&&b.nome)||''; if(BEN_ESTRUTURA.test(n)) return false; return true; }
-// periodicidade do benefício: mensal (×12), anual (×1) ou eventual (fora da conta anual)
-function benPeriodo(b){ const t=((b&&b.nome)||'')+' '+((b&&b.note)||'');
-  if(/n[ãa]o [ée] mensal|ajuda de custo|posse em outra localidade|remo[çc][ãa]o|quarentena|uma [úu]nica vez|por ocorr[êe]ncia/i.test(t)) return 'eventual';
-  if(/d[ée]cimo terceiro|natalina|ter[çc]o constitucional|adicional de f[ée]rias|anual/i.test(t)) return 'anual';
-  return 'mensal';
+// ——— Dinheiro: três fichas que nunca se colam ———
+// A regra que organiza tudo: nunca somar na mesma barra valores de naturezas diferentes, e nunca somar
+// teto com gasto real. Se alguma parcela é teto, o resultado é um intervalo, não um número.
+// A: o que esta pessoa recebe (página da pessoa) · B: o que o cargo permite (página do cargo)
+// C: quanto custa manter a cadeira (página do cargo, recolhida).
+const DEST={pessoa:'var(--accent)',equipe:'var(--exe)',custeio:'var(--povo)'};
+const DEST_ROT={pessoa:'Para quem ocupa o cargo',equipe:'Para as pessoas da equipe',custeio:'Para despesas, contra nota fiscal'};
+const PAPEL_ROT={componente_do_salario:'já vem dentro do salário',beneficio:'vira renda da pessoa',equipe:'paga outras pessoas',custeio:'reembolsa despesa',eventual:'uma vez por mandato'};
+const PER_ROT={mensal:'por mês',anual:'por ano',por_mandato:'uma vez por mandato',eventual:'por ocorrência',diaria:'por dia de viagem'};
+// o que a lei permite, na unidade certa e dizendo se é limite ou valor fixo
+function permitido(b){
+  const v=b.valor_mensal_ou_teto, t=b.tipo_valor||(v?'fixo':'sem_valor'), per=PER_ROT[b.periodicidade]||'';
+  if(t==='sem_valor'||!v) return {txt:'sem valor publicado', tag:''};
+  return {txt:(t==='teto'?'até ':'')+brl(v)+(per?' '+per:''), tag:t==='teto'?'limite da lei':'fixado em lei'};
 }
-// projeção anual: mensais ×12, anuais ×1; eventuais aparecem à parte, sem entrar na soma
-function anualHtml(p, base, salarioMes, bens, mesLabel){
-  if (!window.ATLAS_CUSTO_OK) return '';  // em revisão junto com o custo da cadeira
-  if(!salarioMes) return '';
-  const sal=salarioMes*12;
-  const uteis=bens.filter(b=>b.valor_mensal_ou_teto&&benPessoal(b)).map(b=>({nome:b.nome, per:benPeriodo(b), v:b.valor_mensal_ou_teto}));
-  const itens=uteis.filter(x=>x.per!=='eventual').map(x=>({nome:x.nome, ano:x.per==='mensal'?x.v*12:x.v, per:x.per}));
-  const eventuais=uteis.filter(x=>x.per==='eventual');
-  const benAno=itens.reduce((a,x)=>a+x.ano,0);
-  const tot=sal+benAno; const pct=sal?Math.round(100*benAno/sal):0;
-  const mx=Math.max(tot,1);
-  const barra=(l,v,cor)=>`<div class="cmpv"><span class="l">${l}</span><span class="bar"><i style="width:${Math.round(100*v/mx)}%;background:${cor}"></i></span><span class="v">${brl(v)}</span></div>`;
-  return `<h4 style="margin:12px 0 4px;font-size:13px">No ano, em valores de hoje</h4>
-  ${barra('Só o salário', sal, 'var(--accent)')}
-  ${benAno?barra('Salário + benefícios', tot, 'var(--povo)'):''}
-  ${benAno?`<p style="font-size:12.5px;color:var(--ink-2);margin:4px 0 6px">Os benefícios acrescentam <b>${brl(benAno)}</b> por ano, ou <b>${pct}%</b> sobre o salário.</p>
-  <div class="cmp">${itens.sort((a,b)=>b.ano-a.ano).map(x=>`<div class="cmp-row"><span class="c">${esc(x.nome)} <span style="color:var(--ink-3);font-size:12px">${x.per==='mensal'?'mensal':'uma vez por ano'}</span></span><span class="t">${brl(x.ano)} no ano</span></div>`).join('')}</div>`:'<p style="font-size:12.5px;color:var(--ink-3);margin:4px 0 0">Não há benefício pessoal mensal com valor fixado em norma para este cargo.</p>'}
-  ${eventuais.length?`<p style="font-size:12.5px;color:var(--ink-2);margin:8px 0 0">Fora da conta anual, porque não é pagamento regular: ${eventuais.map(x=>`${esc(x.nome)} (${brl(x.v)} por ocorrência)`).join(' · ')}.</p>`:''}
-  <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Projeção de 12 meses ${base==='folha'?`a partir da folha de ${mesLabel}`:'pelo valor que a lei fixa'}, sem 13º nem férias, que variam por regime. Benefícios são valores de direito: nem todo ocupante recebe todos, e alguns dependem de comprovação de despesa.</p>`;
-}
-// resumo do dinheiro por pessoa: separa o que vai para ela do que paga a estrutura do cargo.
+// uma faixa só é faixa quando os dois extremos aparecem diferentes na tela
+function faixaTxt(a,b){ const x=a||b||0, y=b||a||0; return brl(x)===brl(y)?brl(y):`${brl(x)} a ${brl(y)}`; }
+function tagHtml(t,cor){ return t?`<span class="tag"${cor?` style="color:${cor}"`:''}>${esc(t)}</span>`:''; }
+
+// FICHA A — quanto esta pessoa recebe
 function dinheiroPessoaHtml(p){
   const r=p._rem, gb=p._gab, at=p._activity, vg=p._vg;
   const posIds=(p._full||[]).map(q=>q.id).concat(p.positions||[]);
-  const sub=(posIds.map(id=>N[id]&&N[id].subsidio).filter(x=>x&&x.subsidio_mensal_bruto)[0])||null;
-  const cota=at&&at.cota, ger=r||sub||cota||gb||vg; if(!ger) return '';
+  const cargo=posIds.map(id=>N[id]).filter(x=>x&&x.subsidio)[0]||null;
+  const sub=cargo?cargo.subsidio:null;
+  if(!r&&!sub&&!gb&&!at&&!vg) return '';
   const mes=r?`${(r.mes||'').slice(4,6)}/${(r.mes||'').slice(0,4)}`:'';
-  const pessoa=[], estrutura=[];
-  if(r){ pessoa.push(['Salário bruto no mês', r.bruto, `folha de ${mes}`]);
-    const c=r.componentes||{};
-    if(c.gratificacoes) pessoa.push(['Gratificações', c.gratificacoes, 'dentro do bruto']);
-    if(c.eventuais) pessoa.push(['Verbas eventuais', c.eventuais, 'dentro do bruto']);
-    if(c.indenizatorias) pessoa.push(['Verbas indenizatórias', c.indenizatorias, 'reembolso, fora do teto']);
-  } else if(sub){ pessoa.push(['Subsídio do cargo', sub.subsidio_mensal_bruto, 'fixado em lei; a folha nominal não é publicada']); }
-  const ca=gb&&gb.custo_ano, meses=(ca&&ca.meses)||9;
-  if(cota&&cota.media_mes) estrutura.push(['Cota parlamentar', cota.media_mes, `média mensal em ${cota.ano}`]);
-  else if(ca&&ca.cota) estrutura.push(['Cota para o exercício do mandato', ca.cota/meses, `média mensal; ${brl(ca.cota)} no ano`]);
+  const salMes=r?(r.bruto_apos_abate||r.bruto):(sub&&sub.subsidio_mensal_bruto);
+  const bens=((sub&&sub.beneficios)||[]).filter(b=>{const q=b.papel||'';return q==='beneficio'||q==='eventual'||(!q&&b.natureza!=='indenizatoria');});
+  // coluna da direita: o que sabemos que esta pessoa recebeu. "não publicado" é resposta legítima.
+  const recebido=b=>{
+    const n=(b.nome||'').toLowerCase();
+    if(/moradia/.test(n)&&gb){
+      if(gb.imovel_funcional==='Utilizou') return {txt:'usa imóvel funcional', tag:'gasto real'};
+      if(gb.auxilio_moradia&&gb.auxilio_moradia!=='Não utilizou') return {txt:esc(String(gb.auxilio_moradia)), tag:'gasto real'};
+      if(gb.auxilio_moradia==='Não utilizou') return {txt:'não recebeu', tag:'gasto real'};
+    }
+    return {txt:'não publicado', tag:''};
+  };
+  const linhas=[];
+  if(salMes) linhas.push({nome:'Salário do cargo',
+    lei:sub&&sub.subsidio_mensal_bruto?{txt:brl(sub.subsidio_mensal_bruto)+' por mês',tag:'fixado em lei'}:{txt:'sem valor publicado',tag:''},
+    pes:r?{txt:brl(salMes),tag:`folha de ${mes}`}:{txt:'não publicado',tag:''}});
+  const semValor=[];
+  bens.forEach(b=>{ const l=permitido(b), q=recebido(b);
+    if(l.txt==='sem valor publicado'&&q.txt==='não publicado'){ semValor.push(b.nome); return; }
+    linhas.push({nome:b.nome, lei:l, pes:q, norma:b.norma_url});
+  });
+  if(!linhas.length) return '';
+  const cel=x=>`${esc(x.txt).replace(/&amp;/g,'&')}${tagHtml(x.tag)}`;
+  const tabela=`<div class="tres"><div class="th"></div><div class="th">O que a lei permite</div><div class="th">O que esta pessoa recebeu</div>
+  ${linhas.map(l=>`<div class="nm">${esc(l.nome)}${l.norma?` <a href="${l.norma}" target="_blank" rel="noopener">norma ↗</a>`:''}</div><div class="c1">${cel(l.lei)}</div><div class="c2${l.pes.txt==='não publicado'?' np':''}">${cel(l.pes)}</div>`).join('')}</div>`;
+  // o que o cargo gasta sem passar por esta pessoa
+  const est=[], ca=gb&&gb.custo_ano, meses=(ca&&ca.meses)||(at&&at.cota&&at.cota.meses)||0;
   const folha=(gb&&(gb.folha_mensal_estimada||gb.folha_mensal))||0;
-  if(folha) estrutura.push(['Equipe do gabinete', folha, `${gb.assessores||0} pessoas, folha ${gb.casa==='camara'?'estimada pela tabela de níveis':'do mês'}`]);
-  else if(gb&&gb.assessores) estrutura.push(['Equipe do gabinete', null, `${gb.assessores} pessoas; a folha do mês não veio na fonte`]);
-  if(gb&&gb.nao_inclusos_total) estrutura.push(['Fora da cota (diárias, passagens, correios)', gb.nao_inclusos_total/meses, `média mensal; ${brl(gb.nao_inclusos_total)} no ano`]);
-  if(gb&&gb.imovel_funcional==='Utilizou') estrutura.push(['Imóvel funcional', null, 'usa imóvel funcional em vez de auxílio-moradia']);
-  else if(gb&&gb.auxilio_moradia&&gb.auxilio_moradia!=='Não utilizou') estrutura.push(['Auxílio-moradia', null, esc(String(gb.auxilio_moradia))]);
-  if(vg&&vg.total) estrutura.push(['Viagens a serviço', vg.total/ (vg.meses||9), `média mensal; ${vg.viagens||0} viagens no ano`]);
-  if(!pessoa.length&&!estrutura.length) return '';
-  const linha=([l,v,nota])=>`<div class="cmp-row"><span class="c">${esc(l)} <span style="color:var(--ink-3);font-size:12px">${nota}</span></span><span class="t">${v==null?'—':brl(v)}</span></div>`;
-  const semFolha=!r&&sub;
-  return `<h3>Dinheiro no mês${mes?` · ${mes}`:''}</h3>
-  <p class="note" style="font-size:13px;color:var(--ink-2);margin:0 0 6px">Duas coisas diferentes: o que é pago à pessoa e o que paga a estrutura do cargo. O segundo grupo não vai para o bolso de ninguém.</p>
-  ${pessoa.length?`<h4 style="margin:6px 0 2px;font-size:13px">Pago à pessoa</h4><div class="cmp">${pessoa.map(linha).join('')}</div>`:''}
-  ${estrutura.length?`<h4 style="margin:10px 0 2px;font-size:13px">Estrutura do cargo</h4><div class="cmp">${estrutura.map(linha).join('')}</div>`:''}
-  ${anualHtml(p, r?'folha':'lei', r?r.bruto:(sub&&sub.subsidio_mensal_bruto), (sub&&sub.beneficios)||[], mes)}
-  <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">${semFolha?'A folha com o nome desta pessoa não é publicada, então aparece o valor que a lei fixa para o cargo. ':''}Detalhe de cada item nos blocos abaixo. Verba indenizatória reembolsa despesa e não é salário.</p>`;
+  if(folha) est.push(['Equipe do gabinete', folha, `${gb.assessores||0} pessoas`, 'gasto real']);
+  else if(gb&&gb.assessores) est.push(['Equipe do gabinete', null, `${gb.assessores} pessoas; a folha não é publicada`, '']);
+  if(at&&at.cota&&at.cota.media_mes) est.push(['Despesas do mandato', at.cota.media_mes, `média de ${at.cota.meses} meses de ${at.cota.ano}`, 'gasto real']);
+  else if(ca&&ca.cota&&meses) est.push(['Despesas do mandato', ca.cota/meses, `média de ${meses} meses`, 'gasto real']);
+  if(gb&&gb.nao_inclusos_total&&meses) est.push(['Passagens e diárias fora da cota', gb.nao_inclusos_total/meses, `média de ${meses} meses`, 'gasto real']);
+  if(vg&&vg.total&&vg.meses) est.push(['Viagens a serviço', vg.total/vg.meses, `${vg.viagens||0} viagens`, 'gasto real']);
+  const estTot=est.reduce((a,x)=>a+(x[1]||0),0);
+  const estHtml=est.length?`<details class="estr"><summary>O cargo também gasta ${estTot?`<b>${brl(estTot)}</b> por mês`:'com estrutura'}, sem passar por esta pessoa</summary>
+    <div class="cmp">${est.map(([l,v,nota,tag])=>`<div class="cmp-row"><span class="c">${esc(l)} <span class="sub">${esc(nota)}</span></span><span class="t">${v==null?'—':brl(v)}${tagHtml(tag)}</span></div>`).join('')}</div>
+    <p class="mini">Quase todo este dinheiro paga outras pessoas e despesas. Não é renda de ninguém.</p></details>`:'';
+  return `<h3>Quanto esta pessoa recebe por mês</h3>
+  <div class="big-sal">${salMes?brl(salMes):'sem valor publicado'}</div>
+  <p class="mini">${r?`Salário do cargo na folha de ${mes}, antes dos descontos de imposto de renda e previdência.`:'Este é o valor que a lei fixa. A folha com o nome desta pessoa não é publicada.'}</p>
+  ${tabela}
+  ${semValor.length?`<p class="mini">Sem valor publicado: ${semValor.map(esc).join(' e ')}.</p>`:''}
+  <p class="mini">Benefícios variam de pessoa para pessoa. Nunca somamos limite com gasto real: cada linha diz qual dos dois é.</p>
+  ${estHtml}`;
 }
+
+// FICHA B — o máximo que o cargo permite receber
+function subsidioHtml(n){
+  const b=n.subsidio; if(!b) return '';
+  const v=b.subsidio_mensal_bruto, bens=(b.beneficios||[]);
+  const comValor=bens.filter(x=>x.valor_mensal_ou_teto), semValor=bens.filter(x=>!x.valor_mensal_ou_teto);
+  const linha=x=>{ const l=permitido(x), pa=x.papel||(x.natureza==='indenizatoria'?'custeio':'beneficio');
+    return `<div class="cmp-row"><span class="c">${esc(x.nome)} <span class="sub">${esc(PAPEL_ROT[pa]||'')}</span></span><span class="t">${esc(l.txt)}${tagHtml(l.tag)}${x.norma_url?` <a href="${x.norma_url}" target="_blank" rel="noopener">norma ↗</a>`:''}</span></div>`; };
+  return `<div class="card"><h2>O máximo que o cargo permite receber${v?` <span style="color:var(--ink-3);font-weight:500">· ${brl(v)} por mês</span>`:''}</h2>
+  <p style="font-size:13px;color:var(--ink-2);margin:0 0 8px">${v?`Subsídio bruto mensal fixado em ${esc(b.norma||'lei')}${b.vigencia_desde?`, vigente desde ${fmtDate(b.vigencia_desde)}`:''}. Valor de direito, antes de descontos.`:`O valor não está fixado em norma única. ${esc(b.observacao||'')}`} ${b.norma_url?`<a href="${b.norma_url}" target="_blank" rel="noopener">norma ↗</a>`:''}</p>
+  ${comValor.length?`<h4 style="margin:8px 0 4px;font-size:13px">Além do subsídio</h4><div class="cmp">${comValor.map(linha).join('')}</div>`:''}
+  ${semValor.length?`<p class="mini">Sem valor publicado: ${semValor.map(x=>esc(x.nome)).join(', ')}.</p>`:''}
+  <p class="mini">Benefícios variam de pessoa para pessoa. Aqui está o limite, não o que foi recebido. Reembolso só é pago contra nota fiscal: quem não gasta, não recebe.</p>
+  ${custoHtml(n)}
+  ${b.checked_at?`<p class="cite" style="margin-top:8px">Conferido em ${fmtDate(b.checked_at)}.</p>`:''}</div>`;
+}
+
+// FICHA C — quanto custa manter a cadeira, agrupado por quem recebe
+function custoHtml(n){
+  const c=n.custo, ca=c&&c.cadeira; if(!ca||!(ca.blocos||[]).length) return '';
+  const bl=ca.blocos, min=ca.total_min||0, max=ca.total_max||min;
+  if(!max) return '';
+  const falta=(ca.faltando||[]);
+  const larg=x=>Math.max(0.5,100*((x.ano_max||x.ano_min||0)/max));
+  const faixa=bl.map(x=>`<i style="width:${larg(x).toFixed(2)}%;background:${DEST[x.k]||'var(--ink-3)'}" title="${esc(x.nome)}"></i>`).join('');
+  const val=x=>faixaTxt(x.ano_min,x.ano_max);
+  const baseTag=x=>{ const faixa=brl(x.ano_min||0)!==brl(x.ano_max||x.ano_min||0);
+    if(x.base==='lei') return faixa?'limite da lei':'fixado em lei';
+    if(x.amostra==='faixa') return `faixa de ${x.n} ocupantes`;
+    if(x.n>=5) return `mediana de ${x.n}`;
+    return 'gasto real'; };
+  const linha=x=>`<div class="cmp-row"><span class="c"><span class="sw" style="background:${DEST[x.k]||'var(--ink-3)'}"></span>${esc(x.nome)} <span class="sub">${esc(DEST_ROT[x.k]||'')}</span></span><span class="t">${val(x)}${tagHtml(baseTag(x))}</span></div>`;
+  return `<details class="cadeira"><summary>Quanto custa manter esta cadeira por ano</summary>
+  ${falta.length?`<p class="aviso">Esta conta está incompleta: ${falta.map(esc).join('; ')}. Cadeiras com menos dados públicos parecem mais baratas.</p>`:''}
+  <div class="stack" role="img" aria-label="Composição do custo anual por destinatário">${faixa}</div>
+  <div class="cmp" style="margin-top:8px">${bl.map(linha).join('')}</div>
+  <p class="mini">Somando os três grupos, a cadeira custa ${brl(min)===brl(max)?brl(max):`entre ${brl(min)} e ${brl(max)}`} por ano${ca.intervalo&&brl(min)!==brl(max)?', e é um intervalo porque alguma parcela é limite da lei, não gasto':''}. Nunca somamos limite com gasto real.</p>
+  <details class="fora"><summary>O que não está nesta conta</summary><p class="mini">${(ca.fora||[]).map(esc).join(', ')}.</p></details></details>`;
+}
+
 function agendaHtml(p){
   const a=p._ag; if(!a||!a.compromissos_90d) return '';
   const tipos=Object.entries(a.por_tipo||{}).sort((x,y)=>y[1]-x[1]).map(([k,v])=>`${v} ${esc(k)}`).join(' · ');
@@ -919,37 +999,6 @@ function renderHome(){
 const ACC={acao:'ação',acoes:'ações',assistencia:'assistência',atencao:'atenção',atividades:'atividades',avaliacao:'avaliação',basica:'básica',beneficios:'benefícios',ciencia:'ciência',cidadania:'cidadania',complementacao:'complementação',comunicacao:'comunicação',conservacao:'conservação',construcao:'construção',contribuicao:'contribuição',credito:'crédito',defesa:'defesa',desenvolvimento:'desenvolvimento',divida:'dívida',educacao:'educação',eletrica:'elétrica',energetica:'energética',ensino:'ensino',especiais:'especiais',especifico:'específico',estrategicos:'estratégicos',execucao:'execução',farmaceutica:'farmacêutica',federacao:'federação',fiscalizacao:'fiscalização',formacao:'formação',funcionamento:'funcionamento',gestao:'gestão',hidricos:'hídricos',imunobiologicos:'imunobiológicos',indigena:'indígena',indigenas:'indígenas',informacao:'informação',infraestrutura:'infraestrutura',inovacao:'inovação',judiciais:'judiciais',juridica:'jurídica',manutencao:'manutenção',media:'média',medica:'médica',medicamentos:'medicamentos',militar:'militar',modernizacao:'modernização',municipios:'municípios',nutricional:'nutricional',operacoes:'operações',orcamentaria:'orçamentária',orgaos:'órgãos',participacao:'participação',pensoes:'pensões',pesquisa:'pesquisa',politica:'política',populacao:'população',precatorios:'precatórios',prevencao:'prevenção',previdencia:'previdência',primaria:'primária',producao:'produção',promocao:'promoção',protecao:'proteção',publica:'pública',publico:'público',publicos:'públicos',qualificacao:'qualificação',recuperacao:'recuperação',reducao:'redução',regiao:'região',regularizacao:'regularização',remuneracao:'remuneração',salarios:'salários',saneamento:'saneamento',saude:'saúde',seguranca:'segurança',sentencas:'sentenças',servicos:'serviços',servidores:'servidores',situacao:'situação',social:'social',solidaria:'solidária',tecnologia:'tecnologia',tecnologias:'tecnologias',transferencia:'transferência',transferencias:'transferências',transformacao:'transformação',uniao:'união',vencimentos:'vencimentos',vigilancia:'vigilância',aposentadorias:'aposentadorias',agencia:'agência',agricola:'agrícola',aquisicao:'aquisição',area:'área',areas:'áreas',basico:'básico',ciencias:'ciências',climaticas:'climáticas',combustiveis:'combustíveis',comercio:'comércio',condicoes:'condições',cooperacao:'cooperação',distribuicao:'distribuição',economica:'econômica',economico:'econômico',eletronica:'eletrônica',estatisticas:'estatísticas',exercito:'exército',familia:'família',financeira:'financeira',genero:'gênero',hospitalar:'hospitalar',implantacao:'implantação',inclusao:'inclusão',industria:'indústria',integracao:'integração',logistica:'logística',maritimo:'marítimo',nucleares:'nucleares',patrimonio:'patrimônio',pecuaria:'pecuária',periferia:'periferia',politicas:'políticas',portuaria:'portuária',proprios:'próprios',provisao:'provisão',recursos:'recursos',rodoviaria:'rodoviária',sanitaria:'sanitária',subsidios:'subsídios',territorial:'territorial',turismo:'turismo',urbana:'urbana',usuarios:'usuários',sao:'São',joao:'João',luis:'Luís',marica:'Maricá',goiania:'Goiânia',belem:'Belém',maceio:'Maceió',macae:'Macaé',niteroi:'Niterói',brasilia:'Brasília',vitoria:'Vitória',florianopolis:'Florianópolis',cuiaba:'Cuiabá',maraba:'Marabá',teofilo:'Teófilo',anapolis:'Anápolis',petrolina:'Petrolina',itaborai:'Itaboraí',guaruja:'Guarujá',jundiai:'Jundiaí',piracicaba:'Piracicaba',sorocaba:'Sorocaba',uberlandia:'Uberlândia',ribeirao:'Ribeirão',jose:'José',gama:'Gama',bernardo:'Bernardo',caucaia:'Caucaia',parauapebas:'Parauapebas',rondonopolis:'Rondonópolis'};
 function tit(t){ return deAcc(String(t||'')).toLowerCase().replace(/(^|[\s(\/-])([a-záéíóúâêôãõç])/g,(m,a,b)=>a+b.toUpperCase()).replace(/\bDo\b|\bDa\b|\bDe\b|\bDos\b|\bDas\b|\bE\b|\bEm\b|\bPara\b|\bA\b|\bAo\b|\bAos\b|\bNo\b|\bNa\b|\bNos\b|\bNas\b|\bCom\b|\bPor\b/g,x=>x.toLowerCase()); }
 function deAcc(t){ return String(t||'').replace(/[A-Za-zÀ-ÿ]+/g, w => { const k=w.toLowerCase(); return ACC[k] ? (w===w.toUpperCase()&&w.length>1 ? ACC[k].toUpperCase() : ACC[k]) : w; }); }
-const CUSTO_COR={pessoa:'var(--accent)',equipe:'var(--exe)',despesa:'var(--povo)'};
-const CUSTO_NAT={pessoa:'vai para a pessoa',equipe:'paga outras pessoas',despesa:'reembolsa despesa'};
-function custoHtml(n){
-  // EM REVISÃO (23/09/2026): a auditoria interna encontrou erros no cálculo — extrapolação de um mês para o ano,
-  // dupla contagem de parcelas que já vêm na folha, teto usado como gasto e medianas de amostra mínima.
-  // O bloco fica fora do ar até o cálculo ser refeito; ver scratchpad/eval-numeros.md.
-  if (!window.ATLAS_CUSTO_OK) return '';
-  const c=n.custo; if(!c||!c.total_ano) return '';
-  const cam=c.camadas||[]; const tot=c.total_ano;
-  const faixa=cam.map(x=>`<i style="width:${(100*x.ano/tot).toFixed(2)}%;background:${CUSTO_COR[x.natureza]}" title="${esc(x.nome)}: ${brl(x.ano)}"></i>`).join('');
-  const linha=x=>`<div class="cmp-row"><span class="c"><span class="sw" style="background:${CUSTO_COR[x.natureza]}"></span>${esc(x.nome)} <span style="color:var(--ink-3);font-size:12px">${CUSTO_NAT[x.natureza]}${x.base==='lei'?', valor fixado em lei':x.base==='gasto real'?`, gasto real${x.n?` de ${x.n}`:''}`:x.n?`, folha de ${x.n}`:''}</span></span><span class="t">${brl(x.ano)} · ${Math.round(100*x.ano/tot)}%</span></div>`;
-  const sm=Math.round(tot/(12*1518)); // salários mínimos de 2026 (R$ 1.518)
-  return `<div class="card"><h2>Quanto custa esta cadeira por ano <span style="color:var(--ink-3);font-weight:500">· ${brl(tot)}</span></h2>
-  <p style="font-size:13.5px;color:var(--ink-2);margin:0 0 8px">O salário é <b>${c.pct_salario}%</b> do custo. O resto paga equipe, custeio do mandato e deslocamentos.${c.cadeiras>1?` São ${c.cadeiras} cadeiras: <b>${brl(c.total_colegiado_ano)}</b> por ano no conjunto.`:''}</p>
-  <div class="stack" role="img" aria-label="Composição do custo anual">${faixa}</div>
-  <div class="cmp" style="margin-top:8px">${cam.map(linha).join('')}</div>
-  <p style="font-size:12.5px;color:var(--ink-2);margin:10px 0 0">Equivale a <b>${sm.toLocaleString('pt-BR')}</b> salários mínimos por ano.</p>
-  ${(c.faltando||[]).length?`<p style="font-size:12.5px;color:var(--warn,#9A5B00);margin:6px 0 0">Não entra na conta porque a fonte não publica: ${c.faltando.map(esc).join('; ')}.</p>`:''}
-  <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Também fica de fora: ${(c.fora||[]).map(esc).join(', ')}. Valores medianos entre quem ocupa o cargo, anualizados a partir do dado mais recente de cada fonte.</p></div>`;
-}
-function subsidioHtml(n){
-  const b=n.subsidio; if(!b) return '';
-  const v=b.subsidio_mensal_bruto;
-  const bens=(b.beneficios||[]);
-  const nat=x=>x.natureza==='indenizatoria'?'indenizatória':'remuneração';
-  return `<div class="card"><h2>Quanto o cargo paga${v?` <span style="color:var(--ink-3);font-weight:500">· ${brl(v)} por mês</span>`:''}</h2>
-  <p style="font-size:13px;color:var(--ink-2);margin:0 0 8px">${v?`Subsídio bruto mensal fixado em ${esc(b.norma||'lei')}${b.vigencia_desde?`, vigente desde ${fmtDate(b.vigencia_desde)}`:''}. Valor de direito, antes de descontos; o que foi pago de fato aparece na ficha de quem ocupa o cargo, quando a folha publica o nome.`:`O valor não está fixado em norma única. ${esc(b.observacao||'')}`} ${b.norma_url?`<a href="${b.norma_url}" target="_blank" rel="noopener">Ver a norma ↗</a>`:''}</p>
-  ${bens.length?`<h4 style="margin:8px 0 4px;font-size:13px">Além do subsídio</h4><div class="cmp">${bens.map(x=>`<div class="cmp-row"><span class="c">${esc(x.nome)}${x.norma?` <span style="color:var(--ink-3);font-size:12px">${esc(x.norma)}</span>`:''}</span><span class="t">${x.valor_mensal_ou_teto?brl(x.valor_mensal_ou_teto):''}${x.valor_mensal_ou_teto?' · ':''}${nat(x)}</span></div>`).join('')}</div>
-  <p style="font-size:12.5px;color:var(--ink-3);margin:8px 0 0">Verbas indenizatórias reembolsam despesa do cargo e não entram no teto nem contam como salário.</p>`:''}
-  ${b.checked_at?`<p class="cite" style="margin-top:8px">Conferido em ${fmtDate(b.checked_at)}.</p>`:''}</div>`;
-}
 function programasHtml(n){
   const g=n.programas, t=n.transferencias; if(!g&&!t) return '';
   let out='';
@@ -1038,7 +1087,6 @@ function renderNode(n){
     ${poss?`<h3>Cargos</h3><div class="list">${poss}</div>`:''}
     ${kids?`<h3>Órgãos integrados e vinculados <span style="font-weight:400">· ${n.children.length}</span></h3><div class="list">${kids}</div>`:''}
   </div>
-  ${custoHtml(n)}
   ${subsidioHtml(n)}
   ${programasHtml(n)}
   ${composicaoHtml(n)}

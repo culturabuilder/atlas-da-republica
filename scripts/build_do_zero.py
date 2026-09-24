@@ -394,13 +394,14 @@ h1{font:800 clamp(38px,7vw,68px)/1 var(--disp);letter-spacing:-.03em;margin:0 0 
 .cap .n{font:500 12px var(--mono);color:var(--ink-3);letter-spacing:.1em;margin-bottom:8px}
 .cap h2{font:700 clamp(25px,3.4vw,34px)/1.12 var(--disp);margin:0 0 10px;text-wrap:balance;letter-spacing:-.02em}
 .cap p{margin:0 0 13px;max-width:56ch}
-.cap h2,.cap p,.words b,.words span,.gloss b,.gloss span,.cur span{overflow-wrap:anywhere}
+.cap h2,.cap p,.words span,.gloss span,.cur span{overflow-wrap:anywhere}
+.words b,.gloss b{overflow-wrap:normal;hyphens:none}
 .curta{font-size:19.5px;color:var(--ink);font-weight:600;line-height:1.4}
 .ana{background:var(--panel);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:11px 13px;font-size:16px;color:var(--ink-2)}
 .ana b{color:var(--ink)}
 .words{display:grid;gap:6px;margin:0 0 13px}
-.words .w{display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr);gap:4px 10px;font-size:14.5px;align-items:baseline}
-.words b{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.words .w{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;font-size:14.5px;align-items:baseline}
+.words b{font-family:var(--mono);font-size:13px;color:var(--accent);white-space:nowrap}
 .words span{color:var(--ink-2)}
 .no-atlas{font-size:15px;color:var(--ink-3)}
 .no-atlas a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line-2)}
@@ -408,13 +409,13 @@ h1{font:800 clamp(38px,7vw,68px)/1 var(--disp);letter-spacing:-.03em;margin:0 0 
 .viz .lb{font-family:var(--mono);font-size:8.5px;fill:var(--ink-3)}
 .viz .lb.sm{font-size:7.5px}
 .cap-viz{font-size:14px;color:var(--ink-3);margin:2px 0 14px;max-width:46ch}
-.fotos{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:10px;margin:0 0 12px}
+.fotos{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px;margin:0 0 12px}
 .fc{margin:0;text-align:center}
 .fc .ph{width:64px;height:64px;margin:0 auto 5px;border-radius:50%;overflow:hidden;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;border:1px solid var(--line-2)}
 .fc .ph img{width:64px;height:64px;object-fit:cover;display:block}
 .fc .ini{font:600 16px var(--mono)}
 .fc{min-width:0}
-.fc figcaption{font-size:11.5px;color:var(--ink-3);line-height:1.25;overflow-wrap:anywhere;hyphens:auto}
+.fc figcaption{font-size:11.5px;color:var(--ink-3);line-height:1.25;overflow-wrap:break-word;hyphens:none}
 .fotos>*{min-width:0}
 .solo{margin:0 0 14px;display:flex;gap:14px;align-items:center}
 .solo .ph.big{width:96px;height:96px;border-radius:50%;overflow:hidden;flex:none;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;background:var(--accent-soft)}
@@ -451,7 +452,7 @@ h1{font:800 clamp(38px,7vw,68px)/1 var(--disp);letter-spacing:-.03em;margin:0 0 
 .gloss h2{font:700 22px/1.2 var(--disp);margin:0 0 10px}
 .gloss .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:8px 18px}
 .gloss .g{font-size:15px}
-.gloss .g b{display:block;font-family:var(--mono);font-size:13.5px;color:var(--accent)}
+.gloss .g b{display:block;font-family:var(--mono);font-size:13.5px;color:var(--accent);white-space:nowrap}
 .gloss .g span{color:var(--ink-2)}
 .fim{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--ink-2)}
 .fim a{color:var(--accent)}
@@ -461,6 +462,7 @@ html.js .reveal.on{opacity:1;transform:none;transition:opacity .5s ease,transfor
 html.js .dr{opacity:0}html.js .on .dr{opacity:1;transition:opacity .5s ease;transition-delay:var(--d,0s)}
 html.js .pp{opacity:0}html.js .on .pp{opacity:.9;transition:opacity .35s ease;transition-delay:var(--d,0s)}
 @media (prefers-reduced-motion:reduce){html.js .reveal,html.js .dr,html.js .pp{opacity:1;transform:none;transition:none}.bars2 .bb i{transition:none}}
+@media (max-width:560px){.words .w{grid-template-columns:1fr;gap:0}.words b,.gloss b{white-space:normal}}
 @media (max-width:820px){
   .hero{grid-template-columns:1fr;gap:14px}.hero .art{max-width:280px}
   .cap{grid-template-columns:1fr;gap:16px;padding:34px 0}

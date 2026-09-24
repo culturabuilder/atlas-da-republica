@@ -6,6 +6,18 @@
 #   - `teto: true` quando a norma fixa um limite, não um valor fixo pago a todos.
 #   - `beneficios` nunca entram no subsídio. Os `indenizatoria` são reembolso ou custeio e não são renda;
 #     os `remuneratoria` são parcelas da remuneração. Não se soma benefício a subsídio.
+#   - Cada benefício traz três campos que dizem ao cálculo o que fazer com ele — e só isso; nenhum deles
+#     cria valor ou norma nova:
+#       `papel`         para onde o dinheiro vai:
+#                       `componente_do_salario` já está dentro do contracheque e NUNCA pode ser somado de novo
+#                       `beneficio`             vira renda da pessoa, além do subsídio
+#                       `equipe`                paga o salário de outras pessoas
+#                       `custeio`               reembolsa ou custeia despesa do mandato/atividade
+#                       `eventual`              não é mensal (posse, fim de mandato, remoção, quarentena)
+#       `periodicidade` `mensal`, `anual`, `por_mandato` ou `eventual`
+#       `tipo_valor`    `fixo` (a norma fixa o valor), `teto` (o valor publicado é limite máximo)
+#                       ou `sem_valor` (a norma existe, mas não publica valor)
+#     Regra de leitura: `teto` nunca é somado com gasto real — vira o extremo superior de um intervalo.
 #   - Sem comparação e sem juízo: o arquivo diz quanto a lei manda pagar e onde isso está escrito.
 #
 # Casamento com o grafo (etl/subsidios.py):
@@ -48,12 +60,18 @@ familias:
       - nome: Auxílio-alimentação
         valor_mensal_ou_teto: 1192.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Portaria MGI 2.756/2026, de 31/3/2026 (efeitos a partir de 1º/4/2026); Lei 8.460/1992 art. 22
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
         note: Valor único para todo o Executivo federal.
       - nome: Diárias em viagem a serviço
         valor_mensal_ou_teto: 900.0
         natureza: indenizatoria
+        papel: custeio
+        periodicidade: eventual
+        tipo_valor: fixo
         norma: Decreto 5.992/2006 Anexo I, na redação do Decreto 11.872/2023 (efeitos de 15/2/2024)
         norma_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/decreto/d5992.htm
         note: >-
@@ -79,12 +97,18 @@ familias:
       - nome: Auxílio-alimentação
         valor_mensal_ou_teto: 1192.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
         note: null
       - nome: Diárias em viagem a serviço
         valor_mensal_ou_teto: 900.0
         natureza: indenizatoria
+        papel: custeio
+        periodicidade: eventual
+        tipo_valor: fixo
         norma: Decreto 5.992/2006 Anexo I, na redação do Decreto 11.872/2023 (efeitos de 15/2/2024)
         norma_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/decreto/d5992.htm
         note: >-
@@ -109,6 +133,9 @@ familias:
       - nome: CEAP — Cota para o Exercício da Atividade Parlamentar
         valor_mensal_ou_teto: 58474.70
         natureza: indenizatoria
+        papel: custeio
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Ato da Mesa 43/2009; limites de 2026 recompostos pelo Ato da Mesa 244, de 20/2/2026
         norma_url: https://www2.camara.leg.br/legin/int/atomes/2026/atodamesa-244-20-fevereiro-2026-798720-norma-cd-mesa.html
         note: >-
@@ -117,6 +144,9 @@ familias:
       - nome: Verba de gabinete (folha dos secretários parlamentares)
         valor_mensal_ou_teto: 165806.07
         natureza: indenizatoria
+        papel: equipe
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Ato da Mesa 243, de 20/2/2026; contratação pelo Ato da Mesa 72/1997
         norma_url: https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/verba-de-gabinete
         note: >-
@@ -125,6 +155,9 @@ familias:
       - nome: Auxílio-moradia
         valor_mensal_ou_teto: 4253.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Ato da Mesa 3/2015, que alterou o valor do Ato da Mesa 15/1979
         norma_url: https://www2.camara.leg.br/transparencia/acesso-a-informacao/copy_of_perguntas-frequentes/auxilio-moradia
         note: >-
@@ -133,6 +166,9 @@ familias:
       - nome: Ajuda de custo de início e de fim de mandato
         valor_mensal_ou_teto: 46366.19
         natureza: indenizatoria
+        papel: eventual
+        periodicidade: por_mandato
+        tipo_valor: fixo
         norma: Decreto Legislativo 172/2022; o Decreto Legislativo 569/2012 extinguiu a ajuda por sessão legislativa
         norma_url: https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/direitos-dos-deputados
         note: >-
@@ -141,12 +177,18 @@ familias:
       - nome: Passagens aéreas fora da cota
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: custeio
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Regra divulgada pela Câmara dos Deputados; o ato que a fixa não foi localizado
         norma_url: https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/cota-parlamentar
         note: Até oito passagens por mês entre o estado de representação e Brasília, além do que a CEAP cobre.
       - nome: Assistência à saúde
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Ato da Mesa 89/2013 (reembolso médico-hospitalar) e Ato da Mesa 75/2006 (Pró-Saúde)
         norma_url: https://prosaude.camara.leg.br/o-pro-saude/legislacao-e-regulamento/
         note: >-
@@ -169,6 +211,9 @@ familias:
       - nome: CEAPS — Cota para o Exercício da Atividade Parlamentar dos Senadores
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: custeio
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Ato da Comissão Diretora 3/2003, regulamentado pelo Ato do Primeiro-Secretário 5/2014
         norma_url: https://www12.senado.leg.br/perguntas-frequentes/canais-de-atendimento/senadores/os-senadores-recebem-mais-alguma-verba-alem-do-subsidio
         note: >-
@@ -178,6 +223,9 @@ familias:
       - nome: Auxílio-moradia
         valor_mensal_ou_teto: 5500.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Regra publicada pelo Senado Federal; o ato da Comissão Diretora que fixa o valor não foi localizado
         norma_url: https://www12.senado.leg.br/transparencia/sen/coapat/auxilio-moradia-e-imoveis-funcionais
         note: >-
@@ -186,6 +234,9 @@ familias:
       - nome: Ajuda de custo de início e de fim de mandato
         valor_mensal_ou_teto: 46366.19
         natureza: indenizatoria
+        papel: eventual
+        periodicidade: por_mandato
+        tipo_valor: fixo
         norma: Decreto Legislativo 172/2022, art. 1º §1º, que revogou o Decreto Legislativo 276/2014
         norma_url: https://www2.camara.leg.br/legin/fed/decleg/2022/decretolegislativo-172-21-dezembro-2022-793529-publicacaooriginal-166604-pl.html
         note: >-
@@ -196,6 +247,9 @@ familias:
       - nome: Verba de pessoal do gabinete
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: equipe
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Estrutura de cargos publicada pelo Senado Federal; o ato que fixa o teto da folha não foi localizado
         norma_url: https://www12.senado.leg.br/publicacoes/guias/parl_guia_old/gestao-administrativa/gabinete-parlamentar/composicao
         note: >-
@@ -204,6 +258,9 @@ familias:
       - nome: Assistência à saúde (SIS)
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Regulamento do Sistema Integrado de Saúde do Senado Federal
         norma_url: https://www12.senado.leg.br/institucional/sis/entenda-o-plano/sis
         note: Plano de autogestão, com contribuição mensal do parlamentar por faixa etária. Sem valor fixo publicado.
@@ -226,6 +283,9 @@ familias:
       - nome: Parcela por antiguidade
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14, de 6/4/2026, art. 3º; LC 35/1979 (Loman) art. 65 VIII
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -234,6 +294,9 @@ familias:
       - nome: Auxílio-saúde
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 5º "d"; Resolução CNMP 268, de 8/8/2023
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -242,6 +305,9 @@ familias:
       - nome: Diárias em deslocamento a serviço
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: custeio
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 6º; LC 75/1993 art. 227 II; Resolução CNJ 73, de 28/4/2009
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -250,6 +316,9 @@ familias:
       - nome: Ajuda de custo de remoção, promoção ou nomeação
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: eventual
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 8º; LC 75/1993 art. 227 I "a"; LC 35/1979 art. 65 I
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -258,6 +327,9 @@ familias:
       - nome: Auxílio-moradia
         valor_mensal_ou_teto: 4377.73
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Resolução CNJ 274, de 18/12/2018 art. 4º; Resolução Conjunta CNJ/CNMP 14/2026 art. 7º
         norma_url: https://atos.cnj.jus.br/atos/detalhar/2792
         note: >-
@@ -269,6 +341,9 @@ familias:
       - nome: Décimo terceiro e terço constitucional de férias
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: anual
+        tipo_valor: sem_valor
         norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -279,6 +354,9 @@ familias:
       - nome: Benefícios extintos em 2026
         valor_mensal_ou_teto: 0.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: >-
           Tese de repercussão geral do STF de 25/3/2026 (Rcl 88.319, ADI 6.601, ADI 6.604, ADI 6.606, RE 968.646
           e RE 1.059.466), item 7; Resolução Conjunta CNJ/CNMP 14/2026 art. 2º
@@ -320,6 +398,9 @@ familias:
       - nome: Parcela por antiguidade
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14, de 6/4/2026, art. 3º; LC 35/1979 (Loman) art. 65 VIII
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -328,6 +409,9 @@ familias:
       - nome: Auxílio-saúde
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 5º "d"; Resolução CNMP 268, de 8/8/2023
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -336,6 +420,9 @@ familias:
       - nome: Diárias em deslocamento a serviço
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: custeio
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 6º; LC 75/1993 art. 227 II; Resolução CNJ 73, de 28/4/2009
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -344,6 +431,9 @@ familias:
       - nome: Ajuda de custo de remoção, promoção ou nomeação
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: eventual
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 8º; LC 75/1993 art. 227 I "a"; LC 35/1979 art. 65 I
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -352,6 +442,9 @@ familias:
       - nome: Auxílio-moradia
         valor_mensal_ou_teto: 4377.73
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Resolução CNJ 274, de 18/12/2018 art. 4º; Resolução Conjunta CNJ/CNMP 14/2026 art. 7º
         norma_url: https://atos.cnj.jus.br/atos/detalhar/2792
         note: >-
@@ -363,6 +456,9 @@ familias:
       - nome: Décimo terceiro e terço constitucional de férias
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: anual
+        tipo_valor: sem_valor
         norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -373,6 +469,9 @@ familias:
       - nome: Benefícios extintos em 2026
         valor_mensal_ou_teto: 0.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: >-
           Tese de repercussão geral do STF de 25/3/2026 (Rcl 88.319, ADI 6.601, ADI 6.604, ADI 6.606, RE 968.646
           e RE 1.059.466), item 7; Resolução Conjunta CNJ/CNMP 14/2026 art. 2º
@@ -406,6 +505,9 @@ familias:
       - nome: Gratificação de presença nas sessões do TSE
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Lei 8.350/1991 art. 1º I; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º "c"; CF art. 121 §2º
         norma_url: https://www.planalto.gov.br/ccivil_03/leis/L8350.htm
         note: >-
@@ -443,6 +545,9 @@ familias:
       - nome: Gratificação de presença na Justiça Eleitoral
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Lei 8.350/1991 art. 1º II; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º "c"; CF art. 121 §2º
         norma_url: https://www.planalto.gov.br/ccivil_03/leis/L8350.htm
         note: >-
@@ -453,6 +558,9 @@ familias:
       - nome: Parcela por antiguidade
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14, de 6/4/2026, art. 3º; LC 35/1979 (Loman) art. 65 VIII
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -461,6 +569,9 @@ familias:
       - nome: Auxílio-saúde
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 5º "d"; Resolução CNMP 268, de 8/8/2023
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -469,6 +580,9 @@ familias:
       - nome: Diárias em deslocamento a serviço
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: custeio
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 6º; LC 75/1993 art. 227 II; Resolução CNJ 73, de 28/4/2009
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -477,6 +591,9 @@ familias:
       - nome: Ajuda de custo de remoção, promoção ou nomeação
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: eventual
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 8º; LC 75/1993 art. 227 I "a"; LC 35/1979 art. 65 I
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -485,6 +602,9 @@ familias:
       - nome: Auxílio-moradia
         valor_mensal_ou_teto: 4377.73
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Resolução CNJ 274, de 18/12/2018 art. 4º; Resolução Conjunta CNJ/CNMP 14/2026 art. 7º
         norma_url: https://atos.cnj.jus.br/atos/detalhar/2792
         note: >-
@@ -496,6 +616,9 @@ familias:
       - nome: Décimo terceiro e terço constitucional de férias
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: anual
+        tipo_valor: sem_valor
         norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -506,6 +629,9 @@ familias:
       - nome: Benefícios extintos em 2026
         valor_mensal_ou_teto: 0.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: >-
           Tese de repercussão geral do STF de 25/3/2026 (Rcl 88.319, ADI 6.601, ADI 6.604, ADI 6.606, RE 968.646
           e RE 1.059.466), item 7; Resolução Conjunta CNJ/CNMP 14/2026 art. 2º
@@ -538,12 +664,18 @@ familias:
       - nome: Diárias e passagens
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: custeio
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Lei 11.365/2006 art. 1º §4º
         norma_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11365.htm
         note: Equivalentes às pagas a Ministro do STJ, por deslocamento a serviço. Não são mensais.
       - nome: Demais verbas, na forma da reorganização de 2026
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14, de 6/4/2026
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -572,6 +704,9 @@ familias:
       - nome: Parcela por antiguidade
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14, de 6/4/2026, art. 3º; LC 35/1979 (Loman) art. 65 VIII
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -580,6 +715,9 @@ familias:
       - nome: Auxílio-saúde
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 5º "d"; Resolução CNMP 268, de 8/8/2023
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -588,6 +726,9 @@ familias:
       - nome: Diárias em deslocamento a serviço
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: custeio
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 6º; LC 75/1993 art. 227 II; Resolução CNJ 73, de 28/4/2009
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -596,6 +737,9 @@ familias:
       - nome: Ajuda de custo de remoção, promoção ou nomeação
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: eventual
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 8º; LC 75/1993 art. 227 I "a"; LC 35/1979 art. 65 I
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -604,6 +748,9 @@ familias:
       - nome: Auxílio-moradia
         valor_mensal_ou_teto: 4377.73
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Resolução CNJ 274, de 18/12/2018 art. 4º; Resolução Conjunta CNJ/CNMP 14/2026 art. 7º
         norma_url: https://atos.cnj.jus.br/atos/detalhar/2792
         note: >-
@@ -615,6 +762,9 @@ familias:
       - nome: Décimo terceiro e terço constitucional de férias
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: anual
+        tipo_valor: sem_valor
         norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -625,6 +775,9 @@ familias:
       - nome: Benefícios extintos em 2026
         valor_mensal_ou_teto: 0.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: >-
           Tese de repercussão geral do STF de 25/3/2026 (Rcl 88.319, ADI 6.601, ADI 6.604, ADI 6.606, RE 968.646
           e RE 1.059.466), item 7; Resolução Conjunta CNJ/CNMP 14/2026 art. 2º
@@ -678,6 +831,9 @@ familias:
       - nome: Auxílio-alimentação
         valor_mensal_ou_teto: 1192.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
         note: null
@@ -709,12 +865,18 @@ familias:
       - nome: Auxílio-alimentação
         valor_mensal_ou_teto: 1192.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
         note: null
       - nome: Assistência à saúde suplementar (per capita)
         valor_mensal_ou_teto: 464.89
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Portaria MGI 2.778, de 2/4/2026; Lei 8.112/1990 art. 230
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.778-de-2-de-abril-de-2026-697395044
         note: >-
@@ -724,12 +886,18 @@ familias:
       - nome: Assistência pré-escolar
         valor_mensal_ou_teto: 526.64
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Portaria MGI 2.785, de 2/4/2026; Decreto 977/1993 art. 8º
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.785-de-2-de-abril-de-2026-697385222
         note: Por dependente de até seis anos de idade.
       - nome: Ajuda de custo de posse em outra localidade
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: eventual
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Lei 8.112/1990 arts. 53 a 57
         norma_url: https://www.planalto.gov.br/ccivil_03/leis/l8112cons.htm
         note: >-
@@ -738,6 +906,9 @@ familias:
       - nome: Diárias em viagem a serviço
         valor_mensal_ou_teto: 800.0
         natureza: indenizatoria
+        papel: custeio
+        periodicidade: eventual
+        tipo_valor: fixo
         norma: Decreto 5.992/2006 Anexo I, na redação do Decreto 11.872/2023 (efeitos de 15/2/2024)
         norma_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/decreto/d5992.htm
         note: >-
@@ -766,12 +937,18 @@ familias:
       - nome: Auxílio-alimentação
         valor_mensal_ou_teto: 1192.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
         note: null
       - nome: Assistência à saúde suplementar (per capita)
         valor_mensal_ou_teto: 464.89
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Portaria MGI 2.778, de 2/4/2026; Lei 8.112/1990 art. 230
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.778-de-2-de-abril-de-2026-697395044
         note: >-
@@ -780,12 +957,18 @@ familias:
       - nome: Assistência pré-escolar
         valor_mensal_ou_teto: 526.64
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Portaria MGI 2.785, de 2/4/2026; Decreto 977/1993 art. 8º
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.785-de-2-de-abril-de-2026-697385222
         note: Por dependente de até seis anos de idade.
       - nome: Diárias em viagem a serviço
         valor_mensal_ou_teto: 600.0
         natureza: indenizatoria
+        papel: custeio
+        periodicidade: eventual
+        tipo_valor: fixo
         norma: Decreto 5.992/2006 Anexo I, na redação do Decreto 11.872/2023 (efeitos de 15/2/2024)
         norma_url: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/decreto/d5992.htm
         note: >-
@@ -811,6 +994,9 @@ familias:
       - nome: Auxílio-alimentação
         valor_mensal_ou_teto: 1192.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
         note: null
@@ -834,6 +1020,9 @@ familias:
       - nome: Parcela por antiguidade
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14, de 6/4/2026, art. 3º; LC 35/1979 (Loman) art. 65 VIII
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -842,6 +1031,9 @@ familias:
       - nome: Auxílio-saúde
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 5º "d"; Resolução CNMP 268, de 8/8/2023
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -850,6 +1042,9 @@ familias:
       - nome: Diárias em deslocamento a serviço
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: custeio
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 6º; LC 75/1993 art. 227 II; Resolução CNJ 73, de 28/4/2009
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -858,6 +1053,9 @@ familias:
       - nome: Ajuda de custo de remoção, promoção ou nomeação
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: eventual
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 8º; LC 75/1993 art. 227 I "a"; LC 35/1979 art. 65 I
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -866,6 +1064,9 @@ familias:
       - nome: Auxílio-moradia
         valor_mensal_ou_teto: 4377.73
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Resolução CNJ 274, de 18/12/2018 art. 4º; Resolução Conjunta CNJ/CNMP 14/2026 art. 7º
         norma_url: https://atos.cnj.jus.br/atos/detalhar/2792
         note: >-
@@ -877,6 +1078,9 @@ familias:
       - nome: Décimo terceiro e terço constitucional de férias
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: anual
+        tipo_valor: sem_valor
         norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -887,6 +1091,9 @@ familias:
       - nome: Benefícios extintos em 2026
         valor_mensal_ou_teto: 0.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: >-
           Tese de repercussão geral do STF de 25/3/2026 (Rcl 88.319, ADI 6.601, ADI 6.604, ADI 6.606, RE 968.646
           e RE 1.059.466), item 7; Resolução Conjunta CNJ/CNMP 14/2026 art. 2º
@@ -921,6 +1128,9 @@ familias:
       - nome: Auxílio-alimentação
         valor_mensal_ou_teto: 1192.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
         note: null
@@ -945,6 +1155,9 @@ familias:
       - nome: Remuneração compensatória da quarentena
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: eventual
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Lei 9.986/2000 art. 8º
         norma_url: https://www.planalto.gov.br/ccivil_03/leis/l9986.htm
         note: >-
@@ -953,6 +1166,9 @@ familias:
       - nome: Auxílio-alimentação
         valor_mensal_ou_teto: 1192.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
         note: null
@@ -976,12 +1192,18 @@ familias:
       - nome: Remuneração compensatória da quarentena
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: eventual
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Lei 9.986/2000 art. 8º
         norma_url: https://www.planalto.gov.br/ccivil_03/leis/l9986.htm
         note: Seis meses de impedimento após a saída, com remuneração equivalente à do cargo que ocupava.
       - nome: Auxílio-alimentação
         valor_mensal_ou_teto: 1192.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
         note: null
@@ -1012,12 +1234,18 @@ familias:
       - nome: Auxílio-alimentação
         valor_mensal_ou_teto: 1192.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
         note: null
       - nome: Assistência à saúde suplementar (per capita)
         valor_mensal_ou_teto: 464.89
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Portaria MGI 2.778, de 2/4/2026; Lei 8.112/1990 art. 230
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.778-de-2-de-abril-de-2026-697395044
         note: >-
@@ -1050,6 +1278,9 @@ familias:
       - nome: Vencimento básico da carreira do Magistério Superior (Titular 1, dedicação exclusiva)
         valor_mensal_ou_teto: 12245.03
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Lei 12.772/2012 Anexo III, na redação do Anexo LXXIX da Lei 15.141/2025 (efeitos de 1º/4/2026)
         norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/Anexo/Anexo1a100-Lei15141.htm
         note: >-
@@ -1058,6 +1289,9 @@ familias:
       - nome: Retribuição por Titulação (doutorado, Titular 1, dedicação exclusiva)
         valor_mensal_ou_teto: 14081.78
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Lei 12.772/2012 art. 17 e Anexo IV, na redação do Anexo LXXX da Lei 15.141/2025 (efeitos de 1º/4/2026)
         norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/Anexo/Anexo1a100-Lei15141.htm
         note: >-
@@ -1066,6 +1300,9 @@ familias:
       - nome: Cargo de Direção CD-1
         valor_mensal_ou_teto: 22219.64
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Lei 15.141/2025, Anexo CCXCVII, alínea "c" (efeitos de 1º/1/2026); Lei 8.168/1991
         norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/Anexo/Anexo254a323-Lei15141.htm
         note: >-
@@ -1075,12 +1312,18 @@ familias:
       - nome: Auxílio-alimentação
         valor_mensal_ou_teto: 1192.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
         note: null
       - nome: Adicional de férias (um terço) e gratificação natalina
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: anual
+        tipo_valor: sem_valor
         norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Lei 8.112/1990 arts. 63 e 76
         norma_url: https://www.planalto.gov.br/ccivil_03/leis/l8112cons.htm
         note: >-
@@ -1106,6 +1349,9 @@ familias:
       - nome: Auxílio-alimentação
         valor_mensal_ou_teto: 1192.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
         note: null
@@ -1128,6 +1374,9 @@ familias:
       - nome: Auxílio-alimentação
         valor_mensal_ou_teto: 1192.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
         note: >-
@@ -1137,6 +1386,9 @@ familias:
       - nome: Décimo terceiro e terço constitucional de férias
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: anual
+        tipo_valor: sem_valor
         norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º
         norma_url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
         note: Não são parcelas mensais.
@@ -1168,6 +1420,9 @@ familias:
       - nome: Soldo do posto de Almirante de Esquadra, General de Exército ou Tenente-Brigadeiro
         valor_mensal_ou_teto: 14711.0
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Lei 13.954/2019 Anexo VI, na redação da Lei 15.167/2025 (efeitos de 1º/1/2026)
         norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/Lei/L15167.htm
         note: >-
@@ -1176,12 +1431,18 @@ familias:
       - nome: Adicional militar (oficial-general)
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: MP 2.215-10/2001, Anexo II, Tabela II
         norma_url: https://www.planalto.gov.br/ccivil_03/mpv/2215-10.htm
         note: 28% do soldo.
       - nome: Adicional de compensação por disponibilidade militar (ACDM)
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Lei 13.954/2019 art. 8º e Anexo II
         norma_url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/lei/L13954.htm
         note: >-
@@ -1190,12 +1451,18 @@ familias:
       - nome: Adicional de habilitação (Altos Estudos Categoria I)
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Lei 13.954/2019 Anexo III
         norma_url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/lei/L13954.htm
         note: 73% do soldo desde 1º/7/2023 na Categoria I; 68% na Categoria II.
       - nome: Gratificação de representação (oficial-general)
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Lei 13.954/2019 art. 10 e Anexo IV
         norma_url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/lei/L13954.htm
         note: 10% do soldo.
@@ -1223,6 +1490,9 @@ familias:
       - nome: Parcela por antiguidade
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14, de 6/4/2026, art. 3º; LC 35/1979 (Loman) art. 65 VIII
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -1231,6 +1501,9 @@ familias:
       - nome: Auxílio-saúde
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 5º "d"; Resolução CNMP 268, de 8/8/2023
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -1239,6 +1512,9 @@ familias:
       - nome: Diárias em deslocamento a serviço
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: custeio
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 6º; LC 75/1993 art. 227 II; Resolução CNJ 73, de 28/4/2009
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -1247,6 +1523,9 @@ familias:
       - nome: Ajuda de custo de remoção, promoção ou nomeação
         valor_mensal_ou_teto: null
         natureza: indenizatoria
+        papel: eventual
+        periodicidade: eventual
+        tipo_valor: sem_valor
         norma: Resolução Conjunta CNJ/CNMP 14/2026 art. 8º; LC 75/1993 art. 227 I "a"; LC 35/1979 art. 65 I
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -1255,6 +1534,9 @@ familias:
       - nome: Auxílio-moradia
         valor_mensal_ou_teto: 4377.73
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: teto
         norma: Resolução CNJ 274, de 18/12/2018 art. 4º; Resolução Conjunta CNJ/CNMP 14/2026 art. 7º
         norma_url: https://atos.cnj.jus.br/atos/detalhar/2792
         note: >-
@@ -1266,6 +1548,9 @@ familias:
       - nome: Décimo terceiro e terço constitucional de férias
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: anual
+        tipo_valor: sem_valor
         norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Resolução Conjunta CNJ/CNMP 14/2026 art. 4º
         norma_url: https://atos.cnj.jus.br/atos/detalhar/6863
         note: >-
@@ -1276,6 +1561,9 @@ familias:
       - nome: Benefícios extintos em 2026
         valor_mensal_ou_teto: 0.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: >-
           Tese de repercussão geral do STF de 25/3/2026 (Rcl 88.319, ADI 6.601, ADI 6.604, ADI 6.606, RE 968.646
           e RE 1.059.466), item 7; Resolução Conjunta CNJ/CNMP 14/2026 art. 2º
@@ -1336,6 +1624,9 @@ familias:
       - nome: Honorários advocatícios de sucumbência
         valor_mensal_ou_teto: null
         natureza: remuneratoria
+        papel: componente_do_salario
+        periodicidade: mensal
+        tipo_valor: sem_valor
         norma: Lei 13.327/2016 arts. 29 a 36
         norma_url: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2016/lei/l13327.htm
         note: >-
@@ -1346,6 +1637,9 @@ familias:
       - nome: Auxílio-alimentação
         valor_mensal_ou_teto: 1192.0
         natureza: indenizatoria
+        papel: beneficio
+        periodicidade: mensal
+        tipo_valor: fixo
         norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
         norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
         note: null
