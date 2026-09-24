@@ -7,6 +7,9 @@ concurrency: { group: atualizacao-diaria, cancel-in-progress: false }
 jobs:
   update:
     runs-on: ubuntu-latest
+    # teto duro: o orçamento interno de scripts/update.sh (3h30) deve terminar bem antes disto.
+    # Se bater aqui, o job morre sem publicar — é o sintoma de que algum conector passou do limite.
+    timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -15,6 +18,8 @@ jobs:
       - run: python -m venv .venv && .venv/bin/pip install pyyaml pillow anthropic
       - run: scripts/update.sh --fast
         env:
+          ATLAS_LIMITE: "900"
+          ATLAS_ORCAMENTO: "12600"
           PORTAL_TRANSPARENCIA_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SITE_BASE: https://atlasdarepublica.org
