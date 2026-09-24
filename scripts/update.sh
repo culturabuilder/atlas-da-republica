@@ -64,6 +64,8 @@ run() {  # run "Nome visível" comando...   (LIM=1800 run ... para um limite mai
   rm -f "$marca"
   printf '%s\t%s\t%s\n' "$nome" "$st" "$(( $(date +%s) - t0 ))" >> "$EXEC_LOG"
 }
+# antes de três horas de trabalho, meio segundo conferindo que os pacotes estão todos lá
+$PY scripts/checar_dependencias.py || { echo "faltam dependências; veja requirements.txt"; exit 1; }
 LIM=1800 run "SIORG" $PY etl/siorg.py ${FAST:+--no-full} --cache build
 run "Câmara/Senado" $PY etl/parlamentares.py --cache build
 run "Comissões" $PY etl/comissoes.py --cache build/cache-comissoes

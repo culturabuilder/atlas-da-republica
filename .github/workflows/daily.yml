@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python -m venv .venv && .venv/bin/pip install pyyaml pillow anthropic
+      - run: python -m venv .venv && .venv/bin/pip install pyyaml pillow anthropic openpyxl
       - run: scripts/update.sh --fast
         env:
           ATLAS_LIMITE: "900"
