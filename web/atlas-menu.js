@@ -13,6 +13,7 @@
     { h: 'Explorar', items: [
       { t: 'Roda do governo federal', d: 'Todos os órgãos, cargos e colegiados da União', href: u('/'), act: 'home' },
       { t: 'Buscar', d: 'Órgão, cargo, pessoa, sigla ou combinação', act: 'busca', href: u('/') },
+      { t: 'Do zero', d: 'O governo explicado em palavras simples, para quem nunca estudou isso', href: u('/do-zero/') },
       { t: 'Como funciona a República', d: 'Visita guiada de 9 minutos pela roda', href: u('/como-funciona/') },
       { t: 'Comparar parlamentares', d: 'Rankings e comparação lado a lado', href: u('/comparar/') }
     ] },
@@ -40,7 +41,8 @@
     { h: 'Participar', items: [
       { t: 'Corrigir um dado', d: 'Abre um issue com a página e o campo', href: 'https://github.com/culturabuilder/atlas-da-republica/issues/new?labels=correcao&title=Corre%C3%A7%C3%A3o%3A%20', ext: true },
       { t: 'Pedir o grafo do seu estado ou cidade', href: 'https://github.com/culturabuilder/atlas-da-republica/issues/new?title=Pe%C3%A7o%20um%20grafo%3A%20', ext: true },
-      { t: 'Código e dados no GitHub', href: 'https://github.com/culturabuilder/atlas-da-republica', ext: true }
+      { t: 'Código e dados no GitHub', href: 'https://github.com/culturabuilder/atlas-da-republica', ext: true },
+      { t: 'Projeto apartidário e aberto', d: 'Sem partido, sem ideologia, sem financiamento de campanha', href: u('/metodologia/') }
     ] }
   ];
 
