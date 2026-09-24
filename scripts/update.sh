@@ -33,11 +33,22 @@ run() {  # run "Nome visível" comando...   (LIM=1800 run ... para um limite mai
     printf '%s\t%s\t%s\n' "$nome" "pulado por tempo" "0" >> "$EXEC_LOG"; return 0
   fi
   local t0=$(date +%s)
+  local marca=build/.run_marca; : > "$marca"
   echo "== $nome"
   local st=ok rc=0
   _tempo "$lim" "$@" || rc=$?
-  if [ "$rc" -eq 124 ]; then st="tempo esgotado"; echo "$nome passou de ${lim}s e foi cortado (segue com os dados do último dia)"
-  elif [ "$rc" -ne 0 ]; then st=falhou; echo "$nome falhou (segue com os dados do último dia)"; fi
+  if [ "$rc" -eq 124 ] || [ "$rc" -eq 137 ]; then st="tempo esgotado"; echo "$nome passou de ${lim}s e foi cortado"
+  elif [ "$rc" -ne 0 ]; then st=falhou; echo "$nome falhou"; fi
+  # Cortado ou quebrado, o conector pode ter deixado meio arquivo gravado: vários escrevem em partes.
+  # Devolve ao estado do último commit o que ele tocou, para o site seguir com o dado do dia anterior
+  # em vez de com um pedaço. Só age quando deu errado, e só no que mudou durante esta execução.
+  if [ "$st" != ok ] && [ -d .git ]; then
+    local sujos=$(find data/generated -type f -newer "$marca" 2>/dev/null)
+    if [ -n "$sujos" ]; then
+      echo "$sujos" | while read -r f; do [ -n "$f" ] && git checkout -- "$f" 2>/dev/null && echo "   devolvido ao estado anterior: $f"; done
+    fi
+  fi
+  rm -f "$marca"
   printf '%s\t%s\t%s\n' "$nome" "$st" "$(( $(date +%s) - t0 ))" >> "$EXEC_LOG"
 }
 LIM=1800 run "SIORG" $PY etl/siorg.py ${FAST:+--no-full} --cache build
