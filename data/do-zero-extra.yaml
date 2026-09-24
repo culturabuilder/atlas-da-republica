@@ -1,0 +1,440 @@
+# Curiosidades e fatos marcantes da área "Do zero" (data/do-zero.yaml).
+# Um bloco por capítulo, com os mesmos `id`. Apartidário: só fato institucional
+# e histórico, com fonte oficial e ano. Frases curtas, no máximo 28 palavras.
+# Números do próprio site vêm do build do Atlas de 23/09/2026.
+titulo: 'Do zero: curiosidades e fatos marcantes'
+subtitulo: Complemento de data/do-zero.yaml. Cada item traz fonte oficial e ano,
+  para você conferir.
+neutralidade: Conteúdo institucional e histórico, sem opinião política. Nada aqui
+  favorece ou ataca partido, governo ou candidato.
+capitulos:
+- id: o-que-e-governo
+  curiosidades:
+  - texto: O Brasil tem 5.570 municípios, mais o Distrito Federal. Só Minas Gerais
+      reúne 853 deles.
+    fonte: IBGE, API de Localidades
+    url: "https://servicodados.ibge.gov.br/api/v1/localidades/municipios"
+    ano: 2026
+  - texto: A Constituição diz que todo o poder emana do povo. União, estados, Distrito
+      Federal e municípios são todos autônomos.
+    fonte: Constituição de 1988, art. 1º e art. 18
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 1988
+  - texto: O Atlas mapeia 1.365 órgãos e cargos federais e 2.002 ligações entre
+      eles. Só o Executivo responde por 690.
+    fonte: Atlas da República, build de 23/09/2026
+    url: "https://atlasdarepublica.org/dados/"
+    ano: 2026
+  numero_marcante:
+    valor: 515189
+    unidade: pessoas
+    legenda: Servidores civis do Executivo federal na folha de julho de 2026
+    fonte: Atlas da República, build de 23/09/2026 (Portal da Transparência, SIAPE)
+    url: "https://atlasdarepublica.org/dados/"
+- id: tres-poderes
+  curiosidades:
+  - texto: A expressão "harmônicos e independentes entre si" não nasceu em 1988.
+      Ela já estava na Constituição de 1891.
+    fonte: Constituição de 1891, art. 15
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao91.htm"
+    ano: 1891
+  - texto: A Constituição do Império reconhecia quatro poderes, não três. O quarto
+      era o Poder Moderador, exercido pelo imperador.
+    fonte: Constituição de 1824, art. 10
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao24.htm"
+    ano: 1824
+  - texto: A Constituição marcou um plebiscito para 1993. O povo escolheria entre
+      república e monarquia e entre presidencialismo e parlamentarismo.
+    fonte: Constituição de 1988, ADCT art. 2º
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 1988
+  linha_do_tempo:
+  - ano: 1824
+    fato: Constituição do Império reconhece quatro poderes, incluindo o Moderador.
+  - ano: 1891
+    fato: Primeira Constituição republicana fixa os três poderes atuais.
+  - ano: 1988
+    fato: Constituição chama os três de independentes e harmônicos entre si.
+  - ano: 1993
+    fato: Plebiscito previsto no ADCT confirma república e presidencialismo.
+- id: o-que-faz-o-presidente
+  curiosidades:
+  - texto: No texto original de 1988, o mandato do presidente era de cinco anos.
+      Uma emenda de revisão, em 1994, reduziu para quatro.
+    fonte: Planalto, emendas constitucionais de revisão
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/ecr/quadro_ecr.htm"
+    ano: 1994
+  - texto: A reeleição não existia na Constituição de 1988. Ela foi criada pela
+      Emenda Constitucional 16, em 1997.
+    fonte: Constituição de 1988, art. 14, § 5º
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 1997
+  - texto: O artigo 84 lista 28 tarefas privativas do presidente, de nomear ministros
+      a declarar guerra e conceder indulto.
+    fonte: Constituição de 1988, art. 84
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 1988
+  linha_do_tempo:
+  - ano: 1891
+    fato: Constituição republicana já dava quatro anos ao presidente, sem reeleição.
+  - ano: 1988
+    fato: Nova Constituição fixa mandato de cinco anos e proíbe reeleição.
+  - ano: 1994
+    fato: Emenda de revisão nº 5 reduz o mandato para quatro anos.
+  - ano: 1997
+    fato: Emenda 16 passa a permitir uma reeleição seguida.
+- id: ministro-e-ministerio
+  curiosidades:
+  - texto: A lei lista os ministérios um a um. São 31 no texto de 2023, mais o do
+      Empreendedorismo, incluído em 2024.
+    fonte: Lei nº 14.600/2023, art. 17
+    url: "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm"
+    ano: 2024
+  - texto: 'Em 1974, a lei listava 16 ministérios. Três eram militares: Marinha,
+      Exército e Aeronáutica, cada um com seu ministro.'
+    fonte: Decreto-Lei nº 200/1967, art. 35 (redação de 1974)
+    url: "https://www.planalto.gov.br/ccivil_03/decreto-lei/del0200.htm"
+    ano: 1974
+  - texto: Nem todo ministro chefia um ministério. A lei dá status de ministro ao
+      advogado-geral da União e ao chefe da Casa Civil.
+    fonte: Lei nº 14.600/2023, art. 18
+    url: "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm"
+    ano: 2023
+  numero_marcante:
+    valor: 32
+    unidade: ministérios
+    legenda: Ministérios listados na lei que organiza o governo federal
+    fonte: Lei nº 14.600/2023, art. 17
+    url: "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm"
+- id: quem-escreve-as-leis
+  curiosidades:
+  - texto: O número 513 não está na Constituição. Veio da Lei Complementar 78, de
+      1993, que também fixou o piso de oito deputados por estado.
+    fonte: Lei Complementar nº 78/1993
+    url: "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp78.htm"
+    ano: 1993
+  - texto: Um projeto de iniciativa popular exige assinaturas de 1% dos eleitores
+      do país, espalhadas por pelo menos cinco estados.
+    fonte: Constituição de 1988, art. 61, § 2º
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 1988
+  - texto: A Câmara conta suas legislaturas desde 1826, ainda no Império. A que
+      começou em 2023 é a 57ª.
+    fonte: Câmara dos Deputados, Dados Abertos
+    url: "https://dadosabertos.camara.leg.br/api/v2/legislaturas/1"
+    ano: 2026
+  linha_do_tempo:
+  - ano: 1826
+    fato: Primeira legislatura da Câmara dos Deputados se reúne no Brasil.
+  - ano: 1891
+    fato: Constituição republicana organiza o Congresso em Câmara e Senado.
+  - ano: 1988
+    fato: Constituição cria a iniciativa popular de projetos de lei.
+  - ano: 1993
+    fato: Lei complementar fixa o teto de 513 deputados federais.
+- id: deputado-e-senador
+  curiosidades:
+  - texto: Cada senador é eleito junto com dois suplentes. Eles assumem a vaga quando
+      o titular deixa o cargo.
+    fonte: Constituição de 1988, art. 46, § 3º
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 1988
+  - texto: O Senado nunca se renova inteiro. A cada quatro anos troca ora um terço,
+      ora dois terços das cadeiras.
+    fonte: Constituição de 1988, art. 46, § 2º
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 1988
+  - texto: Nenhum estado pode ter menos de oito nem mais de setenta deputados federais,
+      por mais gente que tenha.
+    fonte: Constituição de 1988, art. 45, § 1º
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 1988
+  numero_marcante:
+    valor: 203
+    unidade: cargos
+    legenda: Cargos federais que só são ocupados após sabatina no Senado
+    fonte: Atlas da República, build de 23/09/2026
+    url: "https://atlasdarepublica.org/dados/"
+- id: como-nasce-uma-lei
+  curiosidades:
+  - texto: Se o presidente não disser nada em quinze dias úteis, o projeto vira
+      lei do mesmo jeito. O silêncio vale como sanção.
+    fonte: Constituição de 1988, art. 66, § 3º
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 1988
+  - texto: O veto parcial não pode cortar palavras soltas. Ele só derruba artigo,
+      parágrafo, inciso ou alínea inteiros.
+    fonte: Constituição de 1988, art. 66, § 2º
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 1988
+  - texto: O Atlas encontrou 316 vetos à espera de votação no Congresso. O mais
+      antigo passou do prazo há mais de quatro anos.
+    fonte: Atlas da República, build de 23/09/2026
+    url: "https://atlasdarepublica.org/dados/"
+    ano: 2026
+  numero_marcante:
+    valor: 316
+    unidade: vetos
+    legenda: Vetos presidenciais aguardando votação no Congresso Nacional
+    fonte: Atlas da República, build de 23/09/2026
+    url: "https://atlasdarepublica.org/dados/"
+- id: medida-provisoria
+  curiosidades:
+  - texto: Antes de 1988 existia o decreto-lei. Se o Congresso não votasse em sessenta
+      dias, ele era considerado aprovado. Hoje é o contrário.
+    fonte: Constituição de 1967, art. 58
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao67.htm"
+    ano: 1967
+  - texto: No texto original de 1988, a medida provisória durava trinta dias e podia
+      ser reeditada sem limite. A Emenda 32 mudou isso.
+    fonte: Emenda Constitucional nº 32/2001
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc32.htm"
+    ano: 2001
+  - texto: Medida provisória não pode tratar de direito penal, matéria eleitoral,
+      orçamento nem de tema reservado a lei complementar.
+    fonte: Constituição de 1988, art. 62, § 1º
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 2001
+  numero_marcante:
+    valor: 72
+    unidade: medidas provisórias
+    legenda: Medidas provisórias em tramitação no Congresso Nacional
+    fonte: Atlas da República, build de 23/09/2026
+    url: "https://atlasdarepublica.org/dados/"
+  linha_do_tempo:
+  - ano: 1967
+    fato: Constituição cria o decreto-lei, aprovado por simples decurso de prazo.
+  - ano: 1988
+    fato: Medida provisória substitui o decreto-lei, com prazo de trinta dias.
+  - ano: 2001
+    fato: Emenda 32 dá sessenta dias, uma prorrogação e proíbe reedição.
+- id: juiz-e-supremo
+  curiosidades:
+  - texto: O Supremo nem sempre teve onze ministros. Foram quinze juízes em 1891
+      e dezesseis em 1967. Onze só a partir de 1969.
+    fonte: Constituição de 1891, art. 56, e Emenda Constitucional nº 1/1969, art.
+      118
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc_anterior1988/emc01-69.ht\
+      m"
+    ano: 1969
+  - texto: Para ser indicado ao Supremo é preciso ter entre 35 e 70 anos. Até 2022,
+      o limite era 65 anos.
+    fonte: Constituição de 1988, art. 101 (redação da Emenda 122)
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 2022
+  - texto: A aposentadoria obrigatória de ministro aos 75 anos é recente. Ela chegou
+      com a Emenda Constitucional 88, de 2015.
+    fonte: Emenda Constitucional nº 88/2015
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc88.htm"
+    ano: 2015
+  linha_do_tempo:
+  - ano: 1891
+    fato: Supremo Tribunal Federal nasce com quinze juízes.
+  - ano: 1967
+    fato: Constituição fixa dezesseis ministros no tribunal.
+  - ano: 1969
+    fato: Emenda 1 reduz o Supremo a onze ministros.
+  - ano: 2015
+    fato: Emenda 88 leva a aposentadoria compulsória para 75 anos.
+  - ano: 2022
+    fato: Emenda 122 eleva para 70 anos a idade máxima de indicação.
+- id: quem-vigia-o-governo
+  curiosidades:
+  - texto: O Tribunal de Contas da União foi criado por decreto em 7 de novembro
+      de 1890. É mais velho que a primeira Constituição republicana.
+    fonte: Câmara dos Deputados, Decreto nº 966-A/1890
+    url: "https://www2.camara.leg.br/legin/fed/decret/1824-1899/decreto-966-a-7-novembro-1890-553\
+      450-publicacaooriginal-71409-pe.html"
+    ano: 1890
+  - texto: Qualquer cidadão pode denunciar irregularidades direto ao Tribunal de
+      Contas da União. Está escrito na Constituição.
+    fonte: Constituição de 1988, art. 74, § 2º
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 1988
+  - texto: Na lei que organiza o governo, a Controladoria-Geral da União entra na
+      mesma lista dos ministérios, como último item.
+    fonte: Lei nº 14.600/2023, art. 17, XXXI
+    url: "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm"
+    ano: 2023
+  numero_marcante:
+    valor: 9
+    unidade: pessoas
+    legenda: Ministros que compõem o Tribunal de Contas da União
+    fonte: Constituição de 1988, art. 73
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+- id: de-onde-vem-o-dinheiro
+  curiosidades:
+  - texto: A União arrecadou cerca de 2,57 trilhões de reais em 2025. Dá perto de
+      88 mil reais por segundo, dia e noite.
+    fonte: Atlas da República, build de 23/09/2026 (Receita Federal)
+    url: "https://atlasdarepublica.org/dados/"
+    ano: 2025
+  - texto: A maior parte do dinheiro da União não vem de impostos. Em 2026, as contribuições
+      sociais já somavam mais que todos os impostos federais.
+    fonte: Atlas da República, build de 23/09/2026 (Receita Federal)
+    url: "https://atlasdarepublica.org/dados/"
+    ano: 2026
+  - texto: 'Metade do que a União arrecada com imposto de renda e IPI não fica com
+      ela: vai para estados e municípios.'
+    fonte: Constituição de 1988, art. 159, I
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 2023
+  numero_marcante:
+    valor: 87901
+    unidade: reais
+    legenda: Arrecadação federal por segundo, na média dos últimos meses
+    fonte: Atlas da República, build de 23/09/2026 (Receita Federal)
+    url: "https://atlasdarepublica.org/dados/"
+- id: para-onde-vai-o-dinheiro
+  curiosidades:
+  - texto: 'O orçamento não é uma lei só, são três: o plano plurianual, a lei de
+      diretrizes e a lei orçamentária anual.'
+    fonte: Constituição de 1988, art. 165
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 1988
+  - texto: A Constituição obriga a União a aplicar ao menos 18% da receita de impostos
+      em educação. Estados e municípios, 25%.
+    fonte: Constituição de 1988, art. 212
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 1988
+  - texto: Além de gastar, o governo deixa de arrecadar. As renúncias fiscais previstas
+      para 2026 somam 613 bilhões de reais.
+    fonte: Atlas da República, build de 23/09/2026 (Receita Federal, PLOA 2026)
+    url: "https://atlasdarepublica.org/dados/"
+    ano: 2026
+  numero_marcante:
+    valor: 612842878964
+    unidade: reais
+    legenda: Renúncias fiscais previstas pela União para 2026
+    fonte: Atlas da República, build de 23/09/2026 (Receita Federal)
+    url: "https://atlasdarepublica.org/dados/"
+- id: emenda-parlamentar
+  curiosidades:
+  - texto: Até 2015, o governo podia simplesmente não pagar a emenda de um parlamentar.
+      A Emenda 86 tornou a execução obrigatória.
+    fonte: Constituição de 1988, art. 166, § 11
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 2015
+  - texto: O limite das emendas individuais era 1,2% da receita corrente líquida.
+      A Emenda 126, de 2022, elevou para 2%.
+    fonte: Constituição de 1988, art. 166, § 9º
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 2022
+  - texto: Metade do dinheiro das emendas individuais precisa ir para saúde. A regra
+      está na própria Constituição.
+    fonte: Constituição de 1988, art. 166, § 9º
+    url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    ano: 2022
+  numero_marcante:
+    valor: 50905200171
+    unidade: reais
+    legenda: Emendas parlamentares empenhadas pela União em 2025
+    fonte: Atlas da República, build de 23/09/2026 (Portal da Transparência)
+    url: "https://atlasdarepublica.org/dados/"
+- id: como-acompanhar
+  curiosidades:
+  - texto: O órgão tem 20 dias para responder a um pedido de informação, prorrogáveis
+      por mais 10, com justificativa por escrito.
+    fonte: Lei nº 12.527/2011, art. 11
+    url: "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm"
+    ano: 2011
+  - texto: A lei proíbe o órgão de perguntar por que você quer a informação. Exigir
+      o motivo é ilegal.
+    fonte: Lei nº 12.527/2011, art. 10, § 3º
+    url: "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm"
+    ano: 2011
+  - texto: Pedir informação pública é de graça. Só a reprodução de documentos pode
+      ser cobrada, e quem não pode pagar fica isento.
+    fonte: Lei nº 12.527/2011, art. 12
+    url: "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm"
+    ano: 2011
+  linha_do_tempo:
+  - ano: 1988
+    fato: Constituição garante o direito de receber informação dos órgãos públicos.
+  - ano: 2011
+    fato: Lei de Acesso à Informação é sancionada em 18 de novembro.
+  - ano: 2012
+    fato: A lei entra em vigor 180 dias depois e os pedidos começam.
+recordes:
+- rotulo: Emendas à Constituição de 1988
+  valor: 138
+  unidade: emendas
+  fonte: Planalto, quadro de emendas constitucionais
+  url: "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/quadro_emc.htm"
+- rotulo: Órgãos e cargos federais mapeados
+  valor: 1365
+  unidade: órgãos e cargos
+  fonte: Atlas da República, build de 23/09/2026
+  url: "https://atlasdarepublica.org/dados/"
+- rotulo: Arrecadação federal em 2025
+  valor: 2566344731208
+  unidade: reais
+  fonte: Atlas da República, build de 23/09/2026 (Receita Federal)
+  url: "https://atlasdarepublica.org/dados/"
+- rotulo: Municípios no Brasil
+  valor: 5570
+  unidade: municípios
+  fonte: IBGE, API de Localidades
+  url: "https://servicodados.ibge.gov.br/api/v1/localidades/municipios"
+- rotulo: Servidores civis do Executivo
+  valor: 515189
+  unidade: pessoas
+  fonte: Atlas da República, build de 23/09/2026 (Portal da Transparência, SIAPE)
+  url: "https://atlasdarepublica.org/dados/"
+- rotulo: Cargos que passam por sabatina
+  valor: 203
+  unidade: cargos
+  fonte: Atlas da República, build de 23/09/2026
+  url: "https://atlasdarepublica.org/dados/"
+- rotulo: Teto salarial do funcionalismo
+  valor: 46366.19
+  unidade: reais por mês
+  fonte: Atlas da República, build de 23/09/2026 (Portal da Transparência)
+  url: "https://atlasdarepublica.org/dados/"
+- rotulo: Ministérios listados em lei
+  valor: 32
+  unidade: ministérios
+  fonte: Lei nº 14.600/2023, art. 17
+  url: "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14600.htm"
+sugestoes_visuais:
+- id: o-que-e-governo
+  ideia: 'Três caixas empilhadas: União, estado e município, com um serviço de exemplo
+    dentro de cada.'
+- id: tres-poderes
+  ideia: Triângulo com um poder em cada ponta e setas de mão dupla mostrando quem
+    confere quem.
+- id: o-que-faz-o-presidente
+  ideia: Régua de quatro anos, marcando a posse em 1º de janeiro e o fim do mandato.
+- id: ministro-e-ministerio
+  ideia: 'Organograma simples: presidente no topo, ministérios abaixo, secretarias
+    num terceiro nível.'
+- id: quem-escreve-as-leis
+  ideia: 'Duas barras lado a lado: 513 quadradinhos e 81 quadradinhos, na mesma
+    escala.'
+- id: deputado-e-senador
+  ideia: Mapa do Brasil com três cadeiras iguais por estado e cadeiras proporcionais
+    à população.
+- id: como-nasce-uma-lei
+  ideia: 'Trilho horizontal com estações: comissão, plenário, outra casa, sanção
+    ou veto.'
+- id: medida-provisoria
+  ideia: Ampulheta em duas metades de sessenta dias, com bifurcação entre virar
+    lei e caducar.
+- id: juiz-e-supremo
+  ideia: 'Pirâmide de três degraus: juiz, tribunal e Supremo, com uma seta de recurso
+    subindo.'
+- id: quem-vigia-o-governo
+  ideia: Círculo do governo com três lupas apontando de fora e de dentro, cada uma
+    rotulada.
+- id: de-onde-vem-o-dinheiro
+  ideia: Funil com entradas de imposto e contribuição e um cronômetro marcando o
+    valor por segundo.
+- id: para-onde-vai-o-dinheiro
+  ideia: Barra de cem por cento fatiada por destino, com os pisos de saúde e educação
+    destacados.
+- id: emenda-parlamentar
+  ideia: Cofre do orçamento com setas finas saindo para municípios, metade delas
+    marcada como saúde.
+- id: como-acompanhar
+  ideia: 'Calendário de vinte mais dez dias, ao lado de três portas: Diário, Portal
+    e gabinete.'

@@ -33,7 +33,7 @@ SEN_API = "https://adm.senado.gov.br/adm-dadosabertos/api/v1"
 SIAPE_URL = "https://portaldatransparencia.gov.br/servidores/"
 FONTE_SIAPE = "Portal da Transparência, remuneração de servidores civis (SIAPE)"
 FONTE_SENADO = "Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)"
-SUBSIDIO = 46366.19  # subsídio de ministro do STF = teto = subsídio de parlamentar (Lei 15.081/2024)
+SUBSIDIO = 46366.19  # subsídio de ministro do STF = teto = subsídio de parlamentar (Lei 14.520/2023)
 # empresas estatais e entidades com folha própria não entram no SIAPE
 FORA_DO_SIAPE = {"empresa_publica", "sociedade_economia_mista"}
 # entidades que, quando estão no SIAPE, aparecem como órgão próprio na folha

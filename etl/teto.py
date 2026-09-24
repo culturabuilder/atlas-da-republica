@@ -3,7 +3,7 @@
 
 Fonte: Portal da Transparência, download mensal "Servidores civis (SIAPE)": Cadastro (órgão de exercício, cargo) e Remuneração
 (remuneração básica bruta, abate-teto, verbas indenizatórias, remuneração após deduções). Teto: subsídio de ministro do STF,
-R$ 46.366,19 (Lei 15.081/2024, a partir de fev/2025). Agregado por órgão: quantos servidores tiveram abate-teto (bruto acima do
+R$ 46.366,19 (Lei 14.520/2023, 4ª parcela a partir de fev/2025). Agregado por órgão: quantos servidores tiveram abate-teto (bruto acima do
 teto), quanto foi abatido, e quanto foi pago fora do teto em verbas indenizatórias. Só agregados por órgão; nada individual.
 Uso: .venv/bin/python etl/teto.py [--mes AAAAMM]   (padrão: dois meses atrás, o último publicado)
 """
@@ -60,7 +60,7 @@ def main():
                      "indenizatorias": round(g["indenizatorias"], 2), "acima_do_teto_com_indenizatorias": g["acima_com_indenizatorias"], "cargos_mais_comuns": [{"cargo": c or "(não informado)", "n": v} for c, v in g["cargos"].most_common(3)]})
     orgs.sort(key=lambda o: -o["com_abate_teto"])
     tot_abate = sum(o["com_abate_teto"] for o in orgs); tot_abatido = sum(o["valor_abatido"] for o in orgs); tot_ind = sum(o["indenizatorias"] for o in orgs); tot_acima = sum(o["acima_do_teto_com_indenizatorias"] for o in orgs)
-    out = {"generated_at": t.isoformat(), "mes": m, "teto": TETO, "teto_fonte": "Lei 15.081/2024 (subsídio de ministro do STF a partir de fev/2025)", "servidores": n, "com_abate_teto": tot_abate, "valor_abatido_mes": round(tot_abatido, 2),
+    out = {"generated_at": t.isoformat(), "mes": m, "teto": TETO, "teto_fonte": "Lei 14.520/2023 (subsídio de ministro do STF, 4ª parcela a partir de fev/2025)", "servidores": n, "com_abate_teto": tot_abate, "valor_abatido_mes": round(tot_abatido, 2),
            "indenizatorias_mes": round(tot_ind, 2), "acima_do_teto_com_indenizatorias": tot_acima, "orgaos": orgs[:40],
            "nota": "Abrange servidores civis do Poder Executivo federal no SIAPE (não inclui militares, Judiciário, Legislativo, MPU nem estatais). 'Abate-teto' é o corte aplicado para respeitar o teto; verbas indenizatórias ficam fora do teto por lei."}
     (ROOT / "data" / "generated" / "teto.yaml").write_text("# GERADO por etl/teto.py. Não edite à mão.\n" + yaml.dump(out, allow_unicode=True, sort_keys=False, width=120), encoding="utf-8")
