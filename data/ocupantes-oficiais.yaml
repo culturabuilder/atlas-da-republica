@@ -84,13 +84,17 @@
 - source: https://www.tse.jus.br/institucional/ministros
   checked_at: 2026-09-18
   entry_mode: eleito
-  note: Sete ministros efetivos com início do biênio; substitutos não incluídos.
+  note: >-
+    Sete ministros efetivos com início do biênio; substitutos não incluídos. Os três vindos do STF aparecem
+    aqui pelo nome usual, o mesmo que o bloco do Supremo usa. O site do TSE publica o nome de registro
+    (Kassio Nunes Marques, André Luiz de Almeida Mendonça, José Antonio Dias Toffoli) e, sem unificar,
+    a mesma pessoa vira dois registros no grafo.
   positions:
-    br-tribunal-superior-eleitoral-presidente: [Kassio Nunes Marques]
+    br-tribunal-superior-eleitoral-presidente: [Nunes Marques]
     br-tribunal-superior-eleitoral-ministro:
-      - { name: Kassio Nunes Marques, started_at: 2025-05-25, note: STF }
-      - { name: André Luiz de Almeida Mendonça, started_at: 2026-06-25, note: STF }
-      - { name: José Antonio Dias Toffoli, started_at: 2026-06-09, note: STF }
+      - { name: Nunes Marques, started_at: 2025-05-25, note: STF }
+      - { name: André Mendonça, started_at: 2026-06-25, note: STF }
+      - { name: Dias Toffoli, started_at: 2026-06-09, note: STF }
       - { name: Antonio Carlos Ferreira, started_at: 2024-09-19, note: STJ, Corregedor-Geral }
       - { name: Ricardo Villas Bôas Cueva, started_at: 2025-12-16, note: STJ }
       - { name: Floriano Peixoto de Azevedo Marques Neto, started_at: 2025-08-01, note: jurista, nomeado pelo Presidente }
