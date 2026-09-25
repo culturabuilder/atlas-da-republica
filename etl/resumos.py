@@ -8,11 +8,18 @@ do texto-fonte; só é regenerado quando a ementa/situação muda. Sem `ANTHROPI
 ambiente ou em `.env`, o script mantém o arquivo como está e sai sem erro (o site mostra só a
 ementa oficial).
 
+Conferência (Eikos): todo resumo gerado é conferido contra o próprio texto-fonte antes de ficar no
+cache, e o resultado é gravado junto — `conferido` (bool, true quando nenhum alerta), `alertas`
+(lista de rótulos) e `conf` (a maior confiança entre os alertas; 0 quando não há alerta). São três
+perguntas: fato fora da fonte, juízo de valor e número ou data divergente. Sem EIKOS_KEY no ambiente
+ou no .env, ou se o Eikos falhar, o resumo é gravado sem esses campos e nada mais muda.
+
 Uso:
-  python etl/resumos.py                # gera o que falta (respeita cache)
+  python etl/resumos.py                # gera o que falta (respeita cache) e confere o que gerou
   python etl/resumos.py --dry-run      # mostra os itens pendentes e o prompt, sem chamar a API
   python etl/resumos.py --limit 20     # no máximo N chamadas nesta execução
   python etl/resumos.py --force ID     # regenera um item
+  python etl/resumos.py --conferir     # só confere os resumos que já estão em cache, sem gerar nada
 
 Provedores (RESUMOS_PROVIDER = culturabuilder | anthropic | auto, padrão auto):
   - culturabuilder: usa o comando `culturabuilder run -m builder-ai/builder-fast` (login OAuth já feito na máquina;
@@ -23,6 +30,8 @@ O texto-fonte não inclui contagens de dias, só datas, para o hash não mudar t
 """
 import argparse, datetime, hashlib, json, os, pathlib, sys, time
 import yaml
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import eikos
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 GEN = ROOT / "data" / "generated"
@@ -121,6 +130,48 @@ def items():
     return out
 
 
+# --- conferência do resumo contra o texto-fonte (Eikos) ---------------------------------------
+# Medido em 24/09/2026 sobre os 51 resumos publicados. A pergunta "inventou" é a segunda versão: a
+# ingênua deu 19 alarmes falsos em 50 porque os resumos acrescentam explicação cívica de propósito.
+CONFERE_Q = {
+ "inventou": {"type": "boolean", "instructions": "Algum número, data, nome, valor ou situação que o resumo atribui a ESTE item específico diverge do texto-fonte ou não aparece nele? Explicação genérica sobre o que é uma medida provisória, um veto ou um projeto de lei não conta como fato inventado.",
+   "criteria": {"true": "o resumo atribui a este item um número, data, nome, valor ou situação processual que o texto-fonte não traz ou traz diferente",
+                "false": "todo dado específico deste item confere com o texto-fonte; o que o resumo acrescenta é só explicação geral de como o processo funciona"}},
+ "opiniao": {"type": "boolean", "instructions": "O resumo emite juízo de valor, diz se algo é bom ou ruim, ou atribui intenção a alguém?",
+   "criteria": {"true": "há adjetivo de opinião, avaliação de mérito, ou intenção atribuída a pessoa, partido ou governo",
+                "false": "o resumo apenas descreve o que a norma diz e em que pé está, sem avaliar"}},
+ "numeros": {"type": "boolean", "instructions": "Todos os números e datas do resumo conferem com o texto-fonte?",
+   "criteria": {"true": "cada número e cada data do resumo aparece igual no texto-fonte",
+                "false": "algum número ou data do resumo diverge do texto-fonte ou não aparece nele"}},
+}
+ROTULOS = {"inventou": "fato fora da fonte", "opiniao": "juízo de valor", "numeros": "número ou data divergente"}
+
+
+def conferir(texto_fonte, resumo):
+    """{conferido, alertas, conf} comparando o resumo com a fonte, ou None se o Eikos não responder."""
+    estado = f"TEXTO-FONTE OFICIAL:\n{texto_fonte[:1500]}\n\nRESUMO PUBLICADO:\n{resumo}"
+    a = eikos.avaliar(estado, CONFERE_Q)
+    if not a or any(k not in a or a[k].get("value") is None for k in CONFERE_Q):
+        return None
+    alertas = []
+    for k in ("inventou", "opiniao", "numeros"):
+        ruim = (not a[k]["value"]) if k == "numeros" else bool(a[k]["value"])
+        if ruim: alertas.append((ROTULOS[k], float(a[k].get("confidence") or 0)))
+    return {"conferido": not alertas, "alertas": [m for m, _ in alertas],
+            "conf": round(max([c for _, c in alertas], default=0.0), 3)}
+
+
+def fila_de_revisao(resumos):
+    """Imprime quem ficou com alerta, do mais confiante ao menos."""
+    com = [(v.get("conf") or 0, k, v) for k, v in resumos.items() if v.get("alertas")]
+    checados = sum(1 for v in resumos.values() if "conferido" in v)
+    print(f"\nfila de revisão: {len(com)} com alerta, de {checados} conferidos ({len(resumos)} em cache)")
+    for c, k, v in sorted(com, key=lambda x: -x[0]):
+        marca = " " if c >= eikos.CORTE_CONFIANCA else "?"
+        print(f"  {marca}[{c:.2f}] {v.get('title')} — {', '.join(v['alertas'])}")
+    if com: print("  ? = abaixo do corte de confiança do Eikos; olhe antes de tirar do ar.")
+
+
 def _gen_culturabuilder(model):
     import subprocess
     def gen(text):
@@ -169,21 +220,28 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--limit", type=int, default=400)
     ap.add_argument("--force", action="append", default=[])
+    ap.add_argument("--conferir", action="store_true", help="confere os resumos já em cache, sem gerar nada")
     args = ap.parse_args()
     _load_env()
     cache = _yaml(OUT) or {}
     resumos = dict(cache.get("resumos") or {})
-    todo = [it for it in items() if it["id"] in args.force or resumos.get(it["id"], {}).get("hash") != it["hash"]]
-    print(f"itens: {len(items())} · em cache: {len(resumos)} · pendentes: {len(todo)}")
+    todos = items()
+    por_id = {it["id"]: it for it in todos}
+    todo = [it for it in todos if it["id"] in args.force or resumos.get(it["id"], {}).get("hash") != it["hash"]]
+    print(f"itens: {len(todos)} · em cache: {len(resumos)} · pendentes: {len(todo)}")
+    if args.conferir:
+        return _conferir_cache(resumos, por_id, cache.get("modelo"), args.force)
     if args.dry_run:
         for it in todo[:5]:
             print("---", it["id"]); print(it["text"])
         return 0
     if not todo:
+        fila_de_revisao(resumos)
         return 0
     gen, modelo = _provider()
     if not gen:
         print("nenhum provedor disponível (culturabuilder no PATH ou ANTHROPIC_API_KEY): resumos não gerados; o site segue com os já existentes")
+        fila_de_revisao(resumos)
         return 0
     print(f"provedor: {modelo}")
     done = 0
@@ -194,19 +252,58 @@ def main():
             print(f"  falhou {it['id']}: {e}"); time.sleep(2); continue
         if not text or len(text) > 700:
             print(f"  descartado {it['id']} (tamanho {len(text)})"); continue
-        resumos[it["id"]] = {"kind": it["kind"], "title": it["title"], "resumo": text, "hash": it["hash"],
-                             "modelo": modelo, "gerado_em": datetime.date.today().isoformat()}
+        reg = {"kind": it["kind"], "title": it["title"], "resumo": text, "hash": it["hash"],
+               "modelo": modelo, "gerado_em": datetime.date.today().isoformat()}
+        # confere contra o texto-fonte antes de entrar no cache; sem chave/erro, entra sem os campos
+        c = conferir(it["text"], text) if eikos.disponivel() else None
+        if c: reg.update(c)
+        resumos[it["id"]] = reg
         done += 1
-        print(f"  ok {it['id']}: {text[:90]}…")
+        aviso = "" if not c else ("" if c["conferido"] else f"  ⚠ {', '.join(c['alertas'])} [{c['conf']:.2f}]")
+        print(f"  ok {it['id']}: {text[:90]}…{aviso}")
         time.sleep(0.3)
-    # mantém só itens ainda existentes + os gerados
-    current = {it["id"] for it in items()}
-    resumos = {k: v for k, v in resumos.items() if k in current}
+    _escrever({it["id"] for it in todos}, resumos, modelo)
+    print(f"gerados agora: {done} · total em cache: {len(resumos)} → {OUT}")
+    g = eikos.gasto()
+    print(f"gasto Eikos: {g['chamadas']} chamadas, {g['tokens']} tokens de entrada, {g['erros']} erros")
+    fila_de_revisao(resumos)
+    return 0
+
+
+def _escrever(current, resumos, modelo):
+    """Grava resumos.yaml mantendo só itens ainda existentes. Modifica `resumos` no lugar."""
+    for k in [k for k in resumos if k not in current]: del resumos[k]
     body = yaml.dump({"generated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
                       "modelo": modelo, "aviso": "Resumos gerados automaticamente por modelo de linguagem; podem conter erros. A ementa oficial prevalece.",
                       "total": len(resumos), "resumos": resumos}, allow_unicode=True, sort_keys=False, width=120)
     OUT.write_text("# GERADO por etl/resumos.py. Não edite à mão.\n" + body)
-    print(f"gerados agora: {done} · total em cache: {len(resumos)} → {OUT}")
+
+
+def _conferir_cache(resumos, por_id, modelo, force):
+    """--conferir: roda a checagem nos resumos já em cache (sem gerar nada) e imprime a fila."""
+    if not eikos.disponivel():
+        print("sem EIKOS_KEY: nada conferido; o arquivo segue como está")
+        fila_de_revisao(resumos); return 0
+    alvos = []
+    for rid, r in resumos.items():
+        if "conferido" in r and rid not in force: continue
+        src = por_id.get(rid) or next((v for v in por_id.values() if v["title"] == r.get("title")), None)
+        if src: alvos.append((rid, r, src))
+        else: print(f"  sem texto-fonte para {rid} ({r.get('title')}): não dá para conferir")
+    print(f"a conferir: {len(alvos)}")
+    falhas = 0
+    for rid, r, src in alvos:
+        c = conferir(src["text"], r.get("resumo") or "")
+        if not c:
+            falhas += 1
+            if falhas >= 5: print("5 falhas no Eikos, desistindo desta execução", file=sys.stderr); break
+            continue
+        r.update(c)
+    _escrever(set(por_id), resumos, modelo)
+    g = eikos.gasto()
+    print(f"conferidos agora: {len(alvos) - falhas}" + (f" · falhas={falhas}" if falhas else "") + f" → {OUT}")
+    print(f"gasto Eikos: {g['chamadas']} chamadas, {g['tokens']} tokens de entrada, {g['erros']} erros")
+    fila_de_revisao(resumos)
     return 0
 
 

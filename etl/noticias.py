@@ -3,12 +3,27 @@
 
 Mesmo mecanismo do CivLab: cada resumo recebe marcações <gov_entities='id'>texto</gov_entities>; o power map
 conta menções por pessoa nos últimos 90 dias. Sem chave.
-Uso: .venv/bin/python etl/noticias.py
+
+Porteiro de relevância: cerca de 45% do que chega pelos feeds não é sobre o governo federal (esporte,
+receita, consumo, política estadual). Com EIKOS_KEY no ambiente ou no .env, cada artigo NOVO recebe três
+campos — `gov` (bool), `gov_p` (probabilidade de ser do governo federal, 3 casas) e `gov_conf` (confiança,
+3 casas). O veredito nunca é recalculado: o custo é por artigo e a resposta não muda. Sem chave, ou se o
+Eikos falhar, o artigo simplesmente fica sem os campos e o resto do conector segue igual.
+
+Uso:
+  .venv/bin/python etl/noticias.py                     # busca os feeds e classifica os novos
+  .venv/bin/python etl/noticias.py --relink            # refaz as ligações de entidade/pessoa
+  .venv/bin/python etl/noticias.py --porteiro-acervo   # classifica os antigos que ainda não têm veredito
 """
-import json, re, sys, pathlib, hashlib, datetime, html, unicodedata, urllib.request, email.utils
+import json, os, re, sys, pathlib, hashlib, datetime, html, unicodedata, urllib.request, email.utils
 import xml.etree.ElementTree as ET
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import eikos
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "generated" / "noticias.json"
+# passada completa do porteiro já paga (mapa id -> {gov, p, conf, tok}); serve de carga inicial em --porteiro-acervo
+SEED_PORTEIRO = pathlib.Path(os.environ.get("PORTEIRO_SEED",
+    "/private/tmp/claude-501/-Users-culto-govnew/cbdbacff-6e4d-44b6-b805-449b42969f6f/scratchpad/eikos/relevancia.json"))
 FEEDS = [
     ("Agência Brasil", "https://agenciabrasil.ebc.com.br/rss/politica/feed.xml"),
     ("Agência Senado", "https://www12.senado.leg.br/noticias/rss"),
@@ -102,6 +117,41 @@ def link(text, matchers):
             if kind == "person" and nid not in [p["id"] for p in people]: people.append({"id": nid, "position": pos, "name": label})
     return ents[:8], people[:8]
 
+# --- porteiro de relevância (Eikos) -----------------------------------------------------------
+# Estado e pergunta medidos em 24/09/2026 sobre 60 notícias com gabarito: 97% de cobertura, 87% de precisão.
+PORTEIRO_Q = {"governo": {"type": "boolean",
+     "instructions": "Esta notícia trata do governo federal brasileiro: seus órgãos, cargos, quem os ocupa, suas decisões, seu orçamento ou as eleições federais?",
+     "criteria": {"true": "trata do governo federal brasileiro, do Congresso Nacional, do Judiciário federal, de órgão ou autoridade federal, ou das eleições federais",
+                  "false": "trata de outro assunto: esporte, entretenimento, receita, consumo, tecnologia, crime comum, governo estrangeiro, política estadual ou municipal"}}}
+
+def porteiro_estado(a):
+    return f"Fonte: {a['publication']}. Data: {a.get('date','')}.\nTítulo: {a.get('title','')}\nResumo: {(a.get('summary') or '').strip()}"[:900]
+
+def porteiro(a):
+    """Pergunta ao Eikos e grava gov/gov_p/gov_conf no artigo. Sem chave ou com erro, não grava nada."""
+    r = eikos.avaliar(porteiro_estado(a), PORTEIRO_Q)
+    v = (r or {}).get("governo")
+    if not v or v.get("value") is None: return False
+    a["gov"] = bool(v.get("value"))
+    a["gov_p"] = round(float(v.get("probability") or 0), 3)
+    a["gov_conf"] = round(float(v.get("confidence") or 0), 3)
+    return True
+
+def carga_inicial(artigos):
+    """Aproveita a passada completa já paga, se o arquivo existir. Devolve quantos vereditos entraram."""
+    if not SEED_PORTEIRO.exists(): return 0
+    try: seed = json.load(open(SEED_PORTEIRO, encoding="utf-8"))
+    except Exception as e:
+        print("carga inicial do porteiro falhou:", e, file=sys.stderr); return 0
+    n = 0
+    for aid, a in artigos.items():
+        s = seed.get(aid)
+        if not s or "gov" in a or s.get("gov") is None: continue
+        a["gov"] = bool(s["gov"]); a["gov_p"] = round(float(s.get("p") or 0), 3); a["gov_conf"] = round(float(s.get("conf") or 0), 3)
+        n += 1
+    return n
+
+
 def main():
     graph = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8"))
     matchers = build_matchers(graph)
@@ -109,7 +159,7 @@ def main():
     if "--relink" in sys.argv:
         for a in store["articles"].values():
             a["entities"], a["people"] = link(a["title"] + " " + a.get("summary", ""), matchers)
-    new = 0
+    new = 0; novos = []
     for pub, url in FEEDS:
         for it in parse(fetch(url)):
             aid = hashlib.sha1(it["url"].encode()).hexdigest()[:16]
@@ -118,15 +168,40 @@ def main():
             store["articles"][aid] = {"id": aid, "publication": pub, "title": it["title"], "url": it["url"], "summary": it["summary"],
                                       "date": it["date"] or datetime.date.today().isoformat(), "fetched_at": datetime.date.today().isoformat(),
                                       "entities": ents, "people": people}
-            new += 1
+            new += 1; novos.append(aid)
     # retém 180 dias
     cutoff = (datetime.date.today() - datetime.timedelta(days=180)).isoformat()
     store["articles"] = {k: v for k, v in store["articles"].items() if (v.get("date") or "") >= cutoff}
+
+    # porteiro: só os artigos sem veredito. O normal cobre os novos; --porteiro-acervo cobre o resto.
+    acervo = "--porteiro-acervo" in sys.argv
+    do_seed = carga_inicial(store["articles"]) if acervo else 0
+    alvos = [k for k in (store["articles"] if acervo else novos) if k in store["articles"] and "gov" not in store["articles"][k]]
+    feitos = falhas = 0
+    if alvos and eikos.disponivel():
+        for i, aid in enumerate(alvos, 1):
+            if porteiro(store["articles"][aid]): feitos += 1
+            else:
+                falhas += 1
+                if falhas >= 5 and feitos == 0: print("porteiro: 5 falhas seguidas, desistindo desta execução", file=sys.stderr); break
+            if acervo and i % 50 == 0: print(f"  porteiro {i}/{len(alvos)}…", file=sys.stderr)
+    elif alvos:
+        print("porteiro: sem EIKOS_KEY, artigos seguem sem veredito de relevância", file=sys.stderr)
+
     store["updated_at"] = datetime.date.today().isoformat(); store["feeds"] = [p for p, _ in FEEDS]
     json.dump(store, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     arts = store["articles"].values()
     linked = sum(1 for a in arts if a["entities"] or a["people"])
     print(f"novos={new} total={len(store['articles'])} com entidade/pessoa={linked}")
+    entraram = sum(1 for a in arts if a.get("gov") is True)
+    barrados = sum(1 for a in arts if a.get("gov") is False)
+    baixa = sum(1 for a in arts if a.get("gov") is not None and a.get("gov_conf", 0) < eikos.CORTE_CONFIANCA)
+    g = eikos.gasto()
+    print(f"porteiro: entraram={entraram} barrados={barrados} sem veredito={len(store['articles']) - entraram - barrados}"
+          f" · classificados agora={feitos}" + (f" (+{do_seed} da carga inicial)" if do_seed else "")
+          + (f" · falhas={falhas}" if falhas else "")
+          + f" · abaixo do corte de {eikos.CORTE_CONFIANCA:.2f} (revisão humana)={baixa}")
+    print(f"gasto Eikos: {g['chamadas']} chamadas, {g['tokens']} tokens de entrada, {g['erros']} erros")
     from collections import Counter
     print("entidades mais citadas:", Counter(e for a in arts for e in a["entities"]).most_common(8))
     print("pessoas mais citadas:", Counter(p["name"] for a in arts for p in a["people"]).most_common(8))
