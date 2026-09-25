@@ -52,12 +52,28 @@ run() {  # run "Nome visível" comando...   (LIM=1800 run ... para um limite mai
   _tempo "$lim" "$@" || rc=$?
   if [ "$rc" -eq 124 ] || [ "$rc" -eq 137 ]; then st="tempo esgotado"; echo "$nome passou de ${lim}s e foi cortado"
   elif [ "$rc" -ne 0 ]; then st=falhou; echo "$nome falhou"; fi
-  # Cortado ou quebrado, o conector pode ter deixado meio arquivo gravado: vários escrevem em partes.
-  # Devolve ao estado do último commit o que ele tocou, para o site seguir com o dado do dia anterior
-  # em vez de com um pedaço. Só age quando deu errado, e só no que mudou durante esta execução.
-  if [ "$st" != ok ] && [ -d .git ]; then
+  # Duas devoluções, para o site nunca publicar menos do que já tinha.
+  # (1) Cortado ou quebrado, o conector pode ter deixado meio arquivo: vários escrevem em partes.
+  # (2) Mesmo "com sucesso", um conector pode gravar quase nada quando a fonte está fora do ar ou
+  #     quando falta um arquivo baixado à mão (os zips do TSE não existem num runner limpo). Isso já
+  #     apagou dirigentes e patrimônio em produção. Encolher para menos de 40% do que estava
+  #     commitado é tratado como falha, não como atualização.
+  if [ -d .git ]; then
     local sujos=$(find data/generated -type f -newer "$marca" 2>/dev/null)
-    if [ -n "$sujos" ]; then
+    local encolheu=""
+    if [ "$st" = ok ] && [ -n "$sujos" ]; then
+      while read -r f; do
+        [ -n "$f" ] || continue
+        local antes=$(git show "HEAD:$f" 2>/dev/null | wc -c | tr -d ' ')
+        local agora=$(wc -c < "$f" 2>/dev/null | tr -d ' ')
+        [ "${antes:-0}" -gt 2000 ] && [ "${agora:-0}" -lt $(( antes * 2 / 5 )) ] && encolheu="$encolheu $f"
+      done <<< "$sujos"
+    fi
+    if [ -n "$encolheu" ]; then
+      st="encolheu, devolvido"
+      echo "$nome gravou bem menos do que já existia; devolvido:$encolheu"
+    fi
+    if { [ "$st" != ok ] || [ -n "$encolheu" ]; } && [ -n "$sujos" ]; then
       echo "$sujos" | while read -r f; do [ -n "$f" ] && git checkout -- "$f" 2>/dev/null && echo "   devolvido ao estado anterior: $f"; done
     fi
   fi
