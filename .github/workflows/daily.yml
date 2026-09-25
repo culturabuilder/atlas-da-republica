@@ -26,10 +26,24 @@ jobs:
           SITE_CNAME: atlasdarepublica.org
       - name: Commit dados gerados
         run: |
+          # O job leva de uma a duas horas. Qualquer commit em main nesse intervalo fazia o push ser
+          # rejeitado e o dia inteiro de coleta ia embora sem publicar. Agora ele se reconcilia com o
+          # que chegou: rebase da sua única commit por cima de origin/main, com os arquivos gerados
+          # ganhando o conflito, porque são o resultado fresco desta execução.
           git config user.name "atlas-bot" && git config user.email "bot@users.noreply.github.com"
           git add data/generated assets/img web/graph.br.js
-          git commit -m "dados: atualização automática $(date -u +%F)" || echo "sem mudanças"
-          git push
+          git commit -m "dados: atualização automática $(date -u +%F)" || { echo "sem mudanças"; exit 0; }
+          for tentativa in 1 2 3; do
+            git fetch -q origin main
+            if git rebase -X theirs origin/main; then
+              git push && exit 0
+            else
+              git rebase --abort || true
+            fi
+            echo "push rejeitado ou rebase falhou; tentativa $tentativa"
+            sleep $((tentativa * 15))
+          done
+          echo "não consegui publicar os dados depois de 3 tentativas"; exit 1
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

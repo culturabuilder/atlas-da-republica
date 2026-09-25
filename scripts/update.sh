@@ -95,7 +95,7 @@ LIM=1200 run "DOU assinaturas" $PY etl/dou_assinaturas.py
 semanal 2700 "Posses" $PY etl/posses.py
 semanal 2700 "Ocupantes pelo DOU" $PY etl/ocupantes_dou.py
 semanal 2700 "Segundo escalão" $PY etl/segundo_escalao.py
-run "Dirigentes" $PY etl/dirigentes.py
+semanal 2700 "Dirigentes" $PY etl/dirigentes.py
 run "Wikipédia" $PY etl/wikipedia.py
 run "Nascimentos" $PY etl/nascimentos.py
 run "Histórico" $PY etl/historico.py

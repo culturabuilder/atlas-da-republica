@@ -104,15 +104,21 @@ n=$(curl -s -m 25 "$BASE/sitemap.xml" | grep -c "<url>")
 [ "${n:-0}" -gt 2000 ] && ok "sitemap com $n endereços" || mal "sitemap com só ${n:-0} endereços"
 
 sec "workflows"
+# olha as três últimas rodadas: uma falha recente não pode ficar escondida por outra que começou depois
 for w in "Publicar site" "Atualização diária"; do
-  linha=$(gh run list --workflow="$w" --limit 1 --json conclusion,status,createdAt -q '.[0] | "\(.status) \(.conclusion // "-") \(.createdAt)"' 2>/dev/null)
-  case "$linha" in
-    *success*) ok "$w: $linha" ;;
-    *in_progress*|*queued*) aviso "$w: $linha" ;;
-    "") aviso "$w: sem informação" ;;
-    *) mal "$w: $linha" ;;
+  linhas=$(gh run list --workflow="$w" --limit 3 --json conclusion,status,createdAt,databaseId \
+           -q '.[] | "\(.status) \(.conclusion // "-") \(.createdAt) \(.databaseId)"' 2>/dev/null)
+  [ -z "$linhas" ] && { aviso "$w: sem informação"; continue; }
+  primeira=$(echo "$linhas" | head -1)
+  falhas=$(echo "$linhas" | grep -c "failure" || true)
+  case "$primeira" in
+    *in_progress*|*queued*) aviso "$w: rodando agora ($primeira)" ;;
+    *success*) ok "$w: $primeira" ;;
+    *) mal "$w: $primeira" ;;
   esac
+  [ "${falhas:-0}" -gt 0 ] && mal "$w: $falhas das 3 últimas rodadas falharam" && echo "$linhas" | grep "failure" | sed 's/^/        /'
 done
+true
 
 if [ "$RAPIDO" != "--rapido" ] && [ -d "$PW" ]; then
   sec "interface"

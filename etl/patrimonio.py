@@ -38,6 +38,15 @@ def bens(ano):
                 sq = row["SQ_CANDIDATO"]; v = money(row["VR_BEM_CANDIDATO"]); tot[sq] += v; tipos[sq][row["DS_TIPO_BEM_CANDIDATO"].title()] += v; n[sq] += 1
     return tot, tipos, n
 def main():
+    # Os zips do TSE são baixados à mão e não existem num runner limpo. Sem eles o script produzia
+    # zero pessoa e gravava por cima das 558 que já estavam publicadas. Agora sai antes de tocar no
+    # arquivo, com código 2, para o registro de execução dizer "falhou" e não "ok".
+    faltando = [f"{b}_{a}.zip" for a in (2018, 2022) for b in ("consulta_cand", "bem_candidato")
+                if not (CACHE / f"{b}_{a}.zip").exists()]
+    if len(faltando) >= 4:
+        print(f"nenhum arquivo do TSE em {CACHE}: baixe à mão antes de rodar "
+              f"(faltam {', '.join(faltando)}). Arquivo anterior mantido.", file=sys.stderr)
+        sys.exit(2)
     g = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8")); P = g["people"]; N = g["nodes"]
     full = {}
     for nid, nd in N.items():
