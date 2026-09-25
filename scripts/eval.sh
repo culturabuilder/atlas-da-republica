@@ -104,19 +104,29 @@ n=$(curl -s -m 25 "$BASE/sitemap.xml" | grep -c "<url>")
 [ "${n:-0}" -gt 2000 ] && ok "sitemap com $n endereços" || mal "sitemap com só ${n:-0} endereços"
 
 sec "workflows"
-# olha as três últimas rodadas: uma falha recente não pode ficar escondida por outra que começou depois
+# Uma falha só é problema enquanto nenhuma rodada posterior tiver dado certo. Falha seguida de sucesso
+# é história, e acusar história a cada seis horas esconde o alarme de verdade. Mas falha seguida apenas
+# de uma rodada EM CURSO continua sendo alarme: foi assim que uma perdeu um dia inteiro de coleta.
 for w in "Publicar site" "Atualização diária"; do
-  linhas=$(gh run list --workflow="$w" --limit 3 --json conclusion,status,createdAt,databaseId \
+  linhas=$(gh run list --workflow="$w" --limit 5 --json conclusion,status,createdAt,databaseId \
            -q '.[] | "\(.status) \(.conclusion // "-") \(.createdAt) \(.databaseId)"' 2>/dev/null)
   [ -z "$linhas" ] && { aviso "$w: sem informação"; continue; }
   primeira=$(echo "$linhas" | head -1)
-  falhas=$(echo "$linhas" | grep -c "failure" || true)
   case "$primeira" in
     *in_progress*|*queued*) aviso "$w: rodando agora ($primeira)" ;;
     *success*) ok "$w: $primeira" ;;
     *) mal "$w: $primeira" ;;
   esac
-  [ "${falhas:-0}" -gt 0 ] && mal "$w: $falhas das 3 últimas rodadas falharam" && echo "$linhas" | grep "failure" | sed 's/^/        /'
+  ult_sucesso=$(echo "$linhas" | grep "success" | head -1 | awk '{print $3}')
+  while read -r l; do
+    [ -n "$l" ] || continue
+    quando=$(echo "$l" | awk '{print $3}')
+    if [ -z "$ult_sucesso" ] || [ "$quando" \> "$ult_sucesso" ]; then
+      mal "$w: falha sem rodada bem-sucedida depois dela"; echo "        $l"
+    else
+      aviso "$w: falha já superada por rodada posterior (histórico): $quando"
+    fi
+  done < <(echo "$linhas" | grep "failure")
 done
 true
 
