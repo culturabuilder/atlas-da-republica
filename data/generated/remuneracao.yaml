@@ -1,5 +1,5 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-09-24'
+generated_at: '2026-09-25'
 mes: '202607'
 mes_senado: '202608'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
@@ -9,11 +9,11 @@ resumo:
   com_remuneracao: 516
   por_setor:
     executivo:
-      ocupantes: 485
-      antes: 403
+      ocupantes: 488
+      antes: 405
       depois: 432
-      pct_antes: 83.1
-      pct_depois: 89.1
+      pct_antes: 83.0
+      pct_depois: 88.5
     essenciais:
       ocupantes: 30
       antes: 4
@@ -27,7 +27,7 @@ resumo:
       pct_antes: 0.0
       pct_depois: 13.5
     judiciario:
-      ocupantes: 114
+      ocupantes: 111
       antes: 0
       depois: 0
       pct_antes: 0.0
@@ -44,13 +44,13 @@ resumo:
     alta: 489
     media: 27
   sem_remuneracao:
-    total: 80
+    total: 83
     por_motivo:
       ausente na folha: 22
-      órgão fora do SIAPE (empresa publica com folha própria): 14
+      órgão fora do SIAPE (empresa publica com folha própria): 15
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
       só há homônimo por primeiro+último sobrenome fora do órgão (...): 12
-      no cadastro do SIAPE mas sem linha de remuneração no mês: 9
+      no cadastro do SIAPE mas sem linha de remuneração no mês: 11
       órgão fora do SIAPE (sociedade economia mista com folha própria): 6
       vários servidores compatíveis no órgão (...) sem desempate: 2
       a entidade não aparece como órgão na folha do SIAPE (folha própria): 1
@@ -10314,7 +10314,7 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
-  br-p-alessandro-facure-neves-de-salles-soares:
+  br-p-dou-alessandro-facure-neves-de-salles-soares:
     mes: '202607'
     bruto: 42147.6
     abate_teto: 0.0
@@ -16934,6 +16934,11 @@ nao_encontrados:
   cargo: Diretor-Presidente da ANA
   setor: executivo
   motivo: ausente na folha
+- id: br-p-dou-ana-paula-do-rego-menezes
+  nome: Ana Paula do Rego Menezes
+  cargo: Presidente da Empresa Brasileira de Hemoderivados e Biotecnologia
+  setor: executivo
+  motivo: órgão fora do SIAPE (empresa publica com folha própria)
 - id: br-p-andrei-augusto-passos-rodrigues
   nome: Andrei Augusto Passos Rodrigues
   cargo: Diretor-Geral da Polícia Federal
@@ -16957,6 +16962,11 @@ nao_encontrados:
 - id: br-p-wp-artur-coimbra-de-oliveira
   nome: Artur Coimbra de Oliveira
   cargo: Conselheiro da Anatel
+  setor: executivo
+  motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
+- id: br-p-dou-augusto-cesar-gadelha-vieira
+  nome: Augusto Cesar Gadelha Vieira
+  cargo: Presidente do Centro Nacional de Tecnologia Eletrônica Avançada S. A
   setor: executivo
   motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
 - id: br-p-dou-carlos-antonio-vieira-fernandes
@@ -17024,6 +17034,11 @@ nao_encontrados:
   cargo: Presidente da Companhia Docas do Rio de Janeiro
   setor: executivo
   motivo: órgão fora do SIAPE (sociedade economia mista com folha própria)
+- id: br-p-wp-jorge-luiz-macedo-bastos
+  nome: Jorge Luiz Macedo Bastos
+  cargo: Presidente da Infra S.A.
+  setor: executivo
+  motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
 - id: br-p-jose-marques-de-lima
   nome: José Marques de Lima
   cargo: Presidente da Companhia Brasileira de Trens Urbanos

@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-09-24'
+generated_at: '2026-09-25'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-06-27'
+janela_inicio: '2026-06-28'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -113,7 +113,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-06-27: []
       presidente/2026-06-28: []
       presidente/2026-06-29:
       - hora: '10:00'
@@ -1053,6 +1052,7 @@ people:
       - hora: '10:10'
         titulo: Intervenções acerca das obras de melhoria na BR-116/RJ
         local: Ginásio do SESC Nova Iguaçu – Nova Iguaçu (RJ)
+      presidente/2026-09-25: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -1060,14 +1060,14 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 89
-    dias_com_agenda: 52
+    compromissos_90d: 86
+    dias_com_agenda: 51
     por_tipo:
       evento: 36
-      viagem: 25
+      viagem: 23
       audiencia: 17
       outro: 6
-      reuniao: 5
+      reuniao: 4
     entidades_top:
     - nome: Luiz Inácio Lula da Silva (Presidente da República)
       n: 6
@@ -1091,7 +1091,7 @@ people:
     - nome: Brasília/DF
       n: 19
     - nome: São Paulo/SP
-      n: 16
+      n: 15
     - nome: Palácio do Planalto, Anexo II
       n: 12
     - nome: Palácio da Alvorada
@@ -1102,9 +1102,9 @@ people:
       n: 2
     - nome: Belo Horizonte/MG
       n: 2
-    - nome: Ribeirão Corrente/SP
+    - nome: Bauru/SP
       n: 1
-    - nome: Franca/SP
+    - nome: Olímpia/SP
       n: 1
     ultimo: '2026-09-23'
     recentes:
@@ -1159,17 +1159,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-06-27:
-      - hora: '12:00'
-        titulo: Decolagem de São Paulo/SP para Franca/SP
-        local: São Paulo/SP
-      - hora: '14:00'
-        titulo: Encontro com Prefeitos e Abertura da Primeira Feira do Empreendedorismo
-        local: Ribeirão Corrente/SP
-      - hora: '16:30'
-        titulo: Decolagem de Franca/SP para Brasília/DF
-        local: Franca/SP
-      vice/2026-06-27-b1: []
       vice/2026-06-28: []
       vice/2026-06-28-b1: []
       vice/2026-06-29:
@@ -1621,6 +1610,8 @@ people:
       vice/2026-09-23-b1: []
       vice/2026-09-24: []
       vice/2026-09-24-b1: []
+      vice/2026-09-25: []
+      vice/2026-09-25-b1: []
 log:
 - 'br-p-luiz-inacio-lula-da-silva: 272 compromissos em 65 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 89 compromissos em 52 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 86 compromissos em 51 dias (0 dias não lidos)'
