@@ -83,9 +83,10 @@ $PY - <<'PY'
 import yaml, json
 try:
     r=yaml.safe_load(open("data/generated/resumos.yaml"))["resumos"]
-    al=[(v.get("conf",0), v.get("title")) for v in r.values() if v.get("alertas")]
-    print(f"   {'!   ' if al else 'ok  '} resumos com alerta: {len(al)} de {len(r)}")
-    for c,t in sorted(al, reverse=True)[:5]: print(f"        {c:.2f} {t}")
+    al=[v for v in r.values() if v.get("alertas")]
+    novos=[(v.get("conf",0), v.get("title")) for v in al if not v.get("revisto_em")]
+    print(f"   {'!   ' if novos else 'ok  '} resumos com alerta: {len(al)} de {len(r)}, sendo {len(novos)} ainda sem revisão humana")
+    for c,t in sorted(novos, reverse=True)[:5]: print(f"        {c:.2f} {t}")
 except Exception as e: print("   !    resumos:", str(e)[:70])
 try:
     A=json.load(open("data/generated/noticias.json"))["articles"].values()

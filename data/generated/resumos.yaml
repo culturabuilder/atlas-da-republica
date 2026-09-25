@@ -1,5 +1,5 @@
 # GERADO por etl/resumos.py. Não edite à mão.
-generated_at: '2026-09-25T10:29:14+00:00'
+generated_at: '2026-09-25T14:22:54+00:00'
 modelo: culturabuilder:builder-ai/builder-fast
 aviso: Resumos gerados automaticamente por modelo de linguagem; podem conter erros. A ementa oficial prevalece.
 total: 52
@@ -71,6 +71,10 @@ resumos:
     - fato fora da fonte
     - número ou data divergente
     conf: 0.608
+    revisto_em: '2026-09-25'
+    revisao: alerta improcedente
+    revisao_nota: data de edição, prazo e valor conferem com a ementa; o que o alerta pegou foi o prazo genérico de 120 dias
+      da medida provisória
   mpv-174624:
     kind: mpv
     title: MPV 1367/2026
@@ -248,6 +252,9 @@ resumos:
     alertas:
     - número ou data divergente
     conf: 0.743
+    revisto_em: '2026-09-25'
+    revisao: alerta improcedente
+    revisao_nota: número e data da lei conferem; os 30 dias são da Constituição e estão no próprio texto-fonte
   veto-3306:
     kind: veto
     title: Veto 25/2008
@@ -274,6 +281,9 @@ resumos:
     alertas:
     - fato fora da fonte
     conf: 0.5
+    revisto_em: '2026-09-25'
+    revisao: alerta improcedente
+    revisao_nota: a data citada é a de publicação do veto, que está no texto-fonte
   veto-3310:
     kind: veto
     title: Veto 51/2008
@@ -288,6 +298,9 @@ resumos:
     alertas:
     - número ou data divergente
     conf: 0.788
+    revisto_em: '2026-09-25'
+    revisao: alerta improcedente
+    revisao_nota: número e data da lei conferem; os 30 dias estão no texto-fonte
   veto-3313:
     kind: veto
     title: Veto 54/2008
@@ -314,6 +327,9 @@ resumos:
     alertas:
     - número ou data divergente
     conf: 0.651
+    revisto_em: '2026-09-25'
+    revisao: alerta improcedente
+    revisao_nota: a data de publicação do veto confere com o texto-fonte
   veto-3311:
     kind: veto
     title: Veto 52/2008
@@ -615,6 +631,10 @@ resumos:
     alertas:
     - fato fora da fonte
     conf: 0.719
+    revisto_em: '2026-09-25'
+    revisao: alerta improcedente
+    revisao_nota: 340 dispositivos, prazo vencido e último andamento conferem; o alerta pegou a explicação de que o Congresso
+      pode derrubar veto
   tema-precatorios:
     kind: tema
     title: PEC dos Precatórios
