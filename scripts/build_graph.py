@@ -442,8 +442,12 @@ if news_path.exists():
     news = [a for a in arts if a.get("entities") or a.get("people")][:60]
     mentions = {}
     today_d = datetime.date.today(); cutoff7 = (today_d - datetime.timedelta(days=7)).isoformat()
+    # quando o porteiro de relevância já rodou (etl/noticias.py, campo gov), a contagem por pessoa usa só
+    # o que é sobre o governo federal: notícia de esporte ou de eleição estadual não entra no ranking.
+    _com_porteiro = sum(1 for a in arts if "gov" in a)
     for a in sorted(arts, key=lambda a: a.get("date") or "", reverse=True):
         if (a.get("date") or "") < cutoff90: continue
+        if a.get("gov") is False: continue
         for p in a.get("people") or []:
             m = mentions.setdefault(p["id"], {"id": p["id"], "name": p["name"], "position": p.get("position"), "articles": 0, "recent": 0, "last": None, "weeks": [0] * 12, "latest": None})
             m["articles"] += 1
@@ -464,6 +468,9 @@ if news_path.exists():
         if e["type"] in ("nomeia", "chefia", "sabatina", "indica") and e["from"] in pos_of and e["to"] in pos_of:
             power_links.append({"from": pos_of[e["from"]], "to": pos_of[e["to"]], "type": e["type"]})
     stats["power_links"] = len(power_links)
+    stats["power_links_total"] = sum(1 for e in edges if e["type"] == "nomeia")
+    stats["noticias_com_porteiro"] = _com_porteiro
+    stats["noticias_barradas"] = sum(1 for a in arts if a.get("gov") is False)
     stats["articles_90d"] = sum(1 for a in arts if (a.get("date") or "") >= cutoff90); stats["news_sources"] = len(store.get("feeds") or [])
 stats["sabatinas"] = len(sabatinas)
 # mudanças: sabatinas deliberadas + posses recentes (started_at) como eventos

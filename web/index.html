@@ -147,6 +147,26 @@ h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid va
 .chg a{color:var(--ink);text-decoration:none}
 .chg a:hover{text-decoration:underline}
 .chg .pn{color:var(--ink-3);font-size:13.5px}
+.pmap{position:relative;display:grid;gap:18px;margin:8px 0 6px}
+.pmfios{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:0}
+.pmt{display:grid;grid-template-columns:repeat(auto-fit,minmax(122px,1fr));gap:12px;position:relative;z-index:1}
+.pmt[data-t="0"]{grid-template-columns:repeat(auto-fit,minmax(150px,200px));justify-content:center}
+.pmt[data-t="1"]{grid-template-columns:repeat(auto-fit,minmax(104px,1fr));justify-content:center}
+.pc{display:grid;justify-items:center;gap:2px;text-align:center;text-decoration:none;color:var(--ink);padding:8px 6px;border-radius:10px;min-width:0}
+.pc:hover{background:var(--panel)}
+.pc .ph{width:52px;height:52px;border-radius:50%;overflow:hidden;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font:600 13px var(--mono);border:1px solid var(--line-2)}
+.pc .ph img{width:52px;height:52px;object-fit:cover;display:block}
+.pmt[data-t="0"] .pc .ph{width:64px;height:64px;border:2px solid var(--accent)}
+.pmt[data-t="0"] .pc .ph img{width:64px;height:64px}
+.pc .nm{font-weight:600;font-size:13.5px;line-height:1.2;overflow-wrap:anywhere}
+.pc .jb{font-size:11.5px;color:var(--ink-3);line-height:1.25;overflow-wrap:anywhere}
+.pc .qt{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);white-space:nowrap}
+.pc .spark{display:inline-flex;align-items:flex-end;gap:1px;height:13px;margin-top:2px}
+.pc .spark i{width:3px;background:var(--accent);border-radius:1px;display:block}
+.pc .spark i.z{background:var(--line-2);height:1px}
+.pm-aviso{font-size:13px;color:var(--ink-2);background:var(--accent-soft);border:1px solid var(--line-2);border-radius:10px;padding:9px 11px;margin:0 0 10px;line-height:1.45}
+.pm-aviso b{color:var(--ink)}
+@media(max-width:520px){.pmt{grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:10px}.pmt[data-t="0"]{grid-template-columns:minmax(0,220px)}}
 .pm{display:grid;grid-template-columns:1fr;gap:6px}
 .pm .row{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;font-size:14.5px}
 .pm .bar{height:6px;background:var(--line-2);border-radius:3px;overflow:hidden;grid-column:2/4}
@@ -959,14 +979,65 @@ function homeBody(){
   if (homeTab==='parado') return `<p class="lead">Decisões com prazo ou rito definido que ainda não aconteceram, e os temas em debate cruzados com o andamento dos processos.</p>${omissaoHtml()}<h2 class="sec">Temas em debate</h2>${temasHtml()}`;
   if (homeTab==='dinheiro') return `${arrecCard(true)}<h2 class="sec">Emendas, renúncias, viagens, cartão e teto</h2>${dinheiroHtml()}`;
   if (homeTab==='imprensa') { const sub = `<div class="ptools"><span class="win" role="group" aria-label="Ver"><button type="button" aria-pressed="${impView==='artigos'}" data-imp="artigos">Artigos</button><button type="button" aria-pressed="${impView==='pessoas'}" data-imp="pessoas">Pessoas mais citadas</button></span>${impView==='artigos'?winSel.replace('<div class="ptools">','').replace(/<\/div>$/,''):''}</div>`;
-    return sub + (impView==='pessoas' ? (power?`<div class="pm">${power}</div><p style="font-size:13px;color:var(--ink-3)">Pessoas do grafo mais citadas nos últimos 90 dias. Cresce a cada coleta diária.</p>`:'<p>Sem menções ainda.</p>')
+    return sub + (impView==='pessoas' ? naNoticiaHtml()
       : (news?`<div class="news">${news}</div><p style="font-size:13px;color:var(--ink-3)">${st.news_sources||0} fontes · ${st.articles_90d||0} artigos em 90 dias · entidades e pessoas reconhecidas por sigla e nome.</p>`:'<p>Sem notícias coletadas ainda.</p>')); }
   return `${winSel}${counters}${bars}${chg||'<p>Sem mudanças nesta janela.</p>'}<p style="font-size:13px;color:var(--ink-3)">Sabatinas do Senado, posses, atos do Diário Oficial e entradas e saídas detectadas na comparação diária dos ocupantes.</p>
     <h2 class="sec">Quem sai com a posse de 2027</h2>${trans}`;
 }
+// ——— Quem está na notícia ———
+// Não é um mapa de poder: a régua é a cobertura da imprensa, que não mede importância. O que é nosso,
+// e que um agregador de notícias não tem, são os fios: quem nomeou quem, entre as pessoas em evidência.
+// A ressalva fica ao lado do título, não em nota de rodapé, porque nota de rodapé não é lida.
+function naNoticiaHtml(){
+  const pw = (G.power||[]).slice(0,14); if(!pw.length) return '<p>Sem menções ainda.</p>';
+  const st = G.stats, pl = (G.power_links||[]);
+  const byId = Object.fromEntries(pw.map(p=>[p.id,p]));
+  const fios = pl.filter(l=>byId[l.from]&&byId[l.to]);
+  const nomeia = new Set(fios.map(l=>l.from)), nomeado = new Set(fios.map(l=>l.to));
+  const faixa = p => nomeia.has(p.id) ? 0 : nomeado.has(p.id) ? 1 : 2;
+  const ago = d => { if(!d) return ''; const n=Math.round((Date.now()-new Date(d+'T00:00:00'))/86400000); return n<=0?'hoje':n===1?'ontem':`há ${n} dias`; };
+  const spark = w => { const m=Math.max(1,...(w||[1])); return `<span class="spark" title="menções por semana, 12 semanas">${(w||[]).map(v=>`<i class="${v?'':'z'}" style="height:${Math.max(1,Math.round(13*v/m))}px"></i>`).join('')}</span>`; };
+  const card = p => { const job = N[p.position] ? N[p.position].name : '';
+    const url = p.latest && ((G.news||[]).find(x=>x.url===p.latest.url));
+    return `<a class="pc" href="#${P[p.id]?p.id:p.position}" data-pm="${esc(p.id)}">
+      <span class="ph">${avatar(p)}</span>
+      <span class="nm">${esc(p.name)}</span>
+      <span class="jb">${esc(job.length>34?job.slice(0,33)+'…':job)}</span>
+      <span class="qt">${p.articles} ${p.articles===1?'artigo':'artigos'} · ${ago(p.last)}</span>
+      ${spark(p.weeks)}</a>`; };
+  const tiers = [0,1,2].map(t=>{ const g=pw.filter(p=>faixa(p)===t); return g.length?`<div class="pmt" data-t="${t}">${g.map(card).join('')}</div>`:''; }).join('');
+  const ndias = 90, fontes = st.news_sources||0, arts = st.articles_90d||0;
+  return `<h3 style="margin:2px 0 4px">Quem está na notícia</h3>
+  <p class="pm-aviso"><b>Isto mede cobertura da imprensa, não importância nem poder.</b> São as ${pw.length} pessoas do Atlas mais citadas em ${arts.toLocaleString('pt-BR')} artigos de ${fontes} fontes nos últimos ${ndias} dias. A janela cobre a campanha eleitoral de 2026, então quem disputa a eleição aparece mais por causa disso.</p>
+  <div class="pmap" id="pmap"><svg class="pmfios" aria-hidden="true" preserveAspectRatio="none"></svg>${tiers}</div>
+  ${fios.length?`<p class="mini">Os fios ligam quem nomeou a quem foi nomeado, segundo a norma que cria o cargo. São ${fios.length} ${fios.length===1?'ligação':'ligações'} entre estas pessoas; o resto do grafo tem ${(st.power_links_total||Object.values(E).filter(e=>e.type==='nomeia').length).toLocaleString('pt-BR')} relações de nomeação.</p>`:'<p class="mini">Nenhuma destas pessoas nomeou outra desta lista.</p>'}`;
+}
+// desenha os fios depois que o navegador posicionou os cartões, e redesenha quando a largura muda
+function desenharFios(){
+  const box = document.getElementById('pmap'); if(!box) return;
+  const svg = box.querySelector('.pmfios'); if(!svg) return;
+  const pl = (G.power_links||[]); const r0 = box.getBoundingClientRect();
+  svg.setAttribute('viewBox', `0 0 ${Math.max(1,Math.round(r0.width))} ${Math.max(1,Math.round(r0.height))}`);
+  svg.setAttribute('width', Math.round(r0.width)); svg.setAttribute('height', Math.round(r0.height));
+  const pos = id => { const el = box.querySelector(`[data-pm="${CSS.escape(id)}"]`); if(!el) return null;
+    const r = el.getBoundingClientRect(); return {x: r.left-r0.left+r.width/2, topo: r.top-r0.top, base: r.bottom-r0.top}; };
+  const partes = [];
+  for (const l of pl){ const a = pos(l.from), b = pos(l.to); if(!a||!b) continue;
+    const y1 = a.base, y2 = b.topo, my = (y1+y2)/2;
+    partes.push(`<path d="M${a.x.toFixed(1)} ${y1.toFixed(1)} C${a.x.toFixed(1)} ${my.toFixed(1)}, ${b.x.toFixed(1)} ${my.toFixed(1)}, ${b.x.toFixed(1)} ${y2.toFixed(1)}" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-opacity=".55" marker-end="url(#pmseta)"/>`);
+  }
+  svg.innerHTML = `<defs><marker id="pmseta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)" fill-opacity=".55"/></marker></defs>` + partes.join('');
+}
+
+let _pmObs = null;
 function renderHomePanel(){
   const panel = document.getElementById('home-panel'); if (!panel) return;
   panel.innerHTML = homeBody();
+  if (_pmObs) { _pmObs.disconnect(); _pmObs = null; }
+  const pmbox = document.getElementById('pmap');
+  if (pmbox) { requestAnimationFrame(desenharFios);
+    pmbox.querySelectorAll('.pc img').forEach(im => im.addEventListener('load', () => requestAnimationFrame(desenharFios), {once:true}));
+    if (window.ResizeObserver) { _pmObs = new ResizeObserver(() => desenharFios()); _pmObs.observe(pmbox); } }
   panel.setAttribute('aria-labelledby', 'tab-' + homeTab);
   document.querySelectorAll('#home-tablist [role=tab]').forEach(b => { const on = b.dataset.tab === homeTab; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
   panel.querySelectorAll('[data-win]').forEach(b => b.addEventListener('click', () => { win = +b.dataset.win; renderHomePanel(); }));
