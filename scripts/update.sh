@@ -51,6 +51,10 @@ run() {  # run "Nome visível" comando...   (LIM=1800 run ... para um limite mai
   local st=ok rc=0
   _tempo "$lim" "$@" || rc=$?
   if [ "$rc" -eq 124 ] || [ "$rc" -eq 137 ]; then st="tempo esgotado"; echo "$nome passou de ${lim}s e foi cortado"
+  # Código 2 é a convenção dos conectores que dependem de arquivo baixado à mão (os zips do TSE):
+  # num runner limpo eles nunca terão o insumo, e marcar isso como "falhou" todo dia vira ruído que
+  # esconde a falha de verdade. O dado anterior continua publicado.
+  elif [ "$rc" -eq 2 ]; then st="falta arquivo local"; echo "$nome não tem o arquivo que precisa ser baixado à mão; segue com o dado anterior"
   elif [ "$rc" -ne 0 ]; then st=falhou; echo "$nome falhou"; fi
   # Duas devoluções, para o site nunca publicar menos do que já tinha.
   # (1) Cortado ou quebrado, o conector pode ter deixado meio arquivo: vários escrevem em partes.
