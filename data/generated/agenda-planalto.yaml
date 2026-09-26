@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-09-25'
+generated_at: '2026-09-26'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-06-28'
+janela_inicio: '2026-06-29'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,12 +11,12 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 272
-    dias_com_agenda: 65
+    compromissos_90d: 277
+    dias_com_agenda: 66
     por_tipo:
-      evento: 95
+      evento: 98
       audiencia: 81
-      viagem: 77
+      viagem: 79
       reuniao: 14
       outro: 5
     entidades_top:
@@ -46,7 +46,7 @@ people:
     - nome: Palácio da Alvorada
       n: 42
     - nome: Base Aérea de Brasília
-      n: 32
+      n: 33
     - nome: Palácio Itamaraty
       n: 5
     - nome: Esplanada dos Ministérios, Brasília
@@ -61,8 +61,38 @@ people:
       n: 3
     - nome: Instituto Mauá de Tecnologia (IMT), São Caetano do Sul (SP)
       n: 3
-    ultimo: '2026-09-24'
+    ultimo: '2026-09-26'
     recentes:
+    - data: '2026-09-26'
+      hora: '17:00'
+      titulo: Chegada a Brasília
+      tipo: viagem
+      local: Base Aérea de Brasília
+      participantes: []
+    - data: '2026-09-26'
+      hora: '15:40'
+      titulo: Partida para Brasília
+      tipo: viagem
+      local: Aeroporto Internacional de São Paulo - Guarulhos
+      participantes: []
+    - data: '2026-09-26'
+      hora: '14:00'
+      titulo: Intervenções por ocasião da Visita ao Novo Prédio do Instituto Federal de São Paulo (IFSP) – Campus Cidade Tiradentes
+      tipo: evento
+      local: Cidade Tiradentes, São Paulo
+      participantes: []
+    - data: '2026-09-26'
+      hora: '13:30'
+      titulo: Visita ao Novo Prédio do Instituto Federal de São Paulo (IFSP) – Campus Cidade Tiradentes
+      tipo: evento
+      local: Cidade Tiradentes, São Paulo
+      participantes: []
+    - data: '2026-09-26'
+      hora: '12:30'
+      titulo: Visita às obras da Universidade Federal de São Paulo (UNIFESP) – Campus Itaquera
+      tipo: evento
+      local: Avenida Jacu-Pêssego – Itaquera, São Paulo (SP)
+      participantes: []
     - data: '2026-09-24'
       hora: '10:10'
       titulo: Intervenções acerca das obras de melhoria na BR-116/RJ
@@ -81,39 +111,8 @@ people:
       tipo: viagem
       local: Aeroporto Internacional John F. Kennedy
       participantes: []
-    - data: '2026-09-22'
-      hora: 09:00
-      titulo: Abertura do Debate Geral de Alto Nível da 81.ª Sessão Ordinária da Assembleia Geral das Nações Unidas
-      tipo: evento
-      local: Sede das Nações Unidas , Nova York
-      participantes: []
-    - data: '2026-09-22'
-      hora: 08:40
-      titulo: Encontro com o Secretário-Geral das Nações Unidas, António Guterres
-      tipo: reuniao
-      local: Sede das Nações Unidas, Nova York
-      participantes: []
-    - data: '2026-09-21'
-      hora: '18:00'
-      titulo: Audiência ao Senador Bernie Sanders
-      tipo: audiencia
-      local: Residência Oficial, Nova York (EUA)
-      participantes: []
-    - data: '2026-09-21'
-      hora: '11:30'
-      titulo: Audiência ao Prefeito da Cidade de Nova York, Zohran Mamdani
-      tipo: audiencia
-      local: Residência Oficial, Nova York (EUA)
-      participantes: []
-    - data: '2026-09-21'
-      hora: '10:30'
-      titulo: Reunião com o Presidente da República Oriental do Uruguai, Yamandú Orsi
-      tipo: reuniao
-      local: Residência Oficial, Nova York (EUA)
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-06-28: []
       presidente/2026-06-29:
       - hora: '10:00'
         titulo: Cerimônia de Anúncio de Medidas de Incentivo à Adimplência
@@ -1053,6 +1052,23 @@ people:
         titulo: Intervenções acerca das obras de melhoria na BR-116/RJ
         local: Ginásio do SESC Nova Iguaçu – Nova Iguaçu (RJ)
       presidente/2026-09-25: []
+      presidente/2026-09-26:
+      - hora: '12:30'
+        titulo: Visita às obras da Universidade Federal de São Paulo (UNIFESP) – Campus Itaquera
+        local: Avenida Jacu-Pêssego – Itaquera, São Paulo (SP)
+      - hora: '13:30'
+        titulo: Visita ao Novo Prédio do Instituto Federal de São Paulo (IFSP) – Campus Cidade Tiradentes
+        local: Cidade Tiradentes, São Paulo
+      - hora: '14:00'
+        titulo: Intervenções por ocasião da Visita ao Novo Prédio do Instituto Federal de São Paulo (IFSP) – Campus Cidade
+          Tiradentes
+        local: Cidade Tiradentes, São Paulo
+      - hora: '15:40'
+        titulo: Partida para Brasília
+        local: Aeroporto Internacional de São Paulo - Guarulhos
+      - hora: '17:00'
+        titulo: Chegada a Brasília
+        local: Base Aérea de Brasília
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -1159,8 +1175,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-06-28: []
-      vice/2026-06-28-b1: []
       vice/2026-06-29:
       - hora: '10:00'
         titulo: Anúncio de Medidas de Incentivo à Adimplência
@@ -1612,6 +1626,8 @@ people:
       vice/2026-09-24-b1: []
       vice/2026-09-25: []
       vice/2026-09-25-b1: []
+      vice/2026-09-26: []
+      vice/2026-09-26-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 272 compromissos em 65 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 277 compromissos em 66 dias (0 dias não lidos)'
 - 'br-p-geraldo-alckmin: 86 compromissos em 51 dias (0 dias não lidos)'
