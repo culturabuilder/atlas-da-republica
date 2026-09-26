@@ -12,6 +12,20 @@ PORTA=8767
 BASE=https://atlasdarepublica.org
 RAPIDO=${1:-}
 problemas=0
+# O eval constrói para verificar, e construir reescreve README, _execucao.yaml, tenures.json e
+# graph.br.js (o campo last_seen carimba a data de hoje). Isso deixava a árvore suja e travava o
+# `git pull --rebase` da rodada seguinte. Guardamos o que já estava sujo antes e, no fim, devolvemos
+# só o que foi o build que mexeu.
+SUJOS_ANTES=$(git status --porcelain 2>/dev/null | awk '{print $2}' | sort)
+devolver_o_que_o_build_mexeu(){
+  [ -d .git ] || return 0
+  local agora; agora=$(git status --porcelain 2>/dev/null | awk '{print $2}' | sort)
+  local novos; novos=$(comm -13 <(echo "$SUJOS_ANTES") <(echo "$agora"))
+  [ -n "$novos" ] || return 0
+  echo "$novos" | while read -r f; do [ -n "$f" ] && git checkout -- "$f" 2>/dev/null; done
+  printf '   ok   árvore devolvida ao estado anterior (%s arquivo(s) que o build reescreveu)\n' "$(echo "$novos" | grep -c .)"
+}
+trap devolver_o_que_o_build_mexeu EXIT
 sec(){ printf '\n=== %s\n' "$1"; }
 ok(){ printf '   ok   %s\n' "$1"; }
 mal(){ printf '   ERRO %s\n' "$1"; problemas=$((problemas+1)); }
