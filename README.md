@@ -16,11 +16,11 @@ entre eles (quem elege, nomeia, sabatina, supervisiona, fiscaliza). Réplica, ad
 | O que o grafo tem hoje | |
 |---|---|
 | Nós e relações | **1365** nós · **2002** relações, cada uma com citação legal |
-| Pessoas | **1223** ocupando **1238** de **1306** cadeiras |
-| Cargos de chefia | **487** de **545** com ocupante (58 vazios) |
+| Pessoas | **1225** ocupando **1240** de **1306** cadeiras |
+| Cargos de chefia | **489** de **545** com ocupante (56 vazios) |
 | Órgãos sem cargo de chefia mapeado | **27** (tribunais regionais, estatais, universidades) |
 | Colegiados sem composição registrada | **220** de **270** |
-| Nomeações sem data de posse | **122** de **622** |
+| Nomeações sem data de posse | **123** de **624** |
 
 Atualizado em 2026-09-26.
 <!-- /ATLAS:NUMEROS -->

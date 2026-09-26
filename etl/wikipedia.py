@@ -122,9 +122,10 @@ def tables(h):
 def main():
     out = {}
     layers = load_ids(); reaproveitadas = {}
+    sem_pagina = []
     for pid, (title, sec_rx, name_col, date_rx) in MAP.items():
         h = page(title); time.sleep(3)
-        if not h: print(pid, "sem página", file=sys.stderr); continue
+        if not h: print(pid, "sem página", file=sys.stderr); sem_pagina.append(pid); continue
         people = []
         for sec, rows in tables(h):
             if not re.search(sec_rx, sec, re.I): continue
@@ -171,7 +172,13 @@ def main():
     class D(yaml.SafeDumper):
         def increase_indent(self, flow=False, indentless=False): return super().increase_indent(flow, False)
     (ROOT / "data" / "generated" / "wikipedia.yaml").write_text("# GERADO por etl/wikipedia.py. Fonte secundária (Wikipédia), não editar à mão.\n" + yaml.dump({"positions": out}, Dumper=D, allow_unicode=True, sort_keys=False, width=110), encoding="utf-8")
-    print("cargos:", len(out), "pessoas:", sum(len(v) for v in out.values()))
+    # Fonte viva e instável: quando a Wikipédia demora ou recusa, o conector antes encolhia em silêncio.
+    # Em 26/09/2026 o job perdeu Enap e Dataprev assim, e só apareceu na contagem de pessoas do eval.
+    if sem_pagina:
+        print(f"AVISO: {len(sem_pagina)} página(s) não vieram nesta execução: {', '.join(sem_pagina[:8])}",
+              file=sys.stderr)
+        print(f"       o arquivo sai menor do que deveria; rode de novo antes de confiar na queda", file=sys.stderr)
+    print("cargos:", len(out), "pessoas:", sum(len(v) for v in out.values()), "| páginas que faltaram:", len(sem_pagina))
     print("ids reaproveitados de camadas oficiais:", len(reaproveitadas))
     for nm, i in sorted(reaproveitadas.items()): print("  ", nm, "->", i)
 

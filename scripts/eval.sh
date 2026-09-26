@@ -62,18 +62,27 @@ base=pathlib.Path("build/_eval_base.json")
 atual={"nos":s["nodes"],"arestas":s["edges"],"cadeiras":s["seats_total"],
        "pessoas":len(G.get("people") or {}),"custo":s.get("cargos_com_custo"),
        "power":len(G.get("power") or []),"fios":len(G.get("power_links") or [])}
+# A regra dos 5% só faz sentido em contagem grande. "fios" do power map é 3 ou 4 conforme quem está
+# na notícia naquele dia: aplicar percentual a número pequeno transforma variação normal em alarme.
+MINIMO = 20
+ruim = 0
 if base.exists():
-    ant=json.loads(base.read_text()); ruim=0
-    for k,v in atual.items():
-        a=ant.get(k)
-        if isinstance(a,int) and isinstance(v,int) and a>0 and v < a*0.95:
-            print(f"   ERRO {k}: {a} -> {v} (queda de {100-100*v/a:.0f}%)"); ruim+=1
-        elif a!=v: print(f"   !    {k}: {a} -> {v}")
-    if not ruim: print("   ok   nenhuma queda acima de 5% contra a execução anterior")
-    sys.exit(1 if ruim else 0)
+    ant = json.loads(base.read_text())
+    for k, v in atual.items():
+        a = ant.get(k)
+        if not (isinstance(a, int) and isinstance(v, int)) or a == v:
+            if a != v: print(f"   !    {k}: {a} -> {v}")
+            continue
+        if a >= MINIMO and v < a * 0.95:
+            print(f"   ERRO {k}: {a} -> {v} (queda de {100-100*v/a:.0f}%)"); ruim += 1
+        else:
+            print(f"   !    {k}: {a} -> {v}")
+    if not ruim: print("   ok   nenhuma queda relevante contra a execução anterior")
 else:
     print("   !    primeira execução: gravando linha de base")
+# a base acompanha a realidade; sem isso, uma mudança legítima seria acusada para sempre
 base.write_text(json.dumps(atual))
+sys.exit(1 if ruim else 0)
 PY
   [ $? -ne 0 ] && problemas=$((problemas+1))
   $PY - <<'PY'
