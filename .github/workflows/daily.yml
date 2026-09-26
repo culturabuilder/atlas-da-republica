@@ -31,11 +31,15 @@ jobs:
           # que chegou: rebase da sua única commit por cima de origin/main, com os arquivos gerados
           # ganhando o conflito, porque são o resultado fresco desta execução.
           git config user.name "atlas-bot" && git config user.email "bot@users.noreply.github.com"
-          git add data/generated assets/img web/graph.br.js
+          # README.md também é gerado: scripts/build_graph.py reescreve a tabela de cobertura dele.
+          # Fora do add, ele ficava como alteração solta e o rebase se recusava a rodar.
+          git add data/generated assets/img web/graph.br.js README.md
           git commit -m "dados: atualização automática $(date -u +%F)" || { echo "sem mudanças"; exit 0; }
           for tentativa in 1 2 3; do
             git fetch -q origin main
-            if git rebase -X theirs origin/main; then
+            # --autostash guarda qualquer outra alteração solta que um conector tenha deixado,
+            # para o rebase nunca ser recusado por causa de arquivo fora do add.
+            if git rebase --autostash -X theirs origin/main; then
               git push && exit 0
             else
               git rebase --abort || true
