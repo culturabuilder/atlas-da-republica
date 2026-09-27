@@ -7,7 +7,7 @@
 set -uo pipefail
 cd "$(dirname "$0")/.."
 PY=.venv/bin/python
-PW=/private/tmp/claude-501/-Users-culto-govnew/cbdbacff-6e4d-44b6-b805-449b42969f6f/scratchpad/pw
+PW=scripts/checagens   # ficavam num diretório temporário e a de contenção sumiu sem ninguém ver
 PORTA=8767
 BASE=https://atlasdarepublica.org
 RAPIDO=${1:-}
@@ -156,12 +156,23 @@ true
 if [ "$RAPIDO" != "--rapido" ] && [ -d "$PW" ]; then
   sec "interface"
   curl -s -o /dev/null -m 3 "http://localhost:$PORTA/" || { (cd site && nohup python3 -m http.server $PORTA >/dev/null 2>&1 &) ; sleep 3; }
-  for t in overflow dzov quebra svgfit pmap; do
-    [ -f "$PW/$t.js" ] || continue
-    saida=$(cd "$PW" && node "$t.js" 2>&1 | tail -3)
-    if echo "$saida" | grep -qiE "erro|falha|estoura|FALHAS|quebrada"; then
-      if echo "$saida" | grep -qiE "nenhuma palavra quebrada|contenção ok|erros \[\]"; then ok "$t"; else mal "$t"; echo "$saida" | sed 's/^/        /'; fi
-    else ok "$t"; fi
+  # Cada checagem precisa dizer explicitamente que passou. Antes, qualquer saída que não casasse com
+  # as palavras de falha virava "ok" — inclusive um crash do node por falta do playwright, que foi
+  # exatamente o que aconteceu em 27/09/2026: cinco verdes com as cinco quebrando.
+  declare -a PROVA=(
+    "overflow:contenção ok"
+    "dzov:contenção ok"
+    "quebra:nenhuma palavra quebrada"
+    "svgfit:ok"
+    "pmap:erros \[\]"
+  )
+  for par in "${PROVA[@]}"; do
+    t=${par%%:*}; esperado=${par#*:}
+    [ -f "$PW/$t.js" ] || { mal "$t: arquivo de checagem não existe em $PW"; continue; }
+    saida=$(node "$PW/$t.js" 2>&1); codigo=$?
+    if [ $codigo -ne 0 ]; then mal "$t: node saiu com código $codigo"; echo "$saida" | tail -3 | sed 's/^/        /'
+    elif echo "$saida" | grep -qiE "$esperado"; then ok "$t"
+    else mal "$t: não confirmou que passou"; echo "$saida" | tail -4 | sed 's/^/        /'; fi
   done
 fi
 

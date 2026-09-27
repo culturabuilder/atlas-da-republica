@@ -1,0 +1,7 @@
+{
+  "name": "atlas-da-republica-checagens",
+  "private": true,
+  "description": "Só as verificações de interface do eval (scripts/checagens). O site é estático e não usa node.",
+  "devDependencies": { "playwright": "^1.47.0" },
+  "scripts": { "checar": "for f in scripts/checagens/*.js; do echo \"== $f\"; node \"$f\"; done" }
+}
