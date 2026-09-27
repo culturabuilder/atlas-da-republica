@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-09-26'
+generated_at: '2026-09-27'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-06-29'
+janela_inicio: '2026-06-30'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,11 +11,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 277
-    dias_com_agenda: 66
+    compromissos_90d: 275
+    dias_com_agenda: 65
     por_tipo:
-      evento: 98
-      audiencia: 81
+      evento: 97
+      audiencia: 80
       viagem: 79
       reuniao: 14
       outro: 5
@@ -42,7 +42,7 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 74
+      n: 72
     - nome: Palácio da Alvorada
       n: 42
     - nome: Base Aérea de Brasília
@@ -113,13 +113,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-06-29:
-      - hora: '10:00'
-        titulo: Cerimônia de Anúncio de Medidas de Incentivo à Adimplência
-        local: Palácio do Planalto
-      - hora: '11:00'
-        titulo: Ministro do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte, Paulo Pereira
-        local: Palácio do Planalto
       presidente/2026-06-30:
       - hora: 08:00
         titulo: Partida para Assunção
@@ -1069,6 +1062,7 @@ people:
       - hora: '17:00'
         titulo: Chegada a Brasília
         local: Base Aérea de Brasília
+      presidente/2026-09-27: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -1076,10 +1070,10 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 86
-    dias_com_agenda: 51
+    compromissos_90d: 85
+    dias_com_agenda: 50
     por_tipo:
-      evento: 36
+      evento: 35
       viagem: 23
       audiencia: 17
       outro: 6
@@ -1103,7 +1097,7 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 20
+      n: 19
     - nome: Brasília/DF
       n: 19
     - nome: São Paulo/SP
@@ -1175,11 +1169,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-06-29:
-      - hora: '10:00'
-        titulo: Anúncio de Medidas de Incentivo à Adimplência
-        local: Palácio do Planalto
-      vice/2026-06-29-b1: []
       vice/2026-06-30:
       - hora: '17:00'
         titulo: Cerimônia de Lançamento do Plano Safra da Agricultura Familiar 2026-2027
@@ -1628,6 +1617,8 @@ people:
       vice/2026-09-25-b1: []
       vice/2026-09-26: []
       vice/2026-09-26-b1: []
+      vice/2026-09-27: []
+      vice/2026-09-27-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 277 compromissos em 66 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 86 compromissos em 51 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 275 compromissos em 65 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 85 compromissos em 50 dias (0 dias não lidos)'
