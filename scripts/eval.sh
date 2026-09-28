@@ -89,8 +89,15 @@ PY
 import json
 s=json.load(open("build/graph.br.json"))["stats"]
 ex=s.get("execucao") or {}
-v=ex.get("blocos_velhos") or []
-print(f"   {'!   ' if v else 'ok  '} blocos com mais de 7 dias: {len(v)}{': '+', '.join(map(str,v[:5])) if v else ''}")
+# Fontes eleitorais são arquivo fechado de 2018 e 2022: envelhecem por natureza, não por falha, e a
+# metodologia já diz isso ao leitor. Contá-las como atraso todo dia treina a gente a ignorar o aviso.
+POR_NATUREZA = ("Candidaturas (TSE)", "Doadores (TSE)", "Votos por município (TSE)", "Patrimônio (TSE)")
+v = ex.get("blocos_velhos") or []
+naturais = [x for x in v if x in POR_NATUREZA]
+reais = [x for x in v if x not in POR_NATUREZA]
+print(f"   {'!   ' if reais else 'ok  '} blocos com atraso real: {len(reais)}{': '+', '.join(map(str,reais[:5])) if reais else ''}")
+if naturais:
+    print(f"        (e {len(naturais)} de fonte eleitoral, que só muda em ano de eleição: {', '.join(naturais)})")
 f=ex.get("falhas") or []
 print(f"   {'!   ' if f else 'ok  '} conectores com falha no último update: {len(f)}{': '+', '.join(f[:6]) if f else ''}")
 PY
