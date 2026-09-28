@@ -386,6 +386,24 @@ def gravar(posses, conflitos, nao_encontrados, desde, ate, sem_data_antes, antig
            "resumo": {"ocupantes_sem_data_antes": sem_data_antes, "resolvidos": len(posses),
                       "por_confianca": por_conf, "conflitos": len(conflitos), "sem_ato": len(nao_encontrados)}}
     OUT.parent.mkdir(parents=True, exist_ok=True)
+    # O conector resolve só quem ainda está sem data e reescrevia o arquivo com o resultado daquela
+    # passada, jogando fora o que já tinha sido descoberto antes. Em produção a rede de segurança do
+    # update.sh pegava; rodado à mão, não, e foi assim que 255 posses viraram 1 em 28/09/2026.
+    # Agora soma ao que já existe, e se ainda assim o resultado for menor, recusa gravar.
+    if OUT.exists():
+        try:
+            ant = yaml.safe_load(open(OUT, encoding="utf-8")) or {}
+        except Exception:
+            ant = {}
+        antes = ant.get("posses") or {}
+        if antes:
+            juntas = dict(antes); juntas.update(doc.get("posses") or {})
+            doc["posses"] = juntas
+            if len(juntas) < len(antes):
+                print(f"ABORTADO: sairiam {len(juntas)} posses contra {len(antes)} do arquivo atual; "
+                      f"arquivo mantido.", file=sys.stderr)
+                sys.exit(1)
+            if doc.get("resumo"): doc["resumo"]["posses"] = len(juntas)
     yaml.safe_dump(doc, open(OUT, "w", encoding="utf-8"), allow_unicode=True, sort_keys=False, width=200)
 
 if __name__ == "__main__": main()
