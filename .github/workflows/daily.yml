@@ -1,6 +1,9 @@
 name: Atualização diária
 on:
-  schedule: [{ cron: "30 9 * * *" }]   # 06:30 em Brasília
+  # 9h30 UTC em ponto é o horário mais disputado do agendador do GitHub, que entrega o gatilho quando
+  # tem folga. Medido nesta semana: 5h10 de atraso num dia, 4h17 noutro, e em 28/09 não disparou.
+  # Minuto quebrado cai fora do pico. O atraso continua possível, é da natureza do serviço.
+  schedule: [{ cron: "47 8 * * *" }]   # 05:47 em Brasília
   workflow_dispatch:
 permissions: { contents: write, pages: write, id-token: write }
 concurrency: { group: atualizacao-diaria, cancel-in-progress: false }
