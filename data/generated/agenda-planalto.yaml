@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-09-27'
+generated_at: '2026-09-28'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-06-30'
+janela_inicio: '2026-07-01'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,12 +11,12 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 275
+    compromissos_90d: 273
     dias_com_agenda: 65
     por_tipo:
       evento: 97
       audiencia: 80
-      viagem: 79
+      viagem: 77
       reuniao: 14
       outro: 5
     entidades_top:
@@ -42,7 +42,7 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 72
+      n: 71
     - nome: Palácio da Alvorada
       n: 42
     - nome: Base Aérea de Brasília
@@ -61,8 +61,38 @@ people:
       n: 3
     - nome: Instituto Mauá de Tecnologia (IMT), São Caetano do Sul (SP)
       n: 3
-    ultimo: '2026-09-26'
+    ultimo: '2026-09-28'
     recentes:
+    - data: '2026-09-28'
+      hora: '16:45'
+      titulo: Intervenções sobre a visita ao Hospital São João de Deus
+      tipo: evento
+      local: Rua Boaventura da Silva – Umarizal, Belém
+      participantes: []
+    - data: '2026-09-28'
+      hora: '16:00'
+      titulo: Visita ao Hospital João de Deus
+      tipo: evento
+      local: Rua Boaventura da Silva – Umarizal, Belém
+      participantes: []
+    - data: '2026-09-28'
+      hora: '15:15'
+      titulo: Chegada a Belém
+      tipo: viagem
+      local: Base Aérea de Belém
+      participantes: []
+    - data: '2026-09-28'
+      hora: '13:00'
+      titulo: Partida para Belém
+      tipo: viagem
+      local: Base Aérea de Brasília
+      participantes: []
+    - data: '2026-09-28'
+      hora: '12:30'
+      titulo: Sanção do PL nº 4.578/2025, que dispõe sobre as diretrizes para o desenvolvimento do futebol feminino
+      tipo: evento
+      local: Base Aérea de Brasília
+      participantes: []
     - data: '2026-09-26'
       hora: '17:00'
       titulo: Chegada a Brasília
@@ -81,60 +111,8 @@ people:
       tipo: evento
       local: Cidade Tiradentes, São Paulo
       participantes: []
-    - data: '2026-09-26'
-      hora: '13:30'
-      titulo: Visita ao Novo Prédio do Instituto Federal de São Paulo (IFSP) – Campus Cidade Tiradentes
-      tipo: evento
-      local: Cidade Tiradentes, São Paulo
-      participantes: []
-    - data: '2026-09-26'
-      hora: '12:30'
-      titulo: Visita às obras da Universidade Federal de São Paulo (UNIFESP) – Campus Itaquera
-      tipo: evento
-      local: Avenida Jacu-Pêssego – Itaquera, São Paulo (SP)
-      participantes: []
-    - data: '2026-09-24'
-      hora: '10:10'
-      titulo: Intervenções acerca das obras de melhoria na BR-116/RJ
-      tipo: evento
-      local: Ginásio do SESC Nova Iguaçu – Nova Iguaçu (RJ)
-      participantes: []
-    - data: '2026-09-22'
-      hora: '23:40'
-      titulo: Chegada a Brasília
-      tipo: viagem
-      local: Base Aérea de Brasília
-      participantes: []
-    - data: '2026-09-22'
-      hora: '13:50'
-      titulo: Partida para Brasília
-      tipo: viagem
-      local: Aeroporto Internacional John F. Kennedy
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-06-30:
-      - hora: 08:00
-        titulo: Partida para Assunção
-        local: Base Aérea de Brasília
-      - hora: '10:10'
-        titulo: Chegada a Assunção
-        local: Aeroporto Silvio Pettirossi
-      - hora: '10:30'
-        titulo: Sessão Plenária da 68.ª Cúpula de Presidentes do Mercosul, Países Associados e Convidados Especiais
-        local: Salão de Plenária do Centro de Convenções da Conmebol
-      - hora: '13:15'
-        titulo: Fotografia oficial
-        local: Hall de entrada do  Centro de Convenções da Conmebol
-      - hora: '13:45'
-        titulo: Partida para Brasília
-        local: Aeroporto Silvio Pettirossi
-      - hora: '15:55'
-        titulo: Chegada a Brasília
-        local: Base Aérea de Brasília
-      - hora: '17:00'
-        titulo: Cerimônia de Lançamento do Plano Safra
-        local: Palácio do Planalto
       presidente/2026-07-01:
       - hora: 08:00
         titulo: Partida para Salvador
@@ -1063,6 +1041,22 @@ people:
         titulo: Chegada a Brasília
         local: Base Aérea de Brasília
       presidente/2026-09-27: []
+      presidente/2026-09-28:
+      - hora: '12:30'
+        titulo: Sanção do PL nº 4.578/2025, que dispõe sobre as diretrizes para o desenvolvimento do futebol feminino
+        local: Base Aérea de Brasília
+      - hora: '13:00'
+        titulo: Partida para Belém
+        local: Base Aérea de Brasília
+      - hora: '15:15'
+        titulo: Chegada a Belém
+        local: Base Aérea de Belém
+      - hora: '16:00'
+        titulo: Visita ao Hospital João de Deus
+        local: Rua Boaventura da Silva – Umarizal, Belém
+      - hora: '16:45'
+        titulo: Intervenções sobre a visita ao Hospital São João de Deus
+        local: Rua Boaventura da Silva – Umarizal, Belém
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -1070,19 +1064,17 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 85
-    dias_com_agenda: 50
+    compromissos_90d: 83
+    dias_com_agenda: 49
     por_tipo:
-      evento: 35
+      evento: 34
       viagem: 23
-      audiencia: 17
+      audiencia: 16
       outro: 6
       reuniao: 4
     entidades_top:
     - nome: Luiz Inácio Lula da Silva (Presidente da República)
       n: 6
-    - nome: George Santoro (Ministro de Estado dos Transportes)
-      n: 1
     - nome: João Eduardo Salles (Presidente da Sociedade Brasileira de Diabetes/SP)
       n: 1
     - nome: Roberto Perosa (Presidente da Associação Brasileira das Indústrias Exportadoras de Car)
@@ -1096,14 +1088,14 @@ people:
     - nome: Sérgio Leite (Presidente da Federação dos Trabalhadores nas Indústrias Químicas e Fa)
       n: 1
     locais_top:
-    - nome: Palácio do Planalto
-      n: 19
     - nome: Brasília/DF
       n: 19
+    - nome: Palácio do Planalto
+      n: 18
     - nome: São Paulo/SP
       n: 15
     - nome: Palácio do Planalto, Anexo II
-      n: 12
+      n: 11
     - nome: Palácio da Alvorada
       n: 4
     - nome: São José dos Campos/SP
@@ -1169,14 +1161,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-06-30:
-      - hora: '17:00'
-        titulo: Cerimônia de Lançamento do Plano Safra da Agricultura Familiar 2026-2027
-        local: Palácio do Planalto
-      - hora: '18:30'
-        titulo: George Santoro, Ministro de Estado dos Transportes
-        local: Palácio do Planalto, Anexo II
-      vice/2026-06-30-b1: []
       vice/2026-07-01:
       - hora: '14:00'
         titulo: João Eduardo Salles, Presidente da Sociedade Brasileira de Diabetes/SP
@@ -1619,6 +1603,8 @@ people:
       vice/2026-09-26-b1: []
       vice/2026-09-27: []
       vice/2026-09-27-b1: []
+      vice/2026-09-28: []
+      vice/2026-09-28-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 275 compromissos em 65 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 85 compromissos em 50 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 273 compromissos em 65 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 83 compromissos em 49 dias (0 dias não lidos)'
