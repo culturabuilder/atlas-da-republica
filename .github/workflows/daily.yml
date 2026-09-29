@@ -25,6 +25,10 @@ jobs:
           ATLAS_ORCAMENTO: "12600"
           PORTAL_TRANSPARENCIA_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Sem o segredo, a variável chega vazia, o porteiro de relevância avisa no log e os artigos
+          # ficam sem veredito — exatamente o comportamento de hoje, nada quebra. Com o segredo, o job
+          # classifica sozinho e ninguém precisa rodar --porteiro-acervo à mão.
+          EIKOS_KEY: ${{ secrets.EIKOS_KEY }}
           SITE_BASE: https://atlasdarepublica.org
           SITE_CNAME: atlasdarepublica.org
       - name: Commit dados gerados
