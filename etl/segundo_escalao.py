@@ -436,7 +436,12 @@ def main():
                 if ex.get("parent") == o["id"]: ja_no_grafo.append({"unidade": u["name"], "orgao": o["id"], "no_existente": i})
                 i += "-sec"
             elif u["sigla"]:
-                dup = next((n for n in nodes.values() if n.get("parent") == o["id"] and u["sigla"] in (n.get("aliases") or [])), None)
+                # A busca por sigla varria o grafo inteiro, inclusive os nós que este conector gerou na
+                # véspera: cada secretaria se reconhecia como "já no grafo", o build descartava as 201 e
+                # o site perdia 592 páginas. Aconteceu em 29/09/2026. Só conta colisão com nó de outra
+                # origem, a mesma regra que `existing` já aplica logo acima.
+                dup = next((n for i2, n in nodes.items() if i2 not in _meus and n.get("parent") == o["id"]
+                            and u["sigla"] in (n.get("aliases") or [])), None)
                 if dup: ja_no_grafo.append({"unidade": u["name"], "orgao": o["id"], "no_existente": dup["id"]})
             if i in used: i = f"{i}-{u['code']}"
             used.add(i); u["id"] = i
