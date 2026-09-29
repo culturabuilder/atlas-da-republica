@@ -1,16 +1,16 @@
 # GERADO por etl/segundo_escalao.py. Não edite à mão.
 generated_from: SIORG estrutura completa + páginas Quem é quem (gov.br) + DOU (data/generated/dou.json)
-generated_at: '2026-09-22'
-siorg_versao: '2026-09-18'
+generated_at: '2026-09-29'
+siorg_versao: '2026-09-29'
 resumo:
   ministerios_cobertos: 37
   orgaos_sem_secretaria:
   - br-presidencia-da-republica
   secretarias: 201
   com_ocupante:
-    oficial: 183
-    dou: 0
-  sem_ocupante: 18
+    oficial: 138
+    dou: 26
+  sem_ocupante: 37
   mediana_secretarias_por_ministerio: 5
   por_ministerio:
     br-controladoria-geral-da-uniao: 5
@@ -52,16 +52,633 @@ resumo:
     br-secretaria-de-relacoes-institucionais: 4
     br-secretaria-geral-da-presidencia: 5
   paginas_nao_lidas:
+  - orgao: br-ministerio-da-igualdade-racial
+    motivo: 'composicao/quem-e-quem: erro URLError; acesso-a-informacao/institucional/quem-e-quem: erro URLError; composicao:
+      erro URLError'
+  - orgao: br-ministerio-da-pesca-e-aquicultura
+    motivo: 'composicao/quem-e-quem: erro URLError; acesso-a-informacao/institucional/quem-e-quem: erro URLError; composicao:
+      erro URLError'
   - orgao: br-ministerio-do-empreendedorismo
     motivo: 'composicao/quem-e-quem: http 404; acesso-a-informacao/institucional/quem-e-quem: http 404; composicao: http 404'
+  - orgao: br-ministerio-do-esporte
+    motivo: 'acesso-a-informacao/institucional/quem-e-quem: erro URLError; institucional/quem-e-quem: erro URLError; acesso-a-informacao/institucional/quem-e-quem/quem-e-quem:
+      erro URLError'
+  - orgao: br-ministerio-dos-direitos-humanos-e-da-cidadania
+    motivo: 'composicao/quem-e-quem: erro URLError; acesso-a-informacao/institucional/quem-e-quem: erro URLError; composicao:
+      erro URLError'
+  - orgao: br-ministerio-dos-povos-indigenas
+    motivo: 'composicao/quem-e-quem: http 404; composicao: erro URLError; institucional/quem-e-quem: http 404'
+  - orgao: br-secretaria-de-relacoes-institucionais
+    motivo: 'composicao/quem-e-quem: http 404; acesso-a-informacao/institucional/quem-e-quem: erro URLError; institucional/quem-e-quem:
+      http 404'
+  - orgao: br-secretaria-geral-da-presidencia
+    motivo: 'composicao/quem-e-quem: erro URLError; acesso-a-informacao/institucional/quem-e-quem: erro URLError; composicao:
+      erro URLError'
   ja_no_grafo:
+  - unidade: Secretaria-Executiva
+    orgao: br-controladoria-geral-da-uniao
+    no_existente: br-secretaria-executiva-cgu
+  - unidade: Secretaria Federal de Controle Interno
+    orgao: br-controladoria-geral-da-uniao
+    no_existente: br-secretaria-federal-de-controle-interno
+  - unidade: Secretaria Nacional de Transparência e Acesso à Informação
+    orgao: br-controladoria-geral-da-uniao
+    no_existente: br-secretaria-nacional-de-transparencia-e-acesso-a-informacao
+  - unidade: Secretaria de Integridade Privada
+    orgao: br-controladoria-geral-da-uniao
+    no_existente: br-secretaria-de-integridade-privada
+  - unidade: Secretaria de Integridade Pública
+    orgao: br-controladoria-geral-da-uniao
+    no_existente: br-secretaria-de-integridade-publica
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-da-agricultura-e-pecuaria
+    no_existente: br-secretaria-executiva-agricultura
+  - unidade: Secretaria de Comércio e Relações Internacionais
+    orgao: br-ministerio-da-agricultura-e-pecuaria
+    no_existente: br-secretaria-de-comercio-e-relacoes-internacionais
+  - unidade: Secretaria de Defesa Agropecuária
+    orgao: br-ministerio-da-agricultura-e-pecuaria
+    no_existente: br-secretaria-de-defesa-agropecuaria
+  - unidade: Secretaria de Desenvolvimento Rural
+    orgao: br-ministerio-da-agricultura-e-pecuaria
+    no_existente: br-secretaria-de-desenvolvimento-rural
+  - unidade: Secretaria de Política Agrícola
+    orgao: br-ministerio-da-agricultura-e-pecuaria
+    no_existente: br-secretaria-de-politica-agricola
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-da-ciencia-tecnologia-e-inovacao
+    no_existente: br-secretaria-executiva-ciencia-e-tecnologia
+  - unidade: Secretaria de Ciência e Tecnologia para Transformação Digital
+    orgao: br-ministerio-da-ciencia-tecnologia-e-inovacao
+    no_existente: br-secretaria-de-ciencia-e-tecnologia-para-transformacao-digital
+  - unidade: Secretaria de Ciência e Tecnologia para o Desenvolvimento Social
+    orgao: br-ministerio-da-ciencia-tecnologia-e-inovacao
+    no_existente: br-secretaria-de-ciencia-e-tecnologia-para-o-desenvolvimento-social
+  - unidade: Secretaria de Desenvolvimento Tecnológico e Inovação
+    orgao: br-ministerio-da-ciencia-tecnologia-e-inovacao
+    no_existente: br-secretaria-de-desenvolvimento-tecnologico-e-inovacao
+  - unidade: Secretaria de Políticas e Programas Estratégicos
+    orgao: br-ministerio-da-ciencia-tecnologia-e-inovacao
+    no_existente: br-secretaria-de-politicas-e-programas-estrategicos
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-da-cultura
+    no_existente: br-secretaria-executiva-cultura
+  - unidade: Secretaria de Articulação Federativa e Comitês de Cultura
+    orgao: br-ministerio-da-cultura
+    no_existente: br-secretaria-de-articulacao-federativa-e-comites-de-cultura
+  - unidade: Secretaria de Cidadania e Diversidade Cultural
+    orgao: br-ministerio-da-cultura
+    no_existente: br-secretaria-de-cidadania-e-diversidade-cultural
+  - unidade: Secretaria de Direitos Autorais e Intelectuais
+    orgao: br-ministerio-da-cultura
+    no_existente: br-secretaria-de-direitos-autorais-e-intelectuais
+  - unidade: Secretaria de Economia Criativa
+    orgao: br-ministerio-da-cultura
+    no_existente: br-secretaria-de-economia-criativa
+  - unidade: Secretaria de Fomento e Incentivo à Cultura
+    orgao: br-ministerio-da-cultura
+    no_existente: br-secretaria-de-fomento-e-incentivo-a-cultura
+  - unidade: Secretaria de Formação Artística e Cultural, Livro e Leitura
+    orgao: br-ministerio-da-cultura
+    no_existente: br-secretaria-de-formacao-artistica-e-cultural-livro-e-leitura
+  - unidade: Secretaria do Audiovisual
+    orgao: br-ministerio-da-cultura
+    no_existente: br-secretaria-do-audiovisual
+  - unidade: Secretaria de Controle Interno
+    orgao: br-ministerio-da-defesa
+    no_existente: br-secretaria-de-controle-interno-defesa
+  - unidade: Secretaria-Geral
+    orgao: br-ministerio-da-defesa
+    no_existente: br-secretaria-geral
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-da-educacao
+    no_existente: br-secretaria-executiva-educacao
+  - unidade: Secretaria de Articulação Intersetorial e com os Sistemas de Ensino
+    orgao: br-ministerio-da-educacao
+    no_existente: br-secretaria-de-articulacao-intersetorial-e-com-os-sistemas-de-ensino
+  - unidade: Secretaria de Educação Básica
+    orgao: br-ministerio-da-educacao
+    no_existente: br-secretaria-de-educacao-basica
+  - unidade: Secretaria de Educação Continuada, Alfabetização de Jovens e Adultos, Diversidade e Inclusão
+    orgao: br-ministerio-da-educacao
+    no_existente: br-secretaria-de-educacao-continuada-alfabetizacao-de-jovens-e-adultos-diversidade-e-inclusao
+  - unidade: Secretaria de Educação Profissional e Tecnológica
+    orgao: br-ministerio-da-educacao
+    no_existente: br-secretaria-de-educacao-profissional-e-tecnologica
+  - unidade: Secretaria de Educação Superior
+    orgao: br-ministerio-da-educacao
+    no_existente: br-secretaria-de-educacao-superior
+  - unidade: Secretaria de Gestão da Informação, Inovação e Avaliação de Políticas Educacionais
+    orgao: br-ministerio-da-educacao
+    no_existente: br-secretaria-de-gestao-da-informacao-inovacao-e-avaliacao-de-politicas-educacionais
+  - unidade: Secretaria de Regulação e Supervisão da Educação Superior
+    orgao: br-ministerio-da-educacao
+    no_existente: br-secretaria-de-regulacao-e-supervisao-da-educacao-superior
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-da-fazenda
+    no_existente: br-secretaria-executiva-fazenda
   - unidade: Secretaria Especial da Receita Federal do Brasil
     orgao: br-ministerio-da-fazenda
     no_existente: br-receita-federal-do-brasil
+  - unidade: Secretaria Extraordinária do Mercado de Carbono
+    orgao: br-ministerio-da-fazenda
+    no_existente: br-secretaria-extraordinaria-do-mercado-de-carbono
+  - unidade: Secretaria de Assuntos Internacionais
+    orgao: br-ministerio-da-fazenda
+    no_existente: br-secretaria-de-assuntos-internacionais
+  - unidade: Secretaria de Política Econômica
+    orgao: br-ministerio-da-fazenda
+    no_existente: br-secretaria-de-politica-economica
+  - unidade: Secretaria de Prêmios e Apostas
+    orgao: br-ministerio-da-fazenda
+    no_existente: br-secretaria-de-premios-e-apostas
+  - unidade: Secretaria de Reformas Econômicas
+    orgao: br-ministerio-da-fazenda
+    no_existente: br-secretaria-de-reformas-economicas
   - unidade: Secretaria do Tesouro Nacional
     orgao: br-ministerio-da-fazenda
     no_existente: br-secretaria-do-tesouro-nacional
-  duracao_s: 2
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-da-gestao
+    no_existente: br-secretaria-executiva-gestao
+  - unidade: Secretaria Extraordinária para a Transformação do Estado
+    orgao: br-ministerio-da-gestao
+    no_existente: br-secretaria-extraordinaria-para-a-transformacao-do-estado
+  - unidade: Secretaria de Coordenação e Governança das Empresas Estatais
+    orgao: br-ministerio-da-gestao
+    no_existente: br-secretaria-de-coordenacao-e-governanca-das-empresas-estatais
+  - unidade: Secretaria de Gestão de Pessoas
+    orgao: br-ministerio-da-gestao
+    no_existente: br-secretaria-de-gestao-de-pessoas
+  - unidade: Secretaria de Gestão e Inovação
+    orgao: br-ministerio-da-gestao
+    no_existente: br-secretaria-de-gestao-e-inovacao
+  - unidade: Secretaria de Governo Digital
+    orgao: br-ministerio-da-gestao
+    no_existente: br-secretaria-de-governo-digital
+  - unidade: Secretaria de Relações de Trabalho
+    orgao: br-ministerio-da-gestao
+    no_existente: br-secretaria-de-relacoes-de-trabalho
+  - unidade: Secretaria de Serviços Compartilhados
+    orgao: br-ministerio-da-gestao
+    no_existente: br-secretaria-de-servicos-compartilhados
+  - unidade: Secretaria do Patrimônio da União
+    orgao: br-ministerio-da-gestao
+    no_existente: br-secretaria-do-patrimonio-da-uniao
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-da-igualdade-racial
+    no_existente: br-secretaria-executiva-igualdade-racial
+  - unidade: Secretaria de Gestão do Sistema Nacional de Promoção da Igualdade Racial
+    orgao: br-ministerio-da-igualdade-racial
+    no_existente: br-secretaria-de-gestao-do-sistema-nacional-de-promocao-da-igualdade-racial
+  - unidade: Secretaria de Polít. p/ Quilombolas, Povos e Comunidades Tradic de Mat. Africana, Povos de Terreiros e Ciganos
+    orgao: br-ministerio-da-igualdade-racial
+    no_existente: br-secretaria-de-polit-p-quilombolas-povos-e-comunidades-tradic-de-mat-africana-povos-de-terreiros-e-ciganos
+  - unidade: Secretaria de Políticas de Ações Afirmativas, Combate e Superação do Racismo
+    orgao: br-ministerio-da-igualdade-racial
+    no_existente: br-secretaria-de-politicas-de-acoes-afirmativas-combate-e-superacao-do-racismo
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-da-integracao-e-do-desenvolvimento-regional
+    no_existente: br-secretaria-executiva-integracao
+  - unidade: Secretaria Nacional de Fundos e Instrumentos Financeiros
+    orgao: br-ministerio-da-integracao-e-do-desenvolvimento-regional
+    no_existente: br-secretaria-nacional-de-fundos-e-instrumentos-financeiros
+  - unidade: Secretaria Nacional de Políticas de Desenvolvimento Regional e Territorial
+    orgao: br-ministerio-da-integracao-e-do-desenvolvimento-regional
+    no_existente: br-secretaria-nacional-de-politicas-de-desenvolvimento-regional-e-territorial
+  - unidade: Secretaria Nacional de Proteção e Defesa Civil
+    orgao: br-ministerio-da-integracao-e-do-desenvolvimento-regional
+    no_existente: br-secretaria-nacional-de-protecao-e-defesa-civil
+  - unidade: Secretaria Nacional de Segurança Hídrica
+    orgao: br-ministerio-da-integracao-e-do-desenvolvimento-regional
+    no_existente: br-secretaria-nacional-de-seguranca-hidrica
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-da-justica-e-seguranca-publica
+    no_existente: br-secretaria-executiva-justica
+  - unidade: Secretaria Nacional de Acesso à Justiça
+    orgao: br-ministerio-da-justica-e-seguranca-publica
+    no_existente: br-secretaria-nacional-de-acesso-a-justica
+  - unidade: Secretaria Nacional de Assuntos Legislativos
+    orgao: br-ministerio-da-justica-e-seguranca-publica
+    no_existente: br-secretaria-nacional-de-assuntos-legislativos
+  - unidade: Secretaria Nacional de Direitos Digitais
+    orgao: br-ministerio-da-justica-e-seguranca-publica
+    no_existente: br-secretaria-nacional-de-direitos-digitais
+  - unidade: Secretaria Nacional de Justiça
+    orgao: br-ministerio-da-justica-e-seguranca-publica
+    no_existente: br-secretaria-nacional-de-justica
+  - unidade: Secretaria Nacional de Políticas Penais
+    orgao: br-ministerio-da-justica-e-seguranca-publica
+    no_existente: br-secretaria-nacional-de-politicas-penais
+  - unidade: Secretaria Nacional de Políticas sobre Drogas e Gestão de Ativos
+    orgao: br-ministerio-da-justica-e-seguranca-publica
+    no_existente: br-secretaria-nacional-de-politicas-sobre-drogas-e-gestao-de-ativos
+  - unidade: Secretaria Nacional de Segurança Pública
+    orgao: br-ministerio-da-justica-e-seguranca-publica
+    no_existente: br-secretaria-nacional-de-seguranca-publica
+  - unidade: Secretaria Nacional do Consumidor
+    orgao: br-ministerio-da-justica-e-seguranca-publica
+    no_existente: br-secretaria-nacional-do-consumidor
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-da-pesca-e-aquicultura
+    no_existente: br-secretaria-executiva-pesca
+  - unidade: Secretaria Nacional de Aquicultura
+    orgao: br-ministerio-da-pesca-e-aquicultura
+    no_existente: br-secretaria-nacional-de-aquicultura
+  - unidade: Secretaria Nacional de Pesca Artesanal
+    orgao: br-ministerio-da-pesca-e-aquicultura
+    no_existente: br-secretaria-nacional-de-pesca-artesanal
+  - unidade: Secretaria Nacional de Pesca Industrial, Amadora e Esportiva
+    orgao: br-ministerio-da-pesca-e-aquicultura
+    no_existente: br-secretaria-nacional-de-pesca-industrial-amadora-e-esportiva
+  - unidade: Secretaria Nacional de Registro, Monitoramento e Pesquisa da Pesca e Aquicultura
+    orgao: br-ministerio-da-pesca-e-aquicultura
+    no_existente: br-secretaria-nacional-de-registro-monitoramento-e-pesquisa-da-pesca-e-aquicultura
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-da-previdencia-social
+    no_existente: br-secretaria-executiva-previdencia
+  - unidade: Secretaria de Regime Geral de Previdência Social
+    orgao: br-ministerio-da-previdencia-social
+    no_existente: br-secretaria-de-regime-geral-de-previdencia-social
+  - unidade: Secretaria de Regime Próprio e Complementar
+    orgao: br-ministerio-da-previdencia-social
+    no_existente: br-secretaria-de-regime-proprio-e-complementar
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-da-saude
+    no_existente: br-secretaria-executiva-saude
+  - unidade: Secretaria de Atenção Especializada à Saúde
+    orgao: br-ministerio-da-saude
+    no_existente: br-secretaria-de-atencao-especializada-a-saude
+  - unidade: Secretaria de Atenção Primária à Saúde
+    orgao: br-ministerio-da-saude
+    no_existente: br-secretaria-de-atencao-primaria-a-saude
+  - unidade: Secretaria de Ciência, Tecnologia e Inovação em Saúde
+    orgao: br-ministerio-da-saude
+    no_existente: br-secretaria-de-ciencia-tecnologia-e-inovacao-em-saude
+  - unidade: Secretaria de Gestão do Trabalho e da Educação na Saúde
+    orgao: br-ministerio-da-saude
+    no_existente: br-secretaria-de-gestao-do-trabalho-e-da-educacao-na-saude
+  - unidade: Secretaria de Informação e Saúde Digital
+    orgao: br-ministerio-da-saude
+    no_existente: br-secretaria-de-informacao-e-saude-digital
+  - unidade: Secretaria de Saúde Indígena
+    orgao: br-ministerio-da-saude
+    no_existente: br-secretaria-de-saude-indigena
+  - unidade: Secretaria de Vigilância em Saúde e Ambiente
+    orgao: br-ministerio-da-saude
+    no_existente: br-secretaria-de-vigilancia-em-saude-e-ambiente
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-das-cidades
+    no_existente: br-secretaria-executiva-cidades
+  - unidade: Secretaria Nacional de Desenvolvimento Urbano e Metropolitano
+    orgao: br-ministerio-das-cidades
+    no_existente: br-secretaria-nacional-de-desenvolvimento-urbano-e-metropolitano
+  - unidade: Secretaria Nacional de Habitação
+    orgao: br-ministerio-das-cidades
+    no_existente: br-secretaria-nacional-de-habitacao
+  - unidade: Secretaria Nacional de Mobilidade Urbana
+    orgao: br-ministerio-das-cidades
+    no_existente: br-secretaria-nacional-de-mobilidade-urbana
+  - unidade: Secretaria Nacional de Periferias
+    orgao: br-ministerio-das-cidades
+    no_existente: br-secretaria-nacional-de-periferias
+  - unidade: Secretaria Nacional de Saneamento Ambiental
+    orgao: br-ministerio-das-cidades
+    no_existente: br-secretaria-nacional-de-saneamento-ambiental
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-das-comunicacoes
+    no_existente: br-secretaria-executiva-comunicacoes
+  - unidade: Secretaria de Radiodifusão
+    orgao: br-ministerio-das-comunicacoes
+    no_existente: br-secretaria-de-radiodifusao
+  - unidade: Secretaria de Telecomunicações
+    orgao: br-ministerio-das-comunicacoes
+    no_existente: br-secretaria-de-telecomunicacoes
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-das-mulheres
+    no_existente: br-secretaria-executiva-mulheres
+  - unidade: Secretaria Nacional de Articulação Intersetorial e Interfederativa e Participação Política
+    orgao: br-ministerio-das-mulheres
+    no_existente: br-secretaria-nacional-de-articulacao-intersetorial-e-interfederativa-e-participacao-politica
+  - unidade: Secretaria Nacional de Autonomia Econômica e Política de Cuidados
+    orgao: br-ministerio-das-mulheres
+    no_existente: br-secretaria-nacional-de-autonomia-economica-e-politica-de-cuidados
+  - unidade: Secretaria Nacional de Enfrentamento à Violência contra Mulheres
+    orgao: br-ministerio-das-mulheres
+    no_existente: br-secretaria-nacional-de-enfrentamento-a-violencia-contra-mulheres
+  - unidade: Secretaria de Controle Interno
+    orgao: br-ministerio-das-relacoes-exteriores
+    no_existente: br-secretaria-de-controle-interno-itamaraty
+  - unidade: Secretaria-Geral das Relações Exteriores
+    orgao: br-ministerio-das-relacoes-exteriores
+    no_existente: br-secretaria-geral-das-relacoes-exteriores
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-de-minas-e-energia
+    no_existente: br-secretaria-executiva-minas-e-energia
+  - unidade: Secretaria Nacional de Energia Elétrica
+    orgao: br-ministerio-de-minas-e-energia
+    no_existente: br-secretaria-nacional-de-energia-eletrica
+  - unidade: Secretaria Nacional de Geologia, Mineração e Transformação Mineral
+    orgao: br-ministerio-de-minas-e-energia
+    no_existente: br-secretaria-nacional-de-geologia-mineracao-e-transformacao-mineral
+  - unidade: Secretaria Nacional de Petróleo, Gás Natural e Biocombustíveis
+    orgao: br-ministerio-de-minas-e-energia
+    no_existente: br-secretaria-nacional-de-petroleo-gas-natural-e-biocombustiveis
+  - unidade: Secretaria Nacional de Transição Energética e Planejamento
+    orgao: br-ministerio-de-minas-e-energia
+    no_existente: br-secretaria-nacional-de-transicao-energetica-e-planejamento
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-de-portos-e-aeroportos
+    no_existente: br-secretaria-executiva-portos-e-aeroportos
+  - unidade: Secretaria Nacional de Aviação Civil
+    orgao: br-ministerio-de-portos-e-aeroportos
+    no_existente: br-secretaria-nacional-de-aviacao-civil
+  - unidade: Secretaria Nacional de Hidrovias e Navegação
+    orgao: br-ministerio-de-portos-e-aeroportos
+    no_existente: br-secretaria-nacional-de-hidrovias-e-navegacao
+  - unidade: Secretaria Nacional de Portos
+    orgao: br-ministerio-de-portos-e-aeroportos
+    no_existente: br-secretaria-nacional-de-portos
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-do-desenvolvimento-agrario
+    no_existente: br-secretaria-executiva-desenvolvimento-agrario
+  - unidade: Secretaria de Abastecimento, Cooperativismo e Soberania Alimentar
+    orgao: br-ministerio-do-desenvolvimento-agrario
+    no_existente: br-secretaria-de-abastecimento-cooperativismo-e-soberania-alimentar
+  - unidade: Secretaria de Agricultura Familiar e Agroecologia
+    orgao: br-ministerio-do-desenvolvimento-agrario
+    no_existente: br-secretaria-de-agricultura-familiar-e-agroecologia
+  - unidade: Secretaria de Governança Fundiária, Desenvolvimento Territorial e Socioambiental
+    orgao: br-ministerio-do-desenvolvimento-agrario
+    no_existente: br-secretaria-de-governanca-fundiaria-desenvolvimento-territorial-e-socioambiental
+  - unidade: Secretaria de Territórios e Sistemas Produtivos Quilombolas e Tradicionais
+    orgao: br-ministerio-do-desenvolvimento-agrario
+    no_existente: br-secretaria-de-territorios-e-sistemas-produtivos-quilombolas-e-tradicionais
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
+    no_existente: br-secretaria-executiva-industria-e-comercio
+  - unidade: Secretaria de Competitividade e Política Regulatória
+    orgao: br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
+    no_existente: br-secretaria-de-competitividade-e-politica-regulatoria
+  - unidade: Secretaria de Comércio Exterior
+    orgao: br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
+    no_existente: br-secretaria-de-comercio-exterior
+  - unidade: Secretaria de Desenvolvimento Industrial, Inovação, Comércio e Serviços
+    orgao: br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
+    no_existente: br-secretaria-de-desenvolvimento-industrial-inovacao-comercio-e-servicos
+  - unidade: Secretaria de Economia Verde, Descarbonização e Bioindústria
+    orgao: br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
+    no_existente: br-secretaria-de-economia-verde-descarbonizacao-e-bioindustria
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-do-desenvolvimento-social
+    no_existente: br-secretaria-executiva-desenvolvimento-social
+  - unidade: Secretaria Extraordinária de Combate à Pobreza e à Fome
+    orgao: br-ministerio-do-desenvolvimento-social
+    no_existente: br-secretaria-extraordinaria-de-combate-a-pobreza-e-a-fome
+  - unidade: Secretaria Nacional da Política de Cuidados e Família
+    orgao: br-ministerio-do-desenvolvimento-social
+    no_existente: br-secretaria-nacional-da-politica-de-cuidados-e-familia
+  - unidade: Secretaria Nacional de Assistência Social
+    orgao: br-ministerio-do-desenvolvimento-social
+    no_existente: br-secretaria-nacional-de-assistencia-social
+  - unidade: Secretaria Nacional de Benefícios Assistenciais
+    orgao: br-ministerio-do-desenvolvimento-social
+    no_existente: br-secretaria-nacional-de-beneficios-assistenciais
+  - unidade: Secretaria Nacional de Integração e Articulação de Plataformas Sociais Eletrônicas
+    orgao: br-ministerio-do-desenvolvimento-social
+    no_existente: br-secretaria-nacional-de-integracao-e-articulacao-de-plataformas-sociais-eletronicas
+  - unidade: Secretaria Nacional de Renda de Cidadania
+    orgao: br-ministerio-do-desenvolvimento-social
+    no_existente: br-secretaria-nacional-de-renda-de-cidadania
+  - unidade: Secretaria Nacional de Segurança Alimentar e Nutricional
+    orgao: br-ministerio-do-desenvolvimento-social
+    no_existente: br-secretaria-nacional-de-seguranca-alimentar-e-nutricional
+  - unidade: Secretaria de Avaliação, Gestão da Informação e Cadastro Único
+    orgao: br-ministerio-do-desenvolvimento-social
+    no_existente: br-secretaria-de-avaliacao-gestao-da-informacao-e-cadastro-unico
+  - unidade: Secretaria de Inclusão Socioeconômica
+    orgao: br-ministerio-do-desenvolvimento-social
+    no_existente: br-secretaria-de-inclusao-socioeconomica
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-do-empreendedorismo
+    no_existente: br-secretaria-executiva-empreendedorismo
+  - unidade: Secretaria Nacional de Ambiente de Negócios
+    orgao: br-ministerio-do-empreendedorismo
+    no_existente: br-secretaria-nacional-de-ambiente-de-negocios
+  - unidade: Secretaria Nacional de Inclusão Socioprodutiva, Artesanato e Microempreendedor Individual
+    orgao: br-ministerio-do-empreendedorismo
+    no_existente: br-secretaria-nacional-de-inclusao-socioprodutiva-artesanato-e-microempreendedor-individual
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-do-esporte
+    no_existente: br-secretaria-executiva-esporte
+  - unidade: Secretaria Extraordinária da Copa do Mundo de Futebol Feminino 2027
+    orgao: br-ministerio-do-esporte
+    no_existente: br-secretaria-extraordinaria-da-copa-do-mundo-de-futebol-feminino-2027
+  - unidade: Secretaria Nacional de Apostas Esportivas e de Desenvolvimento Econômico do Esporte
+    orgao: br-ministerio-do-esporte
+    no_existente: br-secretaria-nacional-de-apostas-esportivas-e-de-desenvolvimento-economico-do-esporte
+  - unidade: Secretaria Nacional de Esporte Amador, Educação, Lazer e Inclusão Social
+    orgao: br-ministerio-do-esporte
+    no_existente: br-secretaria-nacional-de-esporte-amador-educacao-lazer-e-inclusao-social
+  - unidade: Secretaria Nacional de Excelência Esportiva
+    orgao: br-ministerio-do-esporte
+    no_existente: br-secretaria-nacional-de-excelencia-esportiva
+  - unidade: Secretaria Nacional de Futebol e Defesa dos Direitos do Torcedor
+    orgao: br-ministerio-do-esporte
+    no_existente: br-secretaria-nacional-de-futebol-e-defesa-dos-direitos-do-torcedor
+  - unidade: Secretaria Nacional de Paradesporto
+    orgao: br-ministerio-do-esporte
+    no_existente: br-secretaria-nacional-de-paradesporto
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+    no_existente: br-secretaria-executiva-meio-ambiente
+  - unidade: Secretaria Extraordinária de Controle do Desmatamento e Ordenamento Ambiental Territorial
+    orgao: br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+    no_existente: br-secretaria-extraordinaria-de-controle-do-desmatamento-e-ordenamento-ambiental-territorial
+  - unidade: Secretaria Nacional de Biodiversidade, Florestas e Direitos Animais
+    orgao: br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+    no_existente: br-secretaria-nacional-de-biodiversidade-florestas-e-direitos-animais
+  - unidade: Secretaria Nacional de Bioeconomia
+    orgao: br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+    no_existente: br-secretaria-nacional-de-bioeconomia
+  - unidade: Secretaria Nacional de Meio Ambiente Urbano, Recursos Hídricos e Qualidade Ambiental
+    orgao: br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+    no_existente: br-secretaria-nacional-de-meio-ambiente-urbano-recursos-hidricos-e-qualidade-ambiental
+  - unidade: Secretaria Nacional de Mudança do Clima
+    orgao: br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+    no_existente: br-secretaria-nacional-de-mudanca-do-clima
+  - unidade: Secretaria Nacional de Povos e Comunidades Tradicionais e Desenvolvimento Rural Sustentável
+    orgao: br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+    no_existente: br-secretaria-nacional-de-povos-e-comunidades-tradicionais-e-desenvolvimento-rural-sustentavel
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-do-planejamento-e-orcamento
+    no_existente: br-secretaria-executiva-planejamento
+  - unidade: Secretaria Nacional de Planejamento
+    orgao: br-ministerio-do-planejamento-e-orcamento
+    no_existente: br-secretaria-nacional-de-planejamento
+  - unidade: Secretaria de Articulação Institucional
+    orgao: br-ministerio-do-planejamento-e-orcamento
+    no_existente: br-secretaria-de-articulacao-institucional
+  - unidade: Secretaria de Assuntos Internacionais e Desenvolvimento
+    orgao: br-ministerio-do-planejamento-e-orcamento
+    no_existente: br-secretaria-de-assuntos-internacionais-e-desenvolvimento
+  - unidade: Secretaria de Monitoramento e Avaliação de Políticas Públicas
+    orgao: br-ministerio-do-planejamento-e-orcamento
+    no_existente: br-secretaria-de-monitoramento-e-avaliacao-de-politicas-publicas
+  - unidade: Secretaria de Orçamento Federal
+    orgao: br-ministerio-do-planejamento-e-orcamento
+    no_existente: br-secretaria-de-orcamento-federal
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-do-trabalho-e-emprego
+    no_existente: br-secretaria-executiva-trabalho
+  - unidade: Secretaria Nacional de Economia Popular e Solidária
+    orgao: br-ministerio-do-trabalho-e-emprego
+    no_existente: br-secretaria-nacional-de-economia-popular-e-solidaria
+  - unidade: Secretaria Nacional de Qualificação, Emprego e Juventude
+    orgao: br-ministerio-do-trabalho-e-emprego
+    no_existente: br-secretaria-nacional-de-qualificacao-emprego-e-juventude
+  - unidade: Secretaria de Inspeção do Trabalho
+    orgao: br-ministerio-do-trabalho-e-emprego
+    no_existente: br-secretaria-de-inspecao-do-trabalho
+  - unidade: Secretaria de Proteção ao Trabalhador
+    orgao: br-ministerio-do-trabalho-e-emprego
+    no_existente: br-secretaria-de-protecao-ao-trabalhador
+  - unidade: Secretaria de Relações do Trabalho
+    orgao: br-ministerio-do-trabalho-e-emprego
+    no_existente: br-secretaria-de-relacoes-do-trabalho
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-do-turismo
+    no_existente: br-secretaria-executiva-turismo
+  - unidade: Secretaria Nacional de Infraestrutura, Crédito e Investimentos no Turismo
+    orgao: br-ministerio-do-turismo
+    no_existente: br-secretaria-nacional-de-infraestrutura-credito-e-investimentos-no-turismo
+  - unidade: Secretaria Nacional de Políticas de Turismo
+    orgao: br-ministerio-do-turismo
+    no_existente: br-secretaria-nacional-de-politicas-de-turismo
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-dos-direitos-humanos-e-da-cidadania
+    no_existente: br-secretaria-executiva-direitos-humanos
+  - unidade: Secretaria Nacional de Promoção e Defesa dos Direitos Humanos
+    orgao: br-ministerio-dos-direitos-humanos-e-da-cidadania
+    no_existente: br-secretaria-nacional-de-promocao-e-defesa-dos-direitos-humanos
+  - unidade: Secretaria Nacional dos Direitos da Criança e do Adolescente
+    orgao: br-ministerio-dos-direitos-humanos-e-da-cidadania
+    no_existente: br-secretaria-nacional-dos-direitos-da-crianca-e-do-adolescente
+  - unidade: Secretaria Nacional dos Direitos da Pessoa Idosa
+    orgao: br-ministerio-dos-direitos-humanos-e-da-cidadania
+    no_existente: br-secretaria-nacional-dos-direitos-da-pessoa-idosa
+  - unidade: Secretaria Nacional dos Direitos da Pessoa com Deficiência
+    orgao: br-ministerio-dos-direitos-humanos-e-da-cidadania
+    no_existente: br-secretaria-nacional-dos-direitos-da-pessoa-com-deficiencia
+  - unidade: Secretaria Nacional dos Direitos das Pessoas LGBTQIA+
+    orgao: br-ministerio-dos-direitos-humanos-e-da-cidadania
+    no_existente: br-secretaria-nacional-dos-direitos-das-pessoas-lgbtqia
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-dos-povos-indigenas
+    no_existente: br-secretaria-executiva-povos-indigenas
+  - unidade: Secretaria Nacional de Articulação e Promoção de Direitos Indígenas
+    orgao: br-ministerio-dos-povos-indigenas
+    no_existente: br-secretaria-nacional-de-articulacao-e-promocao-de-direitos-indigenas
+  - unidade: Secretaria Nacional de Direitos Territoriais Indígenas
+    orgao: br-ministerio-dos-povos-indigenas
+    no_existente: br-secretaria-nacional-de-direitos-territoriais-indigenas
+  - unidade: Secretaria Nacional de Gestão Ambiental e Territorial Indígena
+    orgao: br-ministerio-dos-povos-indigenas
+    no_existente: br-secretaria-nacional-de-gestao-ambiental-e-territorial-indigena
+  - unidade: Secretaria-Executiva
+    orgao: br-ministerio-dos-transportes
+    no_existente: br-secretaria-executiva-transportes
+  - unidade: Secretaria Nacional de Transporte Ferroviário
+    orgao: br-ministerio-dos-transportes
+    no_existente: br-secretaria-nacional-de-transporte-ferroviario
+  - unidade: Secretaria Nacional de Transporte Rodoviário
+    orgao: br-ministerio-dos-transportes
+    no_existente: br-secretaria-nacional-de-transporte-rodoviario
+  - unidade: Secretaria Nacional de Trânsito
+    orgao: br-ministerio-dos-transportes
+    no_existente: br-secretaria-nacional-de-transito
+  - unidade: Secretaria-Executiva
+    orgao: br-casa-civil
+    no_existente: br-secretaria-executiva-cc-pr
+  - unidade: Secretaria Especial de Análise Governamental
+    orgao: br-casa-civil
+    no_existente: br-secretaria-especial-de-analise-governamental
+  - unidade: Secretaria Especial do Programa de Aceleração do Crescimento
+    orgao: br-casa-civil
+    no_existente: br-secretaria-especial-do-programa-de-aceleracao-do-crescimento
+  - unidade: Secretaria Especial do Programa de Parcerias de Investimentos
+    orgao: br-casa-civil
+    no_existente: br-secretaria-especial-do-programa-de-parcerias-de-investimentos
+  - unidade: Secretaria Especial para Assuntos Jurídicos
+    orgao: br-casa-civil
+    no_existente: br-secretaria-especial-para-assuntos-juridicos
+  - unidade: Secretaria de Articulação e Monitoramento
+    orgao: br-casa-civil
+    no_existente: br-secretaria-de-articulacao-e-monitoramento
+  - unidade: Secretaria-Executiva
+    orgao: br-gabinete-de-seguranca-institucional
+    no_existente: br-secretaria-executiva-gsi-pr
+  - unidade: Secretaria de Acompanhamento e Gestão de Assuntos Estratégicos
+    orgao: br-gabinete-de-seguranca-institucional
+    no_existente: br-secretaria-de-acompanhamento-e-gestao-de-assuntos-estrategicos
+  - unidade: Secretaria de Coordenação e Assuntos Aeroespaciais
+    orgao: br-gabinete-de-seguranca-institucional
+    no_existente: br-secretaria-de-coordenacao-e-assuntos-aeroespaciais
+  - unidade: Secretaria de Segurança Presidencial
+    orgao: br-gabinete-de-seguranca-institucional
+    no_existente: br-secretaria-de-seguranca-presidencial
+  - unidade: Secretaria de Segurança da Informação e Cibernética
+    orgao: br-gabinete-de-seguranca-institucional
+    no_existente: br-secretaria-de-seguranca-da-informacao-e-cibernetica
+  - unidade: Secretaria-Executiva
+    orgao: br-secretaria-de-comunicacao-social
+    no_existente: br-secretaria-executiva-secom-pr
+  - unidade: Secretaria de Comunicação Institucional
+    orgao: br-secretaria-de-comunicacao-social
+    no_existente: br-secretaria-de-comunicacao-institucional
+  - unidade: Secretaria de Estratégias e Redes
+    orgao: br-secretaria-de-comunicacao-social
+    no_existente: br-secretaria-de-estrategias-e-redes
+  - unidade: Secretaria de Imprensa
+    orgao: br-secretaria-de-comunicacao-social
+    no_existente: br-secretaria-de-imprensa
+  - unidade: Secretaria de Políticas Digitais
+    orgao: br-secretaria-de-comunicacao-social
+    no_existente: br-secretaria-de-politicas-digitais
+  - unidade: Secretaria de Produção e Divulgação de Conteúdo Audiovisual
+    orgao: br-secretaria-de-comunicacao-social
+    no_existente: br-secretaria-de-producao-e-divulgacao-de-conteudo-audiovisual
+  - unidade: Secretaria de Publicidade e Patrocínios
+    orgao: br-secretaria-de-comunicacao-social
+    no_existente: br-secretaria-de-publicidade-e-patrocinios
+  - unidade: Secretaria-Executiva
+    orgao: br-secretaria-de-relacoes-institucionais
+    no_existente: br-secretaria-executiva-sri-pr
+  - unidade: Secretaria Especial de Acompanhamento Governamental
+    orgao: br-secretaria-de-relacoes-institucionais
+    no_existente: br-secretaria-especial-de-acompanhamento-governamental
+  - unidade: Secretaria Especial de Assuntos Federativos
+    orgao: br-secretaria-de-relacoes-institucionais
+    no_existente: br-secretaria-especial-de-assuntos-federativos
+  - unidade: Secretaria Especial de Assuntos Parlamentares
+    orgao: br-secretaria-de-relacoes-institucionais
+    no_existente: br-secretaria-especial-de-assuntos-parlamentares
+  - unidade: Secretaria-Executiva
+    orgao: br-secretaria-geral-da-presidencia
+    no_existente: br-secretaria-executiva-sg
+  - unidade: Secretaria Nacional de Diálogos Sociais e Articulação de Políticas Públicas
+    orgao: br-secretaria-geral-da-presidencia
+    no_existente: br-secretaria-nacional-de-dialogos-sociais-e-articulacao-de-politicas-publicas
+  - unidade: Secretaria Nacional de Juventude
+    orgao: br-secretaria-geral-da-presidencia
+    no_existente: br-secretaria-nacional-de-juventude
+  - unidade: Secretaria Nacional de Participação Social
+    orgao: br-secretaria-geral-da-presidencia
+    no_existente: br-secretaria-nacional-de-participacao-social
+  - unidade: Secretaria Nacional de Relações Político-Sociais
+    orgao: br-secretaria-geral-da-presidencia
+    no_existente: br-secretaria-nacional-de-relacoes-politico-sociais
+  duracao_s: 2114
 nodes:
 - id: br-secretaria-executiva-cgu
   type: department
@@ -278,7 +895,7 @@ nodes:
     articulação com os setores competentes do campo científico, governamental, produtivo e da sociedade…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/308702
-  official_url: https://www.gov.br/mcti/pt-br/composicao/setad_c/quem-e-quem/quem
+  official_url: https://www.gov.br/mcti/pt-br/composicao/sexec_c/quem-e-quem
   verified: false
 - id: br-secretaria-de-ciencia-e-tecnologia-para-o-desenvolvimento-social
   type: department
@@ -828,7 +1445,7 @@ nodes:
     normativos; e b) a elaboração de proposições legislativas sobre matéria relacionada ao Ministério…'
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/308907
-  official_url: https://www.gov.br/gestao/pt-br/composicao/quem-e-quem/ministra-e-orgaos-de-assistencia-direta
+  official_url: https://www.gov.br/gestao/pt-br/composicao/quem-e-quem/secretaria-extraordinaria-para-a-transformacao-do-estado-sete
   verified: false
 - id: br-secretaria-extraordinaria-para-a-transformacao-do-estado
   type: department
@@ -975,7 +1592,7 @@ nodes:
     e as averbações junto aos cartórios competentes…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/1986
-  official_url: https://www.gov.br/gestao/pt-br/composicao/quem-e-quem/secretaria-do-patrimonio-da-uniao-spu
+  official_url: https://www.gov.br/gestao/pt-br/composicao/quem-e-quem/secretaria-extraordinaria-para-a-transformacao-do-estado-sete
   verified: false
 - id: br-secretaria-executiva-igualdade-racial
   type: department
@@ -992,7 +1609,7 @@ nodes:
     dos temas, das ações governamentais e das medidas referentes às áreas de atuação do Ministério…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/308855
-  official_url: https://www.gov.br/igualdaderacial/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/igualdaderacial/
   verified: false
 - id: br-secretaria-de-gestao-do-sistema-nacional-de-promocao-da-igualdade-racial
   type: department
@@ -1010,7 +1627,7 @@ nodes:
     Distrito Federal na formulação e execução integrada de políticas de promoção da igualdade racial e étnica…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/73235
-  official_url: https://www.gov.br/igualdaderacial/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/igualdaderacial/
   verified: false
 - id: br-secretaria-de-polit-p-quilombolas-povos-e-comunidades-tradic-de-mat-africana-povos-de-terreiros-e-ciganos
   type: department
@@ -1028,7 +1645,7 @@ nodes:
     e comunidades tradicionais de matriz africana, povos de terreiros e ciganos…'
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/309949
-  official_url: https://www.gov.br/igualdaderacial/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/igualdaderacial/
   verified: false
 - id: br-secretaria-de-politicas-de-acoes-afirmativas-combate-e-superacao-do-racismo
   type: department
@@ -1047,7 +1664,7 @@ nodes:
     por entes federativos e entidades da sociedade civil…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/309941
-  official_url: https://www.gov.br/igualdaderacial/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/igualdaderacial/
   verified: false
 - id: br-secretaria-executiva-integracao
   type: department
@@ -1230,7 +1847,7 @@ nodes:
     as organizações da sociedade civil…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/9518
-  official_url: https://www.gov.br/mj/pt-br/acesso-a-informacao/institucional/sumario/quemequem/secretaria-nacional-de-justica
+  official_url: https://www.gov.br/mj/pt-br/acesso-a-informacao/institucional/sumario/quemequem/secretaria-executiva
   verified: false
 - id: br-secretaria-nacional-de-politicas-penais
   type: department
@@ -1266,7 +1883,7 @@ nodes:
     a perdimento em favor da União, em decorrência de prática e financiamento de crimes…'
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/33032
-  official_url: https://www.gov.br/mj/pt-br/acesso-a-informacao/institucional/sumario/quemequem/secretaria-nacional-de-politicas-sobre-drogas
+  official_url: https://www.gov.br/mj/pt-br/acesso-a-informacao/institucional/sumario/quemequem/secretaria-executiva
   verified: false
 - id: br-secretaria-nacional-de-seguranca-publica
   type: department
@@ -1283,7 +1900,7 @@ nodes:
     e na avaliação de políticas, de estratégias, de planos, de programas e de projetos de segurança pública e defesa social…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/9053
-  official_url: https://www.gov.br/mj/pt-br/acesso-a-informacao/institucional/sumario/quemequem/secretaria-nacional-de-seguranca-publica
+  official_url: https://www.gov.br/mj/pt-br/acesso-a-informacao/institucional/sumario/quemequem/secretaria-executiva
   verified: false
 - id: br-secretaria-nacional-do-consumidor
   type: department
@@ -1321,7 +1938,7 @@ nodes:
     - Sisp; b) Administração Financeira Federal…'
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/308936
-  official_url: https://www.gov.br/mpa/pt-br/acesso-a-informacao/institucional/quem-e-quem-3/secretaria-executiva/gabinete
+  official_url: https://www.gov.br/mpa/
   verified: false
 - id: br-secretaria-nacional-de-aquicultura
   type: department
@@ -1340,7 +1957,7 @@ nodes:
     o zoneamento da aquicultura…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/313030
-  official_url: https://www.gov.br/mpa/pt-br/acesso-a-informacao/institucional/quem-e-quem-3/secretaria-nacional-de-aquicultura/gabinete
+  official_url: https://www.gov.br/mpa/
   verified: false
 - id: br-secretaria-nacional-de-pesca-artesanal
   type: department
@@ -1359,7 +1976,7 @@ nodes:
     e comunitário da pesca artesanal…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/313033
-  official_url: https://www.gov.br/mpa/pt-br/acesso-a-informacao/institucional/quem-e-quem-3/secretaria-executiva/gabinete
+  official_url: https://www.gov.br/mpa/
   verified: false
 - id: br-secretaria-nacional-de-pesca-industrial-amadora-e-esportiva
   type: department
@@ -1377,7 +1994,7 @@ nodes:
     medidas de ordenamento das atividades pesqueiras industrial, artesanal, ornamental, amadora e esportiva…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/313036
-  official_url: https://www.gov.br/mpa/pt-br/acesso-a-informacao/institucional/quem-e-quem-3/secretaria-nacional-de-pesca-industrial-amadora-e-esportiva/gabinete
+  official_url: https://www.gov.br/mpa/
   verified: false
 - id: br-secretaria-nacional-de-registro-monitoramento-e-pesquisa-da-pesca-e-aquicultura
   type: department
@@ -1395,7 +2012,7 @@ nodes:
     pesqueiros e a sustentabilidade ambiental da atividade aquícola, em articulação com as demais Secretarias do Ministério…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/313040
-  official_url: https://www.gov.br/mpa/pt-br/acesso-a-informacao/institucional/quem-e-quem-3/secretaria-nacional-de-registro-monitoramento-e-pesquisa-da-pesca-e-aquicultura/gabinete
+  official_url: https://www.gov.br/mpa/
   verified: false
 - id: br-secretaria-executiva-previdencia
   type: department
@@ -1889,7 +2506,7 @@ nodes:
     dos Recursos de Tecnologia da Informação - Sisp…'
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/3245
-  official_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem/quem-e-quem
   verified: false
 - id: br-secretaria-nacional-de-energia-eletrica
   type: department
@@ -1907,7 +2524,7 @@ nodes:
     do Setor Elétrico e ao Conselho Nacional de Política Energética…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/1919
-  official_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem/quem-e-quem
   verified: false
 - id: br-secretaria-nacional-de-geologia-mineracao-e-transformacao-mineral
   type: department
@@ -1925,7 +2542,7 @@ nodes:
     mineral…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/80058
-  official_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem/quem-e-quem
   verified: false
 - id: br-secretaria-nacional-de-petroleo-gas-natural-e-biocombustiveis
   type: department
@@ -1944,7 +2561,7 @@ nodes:
     nacional…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/80045
-  official_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem/quem-e-quem
   verified: false
 - id: br-secretaria-nacional-de-transicao-energetica-e-planejamento
   type: department
@@ -1963,7 +2580,7 @@ nodes:
     setorial…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/308609
-  official_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem/quem-e-quem
   verified: false
 - id: br-secretaria-executiva-portos-e-aeroportos
   type: department
@@ -2469,7 +3086,7 @@ nodes:
     proposição de políticas, de diretrizes, de objetivos e de metas relativas às áreas de competência do Ministério…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/308924
-  official_url: https://www.gov.br/esporte/pt-br/composicao/secretaria-executiva/a-secretaria/ivo-de-almeida-ico-filho
+  official_url: https://www.gov.br/esporte/
   verified: false
 - id: br-secretaria-extraordinaria-da-copa-do-mundo-de-futebol-feminino-2027
   type: department
@@ -2487,7 +3104,7 @@ nodes:
     os comitês interministeriais, os grupos de trabalho e os fóruns temáticos relacionados ao evento…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/581910
-  official_url: https://www.gov.br/esporte/pt-br/composicao/secretaria-extraordinaria-para-a-copa-do-mundo-de-futebol-feminino/julliana-picoli-agatte
+  official_url: https://www.gov.br/esporte/
   verified: false
 - id: br-secretaria-nacional-de-apostas-esportivas-e-de-desenvolvimento-economico-do-esporte
   type: department
@@ -2506,7 +3123,7 @@ nodes:
     nas áreas do desenvolvimento econômico do esporte…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/419609
-  official_url: https://www.gov.br/esporte/pt-br/composicao/secretaria-nacional-de-apostas-esportivas-e-de-desenvolvimento-economico-do-esporte/Giovanni%20Rocco%20Neto
+  official_url: https://www.gov.br/esporte/
   verified: false
 - id: br-secretaria-nacional-de-esporte-amador-educacao-lazer-e-inclusao-social
   type: department
@@ -2525,7 +3142,7 @@ nodes:
     de lazer e de inclusão social…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/116516
-  official_url: https://www.gov.br/esporte/pt-br/composicao/secretaria-nacional-de-esporte-amador-educacao-lazer-e-inclusao-social/ludmila-ferreira-martins-costa-abadia
+  official_url: https://www.gov.br/esporte/
   verified: false
 - id: br-secretaria-nacional-de-excelencia-esportiva
   type: department
@@ -2544,7 +3161,7 @@ nodes:
     cumprimento da legislação esportiva…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/74079
-  official_url: https://www.gov.br/esporte/pt-br/composicao/Secretaria-Nacional-de-Excelencia-Esportiva/Iziane-Castro-Marques
+  official_url: https://www.gov.br/esporte/
   verified: false
 - id: br-secretaria-nacional-de-futebol-e-defesa-dos-direitos-do-torcedor
   type: department
@@ -2563,7 +3180,7 @@ nodes:
     de ações que fortaleçam o futebol…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/116538
-  official_url: https://www.gov.br/esporte/pt-br/composicao/secretaria-nacional-de-futebol-e-defesa-dos-direitos-do-torcedor/patrick-correa
+  official_url: https://www.gov.br/esporte/
   verified: false
 - id: br-secretaria-nacional-de-paradesporto
   type: department
@@ -2582,7 +3199,7 @@ nodes:
     de ações integradas nas áreas do paradesporto…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/263773
-  official_url: https://www.gov.br/esporte/pt-br/composicao/secretaria-nacional-de-paradesporto/fabio-augusto-lima-de-araujo
+  official_url: https://www.gov.br/esporte/
   verified: false
 - id: br-secretaria-executiva-meio-ambiente
   type: department
@@ -2600,7 +3217,7 @@ nodes:
     das Secretarias integrantes da estrutura do Ministério e na supervisão das entidades a ele vinculadas…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/3205
-  official_url: https://www.gov.br/mma/pt-br/composicao/secex/quem-e-quem
+  official_url: https://www.gov.br/mma/pt-br/composicao/sqa/quem-e-quem
   verified: false
 - id: br-secretaria-extraordinaria-de-controle-do-desmatamento-e-ordenamento-ambiental-territorial
   type: department
@@ -2619,7 +3236,7 @@ nodes:
     do fogo…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/267401
-  official_url: https://www.gov.br/mma/pt-br/composicao/secd/quem-e-quem
+  official_url: https://www.gov.br/mma/pt-br/composicao/sqa/quem-e-quem
   verified: false
 - id: br-secretaria-nacional-de-biodiversidade-florestas-e-direitos-animais
   type: department
@@ -2638,7 +3255,7 @@ nodes:
     de extinção…'
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/38337
-  official_url: https://www.gov.br/mma/pt-br/composicao/sbio/quem-e-quem
+  official_url: https://www.gov.br/mma/pt-br/composicao/sqa/quem-e-quem
   verified: false
 - id: br-secretaria-nacional-de-bioeconomia
   type: department
@@ -2657,7 +3274,7 @@ nodes:
     aos setores público, empresarial e da sociedade civil…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/308979
-  official_url: https://www.gov.br/mma/pt-br/composicao/sbc/quem-e-quem
+  official_url: https://www.gov.br/mma/pt-br/composicao/sqa/quem-e-quem
   verified: false
 - id: br-secretaria-nacional-de-meio-ambiente-urbano-recursos-hidricos-e-qualidade-ambiental
   type: department
@@ -2713,7 +3330,7 @@ nodes:
     de base agroecológica e a agrobiodiversidade…'
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/308981
-  official_url: https://www.gov.br/mma/pt-br/composicao/snpct/quem-e-quem
+  official_url: https://www.gov.br/mma/pt-br/composicao/sqa/quem-e-quem
   verified: false
 - id: br-secretaria-executiva-planejamento
   type: department
@@ -2992,7 +3609,7 @@ nodes:
     do Sistema Nacional de Turismo…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/73570
-  official_url: https://www.gov.br/turismo/pt-br/composicao/secretaria-nacional-de-desenvolvimento-e-competitividade-do-turismo-1
+  official_url: https://www.gov.br/turismo/pt-br/composicao/secretaria-nacional-de-infraestrutura-turistica-1
   verified: false
 - id: br-secretaria-executiva-direitos-humanos
   type: department
@@ -3011,7 +3628,7 @@ nodes:
     programas do Ministério…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/308890
-  official_url: https://www.gov.br/mdh/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/direitoshumanos/
   verified: false
 - id: br-secretaria-nacional-de-promocao-e-defesa-dos-direitos-humanos
   type: department
@@ -3029,7 +3646,7 @@ nodes:
     dos direitos humanos, em especial, sobre: a) as pessoas em situação de rua; b) as pessoas migrantes, refugiadas e apátridas…'
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/74378
-  official_url: https://www.gov.br/mdh/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/direitoshumanos/
   verified: false
 - id: br-secretaria-nacional-dos-direitos-da-crianca-e-do-adolescente
   type: department
@@ -3046,7 +3663,7 @@ nodes:
     os assuntos, as ações e as medidas governamentais referentes aos direitos da criança e do adolescente…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/74380
-  official_url: https://www.gov.br/mdh/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/direitoshumanos/
   verified: false
 - id: br-secretaria-nacional-dos-direitos-da-pessoa-idosa
   type: department
@@ -3065,7 +3682,7 @@ nodes:
     da pessoa idosa…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/223039
-  official_url: https://www.gov.br/mdh/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/direitoshumanos/
   verified: false
 - id: br-secretaria-nacional-dos-direitos-da-pessoa-com-deficiencia
   type: department
@@ -3084,7 +3701,7 @@ nodes:
     plena à sociedade…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/223030
-  official_url: https://www.gov.br/mdh/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/direitoshumanos/
   verified: false
 - id: br-secretaria-nacional-dos-direitos-das-pessoas-lgbtqia
   type: department
@@ -3103,7 +3720,7 @@ nodes:
     sua execução…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/309931
-  official_url: https://www.gov.br/mdh/pt-br/composicao/quem-e-quem
+  official_url: https://www.gov.br/direitoshumanos/
   verified: false
 - id: br-secretaria-executiva-povos-indigenas
   type: department
@@ -3122,7 +3739,7 @@ nodes:
     - Siga…'
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/308851
-  official_url: https://www.gov.br/povosindigenas/pt-br/composicao/ministro-e-orgaos-de-assistencia-direta/secretaria-executiva/marcos-kaingang
+  official_url: https://www.gov.br/povosindigenas/
   verified: false
 - id: br-secretaria-nacional-de-articulacao-e-promocao-de-direitos-indigenas
   type: department
@@ -3141,7 +3758,7 @@ nodes:
     dos povos indígenas…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/309101
-  official_url: https://www.gov.br/povosindigenas/pt-br/composicao/secretaria-de-articulacao-e-promocao-de-direitos-indigenas/giovana-cruz-mandulao
+  official_url: https://www.gov.br/povosindigenas/
   verified: false
 - id: br-secretaria-nacional-de-direitos-territoriais-indigenas
   type: department
@@ -3159,7 +3776,7 @@ nodes:
     municipal e do Distrito Federal…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/309055
-  official_url: https://www.gov.br/povosindigenas/pt-br/composicao/secretaria-de-direitos-ambientais-e-territoriais-indigenas/edilena-krikati
+  official_url: https://www.gov.br/povosindigenas/
   verified: false
 - id: br-secretaria-nacional-de-gestao-ambiental-e-territorial-indigena
   type: department
@@ -3177,7 +3794,7 @@ nodes:
     de bem viver dos povos indígenas…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/309090
-  official_url: https://www.gov.br/povosindigenas/pt-br/composicao/secretaria-de-gestao-ambiental-e-territorial-indigena/ceica-pitaguary
+  official_url: https://www.gov.br/povosindigenas/
   verified: false
 - id: br-secretaria-executiva-transportes
   type: department
@@ -3306,7 +3923,7 @@ nodes:
     monitorar e avaliar os resultados do Novo PAC…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/431129
-  official_url: https://www.gov.br/casacivil/pt-br/composicao/secretaria-especial-do-programa-de-aceleracao-do-crescimento/quem-e-quem
+  official_url: https://www.gov.br/casacivil/pt-br/composicao/secretaria-executiva/quem-e-quem-1
   verified: false
 - id: br-secretaria-especial-do-programa-de-parcerias-de-investimentos
   type: department
@@ -3600,7 +4217,7 @@ nodes:
     Relações Institucionais…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/89763
-  official_url: https://www.gov.br/sri/pt-br/composicao/secretaria-executiva/quem-e-quem
+  official_url: https://www.gov.br/secretariadegoverno/
   verified: false
 - id: br-secretaria-especial-de-acompanhamento-governamental
   type: department
@@ -3617,7 +4234,7 @@ nodes:
     relacionamento com o Congresso Nacional e com os partidos políticos…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/118480
-  official_url: https://www.gov.br/sri/pt-br/composicao/secretaria-especial-de-articulacao-social/quem-e-quem
+  official_url: https://www.gov.br/secretariadegoverno/
   verified: false
 - id: br-secretaria-especial-de-assuntos-federativos
   type: department
@@ -3635,7 +4252,7 @@ nodes:
     das ações federais no âmbito dos entes federativos…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/209853
-  official_url: https://www.gov.br/sri/pt-br/composicao/secretaria-especial-de-assuntos-federativos/quem-e-quem
+  official_url: https://www.gov.br/secretariadegoverno/
   verified: false
 - id: br-secretaria-especial-de-assuntos-parlamentares
   type: department
@@ -3653,7 +4270,7 @@ nodes:
     federal com o Congresso Nacional e com os partidos políticos…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/209852
-  official_url: https://www.gov.br/sri/pt-br/composicao/secretaria-especial-de-assuntos-parlamentares/quem-e-quem
+  official_url: https://www.gov.br/secretariadegoverno/
   verified: false
 - id: br-secretaria-executiva-sg
   type: department
@@ -3672,7 +4289,7 @@ nodes:
     de Estado…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/219930
-  official_url: https://www.gov.br/secretariageral/pt-br/acesso-a-informacao/institucional/quem-e-quem-cargos
+  official_url: https://www.gov.br/secretariageral/
   verified: false
 - id: br-secretaria-nacional-de-dialogos-sociais-e-articulacao-de-politicas-publicas
   type: department
@@ -3691,7 +4308,7 @@ nodes:
     Federal e Municípios…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/309210
-  official_url: https://www.gov.br/secretariageral/pt-br/acesso-a-informacao/institucional/quem-e-quem-cargos
+  official_url: https://www.gov.br/secretariageral/
   verified: false
 - id: br-secretaria-nacional-de-juventude
   type: department
@@ -3710,7 +4327,7 @@ nodes:
     de inclusão de jovens…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/314727
-  official_url: https://www.gov.br/secretariageral/pt-br/acesso-a-informacao/institucional/quem-e-quem-cargos
+  official_url: https://www.gov.br/secretariageral/
   verified: false
 - id: br-secretaria-nacional-de-participacao-social
   type: department
@@ -3728,7 +4345,7 @@ nodes:
     participação e da efetividade da resposta governamental…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/309194
-  official_url: https://www.gov.br/secretariageral/pt-br/acesso-a-informacao/institucional/quem-e-quem-cargos
+  official_url: https://www.gov.br/secretariageral/
   verified: false
 - id: br-secretaria-nacional-de-relacoes-politico-sociais
   type: department
@@ -3747,20 +4364,30 @@ nodes:
     agenda futura do Presidente da República…
   cite: Lei 14.600/2023; decreto de estrutura do ministério
   cite_url: https://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/309225
-  official_url: https://www.gov.br/secretariageral/pt-br/acesso-a-informacao/institucional/quem-e-quem-cargos
+  official_url: https://www.gov.br/secretariageral/
   verified: false
 positions:
 - id: br-secretaria-executiva-cgu-secretario
   type: dept_head
   head_of: br-secretaria-executiva-cgu
-  name: Secretário-Executivo da Controladoria-Geral da União
+  name: Secretária-Executiva da Controladoria-Geral da União
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
   cite_url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/D9727.htm
   description: Dirige a Secretaria-Executiva do Controladoria-Geral da União, unidade de primeiro nível abaixo do ministro.
     Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República por indicação do ministro.
-  people: []
+  people:
+  - id: br-p-eveline-martins-brito
+    name: Eveline Martins Brito
+    started_at: '2024-03-27'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-26-de-marco-de-2024-550393057
+    checked_at: '2026-09-29'
+    verified: false
+    note: ato de nomeação no DOU em 2024-03-27
 - id: br-secretaria-federal-de-controle-interno-secretario
   type: dept_head
   head_of: br-secretaria-federal-de-controle-interno
@@ -3780,7 +4407,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cgu/pt-br/acesso-a-informacao/institucional/quem-e-quem/secretaria-federal-de-controle-interno
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Federal de Controle Interno - Currículo'
 - id: br-secretaria-nacional-de-transparencia-e-acesso-a-informacao-secretario
@@ -3802,7 +4429,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cgu/pt-br/acesso-a-informacao/institucional/quem-e-quem/secretaria-nacional-de-transparencia-e-acesso-a-informacao
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional de Transparência e Acesso à Informação - Currículo'
 - id: br-secretaria-de-integridade-privada-secretario
@@ -3824,7 +4451,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cgu/pt-br/acesso-a-informacao/institucional/quem-e-quem/secretaria-de-integridade-privada
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Integridade Privada - Currículo'
 - id: br-secretaria-de-integridade-publica-secretario
@@ -3857,7 +4484,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/agricultura/pt-br/acesso-a-informacao/institucional/quem-e-quem-novo/se/secretaria-executiva-staff
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário-Executivo'
 - id: br-secretaria-de-comercio-e-relacoes-internacionais-secretario
@@ -3879,7 +4506,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/agricultura/pt-br/acesso-a-informacao/institucional/quem-e-quem-novo/scri/staff-e-gabinete
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário'
 - id: br-secretaria-de-defesa-agropecuaria-secretario
@@ -3901,7 +4528,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/agricultura/pt-br/acesso-a-informacao/institucional/quem-e-quem-novo/sda/secretaria-de-defesa-agropecuaria-staff-e-gabinete-1
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário'
 - id: br-secretaria-de-desenvolvimento-rural-secretario
@@ -3923,7 +4550,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/agricultura/pt-br/acesso-a-informacao/institucional/quem-e-quem-novo/sdr/staff-e-gabinete
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário'
 - id: br-secretaria-de-politica-agricola-secretario
@@ -3945,7 +4572,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/agricultura/pt-br/acesso-a-informacao/institucional/quem-e-quem-novo/spa/staff-e-gabinete
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário'
 - id: br-secretaria-executiva-ciencia-e-tecnologia-secretario
@@ -3967,7 +4594,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mcti/pt-br/composicao/sexec_c/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Executivo'
 - id: br-secretaria-de-ciencia-e-tecnologia-para-transformacao-digital-secretario
@@ -3981,17 +4608,7 @@ positions:
   description: Dirige a Secretaria de Ciência e Tecnologia para Transformação Digital do Ministério da Ciência, Tecnologia
     e Inovação, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo
     Presidente da República por indicação do ministro.
-  people:
-  - id: br-p-henrique-de-oliveira-miguel
-    name: Henrique de Oliveira Miguel
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/mcti/pt-br/composicao/setad_c/quem-e-quem/quem
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretário de Ciência e Tecnologia para Transformação Digital'
+  people: []
 - id: br-secretaria-de-ciencia-e-tecnologia-para-o-desenvolvimento-social-secretario
   type: dept_head
   head_of: br-secretaria-de-ciencia-e-tecnologia-para-o-desenvolvimento-social
@@ -4035,7 +4652,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mcti/pt-br/composicao
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária de Políticas e Programas Estratégicos'
 - id: br-secretaria-executiva-cultura-secretario
@@ -4056,7 +4673,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cultura/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO EXECUTIVO'
 - id: br-secretaria-de-articulacao-federativa-e-comites-de-cultura-secretario
@@ -4078,7 +4695,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cultura/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETARIA DE ARTICULAÇÃO FEDERATIVA E COMITÊS DE CULTURA'
 - id: br-secretaria-de-cidadania-e-diversidade-cultural-secretario
@@ -4100,7 +4717,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cultura/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETARIA DE CIDADANIA E DIVERSIDADE CULTURAL'
 - id: br-secretaria-de-direitos-autorais-e-intelectuais-secretario
@@ -4122,7 +4739,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cultura/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETARIA DE DIREITOS AUTORAIS E INTELECTUAIS'
 - id: br-secretaria-de-economia-criativa-secretario
@@ -4143,7 +4760,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cultura/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETARIA DE ECONOMIA CRIATIVA'
 - id: br-secretaria-de-fomento-e-incentivo-a-cultura-secretario
@@ -4165,7 +4782,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cultura/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETARIA DE FOMENTO E INCENTIVO À CULTURA'
 - id: br-secretaria-de-formacao-artistica-e-cultural-livro-e-leitura-secretario
@@ -4187,7 +4804,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cultura/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETARIA DE FORMAÇÃO ARTÍSTICA E CULTURAL, LIVRO E LEITURA'
 - id: br-secretaria-do-audiovisual-secretario
@@ -4208,7 +4825,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cultura/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETARIA DO AUDIOVISUAL'
 - id: br-secretaria-de-controle-interno-defesa-secretario
@@ -4229,7 +4846,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/defesa/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE CONTROLE INTERNO DO MINISTÉRIO DA DEFESA'
 - id: br-secretaria-geral-secretario
@@ -4250,7 +4867,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/defesa/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A)-GERAL'
 - id: br-secretaria-executiva-educacao-secretario
@@ -4271,7 +4888,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mec/pt-br/composicao
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário-Executivo'
 - id: br-secretaria-de-articulacao-intersetorial-e-com-os-sistemas-de-ensino-secretario
@@ -4293,7 +4910,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mec/pt-br/composicao
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Articulação Intersetorial e com os Sistemas de Ensino'
 - id: br-secretaria-de-educacao-basica-secretario
@@ -4314,7 +4931,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mec/pt-br/composicao
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária de Educação Básica'
 - id: br-secretaria-de-educacao-continuada-alfabetizacao-de-jovens-e-adultos-diversidade-e-inclusao-secretario
@@ -4336,7 +4953,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mec/pt-br/composicao
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária de Educação Continuada, Alfabetização de Jovens e Adultos,
       Diversidade e Inclusão'
@@ -4359,7 +4976,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mec/pt-br/composicao
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Educação Profissional e Tecnológica'
 - id: br-secretaria-de-educacao-superior-secretario
@@ -4380,7 +4997,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mec/pt-br/composicao
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Educação Superior'
 - id: br-secretaria-de-gestao-da-informacao-inovacao-e-avaliacao-de-politicas-educacionais-secretario
@@ -4402,7 +5019,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mec/pt-br/composicao
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Gestão da Informação, Inovação e Avaliação de Políticas
       Educacionais'
@@ -4425,7 +5042,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mec/pt-br/composicao
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária de Regulação e Supervisão da Educação Superior'
 - id: br-secretaria-executiva-fazenda-secretario
@@ -4446,7 +5063,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/fazenda/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A)-EXECUTIVO(A)'
 - id: br-secretaria-especial-da-receita-federal-do-brasil-secretario
@@ -4468,7 +5085,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/fazenda/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) ESPECIAL DA RECEITA FEDERAL DO BRASIL'
 - id: br-secretaria-extraordinaria-do-mercado-de-carbono-secretario
@@ -4490,7 +5107,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/fazenda/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIA EXTRAORDINÁRIA DO MERCADO DE CARBONO'
 - id: br-secretaria-de-assuntos-internacionais-secretario
@@ -4511,7 +5128,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/fazenda/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE ASSUNTOS INTERNACIONAIS'
 - id: br-secretaria-de-politica-economica-secretario
@@ -4532,7 +5149,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/fazenda/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE POLÍTICA ECONÔMICA'
 - id: br-secretaria-de-premios-e-apostas-secretario
@@ -4553,7 +5170,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/fazenda/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE PRÊMIOS E APOSTAS'
 - id: br-secretaria-de-reformas-economicas-secretario
@@ -4574,7 +5191,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/fazenda/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE REFORMAS ECONÔMICAS'
 - id: br-secretaria-do-tesouro-nacional-sec-secretario
@@ -4595,7 +5212,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/fazenda/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DO TESOURO NACIONAL'
 - id: br-secretaria-executiva-gestao-secretario
@@ -4609,17 +5226,7 @@ positions:
   description: Dirige a Secretaria-Executiva do Ministério da Gestão e da Inovação em Serviços Públicos, unidade de primeiro
     nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República por
     indicação do ministro.
-  people:
-  - id: br-p-cilair-rodrigues-de-abreu
-    name: Cilair Rodrigues de Abreu
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/gestao/pt-br/composicao/quem-e-quem/ministra-e-orgaos-de-assistencia-direta
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretário(a)-Executivo(a)'
+  people: []
 - id: br-secretaria-extraordinaria-para-a-transformacao-do-estado-secretario
   type: dept_head
   head_of: br-secretaria-extraordinaria-para-a-transformacao-do-estado
@@ -4639,7 +5246,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/gestao/pt-br/composicao/quem-e-quem/secretaria-extraordinaria-para-a-transformacao-do-estado-sete
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário(a) Extraordinário(a) para a Transformação do Estado'
 - id: br-secretaria-de-coordenacao-e-governanca-das-empresas-estatais-secretario
@@ -4661,7 +5268,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/gestao/pt-br/composicao/quem-e-quem/secretaria-de-coordenacao-e-governanca-das-empresas-estatais-sest
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário(a) de Coordenação e Governança das Empresas Estatais'
 - id: br-secretaria-de-gestao-de-pessoas-secretario
@@ -4683,7 +5290,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/gestao/pt-br/composicao/quem-e-quem/secretaria-de-gestao-de-pessoas-sgp
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário(a) de Gestão de Pessoas'
 - id: br-secretaria-de-gestao-e-inovacao-secretario
@@ -4705,7 +5312,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/gestao/pt-br/composicao/quem-e-quem/secretaria-de-gestao-e-inovacao-seges
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário(a) de Gestão e Inovação'
 - id: br-secretaria-de-governo-digital-secretario
@@ -4727,7 +5334,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/gestao/pt-br/composicao/quem-e-quem/secretaria-de-governo-digital-sgd
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário (a) de Governo Digital'
 - id: br-secretaria-de-relacoes-de-trabalho-secretario
@@ -4749,7 +5356,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/gestao/pt-br/composicao/quem-e-quem/secretaria-de-relacoes-de-trabalho-srt
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário(a) de Relações de Trabalho'
 - id: br-secretaria-de-servicos-compartilhados-secretario
@@ -4771,13 +5378,13 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/gestao/pt-br/composicao/quem-e-quem/secretaria-de-servicos-compartilhados-ssc
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária de Serviços Compartilhados'
 - id: br-secretaria-do-patrimonio-da-uniao-secretario
   type: dept_head
   head_of: br-secretaria-do-patrimonio-da-uniao
-  name: Secretária do Patrimônio da União do Ministério da Gestão e da Inovação em Serviços Públicos
+  name: Secretário do Patrimônio da União do Ministério da Gestão e da Inovação em Serviços Públicos
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -4785,38 +5392,18 @@ positions:
   description: Dirige a Secretaria do Patrimônio da União do Ministério da Gestão e da Inovação em Serviços Públicos, unidade
     de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República
     por indicação do ministro.
-  people:
-  - id: br-p-carolina-gabas-stuchi
-    name: Carolina Gabas Stuchi
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/gestao/pt-br/composicao/quem-e-quem/secretaria-do-patrimonio-da-uniao-spu
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretário(a) do Patrimônio da União'
+  people: []
 - id: br-secretaria-executiva-igualdade-racial-secretario
   type: dept_head
   head_of: br-secretaria-executiva-igualdade-racial
-  name: Secretária-Executiva do Ministério da Igualdade Racial
+  name: Secretário-Executivo do Ministério da Igualdade Racial
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
   cite_url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/D9727.htm
   description: Dirige a Secretaria-Executiva do Ministério da Igualdade Racial, unidade de primeiro nível abaixo do ministro.
     Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República por indicação do ministro.
-  people:
-  - id: br-p-barbara-oliveira-souza
-    name: Bárbara Oliveira Souza
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/igualdaderacial/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária-Executiva'
+  people: []
 - id: br-secretaria-de-gestao-do-sistema-nacional-de-promocao-da-igualdade-racial-secretario
   type: dept_head
   head_of: br-secretaria-de-gestao-do-sistema-nacional-de-promocao-da-igualdade-racial
@@ -4841,18 +5428,7 @@ positions:
   description: Dirige a Secretaria de Polít. p/ Quilombolas, Povos e Comunidades Tradic de Mat. Africana, Povos de Terreiros
     e Ciganos do Ministério da Igualdade Racial, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre
     nomeação e exoneração, provido pelo Presidente da República por indicação do ministro.
-  people:
-  - id: br-p-ronaldo-dos-santos
-    name: Ronaldo dos Santos
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/igualdaderacial/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO DE POLÍTICAS PARA QUILOMBOLAS, POVOS E COMUNIDADES TRADICIONAIS
-      DE MATRIZ AFRICANA, POVOS DE TERREIROS E CIGANOS - SQPT'
+  people: []
 - id: br-secretaria-de-politicas-de-acoes-afirmativas-combate-e-superacao-do-racismo-secretario
   type: dept_head
   head_of: br-secretaria-de-politicas-de-acoes-afirmativas-combate-e-superacao-do-racismo
@@ -4864,18 +5440,7 @@ positions:
   description: Dirige a Secretaria de Políticas de Ações Afirmativas, Combate e Superação do Racismo do Ministério da Igualdade
     Racial, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo
     Presidente da República por indicação do ministro.
-  people:
-  - id: br-p-tiago-santana-da-conceicao
-    name: Tiago Santana da Conceição
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/igualdaderacial/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO DE POLÍTICAS DE AÇÕES AFIRMATIVAS, COMBATE E SUPERAÇÃO
-      DO RACISMO.'
+  people: []
 - id: br-secretaria-executiva-integracao-secretario
   type: dept_head
   head_of: br-secretaria-executiva-integracao
@@ -4895,7 +5460,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mdr/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário-Executivo'
 - id: br-secretaria-nacional-de-fundos-e-instrumentos-financeiros-secretario
@@ -4917,7 +5482,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mdr/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Fundos e Instrumentos Financeiros'
 - id: br-secretaria-nacional-de-politicas-de-desenvolvimento-regional-e-territorial-secretario
@@ -4940,7 +5505,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mdr/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Políticas de Desenvolvimento Regional e Territorial
       – SDR'
@@ -4963,7 +5528,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mdr/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Proteção e Defesa Civil'
 - id: br-secretaria-nacional-de-seguranca-hidrica-secretario
@@ -4985,7 +5550,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mdr/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Segurança Hídrica'
 - id: br-secretaria-executiva-justica-secretario
@@ -5007,7 +5572,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mj/pt-br/acesso-a-informacao/institucional/sumario/quemequem/secretaria-executiva
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário-Executivo - Código: CCE 1.18'
 - id: br-secretaria-nacional-de-acesso-a-justica-secretario
@@ -5029,7 +5594,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mj/pt-br/acesso-a-informacao/institucional/sumario/quemequem/secretaria-de-acesso-a-justica
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária de Acesso à Justiça - Código CCE 1.17'
 - id: br-secretaria-nacional-de-assuntos-legislativos-secretario
@@ -5051,7 +5616,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mj/pt-br/acesso-a-informacao/institucional/sumario/quemequem/secretaria-nacional-de-assuntos-legislativos
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Assuntos Legislativos - Código CCE 1.17'
 - id: br-secretaria-nacional-de-direitos-digitais-secretario
@@ -5073,7 +5638,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mj/pt-br/acesso-a-informacao/institucional/sumario/quemequem/secretaria-direitos-digitais
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Direito Digital - Código: CCE 1.17'
 - id: br-secretaria-nacional-de-justica-secretario
@@ -5090,14 +5655,14 @@ positions:
   people:
   - id: br-p-maria-rosa-guimaraes-loula
     name: Maria Rosa Guimarães Loula
-    started_at: null
+    started_at: '2026-02-18'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/mj/pt-br/acesso-a-informacao/institucional/sumario/quemequem/secretaria-nacional-de-justica
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-13-de-fevereiro-de-2026-687437103
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional de Justiça - Código: CCE 1.17'
+    note: ato de nomeação no DOU em 2026-02-18
 - id: br-secretaria-nacional-de-politicas-penais-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-politicas-penais
@@ -5109,11 +5674,21 @@ positions:
   description: Dirige a Secretaria Nacional de Políticas Penais do Ministério da Justiça e Segurança Pública, unidade de primeiro
     nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República por
     indicação do ministro.
-  people: []
+  people:
+  - id: br-p-rafael-velasco-brandani
+    name: Rafael Velasco Brandani
+    started_at: '2023-01-24'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-23-de-janeiro-de-2023-459688190
+    checked_at: '2026-09-29'
+    verified: false
+    note: ato de nomeação no DOU em 2023-01-24
 - id: br-secretaria-nacional-de-politicas-sobre-drogas-e-gestao-de-ativos-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-politicas-sobre-drogas-e-gestao-de-ativos
-  name: Secretária Nacional de Políticas sobre Drogas e Gestão de Ativos do Ministério da Justiça e Segurança Pública
+  name: Secretário Nacional de Políticas sobre Drogas e Gestão de Ativos do Ministério da Justiça e Segurança Pública
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -5121,22 +5696,11 @@ positions:
   description: Dirige a Secretaria Nacional de Políticas sobre Drogas e Gestão de Ativos do Ministério da Justiça e Segurança
     Pública, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo
     Presidente da República por indicação do ministro.
-  people:
-  - id: br-p-marta-rodriguez-de-assis-machado
-    name: Marta Rodriguez de Assis Machado
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/mj/pt-br/acesso-a-informacao/institucional/sumario/quemequem/secretaria-nacional-de-politicas-sobre-drogas
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional de Políticas sobre Drogas e Gestão de Ativos
-      - Código: CCE 1.17'
+  people: []
 - id: br-secretaria-nacional-de-seguranca-publica-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-seguranca-publica
-  name: Secretário Nacional de Segurança Pública do Ministério da Justiça e Segurança Pública
+  name: Secretária Nacional de Segurança Pública do Ministério da Justiça e Segurança Pública
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -5145,16 +5709,16 @@ positions:
     primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República
     por indicação do ministro.
   people:
-  - id: br-p-francisco-lucas-costa-veloso
-    name: Francisco Lucas Costa Veloso
-    started_at: null
+  - id: br-p-quesia-pereira-cabral
+    name: Quésia Pereira Cabral
+    started_at: '2024-06-26'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/mj/pt-br/acesso-a-informacao/institucional/sumario/quemequem/secretaria-nacional-de-seguranca-publica
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-25-de-junho-de-2024-567938832
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Segurança Pública - Código CCE 1.17'
+    note: ato de nomeação no DOU em 2024-06-26
 - id: br-secretaria-nacional-do-consumidor-secretario
   type: dept_head
   head_of: br-secretaria-nacional-do-consumidor
@@ -5174,7 +5738,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mj/pt-br/acesso-a-informacao/institucional/sumario/quemequem/secretaria-nacional-do-consumidor
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional do Consumidor - Código: CCE 1.17'
 - id: br-secretaria-executiva-pesca-secretario
@@ -5190,14 +5754,14 @@ positions:
   people:
   - id: br-p-lazaro-medeiros-viana-da-costa
     name: Lázaro Medeiros Viana da Costa
-    started_at: null
+    started_at: '2026-04-24'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/mpa/pt-br/acesso-a-informacao/institucional/quem-e-quem-3/secretaria-executiva/gabinete
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-23-de-abril-de-2026-701170171
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretário-Executivo'
+    note: ato de nomeação no DOU em 2026-04-24
 - id: br-secretaria-nacional-de-aquicultura-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-aquicultura
@@ -5212,14 +5776,14 @@ positions:
   people:
   - id: br-p-fernanda-gomes-de-paula
     name: Fernanda Gomes de Paula
-    started_at: null
+    started_at: '2025-04-28'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/mpa/pt-br/acesso-a-informacao/institucional/quem-e-quem-3/secretaria-nacional-de-aquicultura/gabinete
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-25-de-abril-de-2025-626101605
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária'
+    note: ato de nomeação no DOU em 2025-04-28
 - id: br-secretaria-nacional-de-pesca-artesanal-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-pesca-artesanal
@@ -5231,7 +5795,17 @@ positions:
   description: Dirige a Secretaria Nacional de Pesca Artesanal do Ministério da Pesca e Aquicultura, unidade de primeiro nível
     abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República por indicação
     do ministro.
-  people: []
+  people:
+  - id: br-p-cristiano-wellington-noberto-ramalho
+    name: Cristiano Wellington Noberto Ramalho
+    started_at: '2023-01-24'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-23-de-janeiro-de-2023-459688190
+    checked_at: '2026-09-29'
+    verified: false
+    note: ato de nomeação no DOU em 2023-01-24
 - id: br-secretaria-nacional-de-pesca-industrial-amadora-e-esportiva-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-pesca-industrial-amadora-e-esportiva
@@ -5243,21 +5817,11 @@ positions:
   description: Dirige a Secretaria Nacional de Pesca Industrial, Amadora e Esportiva do Ministério da Pesca e Aquicultura,
     unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente
     da República por indicação do ministro.
-  people:
-  - id: br-p-carlos-mello
-    name: Carlos Mello
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/mpa/pt-br/acesso-a-informacao/institucional/quem-e-quem-3/secretaria-nacional-de-pesca-industrial-amadora-e-esportiva/gabinete
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretário'
+  people: []
 - id: br-secretaria-nacional-de-registro-monitoramento-e-pesquisa-da-pesca-e-aquicultura-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-registro-monitoramento-e-pesquisa-da-pesca-e-aquicultura
-  name: Secretária Nacional de Registro, Monitoramento e Pesquisa da Pesca e Aquicultura do Ministério da Pesca e Aquicultura
+  name: Secretário Nacional de Registro, Monitoramento e Pesquisa da Pesca e Aquicultura do Ministério da Pesca e Aquicultura
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -5265,17 +5829,7 @@ positions:
   description: Dirige a Secretaria Nacional de Registro, Monitoramento e Pesquisa da Pesca e Aquicultura do Ministério da
     Pesca e Aquicultura, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração,
     provido pelo Presidente da República por indicação do ministro.
-  people:
-  - id: br-p-carolina-rodrigues-da-costa-doria
-    name: Carolina Rodrigues da Costa Doria
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/mpa/pt-br/acesso-a-informacao/institucional/quem-e-quem-3/secretaria-nacional-de-registro-monitoramento-e-pesquisa-da-pesca-e-aquicultura/gabinete
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária'
+  people: []
 - id: br-secretaria-executiva-previdencia-secretario
   type: dept_head
   head_of: br-secretaria-executiva-previdencia
@@ -5294,7 +5848,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/previdencia/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário-Executivo'
 - id: br-secretaria-de-regime-geral-de-previdencia-social-secretario
@@ -5316,7 +5870,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/previdencia/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Regime Geral de Previdência Social'
 - id: br-secretaria-de-regime-proprio-e-complementar-secretario
@@ -5338,7 +5892,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/previdencia/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Regime Próprio e Complementar'
 - id: br-secretaria-executiva-saude-secretario
@@ -5359,7 +5913,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/saude/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A)-EXECUTIVO(A)'
 - id: br-secretaria-de-atencao-especializada-a-saude-secretario
@@ -5381,7 +5935,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/saude/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE ATENÇÃO ESPECIALIZADA À SAÚDE'
 - id: br-secretaria-de-atencao-primaria-a-saude-secretario
@@ -5402,7 +5956,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/saude/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE ATENÇÃO PRIMÁRIA À SAÚDE'
 - id: br-secretaria-de-ciencia-tecnologia-e-inovacao-em-saude-secretario
@@ -5424,7 +5978,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/saude/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE CIÊNCIA, TECNOLOGIA E INOVAÇÃO EM SAÚDE'
 - id: br-secretaria-de-gestao-do-trabalho-e-da-educacao-na-saude-secretario
@@ -5446,7 +6000,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/saude/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE GESTÃO DO TRABALHO E DA EDUCAÇÃO NA SAÚDE'
 - id: br-secretaria-de-informacao-e-saude-digital-secretario
@@ -5468,7 +6022,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/saude/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIA DE INFORMAÇÃO E SAÚDE DIGITAL'
 - id: br-secretaria-de-saude-indigena-secretario
@@ -5489,7 +6043,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/saude/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE SAÚDE INDÍGENA'
 - id: br-secretaria-de-vigilancia-em-saude-e-ambiente-secretario
@@ -5511,7 +6065,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/saude/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE VIGILÂNCIA EM SAÚDE E AMBIENTE'
 - id: br-secretaria-executiva-cidades-secretario
@@ -5532,7 +6086,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cidades/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária-Executiva'
 - id: br-secretaria-nacional-de-desenvolvimento-urbano-e-metropolitano-secretario
@@ -5554,7 +6108,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cidades/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Desenvolvimento Urbano e Metropolitano'
 - id: br-secretaria-nacional-de-habitacao-secretario
@@ -5575,7 +6129,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cidades/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário'
 - id: br-secretaria-nacional-de-mobilidade-urbana-secretario
@@ -5597,7 +6151,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cidades/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário'
 - id: br-secretaria-nacional-de-periferias-secretario
@@ -5618,7 +6172,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cidades/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário'
 - id: br-secretaria-nacional-de-saneamento-ambiental-secretario
@@ -5640,7 +6194,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/cidades/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Saneamento Ambiental'
 - id: br-secretaria-executiva-comunicacoes-secretario
@@ -5661,7 +6215,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mcom/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária-Executiva'
 - id: br-secretaria-de-radiodifusao-secretario
@@ -5682,7 +6236,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mcom/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Radiodifusão'
 - id: br-secretaria-de-telecomunicacoes-secretario
@@ -5703,7 +6257,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mcom/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Telecomunicações'
 - id: br-secretaria-executiva-mulheres-secretario
@@ -5724,7 +6278,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mulheres/pt-br/composicao/secretaria-executiva/eutalia-barbosa-rodrigues-naves
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária-Executiva'
 - id: br-secretaria-nacional-de-articulacao-intersetorial-e-interfederativa-e-participacao-politica-secretario
@@ -5746,7 +6300,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mulheres/pt-br/composicao/secretaria-nacional-de-articulacao-institucional-acoes-tematicas-e-participacao-politica/sandra-kennedy-viana
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional  de Articulação Intersetorial e Interfederativa
       e Participação Política'
@@ -5769,7 +6323,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mulheres/pt-br/composicao/secretaria-nacional-de-autonomia-economica/joana-celia-dos-passos
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional de Autonomia Econômica e Política de Cuidados'
 - id: br-secretaria-nacional-de-enfrentamento-a-violencia-contra-mulheres-secretario
@@ -5803,7 +6357,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mre/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Controle Interno'
 - id: br-secretaria-geral-das-relacoes-exteriores-secretario
@@ -5825,7 +6379,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mre/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária-Geral das Relações Exteriores'
 - id: br-secretaria-executiva-minas-e-energia-secretario
@@ -5845,8 +6399,8 @@ positions:
     entry_mode: nomeado
     acting: false
     source: oficial
-    source_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    source_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem/quem-e-quem
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO EXECUTIVO'
 - id: br-secretaria-nacional-de-energia-eletrica-secretario
@@ -5867,8 +6421,8 @@ positions:
     entry_mode: nomeado
     acting: false
     source: oficial
-    source_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    source_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem/quem-e-quem
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) NACIONAL DE ENERGIA ELÉTRICA'
 - id: br-secretaria-nacional-de-geologia-mineracao-e-transformacao-mineral-secretario
@@ -5901,8 +6455,8 @@ positions:
     entry_mode: nomeado
     acting: false
     source: oficial
-    source_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    source_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem/quem-e-quem
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO NACIONAL DE PETRÓLEO, GÁS NATURAL E BIOCOMBUSTÍVEIS.'
 - id: br-secretaria-nacional-de-transicao-energetica-e-planejamento-secretario
@@ -5923,8 +6477,8 @@ positions:
     entry_mode: nomeado
     acting: false
     source: oficial
-    source_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    source_url: https://www.gov.br/mme/pt-br/composicao/quem-e-quem/quem-e-quem
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIA NACIONAL DE TRANSIÇÃO ENERGÉTICA E PLANEJAMENTO'
 - id: br-secretaria-executiva-portos-e-aeroportos-secretario
@@ -5945,7 +6499,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/portos-e-aeroportos/pt-br/composicao/secretaria-executiva-subsecretaria-de-gestao-e-administracao/fabio-lavor-teixeira
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária-Executiva'
 - id: br-secretaria-nacional-de-aviacao-civil-secretario
@@ -5967,7 +6521,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/portos-e-aeroportos/pt-br/composicao/secretaria-nacional-de-aviacao-civil/daniel-ramos-longo
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Aviação Civil'
 - id: br-secretaria-nacional-de-hidrovias-e-navegacao-secretario
@@ -5989,7 +6543,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/portos-e-aeroportos/pt-br/composicao/secretaria-nacional-de-hidrovias-e-navegacao/otto-luiz-burlier-da-silveira-filho
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Hidrovias e Navegação'
 - id: br-secretaria-nacional-de-portos-secretario
@@ -6011,7 +6565,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/portos-e-aeroportos/pt-br/composicao/secretaria-nacional-de-portos/alex-sandro-de-avila
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretario Nacional de Portos'
 - id: br-secretaria-executiva-desenvolvimento-agrario-secretario
@@ -6033,7 +6587,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mda/pt-br/acesso-a-informacao/institucional/quem-e-quem/secretaria-executiva
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Executivo'
 - id: br-secretaria-de-abastecimento-cooperativismo-e-soberania-alimentar-secretario
@@ -6056,7 +6610,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mda/pt-br/acesso-a-informacao/institucional/quem-e-quem/secretaria-de-abastecimento-cooperativismo-e-soberania-alimentar
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária de Abastecimento, Cooperativismo e Soberania Alimentar'
 - id: br-secretaria-de-agricultura-familiar-e-agroecologia-secretario
@@ -6078,7 +6632,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mda/pt-br/acesso-a-informacao/institucional/quem-e-quem/secretaria-de-agricultura-familiar-e-agroecologia
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Agricultura Familiar e Agroecologia'
 - id: br-secretaria-de-governanca-fundiaria-desenvolvimento-territorial-e-socioambiental-secretario
@@ -6101,7 +6655,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mda/pt-br/acesso-a-informacao/institucional/quem-e-quem/secretaria-de-governanca-fundiaria-desenvolvimento-territorial-e-socioambiental
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário'
 - id: br-secretaria-de-territorios-e-sistemas-produtivos-quilombolas-e-tradicionais-secretario
@@ -6124,7 +6678,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mda/pt-br/acesso-a-informacao/institucional/quem-e-quem/secretaria-de-territorios-e-sistemas-produtivos-quilombolas-e-tradicionais
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário'
 - id: br-secretaria-executiva-industria-e-comercio-secretario
@@ -6146,7 +6700,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mdic/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A)-EXECUTIVO(A) DA SECRETARIA-EXECUTIVA'
 - id: br-secretaria-de-competitividade-e-politica-regulatoria-secretario
@@ -6168,7 +6722,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mdic/pt-br/composicao/scpr
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário'
 - id: br-secretaria-de-comercio-exterior-secretario
@@ -6190,7 +6744,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mdic/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE COMÉRCIO EXTERIOR'
 - id: br-secretaria-de-desenvolvimento-industrial-inovacao-comercio-e-servicos-secretario
@@ -6213,7 +6767,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mdic/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE DESENVOLVIMENTO INDUSTRIAL, INOVAÇÃO, COMÉRCIO E
       SERVIÇOS'
@@ -6237,7 +6791,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mdic/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE ECONOMIA VERDE, DESCARBONIZAÇÃO E BIOINDÚSTRIA'
 - id: br-secretaria-executiva-desenvolvimento-social-secretario
@@ -6259,7 +6813,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mds/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A)-EXECUTIVO(A)'
 - id: br-secretaria-extraordinaria-de-combate-a-pobreza-e-a-fome-secretario
@@ -6282,7 +6836,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mds/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) EXTRAORDINÁRIO(A) DE COMBATE À POBREZA E À FOME'
 - id: br-secretaria-nacional-da-politica-de-cuidados-e-familia-secretario
@@ -6305,7 +6859,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mds/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) NACIONAL DE CUIDADOS E FAMÍLIA'
 - id: br-secretaria-nacional-de-assistencia-social-secretario
@@ -6328,7 +6882,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mds/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) NACIONAL DE ASSISTÊNCIA SOCIAL'
 - id: br-secretaria-nacional-de-beneficios-assistenciais-secretario
@@ -6351,7 +6905,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mds/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário(a) Nacional de Benefícios Assistenciais'
 - id: br-secretaria-nacional-de-integracao-e-articulacao-de-plataformas-sociais-eletronicas-secretario
@@ -6374,7 +6928,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mds/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário(a) Nacional de Integração e Articulação de Plataformas
       Sociais Eletrônicas'
@@ -6398,7 +6952,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mds/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário(a) Nacional de Renda e Cidadania'
 - id: br-secretaria-nacional-de-seguranca-alimentar-e-nutricional-secretario
@@ -6421,7 +6975,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mds/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) NACIONAL DE SEGURANÇA ALIMENTAR E NUTRICIONAL'
 - id: br-secretaria-de-avaliacao-gestao-da-informacao-e-cadastro-unico-secretario
@@ -6444,7 +6998,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mds/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE AVALIAÇÃO, GESTÃO DA INFORMAÇÃO E CADASTRO ÚNICO'
 - id: br-secretaria-de-inclusao-socioeconomica-secretario
@@ -6466,7 +7020,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mds/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) DE INCLUSÃO SOCIOECONÔMICA'
 - id: br-secretaria-executiva-empreendedorismo-secretario
@@ -6480,7 +7034,17 @@ positions:
   description: Dirige a Secretaria-Executiva do Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte,
     unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente
     da República por indicação do ministro.
-  people: []
+  people:
+  - id: br-p-renato-soares-peres-ferreira
+    name: Renato Soares Peres Ferreira
+    started_at: '2023-11-24'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-23-de-novembro-de-2023-525515335
+    checked_at: '2026-09-29'
+    verified: false
+    note: ato de nomeação no DOU em 2023-11-24
 - id: br-secretaria-nacional-de-ambiente-de-negocios-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-ambiente-de-negocios
@@ -6517,21 +7081,11 @@ positions:
   cite_url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/D9727.htm
   description: Dirige a Secretaria-Executiva do Ministério do Esporte, unidade de primeiro nível abaixo do ministro. Cargo
     comissionado de livre nomeação e exoneração, provido pelo Presidente da República por indicação do ministro.
-  people:
-  - id: br-p-ivo-de-almeida-ico-filho
-    name: Ivo de Almeida Icó Filho
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/esporte/pt-br/composicao/secretaria-executiva/a-secretaria/ivo-de-almeida-ico-filho
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretário-Executivo'
+  people: []
 - id: br-secretaria-extraordinaria-da-copa-do-mundo-de-futebol-feminino-2027-secretario
   type: dept_head
   head_of: br-secretaria-extraordinaria-da-copa-do-mundo-de-futebol-feminino-2027
-  name: Secretária Extraordinária da Copa do Mundo de Futebol Feminino 2027 do Ministério do Esporte
+  name: Secretário Extraordinário da Copa do Mundo de Futebol Feminino 2027 do Ministério do Esporte
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -6539,18 +7093,7 @@ positions:
   description: Dirige a Secretaria Extraordinária da Copa do Mundo de Futebol Feminino 2027 do Ministério do Esporte, unidade
     de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República
     por indicação do ministro.
-  people:
-  - id: br-p-juliana-picoli-agatte
-    name: Juliana Picoli Agatte
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/esporte/pt-br/composicao/secretaria-extraordinaria-para-a-copa-do-mundo-de-futebol-feminino/julliana-picoli-agatte
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária Extraordinária para a Copa do Mundo de Futebol Feminino
-      2027'
+  people: []
 - id: br-secretaria-nacional-de-apostas-esportivas-e-de-desenvolvimento-economico-do-esporte-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-apostas-esportivas-e-de-desenvolvimento-economico-do-esporte
@@ -6562,22 +7105,11 @@ positions:
   description: Dirige a Secretaria Nacional de Apostas Esportivas e de Desenvolvimento Econômico do Esporte do Ministério
     do Esporte, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo
     Presidente da República por indicação do ministro.
-  people:
-  - id: br-p-giovanni-rocco-neto
-    name: Giovanni Rocco Neto
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/esporte/pt-br/composicao/secretaria-nacional-de-apostas-esportivas-e-de-desenvolvimento-economico-do-esporte/Giovanni%20Rocco%20Neto
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Apostas Esportivas e de Desenvolvimento Econômico
-      do Esporte'
+  people: []
 - id: br-secretaria-nacional-de-esporte-amador-educacao-lazer-e-inclusao-social-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-esporte-amador-educacao-lazer-e-inclusao-social
-  name: Secretária Nacional de Esporte Amador, Educação, Lazer e Inclusão Social do Ministério do Esporte
+  name: Secretário Nacional de Esporte Amador, Educação, Lazer e Inclusão Social do Ministério do Esporte
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -6585,22 +7117,11 @@ positions:
   description: Dirige a Secretaria Nacional de Esporte Amador, Educação, Lazer e Inclusão Social do Ministério do Esporte,
     unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente
     da República por indicação do ministro.
-  people:
-  - id: br-p-ludmila-ferreira-martins-costa-abadia
-    name: Ludmila Ferreira Martins Costa Abadia
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/esporte/pt-br/composicao/secretaria-nacional-de-esporte-amador-educacao-lazer-e-inclusao-social/ludmila-ferreira-martins-costa-abadia
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional de Esporte Amador, Educação, Lazer e Inclusão
-      Social'
+  people: []
 - id: br-secretaria-nacional-de-excelencia-esportiva-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-excelencia-esportiva
-  name: Secretária Nacional de Excelência Esportiva do Ministério do Esporte
+  name: Secretário Nacional de Excelência Esportiva do Ministério do Esporte
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -6608,17 +7129,7 @@ positions:
   description: Dirige a Secretaria Nacional de Excelência Esportiva do Ministério do Esporte, unidade de primeiro nível abaixo
     do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República por indicação do
     ministro.
-  people:
-  - id: br-p-iziane-castro-marques-de-oliveira
-    name: Iziane Castro Marques de Oliveira
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/esporte/pt-br/composicao/Secretaria-Nacional-de-Excelencia-Esportiva/Iziane-Castro-Marques
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional de Excelência Esportiva'
+  people: []
 - id: br-secretaria-nacional-de-futebol-e-defesa-dos-direitos-do-torcedor-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-futebol-e-defesa-dos-direitos-do-torcedor
@@ -6631,17 +7142,16 @@ positions:
     de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República
     por indicação do ministro.
   people:
-  - id: br-p-patrick-correa
-    name: Patrick Corrêa
-    started_at: null
+  - id: br-p-ronaldo-cabral-tavares
+    name: Ronaldo Cabral Tavares
+    started_at: '2023-03-31'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/esporte/pt-br/composicao/secretaria-nacional-de-futebol-e-defesa-dos-direitos-do-torcedor/patrick-correa
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-30-de-marco-de-2023-474137733
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Futebol e Defesa dos Direitos do Torcedor
-      - SNFDT'
+    note: ato de nomeação no DOU em 2023-03-31
 - id: br-secretaria-nacional-de-paradesporto-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-paradesporto
@@ -6652,21 +7162,11 @@ positions:
   cite_url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/D9727.htm
   description: Dirige a Secretaria Nacional de Paradesporto do Ministério do Esporte, unidade de primeiro nível abaixo do
     ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República por indicação do ministro.
-  people:
-  - id: br-p-fabio-augusto-lima-de-araujo
-    name: Fabio Augusto Lima de Araujo
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/esporte/pt-br/composicao/secretaria-nacional-de-paradesporto/fabio-augusto-lima-de-araujo
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Paradesporto - SNPAR'
+  people: []
 - id: br-secretaria-executiva-meio-ambiente-secretario
   type: dept_head
   head_of: br-secretaria-executiva-meio-ambiente
-  name: Secretária-Executiva do Ministério do Meio Ambiente e Mudança do Clima
+  name: Secretário-Executivo do Ministério do Meio Ambiente e Mudança do Clima
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -6674,17 +7174,7 @@ positions:
   description: Dirige a Secretaria-Executiva do Ministério do Meio Ambiente e Mudança do Clima, unidade de primeiro nível
     abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República por indicação
     do ministro.
-  people:
-  - id: br-p-anna-flavia-de-senna-franco
-    name: Anna Flávia de Senna Franco
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/mma/pt-br/composicao/secex/quem-e-quem
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária-Executiva'
+  people: []
 - id: br-secretaria-extraordinaria-de-controle-do-desmatamento-e-ordenamento-ambiental-territorial-secretario
   type: dept_head
   head_of: br-secretaria-extraordinaria-de-controle-do-desmatamento-e-ordenamento-ambiental-territorial
@@ -6697,21 +7187,11 @@ positions:
   description: Dirige a Secretaria Extraordinária de Controle do Desmatamento e Ordenamento Ambiental Territorial do Ministério
     do Meio Ambiente e Mudança do Clima, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação
     e exoneração, provido pelo Presidente da República por indicação do ministro.
-  people:
-  - id: br-p-andre-rodolfo-de-lima
-    name: André Rodolfo de Lima
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/mma/pt-br/composicao/secd/quem-e-quem
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretário'
+  people: []
 - id: br-secretaria-nacional-de-biodiversidade-florestas-e-direitos-animais-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-biodiversidade-florestas-e-direitos-animais
-  name: Secretária Nacional de Biodiversidade, Florestas e Direitos Animais do Ministério do Meio Ambiente e Mudança do Clima
+  name: Secretário Nacional de Biodiversidade, Florestas e Direitos Animais do Ministério do Meio Ambiente e Mudança do Clima
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -6719,21 +7199,11 @@ positions:
   description: Dirige a Secretaria Nacional de Biodiversidade, Florestas e Direitos Animais do Ministério do Meio Ambiente
     e Mudança do Clima, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido
     pelo Presidente da República por indicação do ministro.
-  people:
-  - id: br-p-rita-de-cassia-guimaraes-mesquita
-    name: Rita de Cássia Guimarães Mesquita
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/mma/pt-br/composicao/sbio/quem-e-quem
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária'
+  people: []
 - id: br-secretaria-nacional-de-bioeconomia-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-bioeconomia
-  name: Secretária Nacional de Bioeconomia do Ministério do Meio Ambiente e Mudança do Clima
+  name: Secretário Nacional de Bioeconomia do Ministério do Meio Ambiente e Mudança do Clima
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -6741,17 +7211,7 @@ positions:
   description: Dirige a Secretaria Nacional de Bioeconomia do Ministério do Meio Ambiente e Mudança do Clima, unidade de primeiro
     nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República por
     indicação do ministro.
-  people:
-  - id: br-p-carina-mendonca-pimenta
-    name: Carina Mendonça Pimenta
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/mma/pt-br/composicao/sbc/quem-e-quem
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária'
+  people: []
 - id: br-secretaria-nacional-de-meio-ambiente-urbano-recursos-hidricos-e-qualidade-ambiental-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-meio-ambiente-urbano-recursos-hidricos-e-qualidade-ambiental
@@ -6772,7 +7232,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mma/pt-br/composicao/sqa/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário'
 - id: br-secretaria-nacional-de-mudanca-do-clima-secretario
@@ -6794,7 +7254,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/mma/pt-br/composicao/smc/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário'
 - id: br-secretaria-nacional-de-povos-e-comunidades-tradicionais-e-desenvolvimento-rural-sustentavel-secretario
@@ -6811,15 +7271,15 @@ positions:
     e exoneração, provido pelo Presidente da República por indicação do ministro.
   people:
   - id: br-p-edel-nazare-santiago-de-moraes
-    name: Edel Nazaré Santiago de Moraes
-    started_at: null
+    name: Edel Nazare Santiago de Moraes
+    started_at: '2023-01-31'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/mma/pt-br/composicao/snpct/quem-e-quem
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-30-de-janeiro-de-2023-461079074
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária'
+    note: ato de nomeação no DOU em 2023-01-31
 - id: br-secretaria-executiva-planejamento-secretario
   type: dept_head
   head_of: br-secretaria-executiva-planejamento
@@ -6838,7 +7298,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/planejamento/pt-br/composicao/secretaria-executiva/gustavo-jose-de-guimaraes-e-souza
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário-Executivo do Ministério do Planejamento e Orçamento'
 - id: br-secretaria-nacional-de-planejamento-secretario
@@ -6860,7 +7320,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/planejamento/pt-br/composicao/secretaria-nacional-de-planejamento/tatiana-lemos-sandim
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional de Planejamento'
 - id: br-secretaria-de-articulacao-institucional-secretario
@@ -6882,7 +7342,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/planejamento/pt-br/composicao/secretaria-de-articulacao-institucional/wagner-artur-de-oliveira-cabral
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Articulação Institucional'
 - id: br-secretaria-de-assuntos-internacionais-e-desenvolvimento-secretario
@@ -6904,7 +7364,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/planejamento/pt-br/composicao/secretaria-de-assuntos-internacionais-e-desenvolvimento/antonio-negromonte-nascimento-junior-1
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Assuntos Internacionais e Desenvolvimento'
 - id: br-secretaria-de-monitoramento-e-avaliacao-de-politicas-publicas-secretario
@@ -6926,7 +7386,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/planejamento/pt-br/composicao/secretaria-de-monitoramento-e-avaliacao-de-politicas-publicas-e-assuntos-economicos/otavio-augusto-ferreira-ventura
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Monitoramento e Avaliação de Políticas Públicas'
 - id: br-secretaria-de-orcamento-federal-secretario
@@ -6948,7 +7408,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/planejamento/pt-br/composicao/secretaria-de-orcamento-federal/clayton-luiz-montes
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Orçamento Federal'
 - id: br-secretaria-executiva-trabalho-secretario
@@ -6969,7 +7429,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/trabalho-e-emprego/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário-Executivo'
 - id: br-secretaria-nacional-de-economia-popular-e-solidaria-secretario
@@ -7003,7 +7463,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/trabalho-e-emprego/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Qualificação, Emprego e Juventude'
 - id: br-secretaria-de-inspecao-do-trabalho-secretario
@@ -7025,7 +7485,7 @@ positions:
     acting: true
     source: oficial
     source_url: https://www.gov.br/trabalho-e-emprego/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'substituto(a)/interino(a) segundo a página oficial; página Quem é quem do órgão; cargo na página: Secretário de
       Inspeção do Trabalho (Substituto)'
@@ -7048,7 +7508,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/trabalho-e-emprego/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Proteção ao Trabalhador - SPT'
 - id: br-secretaria-de-relacoes-do-trabalho-secretario
@@ -7070,7 +7530,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/trabalho-e-emprego/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Relações do Trabalho'
 - id: br-secretaria-executiva-turismo-secretario
@@ -7083,7 +7543,17 @@ positions:
   cite_url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/D9727.htm
   description: Dirige a Secretaria-Executiva do Ministério do Turismo, unidade de primeiro nível abaixo do ministro. Cargo
     comissionado de livre nomeação e exoneração, provido pelo Presidente da República por indicação do ministro.
-  people: []
+  people:
+  - id: br-p-caio-martins-franco
+    name: Caio Martins Franco
+    started_at: '2023-12-29'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portaria-de-pessoal-mtur-n-466-de-28-de-dezembro-de-2023-534422651
+    checked_at: '2026-09-29'
+    verified: false
+    note: ato de nomeação no DOU em 2023-12-29
 - id: br-secretaria-nacional-de-infraestrutura-credito-e-investimentos-no-turismo-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-infraestrutura-credito-e-investimentos-no-turismo
@@ -7103,14 +7573,14 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/turismo/pt-br/composicao/secretaria-nacional-de-infraestrutura-turistica-1
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO NACIONAL DE INFRAESTRUTURA, CRÉDITO E INVESTIMENTO NO
       TURISMO'
 - id: br-secretaria-nacional-de-politicas-de-turismo-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-politicas-de-turismo
-  name: Secretário Nacional de Políticas de Turismo do Ministério do Turismo
+  name: Secretária Nacional de Políticas de Turismo do Ministério do Turismo
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -7119,16 +7589,16 @@ positions:
     do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República por indicação do
     ministro.
   people:
-  - id: br-p-augusto-lira-da-rocha
-    name: Augusto Lira da Rocha
-    started_at: null
+  - id: br-p-maria-fernanda-mascarenhas-dos-santos-melis
+    name: Maria Fernanda Mascarenhas Dos Santos Melis
+    started_at: '2026-08-28'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/turismo/pt-br/composicao/secretaria-nacional-de-desenvolvimento-e-competitividade-do-turismo-1
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portaria-de-pessoal-gm/mtur-n-27-de-26-de-agosto-de-2026-728533730
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO(A) NACIONAL DE POLÍTICAS DE TURISMO'
+    note: ato de nomeação no DOU em 2026-08-28
 - id: br-secretaria-executiva-direitos-humanos-secretario
   type: dept_head
   head_of: br-secretaria-executiva-direitos-humanos
@@ -7141,16 +7611,16 @@ positions:
     abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República por indicação
     do ministro.
   people:
-  - id: br-p-caroline-dias-dos-reis
-    name: Caroline Dias dos Reis
-    started_at: null
+  - id: br-p-janine-mello-dos-santos
+    name: Janine Mello Dos Santos
+    started_at: '2024-09-27'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/mdh/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decretos-de-26-de-setembro-de-2024-586915261
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária-Executiva'
+    note: ato de nomeação no DOU em 2024-09-27
 - id: br-secretaria-nacional-de-promocao-e-defesa-dos-direitos-humanos-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-promocao-e-defesa-dos-direitos-humanos
@@ -7163,16 +7633,16 @@ positions:
     da Cidadania, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido
     pelo Presidente da República por indicação do ministro.
   people:
-  - id: br-p-tassiana-cunha-carvalho
-    name: Tassiana Cunha Carvalho
-    started_at: null
+  - id: br-p-luana-maria-guimaraes-castelo-branco-medeiros
+    name: Luana Maria Guimarães Castelo Branco Medeiros
+    started_at: '2026-06-29'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/mdh/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-26-de-junho-de-2026-715197130
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional'
+    note: ato de nomeação no DOU em 2026-06-29
 - id: br-secretaria-nacional-dos-direitos-da-crianca-e-do-adolescente-secretario
   type: dept_head
   head_of: br-secretaria-nacional-dos-direitos-da-crianca-e-do-adolescente
@@ -7184,7 +7654,17 @@ positions:
   description: Dirige a Secretaria Nacional dos Direitos da Criança e do Adolescente do Ministério dos Direitos Humanos e
     da Cidadania, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido
     pelo Presidente da República por indicação do ministro.
-  people: []
+  people:
+  - id: br-p-fabio-meirelles-hardman-de-castro
+    name: Fábio Meirelles Hardman de Castro
+    started_at: '2026-09-24'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portaria-n-1.056-de-23-de-setembro-de-2026-733755488
+    checked_at: '2026-09-29'
+    verified: false
+    note: ato de nomeação no DOU em 2026-09-24
 - id: br-secretaria-nacional-dos-direitos-da-pessoa-idosa-secretario
   type: dept_head
   head_of: br-secretaria-nacional-dos-direitos-da-pessoa-idosa
@@ -7197,20 +7677,20 @@ positions:
     unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente
     da República por indicação do ministro.
   people:
-  - id: br-p-alexandre-da-silva
-    name: Alexandre da Silva
-    started_at: null
+  - id: br-p-kenio-costa-de-lima
+    name: Kenio Costa de Lima
+    started_at: '2024-06-26'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/mdh/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-25-de-junho-de-2024-567970527
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional'
+    note: ato de nomeação no DOU em 2024-06-26
 - id: br-secretaria-nacional-dos-direitos-da-pessoa-com-deficiencia-secretario
   type: dept_head
   head_of: br-secretaria-nacional-dos-direitos-da-pessoa-com-deficiencia
-  name: Secretária Nacional dos Direitos da Pessoa com Deficiência do Ministério dos Direitos Humanos e da Cidadania
+  name: Secretário Nacional dos Direitos da Pessoa com Deficiência do Ministério dos Direitos Humanos e da Cidadania
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -7218,21 +7698,11 @@ positions:
   description: Dirige a Secretaria Nacional dos Direitos da Pessoa com Deficiência do Ministério dos Direitos Humanos e da
     Cidadania, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo
     Presidente da República por indicação do ministro.
-  people:
-  - id: br-p-isadora-rodrigues-nascimento-santos
-    name: Isadora Rodrigues Nascimento Santos
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/mdh/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional'
+  people: []
 - id: br-secretaria-nacional-dos-direitos-das-pessoas-lgbtqia-secretario
   type: dept_head
   head_of: br-secretaria-nacional-dos-direitos-das-pessoas-lgbtqia
-  name: Secretária Nacional dos Direitos das Pessoas LGBTQIA+ do Ministério dos Direitos Humanos e da Cidadania
+  name: Secretário Nacional dos Direitos das Pessoas LGBTQIA+ do Ministério dos Direitos Humanos e da Cidadania
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -7240,17 +7710,7 @@ positions:
   description: Dirige a Secretaria Nacional dos Direitos das Pessoas LGBTQIA+ do Ministério dos Direitos Humanos e da Cidadania,
     unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente
     da República por indicação do ministro.
-  people:
-  - id: br-p-symmy-larrat-brito-de-carvalho
-    name: Symmy Larrat Brito de Carvalho
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/mdh/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional'
+  people: []
 - id: br-secretaria-executiva-povos-indigenas-secretario
   type: dept_head
   head_of: br-secretaria-executiva-povos-indigenas
@@ -7264,18 +7724,18 @@ positions:
   people:
   - id: br-p-marcos-vesolosquzki
     name: Marcos Vesolosquzki
-    started_at: null
+    started_at: '2026-04-29'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/povosindigenas/pt-br/composicao/ministro-e-orgaos-de-assistencia-direta/secretaria-executiva/marcos-kaingang
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-28-de-abril-de-2026-702134364
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretário-Executivo'
+    note: ato de nomeação no DOU em 2026-04-29
 - id: br-secretaria-nacional-de-articulacao-e-promocao-de-direitos-indigenas-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-articulacao-e-promocao-de-direitos-indigenas
-  name: Secretária Nacional de Articulação e Promoção de Direitos Indígenas do Ministério dos Povos Indígenas
+  name: Secretário Nacional de Articulação e Promoção de Direitos Indígenas do Ministério dos Povos Indígenas
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -7283,17 +7743,7 @@ positions:
   description: Dirige a Secretaria Nacional de Articulação e Promoção de Direitos Indígenas do Ministério dos Povos Indígenas,
     unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente
     da República por indicação do ministro.
-  people:
-  - id: br-p-giovana-cruz-mandulao
-    name: Giovana Cruz Mandulão
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/povosindigenas/pt-br/composicao/secretaria-de-articulacao-e-promocao-de-direitos-indigenas/giovana-cruz-mandulao
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional de Articulação e Promoção de Direitos Indígenas'
+  people: []
 - id: br-secretaria-nacional-de-direitos-territoriais-indigenas-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-direitos-territoriais-indigenas
@@ -7306,20 +7756,20 @@ positions:
     de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República
     por indicação do ministro.
   people:
-  - id: br-p-edilena-krikati
-    name: Edilena Krikati
-    started_at: null
+  - id: br-p-edilena-ehhuc-torino-krikati
+    name: Edilena Ehhuc Torino Krikati
+    started_at: '2026-04-30'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/povosindigenas/pt-br/composicao/secretaria-de-direitos-ambientais-e-territoriais-indigenas/edilena-krikati
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-29-de-abril-de-2026-702436017
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional de Direitos Territoriais Indígenas'
+    note: ato de nomeação no DOU em 2026-04-30
 - id: br-secretaria-nacional-de-gestao-ambiental-e-territorial-indigena-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-gestao-ambiental-e-territorial-indigena
-  name: Secretária Nacional de Gestão Ambiental e Territorial Indígena do Ministério dos Povos Indígenas
+  name: Secretário Nacional de Gestão Ambiental e Territorial Indígena do Ministério dos Povos Indígenas
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -7327,17 +7777,7 @@ positions:
   description: Dirige a Secretaria Nacional de Gestão Ambiental e Territorial Indígena do Ministério dos Povos Indígenas,
     unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente
     da República por indicação do ministro.
-  people:
-  - id: br-p-ceica-pitaguary
-    name: Ceiça Pitaguary
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/povosindigenas/pt-br/composicao/secretaria-de-gestao-ambiental-e-territorial-indigena/ceica-pitaguary
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional de Gestão Ambiental e Territorial Indígena'
+  people: []
 - id: br-secretaria-executiva-transportes-secretario
   type: dept_head
   head_of: br-secretaria-executiva-transportes
@@ -7356,7 +7796,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/transportes/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário-Executivo'
 - id: br-secretaria-nacional-de-transporte-ferroviario-secretario
@@ -7378,7 +7818,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/transportes/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Transporte Ferroviário'
 - id: br-secretaria-nacional-de-transporte-rodoviario-secretario
@@ -7400,7 +7840,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/transportes/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária Nacional de Transporte Rodoviário'
 - id: br-secretaria-nacional-de-transito-secretario
@@ -7421,7 +7861,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/transportes/pt-br/composicao/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Nacional de Trânsito'
 - id: br-secretaria-executiva-cc-pr-secretario
@@ -7442,7 +7882,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/casacivil/pt-br/composicao/secretaria-executiva/quem-e-quem-1
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária-Executiva'
 - id: br-secretaria-especial-de-analise-governamental-secretario
@@ -7464,7 +7904,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/casacivil/pt-br/composicao/secretaria_especial_de_analise_governamental/quem-e-quem-1
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária Especial'
 - id: br-secretaria-especial-do-programa-de-aceleracao-do-crescimento-secretario
@@ -7479,16 +7919,16 @@ positions:
     unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente
     da República por indicação do ministro.
   people:
-  - id: br-p-roberto-nami-garibe-filho
-    name: Roberto Nami Garibe Filho
-    started_at: null
+  - id: br-p-mauricio-muniz-barretto-de-carvalho
+    name: Maurício Muniz Barretto de Carvalho
+    started_at: '2024-09-26'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/casacivil/pt-br/composicao/secretaria-especial-do-programa-de-aceleracao-do-crescimento/quem-e-quem
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-25-de-setembro-de-2024-586731613
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: Secretário Especial'
+    note: ato de nomeação no DOU em 2024-09-26
 - id: br-secretaria-especial-do-programa-de-parcerias-de-investimentos-secretario
   type: dept_head
   head_of: br-secretaria-especial-do-programa-de-parcerias-de-investimentos
@@ -7508,7 +7948,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/casacivil/pt-br/composicao/secretaria-especial-para-o-programa-de-parcerias-e-investimentos/quem-e-quem-1
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Especial'
 - id: br-secretaria-especial-para-assuntos-juridicos-secretario
@@ -7530,7 +7970,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/casacivil/pt-br/composicao/secretaria-especial-para-assunto-juridicos/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário Especial para Assuntos Jurídicos'
 - id: br-secretaria-de-articulacao-e-monitoramento-secretario
@@ -7564,7 +8004,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/gsi/pt-br/acesso-a-informacao/institucional/principais-cargos-e-respectivos-ocupantes
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário-Executivo'
 - id: br-secretaria-de-acompanhamento-e-gestao-de-assuntos-estrategicos-secretario
@@ -7599,7 +8039,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/gsi/pt-br/acesso-a-informacao/institucional/principais-cargos-e-respectivos-ocupantes
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Coordenação e Assuntos Aeroespaciais'
 - id: br-secretaria-de-seguranca-presidencial-secretario
@@ -7621,7 +8061,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/gsi/pt-br/acesso-a-informacao/institucional/principais-cargos-e-respectivos-ocupantes
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: SECRETARIO'
 - id: br-secretaria-de-seguranca-da-informacao-e-cibernetica-secretario
@@ -7643,7 +8083,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/gsi/pt-br/acesso-a-informacao/institucional/principais-cargos-e-respectivos-ocupantes
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário de Segurança da Informação e Cibernética'
 - id: br-secretaria-executiva-secom-pr-secretario
@@ -7665,7 +8105,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/secom/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária-Executivo'
 - id: br-secretaria-de-comunicacao-institucional-secretario
@@ -7687,7 +8127,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/secom/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária'
 - id: br-secretaria-de-estrategias-e-redes-secretario
@@ -7721,7 +8161,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/secom/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário'
 - id: br-secretaria-de-politicas-digitais-secretario
@@ -7743,7 +8183,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/secom/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretário'
 - id: br-secretaria-de-producao-e-divulgacao-de-conteudo-audiovisual-secretario
@@ -7766,7 +8206,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/secom/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária'
 - id: br-secretaria-de-publicidade-e-patrocinios-secretario
@@ -7788,7 +8228,7 @@ positions:
     acting: false
     source: oficial
     source_url: https://www.gov.br/secom/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-09-22'
+    checked_at: '2026-09-29'
     verified: false
     note: 'página Quem é quem do órgão; cargo na página: Secretária'
 - id: br-secretaria-executiva-sri-pr-secretario
@@ -7802,21 +8242,11 @@ positions:
   description: Dirige a Secretaria-Executiva do Secretaria de Relações Institucionais da Presidência da República, unidade
     de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República
     por indicação do ministro.
-  people:
-  - id: br-p-marcelo-almeida-cunha-costa
-    name: Marcelo Almeida Cunha Costa
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/sri/pt-br/composicao/secretaria-executiva/quem-e-quem
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO-EXECUTIVO-SE/SRI/PR'
+  people: []
 - id: br-secretaria-especial-de-acompanhamento-governamental-secretario
   type: dept_head
   head_of: br-secretaria-especial-de-acompanhamento-governamental
-  name: Secretário Especial de Acompanhamento Governamental da Secretaria de Relações Institucionais da Presidência da República
+  name: Secretária Especial de Acompanhamento Governamental da Secretaria de Relações Institucionais da Presidência da República
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -7825,16 +8255,16 @@ positions:
     da República, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido
     pelo Presidente da República por indicação do ministro.
   people:
-  - id: br-p-andre-de-oliveira-bucar
-    name: André de Oliveira Bucar
-    started_at: null
+  - id: br-p-laina-peternella-ferreira
+    name: Laina Peternella Ferreira
+    started_at: '2026-04-30'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/sri/pt-br/composicao/secretaria-especial-de-articulacao-social/quem-e-quem
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portaria-n-18-de-29-de-abril-de-2026-702495269
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO ESPECIAL DE ACOMPANHAMENTO GOVERNAMENTAL - SEAG/SRI/PR'
+    note: ato de nomeação no DOU em 2026-04-30
 - id: br-secretaria-especial-de-assuntos-federativos-secretario
   type: dept_head
   head_of: br-secretaria-especial-de-assuntos-federativos
@@ -7847,16 +8277,16 @@ positions:
     da República, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido
     pelo Presidente da República por indicação do ministro.
   people:
-  - id: br-p-jose-ilario-goncalves-marques
-    name: José Ilário Gonçalves Marques
-    started_at: null
+  - id: br-p-elizeu-xavier-pinheiro-neto
+    name: Elizeu Xavier Pinheiro Neto
+    started_at: '2026-05-22'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/sri/pt-br/composicao/secretaria-especial-de-assuntos-federativos/quem-e-quem
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-21-de-maio-de-2026-707203139
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO ESPECIAL DE ASSUNTOS FEDERATIVOS - SEAF/SRI/PR'
+    note: ato de nomeação no DOU em 2026-05-22
 - id: br-secretaria-especial-de-assuntos-parlamentares-secretario
   type: dept_head
   head_of: br-secretaria-especial-de-assuntos-parlamentares
@@ -7869,20 +8299,20 @@ positions:
     da República, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido
     pelo Presidente da República por indicação do ministro.
   people:
-  - id: br-p-gerson-luis-bittencourt
-    name: Gerson Luis Bittencourt
-    started_at: null
+  - id: br-p-rute-maria-de-oliveira
+    name: Rute Maria de Oliveira
+    started_at: '2026-01-29'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/sri/pt-br/composicao/secretaria-especial-de-assuntos-parlamentares/quem-e-quem
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-28-de-janeiro-de-2026-683894519
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO ESPECIAL DE ASSUNTOS PARLAMENTARES - SEPAR/SRI/PR'
+    note: ato de nomeação no DOU em 2026-01-29
 - id: br-secretaria-executiva-sg-secretario
   type: dept_head
   head_of: br-secretaria-executiva-sg
-  name: Secretário-Executivo da Secretaria-Geral da Presidência da República
+  name: Secretária-Executiva da Secretaria-Geral da Presidência da República
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -7891,20 +8321,20 @@ positions:
     do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República por indicação do
     ministro.
   people:
-  - id: br-p-josue-augusto-do-amaral-rocha
-    name: Josué Augusto do Amaral Rocha
-    started_at: null
+  - id: br-p-lea-rocchi-sales
+    name: Lea Rocchi Sales
+    started_at: '2026-03-30'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/secretariageral/pt-br/acesso-a-informacao/institucional/quem-e-quem-cargos
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portaria-n-100-de-27-de-marco-de-2026-696094576
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO-EXECUTIVO DA SECRETARIA-GERAL DA PRESIDÊNCIA DA REPÚBLICA'
+    note: ato de nomeação no DOU em 2026-03-30
 - id: br-secretaria-nacional-de-dialogos-sociais-e-articulacao-de-politicas-publicas-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-dialogos-sociais-e-articulacao-de-politicas-publicas
-  name: Secretário Nacional de Diálogos Sociais e Articulação de Políticas Públicas da Secretaria-Geral da Presidência da
+  name: Secretária Nacional de Diálogos Sociais e Articulação de Políticas Públicas da Secretaria-Geral da Presidência da
     República
   nomeado_por: br-presidente-da-republica
   seats: 1
@@ -7914,21 +8344,20 @@ positions:
     Presidência da República, unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração,
     provido pelo Presidente da República por indicação do ministro.
   people:
-  - id: br-p-kelli-cristine-de-oliveira-mafort
-    name: Kelli Cristine de Oliveira Mafort
-    started_at: null
+  - id: br-p-kenarik-boujikian
+    name: Kenarik Boujikian
+    started_at: '2024-06-21'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/secretariageral/pt-br/acesso-a-informacao/institucional/quem-e-quem-cargos
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-20-de-junho-de-2024-567145737
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO NACIONAL DE DIÁLOGOS SOCIAIS E ARTICULAÇÃO DE POLÍTICAS
-      PÚBLICAS - SNDS/SG/PR'
+    note: ato de nomeação no DOU em 2024-06-21
 - id: br-secretaria-nacional-de-juventude-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-juventude
-  name: Secretária Nacional de Juventude da Secretaria-Geral da Presidência da República
+  name: Secretário Nacional de Juventude da Secretaria-Geral da Presidência da República
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -7937,20 +8366,20 @@ positions:
     nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República por
     indicação do ministro.
   people:
-  - id: br-p-vitoria-genuino-de-morais-silva
-    name: Vitória Genuino de Morais Silva
-    started_at: null
+  - id: br-p-ronald-luiz-dos-santos
+    name: Ronald Luiz Dos Santos
+    started_at: '2023-01-24'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/secretariageral/pt-br/acesso-a-informacao/institucional/quem-e-quem-cargos
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-23-de-janeiro-de-2023-459688190
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIA NACIONAL DE JUVENTUDE - SNJ/SG/PR'
+    note: ato de nomeação no DOU em 2023-01-24
 - id: br-secretaria-nacional-de-participacao-social-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-participacao-social
-  name: Secretária Nacional de Participação Social da Secretaria-Geral da Presidência da República
+  name: Secretário Nacional de Participação Social da Secretaria-Geral da Presidência da República
   nomeado_por: br-presidente-da-republica
   seats: 1
   cite: Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)
@@ -7959,16 +8388,16 @@ positions:
     de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente da República
     por indicação do ministro.
   people:
-  - id: br-p-izadora-gama-brito
-    name: Izadora Gama Brito
-    started_at: null
+  - id: br-p-paulo-jose-de-oliveira
+    name: Paulo Jose de Oliveira
+    started_at: '2023-02-17'
     entry_mode: nomeado
     acting: false
-    source: oficial
-    source_url: https://www.gov.br/secretariageral/pt-br/acesso-a-informacao/institucional/quem-e-quem-cargos
-    checked_at: '2026-09-22'
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-16-de-fevereiro-de-2023-465268175
+    checked_at: '2026-09-29'
     verified: false
-    note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO NACIONAL DE PARTICIPAÇÃO SOCIAL - SNPS/SG/PR'
+    note: ato de nomeação no DOU em 2023-02-17
 - id: br-secretaria-nacional-de-relacoes-politico-sociais-secretario
   type: dept_head
   head_of: br-secretaria-nacional-de-relacoes-politico-sociais
@@ -7980,14 +8409,4 @@ positions:
   description: Dirige a Secretaria Nacional de Relações Político-Sociais do Secretaria-Geral da Presidência da República,
     unidade de primeiro nível abaixo do ministro. Cargo comissionado de livre nomeação e exoneração, provido pelo Presidente
     da República por indicação do ministro.
-  people:
-  - id: br-p-wagner-caetano-alves-de-oliveira
-    name: Wagner Caetano Alves de Oliveira
-    started_at: null
-    entry_mode: nomeado
-    acting: false
-    source: oficial
-    source_url: https://www.gov.br/secretariageral/pt-br/acesso-a-informacao/institucional/quem-e-quem-cargos
-    checked_at: '2026-09-22'
-    verified: false
-    note: 'página Quem é quem do órgão; cargo na página: SECRETÁRIO DE RELAÇÕES POLÍTICO-SOCIAIS - SRPS/SG/PR'
+  people: []

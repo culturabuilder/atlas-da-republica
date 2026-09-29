@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-09-28'
+generated_at: '2026-09-29'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,7 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-06-29': 80
+      '2026-06-29': 72
       '2026-07-06': 113
       '2026-07-13': 131
       '2026-07-20': 187
@@ -29,8 +29,9 @@ temas:
       '2026-09-07': 456
       '2026-09-14': 550
       '2026-09-21': 660
-    total_90d: 4187
-    last7: 660
+      '2026-09-28': 154
+    total_90d: 4333
+    last7: 710
     peak_week: 660
   processes:
   - casa: camara
@@ -66,14 +67,22 @@ temas:
   - cpi do master
   - vorcaro
   curated: cpmi-banco-master-2026
-  news_hits: 76
+  news_hits: 78
   news_weekly:
     '2026-09-14': 29
     '2026-09-21': 44
-    '2026-09-28': 3
+    '2026-09-28': 5
   news_recent:
+  - id: 41a064f017414c5e
+    title: Gilmar cobra de Fachin e Salomão reação a irregularidades em precatórios e cita Master
+    date: '2026-09-29'
+    publication: g1 Política
+  - id: cf90521504635371
+    title: Vorcaro pede para votar e título é transferido para a Papuda
+    date: '2026-09-29'
+    publication: Poder360
   - id: 204d68c22eb6a68f
-    title: Gilmar quer suspender julgamento de Moraes no caso Master até identificação de todos os ministros envolvidos
+    title: Gilmar quer suspender julgamento de Moraes no caso Master até identificação de todos ministros envolvidos
     date: '2026-09-28'
     publication: g1 Política
   - id: c4c31ab93365ca02
@@ -84,19 +93,11 @@ temas:
     title: Gilmar Mendes pede que CNJ amplie fiscalização de precatórios e cita caso Master
     date: '2026-09-28'
     publication: g1 Política
-  - id: af7cbd2f5f3e3cf6
-    title: Nunes Marques suspende propaganda de Lula que associa Flávio Bolsonaro a rachadinha e Banco Master
-    date: '2026-09-27'
-    publication: Estadão
-  - id: 664fa1cad1354003
-    title: Gilmar celebra decisão do MPF de não investigar nem impedir Gonet
-    date: '2026-09-26'
-    publication: Poder360
   wikipedia:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-06-29': 430
+      '2026-06-29': 371
       '2026-07-06': 393
       '2026-07-13': 384
       '2026-07-20': 444
@@ -109,8 +110,9 @@ temas:
       '2026-09-07': 10630
       '2026-09-14': 9902
       '2026-09-21': 4671
-    total_90d: 38254
-    last7: 4671
+      '2026-09-28': 362
+    total_90d: 38557
+    last7: 4103
     peak_week: 10630
   processes:
   - casa: camara
@@ -125,7 +127,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
     requested: RCP 1/2026 (camara)
   state: parado
-  stalled_days: 70
+  stalled_days: 71
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -141,14 +143,14 @@ temas:
   news_weekly:
     '2026-09-14': 3
   news_recent:
-  - id: 5cb49ba3da41d66a
-    title: MPT apresenta ação contra Luciano Hang por assédio eleitoral
-    date: '2026-09-18'
-    publication: Congresso em Foco
   - id: 74f518d82928947e
     title: Fim da escala 6x1 e de privatizações é prioridade de Hertz Dias
     date: '2026-09-18'
     publication: Agência Brasil
+  - id: 5cb49ba3da41d66a
+    title: MPT apresenta ação contra Luciano Hang por assédio eleitoral
+    date: '2026-09-18'
+    publication: Congresso em Foco
   - id: c74a1eb7fa1d4d1e
     title: Pesquisa aponta que solidão e exaustão ampliam abstenção nas urnas
     date: '2026-09-17'
@@ -157,7 +159,7 @@ temas:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-06-29': 143
+      '2026-06-29': 133
       '2026-07-06': 113
       '2026-07-13': 137
       '2026-07-20': 161
@@ -170,8 +172,9 @@ temas:
       '2026-09-07': 536
       '2026-09-14': 677
       '2026-09-21': 1134
-    total_90d: 5316
-    last7: 1134
+      '2026-09-28': 232
+    total_90d: 5538
+    last7: 1227
     peak_week: 1134
   processes:
   - casa: camara
@@ -197,7 +200,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2233802
     requested: PEC 221/2019 (camara)
   state: parado
-  stalled_days: 123
+  stalled_days: 124
   silence_after_peak: false
   silent_and_stalled: false
 - id: isencao-ir
@@ -222,7 +225,7 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-06-29': 29
+      '2026-06-29': 27
       '2026-07-06': 33
       '2026-07-13': 28
       '2026-07-20': 41
@@ -235,8 +238,9 @@ temas:
       '2026-09-07': 121
       '2026-09-14': 71
       '2026-09-21': 72
+      '2026-09-28': 2
     total_90d: 689
-    last7: 72
+    last7: 53
     peak_week: 121
   processes:
   - casa: camara
@@ -321,7 +325,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 143
+  stalled_days: 144
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -389,7 +393,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1202
+  stalled_days: 1203
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -399,30 +403,31 @@ temas:
   - precatorios
   - pec dos precatorios
   curated: null
-  news_hits: 8
+  news_hits: 12
   news_weekly:
-    '2026-09-21': 6
-    '2026-09-28': 2
+    '2026-09-21': 7
+    '2026-09-28': 5
   news_recent:
-  - id: 11db342e9639614e
-    title: AGU obtém decisão favorável no CNJ em processo que pede a devolução aos cofres públicos de R$ 2,36 bilhões em precatórios
-    date: '2026-09-28'
+  - id: 41bf20585022a61a
+    title: Em meio a apurações do Master, Fachin responde a Gilmar e defende 'transparência e rastreabilidade' no mercado
+      de precatórios
+    date: '2026-09-29'
     publication: g1 Política
+  - id: 41a064f017414c5e
+    title: Gilmar cobra de Fachin e Salomão reação a irregularidades em precatórios e cita Master
+    date: '2026-09-29'
+    publication: g1 Política
+  - id: b64605a535115af0
+    title: Mendes sugere fim da expedição antecipada de precatórios e inspeção em todos os tribunais
+    date: '2026-09-29'
+    publication: JOTA
   - id: 6fd79a3a300cbfa7
     title: Gilmar Mendes pede que CNJ amplie fiscalização de precatórios e cita caso Master
     date: '2026-09-28'
     publication: g1 Política
-  - id: 9f39e38a449dfef6
-    title: Gilmar Mendes leva ao plenário decisão sobre precatórios bilionários de usinas
-    date: '2026-09-25'
-    publication: JOTA
-  - id: ab903e411ad70b4d
-    title: AGU e Gilmar Mendes fecham cerco contra 'indústria de precatórios' usada pelo Master
-    date: '2026-09-25'
-    publication: g1 Política
-  - id: 28f532c547408ac6
-    title: Gilmar Mendes leva ao plenário do STF caso sobre precatórios de usinas
-    date: '2026-09-24'
+  - id: 11db342e9639614e
+    title: AGU obtém decisão favorável no CNJ em processo que pede a devolução aos cofres públicos de R$ 2,36 bilhões em precatórios
+    date: '2026-09-28'
     publication: g1 Política
   wikipedia:
     article: Precatório
@@ -441,8 +446,9 @@ temas:
       '2026-09-07': 26
       '2026-09-14': 64
       '2026-09-21': 79
-    total_90d: 496
-    last7: 79
+      '2026-09-28': 10
+    total_90d: 506
+    last7: 82
     peak_week: 80
   processes:
   - casa: camara
@@ -509,7 +515,7 @@ temas:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-06-29': 164
+      '2026-06-29': 122
       '2026-07-06': 246
       '2026-07-13': 390
       '2026-07-20': 175
@@ -522,8 +528,9 @@ temas:
       '2026-09-07': 303
       '2026-09-14': 214
       '2026-09-21': 186
-    total_90d: 3245
-    last7: 186
+      '2026-09-28': 31
+    total_90d: 3234
+    last7: 194
     peak_week: 390
   processes:
   - casa: camara

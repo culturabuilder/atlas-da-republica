@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-09-28'
+generated_at: '2026-09-29'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-01'
+janela_inicio: '2026-07-02'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,14 +11,14 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 273
-    dias_com_agenda: 65
+    compromissos_90d: 265
+    dias_com_agenda: 64
     por_tipo:
-      evento: 97
+      evento: 92
       audiencia: 80
-      viagem: 77
+      viagem: 75
       reuniao: 14
-      outro: 5
+      outro: 4
     entidades_top:
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
       n: 23
@@ -46,7 +46,7 @@ people:
     - nome: Palácio da Alvorada
       n: 42
     - nome: Base Aérea de Brasília
-      n: 33
+      n: 32
     - nome: Palácio Itamaraty
       n: 5
     - nome: Esplanada dos Ministérios, Brasília
@@ -113,32 +113,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-01:
-      - hora: 08:00
-        titulo: Partida para Salvador
-        local: Base Aérea de Brasília
-      - hora: 09:35
-        titulo: Chegada a Salvador
-        local: Base Aérea de Salvador
-      - hora: '10:30'
-        titulo: Visita ao Hospital Estadual do Litoral Norte
-        local: Governador Landulfo Alves, Rodovia BR-110, Km 03 – Alagoinhas (BA)
-      - hora: '11:45'
-        titulo: Anúncio sobre a inauguração do Hospital Estadual do Litoral Norte e entrega de veículos do Ministério da Saúde
-          e do Ministério da Educação
-        local: Av. Governador Landulfo Alves, Rodovia BR-110, Km 03 – Alagoinhas (BA)
-      - hora: '14:30'
-        titulo: Visita ao canteiro de obras de construção da Ponte Salvador-Ilha de Itaparica
-        local: Canteiro de obras da Ponte Salvador-Ilha de Itaparica – Vera Cruz (BA)
-      - hora: '15:30'
-        titulo: A núncio sobre a construção da ponte Salvador-Ilha de Itaparica
-        local: Canteiro de obras da Ponte Salvador-Ilha de Itaparica – Vera Cruz (BA)
-      - hora: '20:15'
-        titulo: Cerimônia de reabertura do Teatro Castro Alves
-        local: Praça Dois de Julho, s/n, Campo Grande, Salvador (BA)
-      - hora: '21:15'
-        titulo: Concerto "Benção do Novo Teatro Castro Alves"
-        local: Praça Dois de Julho, s/n – Campo Grande, Salvador
       presidente/2026-07-02:
       - hora: 08:50
         titulo: Partida para Juazeiro do Norte (CE)
@@ -1057,6 +1031,7 @@ people:
       - hora: '16:45'
         titulo: Intervenções sobre a visita ao Hospital São João de Deus
         local: Rua Boaventura da Silva – Umarizal, Belém
+      presidente/2026-09-29: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -1064,19 +1039,17 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 83
+    compromissos_90d: 82
     dias_com_agenda: 49
     por_tipo:
-      evento: 34
+      evento: 33
       viagem: 23
-      audiencia: 16
+      audiencia: 15
       outro: 6
-      reuniao: 4
+      reuniao: 5
     entidades_top:
     - nome: Luiz Inácio Lula da Silva (Presidente da República)
       n: 6
-    - nome: João Eduardo Salles (Presidente da Sociedade Brasileira de Diabetes/SP)
-      n: 1
     - nome: Roberto Perosa (Presidente da Associação Brasileira das Indústrias Exportadoras de Car)
       n: 1
     - nome: Laudemir André Müller (Presidente da ApexBrasil)
@@ -1089,7 +1062,7 @@ people:
       n: 1
     locais_top:
     - nome: Brasília/DF
-      n: 19
+      n: 18
     - nome: Palácio do Planalto
       n: 18
     - nome: São Paulo/SP
@@ -1108,8 +1081,14 @@ people:
       n: 1
     - nome: Olímpia/SP
       n: 1
-    ultimo: '2026-09-23'
+    ultimo: '2026-09-29'
     recentes:
+    - data: '2026-09-29'
+      hora: 09:00
+      titulo: Abertura do Congresso Aço Brasil 2026 (Videoconferência)
+      tipo: reuniao
+      local: Palácio do Planalto, Anexo II
+      participantes: []
     - data: '2026-09-23'
       hora: '15:00'
       titulo: Prof. Dr. Paulo Fernando de Almeida, do Instituto de Ciências e Saúde da Universidade Federal da Bahia (ICS)
@@ -1153,22 +1132,8 @@ people:
       tipo: evento
       local: Palácio do Planalto
       participantes: []
-    - data: '2026-09-08'
-      hora: '15:00'
-      titulo: Cerimônia de demarcação de Unidades de Conservação, em alusão ao Dia da Amazônia
-      tipo: evento
-      local: Palácio do Planalto
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-01:
-      - hora: '14:00'
-        titulo: João Eduardo Salles, Presidente da Sociedade Brasileira de Diabetes/SP
-        local: Palácio do Planalto, Anexo II
-      - hora: '19:00'
-        titulo: Inauguração da Exposição Comemorativa dos 80 anos do SESI
-        local: Brasília/DF
-      vice/2026-07-01-b1: []
       vice/2026-07-02:
       - hora: '10:00'
         titulo: Roberto Perosa, Presidente da Associação Brasileira das Indústrias Exportadoras de Carnes - ABIEC
@@ -1605,6 +1570,11 @@ people:
       vice/2026-09-27-b1: []
       vice/2026-09-28: []
       vice/2026-09-28-b1: []
+      vice/2026-09-29:
+      - hora: 09:00
+        titulo: Abertura do Congresso Aço Brasil 2026 (Videoconferência)
+        local: Palácio do Planalto, Anexo II
+      vice/2026-09-29-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 273 compromissos em 65 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 83 compromissos em 49 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 265 compromissos em 64 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 82 compromissos em 49 dias (0 dias não lidos)'

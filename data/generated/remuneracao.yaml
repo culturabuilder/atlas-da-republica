@@ -1,19 +1,19 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-09-28'
+generated_at: '2026-09-29'
 mes: '202607'
 mes_senado: '202608'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1221
+  ocupantes_no_grafo: 1223
   com_remuneracao: 516
   por_setor:
     executivo:
-      ocupantes: 486
+      ocupantes: 488
       antes: 405
       depois: 432
-      pct_antes: 83.3
-      pct_depois: 88.9
+      pct_antes: 83.0
+      pct_depois: 88.5
     essenciais:
       ocupantes: 30
       antes: 4
@@ -44,14 +44,14 @@ resumo:
     alta: 489
     media: 27
   sem_remuneracao:
-    total: 81
+    total: 83
     por_motivo:
       ausente na folha: 22
-      órgão fora do SIAPE (empresa publica com folha própria): 14
+      órgão fora do SIAPE (empresa publica com folha própria): 15
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
       só há homônimo por primeiro+último sobrenome fora do órgão (...): 12
       no cadastro do SIAPE mas sem linha de remuneração no mês: 11
-      órgão fora do SIAPE (sociedade economia mista com folha própria): 5
+      órgão fora do SIAPE (sociedade economia mista com folha própria): 6
       vários servidores compatíveis no órgão (...) sem desempate: 2
       a entidade não aparece como órgão na folha do SIAPE (folha própria): 1
       ausente na folha do Senado no mês (licença/afastamento ou nome divergente): 1
@@ -16924,6 +16924,11 @@ nao_encontrados:
   cargo: Ministro de Estado da Saúde
   setor: executivo
   motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
+- id: br-p-wp-aloizio-mercadante
+  nome: Aloizio Mercadante
+  cargo: Presidente do BNDES
+  setor: executivo
+  motivo: órgão fora do SIAPE (empresa publica com folha própria)
 - id: br-p-ana-paula-fioreza
   nome: Ana Paula Fioreza
   cargo: Diretor-Presidente da ANA
@@ -16939,6 +16944,11 @@ nao_encontrados:
   cargo: Diretor-Geral da Polícia Federal
   setor: executivo
   motivo: só há homônimo por primeiro+último sobrenome fora do órgão (4)
+- id: br-p-wp-andre-leandro-magalhaes
+  nome: André Leandro Magalhães
+  cargo: Presidente da Telebras
+  setor: executivo
+  motivo: órgão fora do SIAPE (sociedade economia mista com folha própria)
 - id: br-p-wp-antonia-pellegrino
   nome: Antonia Pellegrino
   cargo: Diretor-Presidente da EBC
