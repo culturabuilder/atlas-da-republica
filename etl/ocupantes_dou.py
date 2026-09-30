@@ -492,6 +492,24 @@ def gravar(positions, nao, detalhe, lista, total_alvo, por_tipo_alvo, desde, ate
                    "cargos_processados": len(lista), "resolvidos": len(positions),
                    "por_confianca": por_conf, "por_tipo": por_tipo, "sem_ato": len(nao)},
     }
+    # Este conector procura cargo SEM ocupante, e o que ele acha deixa de estar sem ocupante no grafo
+    # da rodada seguinte. Reescrevendo do zero, ele jogava fora o que já tinha descoberto e o arquivo
+    # erodia até zero. Foi o que derrubou posses e dirigentes; aqui o arquivo já tinha caído de 75 KB
+    # para 10 KB em 24/09/2026. Agora soma ao anterior e recusa gravar se ainda assim encolher.
+    if OUT.exists():
+        try:
+            ant = yaml.safe_load(open(OUT, encoding="utf-8")) or {}
+        except Exception:
+            ant = {}
+        antes = ant.get("positions") or {}
+        if antes:
+            juntas = dict(antes); juntas.update(doc.get("positions") or {})
+            doc["positions"] = juntas
+            if len(juntas) < len(antes):
+                print(f"ABORTADO: sairiam {len(juntas)} cargos contra {len(antes)} do arquivo atual; "
+                      f"arquivo mantido.", file=sys.stderr)
+                sys.exit(1)
+            doc["resumo"]["resolvidos"] = len(juntas)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         f.write("# GERADO por etl/ocupantes_dou.py. Não edite à mão.\n")
