@@ -15,12 +15,12 @@ entre eles (quem elege, nomeia, sabatina, supervisiona, fiscaliza). Réplica, ad
 <!-- Gerado por scripts/build_graph.py a cada build. Não edite à mão. -->
 | O que o grafo tem hoje | |
 |---|---|
-| Nós e relações | **1366** nós · **2003** relações, cada uma com citação legal |
-| Pessoas | **1215** ocupando **1230** de **1306** cadeiras |
-| Cargos de chefia | **479** de **545** com ocupante (66 vazios) |
-| Órgãos sem cargo de chefia mapeado | **28** (tribunais regionais, estatais, universidades) |
+| Nós e relações | **1367** nós · **2005** relações, cada uma com citação legal |
+| Pessoas | **1205** ocupando **1220** de **1307** cadeiras |
+| Cargos de chefia | **469** de **546** com ocupante (77 vazios) |
+| Órgãos sem cargo de chefia mapeado | **27** (tribunais regionais, estatais, universidades) |
 | Colegiados sem composição registrada | **220** de **270** |
-| Nomeações sem data de posse | **120** de **614** |
+| Nomeações sem data de posse | **116** de **609** |
 
 Atualizado em 2026-09-30.
 <!-- /ATLAS:NUMEROS -->

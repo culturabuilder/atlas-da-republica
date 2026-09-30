@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-09-29'
+generated_at: '2026-09-30'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-02'
+janela_inicio: '2026-07-03'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,12 +11,12 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 265
-    dias_com_agenda: 64
+    compromissos_90d: 256
+    dias_com_agenda: 63
     por_tipo:
-      evento: 92
+      evento: 87
       audiencia: 80
-      viagem: 75
+      viagem: 71
       reuniao: 14
       outro: 4
     entidades_top:
@@ -46,20 +46,20 @@ people:
     - nome: Palácio da Alvorada
       n: 42
     - nome: Base Aérea de Brasília
-      n: 32
+      n: 31
     - nome: Palácio Itamaraty
       n: 5
     - nome: Esplanada dos Ministérios, Brasília
       n: 5
     - nome: Aeroporto Internacional de Macapá
       n: 4
-    - nome: Túnel Major Sales
-      n: 3
-    - nome: Aeroporto de Juazeiro do Norte
-      n: 3
     - nome: Aeroporto de Congonhas
       n: 3
     - nome: Instituto Mauá de Tecnologia (IMT), São Caetano do Sul (SP)
+      n: 3
+    - nome: Hospital Federal do Andaraí, Rio de Janeiro
+      n: 3
+    - nome: Centro Industrial Nuclear de Aramar, Iperó (SP)
       n: 3
     ultimo: '2026-09-28'
     recentes:
@@ -113,35 +113,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-02:
-      - hora: 08:50
-        titulo: Partida para Juazeiro do Norte (CE)
-        local: Base Aérea de Salvador
-      - hora: 09:55
-        titulo: Chegada a Juazeiro do Norte
-        local: Aeroporto Orlando Bezerra de Menezes
-      - hora: '11:00'
-        titulo: Abertura da barragem do emboque do Túnel Major Sales
-        local: Túnel Major Sales
-      - hora: '11:45'
-        titulo: Anúncio sobre a inauguração do Túnel Major Sales na transposição das águas do Rio São Francisco para o Rio
-          Grande do Norte, via Ramal do Apodi
-        local: Túnel Major Sales
-      - hora: '13:00'
-        titulo: Visita ao local de desemboque do Túnel Major Sales
-        local: Túnel Major Sales
-      - hora: '15:50'
-        titulo: Cerimônia de entrega dos Lotes 4 e 5 da Ferrovia Transnordestina
-        local: Ferrovia Transnordestina, Quixeramobim (CE)
-      - hora: '19:10'
-        titulo: Visita e Ato de entrega de ônibus escolares e unidades móveis de saúde para municípios do Ceará
-        local: Estacionamento do Horto, Juazeiro do Norte (CE)
-      - hora: '21:20'
-        titulo: Partida para Brasília
-        local: Aeroporto de Juazeiro do Norte
-      - hora: '23:20'
-        titulo: Chegada a Brasília
-        local: Base Aérea de Brasília
       presidente/2026-07-03:
       - hora: '10:00'
         titulo: Cerimônia de Entregas Simultâneas do Governo Federal para Moradia, Saúde e Educação
@@ -1032,6 +1003,7 @@ people:
         titulo: Intervenções sobre a visita ao Hospital São João de Deus
         local: Rua Boaventura da Silva – Umarizal, Belém
       presidente/2026-09-29: []
+      presidente/2026-09-30: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -1042,16 +1014,14 @@ people:
     compromissos_90d: 82
     dias_com_agenda: 49
     por_tipo:
-      evento: 33
+      evento: 34
       viagem: 23
-      audiencia: 15
+      audiencia: 14
       outro: 6
       reuniao: 5
     entidades_top:
     - nome: Luiz Inácio Lula da Silva (Presidente da República)
       n: 6
-    - nome: Roberto Perosa (Presidente da Associação Brasileira das Indústrias Exportadoras de Car)
-      n: 1
     - nome: Laudemir André Müller (Presidente da ApexBrasil)
       n: 1
     - nome: Luis Felipe Salomão (Ministro do Superior Tribunal de Justiça - STJ)
@@ -1062,13 +1032,13 @@ people:
       n: 1
     locais_top:
     - nome: Brasília/DF
-      n: 18
+      n: 19
     - nome: Palácio do Planalto
       n: 18
     - nome: São Paulo/SP
       n: 15
     - nome: Palácio do Planalto, Anexo II
-      n: 11
+      n: 10
     - nome: Palácio da Alvorada
       n: 4
     - nome: São José dos Campos/SP
@@ -1081,8 +1051,14 @@ people:
       n: 1
     - nome: Olímpia/SP
       n: 1
-    ultimo: '2026-09-29'
+    ultimo: '2026-09-30'
     recentes:
+    - data: '2026-09-30'
+      hora: '11:00'
+      titulo: Posse do Ministro Rodrigo Pacheco no Tribunal de Contas da União
+      tipo: evento
+      local: Brasília/DF
+      participantes: []
     - data: '2026-09-29'
       hora: 09:00
       titulo: Abertura do Congresso Aço Brasil 2026 (Videoconferência)
@@ -1126,19 +1102,8 @@ people:
       tipo: viagem
       local: São Paulo/SP
       participantes: []
-    - data: '2026-09-10'
-      hora: '11:00'
-      titulo: Sanção do PLV nº 13/2026, que trata das regras de tributação de remessas postais internacionais
-      tipo: evento
-      local: Palácio do Planalto
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-02:
-      - hora: '10:00'
-        titulo: Roberto Perosa, Presidente da Associação Brasileira das Indústrias Exportadoras de Carnes - ABIEC
-        local: Palácio do Planalto, Anexo II
-      vice/2026-07-02-b1: []
       vice/2026-07-03:
       - hora: 07:30
         titulo: Embarque de Brasília/SP para Bauru/SP
@@ -1575,6 +1540,11 @@ people:
         titulo: Abertura do Congresso Aço Brasil 2026 (Videoconferência)
         local: Palácio do Planalto, Anexo II
       vice/2026-09-29-b1: []
+      vice/2026-09-30:
+      - hora: '11:00'
+        titulo: Posse do Ministro Rodrigo Pacheco no Tribunal de Contas da União
+        local: Brasília/DF
+      vice/2026-09-30-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 265 compromissos em 64 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 256 compromissos em 63 dias (0 dias não lidos)'
 - 'br-p-geraldo-alckmin: 82 compromissos em 49 dias (0 dias não lidos)'
