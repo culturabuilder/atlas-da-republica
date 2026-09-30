@@ -1,5 +1,5 @@
 # GERADO por scripts/build_graph.py. Não edite à mão.
-generated_at: '2026-09-29'
+generated_at: '2026-09-30'
 nota: GERADO por scripts/build_graph.py a partir de build/_execucao.tsv (scripts/update.sh) e do generated_at de cada arquivo.
 conectores:
   SIORG:
@@ -50,7 +50,7 @@ conectores:
   Posses:
     status: fora do dia semanal
     segundos: 0
-    rodou_em: '2026-09-29'
+    rodou_em: '2026-09-30'
   Ocupantes pelo DOU:
     status: fora do dia semanal
     segundos: 0
@@ -141,10 +141,10 @@ conectores:
     rodou_em: '2026-09-29'
     ok_em: '2026-09-29'
   Agendas:
-    status: fora do dia semanal
+    status: ok
     segundos: 0
-    rodou_em: '2026-09-29'
-    ok_em: '2026-09-28'
+    rodou_em: '2026-09-30'
+    ok_em: '2026-09-30'
   Agenda Planalto:
     status: ok
     segundos: 10
@@ -203,21 +203,21 @@ conectores:
   Forçado:
     status: ok
     segundos: 0
-    rodou_em: '2026-09-28'
-    ok_em: '2026-09-28'
+    rodou_em: '2026-09-30'
+    ok_em: '2026-09-30'
   Pulado:
     status: fora do dia semanal
     segundos: 0
-    rodou_em: '2026-09-28'
+    rodou_em: '2026-09-30'
 blocos:
   Ocupantes (Câmara e Senado):
     arquivo: parlamentares.yaml
     existe: true
-    lido_em: '2026-09-29'
+    lido_em: '2026-09-28'
   Comissões do Congresso:
     arquivo: comissoes.yaml
     existe: true
-    lido_em: '2026-09-29'
+    lido_em: '2026-09-28'
   Estrutura (SIORG):
     arquivo: siorg.yaml
     existe: true
@@ -233,7 +233,7 @@ blocos:
   Notícias:
     arquivo: noticias.json
     existe: true
-    lido_em: '2026-09-29'
+    lido_em: '2026-09-30'
   Diário Oficial:
     arquivo: dou.json
     existe: true
