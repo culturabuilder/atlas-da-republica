@@ -847,6 +847,17 @@ def main():
     positions, falhas = [], []
     com_ocupante = {b: 0 for b in blocos}
     total = {b: 0 for b in blocos}
+    # Página oficial que não responde não é cargo vago. Sem isto o conector trocava o ocupante por nada
+    # a cada varredura em que um site caiu, e o site sangrava ~10 pessoas por dia: em 30/09/2026 foram 11,
+    # e duas das páginas conferidas à mão ainda mostravam o nome descartado. Só o caso "li a página e não
+    # achei ninguém" derruba o ocupante; "não consegui ler" mantém o que já se sabia, marcado como tal.
+    _ant_people = {}
+    if OUT.exists():
+        try:
+            _a = yaml.safe_load(open(OUT, encoding="utf-8")) or {}
+            _ant_people = {q.get("id"): (q.get("people") or []) for q in (_a.get("positions") or []) if q.get("people")}
+        except Exception:
+            _ant_people = {}
     for k, o in enumerate(orgs, 1):
         total[o["bloco"]] += 1
         people = []
@@ -874,6 +885,16 @@ def main():
                                    "motivo": clip("; ".join(erros) if erros else
                                                   f"{len(tried)} página(s) lida(s) sem casamento de cargo e nome", 180),
                                    "paginas": tried[:4]})
+                    if erros:  # não foi possível ler: preserva o que já se sabia, sem fingir que é fresco
+                        _herdado = _ant_people.get(o["id"] + "-presidente") or _ant_people.get(o["id"])
+                        if not _herdado:
+                            _herdado = next((v for kk, v in _ant_people.items() if kk.startswith(o["id"])), None)
+                        if _herdado:
+                            people = [OrderedDict(q) for q in _herdado]
+                            for q in people:
+                                q["note"] = clip(f"mantido da leitura anterior porque a página oficial não respondeu "
+                                                 f"em {TODAY}; " + str(q.get("note") or ""), 400)
+                            com_ocupante[o["bloco"]] += 1
         p = OrderedDict()
         p["id"] = f"{o['id']}-{o['sufixo']}"
         p["type"] = "dept_head"
