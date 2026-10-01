@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-09-30'
+generated_at: '2026-10-01'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,7 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-06-29': 62
+      '2026-06-29': 44
       '2026-07-06': 113
       '2026-07-13': 131
       '2026-07-20': 187
@@ -29,9 +29,9 @@ temas:
       '2026-09-07': 456
       '2026-09-14': 550
       '2026-09-21': 660
-      '2026-09-28': 360
-    total_90d: 4529
-    last7: 821
+      '2026-09-28': 602
+    total_90d: 4753
+    last7: 979
     peak_week: 660
   processes:
   - casa: camara
@@ -67,37 +67,37 @@ temas:
   - cpi do master
   - vorcaro
   curated: cpmi-banco-master-2026
-  news_hits: 79
+  news_hits: 84
   news_weekly:
     '2026-09-14': 29
     '2026-09-21': 44
-    '2026-09-28': 6
+    '2026-09-28': 11
   news_recent:
+  - id: cecf28397e4d6612
+    title: PF discute levar a Fachin posição sobre ministros citados no caso Master
+    date: '2026-10-01'
+    publication: g1 Política
+  - id: ef4c8d76ffda147d
+    title: Defesa cita Moraes-Vorcaro e pede ao STF para anular pena de Bolsonaro
+    date: '2026-10-01'
+    publication: Congresso em Foco
+  - id: 5d8426eb8c049841
+    title: Daniel Vorcaro tem título de eleitor regular e pode votar na Papuda
+    date: '2026-10-01'
+    publication: Estadão
   - id: d949be6b4260c2a5
     title: Motta conversou com Vorcaro sobre “sociedade” e PL sobre carbono
     date: '2026-09-30'
     publication: Poder360
-  - id: 41a064f017414c5e
-    title: Gilmar cobra de Fachin e Salomão reação a irregularidades em precatórios e cita Master
-    date: '2026-09-29'
-    publication: g1 Política
-  - id: cf90521504635371
-    title: Vorcaro pede para votar e título é transferido para a Papuda
-    date: '2026-09-29'
-    publication: Poder360
-  - id: 204d68c22eb6a68f
-    title: Gilmar quer suspender julgamento de Moraes no caso Master até identificação de todos ministros envolvidos
-    date: '2026-09-28'
-    publication: g1 Política
-  - id: c4c31ab93365ca02
-    title: Eleição entra na reta final com STF e TSE em choque
-    date: '2026-09-28'
+  - id: 93d1d7f2ee2a4a3e
+    title: Crise no STF impede PF de concluir inquérito-mãe do caso Master
+    date: '2026-09-30'
     publication: g1 Política
   wikipedia:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-06-29': 294
+      '2026-06-29': 232
       '2026-07-06': 393
       '2026-07-13': 384
       '2026-07-20': 444
@@ -110,9 +110,9 @@ temas:
       '2026-09-07': 10630
       '2026-09-14': 9902
       '2026-09-21': 4671
-      '2026-09-28': 725
-    total_90d: 38843
-    last7: 3691
+      '2026-09-28': 1187
+    total_90d: 39243
+    last7: 3307
     peak_week: 10630
   processes:
   - casa: camara
@@ -127,7 +127,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
     requested: RCP 1/2026 (camara)
   state: parado
-  stalled_days: 72
+  stalled_days: 73
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -139,10 +139,15 @@ temas:
   - fim da escala
   - jornada 6x1
   curated: null
-  news_hits: 3
+  news_hits: 4
   news_weekly:
     '2026-09-14': 3
+    '2026-09-28': 1
   news_recent:
+  - id: 15e9ecb1130490ac
+    title: 'Do fim da escala 6×1 ao fim da Justiça do Trabalho: o que defendem os presidenciáveis'
+    date: '2026-10-01'
+    publication: JOTA
   - id: 74f518d82928947e
     title: Fim da escala 6x1 e de privatizações é prioridade de Hertz Dias
     date: '2026-09-18'
@@ -159,7 +164,7 @@ temas:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-06-29': 101
+      '2026-06-29': 82
       '2026-07-06': 113
       '2026-07-13': 137
       '2026-07-20': 161
@@ -172,9 +177,9 @@ temas:
       '2026-09-07': 536
       '2026-09-14': 677
       '2026-09-21': 1134
-      '2026-09-28': 438
-    total_90d: 5712
-    last7: 1217
+      '2026-09-28': 620
+    total_90d: 5875
+    last7: 1288
     peak_week: 1134
   processes:
   - casa: camara
@@ -200,7 +205,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2233802
     requested: PEC 221/2019 (camara)
   state: parado
-  stalled_days: 125
+  stalled_days: 126
   silence_after_peak: false
   silent_and_stalled: false
 - id: isencao-ir
@@ -225,7 +230,7 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-06-29': 18
+      '2026-06-29': 11
       '2026-07-06': 33
       '2026-07-13': 28
       '2026-07-20': 41
@@ -238,9 +243,9 @@ temas:
       '2026-09-07': 121
       '2026-09-14': 71
       '2026-09-21': 72
-      '2026-09-28': 12
-    total_90d: 690
-    last7: 48
+      '2026-09-28': 17
+    total_90d: 688
+    last7: 43
     peak_week: 121
   processes:
   - casa: camara
@@ -278,10 +283,16 @@ temas:
   - pl da dosimetria
   - pl da anistia
   curated: null
-  news_hits: 1
+  news_hits: 2
   news_weekly:
     '2026-09-14': 1
+    '2026-09-28': 1
   news_recent:
+  - id: 5a0d53164466cb3d
+    title: Moraes aplica multa de R$ 5 mil a advogado de réu do 8/1 por uso de prompt oculto de IA para tentar manipular sistema
+      do STF
+    date: '2026-10-01'
+    publication: g1 Política
   - id: 9904ca987c474ee9
     title: 'Lula diz não aceitar classificação de facções como terroristas: ''Terrorismo foi o 8 de Janeiro'''
     date: '2026-09-18'
@@ -325,7 +336,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 145
+  stalled_days: 146
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -393,7 +404,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1204
+  stalled_days: 1205
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -403,11 +414,15 @@ temas:
   - precatorios
   - pec dos precatorios
   curated: null
-  news_hits: 15
+  news_hits: 16
   news_weekly:
     '2026-09-21': 7
-    '2026-09-28': 8
+    '2026-09-28': 9
   news_recent:
+  - id: 3960ce15a894be59
+    title: Gilmar pede revisão de julgamento que mira em ‘farra de precatórios’ controlados por advogados
+    date: '2026-10-01'
+    publication: Estadão
   - id: 488735268a05b0fc
     title: Nova Resolução CMN e cessão de ativos judiciais como mecanismo de acesso à justiça
     date: '2026-09-30'
@@ -425,15 +440,11 @@ temas:
     title: Mendes sugere fim da expedição antecipada de precatórios e inspeção em todos os tribunais
     date: '2026-09-29'
     publication: JOTA
-  - id: e35ac30d18ec403e
-    title: Fachin vai cobrar de tribunais dados sobre precatórios expedidos antes de encerrada ação
-    date: '2026-09-29'
-    publication: JOTA
   wikipedia:
     article: Precatório
     url: https://pt.wikipedia.org/wiki/Precatório
     weekly:
-      '2026-06-29': 20
+      '2026-06-29': 11
       '2026-07-06': 26
       '2026-07-13': 25
       '2026-07-20': 32
@@ -446,9 +457,9 @@ temas:
       '2026-09-07': 26
       '2026-09-14': 64
       '2026-09-21': 79
-      '2026-09-28': 27
-    total_90d: 519
-    last7: 85
+      '2026-09-28': 44
+    total_90d: 527
+    last7: 88
     peak_week: 80
   processes:
   - casa: camara
@@ -485,12 +496,24 @@ temas:
   - orcamento secreto
   - emendas de comissao
   curated: null
-  news_hits: 7
+  news_hits: 10
   news_weekly:
     '2026-09-14': 3
     '2026-09-21': 2
-    '2026-09-28': 2
+    '2026-09-28': 5
   news_recent:
+  - id: 2c8241eb7c4b4319
+    title: Um terço das emendas PIX para obras em 2025 não detalha destino dos recursos, diz Transparência Brasil
+    date: '2026-10-01'
+    publication: g1 Política
+  - id: 7b757dca61c317c3
+    title: Norma do Ministério da Saúde reforça controle das emendas parlamentares de bancada ao SUS
+    date: '2026-10-01'
+    publication: JOTA
+  - id: 5fa2c83abc9ee3a7
+    title: 'Emendas parlamentares: participação democrática, controle e responsabilidade'
+    date: '2026-10-01'
+    publication: JOTA
   - id: b5b0670ebb07eed0
     title: 'Congresso Nacional: o que está em jogo no Orçamento e na crise entre os Poderes - O Assunto #1815'
     date: '2026-09-30'
@@ -499,24 +522,11 @@ temas:
     title: Lula pede votos para Wagner e Rui para acabar com “orçamento secreto”
     date: '2026-09-30'
     publication: Poder360
-  - id: 8cf70df746782402
-    title: Em debate, candidatos ao Senado por SP divergem sobre emendas e defendem mudanças na relação entre Poderes
-    date: '2026-09-26'
-    publication: g1 Política
-  - id: 197b1b73fb45d785
-    title: No g1, candidatos ao Senado por SP discutem infiltração do crime organizado, anomalias nas relações entre Poderes
-      e emendas parlamentares
-    date: '2026-09-25'
-    publication: g1 Política
-  - id: b0c95dcd0fbb5baa
-    title: Caiado promete cortar 100% das emendas impositivas e limitar gastos do governo para reduzir juros
-    date: '2026-09-20'
-    publication: g1 Política
   wikipedia:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-06-29': 108
+      '2026-06-29': 74
       '2026-07-06': 246
       '2026-07-13': 390
       '2026-07-20': 175
@@ -529,9 +539,9 @@ temas:
       '2026-09-07': 303
       '2026-09-14': 214
       '2026-09-21': 186
-      '2026-09-28': 66
-    total_90d: 3255
-    last7: 200
+      '2026-09-28': 118
+    total_90d: 3273
+    last7: 226
     peak_week: 390
   processes:
   - casa: camara

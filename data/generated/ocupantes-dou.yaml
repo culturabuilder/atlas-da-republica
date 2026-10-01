@@ -1,12 +1,12 @@
 # GERADO por etl/ocupantes_dou.py. Não edite à mão.
-generated_at: '2026-09-22T17:34:13'
+generated_at: '2026-10-01T16:31:18'
 fonte: Diário Oficial da União — busca pública www.in.gov.br/consulta (todas as seções), consulta pelo nome do cargo
 nota: 'Ocupante achado buscando o CARGO no DOU (o inverso de etl/posses.py, que busca o nome). started_at = dia da PUBLICAÇÃO do ato de nomeação/designação/recondução, não o da posse. Só entra quando o
   cargo citado no ato casa com o cargo do grafo em todos os termos significativos; confiança alta = cargo e órgão casam, média = só o cargo casa (órgão vindo da sigla ou da hierarquia do ato) ou a nomeação
   é interina. Ato de exoneração/dispensa posterior descarta a pessoa. Em reitoria e estatal, ato anterior a quatro anos e meio cai para média: é o mais recente do DOU, mas o mandato já venceu.'
 janela:
   de: '2018-01-01'
-  ate: '2026-09-22'
+  ate: '2026-10-01'
 positions:
   br-autoridade-nacional-de-seguranca-nuclear-diretor-presidente:
   - id: br-p-alessandro-facure-neves-de-salles-soares
@@ -1239,6 +1239,36 @@ positions:
     ato: DECRETO DE 7 DE AGOSTO DE 2024 (DO2, 2024-08-08)
     cargo_no_ato: Reitor da referida Universidade
     note: 'NOMEAR publicado no DOU em 08/08/2024; cargo no ato: "Reitor da referida Universidade". Data = publicação do ato, não a posse.'
+  br-secretaria-de-comercio-e-relacoes-internacionais-secretario:
+  - id: br-p-augusto-luis-billi
+    name: Augusto Luis Billi
+    started_at: '2026-07-22'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-21-de-julho-de-2026-720569397
+    checked_at: '2026-10-01'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 21 DE JULHO DE 2026 (DO2, 2026-07-22)
+    cargo_no_ato: Secretário de Comércio e Relações Internacionais do Ministério da Agricultura e Pecuária
+    note: 'NOMEAR publicado no DOU em 22/07/2026; cargo no ato: "Secretário de Comércio e Relações Internacionais do Ministério da Agricultura e Pecuária". Data = publicação do ato, não a posse.'
+  br-secretaria-de-territorios-e-sistemas-produtivos-quilombolas-e-tradicionais-secretario:
+  - id: br-p-edmilton-cerqueira
+    name: Edmilton Cerqueira
+    started_at: '2023-01-25'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-25-de-janeiro-de-2023-460122475
+    checked_at: '2026-10-01'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 25 DE JANEIRO DE 2023 (DO2_EXTRA_C, 2023-01-25)
+    cargo_no_ato: Secretário de Territórios e Sistemas Produtivos Quilombolas e Tradicionais do Ministério do Desenvolvimento Agrário e Agricultura Familiar
+    note: 'NOMEAR publicado no DOU em 25/01/2023; cargo no ato: "Secretário de Territórios e Sistemas Produtivos Quilombolas e Tradicionais do Ministério d". Data = publicação do ato, não a posse.'
 nao_encontrados:
 - br-amazonia-azul-tecnologias-de-defesa-s-a-presidente
 - br-banco-da-amazonia-s-a-presidente
@@ -1249,14 +1279,12 @@ nao_encontrados:
 - br-caixa-loterias-s-a-presidente
 - br-caixa-seguridade-participacoes-s-a-presidente
 - br-centrais-de-abastecimento-de-minas-gerais-s-a-presidente
-- br-centro-nacional-de-tecnologia-eletronica-avancada-s-a-presidente
 - br-companhia-das-docas-do-estado-da-bahia-presidente
 - br-companhia-de-entrepostos-e-armazens-gerais-de-sao-paulo-presidente
 - br-companhia-de-pesquisa-de-recursos-minerais-presidente
 - br-companhia-docas-do-ceara-presidente
 - br-companhia-docas-do-para-presidente
 - br-eletronuclear-s-a-presidente
-- br-empresa-brasileira-de-hemoderivados-e-biotecnologia-presidente
 - br-empresa-brasileira-de-participacoes-em-energia-nuclear-e-binacional-s-a-presidente
 - br-empresa-de-trens-urbanos-de-porto-alegre-s-a-presidente
 - br-empresa-gerencial-de-projetos-navais-presidente
@@ -1266,13 +1294,19 @@ nao_encontrados:
 - br-grupo-hospitalar-conceicao-s-a-presidente
 - br-industria-de-material-belico-do-brasil-presidente
 - br-industrias-nucleares-do-brasil-s-a-presidente
-- br-infra-sa-dirigente
 - br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sertao-paraibano-reitor
+- br-secretaria-de-defesa-agropecuaria-secretario
 - br-secretaria-de-estrategias-e-redes-secretario
 - br-secretaria-de-integridade-publica-secretario
-- br-secretaria-executiva-cgu-secretario
+- br-secretaria-executiva-mulheres-secretario
+- br-secretaria-nacional-de-articulacao-intersetorial-e-interfederativa-e-participacao-politica-secretario
+- br-secretaria-nacional-de-autonomia-economica-e-politica-de-cuidados-secretario
+- br-secretaria-nacional-de-biodiversidade-florestas-e-direitos-animais-secretario
+- br-secretaria-nacional-de-bioeconomia-secretario
 - br-secretaria-nacional-de-enfrentamento-a-violencia-contra-mulheres-secretario
 - br-secretaria-nacional-de-geologia-mineracao-e-transformacao-mineral-secretario
+- br-secretaria-nacional-de-meio-ambiente-urbano-recursos-hidricos-e-qualidade-ambiental-secretario
+- br-secretaria-nacional-de-relacoes-politico-sociais-secretario
 - br-universidade-federal-do-esporte-reitor
 - br-universidade-federal-indigena-reitor
 - br-veiculo-de-desestatizacao-mg-investimentos-s-a-presidente
@@ -1331,12 +1365,6 @@ nao_encontrados_detalhe:
   consultas: 4
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-centro-nacional-de-tecnologia-eletronica-avancada-s-a-presidente
-  cargo: Presidente do Centro Nacional de Tecnologia Eletrônica Avançada S. A
-  tipo: estatal
-  consultas: 4
-  atos_lidos: 0
-  motivo: nenhum ato de nomeação citando o cargo
 - cargo_id: br-companhia-das-docas-do-estado-da-bahia-presidente
   cargo: Presidente da Companhia das Docas do Estado da Bahia
   tipo: estatal
@@ -1369,12 +1397,6 @@ nao_encontrados_detalhe:
   motivo: nenhum ato de nomeação citando o cargo
 - cargo_id: br-eletronuclear-s-a-presidente
   cargo: Presidente da Eletronuclear S.A
-  tipo: estatal
-  consultas: 4
-  atos_lidos: 0
-  motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-empresa-brasileira-de-hemoderivados-e-biotecnologia-presidente
-  cargo: Presidente da Empresa Brasileira de Hemoderivados e Biotecnologia
   tipo: estatal
   consultas: 4
   atos_lidos: 0
@@ -1421,12 +1443,6 @@ nao_encontrados_detalhe:
   consultas: 4
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-infra-sa-dirigente
-  cargo: Presidente da Infra S.A.
-  tipo: estatal
-  consultas: 4
-  atos_lidos: 0
-  motivo: nenhum ato de nomeação citando o cargo
 - cargo_id: br-veiculo-de-desestatizacao-mg-investimentos-s-a-presidente
   cargo: Presidente do Veículo de Desestatização MG Investimentos S.A.
   tipo: estatal
@@ -1437,7 +1453,7 @@ nao_encontrados_detalhe:
   cargo: Diretor-Presidente da Fundação Habitacional do Exército
   tipo: fundacao
   consultas: 6
-  atos_lidos: 6
+  atos_lidos: 37
   motivo: cargo do ato (Diretor-Presidente da Codevasf) não casa em todos os termos
 - cargo_id: br-fundacao-osorio-diretor
   cargo: Diretor da Fundação Osório
@@ -1449,7 +1465,7 @@ nao_encontrados_detalhe:
   cargo: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Sertão Paraibano
   tipo: reitoria
   consultas: 4
-  atos_lidos: 0
+  atos_lidos: 186
   motivo: papel casa mas o órgão do ato (Universidade Federal do Amapá) não é o do grafo
 - cargo_id: br-universidade-federal-do-esporte-reitor
   cargo: Reitor da Universidade Federal do Esporte
@@ -1463,6 +1479,12 @@ nao_encontrados_detalhe:
   consultas: 4
   atos_lidos: 0
   motivo: papel casa mas o órgão do ato (Universidade Federal do Amapá) não é o do grafo
+- cargo_id: br-secretaria-de-defesa-agropecuaria-secretario
+  cargo: Secretário de Defesa Agropecuária do Ministério da Agricultura e Pecuária
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 3
+  motivo: cargo do ato (Assessora Especial da Secretaria Especial de Administração da Secretar) não casa em todos os termos
 - cargo_id: br-secretaria-de-estrategias-e-redes-secretario
   cargo: Secretário de Estratégias e Redes da Secretaria de Comunicação Social da Presidência da República
   tipo: secretaria
@@ -1475,12 +1497,36 @@ nao_encontrados_detalhe:
   consultas: 6
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-secretaria-executiva-cgu-secretario
-  cargo: Secretário-Executivo da Controladoria-Geral da União
+- cargo_id: br-secretaria-executiva-mulheres-secretario
+  cargo: Secretário-Executivo do Ministério das Mulheres
   tipo: secretaria
   consultas: 6
   atos_lidos: 60
-  motivo: cargo do ato (secretário executivo, para exercer a função de titular da Unidade Seto) não casa em todos os termos
+  motivo: cargo do ato (Secretário Executivo) não casa em todos os termos
+- cargo_id: br-secretaria-nacional-de-articulacao-intersetorial-e-interfederativa-e-participacao-politica-secretario
+  cargo: Secretário Nacional de Articulação Intersetorial e Interfederativa e Participação Política do Ministério das Mulheres
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
+- cargo_id: br-secretaria-nacional-de-autonomia-economica-e-politica-de-cuidados-secretario
+  cargo: Secretário Nacional de Autonomia Econômica e Política de Cuidados do Ministério das Mulheres
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
+- cargo_id: br-secretaria-nacional-de-biodiversidade-florestas-e-direitos-animais-secretario
+  cargo: Secretário Nacional de Biodiversidade, Florestas e Direitos Animais do Ministério do Meio Ambiente e Mudança do Clima
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
+- cargo_id: br-secretaria-nacional-de-bioeconomia-secretario
+  cargo: Secretário Nacional de Bioeconomia do Ministério do Meio Ambiente e Mudança do Clima
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
 - cargo_id: br-secretaria-nacional-de-enfrentamento-a-violencia-contra-mulheres-secretario
   cargo: Secretário Nacional de Enfrentamento à Violência contra Mulheres do Ministério das Mulheres
   tipo: secretaria
@@ -1493,23 +1539,30 @@ nao_encontrados_detalhe:
   consultas: 6
   atos_lidos: 1
   motivo: cargo do ato (Assessora Especial da Secretaria-Executiva da Secretaria de Relações I) não casa em todos os termos
+- cargo_id: br-secretaria-nacional-de-meio-ambiente-urbano-recursos-hidricos-e-qualidade-ambiental-secretario
+  cargo: Secretário Nacional de Meio Ambiente Urbano, Recursos Hídricos e Qualidade Ambiental do Ministério do Meio Ambiente e Mudança do Clima
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
+- cargo_id: br-secretaria-nacional-de-relacoes-politico-sociais-secretario
+  cargo: Secretário Nacional de Relações Político-Sociais da Secretaria-Geral da Presidência da República
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
 resumo:
-  cargos_alvo: 118
+  cargos_alvo: 42
   cargos_alvo_por_tipo:
-    autarquia: 3
-    estatal: 25
-    fundacao: 3
-    reitoria: 69
-    secretaria: 18
-  cargos_processados: 118
-  resolvidos: 82
+    autarquia: 2
+    estatal: 21
+    fundacao: 2
+    reitoria: 3
+    secretaria: 14
+  cargos_processados: 42
+  resolvidos: 84
   por_confianca:
-    alta: 81
-    media: 1
+    alta: 2
   por_tipo:
-    autarquia: 1
-    estatal: 1
-    fundacao: 1
-    reitoria: 66
-    secretaria: 13
-  sem_ato: 36
+    secretaria: 2
+  sem_ato: 40

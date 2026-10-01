@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-09-30'
+generated_at: '2026-10-01'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-03'
+janela_inicio: '2026-07-04'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,11 +11,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 256
+    compromissos_90d: 259
     dias_com_agenda: 63
     por_tipo:
-      evento: 87
-      audiencia: 80
+      evento: 88
+      audiencia: 82
       viagem: 71
       reuniao: 14
       outro: 4
@@ -42,9 +42,9 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 71
+      n: 73
     - nome: Palácio da Alvorada
-      n: 42
+      n: 43
     - nome: Base Aérea de Brasília
       n: 31
     - nome: Palácio Itamaraty
@@ -61,8 +61,34 @@ people:
       n: 3
     - nome: Centro Industrial Nuclear de Aramar, Iperó (SP)
       n: 3
-    ultimo: '2026-09-28'
+    ultimo: '2026-10-01'
     recentes:
+    - data: '2026-10-01'
+      hora: '18:00'
+      titulo: Ministro da Secretaria de Comunicação Social, Sidônio Palmeira, e Secretário de Imprensa da Secretaria de Comunicação
+        Social, Laércio Portela
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes: []
+    - data: '2026-10-01'
+      hora: '11:00'
+      titulo: Assinatura de parecer vinculante sobre afastamento remunerado de mulheres vítimas de violência doméstica
+      tipo: evento
+      local: Palácio do Planalto
+      participantes: []
+    - data: '2026-10-01'
+      hora: '10:00'
+      titulo: Assinatura da cessão onerosa do Centro de Treinamento Rei Pelé
+      tipo: evento
+      local: Palácio do Planalto
+      participantes: []
+    - data: '2026-10-01'
+      hora: 09:00
+      titulo: Ministra da Casa Civil, Miriam Belchior, Ministro da Fazenda, Dario Durigan, e Ministro do Planejamento e Orçamento,
+        Bruno Moretti
+      tipo: audiencia
+      local: Palácio do Planalto
+      participantes: []
     - data: '2026-09-28'
       hora: '16:45'
       titulo: Intervenções sobre a visita ao Hospital São João de Deus
@@ -87,36 +113,8 @@ people:
       tipo: viagem
       local: Base Aérea de Brasília
       participantes: []
-    - data: '2026-09-28'
-      hora: '12:30'
-      titulo: Sanção do PL nº 4.578/2025, que dispõe sobre as diretrizes para o desenvolvimento do futebol feminino
-      tipo: evento
-      local: Base Aérea de Brasília
-      participantes: []
-    - data: '2026-09-26'
-      hora: '17:00'
-      titulo: Chegada a Brasília
-      tipo: viagem
-      local: Base Aérea de Brasília
-      participantes: []
-    - data: '2026-09-26'
-      hora: '15:40'
-      titulo: Partida para Brasília
-      tipo: viagem
-      local: Aeroporto Internacional de São Paulo - Guarulhos
-      participantes: []
-    - data: '2026-09-26'
-      hora: '14:00'
-      titulo: Intervenções por ocasião da Visita ao Novo Prédio do Instituto Federal de São Paulo (IFSP) – Campus Cidade Tiradentes
-      tipo: evento
-      local: Cidade Tiradentes, São Paulo
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-03:
-      - hora: '10:00'
-        titulo: Cerimônia de Entregas Simultâneas do Governo Federal para Moradia, Saúde e Educação
-        local: Palácio do Planalto
       presidente/2026-07-04: []
       presidente/2026-07-05: []
       presidente/2026-07-06:
@@ -1004,6 +1002,21 @@ people:
         local: Rua Boaventura da Silva – Umarizal, Belém
       presidente/2026-09-29: []
       presidente/2026-09-30: []
+      presidente/2026-10-01:
+      - hora: 09:00
+        titulo: Ministra da Casa Civil, Miriam Belchior, Ministro da Fazenda, Dario Durigan, e Ministro do Planejamento e
+          Orçamento, Bruno Moretti
+        local: Palácio do Planalto
+      - hora: '10:00'
+        titulo: Assinatura da cessão onerosa do Centro de Treinamento Rei Pelé
+        local: Palácio do Planalto
+      - hora: '11:00'
+        titulo: Assinatura de parecer vinculante sobre afastamento remunerado de mulheres vítimas de violência doméstica
+        local: Palácio do Planalto
+      - hora: '18:00'
+        titulo: Ministro da Secretaria de Comunicação Social, Sidônio Palmeira, e Secretário de Imprensa da Secretaria de
+          Comunicação Social, Laércio Portela
+        local: Palácio da Alvorada
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -1011,11 +1024,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 82
-    dias_com_agenda: 49
+    compromissos_90d: 79
+    dias_com_agenda: 48
     por_tipo:
-      evento: 34
-      viagem: 23
+      evento: 32
+      viagem: 22
       audiencia: 14
       outro: 6
       reuniao: 5
@@ -1031,9 +1044,9 @@ people:
     - nome: Sérgio Leite (Presidente da Federação dos Trabalhadores nas Indústrias Químicas e Fa)
       n: 1
     locais_top:
-    - nome: Brasília/DF
-      n: 19
     - nome: Palácio do Planalto
+      n: 18
+    - nome: Brasília/DF
       n: 18
     - nome: São Paulo/SP
       n: 15
@@ -1047,9 +1060,9 @@ people:
       n: 2
     - nome: Belo Horizonte/MG
       n: 2
-    - nome: Bauru/SP
+    - nome: São Caetano do Sul/SP
       n: 1
-    - nome: Olímpia/SP
+    - nome: São José  dos Campos/SP
       n: 1
     ultimo: '2026-09-30'
     recentes:
@@ -1104,17 +1117,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-03:
-      - hora: 07:30
-        titulo: Embarque de Brasília/SP para Bauru/SP
-        local: Brasília/DF
-      - hora: '10:00'
-        titulo: Cerimônia de Entregas Simultâneas do Governo Federal para Educação, Saúde e Moradia
-        local: Bauru/SP
-      - hora: '14:30'
-        titulo: Entrega de 150 Unidades Habitacionais do Residencial Olímpia F, do Programa Minha Casa Minha Vida
-        local: Olímpia/SP
-      vice/2026-07-03-b1: []
       vice/2026-07-04: []
       vice/2026-07-04-b1: []
       vice/2026-07-05: []
@@ -1545,6 +1547,8 @@ people:
         titulo: Posse do Ministro Rodrigo Pacheco no Tribunal de Contas da União
         local: Brasília/DF
       vice/2026-09-30-b1: []
+      vice/2026-10-01: []
+      vice/2026-10-01-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 256 compromissos em 63 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 82 compromissos em 49 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 259 compromissos em 63 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 79 compromissos em 48 dias (0 dias não lidos)'

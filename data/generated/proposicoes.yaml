@@ -1,15 +1,15 @@
 # GERADO por etl/proposicoes.py. Não edite à mão.
-generated_at: '2026-09-30'
+generated_at: '2026-10-01'
 since: '2026-02-02'
-duracao_s: 417
+duracao_s: 270
 resumo:
   camara:
     pessoas: 513
     com_proposicao: 507
-    proposicoes_distintas: 23892
+    proposicoes_distintas: 23924
     virou_norma: 6
-    designacoes_relator: 6735
-    designacoes_casadas: 6733
+    designacoes_relator: 6736
+    designacoes_casadas: 6734
     mediana_apresentadas: 30
     mediana_projetos: 9
     mediana_requerimentos: 14
@@ -18,15 +18,15 @@ resumo:
     relatorias_fonte: eventos "Designação de Relator(a)" nas tramitações do ano, casados por nome parlamentar (proposições
       de qualquer ano)
   senado:
-    pessoas: 83
+    pessoas: 84
     erros: 0
     com_proposicao: 82
-    proposicoes_distintas: 2126
-    virou_norma: 32
-    mediana_apresentadas: 32
-    mediana_projetos: 8
-    mediana_requerimentos: 24
-    mediana_relatorias: 15
+    proposicoes_distintas: 2129
+    virou_norma: 33
+    mediana_apresentadas: 32.5
+    mediana_projetos: 8.0
+    mediana_requerimentos: 24.0
+    mediana_relatorias: 15.0
     fonte: legis.senado.leg.br/dadosabertos/processo (por autor) e /processo/relatoria (por relator)
     relatorias_fonte: relatorias designadas no ano legislativo (inclui requerimentos relatados na Comissão Diretora)
 people:
@@ -952,17 +952,17 @@ people:
   br-p-cd-204572:
     house: camara
     window: ano
-    apresentadas: 514
-    como_primeiro_autor: 498
+    apresentadas: 526
+    como_primeiro_autor: 510
     projetos: 18
-    requerimentos: 428
+    requerimentos: 434
     emendas: 14
-    outros: 54
+    outros: 60
     pareceres_como_relator: 25
     por_tipo:
-      RIC: 373
-      INC: 53
-      REQ: 42
+      RIC: 377
+      INC: 59
+      REQ: 44
       PRL: 18
       PL: 12
       RPD: 12
@@ -1999,24 +1999,24 @@ people:
   br-p-cd-220543:
     house: camara
     window: ano
-    apresentadas: 157
-    como_primeiro_autor: 112
+    apresentadas: 159
+    como_primeiro_autor: 114
     projetos: 32
-    requerimentos: 104
+    requerimentos: 105
     emendas: 3
-    outros: 18
-    pareceres_como_relator: 131
+    outros: 19
+    pareceres_como_relator: 133
     por_tipo:
-      PRL: 68
+      PRL: 70
       REQ: 60
       RPD: 36
       PL: 29
       RDF: 22
+      INC: 19
       SBT: 19
-      INC: 18
       EMR: 12
       SBR: 10
-      RIC: 8
+      RIC: 9
       EMP: 3
       DOC: 1
       PDL: 1
@@ -6571,8 +6571,8 @@ people:
       REC: 1
     temas:
     - Direitos Humanos e Minorias
-    - Finanças Públicas e Orçamento
     - Trabalho e Emprego
+    - Finanças Públicas e Orçamento
     ultimas:
     - id: 2647191
       sigla: PL
@@ -6901,15 +6901,15 @@ people:
   br-p-cd-74856:
     house: camara
     window: ano
-    apresentadas: 689
-    como_primeiro_autor: 403
+    apresentadas: 693
+    como_primeiro_autor: 406
     projetos: 128
-    requerimentos: 505
+    requerimentos: 509
     emendas: 42
     outros: 14
     pareceres_como_relator: 364
     por_tipo:
-      REQ: 376
+      REQ: 377
       PRL: 192
       PL: 119
       RPD: 108
@@ -6918,7 +6918,7 @@ people:
       EMP: 37
       SBR: 36
       RDF: 30
-      RIC: 20
+      RIC: 23
       INC: 11
       EMC: 5
       PLP: 4
@@ -8825,18 +8825,18 @@ people:
   br-p-cd-204534:
     house: camara
     window: ano
-    apresentadas: 59
-    como_primeiro_autor: 40
-    projetos: 19
-    requerimentos: 36
+    apresentadas: 61
+    como_primeiro_autor: 42
+    projetos: 20
+    requerimentos: 37
     emendas: 4
     outros: 0
     pareceres_como_relator: 29
     por_tipo:
       RIC: 19
-      PL: 17
+      PL: 18
       PRL: 15
-      REQ: 9
+      REQ: 10
       RDF: 8
       RPD: 6
       EMP: 4
@@ -8853,6 +8853,17 @@ people:
     - Administração Pública
     - Finanças Públicas e Orçamento
     ultimas:
+    - id: 2647228
+      sigla: PL
+      numero: 5498
+      ano: 2026
+      ementa: Dispõe sobre medidas complementares de proteção de crianças e adolescentes no uso de redes sociais e altera
+        a Lei nº 15.211, de 17 de setembro de 2025 (Estatut…
+      situacao: Apresentação de Proposição
+      orgao: null
+      data: '2026-09-30'
+      apresentada: '2026-09-30'
+      url: https://www.camara.leg.br/propostas-legislativas/2647228
     - id: 2641441
       sigla: PL
       numero: 4739
@@ -8897,17 +8908,6 @@ people:
       data: '2026-08-21'
       apresentada: '2026-06-19'
       url: https://www.camara.leg.br/propostas-legislativas/2634427
-    - id: 2631190
-      sigla: PEC
-      numero: 13
-      ano: 2026
-      ementa: Altera o art. 9º da Emenda Constitucional nº 132, de 20 de dezembro de 2023, para permitir a concessão de créditos
-        do Imposto sobre Bens e Serviços através de…
-      situacao: Pronta para Pauta
-      orgao: CCJC
-      data: '2026-07-20'
-      apresentada: '2026-06-10'
-      url: https://www.camara.leg.br/propostas-legislativas/2631190
     relatorias: 27
     relatorias_projetos: 27
     relatorias_por_orgao:
@@ -10192,8 +10192,8 @@ people:
       SSP: 1
     temas:
     - Direito Penal e Processual Penal
-    - Defesa e Segurança
     - Trabalho e Emprego
+    - Defesa e Segurança
     ultimas:
     - id: 2647186
       sigla: PL
@@ -11634,17 +11634,17 @@ people:
   br-p-cd-178947:
     house: camara
     window: ano
-    apresentadas: 991
-    como_primeiro_autor: 841
+    apresentadas: 992
+    como_primeiro_autor: 842
     projetos: 6
-    requerimentos: 857
+    requerimentos: 858
     emendas: 49
     outros: 79
     pareceres_como_relator: 10
     por_tipo:
       RPD: 723
       DOC: 183
-      REQ: 123
+      REQ: 124
       DTQ: 77
       EMP: 44
       RPDR: 6
@@ -15773,19 +15773,19 @@ people:
     requerimentos: 59
     emendas: 0
     outros: 2
-    pareceres_como_relator: 41
+    pareceres_como_relator: 45
     por_tipo:
       REQ: 38
-      PRL: 28
+      PRL: 30
       PL: 25
       RPD: 20
-      SBT: 8
+      SBT: 9
       EMR: 4
       REC: 2
+      SBR: 2
       PEC: 1
       PLP: 1
       RCP: 1
-      SBR: 1
     temas:
     - Direitos Humanos e Minorias
     - Defesa e Segurança
@@ -19387,22 +19387,22 @@ people:
   br-p-cd-204528:
     house: camara
     window: ano
-    apresentadas: 406
-    como_primeiro_autor: 352
+    apresentadas: 409
+    como_primeiro_autor: 355
     projetos: 44
-    requerimentos: 343
+    requerimentos: 344
     emendas: 9
-    outros: 10
+    outros: 12
     pareceres_como_relator: 10
     por_tipo:
-      RIC: 170
+      RIC: 171
       REQ: 86
       RPD: 86
       PL: 27
       PDL: 9
       EMC: 8
+      INC: 6
       PRL: 5
-      INC: 4
       SBT: 4
       PLP: 3
       REC: 3
@@ -21904,16 +21904,16 @@ people:
   br-p-cd-141391:
     house: camara
     window: ano
-    apresentadas: 40
-    como_primeiro_autor: 34
+    apresentadas: 41
+    como_primeiro_autor: 35
     projetos: 8
-    requerimentos: 9
+    requerimentos: 10
     emendas: 23
     outros: 0
     pareceres_como_relator: 28
     por_tipo:
       EMC: 16
-      REQ: 7
+      REQ: 8
       SBT: 7
       EMP: 5
       PL: 5
@@ -29447,16 +29447,16 @@ people:
   br-p-cd-220534:
     house: camara
     window: ano
-    apresentadas: 94
-    como_primeiro_autor: 32
-    projetos: 26
+    apresentadas: 95
+    como_primeiro_autor: 33
+    projetos: 27
     requerimentos: 64
     emendas: 0
     outros: 4
     pareceres_como_relator: 0
     por_tipo:
       REQ: 59
-      PL: 17
+      PL: 18
       PEC: 4
       RIC: 4
       INC: 3
@@ -29471,6 +29471,17 @@ people:
     - Direito Penal e Processual Penal
     - Finanças Públicas e Orçamento
     ultimas:
+    - id: 2647257
+      sigla: PL
+      numero: 5501
+      ano: 2026
+      ementa: Altera a Lei nº 14.852, de 3 de maio de 2024, para estabelecer incentivos fiscais à formação de recursos humanos
+        para a Indústria de Jogos Eletrônicos
+      situacao: Apresentação de Proposição
+      orgao: null
+      data: '2026-09-30'
+      apresentada: '2026-09-30'
+      url: https://www.camara.leg.br/propostas-legislativas/2647257
     - id: 2646224
       sigla: PL
       numero: 5314
@@ -29515,17 +29526,6 @@ people:
       data: '2026-08-19'
       apresentada: '2026-08-19'
       url: https://www.camara.leg.br/propostas-legislativas/2644044
-    - id: 2639263
-      sigla: PL
-      numero: 3660
-      ano: 2026
-      ementa: Altera a Lei nº 9.991, de 24 de julho de 2000, para incluir a eficiência energética em estabelecimentos públicos
-        de saúde integrantes do Sistema Único de Saúde…
-      situacao: Aguardando Despacho do Presidente da Câmara dos Deputados (Chancela)
-      orgao: SECAP(SGM)
-      data: '2026-07-13'
-      apresentada: '2026-07-13'
-      url: https://www.camara.leg.br/propostas-legislativas/2639263
     relatorias: 0
     relatorias_projetos: 0
     relatorias_por_orgao: {}
@@ -30754,15 +30754,15 @@ people:
   br-p-cd-220568:
     house: camara
     window: ano
-    apresentadas: 335
-    como_primeiro_autor: 305
+    apresentadas: 337
+    como_primeiro_autor: 307
     projetos: 6
-    requerimentos: 282
+    requerimentos: 284
     emendas: 5
     outros: 42
     pareceres_como_relator: 23
     por_tipo:
-      RIC: 214
+      RIC: 216
       REQ: 60
       INC: 37
       PRL: 19
@@ -30835,10 +30835,10 @@ people:
       data: '2026-02-25'
       apresentada: '2026-02-25'
       url: https://www.camara.leg.br/propostas-legislativas/2604454
-    relatorias: 28
-    relatorias_projetos: 10
+    relatorias: 29
+    relatorias_projetos: 11
     relatorias_por_orgao:
-      CCOM: 20
+      CCOM: 21
       CSPCCO: 5
       CREDN: 3
     virou_norma: 0
@@ -31264,15 +31264,15 @@ people:
   br-p-cd-204539:
     house: camara
     window: ano
-    apresentadas: 19
-    como_primeiro_autor: 11
-    projetos: 14
+    apresentadas: 20
+    como_primeiro_autor: 12
+    projetos: 15
     requerimentos: 3
     emendas: 2
     outros: 0
     pareceres_como_relator: 0
     por_tipo:
-      PL: 10
+      PL: 11
       PEC: 4
       REQ: 3
       EMC: 2
@@ -31281,6 +31281,17 @@ people:
     - Trabalho e Emprego
     - Defesa e Segurança
     ultimas:
+    - id: 2647231
+      sigla: PL
+      numero: 5499
+      ano: 2026
+      ementa: Institui o Programa Nacional de Crédito Previdenciário do Cuidado – PNCC, destinado às mulheres que interrompam
+        ou reduzam sua atividade profissional para exer…
+      situacao: Apresentação de Proposição
+      orgao: null
+      data: '2026-09-30'
+      apresentada: '2026-09-30'
+      url: https://www.camara.leg.br/propostas-legislativas/2647231
     - id: 2644800
       sigla: PEC
       numero: 16
@@ -31324,17 +31335,6 @@ people:
       data: '2026-07-20'
       apresentada: '2026-06-17'
       url: https://www.camara.leg.br/propostas-legislativas/2633488
-    - id: 2623604
-      sigla: PEC
-      numero: 9
-      ano: 2026
-      ementa: Altera o art. 228 da Constituição Federal, para reduzir a idade mínima de imputabilidade penal, nas condições
-        que estabelece.
-      situacao: Tramitando em Conjunto
-      orgao: MESA
-      data: '2026-08-12'
-      apresentada: '2026-05-12'
-      url: https://www.camara.leg.br/propostas-legislativas/2623604
     relatorias: 0
     relatorias_projetos: 0
     relatorias_por_orgao: {}
@@ -32768,15 +32768,15 @@ people:
   br-p-cd-214694:
     house: camara
     window: ano
-    apresentadas: 51
-    como_primeiro_autor: 28
+    apresentadas: 52
+    como_primeiro_autor: 29
     projetos: 12
-    requerimentos: 30
+    requerimentos: 31
     emendas: 6
     outros: 3
     pareceres_como_relator: 12
     por_tipo:
-      REQ: 20
+      REQ: 21
       PRL: 7
       RPD: 7
       PL: 6
@@ -36372,9 +36372,9 @@ people:
   br-p-cd-178997:
     house: camara
     window: ano
-    apresentadas: 19
-    como_primeiro_autor: 6
-    projetos: 5
+    apresentadas: 20
+    como_primeiro_autor: 7
+    projetos: 6
     requerimentos: 13
     emendas: 1
     outros: 0
@@ -36382,12 +36382,12 @@ people:
     por_tipo:
       REQ: 12
       PEC: 3
+      PL: 2
       PRL: 2
       DOC: 1
       EMP: 1
       EMR: 1
       ERD: 1
-      PL: 1
       PLP: 1
       PPP: 1
       PRLP: 1
@@ -36398,6 +36398,17 @@ people:
     - Finanças Públicas e Orçamento
     - Esporte e Lazer
     ultimas:
+    - id: 2647251
+      sigla: PL
+      numero: 5500
+      ano: 2026
+      ementa: Altera a Lei nº 10.703, de 18 de julho de 2003, para dispor sobre a verificação de identidade de usuários de
+        serviços de telecomunicações mediante validação bi…
+      situacao: Apresentação de Proposição
+      orgao: null
+      data: '2026-09-30'
+      apresentada: '2026-09-30'
+      url: https://www.camara.leg.br/propostas-legislativas/2647251
     - id: 2642678
       sigla: PL
       numero: 4984
@@ -36441,17 +36452,6 @@ people:
       data: '2026-07-20'
       apresentada: '2026-06-10'
       url: https://www.camara.leg.br/propostas-legislativas/2631190
-    - id: 2623604
-      sigla: PEC
-      numero: 9
-      ano: 2026
-      ementa: Altera o art. 228 da Constituição Federal, para reduzir a idade mínima de imputabilidade penal, nas condições
-        que estabelece.
-      situacao: Tramitando em Conjunto
-      orgao: MESA
-      data: '2026-08-12'
-      apresentada: '2026-05-12'
-      url: https://www.camara.leg.br/propostas-legislativas/2623604
     relatorias: 11
     relatorias_projetos: 9
     relatorias_por_orgao:
@@ -37536,15 +37536,15 @@ people:
   br-p-cd-204553:
     house: camara
     window: ano
-    apresentadas: 45
-    como_primeiro_autor: 41
+    apresentadas: 46
+    como_primeiro_autor: 42
     projetos: 16
-    requerimentos: 24
+    requerimentos: 25
     emendas: 0
     outros: 5
     pareceres_como_relator: 17
     por_tipo:
-      REQ: 23
+      REQ: 24
       PL: 14
       PRL: 10
       INC: 5
@@ -40004,9 +40004,9 @@ people:
     requerimentos: 164
     emendas: 31
     outros: 20
-    pareceres_como_relator: 230
+    pareceres_como_relator: 231
     por_tipo:
-      PRL: 121
+      PRL: 122
       REQ: 102
       SBT: 77
       RIC: 37
@@ -42630,16 +42630,16 @@ people:
   br-p-cd-220660:
     house: camara
     window: ano
-    apresentadas: 8
-    como_primeiro_autor: 8
+    apresentadas: 9
+    como_primeiro_autor: 9
     projetos: 6
-    requerimentos: 2
+    requerimentos: 3
     emendas: 0
     outros: 0
     pareceres_como_relator: 4
     por_tipo:
       PL: 6
-      REQ: 2
+      REQ: 3
       PPP: 1
       PRLP: 1
       RDF: 1
@@ -43121,12 +43121,12 @@ people:
   br-p-sf-3777:
     house: senado
     window: ano
-    apresentadas: 32
+    apresentadas: 33
     como_primeiro_autor: 21
     projetos: 8
     requerimentos: 24
     emendas: 0
-    outros: 0
+    outros: 1
     pareceres_como_relator: null
     por_tipo:
       RQS: 16
@@ -43134,6 +43134,7 @@ people:
       PEC: 4
       PL: 2
       PLP: 2
+      PET: 1
     temas: []
     ultimas:
     - id: 9109525
@@ -43542,21 +43543,21 @@ people:
   br-p-sf-4811:
     house: senado
     window: ano
-    apresentadas: 57
+    apresentadas: 58
     como_primeiro_autor: 32
     projetos: 16
     requerimentos: 39
     emendas: 0
-    outros: 2
+    outros: 3
     pareceres_como_relator: null
     por_tipo:
       RQS: 20
       REQ: 17
       PEC: 7
       PL: 7
+      PET: 2
       PRS: 2
       R.S: 2
-      PET: 1
       VET: 1
     temas: []
     ultimas:
@@ -43713,18 +43714,19 @@ people:
   br-p-sf-5899:
     house: senado
     window: ano
-    apresentadas: 20
+    apresentadas: 21
     como_primeiro_autor: 12
     projetos: 7
     requerimentos: 13
     emendas: 0
-    outros: 0
+    outros: 1
     pareceres_como_relator: null
     por_tipo:
       REQ: 9
       PEC: 5
       RQS: 3
       PL: 2
+      PET: 1
       R.S: 1
     temas: []
     ultimas:
@@ -44219,12 +44221,12 @@ people:
   br-p-sf-5386:
     house: senado
     window: ano
-    apresentadas: 98
+    apresentadas: 99
     como_primeiro_autor: 15
     projetos: 6
     requerimentos: 92
     emendas: 0
-    outros: 0
+    outros: 1
     pareceres_como_relator: null
     por_tipo:
       RQS: 85
@@ -44232,6 +44234,7 @@ people:
       PEC: 3
       PL: 2
       PDL: 1
+      PET: 1
       R.S: 1
     temas: []
     ultimas:
@@ -44304,17 +44307,18 @@ people:
   br-p-sf-5959:
     house: senado
     window: ano
-    apresentadas: 15
+    apresentadas: 16
     como_primeiro_autor: 3
     projetos: 6
     requerimentos: 8
     emendas: 0
-    outros: 1
+    outros: 2
     pareceres_como_relator: null
     por_tipo:
       PEC: 5
       REQ: 4
       RQS: 4
+      PET: 1
       PL: 1
       VET: 1
     temas: []
@@ -44388,17 +44392,18 @@ people:
   br-p-sf-5924:
     house: senado
     window: ano
-    apresentadas: 10
+    apresentadas: 11
     como_primeiro_autor: 3
     projetos: 5
     requerimentos: 5
     emendas: 0
-    outros: 0
+    outros: 1
     pareceres_como_relator: null
     por_tipo:
       PEC: 5
       REQ: 2
       RQS: 2
+      PET: 1
       R.S: 1
     temas: []
     ultimas:
@@ -44832,12 +44837,12 @@ people:
   br-p-sf-6342:
     house: senado
     window: ano
-    apresentadas: 58
+    apresentadas: 59
     como_primeiro_autor: 39
     projetos: 13
     requerimentos: 43
     emendas: 0
-    outros: 2
+    outros: 3
     pareceres_como_relator: null
     por_tipo:
       RQS: 27
@@ -44846,6 +44851,7 @@ people:
       PEC: 4
       PDL: 2
       INS: 1
+      PET: 1
       VET: 1
     temas: []
     ultimas:
@@ -45007,12 +45013,12 @@ people:
   br-p-sf-631:
     house: senado
     window: ano
-    apresentadas: 74
+    apresentadas: 75
     como_primeiro_autor: 53
     projetos: 16
     requerimentos: 55
     emendas: 0
-    outros: 3
+    outros: 4
     pareceres_como_relator: null
     por_tipo:
       RQS: 44
@@ -45020,8 +45026,8 @@ people:
       PL: 6
       PEC: 5
       PDL: 4
+      PET: 2
       INS: 1
-      PET: 1
       PRS: 1
       R.C: 1
       R.S: 1
@@ -45612,12 +45618,12 @@ people:
   br-p-sf-5736:
     house: senado
     window: ano
-    apresentadas: 43
+    apresentadas: 44
     como_primeiro_autor: 11
     projetos: 10
     requerimentos: 30
     emendas: 0
-    outros: 3
+    outros: 4
     pareceres_como_relator: null
     por_tipo:
       RQS: 21
@@ -45628,6 +45634,7 @@ people:
       VET: 2
       INS: 1
       PDL: 1
+      PET: 1
       R.S: 1
     temas: []
     ultimas:
@@ -45665,7 +45672,7 @@ people:
       orgao: SF
       data: '2026-09-30'
       apresentada: '2026-07-01'
-      norma: null
+      norma: Lei nº 15.526 de 29/09/2026
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/174933
     - id: 9055580
       sigla: PEC
@@ -45697,16 +45704,16 @@ people:
       CRA: 4
       CRE: 3
       CAE: 3
-    virou_norma: 5
+    virou_norma: 6
   br-p-sf-6341:
     house: senado
     window: ano
-    apresentadas: 88
+    apresentadas: 89
     como_primeiro_autor: 17
     projetos: 15
     requerimentos: 67
     emendas: 0
-    outros: 6
+    outros: 7
     pareceres_como_relator: null
     por_tipo:
       RQS: 51
@@ -45715,10 +45722,10 @@ people:
       PL: 3
       R.S: 3
       PDL: 2
+      PET: 2
       R.C: 2
       VET: 2
       INS: 1
-      PET: 1
       PLP: 1
     temas: []
     ultimas:
@@ -45875,12 +45882,12 @@ people:
   br-p-sf-5672:
     house: senado
     window: ano
-    apresentadas: 30
+    apresentadas: 31
     como_primeiro_autor: 9
     projetos: 8
     requerimentos: 18
     emendas: 0
-    outros: 4
+    outros: 5
     pareceres_como_relator: null
     por_tipo:
       RQS: 16
@@ -45888,6 +45895,7 @@ people:
       INS: 3
       REQ: 2
       PDL: 1
+      PET: 1
       PLP: 1
       PRS: 1
       VET: 1
@@ -45964,18 +45972,19 @@ people:
   br-p-sf-5982:
     house: senado
     window: ano
-    apresentadas: 45
-    como_primeiro_autor: 29
+    apresentadas: 47
+    como_primeiro_autor: 31
     projetos: 21
     requerimentos: 23
     emendas: 0
-    outros: 1
+    outros: 3
     pareceres_como_relator: null
     por_tipo:
       PL: 16
       RQS: 14
       REQ: 8
       PEC: 4
+      PET: 2
       INS: 1
       PLP: 1
       R.S: 1
@@ -46131,20 +46140,20 @@ people:
   br-p-sf-3806:
     house: senado
     window: ano
-    apresentadas: 54
+    apresentadas: 55
     como_primeiro_autor: 40
     projetos: 13
     requerimentos: 39
     emendas: 0
-    outros: 2
+    outros: 3
     pareceres_como_relator: null
     por_tipo:
       REQ: 26
       RQS: 12
       PEC: 6
       PL: 5
+      PET: 2
       PDL: 1
-      PET: 1
       PLP: 1
       R.S: 1
       VET: 1
@@ -46311,15 +46320,15 @@ people:
   br-p-sf-5906:
     house: senado
     window: ano
-    apresentadas: 70
-    como_primeiro_autor: 62
-    projetos: 48
+    apresentadas: 71
+    como_primeiro_autor: 63
+    projetos: 49
     requerimentos: 22
     emendas: 0
     outros: 0
     pareceres_como_relator: null
     por_tipo:
-      PL: 38
+      PL: 39
       REQ: 18
       PRS: 6
       RQS: 4
@@ -46327,6 +46336,18 @@ people:
       PLP: 1
     temas: []
     ultimas:
+    - id: 9111471
+      sigla: PL
+      numero: 5503
+      ano: 2026
+      ementa: Altera a Lei nº 8.080, de 19 de setembro de 1990 - Lei Orgânica da Saúde, para dispor sobre o requerimento administrativo
+        para fornecimento de medicamento dest…
+      situacao: Aguardando despacho
+      orgao: SF
+      data: '2026-10-01'
+      apresentada: '2026-10-01'
+      norma: null
+      url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175895
     - id: 9110930
       sigla: PL
       numero: 5488
@@ -46374,17 +46395,6 @@ people:
       apresentada: '2026-08-26'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175578
-    - id: 9099593
-      sigla: PRS
-      numero: 49
-      ano: 2026
-      ementa: Institui, no âmbito do Senado Federal, a Frente Parlamentar de Enfrentamento ao Câncer Infantojuvenil.
-      situacao: Aguardando despacho
-      orgao: PLEN
-      data: '2026-08-24'
-      apresentada: '2026-08-24'
-      norma: null
-      url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175559
     relatorias: 18
     relatorias_projetos: 13
     relatorias_por_colegiado:
@@ -46820,12 +46830,12 @@ people:
   br-p-sf-5376:
     house: senado
     window: ano
-    apresentadas: 56
+    apresentadas: 57
     como_primeiro_autor: 34
     projetos: 8
     requerimentos: 44
     emendas: 0
-    outros: 4
+    outros: 5
     pareceres_como_relator: null
     por_tipo:
       RQS: 29
@@ -46834,6 +46844,7 @@ people:
       PL: 3
       PEC: 2
       PRS: 2
+      PET: 1
       PLP: 1
     temas: []
     ultimas:
@@ -47257,18 +47268,18 @@ people:
   br-p-sf-5974:
     house: senado
     window: ano
-    apresentadas: 10
+    apresentadas: 11
     como_primeiro_autor: 7
     projetos: 5
     requerimentos: 3
     emendas: 0
-    outros: 2
+    outros: 3
     pareceres_como_relator: null
     por_tipo:
       PL: 5
+      PET: 2
       RQS: 2
       INS: 1
-      PET: 1
       REQ: 1
     temas: []
     ultimas:
@@ -47504,18 +47515,19 @@ people:
   br-p-sf-5979:
     house: senado
     window: ano
-    apresentadas: 44
+    apresentadas: 45
     como_primeiro_autor: 24
     projetos: 9
     requerimentos: 34
     emendas: 0
-    outros: 1
+    outros: 2
     pareceres_como_relator: null
     por_tipo:
       RQS: 17
       REQ: 16
       PL: 6
       PEC: 2
+      PET: 1
       PLP: 1
       R.S: 1
       VET: 1
@@ -47591,12 +47603,12 @@ people:
   br-p-sf-22:
     house: senado
     window: ano
-    apresentadas: 82
+    apresentadas: 83
     como_primeiro_autor: 30
     projetos: 10
     requerimentos: 69
     emendas: 0
-    outros: 3
+    outros: 4
     pareceres_como_relator: null
     por_tipo:
       RQS: 42
@@ -47607,6 +47619,7 @@ people:
       R.S: 2
       INS: 1
       PDL: 1
+      PET: 1
       R.C: 1
       VET: 1
     temas: []
@@ -47682,12 +47695,12 @@ people:
   br-p-sf-6335:
     house: senado
     window: ano
-    apresentadas: 363
+    apresentadas: 364
     como_primeiro_autor: 228
     projetos: 21
     requerimentos: 332
     emendas: 0
-    outros: 10
+    outros: 11
     pareceres_como_relator: null
     por_tipo:
       RQS: 172
@@ -47695,10 +47708,10 @@ people:
       PL: 11
       PEC: 9
       INS: 6
+      PET: 2
       R.C: 2
       R.S: 2
       PDL: 1
-      PET: 1
       VET: 1
     temas: []
     ultimas:
@@ -47933,21 +47946,21 @@ people:
   br-p-sf-5990:
     house: senado
     window: ano
-    apresentadas: 31
+    apresentadas: 32
     como_primeiro_autor: 25
     projetos: 9
     requerimentos: 20
     emendas: 0
-    outros: 2
+    outros: 3
     pareceres_como_relator: null
     por_tipo:
       RQS: 14
       REQ: 5
       PEC: 4
       PL: 4
+      PET: 2
       PCE: 1
       PDL: 1
-      PET: 1
       R.S: 1
     temas: []
     ultimas:
@@ -48104,19 +48117,19 @@ people:
   br-p-sf-5070:
     house: senado
     window: ano
-    apresentadas: 22
+    apresentadas: 23
     como_primeiro_autor: 7
     projetos: 5
     requerimentos: 16
     emendas: 0
-    outros: 1
+    outros: 2
     pareceres_como_relator: null
     por_tipo:
       RQS: 8
       REQ: 6
       PEC: 4
+      PET: 2
       R.S: 2
-      PET: 1
       PL: 1
     temas: []
     ultimas:
@@ -48189,12 +48202,12 @@ people:
   br-p-sf-1173:
     house: senado
     window: ano
-    apresentadas: 89
+    apresentadas: 90
     como_primeiro_autor: 40
     projetos: 17
     requerimentos: 67
     emendas: 0
-    outros: 5
+    outros: 6
     pareceres_como_relator: null
     por_tipo:
       RQS: 50
@@ -48205,6 +48218,7 @@ people:
       PLP: 3
       PDL: 2
       R.C: 2
+      PET: 1
       R.S: 1
     temas: []
     ultimas:
@@ -48450,12 +48464,12 @@ people:
   br-p-sf-285:
     house: senado
     window: ano
-    apresentadas: 23
+    apresentadas: 24
     como_primeiro_autor: 13
     projetos: 10
     requerimentos: 11
     emendas: 0
-    outros: 2
+    outros: 3
     pareceres_como_relator: null
     por_tipo:
       REQ: 9
@@ -48463,6 +48477,7 @@ people:
       PFS: 2
       PL: 2
       RQS: 2
+      PET: 1
     temas: []
     ultimas:
     - id: 9104654
@@ -48879,21 +48894,21 @@ people:
   br-p-sf-1186:
     house: senado
     window: ano
-    apresentadas: 46
+    apresentadas: 47
     como_primeiro_autor: 22
     projetos: 9
     requerimentos: 34
     emendas: 0
-    outros: 3
+    outros: 4
     pareceres_como_relator: null
     por_tipo:
       RQS: 23
       REQ: 9
       PEC: 6
+      PET: 2
       R.S: 2
       INS: 1
       PDL: 1
-      PET: 1
       PL: 1
       PLP: 1
       VET: 1
@@ -49137,20 +49152,20 @@ people:
   br-p-sf-6009:
     house: senado
     window: ano
-    apresentadas: 89
+    apresentadas: 90
     como_primeiro_autor: 54
     projetos: 21
     requerimentos: 66
     emendas: 0
-    outros: 2
+    outros: 3
     pareceres_como_relator: null
     por_tipo:
       REQ: 34
       RQS: 31
       PL: 12
       PEC: 7
+      PET: 2
       PDL: 1
-      PET: 1
       PRS: 1
       R.S: 1
       VET: 1
@@ -49227,17 +49242,18 @@ people:
   br-p-sf-6010:
     house: senado
     window: ano
-    apresentadas: 24
+    apresentadas: 25
     como_primeiro_autor: 7
     projetos: 5
     requerimentos: 18
     emendas: 0
-    outros: 1
+    outros: 2
     pareceres_como_relator: null
     por_tipo:
       RQS: 15
       PEC: 4
       REQ: 3
+      PET: 1
       PL: 1
       VET: 1
     temas: []
@@ -49393,12 +49409,12 @@ people:
   br-p-sf-5422:
     house: senado
     window: ano
-    apresentadas: 49
+    apresentadas: 50
     como_primeiro_autor: 20
     projetos: 7
     requerimentos: 41
     emendas: 0
-    outros: 1
+    outros: 2
     pareceres_como_relator: null
     por_tipo:
       REQ: 35
@@ -49406,6 +49422,7 @@ people:
       RQS: 5
       PL: 2
       INS: 1
+      PET: 1
       R.S: 1
     temas: []
     ultimas:
@@ -49558,12 +49575,12 @@ people:
   br-p-sf-5895:
     house: senado
     window: ano
-    apresentadas: 63
+    apresentadas: 64
     como_primeiro_autor: 30
     projetos: 18
     requerimentos: 43
     emendas: 0
-    outros: 2
+    outros: 3
     pareceres_como_relator: null
     por_tipo:
       RQS: 29
@@ -49573,6 +49590,7 @@ people:
       R.S: 4
       PLP: 3
       INS: 1
+      PET: 1
       VET: 1
     temas: []
     ultimas:
@@ -49645,12 +49663,12 @@ people:
   br-p-sf-6337:
     house: senado
     window: ano
-    apresentadas: 42
+    apresentadas: 43
     como_primeiro_autor: 19
     projetos: 17
     requerimentos: 24
     emendas: 0
-    outros: 1
+    outros: 2
     pareceres_como_relator: null
     por_tipo:
       RQS: 16
@@ -49658,7 +49676,7 @@ people:
       REQ: 7
       PEC: 6
       PLP: 3
-      PET: 1
+      PET: 2
       R.S: 1
     temas: []
     ultimas:
@@ -49730,12 +49748,12 @@ people:
   br-p-sf-345:
     house: senado
     window: ano
-    apresentadas: 91
+    apresentadas: 92
     como_primeiro_autor: 37
     projetos: 17
     requerimentos: 73
     emendas: 0
-    outros: 1
+    outros: 2
     pareceres_como_relator: null
     por_tipo:
       RQS: 50
@@ -49743,6 +49761,7 @@ people:
       PEC: 7
       PL: 7
       PLP: 2
+      PET: 1
       PRS: 1
       VET: 1
     temas: []
@@ -49895,6 +49914,23 @@ people:
       CDH: 14
       CAS: 12
       CE: 9
+    virou_norma: 0
+  br-p-sf-5257:
+    house: senado
+    window: ano
+    apresentadas: 0
+    como_primeiro_autor: 0
+    projetos: 0
+    requerimentos: 0
+    emendas: 0
+    outros: 0
+    pareceres_como_relator: null
+    por_tipo: {}
+    temas: []
+    ultimas: []
+    relatorias: 0
+    relatorias_projetos: 0
+    relatorias_por_colegiado: {}
     virou_norma: 0
   br-p-sf-6025:
     house: senado
