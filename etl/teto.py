@@ -17,11 +17,34 @@ def money(s): return float((s or "0").replace(".", "").replace(",", ".") or 0)
 def norm(s): return re.sub(r"[^a-z0-9]+", " ", unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode().lower()).strip()
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--mes"); a = ap.parse_args()
-    t = datetime.date.today(); m = a.mes or f"{(t.replace(day=1) - datetime.timedelta(days=45)).strftime('%Y%m')}"
-    p = CACHE / f"{m}_Servidores_SIAPE.zip"
-    if not p.exists():
-        url = f"https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/servidores/{m}_Servidores_SIAPE.zip"; print("GET", url, file=sys.stderr)
-        p.write_bytes(urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=1800).read())
+    # A folha do SIAPE sai com atraso variável: em 01/10/2026 o arquivo de agosto ainda devolvia 403 e o
+    # de julho já existia. Pedir um mês fixo quebrava o conector sempre que a publicação atrasava. Agora
+    # ele tenta do mais novo para o mais velho e usa o primeiro que existir.
+    t = datetime.date.today()
+    if a.mes:
+        candidatos = [a.mes]
+    else:
+        candidatos = []
+        d = t.replace(day=1)
+        for _ in range(6):
+            d = (d - datetime.timedelta(days=1)).replace(day=1)
+            candidatos.append(d.strftime("%Y%m"))
+    m = p = None
+    for cand in candidatos:
+        alvo = CACHE / f"{cand}_Servidores_SIAPE.zip"
+        if alvo.exists(): m, p = cand, alvo; break
+        url = f"https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/servidores/{cand}_Servidores_SIAPE.zip"
+        print("GET", url, file=sys.stderr)
+        try:
+            dados = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=1800).read()
+        except Exception as e:
+            print(f"  {cand} indisponível ({str(e)[:60]}); tentando o mês anterior", file=sys.stderr)
+            continue
+        alvo.write_bytes(dados); m, p = cand, alvo; break
+    if not p:
+        print(f"nenhum mês disponível entre {candidatos[-1]} e {candidatos[0]}; arquivo anterior mantido",
+              file=sys.stderr)
+        sys.exit(2)
     z = zipfile.ZipFile(p)
     cad = [n for n in z.namelist() if n.endswith("Cadastro.csv")][0]; rem = [n for n in z.namelist() if n.endswith("Remuneracao.csv")][0]
     org_of = {}; cargo_of = {}
