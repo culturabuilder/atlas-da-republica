@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-10-01'
+generated_at: '2026-10-02'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,7 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-06-29': 44
+      '2026-06-29': 24
       '2026-07-06': 113
       '2026-07-13': 131
       '2026-07-20': 187
@@ -29,10 +29,10 @@ temas:
       '2026-09-07': 456
       '2026-09-14': 550
       '2026-09-21': 660
-      '2026-09-28': 602
-    total_90d: 4753
-    last7: 979
-    peak_week: 660
+      '2026-09-28': 866
+    total_90d: 4997
+    last7: 1170
+    peak_week: 866
   processes:
   - casa: camara
     id: PEC 3/2021
@@ -67,12 +67,16 @@ temas:
   - cpi do master
   - vorcaro
   curated: cpmi-banco-master-2026
-  news_hits: 84
+  news_hits: 85
   news_weekly:
     '2026-09-14': 29
     '2026-09-21': 44
-    '2026-09-28': 11
+    '2026-09-28': 12
   news_recent:
+  - id: a4a46dd1dc2bf988
+    title: Lula chama Roberta Luchsinger de ‘Vorcaro feminino’ e diz não conhecê-la
+    date: '2026-10-02'
+    publication: Estadão
   - id: cecf28397e4d6612
     title: PF discute levar a Fachin posição sobre ministros citados no caso Master
     date: '2026-10-01'
@@ -89,15 +93,11 @@ temas:
     title: Motta conversou com Vorcaro sobre “sociedade” e PL sobre carbono
     date: '2026-09-30'
     publication: Poder360
-  - id: 93d1d7f2ee2a4a3e
-    title: Crise no STF impede PF de concluir inquérito-mãe do caso Master
-    date: '2026-09-30'
-    publication: g1 Política
   wikipedia:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-06-29': 232
+      '2026-06-29': 158
       '2026-07-06': 393
       '2026-07-13': 384
       '2026-07-20': 444
@@ -110,9 +110,9 @@ temas:
       '2026-09-07': 10630
       '2026-09-14': 9902
       '2026-09-21': 4671
-      '2026-09-28': 1187
-    total_90d: 39243
-    last7: 3307
+      '2026-09-28': 1655
+    total_90d: 39637
+    last7: 3005
     peak_week: 10630
   processes:
   - casa: camara
@@ -127,7 +127,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
     requested: RCP 1/2026 (camara)
   state: parado
-  stalled_days: 73
+  stalled_days: 74
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -164,7 +164,7 @@ temas:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-06-29': 82
+      '2026-06-29': 47
       '2026-07-06': 113
       '2026-07-13': 137
       '2026-07-20': 161
@@ -177,9 +177,9 @@ temas:
       '2026-09-07': 536
       '2026-09-14': 677
       '2026-09-21': 1134
-      '2026-09-28': 620
-    total_90d: 5875
-    last7: 1288
+      '2026-09-28': 867
+    total_90d: 6087
+    last7: 1381
     peak_week: 1134
   processes:
   - casa: camara
@@ -205,7 +205,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2233802
     requested: PEC 221/2019 (camara)
   state: parado
-  stalled_days: 126
+  stalled_days: 127
   silence_after_peak: false
   silent_and_stalled: false
 - id: isencao-ir
@@ -230,7 +230,7 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-06-29': 11
+      '2026-06-29': 9
       '2026-07-06': 33
       '2026-07-13': 28
       '2026-07-20': 41
@@ -243,9 +243,9 @@ temas:
       '2026-09-07': 121
       '2026-09-14': 71
       '2026-09-21': 72
-      '2026-09-28': 17
-    total_90d: 688
-    last7: 43
+      '2026-09-28': 20
+    total_90d: 689
+    last7: 41
     peak_week: 121
   processes:
   - casa: camara
@@ -336,7 +336,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 146
+  stalled_days: 147
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -404,7 +404,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1205
+  stalled_days: 1206
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -444,7 +444,7 @@ temas:
     article: Precatório
     url: https://pt.wikipedia.org/wiki/Precatório
     weekly:
-      '2026-06-29': 11
+      '2026-06-29': 7
       '2026-07-06': 26
       '2026-07-13': 25
       '2026-07-20': 32
@@ -457,9 +457,9 @@ temas:
       '2026-09-07': 26
       '2026-09-14': 64
       '2026-09-21': 79
-      '2026-09-28': 44
-    total_90d: 527
-    last7: 88
+      '2026-09-28': 64
+    total_90d: 543
+    last7: 90
     peak_week: 80
   processes:
   - casa: camara
@@ -526,7 +526,7 @@ temas:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-06-29': 74
+      '2026-06-29': 56
       '2026-07-06': 246
       '2026-07-13': 390
       '2026-07-20': 175
@@ -539,9 +539,9 @@ temas:
       '2026-09-07': 303
       '2026-09-14': 214
       '2026-09-21': 186
-      '2026-09-28': 118
-    total_90d: 3273
-    last7: 226
+      '2026-09-28': 162
+    total_90d: 3299
+    last7: 246
     peak_week: 390
   processes:
   - casa: camara
