@@ -1,0 +1,5861 @@
+# GERADO por etl/recebidos.py. Não edite à mão.
+generated_at: '2026-10-03'
+fonte: https://eagendas.cgu.gov.br (rotas públicas /pesquisa/orgaos, /pesquisa/agentes-publicos-obrigados-por-orgao e /?filtro_servidor=...)
+agenda_lida_em: '2026-09-27'
+janela_dias: 90
+janela_inicio: '2026-06-29'
+agendas: 456
+entidades_n: 1339
+encontros: 15485
+nota: 'Soma das entidades mais frequentes de cada agenda pública, não o total de reuniões do governo: o conector da agenda guarda as mais frequentes
+  por autoridade. Entidade sem classificação não é apresentada como privada. Empresa controlada por estado ou município que o Atlas ainda não
+  tem como nó pode aparecer como empresa até ser classificada uma a uma.'
+por_classe:
+  advocacia:
+    entidades: 44
+    encontros: 170
+  empresa:
+    entidades: 202
+    encontros: 438
+  nao_classificado:
+    entidades: 433
+    encontros: 1078
+  orgao_federal:
+    entidades: 424
+    encontros: 13219
+  publico_outro:
+    entidades: 120
+    encontros: 344
+  setorial:
+    entidades: 116
+    encontros: 236
+privadas:
+- nome: MATTOS FILHO, VEIGA FILHO, MARREY JR. E QUIROGA ADVOGADOS
+  n: 18
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-diogo-thomson-de-andrade
+    nome: Diogo Thomson de Andrade
+    n: 5
+  - pessoa: br-p-igor-muniz
+    nome: Igor Muniz
+    n: 4
+  - pessoa: br-p-marina-palma-copola
+    nome: Marina Palma Copola de Carvalho
+    n: 3
+  - pessoa: br-p-otto-eduardo-fonseca-de-albuquerque-lobo
+    nome: Otto Eduardo Fonseca de Albuquerque Lobo
+    n: 2
+  - pessoa: br-p-joao-carlos-de-andrade-uzeda-accioly
+    nome: Joao Carlos de Andrade Uzeda Accioly
+    n: 2
+  - pessoa: br-p-camila-cabral-pires-alves
+    nome: Camila Cabral Pires Alves
+    n: 2
+- nome: ITAU UNIBANCO S.A.
+  n: 17
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wp-ailton-de-aquino-santos
+    nome: Ailton de Aquino Santos
+    n: 3
+  - pessoa: br-p-wp-nilton-jos-schneider-david
+    nome: Nilton José Schneider David
+    n: 3
+  - pessoa: br-p-wp-gilneu-francisco-astolfi-vivan
+    nome: Gilneu Francisco Astolfi Vivan
+    n: 3
+  - pessoa: br-p-wp-izabela-moreira-correa
+    nome: Izabela Moreira Correa
+    n: 3
+  - pessoa: br-p-gabriel-galipolo
+    nome: Gabriel Muricca Galípolo
+    n: 2
+  - pessoa: br-p-marcelo-cardoso-fonseca
+    nome: Marcelo Cardoso Fonseca
+    n: 1
+- nome: BARBOSA, MUSSNICH E ARAGAO ADVOGADOS
+  n: 15
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-diogo-thomson-de-andrade
+    nome: Diogo Thomson de Andrade
+    n: 3
+  - pessoa: br-p-carlos-jacques-vieira-gomes
+    nome: Carlos Jacques Vieira Gomes
+    n: 3
+  - pessoa: br-p-camila-cabral-pires-alves
+    nome: Camila Cabral Pires Alves
+    n: 3
+  - pessoa: br-p-joao-carlos-de-andrade-uzeda-accioly
+    nome: Joao Carlos de Andrade Uzeda Accioly
+    n: 2
+  - pessoa: br-p-marina-palma-copola
+    nome: Marina Palma Copola de Carvalho
+    n: 2
+  - pessoa: br-p-igor-muniz
+    nome: Igor Muniz
+    n: 2
+- nome: ENEVA S.A.
+  n: 15
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-joao-daniel-de-andrade-cascalho
+    nome: Joao Daniel de Andrade Cascalho
+    n: 12
+  - pessoa: br-p-gentil-nogueira-de-sa-junior
+    nome: Gentil Nogueira de Sa Junior
+    n: 2
+  - pessoa: br-p-agnes-maria-de-aragao-da-costa
+    nome: Agnes Maria de Aragao da Costa
+    n: 1
+- nome: BANCO BRADESCO S.A.
+  n: 13
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wp-gilneu-francisco-astolfi-vivan
+    nome: Gilneu Francisco Astolfi Vivan
+    n: 4
+  - pessoa: br-p-wp-nilton-jos-schneider-david
+    nome: Nilton José Schneider David
+    n: 3
+  - pessoa: br-p-gabriel-galipolo
+    nome: Gabriel Muricca Galípolo
+    n: 2
+  - pessoa: br-p-wp-paulo-picchetti
+    nome: Paulo Picchetti
+    n: 2
+  - pessoa: br-p-wp-rodrigo-alves-teixeira
+    nome: Rodrigo Alves Teixeira
+    n: 1
+  - pessoa: br-p-wp-izabela-moreira-correa
+    nome: Izabela Moreira Correa
+    n: 1
+- nome: RENTERIA SOCIEDADE DE ADVOGADOS
+  n: 13
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-otto-eduardo-fonseca-de-albuquerque-lobo
+    nome: Otto Eduardo Fonseca de Albuquerque Lobo
+    n: 4
+  - pessoa: br-p-marina-palma-copola
+    nome: Marina Palma Copola de Carvalho
+    n: 4
+  - pessoa: br-p-igor-muniz
+    nome: Igor Muniz
+    n: 3
+  - pessoa: br-p-joao-carlos-de-andrade-uzeda-accioly
+    nome: Joao Carlos de Andrade Uzeda Accioly
+    n: 2
+- nome: BRB BANCO DE BRASILIA SA
+  n: 12
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wp-ailton-de-aquino-santos
+    nome: Ailton de Aquino Santos
+    n: 5
+  - pessoa: br-p-gabriel-galipolo
+    nome: Gabriel Muricca Galípolo
+    n: 4
+  - pessoa: br-p-wp-gilneu-francisco-astolfi-vivan
+    nome: Gilneu Francisco Astolfi Vivan
+    n: 3
+- nome: TRINDADE SOCIEDADE DE ADVOGADOS
+  n: 12
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-otto-eduardo-fonseca-de-albuquerque-lobo
+    nome: Otto Eduardo Fonseca de Albuquerque Lobo
+    n: 4
+  - pessoa: br-p-igor-muniz
+    nome: Igor Muniz
+    n: 4
+  - pessoa: br-p-joao-carlos-de-andrade-uzeda-accioly
+    nome: Joao Carlos de Andrade Uzeda Accioly
+    n: 2
+  - pessoa: br-p-marina-palma-copola
+    nome: Marina Palma Copola de Carvalho
+    n: 2
+- nome: ALEXANDRE RANGEL SOCIEDADE DE ADVOGADOS
+  n: 10
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-otto-eduardo-fonseca-de-albuquerque-lobo
+    nome: Otto Eduardo Fonseca de Albuquerque Lobo
+    n: 3
+  - pessoa: br-p-igor-muniz
+    nome: Igor Muniz
+    n: 3
+  - pessoa: br-p-joao-carlos-de-andrade-uzeda-accioly
+    nome: Joao Carlos de Andrade Uzeda Accioly
+    n: 2
+  - pessoa: br-p-marina-palma-copola
+    nome: Marina Palma Copola de Carvalho
+    n: 2
+- nome: Associação Brasileira de Distribuidores de Energia Elétrica - ABRADEE
+  n: 10
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-sandoval-de-araujo-feitosa-neto
+    nome: Sandoval de Araujo Feitosa Neto
+    n: 3
+  - pessoa: br-p-willamy-moreira-frota
+    nome: Willamy Moreira Frota
+    n: 3
+  - pessoa: br-p-agnes-maria-de-aragao-da-costa
+    nome: Agnes Maria de Aragao da Costa
+    n: 2
+  - pessoa: br-p-gentil-nogueira-de-sa-junior
+    nome: Gentil Nogueira de Sa Junior
+    n: 2
+- nome: ABBC ASSOCIACAO BRASILEIRA DE BANCOS
+  n: 9
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wp-gilneu-francisco-astolfi-vivan
+    nome: Gilneu Francisco Astolfi Vivan
+    n: 5
+  - pessoa: br-p-wp-ailton-de-aquino-santos
+    nome: Ailton de Aquino Santos
+    n: 4
+- nome: AIAB - Associação das Indústrias Aeroespaciais do Brasil
+  n: 9
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-marcos-aurelio-vilela-valenca
+    nome: Marcos Aurelio Vilela Valenca
+    n: 6
+  - pessoa: br-p-daniel-gomes-de-almeida-filho
+    nome: Daniel Gomes de Almeida Filho
+    n: 3
+- nome: BANCO SANTANDER (BRASIL) S.A.
+  n: 9
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-dario-carnevalli-durigan
+    nome: Dario Carnevalli Durigan
+    n: 3
+  - pessoa: br-p-wp-gilneu-francisco-astolfi-vivan
+    nome: Gilneu Francisco Astolfi Vivan
+    n: 3
+  - pessoa: br-p-adrualdo-de-lima-catao
+    nome: Adrualdo de Lima Catao
+    n: 2
+  - pessoa: br-p-wp-rodrigo-alves-teixeira
+    nome: Rodrigo Alves Teixeira
+    n: 1
+- nome: GRINBERG E CORDOVIL SOCIEDADE DE ADVOGADOS
+  n: 9
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-jose-levi-mello-do-amaral-junior
+    nome: Jose Levi Mello do Amaral Junior
+    n: 6
+  - pessoa: br-p-carlos-jacques-vieira-gomes
+    nome: Carlos Jacques Vieira Gomes
+    n: 2
+  - pessoa: br-p-diogo-thomson-de-andrade
+    nome: Diogo Thomson de Andrade
+    n: 1
+- nome: PINHEIRO NETO ADVOGADOS
+  n: 9
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-diogo-thomson-de-andrade
+    nome: Diogo Thomson de Andrade
+    n: 3
+  - pessoa: br-p-vinicius-marques-de-carvalho
+    nome: Vinicius Marques de Carvalho
+    n: 2
+  - pessoa: br-p-gabriel-galipolo
+    nome: Gabriel Muricca Galípolo
+    n: 2
+  - pessoa: br-p-claudio-beschizza-ianelli
+    nome: Claudio Beschizza Ianelli
+    n: 1
+  - pessoa: br-p-camila-cabral-pires-alves
+    nome: Camila Cabral Pires Alves
+    n: 1
+- nome: BOCATER, CAMARGO, COSTA E SILVA, RODRIGUES ADVOGADOS ASSOCIADOS
+  n: 8
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-joao-carlos-de-andrade-uzeda-accioly
+    nome: Joao Carlos de Andrade Uzeda Accioly
+    n: 4
+  - pessoa: br-p-otto-eduardo-fonseca-de-albuquerque-lobo
+    nome: Otto Eduardo Fonseca de Albuquerque Lobo
+    n: 2
+  - pessoa: br-p-igor-muniz
+    nome: Igor Muniz
+    n: 2
+- nome: NEOENERGIA S.A
+  n: 8
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-sandoval-de-araujo-feitosa-neto
+    nome: Sandoval de Araujo Feitosa Neto
+    n: 5
+  - pessoa: br-p-gentil-nogueira-de-sa-junior
+    nome: Gentil Nogueira de Sa Junior
+    n: 3
+- nome: CAMINATI E BUENO ADVOGADOS
+  n: 7
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-jose-levi-mello-do-amaral-junior
+    nome: Jose Levi Mello do Amaral Junior
+    n: 3
+  - pessoa: br-p-carlos-jacques-vieira-gomes
+    nome: Carlos Jacques Vieira Gomes
+    n: 2
+  - pessoa: br-p-camila-cabral-pires-alves
+    nome: Camila Cabral Pires Alves
+    n: 2
+- nome: CHEDIAK E CRISTOFARO - ADVOGADOS
+  n: 7
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-joao-carlos-de-andrade-uzeda-accioly
+    nome: Joao Carlos de Andrade Uzeda Accioly
+    n: 4
+  - pessoa: br-p-otto-eduardo-fonseca-de-albuquerque-lobo
+    nome: Otto Eduardo Fonseca de Albuquerque Lobo
+    n: 3
+- nome: FEDERACAO BRASILEIRA DE BANCOS
+  n: 7
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wp-gilneu-francisco-astolfi-vivan
+    nome: Gilneu Francisco Astolfi Vivan
+    n: 4
+  - pessoa: br-p-adrualdo-de-lima-catao
+    nome: Adrualdo de Lima Catao
+    n: 3
+- nome: TELEFONICA BRASIL S.A.
+  n: 7
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wilson-diniz-wellisch
+    nome: Wilson Diniz Wellisch
+    n: 4
+  - pessoa: br-p-frederico-de-siqueira-filho
+    nome: Frederico de Siqueira Filho
+    n: 2
+  - pessoa: br-p-dou-carlos-manuel-baigorri
+    nome: Carlos Manuel Baigorri
+    n: 1
+- nome: VALE S.A.
+  n: 7
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-mauro-henrique-moreira-sousa
+    nome: Mauro Henrique Moreira Sousa
+    n: 3
+  - pessoa: br-p-leonardo-cezar-ribeiro
+    nome: Leonardo Cezar Ribeiro
+    n: 3
+  - pessoa: br-p-jose-fernando-gomes-junior
+    nome: Jose Fernando de Mendonca Gomes Junior
+    n: 1
+- nome: ABRADEE ASSOCIACAO BRASILEIRA DISTRIB ENERGIA ELETRICA
+  n: 6
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-sandoval-de-araujo-feitosa-neto
+    nome: Sandoval de Araujo Feitosa Neto
+    n: 3
+  - pessoa: br-p-willamy-moreira-frota
+    nome: Willamy Moreira Frota
+    n: 3
+- nome: ASSOCIACAO BRASILEIRA DA IND DE MAQUINAS E EQUIPAMENTOS
+  n: 6
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-tatiana-lacerda-prazeres
+    nome: Tatiana Lacerda Prazeres
+    n: 6
+- nome: CLARO S.A.
+  n: 6
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wilson-diniz-wellisch
+    nome: Wilson Diniz Wellisch
+    n: 5
+  - pessoa: br-p-dou-carlos-manuel-baigorri
+    nome: Carlos Manuel Baigorri
+    n: 1
+- nome: G.S.I - SERVICOS ESPECIALIZADOS LTDA
+  n: 6
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-fernanda-santana-rabello-de-castro
+    nome: Fernanda Santana Rabello de Castro
+    n: 6
+- nome: HIDROVIAS DO BRASIL S.A.
+  n: 6
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-otto-luiz-burlier-da-silveira-filho
+    nome: Otto Luiz Burlier da Silveira Filho
+    n: 4
+  - pessoa: br-p-frederico-carvalho-dias
+    nome: Frederico Carvalho Dias
+    n: 2
+- nome: Magalhães e Dias Advocacia
+  n: 6
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-carlos-jacques-vieira-gomes
+    nome: Carlos Jacques Vieira Gomes
+    n: 3
+  - pessoa: br-p-frederico-carvalho-dias
+    nome: Frederico Carvalho Dias
+    n: 2
+  - pessoa: br-p-jose-levi-mello-do-amaral-junior
+    nome: Jose Levi Mello do Amaral Junior
+    n: 1
+- nome: OTAVIO YAZBEK SOCIEDADE DE ADVOGADOS
+  n: 6
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-igor-muniz
+    nome: Igor Muniz
+    n: 3
+  - pessoa: br-p-otto-eduardo-fonseca-de-albuquerque-lobo
+    nome: Otto Eduardo Fonseca de Albuquerque Lobo
+    n: 2
+  - pessoa: br-p-joao-carlos-de-andrade-uzeda-accioly
+    nome: Joao Carlos de Andrade Uzeda Accioly
+    n: 1
+- nome: SINDICATO DA INDUSTRIA DE PRODUTOS FARMACEUTICOS
+  n: 6
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-daniela-marreco-cerqueira
+    nome: Daniela Marreco Cerqueira
+    n: 3
+  - pessoa: br-p-fernanda-de-negri
+    nome: Fernanda de Negri
+    n: 3
+- nome: ASSOCIACAO ADMINISTRADORA DO PROCESSO DE REDISTRIBUICAO E DIGITALIZACAO DE CANAIS DE TV E RTV
+  n: 5
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wilson-diniz-wellisch
+    nome: Wilson Diniz Wellisch
+    n: 5
+- nome: ASSOCIACAO BRASILEIRA DE RADIO E TELEVISAO - ABRATEL
+  n: 5
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wilson-diniz-wellisch
+    nome: Wilson Diniz Wellisch
+    n: 5
+- nome: ASSOCIACAO NACIONAL DAS EMPRESAS DE OBRAS RODOVIARIAS
+  n: 5
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-dou-fabricio-de-oliveira-galvao
+    nome: Fabricio de Oliveira Galvao
+    n: 4
+  - pessoa: br-p-gregorio-durlo-grisa
+    nome: Gregório Durlo Grisa
+    n: 1
+- nome: EQUATORIAL S.A.
+  n: 5
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-sandoval-de-araujo-feitosa-neto
+    nome: Sandoval de Araujo Feitosa Neto
+    n: 3
+  - pessoa: br-p-willamy-moreira-frota
+    nome: Willamy Moreira Frota
+    n: 2
+- nome: GALLOTTI E ADVOGADOS ASSOCIADOS
+  n: 5
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-alex-sandro-de-avila
+    nome: Alex Sandro de Avila
+    n: 4
+  - pessoa: br-p-alexandre-palmieri-florambel
+    nome: Alexandre Palmieri Florambel
+    n: 1
+- nome: LIGHT SERVICOS DE ELETRICIDADE S A
+  n: 5
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-sandoval-de-araujo-feitosa-neto
+    nome: Sandoval de Araujo Feitosa Neto
+    n: 3
+  - pessoa: br-p-willamy-moreira-frota
+    nome: Willamy Moreira Frota
+    n: 2
+- nome: V.TAL - REDE NEUTRA DE TELECOMUNICACOES S.A.
+  n: 5
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-frederico-de-siqueira-filho
+    nome: Frederico de Siqueira Filho
+    n: 2
+  - pessoa: br-p-wp-alexandre-reis-siqueira-freire
+    nome: Alexandre Reis Siqueira Freire
+    n: 2
+  - pessoa: br-p-luciana-barbosa-de-oliveira-santos
+    nome: Luciana Barbosa de Oliveira Santos
+    n: 1
+- nome: VLI MULTIMODAL S.A.
+  n: 5
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-leonardo-cezar-ribeiro
+    nome: Leonardo Cezar Ribeiro
+    n: 5
+- nome: ALGAR TELECOM S/A
+  n: 4
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wilson-diniz-wellisch
+    nome: Wilson Diniz Wellisch
+    n: 4
+- nome: ASSOCIACAO BRASILEIRA DAS INDUSTRIAS DE PESCADOS - ABIPESCA
+  n: 4
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-andre-carlos-alves-de-paula-filho
+    nome: Andre Carlos Alves de Paula Filho
+    n: 2
+  - pessoa: br-p-fernanda-gomes-de-paula
+    nome: Fernanda Gomes de Paula
+    n: 1
+  - pessoa: br-p-carlos-mello
+    nome: Carlos Cesar de Mello Junior
+    n: 1
+- nome: ASSOCIACAO BRASILEIRA DE GERACAO DISTRIBUIDA - ABGD
+  n: 4
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-agnes-maria-de-aragao-da-costa
+    nome: Agnes Maria de Aragao da Costa
+    n: 2
+  - pessoa: br-p-gentil-nogueira-de-sa-junior
+    nome: Gentil Nogueira de Sa Junior
+    n: 2
+- nome: ASSOCIACAO BRASILEIRA DE INCORPORADORAS IMOBILIARIAS - ABRAINC
+  n: 4
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-roberto-nami-garibe-filho
+    nome: Roberto Nami Garibe Filho
+    n: 4
+- nome: ASSOCIACAO BRASILEIRA DE RESIDUOS E MEIO AMBIENTE - ABREMA
+  n: 4
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-marcio-leao-coelho
+    nome: Marcio Leao Coelho
+    n: 4
+- nome: ASSOCIACAO DOS PRODUTORES DE CHARUTOS ARTESANAIS DO BRASIL
+  n: 4
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-henrique-eduardo-medeiros-aquino
+    nome: Henrique Eduardo Medeiros Aquino
+    n: 2
+  - pessoa: br-p-luiz-henrique-ramos-lopes
+    nome: Luiz Henrique Ramos Lopes
+    n: 1
+  - pessoa: br-p-marcos-perioto
+    nome: Marcos Perioto
+    n: 1
+- nome: ASSOCIACAO NACIONAL DAS PLATAFORMAS INTEGRADORAS RENAVE (ANPIR)
+  n: 4
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-adrualdo-de-lima-catao
+    nome: Adrualdo de Lima Catao
+    n: 4
+- nome: CONEXIS BRASIL DIGITAL - SINDICATO NACIONAL DAS EMPRESAS DE TELEFONIA E DE SERVICO MOVEL CELULAR E PESSOAL
+  n: 4
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-frederico-de-siqueira-filho
+    nome: Frederico de Siqueira Filho
+    n: 4
+- nome: CS INFRA S.A.
+  n: 4
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-alex-sandro-de-avila
+    nome: Alex Sandro de Avila
+    n: 3
+  - pessoa: br-p-alexandre-palmieri-florambel
+    nome: Alexandre Palmieri Florambel
+    n: 1
+- nome: DELTA COMERCIALIZADORA DE ENERGIA LTDA.
+  n: 4
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-agnes-maria-de-aragao-da-costa
+    nome: Agnes Maria de Aragao da Costa
+    n: 2
+  - pessoa: br-p-gentil-nogueira-de-sa-junior
+    nome: Gentil Nogueira de Sa Junior
+    n: 2
+- nome: EDP - ENERGIAS DO BRASIL S.A.
+  n: 4
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-gentil-nogueira-de-sa-junior
+    nome: Gentil Nogueira de Sa Junior
+    n: 2
+  - pessoa: br-p-willamy-moreira-frota
+    nome: Willamy Moreira Frota
+    n: 2
+- nome: ENEL BRASIL S.A
+  n: 4
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-sandoval-de-araujo-feitosa-neto
+    nome: Sandoval de Araujo Feitosa Neto
+    n: 4
+- nome: INFRAMERICA CONCESSIONARIA DO AEROPORTO DE BRASILIA S/A
+  n: 4
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-daniel-ramos-longo
+    nome: Daniel Ramos Longo
+    n: 4
+- nome: LARGO VANADIO DE MARACAS S.A
+  n: 4
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-mauro-henrique-moreira-sousa
+    nome: Mauro Henrique Moreira Sousa
+    n: 2
+  - pessoa: br-p-luiz-paniago-neves
+    nome: Luiz Paniago Neves
+    n: 2
+- nome: SIMPAR S.A.
+  n: 4
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-alex-sandro-de-avila
+    nome: Alex Sandro de Avila
+    n: 3
+  - pessoa: br-p-alexandre-palmieri-florambel
+    nome: Alexandre Palmieri Florambel
+    n: 1
+- nome: TIM S A
+  n: 4
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wilson-diniz-wellisch
+    nome: Wilson Diniz Wellisch
+    n: 4
+- nome: VPORTS AUTORIDADE PORTUARIA S.A.
+  n: 4
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-alex-sandro-de-avila
+    nome: Alex Sandro de Avila
+    n: 3
+  - pessoa: br-p-alexandre-palmieri-florambel
+    nome: Alexandre Palmieri Florambel
+    n: 1
+- nome: ACHE LABORATORIOS FARMACEUTICOS SA
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-daniela-marreco-cerqueira
+    nome: Daniela Marreco Cerqueira
+    n: 3
+- nome: AMBEV S.A.
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-dario-carnevalli-durigan
+    nome: Dario Carnevalli Durigan
+    n: 3
+- nome: ASSOCIACAO BRASILEIRA DA PRODUCAO DE OBRAS AUDIOVISUAIS - APRO
+  n: 3
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-leandro-de-sousa-mendes
+    nome: Leandro de Sousa Mendes
+    n: 2
+  - pessoa: br-p-alex-braga-muniz
+    nome: Alex Braga Muniz
+    n: 1
+- nome: ASSOCIACAO BRASILEIRA DAS EMPRESAS AEREAS - ABEAR
+  n: 3
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-daniel-ramos-longo
+    nome: Daniel Ramos Longo
+    n: 2
+  - pessoa: br-p-rui-chagas-mesquita
+    nome: Rui Chagas Mesquita
+    n: 1
+- nome: ASSOCIACAO DOS FUNDOS DE PENSAO E PATROCINADORES DO SETOR PRIVADO
+  n: 3
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-ricardo-pena-pinheiro
+    nome: Ricardo Pena Pinheiro
+    n: 3
+- nome: ASSOCIAÇÃO BRASILEIRA DE ENGENHARIA SANITÁRIA E AMBIENTAL - ABES
+  n: 3
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-marcio-leao-coelho
+    nome: Marcio Leao Coelho
+    n: 3
+- nome: B3 S.A. - BRASIL, BOLSA, BALCAO
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-jose-levi-mello-do-amaral-junior
+    nome: Jose Levi Mello do Amaral Junior
+    n: 3
+- nome: B3 S.A. – Brasil, Bolsa, Balcão
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-adrualdo-de-lima-catao
+    nome: Adrualdo de Lima Catao
+    n: 3
+- nome: BANCO BTG PACTUAL S.A.
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-gentil-nogueira-de-sa-junior
+    nome: Gentil Nogueira de Sa Junior
+    n: 2
+  - pessoa: br-p-wp-nilton-jos-schneider-david
+    nome: Nilton José Schneider David
+    n: 1
+- nome: BIONOVIS S.A. - COMPANHIA BRASILEIRA DE BIOTECNOLOGIA FARMACEUTICA
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-fernanda-de-negri
+    nome: Fernanda de Negri
+    n: 3
+- nome: CALIA/ Y2 PROPAGANDA E MARKETING LTDA.
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-samantha-marchiori-rodrigues-ribeiro
+    nome: Samantha Marchiori Rodrigues Ribeiro
+    n: 3
+- nome: CESCON, BARRIEU, FLESCH, BARRETO E TEIXEIRA DOS SANTOS - ADVOGADOS
+  n: 3
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-marina-palma-copola
+    nome: Marina Palma Copola de Carvalho
+    n: 3
+- nome: CONFEDERACAO DAS COOPERATIVAS DO SICREDI - CONFEDERACAO SICREDI
+  n: 3
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-debora-freire
+    nome: Débora Freire Cardoso
+    n: 3
+- nome: CONFEDERACAO NACIONAL DA INDUSTRIA
+  n: 3
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-marcio-leao-coelho
+    nome: Marcio Leao Coelho
+    n: 3
+- nome: Confederação Nacional da Indústria
+  n: 3
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-luiz-marinho
+    nome: Luiz Marinho
+    n: 2
+  - pessoa: br-p-luiz-henrique-ramos-lopes
+    nome: Luiz Henrique Ramos Lopes
+    n: 1
+- nome: ELETROPAULO METROPOLITANA ELETRICIDADE DE SAO PAULO S.A.
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-sandoval-de-araujo-feitosa-neto
+    nome: Sandoval de Araujo Feitosa Neto
+    n: 3
+- nome: EMPRESA FOLHA DA MANHA S.A.
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-leonardo-osvaldo-barchini-rosa
+    nome: Leonardo Osvaldo Barchini Rosa
+    n: 3
+- nome: FEDERACAO BRASILEIRA DE VOO EM PLANADORES - FBVP
+  n: 3
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-rui-chagas-mesquita
+    nome: Rui Chagas Mesquita
+    n: 1
+  - pessoa: br-p-roberto-jose-silveira-honorato
+    nome: Roberto Jose Silveira Honorato
+    n: 1
+  - pessoa: br-p-claudio-beschizza-ianelli
+    nome: Claudio Beschizza Ianelli
+    n: 1
+- nome: HAPVIDA ASSISTENCIA MEDICA S.A.
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-lenise-barcellos-de-mello-secchin
+    nome: Lenise Barcellos de Mello Secchin
+    n: 1
+  - pessoa: br-p-eliane-aparecida-de-castro-medeiros
+    nome: Eliane Aparecida de Castro Medeiros
+    n: 1
+  - pessoa: br-p-francisco-jose-d-angelo-pinto
+    nome: Francisco Jose D Angelo Pinto
+    n: 1
+- nome: HYPERA S.A.
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-daniela-marreco-cerqueira
+    nome: Daniela Marreco Cerqueira
+    n: 3
+- nome: JBS S/A
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-carlos-goulart
+    nome: Carlos Goulart
+    n: 3
+- nome: KINEA INVESTIMENTOS LTDA.
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wp-nilton-jos-schneider-david
+    nome: Nilton José Schneider David
+    n: 2
+  - pessoa: br-p-wp-rodrigo-alves-teixeira
+    nome: Rodrigo Alves Teixeira
+    n: 1
+- nome: MICROSOFT DO BRASIL IMPORTACAO E COMERCIO DE SOFTWARE E VIDEO GAMES LTDA
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-henrique-eduardo-medeiros-aquino
+    nome: Henrique Eduardo Medeiros Aquino
+    n: 2
+  - pessoa: br-p-wp-alexandre-reis-siqueira-freire
+    nome: Alexandre Reis Siqueira Freire
+    n: 1
+- nome: NOVA S.A.
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-samantha-marchiori-rodrigues-ribeiro
+    nome: Samantha Marchiori Rodrigues Ribeiro
+    n: 3
+- nome: ODATA BRASIL LTDA
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-marcio-fernando-elias-rosa
+    nome: Marcio Fernando Elias Rosa
+    n: 3
+- nome: SALOMAO, COTTA & GOMES SOCIEDADE DE ADVOGADOS
+  n: 3
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-alex-sandro-de-avila
+    nome: Alex Sandro de Avila
+    n: 3
+- nome: SHELL BRASIL PETROLEO LTDA
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-symone-christine-de-santana-araujo
+    nome: Symone Christine de Santana Araujo
+    n: 2
+  - pessoa: br-p-pietro-mendes
+    nome: Pietro Adamo Sampaio Mendes
+    n: 1
+- nome: SINDICATO NACIONAL DOS AERONAUTAS
+  n: 3
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-tiago-chagas-faierstein
+    nome: Tiago Chagas Faierstein
+    n: 1
+  - pessoa: br-p-rui-chagas-mesquita
+    nome: Rui Chagas Mesquita
+    n: 1
+  - pessoa: br-p-antonio-mathias-nogueira-moreira
+    nome: Antonio Mathias Nogueira Moreira
+    n: 1
+- nome: STELLANTIS AUTOMOVEIS BRASIL LTDA.
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-marcio-fernando-elias-rosa
+    nome: Marcio Fernando Elias Rosa
+    n: 3
+- nome: SUBSEA7 DO BRASIL SERVICOS LTDA
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-camila-cabral-pires-alves
+    nome: Camila Cabral Pires Alves
+    n: 3
+- nome: TOZZINI,FREIRE,TEIXEIRA,E SILVA ADVOGADOS
+  n: 3
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-camila-cabral-pires-alves
+    nome: Camila Cabral Pires Alves
+    n: 3
+- nome: UBIRAJARA MARQUES ADVOGADOS
+  n: 3
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-daniela-marreco-cerqueira
+    nome: Daniela Marreco Cerqueira
+    n: 3
+- nome: VISA DO BRASIL EMPREENDIMENTOS LTDA
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wp-gilneu-francisco-astolfi-vivan
+    nome: Gilneu Francisco Astolfi Vivan
+    n: 3
+- nome: VLI S.A.
+  n: 3
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-leonardo-cezar-ribeiro
+    nome: Leonardo Cezar Ribeiro
+    n: 3
+- nome: ABEEOLICA - ASSOCIACAO BRASILEIRA DE ENERGIA EOLICA E NOVAS TECNOLOGIAS
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-ludimila-lima-da-silva
+    nome: Ludimila Lima da Silva
+    n: 2
+- nome: ACROPOLIS ENERGIA LTDA
+  n: 2
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-gentil-nogueira-de-sa-junior
+    nome: Gentil Nogueira de Sa Junior
+    n: 2
+- nome: AMAZON AWS SERVICOS BRASIL LTDA
+  n: 2
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-camila-cabral-pires-alves
+    nome: Camila Cabral Pires Alves
+    n: 1
+  - pessoa: br-p-wp-betania-lemos
+    nome: Betania Peixoto Lemos
+    n: 1
+- nome: AMBAR ENERGIA S.A.
+  n: 2
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-artur-watt-neto
+    nome: Artur Watt Neto
+    n: 1
+  - pessoa: br-p-renato-cabral-dias-dutra
+    nome: Renato Cabral Dias Dutra
+    n: 1
+- nome: ARTERIS S.A.
+  n: 2
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-guilherme-theo-rodrigues-da-rocha-sampaio
+    nome: Guilherme Theo Rodrigues da Rocha Sampaio
+    n: 2
+- nome: ASSOCIACAO ADMINISTRADORA DA CONECTIVIDADE DE ESCOLAS EACE
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-frederico-de-siqueira-filho
+    nome: Frederico de Siqueira Filho
+    n: 2
+- nome: ASSOCIACAO BRASILEIRA DAS INDUSTRIAS DE OLEOS VEGETAIS
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-carlos-goulart
+    nome: Carlos Goulart
+    n: 2
+- nome: ASSOCIACAO BRASILEIRA DAS INDUSTRIAS EXPORTADORAS DE CARNES - ABIEC
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-carlos-goulart
+    nome: Carlos Goulart
+    n: 2
+- nome: ASSOCIACAO BRASILEIRA DE ACROBACIA AEREA
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-claudio-beschizza-ianelli
+    nome: Claudio Beschizza Ianelli
+    n: 2
+- nome: ASSOCIACAO BRASILEIRA DE INSTITUICOES DE PAGAMENTOS - ABIPAG
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wp-ailton-de-aquino-santos
+    nome: Ailton de Aquino Santos
+    n: 2
+- nome: ASSOCIACAO BRASILEIRA DE PRODUTORES E BENEFICIADORES DE BORRACHA NATURAL
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-guilherme-campos-junior
+    nome: Guilherme Campos Junior
+    n: 2
+- nome: ASSOCIACAO BRASILEIRA DE PROTEINA ANIMAL
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-carlos-goulart
+    nome: Carlos Goulart
+    n: 2
+- nome: ASSOCIACAO BRASILEIRA DOS PRODUTORES DE ALGODAO
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-carlos-goulart
+    nome: Carlos Goulart
+    n: 2
+- nome: ASSOCIACAO DE JORNALISTAS DE MIDIA ELETRONICA DO BRASIL
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-gustavo-costa-feliciano
+    nome: Gustavo Costa Feliciano
+    n: 2
+- nome: ASSOCIACAO DE TERMINAIS PORTUARIOS PRIVADOS
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-caio-cesar-farias-leoncio
+    nome: Caio Cesar Farias Leoncio
+    n: 1
+  - pessoa: br-p-diogo-thomson-de-andrade
+    nome: Diogo Thomson de Andrade
+    n: 1
+- nome: ASSOCIACAO DOS INICIADORES DE TRANSACAO DE PAGAMENTO - INIT
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wp-gilneu-francisco-astolfi-vivan
+    nome: Gilneu Francisco Astolfi Vivan
+    n: 2
+- nome: ASSOCIACAO DOS LABORATORIOS FARMACEUTICOS NACIONAIS - ALANAC
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-thiago-lopes-cardoso-campos
+    nome: Thiago Lopes Cardoso Campos
+    n: 2
+- nome: ASSOCIACAO NACIONAL DAS EMPRESAS DE BENEFICIOS COM ATENCAO PRIMARIA E SECUNDARIA - ANEBAPS
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-lenise-barcellos-de-mello-secchin
+    nome: Lenise Barcellos de Mello Secchin
+    n: 1
+  - pessoa: br-p-eliane-aparecida-de-castro-medeiros
+    nome: Eliane Aparecida de Castro Medeiros
+    n: 1
+- nome: ASSOCIACAO NACIONAL DOS AEROVIARIOS E DOS TRABALHADORES TERCERIZADOS NO SETOR AEREO - ANATTA
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-marcos-perioto
+    nome: Marcos Perioto
+    n: 2
+- nome: AST & SCIENCE DO BRASIL LTDA
+  n: 2
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-dou-marco-antonio-chamon
+    nome: Marco Antonio Chamon
+    n: 2
+- nome: AUREN ENERGIA S.A.
+  n: 2
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-gentil-nogueira-de-sa-junior
+    nome: Gentil Nogueira de Sa Junior
+    n: 2
+- nome: AXIA ENERGIA S.A.
+  n: 2
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-alexandre-silveira-de-oliveira
+    nome: Alexandre Silveira de Oliveira
+    n: 2
+- nome: BANCO BRADESCO FINANCIAMENTOS S.A.
+  n: 2
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-adrualdo-de-lima-catao
+    nome: Adrualdo de Lima Catao
+    n: 2
+- nome: BANCO C6 S.A.
+  n: 2
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-adrualdo-de-lima-catao
+    nome: Adrualdo de Lima Catao
+    n: 2
+- nome: BNP PARIBAS ASSET MANAGEMENT BRASIL LTDA
+  n: 2
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wp-paulo-picchetti
+    nome: Paulo Picchetti
+    n: 2
+- nome: BRASIL MINERAIS IMPEX LTDA
+  n: 2
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-jose-fernando-gomes-junior
+    nome: Jose Fernando de Mendonca Gomes Junior
+    n: 2
+- nome: Bichara Advogados
+  n: 2
+  classe: advocacia
+  via: marca
+  recebida_por:
+  - pessoa: br-p-alber-furtado-de-vasconcelos-neto
+    nome: Alber Furtado de Vasconcelos Neto
+    n: 2
+- nome: CENTRO OESTE GOLD MINE S.A.
+  n: 2
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-jose-fernando-gomes-junior
+    nome: Jose Fernando de Mendonca Gomes Junior
+    n: 1
+  - pessoa: br-p-luiz-paniago-neves
+    nome: Luiz Paniago Neves
+    n: 1
+- nome: COCA COLA INDUSTRIAS LTDA
+  n: 2
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-dario-carnevalli-durigan
+    nome: Dario Carnevalli Durigan
+    n: 2
+- nome: CONFEDERACAO NACIONAL DOS TRABALHADORES LIBERAIS UNIVERSITARIOS REGULAMENTADOS
+  n: 2
+  classe: setorial
+  via: marca
+  recebida_por:
+  - pessoa: br-p-luiz-marinho
+    nome: Luiz Marinho
+    n: 2
+- nome: CONSORCIO RIO NEGRO LTDA
+  n: 2
+  classe: empresa
+  via: marca
+  recebida_por:
+  - pessoa: br-p-wilson-pereira-de-lima-filho
+    nome: Wilson Pereira de Lima Filho
+    n: 2
+privadas_total:
+  entidades: 362
+  encontros: 844
+quem_recebeu:
+- pessoa: br-p-wp-gilneu-francisco-astolfi-vivan
+  nome: Gilneu Francisco Astolfi Vivan
+  encontros: 29
+  entidades: 9
+- pessoa: br-p-wilson-diniz-wellisch
+  nome: Wilson Diniz Wellisch
+  encontros: 27
+  entidades: 6
+- pessoa: br-p-sandoval-de-araujo-feitosa-neto
+  nome: Sandoval de Araujo Feitosa Neto
+  encontros: 26
+  entidades: 8
+- pessoa: br-p-igor-muniz
+  nome: Igor Muniz
+  encontros: 25
+  entidades: 9
+- pessoa: br-p-gentil-nogueira-de-sa-junior
+  nome: Gentil Nogueira de Sa Junior
+  encontros: 21
+  entidades: 10
+- pessoa: br-p-otto-eduardo-fonseca-de-albuquerque-lobo
+  nome: Otto Eduardo Fonseca de Albuquerque Lobo
+  encontros: 21
+  entidades: 8
+- pessoa: br-p-joao-carlos-de-andrade-uzeda-accioly
+  nome: Joao Carlos de Andrade Uzeda Accioly
+  encontros: 21
+  entidades: 10
+- pessoa: br-p-marina-palma-copola
+  nome: Marina Palma Copola de Carvalho
+  encontros: 17
+  entidades: 7
+- pessoa: br-p-adrualdo-de-lima-catao
+  nome: Adrualdo de Lima Catao
+  encontros: 16
+  entidades: 6
+- pessoa: br-p-diogo-thomson-de-andrade
+  nome: Diogo Thomson de Andrade
+  encontros: 16
+  entidades: 7
+- pessoa: br-p-camila-cabral-pires-alves
+  nome: Camila Cabral Pires Alves
+  encontros: 16
+  entidades: 8
+- pessoa: br-p-wp-ailton-de-aquino-santos
+  nome: Ailton de Aquino Santos
+  encontros: 16
+  entidades: 5
+- pessoa: br-p-alex-sandro-de-avila
+  nome: Alex Sandro de Avila
+  encontros: 16
+  entidades: 5
+- pessoa: br-p-jose-levi-mello-do-amaral-junior
+  nome: Jose Levi Mello do Amaral Junior
+  encontros: 15
+  entidades: 6
+- pessoa: br-p-willamy-moreira-frota
+  nome: Willamy Moreira Frota
+  encontros: 14
+  entidades: 6
+- pessoa: br-p-daniela-marreco-cerqueira
+  nome: Daniela Marreco Cerqueira
+  encontros: 14
+  entidades: 5
+- pessoa: br-p-carlos-jacques-vieira-gomes
+  nome: Carlos Jacques Vieira Gomes
+  encontros: 13
+  entidades: 6
+- pessoa: br-p-frederico-de-siqueira-filho
+  nome: Frederico de Siqueira Filho
+  encontros: 12
+  entidades: 5
+- pessoa: br-p-joao-daniel-de-andrade-cascalho
+  nome: Joao Daniel de Andrade Cascalho
+  encontros: 12
+  entidades: 1
+- pessoa: br-p-wp-nilton-jos-schneider-david
+  nome: Nilton José Schneider David
+  encontros: 12
+  entidades: 6
+- pessoa: br-p-agnes-maria-de-aragao-da-costa
+  nome: Agnes Maria de Aragao da Costa
+  encontros: 11
+  entidades: 7
+- pessoa: br-p-jose-fernando-gomes-junior
+  nome: Jose Fernando de Mendonca Gomes Junior
+  encontros: 11
+  entidades: 8
+- pessoa: br-p-leonardo-cezar-ribeiro
+  nome: Leonardo Cezar Ribeiro
+  encontros: 11
+  entidades: 3
+- pessoa: br-p-carlos-goulart
+  nome: Carlos Goulart
+  encontros: 11
+  entidades: 5
+- pessoa: br-p-gabriel-galipolo
+  nome: Gabriel Muricca Galípolo
+  encontros: 10
+  entidades: 4
+- pessoa: br-p-marcio-leao-coelho
+  nome: Marcio Leao Coelho
+  encontros: 10
+  entidades: 3
+- pessoa: br-p-claudio-beschizza-ianelli
+  nome: Claudio Beschizza Ianelli
+  encontros: 9
+  entidades: 8
+- pessoa: br-p-daniel-maia-vieira
+  nome: Daniel Maia Vieira
+  encontros: 9
+  entidades: 8
+- pessoa: br-p-daniel-meirelles-fernandes-pereira
+  nome: Daniel Meirelles Fernandes Pereira
+  encontros: 9
+  entidades: 8
+- pessoa: br-p-wilson-pereira-de-lima-filho
+  nome: Wilson Pereira de Lima Filho
+  encontros: 9
+  entidades: 8
+entidades:
+  (BNetzA) Germany):
+    classe: nao_classificado
+    via: null
+  88I SEGURADORA DIGITAL S.A..:
+    classe: empresa
+    via: marca
+  ABBC ASSOCIACAO BRASILEIRA DE BANCOS:
+    classe: setorial
+    via: marca
+  ABEEOLICA - ASSOCIACAO BRASILEIRA DE ENERGIA EOLICA E NOVAS TECNOLOGIAS:
+    classe: setorial
+    via: marca
+  ABEPH:
+    classe: nao_classificado
+    via: null
+  ABES-ASSOCIACAO BRASILEIRA DAS EMPRESAS DE SOFTWARE:
+    classe: setorial
+    via: marca
+  ABI – Administradora de Bens de Infraestrutura S/A:
+    classe: empresa
+    via: marca
+  ABIFINA:
+    classe: nao_classificado
+    via: null
+  ABIN - AGENCIA BRASILEIRA DE INTELIGENCIA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-agencia-brasileira-de-inteligencia
+  ABIN - Agência Brasileira de Inteligência:
+    classe: orgao_federal
+    via: sigla
+    'no': br-agencia-brasileira-de-inteligencia
+  ABRADEE ASSOCIACAO BRASILEIRA DISTRIB ENERGIA ELETRICA:
+    classe: setorial
+    via: marca
+  ABRAGAMES - ASSOCIACAO BRASILEIRA DAS DESENVOLVEDORAS DE JOGOS ELETRONICOS:
+    classe: setorial
+    via: marca
+  ABRAPP - ASSOCIACAO BRASILEIRA DAS ENTIDADES FECHADAS DE PREVIDENCIA COMPLEMENTAR:
+    classe: nao_classificado
+    via: null
+  ABRINQ ASSOC BRASILEIRA DOS FABRICANTES DE BRINQUEDOS:
+    classe: nao_classificado
+    via: null
+  ABSAE:
+    classe: nao_classificado
+    via: null
+  ABTRA ASSOCIACAO BRASILEIRA DE TERMINAIS E RECINTOS ALFANDEGADOS:
+    classe: setorial
+    via: marca
+  ACECE - ASSOCIACAO CEARENSE DE ESPORTE, CULTURA E EDUCACAO:
+    classe: nao_classificado
+    via: null
+  ACESSA - ASSOCIACAO BRASILEIRA DA INDUSTRIA DE PRODUTOS PARA O AUTOCUIDADO EM SAUDE:
+    classe: nao_classificado
+    via: null
+  ACHE LABORATORIOS FARMACEUTICOS SA:
+    classe: empresa
+    via: marca
+  ACREFI ASSOC NAC DAS INST DE CRED FINANC E INVESTIMENTO:
+    classe: nao_classificado
+    via: null
+  ACROPOLIS ENERGIA LTDA:
+    classe: empresa
+    via: marca
+  ADM DO BRASIL LTDA:
+    classe: empresa
+    via: marca
+  ADVISIA CONSULTORIA DE GESTAO EMPRESARIAL LTDA:
+    classe: nao_classificado
+    via: null
+  AEB - AGENCIA ESPACIAL BRASILEIRA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-agencia-espacial-brasileira
+  AEB - Agência Espacial Brasileira:
+    classe: orgao_federal
+    via: sigla
+    'no': br-agencia-espacial-brasileira
+  AEROPORTOS DO NORDESTE DO BRASIL S.A.:
+    classe: empresa
+    via: marca
+  AESBE:
+    classe: nao_classificado
+    via: null
+  AFD - AGÊNCIA FRANCESA DE DESENVOLVIMENTO:
+    classe: nao_classificado
+    via: null
+  AGENCIA AMAZONENSE DE DESENVOLVIMENTO ECONOMICO, SOCIAL E AMBIENTAL - AADESAM:
+    classe: nao_classificado
+    via: null
+  AGENCIA BRASILEIRA DE DESENVOLVIMENTO INDUSTRIAL - ABDI:
+    classe: nao_classificado
+    via: null
+  AGENCIA DE PROMOCAO DE EXPORTACOES DO BRASIL - APEX-BRASIL:
+    classe: nao_classificado
+    via: null
+  AGENCIA NACIONAL DE ASSISTENCIA TECNICA E EXTENSAO RURAL ANATER:
+    classe: publico_outro
+    via: marca
+  AGSUS:
+    classe: nao_classificado
+    via: null
+  AGU - ADVOCACIA-GERAL DA UNIAO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-advocacia-geral-da-uniao
+  AGU - Advocacia-Geral da União:
+    classe: orgao_federal
+    via: sigla
+    'no': br-advocacia-geral-da-uniao
+  AIAB - Associação das Indústrias Aeroespaciais do Brasil:
+    classe: setorial
+    via: marca
+  ALADA - Empresa de Projetos Aeroespacias do Brasil:
+    classe: nao_classificado
+    via: null
+  ALEXANDRE RANGEL SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  ALGAR TELECOM S/A:
+    classe: empresa
+    via: marca
+  ALMEIDA PRADO E HOFFMANN ADVOGADOS ASSOCIADOS:
+    classe: advocacia
+    via: marca
+  ALUNORTE ALUMINA DO NORTE DO BRASIL S/A:
+    classe: empresa
+    via: marca
+  ALVAREZ & MARSAL:
+    classe: nao_classificado
+    via: null
+  AMAZON AWS SERVICOS BRASIL LTDA:
+    classe: empresa
+    via: marca
+  AMB ASSESSORIA E CONSULTORIA TRIBUTARIA LTDA:
+    classe: empresa
+    via: marca
+  AMBAR ENERGIA S.A.:
+    classe: empresa
+    via: marca
+  AMBEV S.A.:
+    classe: empresa
+    via: marca
+  AMERICAN CHAMBER OF COMMERCE FOR BRAZIL SAO PAULO:
+    classe: nao_classificado
+    via: null
+  AMPRO ASSOCIACAO DE MARKETING PROMOCIONAL:
+    classe: setorial
+    via: marca
+  ANA - AGENCIA NACIONAL DE AGUAS:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ana
+  ANAC - AGENCIA NACIONAL DE AVIACAO CIVIL:
+    classe: orgao_federal
+    via: sigla
+    'no': br-anac
+  ANAMMA:
+    classe: nao_classificado
+    via: null
+  ANATEL - AGENCIA NACIONAL DE TELECOMUNICACOES:
+    classe: orgao_federal
+    via: sigla
+    'no': br-anatel
+  ANATEL - Agência Nacional de Telecomunicações:
+    classe: orgao_federal
+    via: sigla
+    'no': br-anatel
+  ANATER:
+    classe: nao_classificado
+    via: null
+  ANBIMA - ASSOCIACAO BRASILEIRA DAS ENTIDADES DOS MERCADOS FINANCEIRO E DE CAPITAIS:
+    classe: setorial
+    via: marca
+  ANEEL - AGENCIA NACIONAL DE ENERGIA ELETRICA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-aneel
+  ANEEL - Agência Nacional de Energia Elétrica:
+    classe: orgao_federal
+    via: sigla
+    'no': br-aneel
+  ANFFA SINDICAL:
+    classe: nao_classificado
+    via: null
+  ANPD - AGENCIA NACIONAL DE PROTECAO DE DADOS:
+    classe: orgao_federal
+    via: sigla
+    'no': br-anpd
+  ANS - Agência Nacional de Saúde Suplementar:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ans
+  ANSN - Autoridade Nacional de Segurança Nuclear:
+    classe: orgao_federal
+    via: sigla
+    'no': br-autoridade-nacional-de-seguranca-nuclear
+  ANTAQ:
+    classe: orgao_federal
+    via: nome
+    'no': br-antaq
+  ANTAQ - Agência Nacional de Transportes Aquaviários:
+    classe: orgao_federal
+    via: sigla
+    'no': br-antaq
+  ANTT - AGENCIA NAC. DE TRANSPORTES TERRESTRES:
+    classe: orgao_federal
+    via: sigla
+    'no': br-antt
+  ANTT - Agência Nacional de Transportes Terrestres:
+    classe: orgao_federal
+    via: sigla
+    'no': br-antt
+  ANVISA - Agência Nacional de Vigilância Sanitária:
+    classe: orgao_federal
+    via: sigla
+    'no': br-anvisa
+  ANVS - AGENCIA NACIONAL DE VIGILANCIA SANITARIA:
+    classe: orgao_federal
+    via: resto
+    'no': br-anvisa
+  API - ASSOCIACAO DAS PRODUTORAS INDEPENDENTES DO AUDIOVISUAL BRASILEIRO:
+    classe: setorial
+    via: marca
+  APSEN FARMACEUTICA S/A:
+    classe: empresa
+    via: marca
+  ARCON:
+    classe: nao_classificado
+    via: null
+  ARTELESTE CONSTRUCOES LIMITADA:
+    classe: nao_classificado
+    via: null
+  ARTERIS S.A.:
+    classe: empresa
+    via: marca
+  ASEAN:
+    classe: nao_classificado
+    via: null
+  ASSOC NAC DIRIGENTES DAS INST FED DE ENSINO SUPERIOR:
+    classe: nao_classificado
+    via: null
+  ASSOCIACAO ADMINISTRADORA DA CONECTIVIDADE DE ESCOLAS EACE:
+    classe: setorial
+    via: marca
+  ASSOCIACAO ADMINISTRADORA DO PROCESSO DE REDISTRIBUICAO E DIGITALIZACAO DE CANAIS DE TV E RTV:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRAS DAS IND DE Q FINA B E SUAS ESP ABIFINA:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DA IND DE MAQUINAS E EQUIPAMENTOS:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DA PRODUCAO DE OBRAS AUDIOVISUAIS - APRO:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DAS EMPRESAS AEREAS - ABEAR:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DAS EMPRESAS DISTRIBUIDORAS DE ASFALTOS:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DAS INDUSTRIAS DE OLEOS VEGETAIS:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DAS INDUSTRIAS DE PESCADOS - ABIPESCA:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DAS INDUSTRIAS EXPORTADORAS DE CARNES - ABIEC:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DAS OPERADORAS DE TURISMO BRAZTOA:
+    classe: nao_classificado
+    via: null
+  ASSOCIACAO BRASILEIRA DE ACROBACIA AEREA:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE AGENCIAS REGULADORAS - ABAR:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE CINEASTAS ABRACI:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE CRUZEIROS MARITIMOS:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE EVENTOS:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE GERACAO DISTRIBUIDA - ABGD:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE INCORPORADORAS IMOBILIARIAS - ABRAINC:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE INSTITUICOES DE PAGAMENTOS - ABIPAG:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE MEDICINA DIAGNOSTICA - ABRAMED:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE PRODUTORES E BENEFICIADORES DE BORRACHA NATURAL:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE PROTEINA ANIMAL:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE RADIO E TELEVISAO - ABRATEL:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE RECICLAGEM ANIMAL - ABRA:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE RESIDUOS E MEIO AMBIENTE - ABREMA:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE RESORTS:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE TELEVISAO POR ASSINATURA:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE TERMINAIS DE LIQUIDOS:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DE TRANSPORTE E LOGISTICA DE PRODUTOS PERIGOSOS:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DOS PRODUTORES DE ALGODAO:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DOS PRODUTORES DE PESCADOS DA AMAZONIA AZUL - ABRAPPAA:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA DOS TERMINAIS PORTUARIOS:
+    classe: setorial
+    via: marca
+  ASSOCIACAO BRASILEIRA EMPRESAS DISTRIBUIDORAS ASFALTO:
+    classe: setorial
+    via: marca
+  ? ASSOCIACAO CENTRAL DE LESBICAS, GAYS, BISSEXUAIS, TRAVESTIS, TRANSEXUAIS, INTERSEXUAIS, ASSEXUAIS, PANSEXUAIS E NAO BINARIOS DE PAULO AFONSO-BA
+  : classe: setorial
+    via: marca
+  ASSOCIACAO DAS DISTRIBUIDORAS DE COMBUSTIVEIS - BRASILCOM:
+    classe: setorial
+    via: marca
+  ASSOCIACAO DE EMPRESAS DE TRANSPORTE DE GAS NATURAL POR GASODUTO - ATGAS:
+    classe: setorial
+    via: marca
+  ASSOCIACAO DE JORNALISTAS DE MIDIA ELETRONICA DO BRASIL:
+    classe: setorial
+    via: marca
+  ASSOCIACAO DE PROTECAO AMBIENTAL NACIONAL - APAN:
+    classe: setorial
+    via: marca
+  ASSOCIACAO DE TERMINAIS PORTUARIOS PRIVADOS:
+    classe: setorial
+    via: marca
+  ASSOCIACAO DOS ANALISTAS JURIDICOS DO MINISTERIO PUBLICO DO ESTADO DE SAO PAULO:
+    classe: publico_outro
+    via: marca
+  ASSOCIACAO DOS AUDITORES FISCAIS DA RECEITA ESTADUAL DE SAO PAULO:
+    classe: nao_classificado
+    via: null
+  ASSOCIACAO DOS AUDITORES-FISCAIS TRIBUTARIOS DO MUNICIPIO DE SAO PAULO - AAFIT/SP:
+    classe: publico_outro
+    via: marca
+  ASSOCIACAO DOS FUNDOS DE PENSAO E PATROCINADORES DO SETOR PRIVADO:
+    classe: setorial
+    via: marca
+  ASSOCIACAO DOS INICIADORES DE TRANSACAO DE PAGAMENTO - INIT:
+    classe: setorial
+    via: marca
+  ASSOCIACAO DOS LABORATORIOS FARMACEUTICOS NACIONAIS - ALANAC:
+    classe: setorial
+    via: marca
+  ASSOCIACAO DOS PRODUTORES DE CHARUTOS ARTESANAIS DO BRASIL:
+    classe: setorial
+    via: marca
+  ASSOCIACAO DOS PRODUTORES DE SOJA E MILHO DO ESTADO DE MATO GROSSO:
+    classe: setorial
+    via: marca
+  ASSOCIACAO DOS SERVIDORES DA DEFENSORIA PUBLICA DO ESTADO DE SAO PAULO:
+    classe: publico_outro
+    via: marca
+  ASSOCIACAO ESPERANTO:
+    classe: setorial
+    via: marca
+  ASSOCIACAO NACIONAL DAS EMPRESAS DE BENEFICIOS COM ATENCAO PRIMARIA E SECUNDARIA - ANEBAPS:
+    classe: setorial
+    via: marca
+  ASSOCIACAO NACIONAL DAS EMPRESAS DE OBRAS RODOVIARIAS:
+    classe: setorial
+    via: marca
+  ASSOCIACAO NACIONAL DAS PLATAFORMAS INTEGRADORAS RENAVE (ANPIR):
+    classe: setorial
+    via: marca
+  ASSOCIACAO NACIONAL DE HOSPITAIS PRIVADOS - ANAHP:
+    classe: setorial
+    via: marca
+  ASSOCIACAO NACIONAL DE MUNICIPIOS E MEIO AMBIENTE:
+    classe: publico_outro
+    via: marca
+  ASSOCIACAO NACIONAL DOS AEROVIARIOS E DOS TRABALHADORES TERCERIZADOS NO SETOR AEREO - ANATTA:
+    classe: setorial
+    via: marca
+  ASSOCIACAO NACIONAL DOS SERVICOS MUNICIP DE SANEAMENTO:
+    classe: publico_outro
+    via: marca
+  ASSOCIACAO PARANAENSE DE CULTURA - APC:
+    classe: nao_classificado
+    via: null
+  ASSOCIAÇÃO BRASILEIRA DE ENGENHARIA SANITÁRIA E AMBIENTAL - ABES:
+    classe: setorial
+    via: marca
+  AST & SCIENCE DO BRASIL LTDA:
+    classe: empresa
+    via: marca
+  AUREN ENERGIA S.A.:
+    classe: empresa
+    via: marca
+  AURUM EDUCACIONAL E ENERGIA LTDA - SCP:
+    classe: empresa
+    via: marca
+  AXIA ENERGIA NORTE S.A.:
+    classe: empresa
+    via: marca
+  AXIA ENERGIA S.A.:
+    classe: empresa
+    via: marca
+  AZEVEDO SETTE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  Abrasca:
+    classe: nao_classificado
+    via: null
+  Adido Agrícola no Brasil:
+    classe: nao_classificado
+    via: null
+  Advocacia-Geral da União:
+    classe: orgao_federal
+    via: nome
+    'no': br-advocacia-geral-da-uniao
+  Aegea Saneamento e Participações:
+    classe: nao_classificado
+    via: null
+  Agência Brasileira de Apoio à Gestão do Sistema Único de Saúde (AgSUS):
+    classe: nao_classificado
+    via: null
+  Agência Brasileira de Apoio à Gestão do Sistema Único de Saúde/AgSUS:
+    classe: nao_classificado
+    via: null
+  Agência Brasileira de Desenvolvimento Industrial - (ABDI):
+    classe: nao_classificado
+    via: null
+  Agência Federal de Pesca da Rússia (Rosrybolovstvo):
+    classe: nao_classificado
+    via: null
+  Agência Nacional de Assistência Técnica e Extensão Rural - ANATER:
+    classe: publico_outro
+    via: marca
+  Agência Nacional de Assistência Técnica e Extensão Rural – ANATER:
+    classe: publico_outro
+    via: marca
+  Agência Nacional de Aviação Civil:
+    classe: orgao_federal
+    via: nome
+    'no': br-anac
+  Agência Nacional de Energia Elétrica:
+    classe: orgao_federal
+    via: nome
+    'no': br-aneel
+  Agência Nacional de Proteção de Dados:
+    classe: publico_outro
+    via: marca
+  Agência Nacional de Saúde Suplementar:
+    classe: orgao_federal
+    via: nome
+    'no': br-ans
+  Agência Nacional de Telecomunicações:
+    classe: orgao_federal
+    via: nome
+    'no': br-anatel
+  Agência Nacional de Transportes Aquaviários:
+    classe: orgao_federal
+    via: nome
+    'no': br-antaq
+  Agência Nacional de Transportes Terrestres:
+    classe: orgao_federal
+    via: nome
+    'no': br-antt
+  Agência Nacional de Vigilância Sanitária:
+    classe: orgao_federal
+    via: nome
+    'no': br-anvisa
+  Agência Nacional de Águas e Saneamento Básico:
+    classe: orgao_federal
+    via: nome
+    'no': br-ana
+  Agência Nacional do Cinema:
+    classe: orgao_federal
+    via: nome
+    'no': br-ancine
+  Agência Nacional do Petróleo, Gás Natural e Biocombustíveis:
+    classe: orgao_federal
+    via: nome
+    'no': br-anp
+  Agência de Águas do Estado de São Paulo (SP Águas):
+    classe: nao_classificado
+    via: null
+  Amazon:
+    classe: nao_classificado
+    via: null
+  Andifes:
+    classe: nao_classificado
+    via: null
+  Arari/MA:
+    classe: nao_classificado
+    via: null
+  Associação Brasileira de Distribuidores de Energia Elétrica - ABRADEE:
+    classe: setorial
+    via: marca
+  Associação Nacional dos Dirigentes das Instituições Federais de Ensino Superior – Andifes:
+    classe: setorial
+    via: marca
+  Associação Regional dos Engenheiros de Itapeva/SP (Arespi):
+    classe: setorial
+    via: marca
+  Associação de Aeronaves Não Tripuladas da Irlanda (UAI):
+    classe: setorial
+    via: marca
+  Avion Express Brasil Ltda.:
+    classe: empresa
+    via: marca
+  B3 S.A. - BRASIL, BOLSA, BALCAO:
+    classe: empresa
+    via: marca
+  B3 S.A. – Brasil, Bolsa, Balcão:
+    classe: empresa
+    via: marca
+  BANCO BNP PARIBAS BRASIL S.A.:
+    classe: empresa
+    via: marca
+  BANCO BRADESCO FINANCIAMENTOS S.A.:
+    classe: empresa
+    via: marca
+  BANCO BRADESCO S.A.:
+    classe: empresa
+    via: marca
+  BANCO BTG PACTUAL S.A.:
+    classe: empresa
+    via: marca
+  BANCO C6 S.A.:
+    classe: empresa
+    via: marca
+  BANCO CREFISA S.A.:
+    classe: empresa
+    via: marca
+  BANCO DO BRASIL SA:
+    classe: orgao_federal
+    via: forma
+    'no': br-banco-do-brasil
+  BANCO DO NORDESTE DO BRASIL:
+    classe: orgao_federal
+    via: prefixo
+    'no': br-banco-do-nordeste-do-brasil-s-a
+  BANCO INTERAMERICANO DE DESENVOLVIMENTO:
+    classe: nao_classificado
+    via: null
+  BANCO MUNDIAL:
+    classe: nao_classificado
+    via: null
+  BANCO SANTANDER (BRASIL) S.A.:
+    classe: empresa
+    via: marca
+  BARBOSA, MUSSNICH & ARAGAO:
+    classe: nao_classificado
+    via: null
+  BARBOSA, MUSSNICH E ARAGAO ADVOGADOS:
+    classe: advocacia
+    via: marca
+  BARREIROS GERACAO ENERGIA S.A.:
+    classe: empresa
+    via: marca
+  BASA - Banco da Amazônia S.A.:
+    classe: orgao_federal
+    via: sigla
+    'no': br-banco-da-amazonia-s-a
+  BB - Banco do Brasil S.A.:
+    classe: orgao_federal
+    via: sigla
+    'no': br-banco-do-brasil
+  BB GESTAO DE RECURSOS - DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS S.A.:
+    classe: nao_classificado
+    via: null
+  BB-PREVIDENCIA FUNDO DE PENSAO BANCO DO BRASIL:
+    classe: orgao_federal
+    via: sigla
+    'no': br-banco-do-brasil
+  BCB - Banco Central do Brasil:
+    classe: orgao_federal
+    via: sigla
+    'no': br-banco-central-do-brasil
+  BIALER & FALSETTI SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  BID:
+    classe: nao_classificado
+    via: null
+  BID - BANCO INTERAMERICANO DE DESENVOLVIMENTO:
+    classe: nao_classificado
+    via: null
+  BIONOVIS S.A. - COMPANHIA BRASILEIRA DE BIOTECNOLOGIA FARMACEUTICA:
+    classe: empresa
+    via: marca
+  BMA:
+    classe: nao_classificado
+    via: null
+  BMJ CONSULTORIA EMPRESARIAL LTDA:
+    classe: empresa
+    via: marca
+  BNB - Banco do Nordeste do Brasil S.A.:
+    classe: orgao_federal
+    via: sigla
+    'no': br-banco-do-nordeste-do-brasil-s-a
+  BNDES - Banco Nacional de Desenvolvimento Econômico e Social:
+    classe: orgao_federal
+    via: sigla
+    'no': br-bndes
+  BNP PARIBAS ASSET MANAGEMENT BRASIL LTDA:
+    classe: empresa
+    via: marca
+  BOCATER, CAMARGO, COSTA E SILVA, RODRIGUES ADVOGADOS ASSOCIADOS:
+    classe: advocacia
+    via: marca
+  BOEING:
+    classe: nao_classificado
+    via: null
+  BRACELL SP CELULOSE LTDA:
+    classe: empresa
+    via: marca
+  BRADESCO BBI SA:
+    classe: empresa
+    via: marca
+  BRASBUNKER PARTICIPACOES S/A:
+    classe: empresa
+    via: marca
+  BRASIL MINERAIS IMPEX LTDA:
+    classe: empresa
+    via: marca
+  BRB BANCO DE BRASILIA SA:
+    classe: empresa
+    via: marca
+  BW ENERGY MAROMBA DO BRASIL LTDA.:
+    classe: empresa
+    via: marca
+  BW Energy Peixe:
+    classe: nao_classificado
+    via: null
+  Bacen:
+    classe: orgao_federal
+    via: nome
+    'no': br-banco-central-do-brasil
+  Bacia Hidrográfica do Igarapé Mata Fome.:
+    classe: nao_classificado
+    via: null
+  Banco Central do Brasil:
+    classe: orgao_federal
+    via: nome
+    'no': br-banco-central-do-brasil
+  Banco Mundial:
+    classe: nao_classificado
+    via: null
+  Banco Nacional do Nordeste:
+    classe: nao_classificado
+    via: null
+  Banco de Compensações Internacionais - BIS:
+    classe: nao_classificado
+    via: null
+  Banco de Desenvolvimento KfW:
+    classe: nao_classificado
+    via: null
+  Banco do Brasil:
+    classe: orgao_federal
+    via: nome
+    'no': br-banco-do-brasil
+  Banco do Nordeste (BNB):
+    classe: nao_classificado
+    via: null
+  Bichara Advogados:
+    classe: advocacia
+    via: marca
+  Bram Offshore:
+    classe: nao_classificado
+    via: null
+  Broad Reach:
+    classe: nao_classificado
+    via: null
+  C.EX - COMANDO DO EXERCITO:
+    classe: nao_classificado
+    via: null
+  CAA:
+    classe: nao_classificado
+    via: null
+  CAA UK:
+    classe: nao_classificado
+    via: null
+  CAB - COMITE AERODESPORTIVO DO BRASIL:
+    classe: nao_classificado
+    via: null
+  CADE - Conselho Administrativo de Defesa Econômica:
+    classe: orgao_federal
+    via: sigla
+    'no': br-cade
+  CAF:
+    classe: nao_classificado
+    via: null
+  CAIXA - Caixa Econômica Federal:
+    classe: orgao_federal
+    via: sigla
+    'no': br-caixa-economica-federal
+  CAIXA DE ASSISTENCIA A SAUDE- CABERJ:
+    classe: nao_classificado
+    via: null
+  CALIA/ Y2 PROPAGANDA E MARKETING LTDA.:
+    classe: empresa
+    via: marca
+  CAMARA BRASILEIRA DA INDUSTRIA DA CONSTRUCAO:
+    classe: nao_classificado
+    via: null
+  CAMARA DE COMERCIO INDUSTRIA E TURISMO BRASIL-RUSSIA:
+    classe: nao_classificado
+    via: null
+  CAMINATI E BUENO ADVOGADOS:
+    classe: advocacia
+    via: marca
+  CAPES - FUND COORD APERF PESSOAL NIVEL SUPERIOR:
+    classe: orgao_federal
+    via: sigla
+    'no': br-capes
+  CAPES - Fundação Coordenação de Aperfeiçoamento de Pessoal de Nível superior:
+    classe: orgao_federal
+    via: sigla
+    'no': br-capes
+  CASE FILMES LTDA.:
+    classe: empresa
+    via: marca
+  CASTRO, SOBRAL E GOMES ADVOGADOS:
+    classe: advocacia
+    via: marca
+  CBPM - Companhia Baiana de Pesquisa Mineral:
+    classe: nao_classificado
+    via: null
+  CBTU - Companhia Brasileira de Trens Urbanos:
+    classe: orgao_federal
+    via: sigla
+    'no': br-companhia-brasileira-de-trens-urbanos
+  CC-PR - Casa Civil da Presidência da República:
+    classe: orgao_federal
+    via: sigla
+    'no': br-casa-civil
+  CCPIT Patent and Trademark Law Office:
+    classe: nao_classificado
+    via: null
+  CEAGESP - Companhia de Entrepostos e Armazéns Gerais de São Paulo:
+    classe: orgao_federal
+    via: sigla
+    'no': br-companhia-de-entrepostos-e-armazens-gerais-de-sao-paulo
+  CEDINEPIR - Conselho Estadual dos Direitos do Negro e Promoção da Igualdade Racial:
+    classe: publico_outro
+    via: marca
+  CEFET/MG - CENTRO FED.DE EDUC.TECNOL.MINAS GERAIS:
+    classe: nao_classificado
+    via: null
+  CEGÁS - Companhia de Gás do Ceará:
+    classe: nao_classificado
+    via: null
+  CENTRAL UNICA DOS TRABALHADORES-CUT:
+    classe: nao_classificado
+    via: null
+  CENTRO BRASILEIRO DE RELACOES INTERNACIONAIS - CEBRI:
+    classe: nao_classificado
+    via: null
+  CENTRO DE GESTAO E ESTUDOS ESTRATEGICOS:
+    classe: nao_classificado
+    via: null
+  CENTRO ESPIRITA CARIDADE E FE:
+    classe: nao_classificado
+    via: null
+  CENTRO NACIONAL DE NAVEGACAO TRANSATLANTICA - CNNT:
+    classe: nao_classificado
+    via: null
+  CENTRO OESTE GOLD MINE S.A.:
+    classe: empresa
+    via: marca
+  CESCON, BARRIEU, FLESCH, BARRETO E TEIXEIRA DOS SANTOS - ADVOGADOS:
+    classe: advocacia
+    via: marca
+  CEX - Comando do Exército:
+    classe: nao_classificado
+    via: null
+  CGAM/DNASF:
+    classe: nao_classificado
+    via: null
+  CGEE:
+    classe: orgao_federal
+    via: nome
+    'no': br-comite-gestor-de-eficiencia-energetica
+  CGEE - Centro de Gestão e Estudos Estratégicos:
+    classe: orgao_federal
+    via: sigla
+    'no': br-comite-gestor-de-eficiencia-energetica
+  CGFSA:
+    classe: nao_classificado
+    via: null
+  CGNA/DECEA:
+    classe: nao_classificado
+    via: null
+  CGSM/DEINC/SETAD/MCTI:
+    classe: nao_classificado
+    via: null
+  CGU - CONTROLADORIA-GERAL DA UNIAO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-controladoria-geral-da-uniao
+  CHANGE CONSTRUCOES E SERVICOS DE ENGENHARIA LTDA:
+    classe: empresa
+    via: marca
+  CHEDAN MINERALES LTDA:
+    classe: empresa
+    via: marca
+  CHEDIAK E CRISTOFARO - ADVOGADOS:
+    classe: advocacia
+    via: marca
+  CLARO S.A.:
+    classe: empresa
+    via: marca
+  CNC CONSELHO NACIONAL DO CAFE:
+    classe: publico_outro
+    via: marca
+  CNEN - COMISSAO NACIONAL DE ENERGIA NUCLEAR:
+    classe: orgao_federal
+    via: sigla
+    'no': br-cnen
+  CNI:
+    classe: orgao_federal
+    via: sigla
+    'no': br-conselho-nacional-de-irrigacao
+  CNNC:
+    classe: nao_classificado
+    via: null
+  CNNC Environmental Protectio Co., Ltd:
+    classe: nao_classificado
+    via: null
+  CNPQ - CONSELHO NAC.DE DESEN.CIEN.E TECNOLOGICO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-cnpq
+  CNTTL:
+    classe: nao_classificado
+    via: null
+  COAF - CONS. DE CONTROLE DE ATIV. FINANCEIRAS:
+    classe: nao_classificado
+    via: null
+  COCA COLA INDUSTRIAS LTDA:
+    classe: empresa
+    via: marca
+  CODEVASF - COMPANHIA DESENV. DO VALE SAO FRANCISCO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-codevasf
+  COEC/CGPEC/DHPS:
+    classe: nao_classificado
+    via: null
+  COMAER - Comando da Aeronáutica:
+    classe: nao_classificado
+    via: null
+  COMISSÃO INTERNACIONAL HUMANITÁRIO EM CABO VERDE:
+    classe: nao_classificado
+    via: null
+  COMITE PARAOLIMPICO BRASILEIRO:
+    classe: nao_classificado
+    via: null
+  COMPANHIA BRASILEIRA DE OFFSHORE:
+    classe: nao_classificado
+    via: null
+  COMPANHIA DOCAS DO RIO GRANDE DO NORTE - CODERN:
+    classe: orgao_federal
+    via: sigla
+    'no': br-companhia-docas-do-rio-grande-do-norte
+  COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG:
+    classe: nao_classificado
+    via: null
+  COMPANHIA PARANAENSE DE ENERGIA - COPEL:
+    classe: nao_classificado
+    via: null
+  COMPANHIA SUL SERGIPANA DE ELETRICIDADE:
+    classe: nao_classificado
+    via: null
+  COMPLEXO DE ENSINO SUPERIOR DE SAO PAULO LTDA - CESUSP:
+    classe: empresa
+    via: marca
+  CONAB - COMPANHIA NACIONAL DE ABASTECIMENTO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-conab
+  CONEXIS BRASIL DIGITAL - SINDICATO NACIONAL DAS EMPRESAS DE TELEFONIA E DE SERVICO MOVEL CELULAR E PESSOAL:
+    classe: setorial
+    via: marca
+  CONFEDERACAO BRASILEIRA DE AEROMODELISMO:
+    classe: setorial
+    via: marca
+  CONFEDERACAO BRASILEIRA DE APOSENTADOS, PENSIONISTAS E IDOSOS:
+    classe: setorial
+    via: marca
+  CONFEDERACAO BRASILEIRA DE PARA-QUEDISMO:
+    classe: setorial
+    via: marca
+  CONFEDERACAO BRASILEIRA DE PESCA ESPORTIVA:
+    classe: nao_classificado
+    via: null
+  CONFEDERACAO BRASILEIRA DE REMO:
+    classe: setorial
+    via: marca
+  CONFEDERACAO BRASILEIRA DE VOO LIVRE:
+    classe: setorial
+    via: marca
+  CONFEDERACAO BRASILEIRA DO DESPORTO ESCOLAR:
+    classe: setorial
+    via: marca
+  CONFEDERACAO DA AGRICULTURA E PECUARIA DO BRASIL:
+    classe: nao_classificado
+    via: null
+  CONFEDERACAO DAS COOPERATIVAS DO SICREDI - CONFEDERACAO SICREDI:
+    classe: setorial
+    via: marca
+  CONFEDERACAO DAS SANTAS CASAS DE MISERICORDIA, HOSPITAIS E ENTIDADES FILANTROPICAS - CMB:
+    classe: orgao_federal
+    via: sigla
+    'no': br-casa-da-moeda-do-brasil
+  CONFEDERACAO NACIONAL DA INDUSTRIA:
+    classe: setorial
+    via: marca
+  CONFEDERACAO NACIONAL DOS TRABALHADORES ASSALARIADOS E ASSALARIADAS RURAIS:
+    classe: setorial
+    via: marca
+  CONFEDERACAO NACIONAL DOS TRABALHADORES E TRABALHADORAS NA AGRICULTURA FAMILIAR DO BRASIL:
+    classe: nao_classificado
+    via: null
+  CONFEDERACAO NACIONAL DOS TRABALHADORES EM TRANSPORTE E LOGISTICA - CNTTL:
+    classe: setorial
+    via: marca
+  CONFEDERACAO NACIONAL DOS TRABALHADORES LIBERAIS UNIVERSITARIOS REGULAMENTADOS:
+    classe: setorial
+    via: marca
+  CONFEDERACAO NACIONAL DOS TRABALHADORES RURAIS AGRICULTORES E AGRICULTORAS FAMILIARES:
+    classe: setorial
+    via: marca
+  CONFEDERAO NACIONAL DAS ASSOCIACOES DE MORADORES E ENTIDADES COMUNITARIAS DO BRASIL:
+    classe: nao_classificado
+    via: null
+  ? CONFIES - Conselho Nacional das Fundações de Apoio às instituições de Ensino Superior e de Pesquisa Científica e Tecnológica
+  : classe: publico_outro
+    via: marca
+  CONIF CONSELHO NACIONAL DAS INSTITUICOES:
+    classe: publico_outro
+    via: marca
+  CONIF- CONSELHO NACIONAL DAS INSTITUIÇÕES DA REDE FEDERAL DE EDUCAÇÃO PROFISSIONAL CIENTÍFICA E TECNOLÓGICA:
+    classe: nao_classificado
+    via: null
+  CONSELHO NACIONAL DE JUSTIÇA - CNJ:
+    classe: orgao_federal
+    via: sigla
+    'no': br-conselho-nacional-de-justica
+  CONSELHO NACIONAL DE SECRETARIOS DE SAUDE:
+    classe: nao_classificado
+    via: null
+  CONSELHO REGIONAL DE ENGENHARIA E AGRONOMIA DO ESTADO DO AMAZONAS:
+    classe: nao_classificado
+    via: null
+  CONSELHO REGIONAL DE PSICOLOGIA DO PARÁ:
+    classe: nao_classificado
+    via: null
+  CONSORCIO INTERMUNICIPAL DAS BACIAS HIDROGRAFICAS DOS RIOS PIRACICABA, CAPIVARI E JUNDIAI:
+    classe: publico_outro
+    via: marca
+  CONSORCIO RIO NEGRO LTDA:
+    classe: empresa
+    via: marca
+  CONSTRUTORA CAIAPO LTDA:
+    classe: empresa
+    via: marca
+  CONSTRUTORA CENTRAL DO BRASIL S.A:
+    classe: empresa
+    via: marca
+  CONTROLADOIRA-GERAL DO ESTADO DE MINAS GERAIS:
+    classe: nao_classificado
+    via: null
+  CONTROLADORIA GERAL DO ESTADO DO RJ:
+    classe: nao_classificado
+    via: null
+  CONTROLADORIA-GERAL DA UNIAO:
+    classe: orgao_federal
+    via: nome
+    'no': br-controladoria-geral-da-uniao
+  CONTROLADORIA-GERAL DO ESTADO DE MINAS GERAIS:
+    classe: nao_classificado
+    via: null
+  COOMARU - COOPERATIVA DE PRODUTORES DE OURO DO CUMARU:
+    classe: nao_classificado
+    via: null
+  COOPERATIVA DE TRABALHO E SERVICOS TECNICOS, ASSESSORIA, CONSULTORIA E TREINAMENTOS:
+    classe: nao_classificado
+    via: null
+  COOPERATIVA DOS GARIMPEIROS DO RIO MADEIRA - COOGARIMA:
+    classe: nao_classificado
+    via: null
+  COPEL GERACAO E TRANSMISSAO S.A.:
+    classe: empresa
+    via: marca
+  CPOP - Rede Nacional de Cursinhos Populares:
+    classe: nao_classificado
+    via: null
+  CR-BA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-conselho-da-republica
+  CRISTALIA PRODUTOS QUIMICOS FARMACEUTICOS LTDA:
+    classe: empresa
+    via: marca
+  CRT-BA:
+    classe: nao_classificado
+    via: null
+  CS INFRA S.A.:
+    classe: empresa
+    via: marca
+  CSB - CENTRAL DOS SINDICATOS BRASILEIROS:
+    classe: setorial
+    via: marca
+  CSD CENTRAL DE SERVICOS DE REGISTRO E DEPOSITO AOS MERCADOS FINANCEIRO E DE CAPITAIS S.A.:
+    classe: empresa
+    via: marca
+  CVM - COMISSAO DE VALORES MOBILIARIOS:
+    classe: orgao_federal
+    via: sigla
+    'no': br-comissao-de-valores-mobiliarios
+  CYMI CONSTRUCOES E PARTICIPACOES S.A:
+    classe: empresa
+    via: marca
+  CYMI DO BRASIL - PROJETOS E SERVICOS LTDA:
+    classe: empresa
+    via: marca
+  Caixa Econômica Federal:
+    classe: orgao_federal
+    via: nome
+    'no': br-caixa-economica-federal
+  Camara Legislativa:
+    classe: nao_classificado
+    via: null
+  Camara dos Deputados:
+    classe: orgao_federal
+    via: nome
+    'no': br-camara-dos-deputados
+  Campo Brito/SE:
+    classe: nao_classificado
+    via: null
+  Campus France Brasil:
+    classe: nao_classificado
+    via: null
+  Capital Group:
+    classe: nao_classificado
+    via: null
+  Casa Civil da Presidência da República:
+    classe: orgao_federal
+    via: nome
+    'no': br-casa-civil
+  Casa Civil do Estado de de Roraima:
+    classe: nao_classificado
+    via: null
+  Central Única dos Trabalhadores (CUT):
+    classe: nao_classificado
+    via: null
+  Centro Aeroespacial Alemão:
+    classe: nao_classificado
+    via: null
+  Centro Federal de Educação Tecnológica - Celso Suckow da Fonseca:
+    classe: orgao_federal
+    via: nome
+    'no': br-centro-federal-de-educacao-tecnologica-celso-suckow-da-fonseca
+  Centro Federal de Educação Tecnológica de Minas Gerais:
+    classe: orgao_federal
+    via: nome
+    'no': br-centro-federal-de-educacao-tecnologica-de-minas-gerais
+  Centro Regional de Ciências Nucleares do Nordeste:
+    classe: nao_classificado
+    via: null
+  Centro Universitário Doctum de Teófilo Otoni:
+    classe: nao_classificado
+    via: null
+  Centro Universitário FG – UniFG:
+    classe: nao_classificado
+    via: null
+  Centro de Operações Espacias - COES:
+    classe: nao_classificado
+    via: null
+  Chapleau Exploração Mineral Ltda:
+    classe: empresa
+    via: marca
+  Chefe da Representação comercial da Rússia no Brasil:
+    classe: nao_classificado
+    via: null
+  China:
+    classe: nao_classificado
+    via: null
+  China Isotope & Radiation Corporation:
+    classe: nao_classificado
+    via: null
+  China Isotope & Radiation Corporation (CIRC) e HTA Co., Ltd.:
+    classe: nao_classificado
+    via: null
+  China National Nuclear Corporation (CNNC):
+    classe: nao_classificado
+    via: null
+  Colegiado Nacional de Gestores Municipais de Assistência Social - CONGEMAS:
+    classe: publico_outro
+    via: marca
+  Colégio Pedro II:
+    classe: orgao_federal
+    via: nome
+    'no': br-colegio-pedro-ii
+  Comando da Aeronáutica:
+    classe: nao_classificado
+    via: null
+  Comerc Energia S. A.:
+    classe: empresa
+    via: marca
+  Comissão de Valores Mobiliários:
+    classe: orgao_federal
+    via: nome
+    'no': br-comissao-de-valores-mobiliarios
+  Comissão de Valores Mobiliários (CVM):
+    classe: nao_classificado
+    via: null
+  Comitê de Governança do Programa de Educação Ambiental - CGPEA:
+    classe: nao_classificado
+    via: null
+  Companhia Baiana de Pesquisa Mineral (CBPM):
+    classe: nao_classificado
+    via: null
+  Companhia Nacional de Abastecimento:
+    classe: orgao_federal
+    via: nome
+    'no': br-conab
+  Companhia de Desenvolvimento dos Vales do São Francisco e do Parnaíba:
+    classe: orgao_federal
+    via: nome
+    'no': br-codevasf
+  Companhia de Entrepostos e Armazéns Gerais de São Paulo - CEAGESP:
+    classe: orgao_federal
+    via: sigla
+    'no': br-companhia-de-entrepostos-e-armazens-gerais-de-sao-paulo
+  Complexo do Pecem:
+    classe: nao_classificado
+    via: null
+  Condeferação Nacional do Comércio de Bens, Serviço e Turismo:
+    classe: nao_classificado
+    via: null
+  Confederação Nacional da Indústria:
+    classe: setorial
+    via: marca
+  Confederação Nacional do Sistema Financeiro:
+    classe: setorial
+    via: marca
+  Conselho Nacional de Desenvolvimento Científico e Tecnológico:
+    classe: orgao_federal
+    via: nome
+    'no': br-cnpq
+  Conselho Nacional dos Direitos da Criança e do Adolescente:
+    classe: publico_outro
+    via: marca
+  Conselho Regional de Enfermagem de Rondônia – COREN-RO:
+    classe: nao_classificado
+    via: null
+  Conselho Regional de Medicina de Rondônia – CREMERO:
+    classe: nao_classificado
+    via: null
+  Conselho de Controle de Atividades Financeiras:
+    classe: nao_classificado
+    via: null
+  Consórcio Brasil Central:
+    classe: nao_classificado
+    via: null
+  Consórcio PCJ:
+    classe: nao_classificado
+    via: null
+  Controladoria-Geral da União:
+    classe: orgao_federal
+    via: nome
+    'no': br-controladoria-geral-da-uniao
+  Coordenador Residente do Sistema das Nações Unidas No Brasil:
+    classe: nao_classificado
+    via: null
+  Correios:
+    classe: orgao_federal
+    via: nome
+    'no': br-correios
+  CÂMARA DOS DEPUTADOS:
+    classe: orgao_federal
+    via: nome
+    'no': br-camara-dos-deputados
+  Câmara:
+    classe: orgao_federal
+    via: nome
+    'no': br-camara-dos-deputados
+  Câmara Municipal de Porto Alegre:
+    classe: nao_classificado
+    via: null
+  Câmara de Comercialização de Energia Elétrica - CCEE:
+    classe: nao_classificado
+    via: null
+  Câmara dos Deputados:
+    classe: orgao_federal
+    via: nome
+    'no': br-camara-dos-deputados
+  Câmara dos Vereadores:
+    classe: nao_classificado
+    via: null
+  DANONE LTDA:
+    classe: empresa
+    via: marca
+  DARWIN SEGUROS S A:
+    classe: empresa
+    via: marca
+  DATAPREV - Empresa de Tecnologia e Informações da Previdência:
+    classe: orgao_federal
+    via: sigla
+    'no': br-dataprev
+  DECIP/SGP - DEP.DE CENTRAL.SERV.DE INATIVOS E PENS.:
+    classe: nao_classificado
+    via: null
+  DELTA COMERCIALIZADORA DE ENERGIA LTDA.:
+    classe: empresa
+    via: marca
+  DELTA SUCROENERGIA S.A:
+    classe: empresa
+    via: marca
+  DEPARTAMENTO NAC.DE INFRAEST. DE TRANSP.:
+    classe: nao_classificado
+    via: null
+  DF EMPREENDIMENTOS HOSPITALARES E PARTICIPACOES LTDA:
+    classe: empresa
+    via: marca
+  DNIT - DEPARTAMENTO NAC.DE INFRAEST. DE TRANSP.:
+    classe: orgao_federal
+    via: sigla
+    'no': br-dnit
+  DNIT - Departamento Nacional de Infraestrutura de Transportes:
+    classe: orgao_federal
+    via: sigla
+    'no': br-dnit
+  DNOCS - DEPTO. NACIONAL DE OBRAS CONTRA AS SECAS:
+    classe: orgao_federal
+    via: sigla
+    'no': br-dnocs
+  DOF:
+    classe: nao_classificado
+    via: null
+  DPF - DEPARTAMENTO DE POLICIA FEDERAL:
+    classe: orgao_federal
+    via: sigla
+    'no': br-policia-federal
+  DPRF - DEPTO. DE POLICIA RODOVIARIA FEDERAL:
+    classe: publico_outro
+    via: marca
+  DPU - DEFENSORIA PUBLICA DA UNIAO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-defensoria-publica-da-uniao
+  DR.REDDY'S FARMACEUTICA DO BRASIL LTDA:
+    classe: empresa
+    via: marca
+  DRHB/MIDR:
+    classe: nao_classificado
+    via: null
+  Daniel:
+    classe: nao_classificado
+    via: null
+  Dataprev:
+    classe: orgao_federal
+    via: nome
+    'no': br-dataprev
+  Defensoria Pública da União:
+    classe: orgao_federal
+    via: nome
+    'no': br-defensoria-publica-da-uniao
+  Departamento Nacional de Infraestrutura de Transportes:
+    classe: orgao_federal
+    via: nome
+    'no': br-dnit
+  Departamento Nacional de Obras Contra as Secas:
+    classe: orgao_federal
+    via: nome
+    'no': br-dnocs
+  Departamento de Frota, Portos e Cooperação Internacional:
+    classe: nao_classificado
+    via: null
+  Departamento de Regulação assistencial e Controle/Ministério da Saúde:
+    classe: nao_classificado
+    via: null
+  Deputado Federal, Sr. Helder Salomão PT/ES:
+    classe: publico_outro
+    via: marca
+  Diego Ciufici Nogueira Alves , Vanessa de Oliveira Pequeno Ribeiro:
+    classe: nao_classificado
+    via: null
+  Diretoria de Cooperação Internacional em Segurança - França:
+    classe: nao_classificado
+    via: null
+  EAGLE COMERCIO, IMPORTACAO E EXPORTACAO DE MINERAIS LTDA:
+    classe: empresa
+    via: marca
+  EBC - EMPRESA BRASIL DE COMUNICACAO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-empresa-brasil-de-comunicacao
+  EBES SISTEMAS DE ENERGIA SA:
+    classe: empresa
+    via: marca
+  EBSERH - EMPRESA BRAS. DE SERVICOS HOSPITALARES:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ebserh
+  ECAD:
+    classe: nao_classificado
+    via: null
+  ECE S.A:
+    classe: empresa
+    via: marca
+  'ECFR - European Council on Foreign Relations (Passaporte: N//A)':
+    classe: nao_classificado
+    via: null
+  ECORODOVIAS CONCESSOES E SERVICOS S/A:
+    classe: empresa
+    via: marca
+  ECT - Empresa Brasileira de Correios e Telégrafos:
+    classe: orgao_federal
+    via: sigla
+    'no': br-correios
+  EDP - ENERGIAS DO BRASIL S.A.:
+    classe: empresa
+    via: marca
+  ELETROPAULO METROPOLITANA ELETRICIDADE DE SAO PAULO S.A.:
+    classe: empresa
+    via: marca
+  EMAER - Estado-Maior da Aeronáutica:
+    classe: nao_classificado
+    via: null
+  EMAER - FAB:
+    classe: orgao_federal
+    via: sigla
+    'no': br-forca-aerea-brasileira
+  EMBRAPA - EMPRESA BRASILEIRA DE PESQ. AGROPECUARIA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-embrapa
+  EMBRATUR - AGENCIA BRASILEIRA DE PROMOCAO INTERNACIONAL DO TURISMO:
+    classe: nao_classificado
+    via: null
+  EMBRATUR - Instituto Brasileiro de Turismo:
+    classe: nao_classificado
+    via: null
+  EMGEA - Empresa Gestora de Ativos:
+    classe: orgao_federal
+    via: sigla
+    'no': br-empresa-gestora-de-ativos
+  EMPRESA BRASIL DE COMUNICACAO S.A. - EBC:
+    classe: orgao_federal
+    via: sigla
+    'no': br-empresa-brasil-de-comunicacao
+  EMPRESA DE ASSISTENCIA TECNICA E EXTENSAO RURAL DO ACRE:
+    classe: nao_classificado
+    via: null
+  EMPRESA FOLHA DA MANHA S.A.:
+    classe: empresa
+    via: marca
+  EMS:
+    classe: nao_classificado
+    via: null
+  EMS S/A:
+    classe: empresa
+    via: marca
+  ENAP - FUNDACAO ESCOLA NACIONAL DE ADM. PUBLICA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-enap
+  ENAP - Fundação Escola Nacional de Administração Pública:
+    classe: orgao_federal
+    via: sigla
+    'no': br-enap
+  ENEL BRASIL S.A:
+    classe: empresa
+    via: marca
+  ENEVA S.A.:
+    classe: empresa
+    via: marca
+  EPAMIG:
+    classe: nao_classificado
+    via: null
+  EPE - EMPRESA DE PESQUISA ENERGETICA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-empresa-de-pesquisa-energetica
+  EPPGG:
+    classe: nao_classificado
+    via: null
+  EPR PARTICIPACOES S.A.:
+    classe: empresa
+    via: marca
+  EQUATORIAL S.A.:
+    classe: empresa
+    via: marca
+  EQUINOR BRASIL ENERGIA LTDA.:
+    classe: empresa
+    via: marca
+  EQUINOR ENERGY DO BRASIL LTDA.:
+    classe: empresa
+    via: marca
+  ESAERO - EMPRESA DE SERVICOS AEROPORTUARIOS LTDA:
+    classe: empresa
+    via: marca
+  ESH CAPITAL INVESTIMENTOS LTDA:
+    classe: empresa
+    via: marca
+  EURASIA GROUP, LTD.:
+    classe: nao_classificado
+    via: null
+  Ecoa Consultoria Economica:
+    classe: nao_classificado
+    via: null
+  Embaixada da Alemanha:
+    classe: publico_outro
+    via: marca
+  Embaixada da Dinamarca:
+    classe: publico_outro
+    via: marca
+  Embaixada da França:
+    classe: publico_outro
+    via: marca
+  Embaixada da República da Indonésia:
+    classe: publico_outro
+    via: marca
+  Embaixada da República de Moçambique:
+    classe: publico_outro
+    via: marca
+  Embaixada de Cuba no Brasil:
+    classe: publico_outro
+    via: marca
+  Embaixada de Moçambique:
+    classe: publico_outro
+    via: marca
+  Embaixada de São Tomé e Príncipe:
+    classe: publico_outro
+    via: marca
+  'Embaixada do Brasil na Guiné-Bissau Fonte: Agência Senado':
+    classe: nao_classificado
+    via: null
+  Embaixada do Canadá no Brasil:
+    classe: publico_outro
+    via: marca
+  Embaixada do Reino Unido no Brasil:
+    classe: publico_outro
+    via: marca
+  Empresa Brasileira de Correios e Telégrafos:
+    classe: orgao_federal
+    via: nome
+    'no': br-correios
+  Empresa Brasileira de Hemoderivados e Biotecnologia:
+    classe: orgao_federal
+    via: nome
+    'no': br-empresa-brasileira-de-hemoderivados-e-biotecnologia
+  Empresa Brasileira de Pesquisa e Inovação Industrial - EMBRAPII:
+    classe: nao_classificado
+    via: null
+  Empresa Gestora de Ativos:
+    classe: orgao_federal
+    via: nome
+    'no': br-empresa-gestora-de-ativos
+  Energisa S.A:
+    classe: empresa
+    via: marca
+  Estado de Florianópolis/SC:
+    classe: nao_classificado
+    via: null
+  Estado do Rio Grande do Norte - RN:
+    classe: nao_classificado
+    via: null
+  Eurofarma:
+    classe: nao_classificado
+    via: null
+  Exército Brasileiro:
+    classe: orgao_federal
+    via: nome
+    'no': br-exercito-brasileiro
+  Exército da Colômbia:
+    classe: nao_classificado
+    via: null
+  Exército de Terra da Espanha:
+    classe: nao_classificado
+    via: null
+  F. P. GRAN MINERACAO LTDA:
+    classe: empresa
+    via: marca
+  F.CENTRO - FUND.JORGE DUPRAT FIG. SEG. MED.TRABALHO:
+    classe: nao_classificado
+    via: null
+  FAB:
+    classe: orgao_federal
+    via: sigla
+    'no': br-forca-aerea-brasileira
+  FACULDADES CATOLICAS:
+    classe: nao_classificado
+    via: null
+  FAGEP:
+    classe: nao_classificado
+    via: null
+  FAPERJ - Federação das Associações de Favela:
+    classe: setorial
+    via: marca
+  FCP - FUNDACAO CULTURAL PALMARES:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fundacao-cultural-palmares
+  FEDERACAO ASSOC SINDICAISE PROFISSIONAIS SERVIDORES PMS:
+    classe: setorial
+    via: marca
+  FEDERACAO BRASILEIRA DE BANCOS:
+    classe: setorial
+    via: marca
+  FEDERACAO BRASILEIRA DE VOO EM PLANADORES - FBVP:
+    classe: setorial
+    via: marca
+  FEDERACAO BRASILEIRA DOS AEROCLUBES FEBRAERO:
+    classe: setorial
+    via: marca
+  FEDERACAO DAS COOPERATIVAS DE TRANSPORTADORES RODOVIARIOS DE CARGAS E LOGISTICA:
+    classe: setorial
+    via: marca
+  FEDERACAO DAS INDUSTRIAS DO EST DO RIO G NORTE:
+    classe: setorial
+    via: marca
+  FEDERACAO DOS TRABALHADORES (AS) RURAIS EMPREGADOS (AS) ASSALARIADOS E ASSALARIADAS DO ESTADO DE GOIAS:
+    classe: setorial
+    via: marca
+  FEDERACAO NACIONAL DAS ASSOCIACOES DE PACIENTES RENAIS E TRANSPLANTADOS DO BRASIL - FENAPAR:
+    classe: setorial
+    via: marca
+  FEDERACAO NACIONAL DAS OPERACOES PORTUARIAS:
+    classe: setorial
+    via: marca
+  FEDERACAO NACIONAL DE COOPERATIVAS DOS TRANSPORTADORES AUTONOMOS DE CARGAS - FECOOTAC:
+    classe: setorial
+    via: marca
+  FEDERACAO NACIONAL DE INSTALACAO E MANUTENCAO DE INFRAESTRUTURA DE REDES DE TELECOMUNICACOES E INFORMATICA - FENINFRA:
+    classe: setorial
+    via: marca
+  FEDERACAO NACIONAL DO COMERCIO DE COMBUSTIVEIS E DE LUBRIFICANTES:
+    classe: setorial
+    via: marca
+  FEDERACAO NACIONAL DOS AERONAUTAS E AEROVIARIOS:
+    classe: setorial
+    via: marca
+  FEESC:
+    classe: nao_classificado
+    via: null
+  FGO:
+    classe: nao_classificado
+    via: null
+  FINEP - Financiadora de Estudos e Projetos:
+    classe: orgao_federal
+    via: sigla
+    'no': br-finep
+  FIOCRUZ - FUNDACAO OSWALDO CRUZ:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fiocruz
+  FIOCRUZ - Fundação Oswaldo Cruz:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fiocruz
+  FMSS ARACATI:
+    classe: nao_classificado
+    via: null
+  FNDE - FUNDO NACIONAL DE DESENVOLV. DA EDUCACAO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fnde
+  FNDE - Fundo Nacional de Desenvolvimento da Educação:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fnde
+  FNP:
+    classe: nao_classificado
+    via: null
+  FOCO ASSESSORIA E CONSULTORIA LEGISLATIVA LTDA:
+    classe: empresa
+    via: marca
+  FORUM MINEIRO DE SAUDE MENTAL - FMSM:
+    classe: nao_classificado
+    via: null
+  FORÇA SINDICAL:
+    classe: nao_classificado
+    via: null
+  FRANCA DA ROCHA & ADVOGADOS ASSOCIADOS:
+    classe: advocacia
+    via: marca
+  FRANCISCO DE ANDRADE PESSOA:
+    classe: nao_classificado
+    via: null
+  FREDERICO BEDRAN ADVOGADOS:
+    classe: advocacia
+    via: marca
+  FRENTE DE EVANGÉLICOS PELO ESTADO DE DIREITO:
+    classe: nao_classificado
+    via: null
+  FS INDUSTRIA DE BIOCOMBUSTIVEIS LTDA:
+    classe: empresa
+    via: marca
+  FSB COMUNICACOES LTDA:
+    classe: nao_classificado
+    via: null
+  FUAM - FUNDACAO UNIVERSIDADE DO AMAZONAS:
+    classe: orgao_federal
+    via: resto
+    'no': br-fundacao-universidade-do-amazonas
+  FUFS - FUNDACAO UNIVERSIDADE FEDERAL DE SERGIPE:
+    classe: orgao_federal
+    via: resto
+    'no': br-fundacao-universidade-federal-de-sergipe
+  FUFSCAR - UNIVERSIDADE FEDERAL DE SAO CARLOS:
+    classe: publico_outro
+    via: marca
+  FUNAI - FUNDACAO NACIONAL DOS POVOS INDIGENAS:
+    classe: orgao_federal
+    via: sigla
+    'no': br-funai
+  FUNAPE:
+    classe: nao_classificado
+    via: null
+  FUNASA - FUNDACAO NACIONAL DE SAUDE:
+    classe: orgao_federal
+    via: sigla
+    'no': br-funasa
+  FUNDACAO ASSISTENCIAL DOS SERVIDORES DO MINISTERIO DA FAZENDA:
+    classe: nao_classificado
+    via: null
+  FUNDACAO CENTRO DE POLITICAS PUBLICAS E AVALIACAO DA EDUCACAO - FUNDACAO CAED:
+    classe: nao_classificado
+    via: null
+  FUNDACAO CULTURAL DO ESTADO DO PARA:
+    classe: nao_classificado
+    via: null
+  FUNDACAO CULTURAL E DE FOMENTO A PESQUISA, ENSINO, EXTENSAO E INOVACAO - FADEX:
+    classe: nao_classificado
+    via: null
+  FUNDACAO DE EDUCACAO TECNOLOGICA E CULTURAL DA PARAIBA FUNETEC PB:
+    classe: nao_classificado
+    via: null
+  FUNDACAO GETULIO VARGAS:
+    classe: nao_classificado
+    via: null
+  FUNDACAO MUNICIPAL DE PATRIMONIO HISTORICO -FUMPH:
+    classe: publico_outro
+    via: marca
+  FUNDACAO PADRE LEONEL FRANCA:
+    classe: nao_classificado
+    via: null
+  FUNDACAO UNIVERSIDADE DO AMAZONAS:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-do-amazonas
+  FUNDACAO UNIVERSITAS DE ESTUDOS AMAZONICOS - F. UEA:
+    classe: nao_classificado
+    via: null
+  FUNDAÇÃO GETULIO VARGAS FGV:
+    classe: nao_classificado
+    via: null
+  FUNDO GARANTIDOR DE CREDITOS - FGC:
+    classe: nao_classificado
+    via: null
+  FUNDO MUNICIPAL DE SEGURIDADE SOCIAL - FMSS ARACATI/CE:
+    classe: publico_outro
+    via: marca
+  FUNTEC:
+    classe: nao_classificado
+    via: null
+  Faculdade Barddal de Artes Aplicadas:
+    classe: nao_classificado
+    via: null
+  Federação Alagoana de Futebol:
+    classe: setorial
+    via: marca
+  Federação Nacional dos Trabalhadores nas Indústrias da Borracha – FENABOR:
+    classe: setorial
+    via: marca
+  Federação da Agricultura do estado do Paraná (Faesp):
+    classe: nao_classificado
+    via: null
+  Federação da Agricultura e Pecuária do Pará (FAEPA - PA):
+    classe: nao_classificado
+    via: null
+  Força Sindical (FS):
+    classe: nao_classificado
+    via: null
+  França:
+    classe: nao_classificado
+    via: null
+  Fundação Biblioteca Nacional:
+    classe: orgao_federal
+    via: nome
+    'no': br-biblioteca-nacional
+  Fundação Casa de Rui Barbosa:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-casa-de-rui-barbosa
+  Fundação Coordenação de Aperfeiçoamento de Pessoal de Nível superior:
+    classe: nao_classificado
+    via: null
+  Fundação Cultural Palmares:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-cultural-palmares
+  Fundação Escola Nacional de Administração Pública:
+    classe: nao_classificado
+    via: null
+  Fundação Getulio Vargas:
+    classe: nao_classificado
+    via: null
+  Fundação Getúlio Vargas:
+    classe: nao_classificado
+    via: null
+  Fundação Instituto Brasileiro de Geografia e Estatística:
+    classe: nao_classificado
+    via: null
+  Fundação Jorge Duprat Figueiredo, de Segurança e Medicina do Trabalho:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-jorge-duprat-figueiredo-de-seguranca-e-medicina-do-trabalho
+  Fundação Nacional de Artes:
+    classe: orgao_federal
+    via: nome
+    'no': br-funarte
+  Fundação Nacional de Saúde:
+    classe: orgao_federal
+    via: nome
+    'no': br-funasa
+  Fundação Nacional de Saúde/FUNASA:
+    classe: nao_classificado
+    via: null
+  Fundação Nacional do Índio:
+    classe: nao_classificado
+    via: null
+  Fundação Nacional dos Povos Indígenas:
+    classe: orgao_federal
+    via: nome
+    'no': br-funai
+  Fundação Nacional dos Povos Indígenas-Funai:
+    classe: orgao_federal
+    via: sigla
+    'no': br-funai
+  Fundação Oswaldo Cruz:
+    classe: orgao_federal
+    via: nome
+    'no': br-fiocruz
+  Fundação Universidade Federal de Mato Grosso:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-de-mato-grosso
+  Fundação Universidade Federal de Mato Grosso do Sul:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-de-mato-grosso-do-sul
+  Fundação Universidade Federal de Ouro Preto:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-de-ouro-preto
+  Fundação Universidade Federal de Pelotas:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-de-pelotas
+  Fundação Universidade Federal de Rondônia:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-de-rondonia
+  Fundação Universidade Federal de Roraima:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-de-roraima
+  Fundação Universidade Federal de Sergipe:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-de-sergipe
+  Fundação Universidade Federal de São Carlos:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-de-sao-carlos
+  Fundação Universidade Federal de São João Del Rei:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-de-sao-joao-del-rei
+  Fundação Universidade Federal de Viçosa:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-de-vicosa
+  Fundação Universidade Federal do Acre:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-do-acre
+  Fundação Universidade Federal do Amapá:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-do-amapa
+  Fundação Universidade Federal do Maranhão:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-do-maranhao
+  Fundação Universidade Federal do Pampa:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-do-pampa
+  Fundação Universidade Federal do Piauí:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-do-piaui
+  Fundação Universidade Federal do Rio Grande:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-do-rio-grande
+  Fundação Universidade Federal do Vale do São Francisco:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-federal-do-vale-do-sao-francisco
+  Fundação Universidade de Brasília:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-de-brasilia
+  Fundação Universidade do Amazonas:
+    classe: orgao_federal
+    via: nome
+    'no': br-fundacao-universidade-do-amazonas
+  Fundação Universidade do Rio Grande:
+    classe: publico_outro
+    via: marca
+  Fundação de Amparo à Pesquisa do Estado de Minas Gerais:
+    classe: nao_classificado
+    via: null
+  Fundo Monetário Internacional - FMI:
+    classe: nao_classificado
+    via: null
+  Fundo Nacional de Desenvolvimento da Educação:
+    classe: orgao_federal
+    via: nome
+    'no': br-fnde
+  Fundo Soberano de Angola:
+    classe: nao_classificado
+    via: null
+  Fundo das Nações Unidas para a Infância - UNICEF:
+    classe: nao_classificado
+    via: null
+  FÓRUM NACIONAL DOS CONSELHOS ESTADUAIS DE EDUCAÇÃO - FONCEDE:
+    classe: nao_classificado
+    via: null
+  G.S.I - SERVICOS ESPECIALIZADOS LTDA:
+    classe: empresa
+    via: marca
+  G1 e TV Globo/SP:
+    classe: nao_classificado
+    via: null
+  GALAPAGOS CAPITAL INVESTIMENTOS E PARTICIPACOES LTDA.:
+    classe: empresa
+    via: marca
+  GALLOTTI E ADVOGADOS ASSOCIADOS:
+    classe: advocacia
+    via: marca
+  GAMESCOM LATAM LTDA:
+    classe: empresa
+    via: marca
+  GARTNER DO BRASIL SERVICOS DE PESQUISAS LTDA.:
+    classe: empresa
+    via: marca
+  GENOA CAPITAL GESTORA DE RECURSOS LTDA:
+    classe: empresa
+    via: marca
+  GIZ:
+    classe: nao_classificado
+    via: null
+  GLOBO COMUNICACAO E PARTICIPACOES S/A:
+    classe: empresa
+    via: marca
+  GOIANAPREV:
+    classe: nao_classificado
+    via: null
+  GOIANAPREVI:
+    classe: nao_classificado
+    via: null
+  GOL LINHAS AEREAS S.A.:
+    classe: empresa
+    via: marca
+  GOOGLE BRASIL INTERNET LTDA.:
+    classe: empresa
+    via: marca
+  GOOGLE CLOUD BRASIL COMPUTACAO E SERVICOS DE DADOS LTDA.:
+    classe: empresa
+    via: marca
+  GOVERNO DE MINAS GERAIS:
+    classe: publico_outro
+    via: marca
+  GOVERNO DE MINAS GERAIS – GOHAB:
+    classe: publico_outro
+    via: marca
+  GOVERNO DO ESTADO DA BAHIA:
+    classe: publico_outro
+    via: marca
+  GREEN CARGO LOCACAO LTDA:
+    classe: empresa
+    via: marca
+  GREMIO RECREATIVO ESCOLA DE SAMBA UNIDOS DE VILA ISABEL:
+    classe: nao_classificado
+    via: null
+  GRINBERG E CORDOVIL SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  GRUPO FARMABRASIL:
+    classe: nao_classificado
+    via: null
+  GUERINO SEISCENTO TRANSPORTES S.A.:
+    classe: nao_classificado
+    via: null
+  Gabinete PT/SP:
+    classe: nao_classificado
+    via: null
+  Gabinete Secretaria Executiva do Ministério da Cultura:
+    classe: nao_classificado
+    via: null
+  Gabinete de Segurança Institucional da Presidência da República:
+    classe: orgao_federal
+    via: nome
+    'no': br-gabinete-de-seguranca-institucional
+  Gabinete do Ministro de Portos e Aeroportos – GM/MPOR:
+    classe: nao_classificado
+    via: null
+  Galaxea Foundation:
+    classe: nao_classificado
+    via: null
+  Gallotti Advogados:
+    classe: advocacia
+    via: marca
+  Gallotti Advogados Associados:
+    classe: advocacia
+    via: marca
+  Garder Engenharia:
+    classe: nao_classificado
+    via: null
+  Genial Investimentos:
+    classe: nao_classificado
+    via: null
+  Genial Invetimentos:
+    classe: nao_classificado
+    via: null
+  Globo Comunicação e Participações:
+    classe: nao_classificado
+    via: null
+  Gol Linhas Aéreas:
+    classe: nao_classificado
+    via: null
+  Gorodissky & Partners:
+    classe: nao_classificado
+    via: null
+  Governo de Estado de Alagoas:
+    classe: publico_outro
+    via: marca
+  Governo de Pernambuco:
+    classe: publico_outro
+    via: marca
+  Governo do Distrito Federal:
+    classe: publico_outro
+    via: marca
+  Governo do Estado de Roraima:
+    classe: publico_outro
+    via: marca
+  Governo do Estado do Paraná:
+    classe: publico_outro
+    via: marca
+  Governo do Estado do Rio Grande do Norte:
+    classe: publico_outro
+    via: marca
+  Governo do Rio Grande do Sul:
+    classe: publico_outro
+    via: marca
+  Governo do Rio de Janeiro:
+    classe: publico_outro
+    via: marca
+  Grupo Equatorial:
+    classe: nao_classificado
+    via: null
+  Grupo Equatorial Energia:
+    classe: nao_classificado
+    via: null
+  Grupo Hospitalar Conceição/GHC:
+    classe: nao_classificado
+    via: null
+  HAPPEN DESENVOLVIMENTO DE SOFTWARE, TREINAMENTO E CURSOS LTDA:
+    classe: empresa
+    via: marca
+  HAPVIDA ASSISTENCIA MEDICA S.A.:
+    classe: empresa
+    via: marca
+  HERA MIDIA LTDA:
+    classe: empresa
+    via: marca
+  HIDROVIAS DO BRASIL S.A.:
+    classe: empresa
+    via: marca
+  HOSPITAL CARE CALEDONIA S.A.:
+    classe: empresa
+    via: marca
+  HU BRASIL:
+    classe: orgao_federal
+    via: nome
+    'no': br-ebserh
+  HU Brasil:
+    classe: orgao_federal
+    via: nome
+    'no': br-ebserh
+  HYPERA S.A.:
+    classe: empresa
+    via: marca
+  Hospital de Amor Amazônia:
+    classe: nao_classificado
+    via: null
+  Hypera Pharma:
+    classe: nao_classificado
+    via: null
+  IAPEN/AP:
+    classe: nao_classificado
+    via: null
+  IATA:
+    classe: nao_classificado
+    via: null
+  IATA INTERNATIONAL AIR TRANSPORT ASSOCIATION:
+    classe: nao_classificado
+    via: null
+  IBAMA - INST. BR. MEIO AMB. REC. NAT. RENOVAVEIS:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ibama
+  IBGE - FUND. INST. BRASIL. GEOG. E ESTATISTICA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ibge
+  IBRAM - INSTITUTO BRASILEIRO DE MUSEUS:
+    classe: orgao_federal
+    via: sigla
+    'no': br-instituto-brasileiro-de-museus
+  ICM-Bio:
+    classe: nao_classificado
+    via: null
+  ICMBIO - INSTITUTO CHICO MENDES CONSERV.BIODIVER.:
+    classe: orgao_federal
+    via: sigla
+    'no': br-icmbio
+  IEB - INSTITUTO INTERNACIONAL DE EDUCAÇÃO DO BRASIL:
+    classe: nao_classificado
+    via: null
+  IFB - Instituto Federal de Educação, Ciência e Tecnologia de Brasília:
+    classe: orgao_federal
+    via: sigla
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-brasilia
+  IFBAIANO - INSTITUTO FEDERAL BAIANO:
+    classe: publico_outro
+    via: marca
+  IFBRASILIA - INSTITUTO FEDERAL DE BRASILIA:
+    classe: publico_outro
+    via: marca
+  IFCATARINA - INSTITUTO FEDERAL CATARINENSE:
+    classe: publico_outro
+    via: marca
+  IFGOIANO - INSTITUTO FEDERAL GOIANO:
+    classe: publico_outro
+    via: marca
+  IFMA - Instituto Federal de Educação, Ciência e Tecnologia do Maranhão:
+    classe: orgao_federal
+    via: sigla
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-maranhao
+  IFMS:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-mato-grosso-do-sul
+  IFMT:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-mato-grosso
+  IFPB - INSTITUTO FEDERAL DA PARAIBA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-da-paraiba
+  IFPE - INSTITUTO FEDERAL DE PERNAMBUCO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-pernambuco
+  IFRN - INSTITUTO FEDERAL DO RIO GRANDE DO NORTE:
+    classe: orgao_federal
+    via: sigla
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-grande-do-norte
+  IFRO - INSTITUTO FEDERAL DE RONDONIA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-rondonia
+  IFSP:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-sao-paulo
+  IFSul:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-sul-rio-grandense
+  INCA - Instituto Nacional de Câncer José Alencar Gomes da Silva:
+    classe: nao_classificado
+    via: null
+  INCRA - INSTITUTO NAC. DE COLONIZ E REF AGRARIA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-incra
+  INCRA - Instituto Nacional de Colonização e Reforma Agrária:
+    classe: orgao_federal
+    via: sigla
+    'no': br-incra
+  INEP - INST.NACIONAL DE EST.E PESQ.EDUCACIONAIS:
+    classe: orgao_federal
+    via: sigla
+    'no': br-inep
+  INFRAERO - Empresa Brasileira de Infraestrutura Aeroportuária:
+    classe: orgao_federal
+    via: sigla
+    'no': br-infraero
+  INFRAMERICA CONCESSIONARIA DO AEROPORTO DE BRASILIA S/A:
+    classe: empresa
+    via: marca
+  INPE:
+    classe: orgao_federal
+    via: nome
+    'no': br-inpe
+  INSS - INSTITUTO NACIONAL DE SEGURO SOCIAL:
+    classe: orgao_federal
+    via: sigla
+    'no': br-inss
+  INSTITUR - Instituto de Turismo das Américas:
+    classe: nao_classificado
+    via: null
+  INSTITUTO BRASILEIRO DE JOGO RESPONSAVEL - IBJR:
+    classe: nao_classificado
+    via: null
+  INSTITUTO BRASILEIRO DE MINERACAO IBRAM:
+    classe: nao_classificado
+    via: null
+  INSTITUTO BRASILEIRO DE PETROLEO E GAS:
+    classe: nao_classificado
+    via: null
+  INSTITUTO BRASILEIRO DE RELACOES COM INVESTIDORES - IBRI:
+    classe: nao_classificado
+    via: null
+  INSTITUTO CHICO MENDES CONSERV.BIODIVER.:
+    classe: nao_classificado
+    via: null
+  INSTITUTO DAS PRETAS.ORG:
+    classe: nao_classificado
+    via: null
+  INSTITUTO DE DESENVOLVIMENTO SUSTENTAVEL MAMIRAUA:
+    classe: nao_classificado
+    via: null
+  INSTITUTO DE ENSINO E PESQUISA ALBERTO SANTOS DUMONT:
+    classe: nao_classificado
+    via: null
+  INSTITUTO DE PLANEJAMENTO E GESTAO DE CIDADES- IPGC:
+    classe: nao_classificado
+    via: null
+  INSTITUTO FEDERAL DE SANTA CATARINA:
+    classe: publico_outro
+    via: marca
+  INSTITUTO NIEMEYER BRASILIA - INB:
+    classe: orgao_federal
+    via: sigla
+    'no': br-industrias-nucleares-do-brasil-s-a
+  INSTITUTO TECNOLOGICO DAS CADEIAS BIOSSUSTENTAVEIS - ITCBIO:
+    classe: nao_classificado
+    via: null
+  INSTITUTO VIDA VIDEIRA:
+    classe: nao_classificado
+    via: null
+  INSTITUTO WCF - BRASIL:
+    classe: nao_classificado
+    via: null
+  INTERFARMA ASSOCIACAO DA INDUSTRIA FARMACEUTICA DE PESQUISA:
+    classe: setorial
+    via: marca
+  INTERPOL:
+    classe: nao_classificado
+    via: null
+  IPEA - INSTITUTO DE PESQUISA ECONOMICA APLICADA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ipea
+  IPHAN - INSTITUTO DO PATR.HIST.E ART. NACIONAL:
+    classe: orgao_federal
+    via: sigla
+    'no': br-iphan
+  IRMANDADE DA SANTA CASA DE MISERICORDIA DE SAO PAULO:
+    classe: nao_classificado
+    via: null
+  ISA ENERGIA BRASIL S.A.:
+    classe: empresa
+    via: marca
+  ITAU UNIBANCO S.A.:
+    classe: empresa
+    via: marca
+  IZA SEGURADORA S.A.:
+    classe: empresa
+    via: marca
+  Inc. – California:
+    classe: nao_classificado
+    via: null
+  Indústria e Comércio da Federação da Rússia:
+    classe: setorial
+    via: marca
+  InfoPerifa/SP:
+    classe: nao_classificado
+    via: null
+  Infra S/A:
+    classe: orgao_federal
+    via: nome
+    'no': br-infra-sa
+  Insituto Chico Mendes:
+    classe: nao_classificado
+    via: null
+  Instituto Auschwitz:
+    classe: nao_classificado
+    via: null
+  Instituto Brasileiro de Geografia e Estatística (IBGE):
+    classe: nao_classificado
+    via: null
+  Instituto Brasileiro de Museus:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-brasileiro-de-museus
+  Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis:
+    classe: orgao_federal
+    via: nome
+    'no': br-ibama
+  Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis (IBAMA):
+    classe: nao_classificado
+    via: null
+  Instituto Chico Mendes de Conservação da Biodiversidade:
+    classe: orgao_federal
+    via: nome
+    'no': br-icmbio
+  Instituto Federal:
+    classe: publico_outro
+    via: marca
+  Instituto Federal Baiano:
+    classe: publico_outro
+    via: marca
+  Instituto Federal de Educação, Ciência e Tecnologia Catarinense:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-catarinense
+  Instituto Federal de Educação, Ciência e Tecnologia Farroupilha:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-farroupilha
+  Instituto Federal de Educação, Ciência e Tecnologia Fluminense:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-fluminense
+  Instituto Federal de Educação, Ciência e Tecnologia Goiano:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-goiano
+  Instituto Federal de Educação, Ciência e Tecnologia Sul-Rio-Grandense:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-sul-rio-grandense
+  Instituto Federal de Educação, Ciência e Tecnologia da Bahia:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-da-bahia
+  Instituto Federal de Educação, Ciência e Tecnologia da Paraíba:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-da-paraiba
+  Instituto Federal de Educação, Ciência e Tecnologia de Brasília:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-brasilia
+  Instituto Federal de Educação, Ciência e Tecnologia de Goiás:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-goias
+  Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-mato-grosso
+  Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso do Sul:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-mato-grosso-do-sul
+  Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-minas-gerais
+  Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-pernambuco
+  Instituto Federal de Educação, Ciência e Tecnologia de Rondônia:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-rondonia
+  Instituto Federal de Educação, Ciência e Tecnologia de Roraima:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-roraima
+  Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-santa-catarina
+  Instituto Federal de Educação, Ciência e Tecnologia de São Paulo:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-sao-paulo
+  Instituto Federal de Educação, Ciência e Tecnologia do Ceará:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-ceara
+  Instituto Federal de Educação, Ciência e Tecnologia do Espírito Santo:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-espirito-santo
+  Instituto Federal de Educação, Ciência e Tecnologia do Norte de Minas Gerais:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-norte-de-minas-gerais
+  Instituto Federal de Educação, Ciência e Tecnologia do Paraná:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-parana
+  Instituto Federal de Educação, Ciência e Tecnologia do Pará:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-para
+  Instituto Federal de Educação, Ciência e Tecnologia do Piauí:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-piaui
+  Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-grande-do-norte
+  Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-grande-do-sul
+  Instituto Federal de Educação, Ciência e Tecnologia do Rio de Janeiro:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-de-janeiro
+  Instituto Federal de Educação, Ciência e Tecnologia do Sertão Pernambucano:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sertao-pernambucano
+  Instituto Federal de Educação, Ciência e Tecnologia do Sertão Pernambucano – IFSertãoPE:
+    classe: nao_classificado
+    via: null
+  Instituto Federal de Educação, Ciência e Tecnologia do Sudeste de Minas Gerais:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sudeste-de-minas-gerais
+  Instituto Federal de Educação, Ciência e Tecnologia do Sul de Minas Gerais:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sul-de-minas-gerais
+  Instituto Federal de Educação, Ciência e Tecnologia do Triângulo Mineiro:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-triangulo-mineiro
+  Instituto Federal de Mato Grosso:
+    classe: publico_outro
+    via: marca
+  'Instituto Federal do Sertão Pernambucano: IFSertãoPE':
+    classe: nao_classificado
+    via: null
+  Instituto Federal do Sudeste de Minas Gerais:
+    classe: publico_outro
+    via: marca
+  Instituto IberoCulturas:
+    classe: nao_classificado
+    via: null
+  Instituto Mineiro de Gestão das Águas - IGAM:
+    classe: nao_classificado
+    via: null
+  Instituto Nacional de Colonização e Reforma Agrária:
+    classe: orgao_federal
+    via: nome
+    'no': br-incra
+  Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira:
+    classe: orgao_federal
+    via: nome
+    'no': br-inep
+  Instituto Nacional de Pesquisas Espaciais - INPE:
+    classe: orgao_federal
+    via: sigla
+    'no': br-inpe
+  Instituto Nacional de Tecnologia da Informação:
+    classe: orgao_federal
+    via: nome
+    'no': br-iti
+  Instituto Nacional do Seguro Social:
+    classe: orgao_federal
+    via: nome
+    'no': br-inss
+  Instituto Russo de Pesquisa de Pesca e Oceanografia (VNIRO):
+    classe: nao_classificado
+    via: null
+  Instituto de Medicina Integral Professor Fernando Figueira - IMIP:
+    classe: nao_classificado
+    via: null
+  Instituto de Pesquisa Econômica Aplicada:
+    classe: orgao_federal
+    via: nome
+    'no': br-ipea
+  Instituto de Pesquisas Energéticas e Nucleares (IPEN):
+    classe: nao_classificado
+    via: null
+  Instituto de Pesquisas Jardim Botânico do Rio de Janeiro:
+    classe: orgao_federal
+    via: nome
+    'no': br-instituto-de-pesquisas-jardim-botanico-do-rio-de-janeiro
+  Instituto do Patrimônio Histórico e Artístico Nacional:
+    classe: orgao_federal
+    via: nome
+    'no': br-iphan
+  Instituto Água e Terra do Paraná (IAT):
+    classe: nao_classificado
+    via: null
+  International Trade Administration | U.S. Department of Commerce:
+    classe: nao_classificado
+    via: null
+  Itaú BBA Assessoria Financeira S.A.:
+    classe: empresa
+    via: marca
+  JARUS:
+    classe: nao_classificado
+    via: null
+  JBS S/A:
+    classe: empresa
+    via: marca
+  JETSERV SERVICOS LTDA:
+    classe: empresa
+    via: marca
+  JOSE CARLOS BERARDO SOCIEDADE INDIVIDUAL DE ADVOCACIA:
+    classe: advocacia
+    via: marca
+  JUSTEN, PEREIRA, OLIVEIRA E TALAMINI - SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  JUSTOS SEGUROS S.A.:
+    classe: empresa
+    via: marca
+  Jornal Metrópoles:
+    classe: nao_classificado
+    via: null
+  KINEA INVESTIMENTOS LTDA.:
+    classe: empresa
+    via: marca
+  KLM CIA REAL HOLANDESA DE AVIACAO:
+    classe: nao_classificado
+    via: null
+  LARGO VANADIO DE MARACAS S.A:
+    classe: empresa
+    via: marca
+  LIDER TAXI AEREO S/A - AIR BRASIL:
+    classe: empresa
+    via: marca
+  LIGA INDEPENDENTE DAS ESC DE SAMBA DO RIO DE JANEIRO:
+    classe: nao_classificado
+    via: null
+  LIGHT ENERGIA S.A:
+    classe: empresa
+    via: marca
+  LIGHT SERVICOS DE ELETRICIDADE S A:
+    classe: empresa
+    via: marca
+  LIGHTSOURCE BRASIL ENERGIA RENOVAVEL LTDA.:
+    classe: empresa
+    via: marca
+  LIVOLTEK POWER BRASIL LTDA:
+    classe: empresa
+    via: marca
+  LOBO & DE RIZZO SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  LOCALIZA RENT A CAR SA:
+    classe: empresa
+    via: marca
+  LOGISTICA BRASIL - ASSOCIACAO BRASILEIRA DOS USUARIOS DOS PORTOS, DE TRANSPORTES E DA LOGISTICA:
+    classe: nao_classificado
+    via: null
+  LUZ MINERACAO LTDA:
+    classe: empresa
+    via: marca
+  Laboratório Nacional de Astrofísica:
+    classe: nao_classificado
+    via: null
+  M4E LITHIUM LTDA:
+    classe: empresa
+    via: marca
+  MAB:
+    classe: nao_classificado
+    via: null
+  MACHADO NUNES, MARQUES E GUTIERREZ SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  MACIEL MARINHO - SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  MAIIPAY BANK:
+    classe: nao_classificado
+    via: null
+  MAPA - MINISTERIO DA AGRICULTURA E PECUARIA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-agricultura-e-pecuaria
+  MAPA - Ministério da Agricultura, Pecuária e Abastecimento:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-agricultura-e-pecuaria
+  MATTOS FILHO, VEIGA FILHO, MARREY JR. E QUIROGA ADVOGADOS:
+    classe: advocacia
+    via: marca
+  MAURO HAUSCHILD ADVOGADOS ASSOCIADOS:
+    classe: advocacia
+    via: marca
+  MB - Comando da Marinha:
+    classe: orgao_federal
+    via: sigla
+    'no': br-marinha-do-brasil
+  MCID - MINISTERIO DAS CIDADES:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-das-cidades
+  MCOM:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-das-comunicacoes
+  MCOM - MINISTERIO DAS COMUNICACOES:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-das-comunicacoes
+  MCTI - MINISTERIO CIENCIA TECNOLOGIA INOVA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
+  MCTI - MINISTERIO CIENCIA TECNOLOGIA INOVAÇÃO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
+  MD - MINISTERIO DA DEFESA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-defesa
+  MD - Ministério da Defesa:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-defesa
+  MDA - MIN DO DESENV AGR E AGRIC FAMILIAR:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-do-desenvolvimento-agrario
+  MDH - MINISTÉRIO DOS DIREITOS HUMANOS E DA CIDADNIA:
+    classe: publico_outro
+    via: marca
+  MDHC:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-dos-direitos-humanos-e-da-cidadania
+  MDHC - MIN DOS DIR HUM E DA CIDADANIA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-dos-direitos-humanos-e-da-cidadania
+  MDHC - Ministério dos Direitos Humanos e da Cidadania:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-dos-direitos-humanos-e-da-cidadania
+  MDIC - MIN DESENVOLV IND COMERCIO E SERVICOS:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
+  MDIC/SDIC/DIAL:
+    classe: nao_classificado
+    via: null
+  MDS - MIN DESENV ASSIS SOCI FAMIL COMBATE FOME:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-do-desenvolvimento-social
+  MEC - MINISTERIO DA EDUCACAO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-educacao
+  MEC - Ministério da Educação:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-educacao
+  MEDLIVE PARTNERS LTDA:
+    classe: empresa
+    via: marca
+  MEMP - MIN EMPREEND MICROEMP EMP PEQUENO PORTE:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-do-empreendedorismo
+  MESP - MINISTERIO DO ESPORTE:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-do-esporte
+  METEORIC RESOURCES BRASIL LTDA:
+    classe: empresa
+    via: marca
+  METROPOLES MIDIA E COMUNICACAO S/A:
+    classe: empresa
+    via: marca
+  MF - MINISTERIO DA FAZENDA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-fazenda
+  MF/STN/SUDIP/CODIP:
+    classe: nao_classificado
+    via: null
+  MGAS COMERCIALIZADORA DE GAS NATURAL LTDA:
+    classe: empresa
+    via: marca
+  MGI - MIN GESTAO E INOV EM SERV PUBLICOS:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-gestao
+  MGISP - Ministério da Gestão e da Inovação em Serviços Públicos:
+    classe: orgao_federal
+    via: resto
+    'no': br-ministerio-da-gestao
+  MICROSOFT DO BRASIL IMPORTACAO E COMERCIO DE SOFTWARE E VIDEO GAMES LTDA:
+    classe: empresa
+    via: marca
+  MICROSOFT INFORMATICA LTDA:
+    classe: empresa
+    via: marca
+  MIDR - MIN DA INTEG E DO DESENV REGIONAL:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-integracao-e-do-desenvolvimento-regional
+  MINC - MINISTERIO DA CULTURA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-cultura
+  MINDER PEOPLE ANALYTICS LTDA:
+    classe: empresa
+    via: marca
+  MINERACAO SERRAS DO OESTE LIMITADA:
+    classe: nao_classificado
+    via: null
+  MINISTERIO DA AGRICULTURA E PECUARIA:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-agricultura-e-pecuaria
+  MINISTERIO DA FAZENDA:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-fazenda
+  MINISTERIO DAS RELACOES EXTERIORES:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-das-relacoes-exteriores
+  MINISTÉRIO DA EDUCAÇÃO DE ANGOLA:
+    classe: nao_classificado
+    via: null
+  MINISTÉRIO DE PORTOS E AEROPORTOS - MPOR:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-de-portos-e-aeroportos
+  MINISTÉRIO PÚBLICO FEDERAL:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-publico-federal
+  MIR - MINISTERIO DA IGUALDADE RACIAL:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-igualdade-racial
+  MJ - MINIST. DA JUSTICA E SEGURANCA PUBLICA:
+    classe: orgao_federal
+    via: resto
+    'no': br-ministerio-da-justica-e-seguranca-publica
+  MJSP - Ministério da Justiça e Segurança Pública:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-justica-e-seguranca-publica
+  MMA - MINISTERIO DO MEIO AMBIENTE:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+  MMA - Ministério do Meio Ambiente:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+  MME:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-de-minas-e-energia
+  MME - MINISTERIO DE MINAS E ENERGIA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-de-minas-e-energia
+  MME - Ministério de Minas e Energia:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-de-minas-e-energia
+  MMULHERES - MINISTERIO DAS MULHERES:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-das-mulheres
+  MMULHERES - Ministério das Mulheres:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-das-mulheres
+  MONDELEZ BRASIL LTDA:
+    classe: empresa
+    via: marca
+  MORENA FILMES LTDA:
+    classe: empresa
+    via: marca
+  MOVIMENTO BRASIL COMPETITIVO - MBC:
+    classe: nao_classificado
+    via: null
+  MOVIMENTO NACIONAL DE LUTA PELA MORADIA NO OESTE DO ESTADO DO PARA:
+    classe: nao_classificado
+    via: null
+  MPA - MINISTERIO DA PESCA E AQUICULTURA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-pesca-e-aquicultura
+  MPI - MINISTERIO DOS POVOS INDIGENAS:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-dos-povos-indigenas
+  MPO - MINISTERIO DO PLANEJAMENTO E ORCAMENTO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-do-planejamento-e-orcamento
+  MPO - Ministério do Planejamento e Orçamento:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-do-planejamento-e-orcamento
+  MPOR - MINISTERIO DE PORTOS E AEROPORTOS:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-de-portos-e-aeroportos
+  MPOR - Ministério de Portos e Aeroportos:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-de-portos-e-aeroportos
+  MPS - MINISTERIO DA PREVIDENCIA SOCIAL:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-previdencia-social
+  MRE - MINISTERIO DAS RELACOES EXTERIORES:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-das-relacoes-exteriores
+  MRE - Ministério das Relações exteriores:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-das-relacoes-exteriores
+  MS - MINISTERIO DA SAUDE:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-saude
+  MS - Ministério da Saúde:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-saude
+  MST Tricontinental:
+    classe: nao_classificado
+    via: null
+  MT - MINISTERIO DOS TRANSPORTES:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-dos-transportes
+  Magalhães e Dias Advocacia:
+    classe: advocacia
+    via: marca
+  Marinha do Brasil:
+    classe: orgao_federal
+    via: nome
+    'no': br-marinha-do-brasil
+  Mario Seabra Suarez:
+    classe: nao_classificado
+    via: null
+  Mecanismo de Apoio da Aliança Global Contra a Fome e a Pobreza:
+    classe: nao_classificado
+    via: null
+  Ministério Publico de Goiás:
+    classe: publico_outro
+    via: marca
+  Ministério Público Federal:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-publico-federal
+  Ministério Público Militar:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-publico-militar
+  Ministério Público do Estado do Acre:
+    classe: publico_outro
+    via: marca
+  Ministério Público do Trabalho:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-publico-do-trabalho
+  Ministério Público do Trabalho - PE:
+    classe: orgao_federal
+    via: forma
+    'no': br-ministerio-publico-do-trabalho
+  Ministério Público do Trabalho - Recife:
+    classe: orgao_federal
+    via: forma
+    'no': br-ministerio-publico-do-trabalho
+  Ministério da Agricultura e Pecuária:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-agricultura-e-pecuaria
+  Ministério da Ciência, Tecnologia e Inovação:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
+  Ministério da Cultura:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-cultura
+  Ministério da Defesa:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-defesa
+  Ministério da Defesa - MD:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-defesa
+  Ministério da Educação:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-educacao
+  Ministério da Fazenda:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-fazenda
+  Ministério da Fazenda, Secretaria de Prémios e Apostas:
+    classe: nao_classificado
+    via: null
+  Ministério da Gestão e da Inovação em Serviços Públicos:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-gestao
+  Ministério da Gestão e da Inovação em Serviços Públicos - MGI:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-gestao
+  Ministério da Igualdade Racial:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-igualdade-racial
+  Ministério da Integração e do Desenvolvimento Regional:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-integracao-e-do-desenvolvimento-regional
+  Ministério da Integração e do Desenvolvimento Regional - MIDR:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-da-integracao-e-do-desenvolvimento-regional
+  Ministério da Justiça e Segurança Pública:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-justica-e-seguranca-publica
+  Ministério da Pesca e Aquicultura:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-pesca-e-aquicultura
+  Ministério da Previdência Social:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-previdencia-social
+  Ministério da Saúde:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-da-saude
+  Ministério das Cidades:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-das-cidades
+  Ministério das Cidades – MC:
+    classe: orgao_federal
+    via: forma
+    'no': br-ministerio-das-cidades
+  Ministério das Comunicações:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-das-comunicacoes
+  Ministério das Mulheres:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-das-mulheres
+  Ministério das Relações Exteriores:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-das-relacoes-exteriores
+  Ministério de Minas e Energia:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-de-minas-e-energia
+  Ministério de Portos e Aeroportos:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-de-portos-e-aeroportos
+  Ministério de Relações Exteriores e Pesca das Ilhas Faroé:
+    classe: nao_classificado
+    via: null
+  Ministério do Desenvolvimento Agrário e Agricultura Familiar:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-do-desenvolvimento-agrario
+  Ministério do Desenvolvimento Social:
+    classe: publico_outro
+    via: marca
+  Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-do-desenvolvimento-social
+  Ministério do Desenvolvimento, Indústria, Comércio e Serviços:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
+  Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-do-empreendedorismo
+  Ministério do Esporte:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-do-esporte
+  Ministério do Meio Ambiente:
+    classe: orgao_federal
+    via: prefixo
+    'no': br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+  Ministério do Meio Ambiente e Mudança do Clima:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+  Ministério do Planejamento e Orçamento:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-do-planejamento-e-orcamento
+  Ministério do Trabalho e Emprego:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-do-trabalho-e-emprego
+  Ministério dos Direitos Humanos e Cidadania:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-dos-direitos-humanos-e-da-cidadania
+  Ministério dos Direitos Humanos e da Cidadania:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-dos-direitos-humanos-e-da-cidadania
+  Ministério dos Povos Indígenas:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-dos-povos-indigenas
+  Ministério dos Transportes:
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-dos-transportes
+  Ministéro das Mulheres:
+    classe: nao_classificado
+    via: null
+  Modal Consult:
+    classe: nao_classificado
+    via: null
+  Mongolian Sustainable Finance Association:
+    classe: nao_classificado
+    via: null
+  Movimento Sem Terra:
+    classe: nao_classificado
+    via: null
+  Movimento de Libertação dos Sem Terra - MLST:
+    classe: nao_classificado
+    via: null
+  Movimento dos Pequenos agricultores:
+    classe: nao_classificado
+    via: null
+  Movimento dos Trabalhadores Rurais Sem Terra (MST):
+    classe: nao_classificado
+    via: null
+  Movimento dos Trabalhadores Rurais Sem Terra – MST:
+    classe: nao_classificado
+    via: null
+  Municipio de Viçosa:
+    classe: publico_outro
+    via: marca
+  Município de Aguas Lindas-GO:
+    classe: publico_outro
+    via: marca
+  Município de Trânsito e Mobilidade Urbana de Águas Lindas de Goiás:
+    classe: publico_outro
+    via: marca
+  NDB - NOVO BANCO DE DESENVOLVIMENTO:
+    classe: nao_classificado
+    via: null
+  NELSON EIZIRIK - ADVOGADOS:
+    classe: advocacia
+    via: marca
+  NEOENERGIA S.A:
+    classe: empresa
+    via: marca
+  NEOTROPICAL CONSULTORIA E ASSESSORIA AMBIENTAL LTDA:
+    classe: empresa
+    via: marca
+  NETFLIX ENTRETENIMENTO BRASIL LTDA.:
+    classe: empresa
+    via: marca
+  NEW FORTRESS ENERGY INC:
+    classe: nao_classificado
+    via: null
+  NOVA S.A.:
+    classe: empresa
+    via: marca
+  NOVA TRANSPORTADORA DO SUDESTE S/A - NTS:
+    classe: empresa
+    via: marca
+  NOVACAP:
+    classe: nao_classificado
+    via: null
+  NU PAGAMENTOS S.A. - INSTITUICAO DE PAGAMENTO:
+    classe: empresa
+    via: marca
+  NUCLEO DE INFORMACAO E COORDENACAO DO PONTO BR - NIC .BR:
+    classe: nao_classificado
+    via: null
+  NUCLEO NACIONAL DAS EMPRESAS DE SERVICOS DE ATENCAO DOMICILIAR - NEAD:
+    classe: nao_classificado
+    via: null
+  NZINGA-COLETIVO MULHERES NEGRAS DE BELO HORIZONTE-MINAS GERAIS:
+    classe: nao_classificado
+    via: null
+  Neoenergia:
+    classe: nao_classificado
+    via: null
+  Novatek:
+    classe: nao_classificado
+    via: null
+  ODARA INSTITUTO DA MULHER NEGRA:
+    classe: nao_classificado
+    via: null
+  ODATA BRASIL LTDA:
+    classe: empresa
+    via: marca
+  OIJ:
+    classe: nao_classificado
+    via: null
+  OIM - Organização Internacional para as Migrações:
+    classe: nao_classificado
+    via: null
+  OIT - ORGANIZAÇÃO INTERNACIONAL DO TRABALHO:
+    classe: nao_classificado
+    via: null
+  OLIVER WYMAN CONSULTORIA EM ESTRATEGIA DE NEGOCIOS LTDA.:
+    classe: empresa
+    via: marca
+  ONS:
+    classe: nao_classificado
+    via: null
+  ONU Turismo:
+    classe: nao_classificado
+    via: null
+  OPIN:
+    classe: nao_classificado
+    via: null
+  ORGANIZACAO DAS NACOES UNIDAS PARA EDUCACAO, CIENCIA E CULTURA:
+    classe: nao_classificado
+    via: null
+  OTAVIO YAZBEK SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  Operador Nacional do Sistema Elétrico:
+    classe: nao_classificado
+    via: null
+  Organização das Nações Unidas para Alimentação e Agricultura - FAO no Brasil:
+    classe: nao_classificado
+    via: null
+  Organização das Nações Unidas para a Educação, a Ciência e a Cultura – UNESCO:
+    classe: nao_classificado
+    via: null
+  Organização de Estado Ibero-Americanos:
+    classe: nao_classificado
+    via: null
+  PAVLIX ENGENHARIA E CONSTRUCOES LTDA:
+    classe: empresa
+    via: marca
+  PDT/DF:
+    classe: nao_classificado
+    via: null
+  PETROBRAS - Petróleo Brasileiro S.A.:
+    classe: orgao_federal
+    via: sigla
+    'no': br-petrobras
+  PETROLEO BRASILEIRO S A PETROBRAS:
+    classe: nao_classificado
+    via: null
+  PFIZER BRASIL LTDA:
+    classe: empresa
+    via: marca
+  PGFN - Procuradoria-Geral da Fazenda Nacional:
+    classe: orgao_federal
+    via: sigla
+    'no': br-procuradoria-geral-da-fazenda-nacional
+  PIER SEGURADORA S.A.:
+    classe: empresa
+    via: marca
+  PINHEIRO NETO ADVOGADOS:
+    classe: advocacia
+    via: marca
+  PODER360 JORNALISMO E PARTICIPACOES LTDA:
+    classe: empresa
+    via: marca
+  POLÍCIA CIENTÍFICA DO RIO GRANDE DO NORTE:
+    classe: publico_outro
+    via: marca
+  PORTO DO RECIFE S/A:
+    classe: empresa
+    via: marca
+  POSTAL SAUDE - CAIXA DE ASSISTENCIA E SAUDE DOS EMPREGADOS DOS CORREIOS:
+    classe: nao_classificado
+    via: null
+  POTENCIAL PETROLEO LTDA:
+    classe: empresa
+    via: marca
+  PPSA - Empresa Brasileira de Administração de Petróleo e Gás Natural S.A..- Pré-Sal Petróleo S.A.:
+    classe: orgao_federal
+    via: sigla
+    'no': br-empresa-brasileira-de-administracao-de-petroleo-e-gas-natural-s-a-pre-sal-petroleo-s-a
+  PR - PRESIDENCIA DA REPUBLICA:
+    classe: orgao_federal
+    via: resto
+    'no': br-presidencia-da-republica
+  PR - Presidência da República:
+    classe: orgao_federal
+    via: resto
+    'no': br-presidencia-da-republica
+  PR/MG:
+    classe: nao_classificado
+    via: null
+  PREFEITURA DE ARAÇATUBA/SP:
+    classe: publico_outro
+    via: marca
+  PREFEITURA MUNICIPAL DE NOVA ODESSA – SP:
+    classe: publico_outro
+    via: marca
+  PRESIDENCIA DA REPUBLICA:
+    classe: orgao_federal
+    via: nome
+    'no': br-presidencia-da-republica
+  PRF - Polícia Rodoviária Federal:
+    classe: orgao_federal
+    via: sigla
+    'no': br-policia-rodoviaria-federal
+  PRIO S.A.:
+    classe: empresa
+    via: marca
+  PRO GENERICOS ASSOCIACAO BRASILEIRA DAS INDUSTRIAS DE MEDICAMENTOS GENERICOS E BIOSSIMILARES.:
+    classe: setorial
+    via: marca
+  PRO-MUSICA BRASIL PRODUTORES FONOGRAFICOS ASSOCIADOS:
+    classe: nao_classificado
+    via: null
+  PROCURADORIA GERAL DE JUSTICA DO ESTADO DO AMAZONAS:
+    classe: nao_classificado
+    via: null
+  PRODUCOES CINEMATOGRAFICAS L C BARRETO LTDA:
+    classe: empresa
+    via: marca
+  PROSPECTIVA MACROPOLITICA LTDA:
+    classe: empresa
+    via: marca
+  PRS AEROPORTOS S.A:
+    classe: empresa
+    via: marca
+  PT/ES:
+    classe: nao_classificado
+    via: null
+  PUC Goiás:
+    classe: nao_classificado
+    via: null
+  PURISSIMA FARMACIA DE MANIPULACAO S.A.:
+    classe: empresa
+    via: marca
+  Parlamento Amazônico:
+    classe: nao_classificado
+    via: null
+  Parque Municipal da Pessoa Idosa em Palmas/TO:
+    classe: publico_outro
+    via: marca
+  Petrobras:
+    classe: orgao_federal
+    via: nome
+    'no': br-petrobras
+  Petrobras - Petróleo Brasileiro S.A.:
+    classe: orgao_federal
+    via: sigla
+    'no': br-petrobras
+  Petros (Fundação Petrobras de Seguridade Social):
+    classe: nao_classificado
+    via: null
+  Piquet Magaldi Guedes Advogados:
+    classe: advocacia
+    via: marca
+  Point72:
+    classe: nao_classificado
+    via: null
+  Polícia Federal:
+    classe: orgao_federal
+    via: nome
+    'no': br-policia-federal
+  Polícia Federal no Rio Grande do Norte:
+    classe: publico_outro
+    via: marca
+  'Polícia Federal:':
+    classe: orgao_federal
+    via: nome
+    'no': br-policia-federal
+  Polícia Nacional da Colômbia:
+    classe: publico_outro
+    via: marca
+  Polícia Rodoviária Federal:
+    classe: orgao_federal
+    via: nome
+    'no': br-policia-rodoviaria-federal
+  Porto de Itajaí:
+    classe: nao_classificado
+    via: null
+  Prefeito Municipal de Pompeia:
+    classe: publico_outro
+    via: marca
+  Prefeito de Marcelino Ramos:
+    classe: nao_classificado
+    via: null
+  Prefeitura:
+    classe: publico_outro
+    via: marca
+  Prefeitura Municipal de Alfenas:
+    classe: publico_outro
+    via: marca
+  Prefeitura Municipal de Bombinhas-SC:
+    classe: publico_outro
+    via: marca
+  Prefeitura Municipal de Diamantino:
+    classe: publico_outro
+    via: marca
+  Prefeitura Municipal de Diamantino - MT:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-dos-transportes
+  Prefeitura Municipal de Maricá-RJ:
+    classe: publico_outro
+    via: marca
+  Prefeitura Municipal de Porto Alegre:
+    classe: publico_outro
+    via: marca
+  Prefeitura Municipal de Santo Antônio da Patrulha:
+    classe: publico_outro
+    via: marca
+  Prefeitura Municipal de Tanguá – RJ.:
+    classe: publico_outro
+    via: marca
+  Prefeitura da Cidade de Torino - Itália:
+    classe: publico_outro
+    via: marca
+  Prefeitura da Cidade do Recife:
+    classe: publico_outro
+    via: marca
+  Prefeitura de Diamantino:
+    classe: publico_outro
+    via: marca
+  Prefeitura de Jataí:
+    classe: publico_outro
+    via: marca
+  Prefeitura de Marcelino Ramos:
+    classe: publico_outro
+    via: marca
+  Prefeitura de Maricá:
+    classe: publico_outro
+    via: marca
+  Prefeitura de Maricá-RJ:
+    classe: publico_outro
+    via: marca
+  Prefeitura de São Paulo:
+    classe: publico_outro
+    via: marca
+  Presidente do TST e do Conselho Superior da Justiça do Trabalho:
+    classe: nao_classificado
+    via: null
+  Presidência da República:
+    classe: orgao_federal
+    via: nome
+    'no': br-presidencia-da-republica
+  Procuradora Regional dos Direitos do Cidadão (PRDC):
+    classe: nao_classificado
+    via: null
+  Procuradoria do Estado de São Paulo:
+    classe: publico_outro
+    via: marca
+  Procuradoria-Geral do Estado do Rio de Janeiro:
+    classe: publico_outro
+    via: marca
+  Programa das Nações Unidas para o Desenvolvimento (PNUD):
+    classe: nao_classificado
+    via: null
+  Programa das Nações Unidas para o Desenvolvimento - PNUD:
+    classe: nao_classificado
+    via: null
+  QI TECH LTDA.:
+    classe: empresa
+    via: marca
+  QUANTITAS GESTAO DE RECURSOS LTDA.:
+    classe: nao_classificado
+    via: null
+  QUANTUM TECHNOLOGY LTDA:
+    classe: empresa
+    via: marca
+  R&SOUSA CONSTRUÇÕES SERVICOS LTDA:
+    classe: empresa
+    via: marca
+  RADIO E TELEVISAO RECORD S.A:
+    classe: empresa
+    via: marca
+  REDES PLANEJAMENTO E POLITICA PUBLICA LTDA:
+    classe: nao_classificado
+    via: null
+  RENAULT DO BRASIL S.A.:
+    classe: empresa
+    via: marca
+  RENTERIA SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  RFB - Secretaria Especial da Receita Federal do Brasil:
+    classe: orgao_federal
+    via: sigla
+    'no': br-receita-federal-do-brasil
+  RIPPLE BRASIL SOCIEDADE PRESTADORA DE SERVICOS DE ATIVO VIRTUAL LTDA:
+    classe: empresa
+    via: marca
+  RNP:
+    classe: nao_classificado
+    via: null
+  ROSANA DOS S. ALCANTARA SOCIEDADE INDIVIDUAL DE ADVOCACIA:
+    classe: advocacia
+    via: marca
+  RUBIC BALOES INDUSTRIA E COMERCIO LTDA:
+    classe: empresa
+    via: marca
+  Real Consulado Geral da Noruega no Rio de Janeiro:
+    classe: publico_outro
+    via: marca
+  Receita Federal do Brasil:
+    classe: nao_classificado
+    via: null
+  Rede Mulheres Negras de Pernambuco:
+    classe: nao_classificado
+    via: null
+  Rede Nacional de Ensino e Pesquisa - RNP:
+    classe: nao_classificado
+    via: null
+  Rede de Gestores:
+    classe: nao_classificado
+    via: null
+  Reino da Dinamarca:
+    classe: nao_classificado
+    via: null
+  Reino da Tailândia:
+    classe: nao_classificado
+    via: null
+  Reino do Bahrein:
+    classe: nao_classificado
+    via: null
+  Reitor do Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso (IFMT):
+    classe: nao_classificado
+    via: null
+  Remfry & Sagar:
+    classe: nao_classificado
+    via: null
+  Representante comercial da Rússia no Brasil:
+    classe: nao_classificado
+    via: null
+  Representantes do Movimento dos Trabalhadores Rurais Sem Terra - MST:
+    classe: nao_classificado
+    via: null
+  República da Coreia:
+    classe: nao_classificado
+    via: null
+  República de Singapura:
+    classe: nao_classificado
+    via: null
+  Rádio e TV Universitária (RTV):
+    classe: nao_classificado
+    via: null
+  S/A O ESTADO DE S.PAULO:
+    classe: empresa
+    via: marca
+  SA CORREIO BRAZILIENSE:
+    classe: nao_classificado
+    via: null
+  SAAE-Serviço Autônomo de Água e Esgoto:
+    classe: nao_classificado
+    via: null
+  SABACK DAU & BOKEL SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  SAEXPLORATION (BRASIL) SERVICOS SISMICOS LTDA.:
+    classe: empresa
+    via: marca
+  SAFRA ASSET MANAGEMENT LTDA.:
+    classe: empresa
+    via: marca
+  SAIPEM DO BRASIL SERVICOS DE PETROLEO LTDA.:
+    classe: empresa
+    via: marca
+  SALOMAO, COTTA & GOMES SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  SALOMAO, KAIUCA, ABRAHAO, RAPOSO & COTTA SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  SAM/CASA CIVIL/PR:
+    classe: nao_classificado
+    via: null
+  SECIPE - SERVICO DE CIRURGIA PEDIATRICA S/S:
+    classe: nao_classificado
+    via: null
+  SECRETARIA DE GOVERNO - PREFEITURA DE JUIZ DE FORA/MG:
+    classe: publico_outro
+    via: marca
+  SEDES - Secretaria de Desenvolvimento Social do Distrito Federal:
+    classe: orgao_federal
+    via: sigla
+    'no': br-secretaria-de-ciencia-e-tecnologia-para-o-desenvolvimento-social
+  SEGOV/PR - Secretaria de Governo da Presidência da República:
+    classe: publico_outro
+    via: marca
+  SENADO FEDERAL:
+    classe: orgao_federal
+    via: nome
+    'no': br-senado-federal
+  SENASP:
+    classe: orgao_federal
+    via: nome
+    'no': br-secretaria-nacional-de-seguranca-publica
+  SERPRO:
+    classe: orgao_federal
+    via: nome
+    'no': br-serpro
+  SERPRO - Serviço Federal de Processamento de Dados:
+    classe: orgao_federal
+    via: sigla
+    'no': br-serpro
+  SERVICO FEDERAL DE PROCESSAMENTO DE DADOS (SERPRO):
+    classe: nao_classificado
+    via: null
+  SERVICO NACIONAL DE APRENDIZAGEM INDUSTRIAL SENAI:
+    classe: nao_classificado
+    via: null
+  SERVICO NACIONAL DE APRENDIZAGEM RURAL SENAR:
+    classe: nao_classificado
+    via: null
+  SESU/MEC:
+    classe: nao_classificado
+    via: null
+  SETA SOLUCOES EM RELACOES INSTITUCIONAIS E GOVERNAMENTAIS LTDA:
+    classe: empresa
+    via: marca
+  SETE/MGI:
+    classe: nao_classificado
+    via: null
+  SFPLAN/SE/MT:
+    classe: nao_classificado
+    via: null
+  SHELL BRASIL PETROLEO LTDA:
+    classe: empresa
+    via: marca
+  SHPS TECNOLOGIA E SERVICOS LTDA.:
+    classe: empresa
+    via: marca
+  SIAESP - SINDICATO DA INDUSTRIA AUDIOVISUAL DO ESTADO DE SAO PAULO:
+    classe: setorial
+    via: marca
+  SIEMENS ENERGY BRASIL LTDA.:
+    classe: empresa
+    via: marca
+  SIMPAR S.A.:
+    classe: empresa
+    via: marca
+  SINCONED:
+    classe: nao_classificado
+    via: null
+  SIND EMPREGADOS ESTAB DE SERVICOS DE SAUDE NO EST CEARA:
+    classe: nao_classificado
+    via: null
+  SIND TRAB IND PURIF DIST AGUA SERV ESGOTO DO ESTADO MG:
+    classe: nao_classificado
+    via: null
+  SINDICATO DA INDUSTRIA DE PRODUTOS FARMACEUTICOS:
+    classe: setorial
+    via: marca
+  SINDICATO DA INDUSTRIA DO ACUCAR E DO ALCOOL NO EST PE:
+    classe: setorial
+    via: marca
+  SINDICATO DA INDUSTRIA DO CINEMA E DO AUDIOVISUAL DO ESTADO DA BAHIA - SINAV:
+    classe: setorial
+    via: marca
+  SINDICATO DAS INDUSTRIAS DA CONSTRUCAO NO EST DO PIAUI:
+    classe: setorial
+    via: marca
+  SINDICATO DOS POLICIAIS PENAIS DO DISTRITO FEDERAL - SINDPOL-DF:
+    classe: publico_outro
+    via: marca
+  SINDICATO DOS SERVIDORES DA CARREIRA DE POLITICAS PUBLICAS E GESTAO GOVERNAMENTAL DO DISTRITO FEDERAL - SINDPPGG/DF:
+    classe: nao_classificado
+    via: null
+  SINDICATO DOS TRAB.NO COM.DE MINERIOS E DERIV. DE PETROLEO NO ESTADO DE MG:
+    classe: setorial
+    via: marca
+  SINDICATO INTERESTADUAL DA INDUSTRIA AUDIOVISUAL:
+    classe: publico_outro
+    via: marca
+  SINDICATO NAC DAS EMP DIST DE COMB E DE LUBRIFICANTES:
+    classe: setorial
+    via: marca
+  SINDICATO NACIONAL DA INDUSTRIA DA CONSTRUCAO PESADA - INFRA-ESTRUTURA - SINICON:
+    classe: setorial
+    via: marca
+  SINDICATO NACIONAL DAS EMPRESAS DE NAVEGACAO MARITIMA:
+    classe: setorial
+    via: marca
+  SINDICATO NACIONAL DOS AERONAUTAS:
+    classe: setorial
+    via: marca
+  SINDICATO NACIONAL DOS APOSENTADOS DO BRASIL - SINAB:
+    classe: setorial
+    via: marca
+  SINDICATO NACIONAL DOS AUDITORES E TECNICOS FEDERAIS DE FINANCAS E CONTROLE:
+    classe: setorial
+    via: marca
+  SINDICATO NACIONAL DOS SERVIDORES FEDERAIS DA EDUCACAO BASICA, PROFISSIONAL E TECNOLOGICA:
+    classe: nao_classificado
+    via: null
+  SINDICATO NACIONAL DOS TRABALHADORES DE PESQUISA E DESENVOLVIMENTO AGROPECUARIO:
+    classe: setorial
+    via: marca
+  SINDICERV:
+    classe: nao_classificado
+    via: null
+  SINTAPI-CUT - Sindicato Nacional dos Trabalhadores Aposentados, Pensionistas e Idosos:
+    classe: setorial
+    via: marca
+  SINTFUB - SINDICATO DOS SERVIDORES TECNICO-ADMINISTRATIVOS DA FUNDACAO UNIVERSIDADE DE BRASILIA:
+    classe: publico_outro
+    via: marca
+  SM WORK:
+    classe: nao_classificado
+    via: null
+  SNPS/SG/PR:
+    classe: nao_classificado
+    via: null
+  SOLVI ESSENCIS AMBIENTAL S.A.:
+    classe: empresa
+    via: marca
+  SOR/ANATEL:
+    classe: nao_classificado
+    via: null
+  SP-HIDRO S.A:
+    classe: empresa
+    via: marca
+  SPX GESTAO DE RECURSOS LTDA:
+    classe: nao_classificado
+    via: null
+  SRI/PR - Secretaria de Relações Institucionais da Presidência da República:
+    classe: publico_outro
+    via: marca
+  STARNAV SERVICOS MARITIMOS LTDA.:
+    classe: empresa
+    via: marca
+  STATE GRID BRAZIL HOLDING S.A.:
+    classe: empresa
+    via: marca
+  STELLANTIS AUTOMOVEIS BRASIL LTDA.:
+    classe: empresa
+    via: marca
+  STF - Supremo Tribunal Federal:
+    classe: orgao_federal
+    via: sigla
+    'no': br-supremo-tribunal-federal
+  STOCCHE, FORBES, FILIZZOLA, CLAPIS, PASSARO E MEYER SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  STRATA ENGENHARIA LTDA:
+    classe: empresa
+    via: marca
+  SUBSEA7 DO BRASIL SERVICOS LTDA:
+    classe: empresa
+    via: marca
+  SUDECO - SUP.DE DESENVOLVIMENTO DO CENTRO OESTE:
+    classe: orgao_federal
+    via: sigla
+    'no': br-sudeco
+  SUPREMO TRIBUNAL FEDERAL:
+    classe: orgao_federal
+    via: nome
+    'no': br-supremo-tribunal-federal
+  SUZANO S.A.:
+    classe: empresa
+    via: marca
+  SVSA/MS:
+    classe: nao_classificado
+    via: null
+  SZAZI, BECHARA, STORTO, REICHER E FIGUEIREDO LOPES ADVOGADOS:
+    classe: advocacia
+    via: marca
+  Salinor:
+    classe: nao_classificado
+    via: null
+  Sanofi Medley Farmacêutica Ltda:
+    classe: empresa
+    via: marca
+  Sarau Cultura Brasileira:
+    classe: nao_classificado
+    via: null
+  Secretaria Especial da Receita Federal do Brasil:
+    classe: orgao_federal
+    via: nome
+    'no': br-receita-federal-do-brasil
+  Secretaria Municipal da Conservação e Serviços Públicos de Fortaleza:
+    classe: publico_outro
+    via: marca
+  Secretaria Municipal de Habitação (SEHAB) São Paulo/SP:
+    classe: publico_outro
+    via: marca
+  Secretaria Municipal de Mobilidade Urbana:
+    classe: publico_outro
+    via: marca
+  Secretaria Municipal de Saúde:
+    classe: nao_classificado
+    via: null
+  Secretaria Municipal de Turismo de Pirinópolis/GO:
+    classe: nao_classificado
+    via: null
+  Secretaria Nacional de Aviação Civil:
+    classe: orgao_federal
+    via: nome
+    'no': br-secretaria-nacional-de-aviacao-civil
+  Secretaria Nacional de Periferias:
+    classe: orgao_federal
+    via: nome
+    'no': br-secretaria-nacional-de-periferias
+  Secretaria Nacional dos Direitos da Pessoa com Deficiência:
+    classe: orgao_federal
+    via: nome
+    'no': br-secretaria-nacional-dos-direitos-da-pessoa-com-deficiencia
+  Secretaria da Educação do Estado do Rio Grande do Sul – SEDUC/RS:
+    classe: nao_classificado
+    via: null
+  Secretaria da Mulher – SECMULHER/PE:
+    classe: publico_outro
+    via: marca
+  Secretaria da Proteção Animal do Estado do Ceará:
+    classe: publico_outro
+    via: marca
+  Secretaria de Atenção Primária à Sáude - Ministério da Saúde:
+    classe: nao_classificado
+    via: null
+  Secretaria de Cidadania e Diversidade Cultural/ Ministério da Cultura:
+    classe: nao_classificado
+    via: null
+  Secretaria de Comunicação Social da Presidência da República:
+    classe: orgao_federal
+    via: nome
+    'no': br-secretaria-de-comunicacao-social
+  Secretaria de Cultura de Itarema:
+    classe: nao_classificado
+    via: null
+  Secretaria de Cultura de Itarema/CE:
+    classe: nao_classificado
+    via: null
+  Secretaria de Diálogos Sociais e Articulação de Políticas Publicas:
+    classe: publico_outro
+    via: marca
+  Secretaria de Estado da Agricultura, Desenvolvimento e Inovação de Roraima:
+    classe: nao_classificado
+    via: null
+  Secretaria de Estado da Cultura e Turismo de Roraima:
+    classe: nao_classificado
+    via: null
+  Secretaria de Estado da Mulher do Estado do Acre – SEMULHER:
+    classe: publico_outro
+    via: marca
+  Secretaria de Estado da Mulher do Tocantins:
+    classe: publico_outro
+    via: marca
+  Secretaria de Estado de Ciência e Tecnologia:
+    classe: publico_outro
+    via: marca
+  Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável - SEMAD:
+    classe: publico_outro
+    via: marca
+  Secretaria de Estado de Trabalho, Emprego, Cidadania e Assistência Social – MT:
+    classe: orgao_federal
+    via: sigla
+    'no': br-ministerio-dos-transportes
+  Secretaria de Estado do Desenvolvimento Sustentável:
+    classe: publico_outro
+    via: marca
+  Secretaria de Inovação, Ciência e Tecnologia do Rio Grande do Sul:
+    classe: publico_outro
+    via: marca
+  Secretaria de Meio Ambiente de São Paulo:
+    classe: publico_outro
+    via: marca
+  Secretaria de Policia Penal do Rio de Janeiro:
+    classe: publico_outro
+    via: marca
+  Secretaria de Políticas para as Mulheres – SE:
+    classe: nao_classificado
+    via: null
+  Secretaria de Relações Institucionais da Presidência da República:
+    classe: orgao_federal
+    via: nome
+    'no': br-secretaria-de-relacoes-institucionais
+  Secretaria de Representação do Estado de Roraima em Brasília:
+    classe: publico_outro
+    via: marca
+  Secretaria de Segurança Presidencial/GSI:
+    classe: publico_outro
+    via: marca
+  Secretaria do Desenvolvimento Econômico do Estado do Ceará - SDE:
+    classe: publico_outro
+    via: marca
+  Secretaria do Tesouro Nacional:
+    classe: orgao_federal
+    via: nome
+    'no': br-secretaria-do-tesouro-nacional
+  Secretaria-Geral da Presidência da República:
+    classe: orgao_federal
+    via: nome
+    'no': br-secretaria-geral-da-presidencia
+  Secretario Municipal de Educação de São Paulo:
+    classe: nao_classificado
+    via: null
+  Secretária Municipal de Saúde de Porto Velho – SEMUSA:
+    classe: nao_classificado
+    via: null
+  Secretária da Mulher do Estado do Rio Grande do Sul:
+    classe: publico_outro
+    via: marca
+  Secretária de Estado da Cultura e Turismo SECULT/RORAIMA:
+    classe: nao_classificado
+    via: null
+  Secretária de Estado da Mulher do Pará:
+    classe: publico_outro
+    via: marca
+  Secretária de Estado das Mulheres do Piauí:
+    classe: nao_classificado
+    via: null
+  Secretária de Estado das Mulheres e da Diversidade Humana do Estado da Paraíba:
+    classe: nao_classificado
+    via: null
+  Secretário de Estado da Saúde de Rondônia – SESAU:
+    classe: nao_classificado
+    via: null
+  Semad:
+    classe: nao_classificado
+    via: null
+  Senado Federal:
+    classe: orgao_federal
+    via: nome
+    'no': br-senado-federal
+  Senador:
+    classe: nao_classificado
+    via: null
+  Serviço nacional de aprendizagem industrial- SENAI/PA:
+    classe: nao_classificado
+    via: null
+  Siemens energy:
+    classe: nao_classificado
+    via: null
+  Sindicato dos Trabalhadores das Universidades Federais no Estado do Ceará:
+    classe: setorial
+    via: marca
+  Sistema das Nações Unidas no Brasil:
+    classe: nao_classificado
+    via: null
+  Suape:
+    classe: nao_classificado
+    via: null
+  Subsecretária dos Direitos da Mulheres do Estado de Minas Gerais:
+    classe: nao_classificado
+    via: null
+  Superintendência Federal de Pesca e Aquicultura - SFPA-PA:
+    classe: nao_classificado
+    via: null
+  Superintendência Regional do Trabalho no Ceará:
+    classe: nao_classificado
+    via: null
+  Superintendência de Agricultura e Pecuária do Pará:
+    classe: nao_classificado
+    via: null
+  Superintendência de Seguros Privados:
+    classe: orgao_federal
+    via: nome
+    'no': br-superintendencia-de-seguros-privados
+  Superintendência do Desenvolvimento da Amazônia:
+    classe: orgao_federal
+    via: nome
+    'no': br-sudam
+  Superintendência do Desenvolvimento do Centro-Oeste:
+    classe: orgao_federal
+    via: nome
+    'no': br-sudeco
+  Superintendência do Desenvolvimento do Nordeste:
+    classe: orgao_federal
+    via: nome
+    'no': br-sudene
+  Superior Tribunal de Justiça:
+    classe: orgao_federal
+    via: nome
+    'no': br-superior-tribunal-de-justica
+  Supremo Tribunal Federal:
+    classe: orgao_federal
+    via: nome
+    'no': br-supremo-tribunal-federal
+  TAM LINHAS AEREAS S/A.:
+    classe: empresa
+    via: marca
+  TAUIL E CHEQUER ADVOGADOS:
+    classe: advocacia
+    via: marca
+  TAUIL E CHEQUER SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  TAURUS ARMAS S.A.:
+    classe: empresa
+    via: marca
+  TCU:
+    classe: orgao_federal
+    via: sigla
+    'no': br-tribunal-de-contas-da-uniao
+  TCU - Tribunal de Contas da União:
+    classe: orgao_federal
+    via: sigla
+    'no': br-tribunal-de-contas-da-uniao
+  TCU- Tribunal de Contas da União:
+    classe: orgao_federal
+    via: sigla
+    'no': br-tribunal-de-contas-da-uniao
+  TECNICALL ENGENHARIA LTDA:
+    classe: empresa
+    via: marca
+  TELEBRAS - TELEBRAS - TELECOM. BRASILEIRAS S.A.:
+    classe: orgao_federal
+    via: sigla
+    'no': br-telebras
+  TELEBRAS - Telecomunicações Brasileiras S.A.:
+    classe: orgao_federal
+    via: sigla
+    'no': br-telebras
+  TELEFONICA BRASIL S.A.:
+    classe: empresa
+    via: marca
+  TELEVISAO INDEPENDENTE DE SAO JOSE DO RIO PRETO LTDA:
+    classe: empresa
+    via: marca
+  TEVA FARMACEUTICA LTDA.:
+    classe: empresa
+    via: marca
+  TIM S A:
+    classe: empresa
+    via: marca
+  TODOROV, GIANNINI E NISIYAMA SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  TODOS PELA EDUCACAO:
+    classe: nao_classificado
+    via: null
+  TOTAL LINHAS AEREAS S.A:
+    classe: empresa
+    via: marca
+  TOYOTA DO BRASIL LTDA:
+    classe: empresa
+    via: marca
+  TOZZINI,FREIRE,TEIXEIRA,E SILVA ADVOGADOS:
+    classe: advocacia
+    via: marca
+  TRANSPORTADORA ASSOCIADA DE GAS S.A. - TAG:
+    classe: empresa
+    via: marca
+  TRANSPORTADORA BRASILEIRA GASODUTO BOLIVIA-BRASIL S/A:
+    classe: empresa
+    via: marca
+  TRANSPORTADORA TRANSPRINT LTDA:
+    classe: empresa
+    via: marca
+  TREINITEC LTDA:
+    classe: empresa
+    via: marca
+  TRENCH ROSSI E WATANABE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  TRIBUNAL DE CONTAS DA UNIÃO - TCU:
+    classe: orgao_federal
+    via: sigla
+    'no': br-tribunal-de-contas-da-uniao
+  TRIDENT ENERGY DO BRASIL LTDA:
+    classe: empresa
+    via: marca
+  TRINDADE SOCIEDADE DE ADVOGADOS:
+    classe: advocacia
+    via: marca
+  TS MOBILIDADE E INFRAESTRUTURA LTDA:
+    classe: empresa
+    via: marca
+  TVSBT CANAL 4 DE SAO PAULO S/A:
+    classe: empresa
+    via: marca
+  Telefonica:
+    classe: nao_classificado
+    via: null
+  The Padina Group:
+    classe: nao_classificado
+    via: null
+  Toyota:
+    classe: nao_classificado
+    via: null
+  Tribunal Superior Eleitoral (TSE):
+    classe: publico_outro
+    via: marca
+  Tribunal Superior do Trabalho:
+    classe: orgao_federal
+    via: nome
+    'no': br-tribunal-superior-do-trabalho
+  Tribunal de Contas da União:
+    classe: orgao_federal
+    via: nome
+    'no': br-tribunal-de-contas-da-uniao
+  Tribunal de Contas da União (TCU):
+    classe: publico_outro
+    via: marca
+  Tribunal de Contas da União - TCU:
+    classe: orgao_federal
+    via: sigla
+    'no': br-tribunal-de-contas-da-uniao
+  Tribunal de Justiça do Estado do Ceará (TJCE):
+    classe: nao_classificado
+    via: null
+  Tribunal de Justiça do Maranhão:
+    classe: nao_classificado
+    via: null
+  UAEWORLD HOLDING LTDA:
+    classe: empresa
+    via: marca
+  UBIRAJARA MARQUES ADVOGADOS:
+    classe: advocacia
+    via: marca
+  UFABC - FUNDACAO UNIVERSIDADE FEDERAL DO ABC:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fundacao-universidade-federal-do-abc
+  UFAM - Fundação Universidade do Amazonas:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fundacao-universidade-do-amazonas
+  UFBA - UNIVERSIDADE FEDERAL DA BAHIA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-da-bahia
+  UFC - Universidade Federal do Ceará:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-do-ceara
+  UFCE - UNIVERSIDADE FEDERAL DO CEARA:
+    classe: orgao_federal
+    via: resto
+    'no': br-universidade-federal-do-ceara
+  UFCG - UNIVERSIDADE FEDERAL DE CAMPINA GRANDE:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-de-campina-grande
+  UFCG - Universidade Federal de Campina Grande:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-de-campina-grande
+  UFCSPA - FUND.UNIV.FED.CIENC.SAUDE D PORTO ALEGRE:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fundacao-universidade-federal-de-ciencias-da-saude-de-porto-alegre
+  UFFS - UNIVERSIDADE FEDERAL DA FRONTEIRA SUL:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-da-fronteira-sul
+  UFGO - UNIVERSIDADE FEDERAL DE GOIAS:
+    classe: orgao_federal
+    via: resto
+    'no': br-universidade-federal-de-goias
+  UFMG - UNIVERSIDADE FEDERAL DE MINAS GERAIS:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-de-minas-gerais
+  UFPA - UNIVERSIDADE FEDERAL DO PARÁ:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-do-para
+  UFPE - UNIVERSIDADE FEDERAL DE PERNAMBUCO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-de-pernambuco
+  UFPR - UNIVERSIDADE FEDERAL DO PARANA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-do-parana
+  UFR - Universidade Federal de Rondonópolis:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-de-rondonopolis
+  UFRB - UNIVERSIDADE FEDERAL DO RECÔNCAVO DA BAHIA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-do-reconcavo-da-bahia
+  UFRGS/RS - UNIVERSIDADE FED. DO RIO GRANDE DO SUL:
+    classe: nao_classificado
+    via: null
+  UFRJ - UNIVERSIDADE FEDERAL DO RIO DE JANEIRO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-do-rio-de-janeiro
+  UFRPE - UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-rural-de-pernambuco
+  UFRPE - Universidade Federal Rural de Pernambuco:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-rural-de-pernambuco
+  UFRR - Fundação Universidade Federal de Roraima:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fundacao-universidade-federal-de-roraima
+  UFRR - UNIVERSIDADE FEDERAL DE RORAIMA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fundacao-universidade-federal-de-roraima
+  UFSCar - UNIVERSIDADE FEDERAL DE SÃO CARLOS:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fundacao-universidade-federal-de-sao-carlos
+  UFV - Fundação Universidade Federal de Viçosa:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fundacao-universidade-federal-de-vicosa
+  UFV - UNIVERSIDADE FEDERAL DE VICOSA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fundacao-universidade-federal-de-vicosa
+  ULTRAVIOLETA PRODUCAO AUDIOVISUAL LTDA:
+    classe: empresa
+    via: marca
+  UNB - FUNDACAO UNIVERSIDADE DE BRASILIA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fundacao-universidade-de-brasilia
+  UNB - Fundação Universidade de Brasília:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fundacao-universidade-de-brasilia
+  UNESCO:
+    classe: nao_classificado
+    via: null
+  UNESCO no Brasil:
+    classe: nao_classificado
+    via: null
+  UNIAO GERAL DOS TRABALHADORES - UGT:
+    classe: publico_outro
+    via: marca
+  UNICAFES:
+    classe: nao_classificado
+    via: null
+  UNICOPAS:
+    classe: nao_classificado
+    via: null
+  UNIFESP - UNIVERSIDADE FEDERAL DE SAO PAULO:
+    classe: orgao_federal
+    via: sigla
+    'no': br-universidade-federal-de-sao-paulo
+  UNIMED BELO HORIZONTE COOPERATIVA DE TRABALHO MEDICO:
+    classe: nao_classificado
+    via: null
+  UNIMED BLUMENAU - COOPERATIVA DE TRABALHO MEDICO:
+    classe: nao_classificado
+    via: null
+  UNIMED DO BRASIL CONFEDERACAO NAC DAS COOPERATIVAS MED:
+    classe: setorial
+    via: marca
+  UNIMED DO EST R J FEDERACAO EST DAS COOPERATIVAS MED:
+    classe: setorial
+    via: marca
+  UNIMED NOVA IGUACU COOPERATIVA DE TRABALHO MEDICO LTDA:
+    classe: nao_classificado
+    via: null
+  UNIPAMPA - FUNDACAO UNIVERSIDADE FEDERAL DO PAMPA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fundacao-universidade-federal-do-pampa
+  UNIPAMPA - Universidade Federal do Pampa:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fundacao-universidade-federal-do-pampa
+  UNIVERSIDADE DE SAO PAULO:
+    classe: nao_classificado
+    via: null
+  UNIVERSIDADE DO ESTADO DO RIO DE JANEIRO:
+    classe: nao_classificado
+    via: null
+  UNIVERSIDADE FEDERAL DE SÃO PAULO (USP):
+    classe: publico_outro
+    via: marca
+  USP - Universidade de São Paulo:
+    classe: nao_classificado
+    via: null
+  Unesco:
+    classe: nao_classificado
+    via: null
+  Unimed Blumenau:
+    classe: nao_classificado
+    via: null
+  United Nations Children's Fund (UNICEF Office):
+    classe: nao_classificado
+    via: null
+  Universidade Estadual de Campinas:
+    classe: publico_outro
+    via: marca
+  Universidade Estadual de Campinas – UNICAMP:
+    classe: publico_outro
+    via: marca
+  Universidade Federal Fluminense:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-fluminense
+  Universidade Federal Rural da Amazônia:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-rural-da-amazonia
+  Universidade Federal Rural de Pernambuco:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-rural-de-pernambuco
+  Universidade Federal Rural do Rio de Janeiro:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-rural-do-rio-de-janeiro
+  Universidade Federal Rural do Semi-Árido:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-rural-do-semi-arido
+  Universidade Federal da Bahia:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-da-bahia
+  Universidade Federal da Fronteira Sul:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-da-fronteira-sul
+  Universidade Federal da Paraíba:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-da-paraiba
+  Universidade Federal de Alfenas:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-de-alfenas
+  Universidade Federal de Campina Grande:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-de-campina-grande
+  Universidade Federal de Catalão:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-de-catalao
+  Universidade Federal de Goiás:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-de-goias
+  Universidade Federal de Itajubá:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-de-itajuba
+  Universidade Federal de Juiz de Fora:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-de-juiz-de-fora
+  Universidade Federal de Lavras:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-de-lavras
+  Universidade Federal de Minas Gerais:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-de-minas-gerais
+  Universidade Federal de Pelotas:
+    classe: publico_outro
+    via: marca
+  Universidade Federal de Pernambuco:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-de-pernambuco
+  Universidade Federal de Rondonópolis:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-de-rondonopolis
+  Universidade Federal de Santa Catarina:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-de-santa-catarina
+  Universidade Federal de São Paulo:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-de-sao-paulo
+  Universidade Federal do Agreste de Pernambuco:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-agreste-de-pernambuco
+  Universidade Federal do Cariri:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-cariri
+  Universidade Federal do Ceará:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-ceara
+  Universidade Federal do Delta do Parnaíba:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-delta-do-parnaiba
+  Universidade Federal do Espírito Santo:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-espirito-santo
+  Universidade Federal do Norte do Tocantins:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-norte-do-tocantins
+  Universidade Federal do Oeste da Bahia:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-oeste-da-bahia
+  Universidade Federal do Oeste do Pará:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-oeste-do-para
+  Universidade Federal do Pará:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-para
+  Universidade Federal do Recôncavo da Bahia:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-reconcavo-da-bahia
+  Universidade Federal do Rio Grande - FURG:
+    classe: orgao_federal
+    via: sigla
+    'no': br-fundacao-universidade-federal-do-rio-grande
+  Universidade Federal do Rio Grande do Norte:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-rio-grande-do-norte
+  Universidade Federal do Rio de Janeiro:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-rio-de-janeiro
+  Universidade Federal do Sul da Bahia:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-sul-da-bahia
+  Universidade Federal do Sul e Sudeste do Pará:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-sul-e-sudeste-do-para
+  Universidade Federal do Triângulo Mineiro:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-federal-do-triangulo-mineiro
+  Universidade Zambeze:
+    classe: nao_classificado
+    via: null
+  Universidade da Integração Internacional da Lusofonia Afro-Brasileira:
+    classe: orgao_federal
+    via: nome
+    'no': br-universidade-da-integracao-internacional-da-lusofonia-afro-brasileira
+  Universidade de São Paulo:
+    classe: nao_classificado
+    via: null
+  União Europeia:
+    classe: publico_outro
+    via: marca
+  União Geral dos Trabalhadores - UGT:
+    classe: publico_outro
+    via: marca
+  Uruguai:
+    classe: nao_classificado
+    via: null
+  V.TAL - REDE NEUTRA DE TELECOMUNICACOES S.A.:
+    classe: empresa
+    via: marca
+  VALE S.A.:
+    classe: empresa
+    via: marca
+  VERDE BRASIL INDUSTRIA DE PRODUTOS PLASTICOS LTDA:
+    classe: empresa
+    via: marca
+  VIDEOGRAPHICA SERVICOS E PARTICIPACOES LTDA:
+    classe: empresa
+    via: marca
+  VIEIRA, REZENDE E GUERREIRO ADVOGADOS:
+    classe: advocacia
+    via: marca
+  VIGINUM:
+    classe: nao_classificado
+    via: null
+  VIRTUEYES SOLUCOES EM TECNOLOGIA E CONECTIVIDADE M2M LTDA:
+    classe: empresa
+    via: marca
+  VISA DO BRASIL EMPREENDIMENTOS LTDA:
+    classe: empresa
+    via: marca
+  VISAO MUNDIAL:
+    classe: nao_classificado
+    via: null
+  VLI MULTIMODAL S.A.:
+    classe: empresa
+    via: marca
+  VLI S.A.:
+    classe: empresa
+    via: marca
+  VOA SP SPE S.A.:
+    classe: empresa
+    via: marca
+  VOLTALIA ENERGIA DO BRASIL LTDA.:
+    classe: empresa
+    via: marca
+  VPORTS AUTORIDADE PORTUARIA S.A.:
+    classe: empresa
+    via: marca
+  VPR - VICE-PRESIDENCIA DA REPUBLICA:
+    classe: orgao_federal
+    via: sigla
+    'no': br-vice-presidencia-da-republica
+  VPR - Vice-Presidência da República:
+    classe: orgao_federal
+    via: sigla
+    'no': br-vice-presidencia-da-republica
+  Verde Brasil:
+    classe: nao_classificado
+    via: null
+  Verdes Marias - Três irmãs:
+    classe: nao_classificado
+    via: null
+  Vice-Presidência da República:
+    classe: orgao_federal
+    via: nome
+    'no': br-vice-presidencia-da-republica
+  Vital Strategies:
+    classe: nao_classificado
+    via: null
+  Von Seidels:
+    classe: nao_classificado
+    via: null
+  Vports Autoridade Portuária:
+    classe: nao_classificado
+    via: null
+  World Bank - WB:
+    classe: nao_classificado
+    via: null
+  XP INVESTIMENTOS CORRETORA DE CAMBIO, TITULOS E VALORES MOBILIARIOS S/A:
+    classe: empresa
+    via: marca
+  YARA BRASIL FERTILIZANTES S/A:
+    classe: empresa
+    via: marca
+  ZELLO:
+    classe: nao_classificado
+    via: null
+  ZETTA:
+    classe: nao_classificado
+    via: null
+  assembleia legislativa:
+    classe: publico_outro
+    via: marca
+  diretor:
+    classe: nao_classificado
+    via: null
+  gabinete:
+    classe: nao_classificado
+    via: null
+  iRede Amazônia:
+    classe: nao_classificado
+    via: null
+  simepar:
+    classe: nao_classificado
+    via: null
+  tce:
+    classe: nao_classificado
+    via: null
+  África do Sul:
+    classe: nao_classificado
+    via: null

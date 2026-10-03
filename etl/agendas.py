@@ -236,7 +236,11 @@ def main():
                        "desde": a.get("fecha_inicio"), "compromissos_90d": len(jan), "compromissos_ano": len(ano), "compromissos_total": len(comps),
                        "ultimo": comps[0][0].isoformat() if comps else None,
                        "por_tipo": {t: por_tipo[t] for t in ("reuniao", "audiencia", "evento", "viagem", "outros") if por_tipo[t]},
-                       "entidades_top": [{"nome": grafia[n_].most_common(1)[0][0], "n": c} for n_, c in ent.most_common(10)], "recentes": recentes}
+                       # Eram as 10 mais frequentes. O topo de uma agenda é quase todo órgão público
+                       # falando com órgão público; quem vem de fora aparece uma ou duas vezes e caía
+                       # fora do corte — justamente o que o painel "quem o governo recebeu" precisa ver.
+                       # Isto vai para build/people/<id>.json, carregado sob demanda, não para o núcleo.
+                       "entidades_top": [{"nome": grafia[n_].most_common(1)[0][0], "n": c} for n_, c in ent.most_common(60)], "recentes": recentes}
         if not comps: sem_agenda.append(titulo_nome(a["nome"]))
         for no_id, head_of, _ in pessoas[pid]["nos"]:
             if not head_of or pid in por_orgao[head_of]["pessoas"]: continue

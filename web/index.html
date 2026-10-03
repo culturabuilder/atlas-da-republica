@@ -1154,6 +1154,7 @@ function renderHome(){
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
     <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div></div>
   <div class="card acomp"><h2 class="acomp-h">Acompanhar <span>lido em ${fmtDate(st.generated_at)}</span></h2><div class="kpis" role="tablist" id="home-tablist" aria-label="Painéis da página inicial">${HOME_TABS.map(tab).join('')}</div><div id="home-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-${homeTab}"></div></div>
+  ${recebidosHtml()}
   <div class="card"><h2>Por poder</h2><div class="counts">${Object.keys(ARC).map(s=>`<span class="k"><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</span><span>${bs[s]||0}</span>`).join('')}</div>
     <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
     <h3>Cargos e colegiados</h3><div class="counts"><span>Cargos de chefia mapeados</span><span>${bt.dept_head||0}</span><span>Cadeiras (inclui 513 deputados e 81 senadores)</span><span>${st.seats_total}</span><span>Sabatinas do Senado desde 2023</span><span>${st.sabatinas||0}</span><span>Colegiados deliberativos</span><span>${bt.commission||0}</span></div></div>
@@ -1217,6 +1218,24 @@ function composicaoHtml(n){
   ${nat.length?`<div class="cmp">${nat.map(row).join('')}</div>`:''}
   ${out2.length?`<h4 style="margin:10px 0 4px;font-size:13px">Indicados, eleitos e externos</h4><div class="cmp">${out2.map(row).join('')}</div>`:''}
   ${c.vagas_sociedade?`<p style="font-size:12.5px;color:var(--ink-3);margin:8px 0 0">${c.vagas_sociedade} assentos são de representação da sociedade civil, de entidades ou de outros entes federativos; o Atlas não nomeia essas pessoas.</p>`:''}</div>`;
+}
+function recebidosHtml(){
+  // A agenda pública mostra com quem cada autoridade se reuniu, mas só uma por vez: ninguém
+  // conseguia somar as 456. Somadas, a maior parte do governo se reúne com o próprio governo —
+  // e o que interessa é a minoria que vem de fora.
+  const R=G.recebidos; if(!R||!R.por_classe) return '';
+  const pc=R.por_classe, pr=R.privadas_total||{};
+  const g=k=>(pc[k]||{}).encontros||0, ge=k=>(pc[k]||{}).entidades||0;
+  const fed=g('orgao_federal'), nc=g('nao_classificado'), tot=R.encontros||1;
+  const ROT={advocacia:'escritório de advocacia', empresa:'empresa', setorial:'representação setorial'};
+  const st=(v,l)=>`<div class="stat"><div class="n">${v}</div><div class="l">${l}</div></div>`;
+  const lista=(R.privadas||[]).slice(0,24);
+  return `<div class="card"><h2>Quem o governo recebeu de fora</h2>
+  <p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">Somando as ${(R.agendas||0).toLocaleString('pt-BR')} agendas públicas de autoridades do Executivo federal, <b>${Math.round(100*fed/tot)}%</b> dos encontros registrados são com outro órgão do próprio governo federal. O que vem de fora e representa interesse econômico privado é <b>${(pr.encontros||0).toLocaleString('pt-BR')}</b> ${pr.encontros===1?'encontro':'encontros'}, com ${(pr.entidades||0).toLocaleString('pt-BR')} entidades. Estar nesta lista não é indício de irregularidade: audiência com o governo é legítima e a agenda é pública justamente para poder ser vista.</p>
+  <div class="om">${st((pr.encontros||0).toLocaleString('pt-BR'),'encontros com interesse privado')}${st(g('advocacia').toLocaleString('pt-BR'),`em ${ge('advocacia')} escritórios de advocacia`)}${st(g('empresa').toLocaleString('pt-BR'),`em ${ge('empresa')} empresas`)}${st(g('setorial').toLocaleString('pt-BR'),`em ${ge('setorial')} associações e sindicatos`)}${st(nc.toLocaleString('pt-BR'),`ainda sem classificação, em ${ge('nao_classificado')} entidades`)}</div>
+  ${lista.length?`<h3>Mais recebidas</h3>${bars(lista, x=>x.nome.length>52?x.nome.slice(0,52)+'…':x.nome, x=>x.n, {fmt:(v,it)=>`${v} · ${ROT[it.classe]||it.classe}`, sub:it=>(it.recebida_por||[]).slice(0,3).map(q=>`${q.nome} (${q.n})`).join(' · ')})}`:''}
+  ${(R.quem_recebeu||[]).length?`<h3>Quem mais recebeu</h3>${bars((R.quem_recebeu||[]).slice(0,12), x=>x.nome, x=>x.encontros, {fmt:(v,it)=>`${v} ${v===1?'encontro':'encontros'} · ${it.entidades} ${it.entidades===1?'entidade':'entidades'}`, link:x=>P[x.pessoa]?'#'+x.pessoa:null})}`:''}
+  <p class="note">${esc(R.nota||'')} A classificação parte da junção com os ${(G.stats.nodes||0).toLocaleString('pt-BR')} órgãos do próprio Atlas, depois da razão social no nome. Fonte: ${esc(R.fonte||'')}, agenda lida em ${fmtDate(R.agenda_lida_em)}${R.janela_inicio?`, janela desde ${fmtDate(R.janela_inicio)}`:''}.</p></div>`;
 }
 function tetoOrgaoHtml(n){
   // O abate-teto existia só no ranking da home: quem abria a página do órgão não via nada sobre

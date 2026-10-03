@@ -120,6 +120,10 @@ run "Proposições" $PY etl/proposicoes.py
 run "Gabinetes" $PY etl/gabinetes.py
 run "Gabinetes SF" $PY etl/gabinetes_senado.py
 semanal 7 5400 "Agendas" $PY etl/agendas.py
+# Lê agendas.yaml e build/graph.br.json: depois da agenda e depois do primeiro build. Roda todo dia
+# porque a junção é determinística e barata, e porque assim o Eikos vai classificando aos poucos as
+# entidades novas, guardando o veredito no próprio arquivo.
+run "Quem recebeu" $PY etl/recebidos.py
 LIM=1800 run "Agenda Planalto" $PY etl/agenda_planalto.py
 run "Emendas" $PY etl/emendas.py
 run "Renúncias" $PY etl/renuncias.py
