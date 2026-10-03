@@ -6,7 +6,8 @@ Fontes oficiais, sem estimativa escondida:
     por mês de lançamento, para o ano corrente e os dois anteriores
   - IBGE/SIDRA 1737: IPCA número-índice mensal (para comparar anos em valor real)
   - IBGE/SIDRA 6579: população residente estimada (por habitante)
-  - Banco Central/SGS 4607: juros nominais do governo federal, fluxo mensal (R$ milhões)
+  - Banco Central/SGS 4607: juros nominais do governo federal, fluxo mensal (R$ milhões) — fonte lateral: se cair,
+    repetimos a série do arquivo anterior em vez de perder a arrecadação do dia
 Uso: .venv/bin/python etl/arrecadacao.py
 """
 import csv, io, json, sys, zipfile, pathlib, datetime, urllib.request, collections
@@ -46,12 +47,31 @@ def populacao():
 def juros():
     d = json.load(urllib.request.urlopen(urllib.request.Request(f"https://api.bcb.gov.br/dados/serie/bcdata.sgs.4607/dados?formato=json&dataInicial=01/01/{TODAY.year-2}&dataFinal={TODAY.strftime('%d/%m/%Y')}", headers=UA), timeout=120))
     return {f"{x['data'][6:10]}-{x['data'][3:5]}": float(x["valor"]) * 1e6 for x in d}
+def juros_ou_anterior():
+    """O juro vem de uma terceira fonte (Banco Central) e é informação lateral: o número que a home
+    mostra é a arrecadação. Em 03/10/2026 o SGS caiu e levou o conector inteiro com ele, deixando o
+    contador um dia para trás. Agora, se o Banco Central não responde, repetimos a série do arquivo
+    anterior e seguimos — com a data da última atualização registrada, para o leitor não achar que é de hoje."""
+    try:
+        return juros(), None
+    except Exception as e:
+        print("juros (BCB) falhou, repetindo a série anterior:", e, file=sys.stderr)
+        try:
+            ant = yaml.safe_load((ROOT / "data" / "generated" / "arrecadacao.yaml").read_text(encoding="utf-8")) or {}
+            j = (ant.get("juros") or {}).get("months") or {}
+            return {str(k): float(v) for k, v in j.items()}, (ant.get("generated_at") or "desconhecida")
+        except Exception as e2:
+            print("e não havia série anterior:", e2, file=sys.stderr)
+            return {}, "indisponível"
 def main():
     years = {}
     for ano in (TODAY.year - 2, TODAY.year - 1, TODAY.year):
         try: years[ano] = receitas(ano)
         except Exception as e: print("receitas", ano, "falhou:", e, file=sys.stderr)
-    idx = ipca(); pop, pop_year = populacao(); jur = juros()
+    if TODAY.year not in years:
+        # sem a receita do ano corrente não há o que calcular; dizer isso é melhor do que um KeyError
+        sys.exit("receita do ano corrente indisponível no Portal da Transparência; arquivo anterior mantido")
+    idx = ipca(); pop, pop_year = populacao(); jur, jur_de = juros_ou_anterior()
     cur = years[TODAY.year][0]; last_date = years[TODAY.year][2]
     last_month = last_date[:7]; complete_months = [m for m in cur if m < last_month]  # meses fechados
     ytd_months = complete_months + [last_month]
@@ -78,7 +98,7 @@ def main():
            "ytd": {"months": ytd_months, "nominal": ytd_now, "prev_nominal": ytd_prev, "prev_real": ytd_prev_real, "growth_nominal_pct": (ytd_now / ytd_prev - 1) * 100 if ytd_prev else None, "growth_real_pct": (ytd_now / ytd_prev_real - 1) * 100 if ytd_prev_real else None, "per_capita": ytd_now / pop},
            "rate_per_second": rate, "rate_months": last3, "anchor": {"date": last_date, "value": ytd_now},
            "full_years": {str(y): sum(years[y][0].values()) for y in years if y < TODAY.year},
-           "juros": {"months": {k: v for k, v in jur.items()}, "ytd": j_ytd, "prev_year": j_prev, "last_month": max(jur) if jur else None}}
+           "juros": {"months": {k: v for k, v in jur.items()}, "ytd": j_ytd, "prev_year": j_prev, "last_month": max(jur) if jur else None, **({"repetido_de": jur_de} if jur_de else {})}}
     (ROOT / "data" / "generated" / "arrecadacao.yaml").write_text("# GERADO por etl/arrecadacao.py. Não edite à mão.\n" + yaml.dump(out, allow_unicode=True, sort_keys=False, width=120), encoding="utf-8")
     print(f"arrecadação {TODAY.year} até {last_date}: R$ {ytd_now/1e9:.1f} bi ({len(ytd_months)} meses); mesmo período {TODAY.year-1}: R$ {ytd_prev/1e9:.1f} bi nominal, R$ {ytd_prev_real/1e9:.1f} bi em reais de hoje; real {out['ytd']['growth_real_pct']:.1f}%")
     print(f"ritmo: R$ {rate:,.0f}/s ({last3}); por habitante: R$ {ytd_now/pop:,.0f}; juros {TODAY.year}: R$ {j_ytd/1e9:.1f} bi até {out['juros']['last_month']}; {TODAY.year-1}: R$ {j_prev/1e9:.1f} bi")
