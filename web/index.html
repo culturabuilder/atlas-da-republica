@@ -122,6 +122,18 @@ p{margin:8px 0;color:var(--ink-2)}
 .news .it .m{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:2px}
 .news .it .e{display:inline-block;font-size:12.5px;color:var(--accent);text-decoration:none;margin-right:8px}
 .acomp-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 12px}.acomp-h{font-size:1.06em}.acomp-h span{font-family:var(--mono);font-size:11px;color:var(--ink-3);font-weight:400}
+/* faixa de abertura: o número que as pessoas mais procuram, antes de qualquer outra coisa */
+.hero-arrec{container-type:inline-size;display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-left:5px solid var(--povo);border-radius:14px;background:var(--panel);padding:16px 18px 14px;margin:0 0 12px;transition:border-color .15s}
+.hero-arrec:hover{border-color:var(--povo)}
+.hero-arrec .rot{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+/* O painel tem 366px: "R$ 2.063.859.898.826" tem 20 caracteres e só cabe numa linha até cerca de 28px.
+   Quebrar o número ao meio seria pior do que ele ser um pouco menor, então nunca quebra e encolhe
+   junto com o contêiner. Mesmo assim é o maior elemento da página. */
+.hero-arrec .big{display:block;font-family:var(--disp);font-weight:800;font-size:clamp(34px,11cqw,58px);line-height:1;letter-spacing:-.035em;color:var(--povo);font-variant-numeric:tabular-nums;margin:5px 0 1px;white-space:nowrap}
+.hero-arrec .n{display:block;font-family:var(--mono);font-size:clamp(12px,3.3cqw,16px);color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap;margin-bottom:3px}
+.hero-arrec .sub{display:block;font-family:var(--mono);font-size:12px;color:var(--ink-2);line-height:1.4}
+.hero-arrec .pe{display:block;font-size:11.5px;color:var(--ink-3);line-height:1.4;margin-top:7px}
+@media (max-width:420px){.hero-arrec{padding:14px 15px 12px}.hero-arrec .sub{font-size:11px}}
 /* As quatro perguntas são a navegação principal da home: ganham o peso de indicador, com o número
    grande na frente, em vez de parecerem abas secundárias. */
 /* O painel tem cerca de 580px: quatro colunas espremiam "R$ 2,06 tri" em duas linhas partindo o número.
@@ -792,12 +804,12 @@ function emendasHtml(p){
   <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Fonte: Portal da Transparência, emendas parlamentares (valor empenhado por município de aplicação).</p></div>`;
 }
 let arrecTimer=null;
-function startArrec(){ if(arrecTimer) clearInterval(arrecTimer); const a=G.arrecadacao; const el=document.getElementById('arrec-n'); if(!a||!el) return; const base=a.anchor.value; const t0=new Date(a.anchor.date+'T23:59:59'); const rate=a.rate_per_second;
-  const tick=()=>{ const el=document.getElementById('arrec-n'); if(!el){ clearInterval(arrecTimer); return; } const dt=Math.max(0,(Date.now()-t0)/1000); el.textContent='R$ '+Math.round(base+rate*dt).toLocaleString('pt-BR'); }; tick(); arrecTimer=setInterval(tick,120); }
+function startArrec(){ if(arrecTimer) clearInterval(arrecTimer); const a=G.arrecadacao; const alvos=()=>document.querySelectorAll('.arrec-n'); if(!a||!alvos().length) return; const base=a.anchor.value; const t0=new Date(a.anchor.date+'T23:59:59'); const rate=a.rate_per_second;
+  const tick=()=>{ const es=alvos(); if(!es.length){ clearInterval(arrecTimer); return; } const dt=Math.max(0,(Date.now()-t0)/1000); const txt='R$ '+Math.round(base+rate*dt).toLocaleString('pt-BR'); es.forEach(e=>{ e.textContent=txt; }); }; tick(); arrecTimer=setInterval(tick,120); }
 function arrecCard(inner){
   const a=G.arrecadacao; if(!a) return ''; const y=a.ytd||{}; const g=y.growth_real_pct; const j=a.juros||{}; const c=a.compare||{};
   setTimeout(startArrec,0);
-  return `<div class="${inner?'arrec inner':'card arrec'}"><h2 class="${inner?'sec first':''}">Arrecadação da União em ${a.year}</h2><div class="n" id="arrec-n">R$ ${Math.round(a.anchor.value).toLocaleString('pt-BR')}</div><div class="cap">impostos, taxas e contribuições · dado oficial até ${fmtDate(a.source_date)}; depois, projeção pelo ritmo dos últimos 3 meses (${brl(a.rate_per_second)} por segundo)</div>
+  return `<div class="${inner?'arrec inner':'card arrec'}"><h2 class="${inner?'sec first':''}">Arrecadação da União em ${a.year}</h2><div class="n arrec-n" id="arrec-n">R$ ${Math.round(a.anchor.value).toLocaleString('pt-BR')}</div><div class="cap">impostos, taxas e contribuições · dado oficial até ${fmtDate(a.source_date)}; depois, projeção pelo ritmo dos últimos 3 meses (${brl(a.rate_per_second)} por segundo)</div>
   <div class="grid"><div><b class="${g>=0?'up':'down'}">${g==null?'—':(g>=0?'+':'')+g.toLocaleString('pt-BR',{maximumFractionDigits:1})}%</b>em valor real sobre o mesmo período de ${a.year-1} (IPCA)</div><div><b>${brl(y.prev_nominal)}</b>arrecadado até a mesma data em ${a.year-1}, sem correção</div><div><b>R$ ${Math.round(y.per_capita).toLocaleString('pt-BR')}</b>por habitante no ano (${(a.population/1e6).toFixed(0)} milhões)</div><div><b>${brl(j.ytd)}</b>de juros da dívida do governo federal em ${a.year}, até ${(j.last_month||'').slice(5,7)}/${(j.last_month||'').slice(2,4)}</div>${c.saude?`<div><b>${brl(c.saude.empenhado)}</b>empenhado pela Saúde no ano</div>`:''}${c.educacao?`<div><b>${brl(c.educacao.empenhado)}</b>empenhado pela Educação no ano</div>`:''}</div>
   <details><summary>Como este número é calculado</summary><p style="margin:6px 0 0">Soma das receitas realizadas da União nas origens "Impostos, taxas e contribuições de melhoria" e "Contribuições", por data de lançamento, conforme o Portal da Transparência (CSV anual, atualizado diariamente). A comparação com ${a.year-1} usa os mesmos meses e, no mês corrente, só até o mesmo dia; o valor real corrige pelo IPCA (IBGE, número-índice de ${a.ipca_ref_month}). O contador que corre é uma projeção: ao valor oficial até ${fmtDate(a.source_date)} soma-se o ritmo médio por segundo dos meses ${(a.rate_months||[]).join(', ')}; quando o dado oficial chega, o número se corrige. Juros: Banco Central, série 4607 (juros nominais do governo federal, fluxo mensal). Saúde e Educação: despesa empenhada do órgão superior no ano, Portal da Transparência. Não inclui estados e municípios.</p></details></div>`;
 }
@@ -1059,6 +1071,30 @@ function renderHomePanel(){
   panel.querySelectorAll('[data-win]').forEach(b => b.addEventListener('click', () => { win = +b.dataset.win; renderHomePanel(); }));
   panel.querySelectorAll('[data-imp]').forEach(b => b.addEventListener('click', () => { impView = b.dataset.imp; renderHomePanel(); }));
 }
+// O número que as pessoas mais procuram abre a página, antes de qualquer outra coisa. O detalhe
+// metodológico continua inteiro na aba do dinheiro; aqui fica só o essencial para não enganar.
+function heroArrec(){
+  const a = G.arrecadacao; if (!a) return '';
+  setTimeout(startArrec, 0);
+  const seg = a.rate_per_second ? `R$ ${Math.round(a.rate_per_second).toLocaleString('pt-BR')} por segundo` : '';
+  const g = (a.ytd||{}).growth_real_pct;
+  const var_ = g == null ? '' : `${g>=0?'+':''}${g.toLocaleString('pt-BR',{maximumFractionDigits:1})}% em valor real sobre ${a.year-1}`;
+  // O valor cheio tem vinte dígitos e, no painel de 366px, só caberia numa linha a 21px — menor do que
+  // os números das abas. Então a grandeza vem grande e o contador corre logo abaixo, ainda legível.
+  // mesmo valor projetado que o cartão da aba usa: dois totais diferentes na mesma tela seriam uma
+  // contradição a três centímetros de distância
+  const agora = a.anchor.value + (a.rate_per_second||0) * Math.max(0, (Date.now() - new Date(a.anchor.date+'T23:59:59'))/1000);
+  const curto = agora >= 1e12
+    ? `R$ ${(agora/1e12).toLocaleString('pt-BR',{maximumFractionDigits:2})} tri`
+    : `R$ ${(agora/1e9).toLocaleString('pt-BR',{maximumFractionDigits:0})} bi`;
+  return `<a class="hero-arrec" href="#" data-ir="dinheiro">
+    <span class="rot">Arrecadação da União em ${a.year}</span>
+    <span class="big">${curto}</span>
+    <span class="n arrec-n">R$ ${Math.round(agora).toLocaleString('pt-BR')}</span>
+    <span class="sub">${seg}${seg&&var_?' · ':''}${var_}</span>
+    <span class="pe">Projeção a partir do dado oficial até ${fmtDate(a.source_date||a.anchor.date)}, do Portal da Transparência. Ver para onde vai →</span>
+  </a>`;
+}
 function renderHome(){
   const st = G.stats; const bt = st.by_type||{}, bs = st.by_sector||{}, bsub = st.by_subtype||{};
   const subRows = [['ministerio','Ministérios'],['orgao_presidencia','Órgãos da Presidência'],['agencia_reguladora','Agências reguladoras'],['autarquia','Autarquias'],['fundacao','Fundações'],['empresa_publica','Empresas públicas'],['sociedade_economia_mista','Sociedades de economia mista'],['tribunal','Tribunais'],['ministerio_publico','Ministério Público'],['forca_armada','Forças Armadas'],['instituicao_de_ensino','Universidades e institutos federais']];
@@ -1067,7 +1103,7 @@ function renderHome(){
   // verde é movimento, azul é o Executivo e por extensão a cobertura do dia a dia.
   const COR_ABA = {mudou:'var(--accent)', parado:'var(--jud)', dinheiro:'var(--povo)', imprensa:'var(--exe)'};
   const tab = ([id,label])=>`<button type="button" role="tab" id="tab-${id}" aria-selected="${homeTab===id}" aria-controls="home-panel" tabindex="${homeTab===id?0:-1}" data-tab="${id}" style="--c:${COR_ABA[id]||'var(--accent)'}"><span class="q">${label}</span><span class="v">${esc(String((kp[id]||{}).n ?? ''))}</span><span class="l">${esc((kp[id]||{}).l||'')}</span></button>`;
-  content.innerHTML = `<div class="neutro"><b>Projeto apartidário e de código aberto.</b> O Atlas não defende partido, candidato nem ideologia: mostra quem ocupa cada cargo, quem nomeia quem e para onde vai o dinheiro, sempre com a fonte oficial ao lado. É feito por colaboradores, e qualquer pessoa pode conferir, corrigir ou reaproveitar os dados. <a href="/metodologia/">Como apuramos</a> · <a href="https://github.com/culturabuilder/atlas-da-republica" target="_blank" rel="noopener">Código e dados ↗</a></div>`+`<a class="card start zero" href="/do-zero/"><span class="eyebrow">Nunca estudou isso?</span><b>Do zero</b><span>O governo explicado em palavras simples, em 14 perguntas: o que faz um ministro, quem escreve as leis, de onde vem o dinheiro. Sem pressa e sem termo difícil.</span><span class="go">Começar do zero →</span></a>`+`<a class="card start" href="/como-funciona/"><span class="eyebrow">Depois disto</span><b>Como funciona a República</b><span>Uma visita guiada de 9 minutos pela roda: quem você elege, quem nomeia quem, quem vigia quem. Para quem nunca precisou entender isso e agora quer.</span><span class="go">Começar →</span></a><nav class="quick" aria-label="Outras páginas"><a href="/do-zero/">Do zero</a><a href="/comparar/">Comparar parlamentares</a><a href="/dados/">Dados abertos</a><a href="/metodologia/">Metodologia</a><a href="/feeds/mudancas.xml">Feed RSS</a></nav>`+`
+  content.innerHTML = `<div class="neutro"><b>Projeto apartidário e de código aberto.</b> O Atlas não defende partido, candidato nem ideologia: mostra quem ocupa cada cargo, quem nomeia quem e para onde vai o dinheiro, sempre com a fonte oficial ao lado. É feito por colaboradores, e qualquer pessoa pode conferir, corrigir ou reaproveitar os dados. <a href="/metodologia/">Como apuramos</a> · <a href="https://github.com/culturabuilder/atlas-da-republica" target="_blank" rel="noopener">Código e dados ↗</a></div>`+``+heroArrec()+`<a class="card start zero" href="/do-zero/"><span class="eyebrow">Nunca estudou isso?</span><b>Do zero</b><span>O governo explicado em palavras simples, em 14 perguntas: o que faz um ministro, quem escreve as leis, de onde vem o dinheiro. Sem pressa e sem termo difícil.</span><span class="go">Começar do zero →</span></a>`+`<a class="card start" href="/como-funciona/"><span class="eyebrow">Depois disto</span><b>Como funciona a República</b><span>Uma visita guiada de 9 minutos pela roda: quem você elege, quem nomeia quem, quem vigia quem. Para quem nunca precisou entender isso e agora quer.</span><span class="go">Começar →</span></a><nav class="quick" aria-label="Outras páginas"><a href="/do-zero/">Do zero</a><a href="/comparar/">Comparar parlamentares</a><a href="/dados/">Dados abertos</a><a href="/metodologia/">Metodologia</a><a href="/feeds/mudancas.xml">Feed RSS</a></nav>`+`
   <div class="card"><h1>Quem manda em quê no governo federal</h1>
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
     <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div></div>
@@ -1078,6 +1114,9 @@ function renderHome(){
   <div class="card"><h2>Como ler a roda</h2><div class="counts">${[1,2,3,4].map(r=>`<span><b>Anel ${r} · ${L.rings[r].name}</b><br><span style="color:var(--ink-3);font-size:13.5px">${L.rings[r].description}</span></span><span></span>`).join('')}</div>
     <p style="font-size:13.5px;margin-top:10px">${st.siorg_matched||0} órgãos curados casados com o registro oficial do SIORG e ${st.from_siorg||0} importados dele. ${st.unverified||0} citações curadas ainda marcadas para conferência. Dados lidos em ${fmtDate(st.generated_at)}.</p></div>`;
   renderHomePanel();
+  const _hero = content.querySelector('.hero-arrec[data-ir]');
+  if (_hero) _hero.addEventListener('click', e => { e.preventDefault(); homeTab = _hero.dataset.ir; renderHomePanel();
+    document.getElementById('tab-' + homeTab)?.scrollIntoView({behavior:'smooth', block:'center'}); });
   const tl = document.getElementById('home-tablist');
   const goTab = b => { homeTab = b.dataset.tab; renderHomePanel(); b.focus(); };
   tl.addEventListener('click', e => { const b = e.target.closest('[role=tab]'); if (b) goTab(b); });
