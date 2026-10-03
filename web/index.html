@@ -121,13 +121,22 @@ p{margin:8px 0;color:var(--ink-2)}
 .news .it a.t:hover{text-decoration:underline}
 .news .it .m{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:2px}
 .news .it .e{display:inline-block;font-size:12.5px;color:var(--accent);text-decoration:none;margin-right:8px}
-.acomp-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 10px}.acomp-h span{font-family:var(--mono);font-size:11px;color:var(--ink-3);font-weight:400}
-.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:0 0 14px}
-.kpis [role=tab]{font:inherit;text-align:left;display:flex;flex-direction:column;gap:3px;padding:10px 11px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink-2);cursor:pointer;min-height:64px}
-.kpis [role=tab] .q{font-weight:600;font-size:13.5px;line-height:1.2;color:var(--ink);text-wrap:balance}.kpis [role=tab] .n{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);line-height:1.3}
-.kpis [role=tab][aria-selected=true]{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}.kpis [role=tab][aria-selected=true] .n{color:var(--accent)}
+.acomp-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 12px}.acomp-h{font-size:1.06em}.acomp-h span{font-family:var(--mono);font-size:11px;color:var(--ink-3);font-weight:400}
+/* As quatro perguntas são a navegação principal da home: ganham o peso de indicador, com o número
+   grande na frente, em vez de parecerem abas secundárias. */
+/* O painel tem cerca de 580px: quatro colunas espremiam "R$ 2,06 tri" em duas linhas partindo o número.
+   O grid se adapta à largura real, duas colunas no painel e quatro quando houver espaço. */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:9px;margin:0 0 16px}
+.kpis [role=tab]{font:inherit;text-align:left;display:flex;flex-direction:column;gap:2px;padding:12px 13px 11px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink-2);cursor:pointer;min-height:104px;transition:border-color .15s,background .15s}
+.kpis [role=tab]:hover{border-color:var(--ink-3)}
+.kpis [role=tab] .q{font-weight:700;font-size:14.5px;line-height:1.2;color:var(--ink);text-wrap:balance;margin-bottom:4px}
+.kpis [role=tab] .v{font-family:var(--disp);font-weight:800;font-size:clamp(20px,1.6vw,24px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums;margin-top:auto;white-space:nowrap}
+.kpis [role=tab] .l{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);line-height:1.35;margin-top:2px}
+.kpis [role=tab][aria-selected=true]{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.kpis [role=tab][aria-selected=true] .v{color:var(--accent)}
 .kpis [role=tab]:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
-@media (max-width:900px){.kpis{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.kpis{gap:8px}.kpis [role=tab]{min-height:100px}}
+@media (max-width:420px){.kpis [role=tab]{padding:11px 12px;min-height:92px}}
 .ptools{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin:0 0 10px}.ptools .win{margin-left:0}
 h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid var(--line-2)}h2.sec.first{border-top:0;padding-top:0;margin-top:0}
 .arrec.inner{margin-bottom:6px}
@@ -940,10 +949,14 @@ function homeKpis(){
   const n7 = (G.news||[]).filter(x => (Date.now()-new Date(dayKey(x.date)+'T00:00:00'))/86400000 <= 7).length;
   const short = v => v>=1e12?`R$ ${(v/1e12).toLocaleString('pt-BR',{maximumFractionDigits:2})} tri`:v>=1e9?`R$ ${(v/1e9).toLocaleString('pt-BR',{maximumFractionDigits:0})} bi`:brl(v);
   const agora = a ? a.anchor.value + (a.rate_per_second||0)*Math.max(0,(Date.now()-new Date(a.anchor.date+'T23:59:59'))/1000) : 0;
-  return { mudou: n30 ? `${n30} nos últimos 30 dias` : (st.last_change ? `última em ${fmtDate(st.last_change)}` : 'sem registros'),
-    parado: om.mpvs_ate_30_dias ? `${om.mpvs_ate_30_dias} MPs perto do prazo` : `${om.vetos_pendentes||0} vetos sem votação`,
-    dinheiro: a ? `${short(agora)} em ${a.year}` : `${brl(((G.emendas||{}).por_ano||{})[String((G.emendas||{}).year)]?.empenhado)} em emendas`,
-    imprensa: `${n7} ${n7===1?'notícia':'notícias'} na semana` };
+  return {
+    mudou: n30 ? {n: n30, l: 'nos últimos 30 dias'}
+               : {n: st.last_change ? fmtDate(st.last_change) : '—', l: 'última mudança'},
+    parado: om.mpvs_ate_30_dias ? {n: om.mpvs_ate_30_dias, l: 'medidas provisórias perto do prazo'}
+                                : {n: om.vetos_pendentes||0, l: 'vetos sem votação'},
+    dinheiro: a ? {n: short(agora), l: `arrecadados em ${a.year}`}
+                : {n: brl(((G.emendas||{}).por_ano||{})[String((G.emendas||{}).year)]?.empenhado), l: 'em emendas'},
+    imprensa: {n: n7, l: n7===1?'notícia na semana':'notícias na semana'} };
 }
 // conteúdo do painel da aba ativa (só o painel é recriado ao trocar de aba; os botões das abas ficam)
 function homeBody(){
@@ -1047,7 +1060,7 @@ function renderHome(){
   const st = G.stats; const bt = st.by_type||{}, bs = st.by_sector||{}, bsub = st.by_subtype||{};
   const subRows = [['ministerio','Ministérios'],['orgao_presidencia','Órgãos da Presidência'],['agencia_reguladora','Agências reguladoras'],['autarquia','Autarquias'],['fundacao','Fundações'],['empresa_publica','Empresas públicas'],['sociedade_economia_mista','Sociedades de economia mista'],['tribunal','Tribunais'],['ministerio_publico','Ministério Público'],['forca_armada','Forças Armadas'],['instituicao_de_ensino','Universidades e institutos federais']];
   const kp = homeKpis();
-  const tab = ([id,label])=>`<button type="button" role="tab" id="tab-${id}" aria-selected="${homeTab===id}" aria-controls="home-panel" tabindex="${homeTab===id?0:-1}" data-tab="${id}"><span class="q">${label}</span><span class="n">${esc(kp[id]||'')}</span></button>`;
+  const tab = ([id,label])=>`<button type="button" role="tab" id="tab-${id}" aria-selected="${homeTab===id}" aria-controls="home-panel" tabindex="${homeTab===id?0:-1}" data-tab="${id}"><span class="q">${label}</span><span class="v">${esc(String((kp[id]||{}).n ?? ''))}</span><span class="l">${esc((kp[id]||{}).l||'')}</span></button>`;
   content.innerHTML = `<div class="neutro"><b>Projeto apartidário e de código aberto.</b> O Atlas não defende partido, candidato nem ideologia: mostra quem ocupa cada cargo, quem nomeia quem e para onde vai o dinheiro, sempre com a fonte oficial ao lado. É feito por colaboradores, e qualquer pessoa pode conferir, corrigir ou reaproveitar os dados. <a href="/metodologia/">Como apuramos</a> · <a href="https://github.com/culturabuilder/atlas-da-republica" target="_blank" rel="noopener">Código e dados ↗</a></div>`+`<a class="card start zero" href="/do-zero/"><span class="eyebrow">Nunca estudou isso?</span><b>Do zero</b><span>O governo explicado em palavras simples, em 14 perguntas: o que faz um ministro, quem escreve as leis, de onde vem o dinheiro. Sem pressa e sem termo difícil.</span><span class="go">Começar do zero →</span></a>`+`<a class="card start" href="/como-funciona/"><span class="eyebrow">Depois disto</span><b>Como funciona a República</b><span>Uma visita guiada de 9 minutos pela roda: quem você elege, quem nomeia quem, quem vigia quem. Para quem nunca precisou entender isso e agora quer.</span><span class="go">Começar →</span></a><nav class="quick" aria-label="Outras páginas"><a href="/do-zero/">Do zero</a><a href="/comparar/">Comparar parlamentares</a><a href="/dados/">Dados abertos</a><a href="/metodologia/">Metodologia</a><a href="/feeds/mudancas.xml">Feed RSS</a></nav>`+`
   <div class="card"><h1>Quem manda em quê no governo federal</h1>
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
