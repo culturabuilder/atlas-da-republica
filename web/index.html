@@ -127,13 +127,16 @@ p{margin:8px 0;color:var(--ink-2)}
 /* O painel tem cerca de 580px: quatro colunas espremiam "R$ 2,06 tri" em duas linhas partindo o número.
    O grid se adapta à largura real, duas colunas no painel e quatro quando houver espaço. */
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:9px;margin:0 0 16px}
-.kpis [role=tab]{font:inherit;text-align:left;display:flex;flex-direction:column;gap:2px;padding:12px 13px 11px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink-2);cursor:pointer;min-height:104px;transition:border-color .15s,background .15s}
-.kpis [role=tab]:hover{border-color:var(--ink-3)}
+.kpis [role=tab]{position:relative;font:inherit;text-align:left;display:flex;flex-direction:column;gap:2px;padding:13px 13px 12px 15px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink-2);cursor:pointer;min-height:108px;overflow:hidden;transition:border-color .15s,background .15s}
+/* faixa da cor do assunto na lateral: marca a identidade do cartão mesmo quando ele não está selecionado */
+.kpis [role=tab]::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c);opacity:.85}
+.kpis [role=tab]:hover{border-color:var(--c)}
 .kpis [role=tab] .q{font-weight:700;font-size:14.5px;line-height:1.2;color:var(--ink);text-wrap:balance;margin-bottom:4px}
-.kpis [role=tab] .v{font-family:var(--disp);font-weight:800;font-size:clamp(20px,1.6vw,24px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums;margin-top:auto;white-space:nowrap}
+.kpis [role=tab] .v{font-family:var(--disp);font-weight:800;font-size:clamp(23px,1.9vw,28px);line-height:1.05;letter-spacing:-.025em;color:var(--c);font-variant-numeric:tabular-nums;margin-top:auto;white-space:nowrap}
 .kpis [role=tab] .l{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);line-height:1.35;margin-top:2px}
-.kpis [role=tab][aria-selected=true]{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
-.kpis [role=tab][aria-selected=true] .v{color:var(--accent)}
+.kpis [role=tab][aria-selected=true]{border-color:var(--c);background:color-mix(in srgb, var(--c) 13%, var(--panel));box-shadow:inset 0 0 0 1px var(--c)}
+.kpis [role=tab][aria-selected=true]::before{opacity:1;width:5px}
+.kpis [role=tab][aria-selected=true] .q{color:var(--ink)}
 .kpis [role=tab]:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 @media (max-width:900px){.kpis{gap:8px}.kpis [role=tab]{min-height:100px}}
 @media (max-width:420px){.kpis [role=tab]{padding:11px 12px;min-height:92px}}
@@ -1060,7 +1063,10 @@ function renderHome(){
   const st = G.stats; const bt = st.by_type||{}, bs = st.by_sector||{}, bsub = st.by_subtype||{};
   const subRows = [['ministerio','Ministérios'],['orgao_presidencia','Órgãos da Presidência'],['agencia_reguladora','Agências reguladoras'],['autarquia','Autarquias'],['fundacao','Fundações'],['empresa_publica','Empresas públicas'],['sociedade_economia_mista','Sociedades de economia mista'],['tribunal','Tribunais'],['ministerio_publico','Ministério Público'],['forca_armada','Forças Armadas'],['instituicao_de_ensino','Universidades e institutos federais']];
   const kp = homeKpis();
-  const tab = ([id,label])=>`<button type="button" role="tab" id="tab-${id}" aria-selected="${homeTab===id}" aria-controls="home-panel" tabindex="${homeTab===id?0:-1}" data-tab="${id}"><span class="q">${label}</span><span class="v">${esc(String((kp[id]||{}).n ?? ''))}</span><span class="l">${esc((kp[id]||{}).l||'')}</span></button>`;
+  // cor por assunto, reaproveitando a chave que o site já usa: laranja é dinheiro, âmbar é pendência,
+  // verde é movimento, azul é o Executivo e por extensão a cobertura do dia a dia.
+  const COR_ABA = {mudou:'var(--accent)', parado:'var(--jud)', dinheiro:'var(--povo)', imprensa:'var(--exe)'};
+  const tab = ([id,label])=>`<button type="button" role="tab" id="tab-${id}" aria-selected="${homeTab===id}" aria-controls="home-panel" tabindex="${homeTab===id?0:-1}" data-tab="${id}" style="--c:${COR_ABA[id]||'var(--accent)'}"><span class="q">${label}</span><span class="v">${esc(String((kp[id]||{}).n ?? ''))}</span><span class="l">${esc((kp[id]||{}).l||'')}</span></button>`;
   content.innerHTML = `<div class="neutro"><b>Projeto apartidário e de código aberto.</b> O Atlas não defende partido, candidato nem ideologia: mostra quem ocupa cada cargo, quem nomeia quem e para onde vai o dinheiro, sempre com a fonte oficial ao lado. É feito por colaboradores, e qualquer pessoa pode conferir, corrigir ou reaproveitar os dados. <a href="/metodologia/">Como apuramos</a> · <a href="https://github.com/culturabuilder/atlas-da-republica" target="_blank" rel="noopener">Código e dados ↗</a></div>`+`<a class="card start zero" href="/do-zero/"><span class="eyebrow">Nunca estudou isso?</span><b>Do zero</b><span>O governo explicado em palavras simples, em 14 perguntas: o que faz um ministro, quem escreve as leis, de onde vem o dinheiro. Sem pressa e sem termo difícil.</span><span class="go">Começar do zero →</span></a>`+`<a class="card start" href="/como-funciona/"><span class="eyebrow">Depois disto</span><b>Como funciona a República</b><span>Uma visita guiada de 9 minutos pela roda: quem você elege, quem nomeia quem, quem vigia quem. Para quem nunca precisou entender isso e agora quer.</span><span class="go">Começar →</span></a><nav class="quick" aria-label="Outras páginas"><a href="/do-zero/">Do zero</a><a href="/comparar/">Comparar parlamentares</a><a href="/dados/">Dados abertos</a><a href="/metodologia/">Metodologia</a><a href="/feeds/mudancas.xml">Feed RSS</a></nav>`+`
   <div class="card"><h1>Quem manda em quê no governo federal</h1>
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
