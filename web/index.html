@@ -228,6 +228,12 @@ h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid va
 .om{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:8px 0 14px}
 .om .stat .n{font-size:22px}.om .stat .l{font-size:12px;color:var(--ink-3);line-height:1.3}
 .om-it{padding:9px 0;border-bottom:1px dashed var(--line-2);font-size:14px;line-height:1.4}
+.vt-all{margin-top:6px}
+.vt-ano h4{margin:12px 0 2px;font-size:13px;font-weight:600;color:var(--ink-2);display:flex;gap:8px;align-items:baseline;border-bottom:1px solid var(--line-2);padding-bottom:3px}
+.vt-ano h4 span{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-left:auto}
+.vt-it{padding:4px 0;font-size:13px;line-height:1.35;color:var(--ink-2)}
+.vt-it a,.vt-it b{font-weight:600;color:var(--ink)}.vt-it a{color:var(--accent)}
+.vt-it .m{font-family:var(--mono);font-size:11px;color:var(--ink-3);display:block}
 .om-it .t{font-weight:600}.om-it .m{font-family:var(--mono);font-size:11px;color:var(--ink-3);display:block;margin-top:2px}
 .om-it .m b{color:var(--ink);font-weight:600}.om-it .m .bad{color:var(--leg);font-weight:600}.om-it .m .ok{color:var(--ok)}
 .om-it .who{font-size:13px;color:var(--ink-2);margin-top:3px}.om-it .who a{color:var(--accent)}
@@ -272,6 +278,7 @@ details.fora{margin-top:6px}details.fora>summary{cursor:pointer;font-family:var(
 details.fora>summary::-webkit-details-marker{display:none}
 .aviso{font-size:12.5px;color:var(--warn);background:var(--warn-soft);border-radius:8px;padding:8px 10px;margin:6px 0 8px;line-height:1.45}
 .hist{display:grid;grid-template-columns:auto 1fr auto;gap:2px 12px;font-size:13.5px}.hist .hm{display:contents}.hist .hy{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);white-space:nowrap;padding-top:2px}.hist .hn a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}.hist .hn em{font-style:normal;font-size:11px;color:var(--ink-3);margin-left:4px}.hist .hd{font-size:12px;color:var(--ink-3);text-align:right;white-space:nowrap}.hist .cur .hn{font-weight:600}@media(max-width:520px){.hist{grid-template-columns:auto 1fr}.hist .hd{grid-column:2;text-align:left;margin-top:-2px;margin-bottom:4px}}
+.hm .hg{grid-column:1/-1;font-size:12px;color:var(--leg);margin:1px 0 3px;line-height:1.3}
 .simples{font-size:13.5px;color:var(--ink-2);margin:4px 0 2px;padding-left:10px;border-left:2px solid var(--line-2);line-height:1.45}.simples i{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-left:6px}
 .arrec .n{font-family:var(--disp);font-size:clamp(22px,3.2vw,30px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1;word-break:break-all}
 .arrec .cap{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:4px}
@@ -649,6 +656,17 @@ function inWin(d){ if(!d) return false; const t=new Date(d+'T00:00:00'); return 
 const brl = v => v==null?'—':(Math.abs(v)>=1e9?`R$ ${(v/1e9).toLocaleString('pt-BR',{maximumFractionDigits:1})} bi`:Math.abs(v)>=1e6?`R$ ${(v/1e6).toLocaleString('pt-BR',{maximumFractionDigits:Math.abs(v)<1e8?1:0})} mi`:`R$ ${Math.round(v).toLocaleString('pt-BR')}`);
 const who = x => x.responsible_position&&N[x.responsible_position]?`<div class="who">Próximo passo cabe a <a href="#${x.responsible_position}">${esc(x.responsible_name||N[x.responsible_position].name)}</a>${x.responsible_person?` · <a href="#${x.responsible_person_id||''}">${esc(x.responsible_person)}</a>`:''}</div>`:'';
 function simples(x){ return x&&x.resumo?`<div class="simples">${esc(x.resumo)}<i>resumo automático, revise na fonte</i></div>`:''; }
+function vetosTodosHtml(v){
+  // A tela mostrava 6 de 321. O leitor precisa ver os 321: o acúmulo é o fato, e a amostra fazia
+  // parecer exceção. Lista enxuta, agrupada por ano, do mais antigo para o mais novo dentro do ano.
+  const porAno={}; for(const x of v){ const y=x.y||'sem data'; (porAno[y]=porAno[y]||[]).push(x); }
+  const anos=Object.keys(porAno).sort((a,b)=>a==='sem data'?1:b==='sem data'?-1:Number(b)-Number(a));
+  const corpo=anos.map(y=>{ const it=porAno[y].slice().sort((a,b)=>(b.d||0)-(a.d||0));
+    return `<div class="vt-ano"><h4>${y==='sem data'?'Sem data de protocolo':y}<span>${it.length}</span></h4>`+
+      it.map(x=>`<div class="vt-it">${x.u?`<a href="${x.u}" target="_blank" rel="noopener">${esc(x.t||'')}</a>`:`<b>${esc(x.t||'')}</b>`} ${esc(x.a||'')}<span class="m">${x.n?esc(x.n)+' · ':''}${x.d!=null?`há ${x.d.toLocaleString('pt-BR')} dias`:'sem data'}</span></div>`).join('')+`</div>`;
+  }).join('');
+  return `<details class="rel vt-all"><summary>Ver todos os ${v.length} vetos, por ano<span class="n">expandir</span></summary>${corpo}</details>`;
+}
 function omissaoHtml(){
   const o=G.omissao; if(!o) return '<p class="seat">Sem dados do placar ainda.</p>'; const s=o.summary||{};
   const stat=(n,l)=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`;
@@ -660,8 +678,8 @@ function omissaoHtml(){
   if(rc.length) out+=`<h3>Pedidos de CPI com assinaturas suficientes, sem despacho</h3><p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">Com um terço das assinaturas (171 deputados) a CPI deve ser criada; o presidente da Câmara decide quando a lê e a instala (CF art. 58 §3º; RICD art. 35).</p>`+rc.map(x=>`<div class="om-it"><span class="t"><a href="${x.url}" target="_blank" rel="noopener">${esc(x.title)}</a></span> ${esc((x.summary||'').replace(/^Requer(,| a Vossa Excelência,)?( nos termos d[^,]+,)?\s*/i,''))}<span class="m"><b>${x.signatures}</b> assinaturas · protocolado em ${fmtLong(x.date)} · <span class="bad">há ${x.days} dias</span> · ${esc(x.situation||'')}</span>${simples(x)}${who(x)}</div>`).join('');
   const cu=o.curated||[];
   if(cu.length) out+=`<h3>Casos acompanhados</h3>`+cu.map(x=>`<div class="om-it"><span class="t">${esc(x.title)}</span> ${esc(x.summary||'')}<span class="m">${x.signatures?`<b>${x.signatures.camara}</b> deputados e <b>${x.signatures.senado}</b> senadores (mínimo ${x.signatures.min_camara} e ${x.signatures.min_senado}) · `:''}protocolado em ${fmtLong(x.date)} · <span class="bad">há ${x.days} dias</span> · ${esc(x.legal_deadline||'')}</span>${simples(x)}${who(x)}<span class="m">Fontes: ${(x.sources||[]).map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${esc(s.title)}</a> (${fmtDate(String(s.date))})`).join(' · ')}</span></div>`).join('');
-  const vt=(o.vetos||[]).slice(0,6);
-  if(vt.length) out+=`<h3>Vetos mais antigos sem votação</h3><p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">O Congresso tem 30 dias para votar um veto; vencido o prazo, ele passa a trancar a pauta das sessões conjuntas (CF art. 66 §§4º e 6º). Por ano: ${Object.entries(o.vetos_by_year||{}).sort().map(([y,n])=>`${y}: ${n}`).join(' · ')}.</p>`+vt.map(x=>`<div class="om-it"><span class="t"><a href="${x.url}" target="_blank" rel="noopener">${esc(x.title)}</a></span> ${esc((x.summary||'').slice(0,160))}<span class="m">${x.norma?esc(x.norma)+' · ':''}<span class="bad">há ${x.days} dias</span>, prazo de 30</span>${simples(x)}${who(x)}</div>`).join('');
+  const vt=(o.vetos||[]).slice(0,6); const vta=o.vetos_todos||[];
+  if(vt.length) out+=`<h3>Vetos mais antigos sem votação</h3><p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">O Congresso tem 30 dias para votar um veto; vencido o prazo, ele passa a trancar a pauta das sessões conjuntas (CF art. 66 §§4º e 6º). Por ano: ${Object.entries(o.vetos_by_year||{}).sort().map(([y,n])=>`${y}: ${n}`).join(' · ')}.</p>`+vt.map(x=>`<div class="om-it"><span class="t"><a href="${x.url}" target="_blank" rel="noopener">${esc(x.title)}</a></span> ${esc((x.summary||'').slice(0,160))}<span class="m">${x.norma?esc(x.norma)+' · ':''}<span class="bad">há ${x.days} dias</span>, prazo de 30</span>${simples(x)}${who(x)}</div>`).join('')+(vta.length>vt.length?vetosTodosHtml(vta):'');
   return out;
 }
 function spark(weekly){ const vals=Object.values(weekly||{}); if(vals.length<2) return ''; const max=Math.max(...vals,1); const w=120,hh=26; const pts=vals.map((v,i)=>`${(i/(vals.length-1)*w).toFixed(1)},${(hh-2-(v/max)*(hh-4)).toFixed(1)}`).join(' '); return `<svg viewBox="0 0 ${w} ${hh}" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="var(--accent)" stroke-width="1.5"/><circle cx="${w}" cy="${(hh-2-(vals[vals.length-1]/max)*(hh-4)).toFixed(1)}" r="2" fill="var(--accent)"/></svg>`; }
@@ -703,7 +721,7 @@ function dinheiroHtml(){
     <h4 style="margin:10px 0 4px;font-size:14px">Maiores benefícios</h4>${bars((R.gastos_top||[]).slice(0,10), x=>x.gasto, x=>x.valor)}
     ${cmp.length?`<h4 style="margin:12px 0 4px;font-size:14px">Renúncia por área × orçamento do ministério da área</h4><div class="cmp"><span class="h">área</span><span class="h">renúncia</span><span class="h">empenhado pelo ministério</span>${cmp.slice(0,8).map(c=>`<span>${esc(c.funcao)} · <a href="#${c.ministerio}">${esc((c.ministerio_nome||'').replace('Ministério ',''))}</a></span><span class="n">${brl(c.renuncia)}</span><span class="n">${brl(c.empenhado)} (${c.empenhado_ano})</span>`).join('')}</div>`:''}`; }
   const V=G.viagens, C=G.cartao;
-  if(V&&V.orgaos){ out+=`<h3>Viagens a serviço no Executivo em ${V.ano}</h3><p class="note">${esc(V.nota||'')} Fonte: ${esc(V.fonte||'')}, lido em ${fmtDate(V.generated_at)}.</p><div class="om">${stat(V.viagens_total.toLocaleString('pt-BR'),'viagens realizadas')}${stat(brl(V.total),'em diárias e passagens')}</div><h4 style="margin:10px 0 4px;font-size:14px">Órgãos que mais gastaram</h4>${bars((V.orgaos||[]).slice(0,10), x=>(x.node&&N[x.node]?N[x.node].name:x.orgao), x=>x.total, {fmt:v=>brl(v), sub:it=>`${it.viagens.toLocaleString('pt-BR')} viagens`})}`; }
+  if(V&&V.orgaos){ out+=`<h3>Viagens a serviço no Executivo em ${V.ano}</h3><p class="note">${esc(V.nota||'')} Fonte: ${esc(V.fonte||'')}, lido em ${fmtDate(V.generated_at)}.</p><div class="om">${stat(V.viagens_total.toLocaleString('pt-BR'),'viagens realizadas')}${stat(brl(V.total),'em diárias e passagens')}</div><h4 style="margin:10px 0 4px;font-size:14px">Órgãos que mais gastaram</h4>${bars((V.orgaos||[]).slice(0,10), x=>(x.node&&N[x.node]?N[x.node].name:x.orgao), x=>x.total, {fmt:v=>brl(v), sub:it=>`${it.viagens.toLocaleString('pt-BR')} viagens`, link:x=>x.node?'#'+x.node:null})}`; }
   if(C&&C.orgaos){ const top=(C.orgaos||[])[0];
     out+=`<h3>Cartão corporativo em ${C.ano}</h3><p class="note">${esc(C.nota||'')} Fonte: ${esc(C.fonte||'')}, ${(C.meses||[]).length} meses.</p><div class="om">${stat(brl(C.total),'gastos no ano')}${stat(brl((C.orgaos||[]).reduce((a,x)=>a+(x.saques||0),0)),'sacados em espécie')}</div>${bars((C.orgaos||[]).slice(0,10), x=>(x.node_id&&N[x.node_id]?N[x.node_id].name:x.orgao), x=>x.total, {fmt:v=>brl(v), sub:it=>`${it.portadores} ${it.portadores===1?'cartão':'cartões'}${it.saques?` · saques ${brl(it.saques)}`:''}`, link:x=>x.node_id?'#'+x.node_id:null})}`;
     if(top&&top.unidades_top&&top.unidades_top.length) out+=`<h4 style="margin:10px 0 4px;font-size:14px">Onde o gasto acontece, no órgão que mais gasta (${esc(top.orgao)})</h4>${bars(top.unidades_top, x=>tit(x.nome), x=>x.valor, {fmt:v=>brl(v)})}`;
@@ -732,6 +750,20 @@ function dinheiroHtml(){
     <h4 style="margin:10px 0 4px;font-size:14px">Órgãos com mais servidores acima do teto</h4>${bars((T.orgaos||[]).slice(0,10), x=>(x.node&&N[x.node]?N[x.node].name:x.orgao), x=>x.com_abate_teto, {fmt:(v,it)=>`${v.toLocaleString('pt-BR')} (${it.pct_com_abate}%)`, link:x=>x.node?'#'+x.node:null})}`; }
   return out+'</div>';
 }
+let _siglaCol=null;
+function colegiadoPorSigla(sig){
+  // As relatorias vêm por sigla de colegiado ("CCJC", "CICS") e isso estava no arquivo sem aparecer
+  // na tela. Casar sigla solta erra: "CICS" também é uma comissão interministerial do Executivo, e o
+  // leitor veria a relatoria de um deputado apontando para o órgão errado. Só casamos colegiado da
+  // Câmara, do Senado ou do Congresso, e sigla que aponta para mais de um nó não casa com nenhum.
+  if(!_siglaCol){ _siglaCol={};
+    for(const id in N){ if(!(/-(da-camara|do-senado|do-congresso)$/).test(id)) continue;
+      const n=N[id]; for(const a of [n.name].concat(n.aliases||[])){
+        if(!a||a!==a.toUpperCase()||a.length<2||a.length>10) continue;
+        _siglaCol[a] = (a in _siglaCol && _siglaCol[a]!==id) ? null : id; } }
+  }
+  return _siglaCol[sig]||null;
+}
 function propHtml(p){
   const r=p._pr; if(!r) return ''; const M=G.stats.proposicoes||{}; const tipos=Object.entries(r.por_tipo||{}).sort((a,b)=>b[1]-a[1]).slice(0,6);
   const med=(M.resumo&&M.resumo[(p.positions||[]).includes('br-senador')?'senado':'camara'])||{}; const m=med.mediana_apresentadas!=null?med.mediana_apresentadas:(med.mediana!=null?med.mediana:null);
@@ -739,6 +771,12 @@ function propHtml(p){
   return `<h3>Proposições no ano legislativo</h3><div class="din"><div class="om">${[[r.projetos!=null?r.projetos:'—','projetos (PL, PEC, PLP, PDL…)'+(mp!=null?` · mediana ${mp}`:'')],[r.requerimentos!=null?r.requerimentos:'—','requerimentos'+(med.mediana_requerimentos!=null?` · mediana ${med.mediana_requerimentos}`:'')],[r.relatorias_projetos!=null?r.relatorias_projetos:(r.relatorias!=null?r.relatorias:'—'),'relatorias de projetos'+(r.relatorias!=null&&r.relatorias_projetos!=null&&r.relatorias!==r.relatorias_projetos?` (${r.relatorias} no total)`:'')],[r.virou_norma!=null?r.virou_norma:'—','viraram norma']].map(([n,l])=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join('')}</div>
   <p style="font-size:13px;color:var(--ink-2);margin:4px 0 6px">${r.apresentadas} ${r.apresentadas===1?'proposição apresentada':'proposições apresentadas'} no ano${r.como_primeiro_autor!=null?` (${r.como_primeiro_autor} como primeiro autor)`:''}${tipos.length?`: ${tipos.map(([k,v])=>`${esc(k)} ${v}`).join(' · ')}`:''}.${r.temas&&r.temas.length?` Temas mais frequentes: ${r.temas.slice(0,4).map(t=>esc(typeof t==='string'?t:(t.tema||t.nome||''))).join(', ')}.`:''}</p>
   ${r.ultimas&&r.ultimas.length?`<div class="act">${r.ultimas.map(u=>`<div class="row"><span>${u.url?`<a href="${u.url}" target="_blank" rel="noopener"><b>${esc(u.sigla)} ${esc(String(u.numero))}/${esc(String(u.ano))}</b></a>`:`<b>${esc(u.sigla)} ${esc(String(u.numero))}/${esc(String(u.ano))}</b>`} ${esc(u.ementa||'')}<span class="d" style="display:block">${esc(u.situacao||'')}${u.data?' · '+fmtDate(String(u.data).slice(0,10)):''}</span></span></div>`).join('')}</div>`:''}
+  ${(()=>{ const ro=Object.entries(r.relatorias_por_orgao||{}).sort((a,b)=>b[1]-a[1]); if(!ro.length) return '';
+    const NAO_COMISSAO={MESA:'Mesa Diretora',PLEN:'Plenário',CMO:'Comissão Mista de Orçamento',COETICA:'Conselho de Ética',MERCOSUL:'Representação do Mercosul'};
+    return `<h4 style="margin:10px 0 4px;font-size:14px">Onde relatou</h4>
+    <p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">Relatoria é poder de agenda: quem relata escreve o parecer que a comissão vota.${r.pareceres_como_relator?` ${r.pareceres_como_relator} ${r.pareceres_como_relator===1?'parecer':'pareceres'} como relator.`:''}</p>
+    <div class="act">${ro.map(([sig,n_])=>{ const id=colegiadoPorSigla(sig); const rot=id&&N[id]?N[id].name:(NAO_COMISSAO[sig]||sig);
+      return `<div class="row"><span>${id?`<a href="#${id}">${esc(rot)}</a>`:esc(rot)}${id||NAO_COMISSAO[sig]?`<span class="d" style="display:block">${esc(sig)}</span>`:''}</span><span class="v">${n_}</span></div>`; }).join('')}</div>`; })()}
   <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">${M.desde?`Desde ${fmtDate(M.desde)}. `:''}Fonte: ${esc(M.fonte||'Câmara e Senado, dados abertos')}.</p></div>`;
 }
 function gabHtml(p){
@@ -801,7 +839,15 @@ function emendasHtml(p){
   ${e.votos_2022&&e.votos_2022.emendas_nos_top15_pct!=null?`<p style="margin:6px 0;font-size:14px;background:var(--panel);border:1px solid var(--line-2);border-radius:8px;padding:8px 10px">Em 2022 teve ${e.votos_2022.votos.toLocaleString('pt-BR')} votos; os 15 municípios onde foi mais votado somaram ${e.votos_2022.top15_votos_pct.toLocaleString('pt-BR')}% deles. Das emendas com município definido desde ${e.desde} (${brl(e.votos_2022.emendas_com_municipio)}), <b>${e.votos_2022.emendas_nos_top15_pct.toLocaleString('pt-BR')}%</b> foram para esses 15 municípios (${e.votos_2022.top15.slice(0,3).map(esc).join(', ')}…).</p>`:''}
   ${bars(anos.map(([k,v])=>({k,v:v.empenhado})), x=>x.k, x=>x.v)}
   ${e.top_municipios&&e.top_municipios.length>=2?`<h4 style="margin:10px 0 4px;font-size:14px">Municípios que mais receberam desde ${e.desde}</h4>${bars(e.top_municipios, x=>x.nome, x=>x.valor, {fmt:(v,it)=>`${brl(v)} · ${it.pct}%${it.populacao?` · ${it.populacao.toLocaleString('pt-BR')} hab`:''}`})}`:''}
-  <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Fonte: Portal da Transparência, emendas parlamentares (valor empenhado por município de aplicação).</p></div>`;
+  ${(()=>{ const fv=(e.favorecidos_pj||[]).filter(x=>x.valor>0).slice(0,12); if(fv.length<2) return '';
+    // Estava no arquivo e não aparecia em lugar nenhum: diz quem recebeu, não só em que município caiu.
+    // A lista mistura repasse e fornecedor de ponta, e sem o CNPJ não há como separar com honestidade —
+    // então marcamos só o que tem marca jurídica de empresa e dizemos ao leitor o que ele está vendo.
+    const EMP=/\b(ltda|s\/a|eireli|epp|mei)\b|\bsa\b/i;
+    return `<h4 style="margin:10px 0 4px;font-size:14px">Quem recebeu o dinheiro dessas emendas</h4>
+    <p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">A maior parte é repasse: fundo municipal ou estadual de saúde, prefeitura, ou o Banco do Brasil como pagador. Quem aparece marcado como <b>empresa</b> tem razão social de empresa no registro; o resto pode ser órgão, fundo ou entidade.</p>
+    ${bars(fv, x=>tit(x.nome), x=>x.valor, {fmt:(v,it)=>`${brl(v)}${EMP.test(it.nome)?' · empresa':''}`})}`; })()}
+  <p style="font-size:12px;color:var(--ink-3);margin:6px 0 0">Fonte: Portal da Transparência, emendas parlamentares (valor empenhado por município de aplicação); favorecidos pelo nome na execução, sem CNPJ na fonte.</p></div>`;
 }
 let arrecTimer=null;
 function startArrec(){ if(arrecTimer) clearInterval(arrecTimer); const a=G.arrecadacao; const alvos=()=>document.querySelectorAll('.arrec-n'); if(!a||!alvos().length) return; const base=a.anchor.value; const t0=new Date(a.anchor.date+'T23:59:59'); const rate=a.rate_per_second;
@@ -1112,7 +1158,20 @@ function renderHome(){
     <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
     <h3>Cargos e colegiados</h3><div class="counts"><span>Cargos de chefia mapeados</span><span>${bt.dept_head||0}</span><span>Cadeiras (inclui 513 deputados e 81 senadores)</span><span>${st.seats_total}</span><span>Sabatinas do Senado desde 2023</span><span>${st.sabatinas||0}</span><span>Colegiados deliberativos</span><span>${bt.commission||0}</span></div></div>
   <div class="card"><h2>Como ler a roda</h2><div class="counts">${[1,2,3,4].map(r=>`<span><b>Anel ${r} · ${L.rings[r].name}</b><br><span style="color:var(--ink-3);font-size:13.5px">${L.rings[r].description}</span></span><span></span>`).join('')}</div>
-    <p style="font-size:13.5px;margin-top:10px">${st.siorg_matched||0} órgãos curados casados com o registro oficial do SIORG e ${st.from_siorg||0} importados dele. ${st.unverified||0} citações curadas ainda marcadas para conferência. Dados lidos em ${fmtDate(st.generated_at)}.</p></div>`;
+    <p style="font-size:13.5px;margin-top:10px">${st.siorg_matched||0} órgãos curados casados com o registro oficial do SIORG e ${st.from_siorg||0} importados dele. ${st.unverified||0} citações curadas ainda marcadas para conferência. Dados lidos em ${fmtDate(st.generated_at)}.</p></div>
+  ${(()=>{ const c=st.cobertura; if(!c) return '';
+    // Esta contagem já existia, mas só na página /do-zero — a menos aberta do site. É a parte do
+    // projeto que diz o que ele ainda não sabe, e esconder isso é o avesso do que o Atlas promete.
+    const linhas=[[`${c.cargos_sem} de ${c.cargos}`,'cargos de chefia sem ocupante conhecido'],
+      [c.orgaos_sem_chefia,'órgãos sem nenhum cargo de chefia mapeado'],
+      [`${c.colegiados_sem_membros} de ${c.colegiados}`,'colegiados sem a composição registrada'],
+      [`${c.nomeacoes_sem_data} de ${c.nomeacoes}`,'nomeações sem a data em que começaram'],
+      [`${c.cadeiras-c.cadeiras_ocupadas} de ${c.cadeiras}`,'cadeiras sem ocupante identificado'],
+      [st.unverified||0,'citações curadas ainda por conferir']].filter(([v])=>v);
+    return `<div class="card"><h2>O que falta no Atlas hoje</h2>
+    <p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">Nenhum mapa de governo está completo, e um que não diz onde está incompleto não dá para conferir. Estes são os buracos conhecidos, contados pelo próprio build.</p>
+    <div class="counts">${linhas.map(([v,l])=>`<span>${l}</span><span>${typeof v==='number'?v.toLocaleString('pt-BR'):v}</span>`).join('')}</div>
+    <p style="font-size:13px;color:var(--ink-3);margin:8px 0 0">Contagem de ${fmtDate(st.generated_at)}. <a href="/metodologia/">Como apuramos</a> · <a href="/do-zero/">A mesma conta explicada do zero</a></p></div>`; })()}`;
   renderHomePanel();
   const _hero = content.querySelector('.hero-arrec[data-ir]');
   if (_hero) _hero.addEventListener('click', e => { e.preventDefault(); homeTab = _hero.dataset.ir; renderHomePanel();
@@ -1159,6 +1218,19 @@ function composicaoHtml(n){
   ${out2.length?`<h4 style="margin:10px 0 4px;font-size:13px">Indicados, eleitos e externos</h4><div class="cmp">${out2.map(row).join('')}</div>`:''}
   ${c.vagas_sociedade?`<p style="font-size:12.5px;color:var(--ink-3);margin:8px 0 0">${c.vagas_sociedade} assentos são de representação da sociedade civil, de entidades ou de outros entes federativos; o Atlas não nomeia essas pessoas.</p>`:''}</div>`;
 }
+function tetoOrgaoHtml(n){
+  // O abate-teto existia só no ranking da home: quem abria a página do órgão não via nada sobre
+  // salário acima do teto ali. Mesmas palavras do ranking, para não haver duas definições no site.
+  const T=G.teto; if(!T||!T.orgaos) return '';
+  const o=T.orgaos.find(x=>x.node===n.id); if(!o||!o.com_abate_teto) return '';
+  const mes=`${(T.mes||'').slice(4,6)}/${(T.mes||'').slice(0,4)}`;
+  const st=(v,l)=>`<div class="stat"><div class="n">${v}</div><div class="l">${l}</div></div>`;
+  const cg=(o.cargos_mais_comuns||[]).filter(c=>c.cargo&&!/^sem informa/i.test(c.cargo));
+  return `<div class="card"><h2>Salários acima do teto neste órgão <span style="color:var(--ink-3);font-weight:500">· folha de ${mes}</span></h2>
+  <div class="om">${st(o.com_abate_teto.toLocaleString('pt-BR'),'com salário bruto acima do teto (cortado pelo abate-teto)')}${st(o.pct_com_abate+'%',`dos ${o.servidores.toLocaleString('pt-BR')} servidores do órgão`)}${st(brl(o.valor_abatido),'cortados no mês')}${st(brl(o.indenizatorias),'pagos fora do teto como verbas indenizatórias')}${o.acima_do_teto_com_indenizatorias?st(o.acima_do_teto_com_indenizatorias.toLocaleString('pt-BR'),'acima do teto contando as indenizatórias'):''}</div>
+  ${cg.length?`<h3>Cargos que mais aparecem no abate</h3><div class="act">${cg.map(c=>`<div class="row"><span>${esc(c.cargo)}</span><span class="v">${c.n.toLocaleString('pt-BR')}</span></div>`).join('')}</div>`:''}
+  <p class="note">Teto: R$ ${T.teto.toLocaleString('pt-BR')} (${esc(T.teto_fonte)}). Fonte: Portal da Transparência, folha de ${mes}, lida em ${fmtDate(T.generated_at)}.</p></div>`;
+}
 function historicoHtml(n){
   const h=n.historico; if(!h||!h.mandatos||!h.mandatos.length) return '';
   const cur=holders(n)[0]; const ms=h.mandatos.slice().reverse();
@@ -1168,7 +1240,7 @@ function historicoHtml(n){
   const first=yrs(h.mandatos[0].inicio);
   return `<div class="card"><h2>Quem ocupou este cargo <span style="color:var(--ink-3);font-weight:500">· ${h.ocupantes} desde ${first}</span></h2>
   <p style="font-size:13px;color:var(--ink-2);margin:0 0 8px">${med?`Cada passagem pelo cargo durou, na mediana, <b>${med}</b>. `:''}${pres?`Trocas por governo: ${pres}. `:''}${!h.wikidata_atualizado&&cur?`O Wikidata ainda não registra ${esc(cur.name)}, ocupante atual segundo a página oficial. `:''}Fonte: <a href="https://www.wikidata.org/wiki/${h.qid}" target="_blank" rel="noopener">Wikidata ↗</a>, lista colaborativa; pode faltar gente ou data.</p>
-  <div class="hist">${ms.map(m=>`<div class="hm${m.fim?'':' cur'}"><span class="hy">${yrs(m.inicio)}${m.fim?'–'+yrs(m.fim):'–'}</span><span class="hn">${P['br-p-'+m.nome.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^a-z0-9]+/g,'-')]?`<a href="#br-p-${m.nome.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^a-z0-9]+/g,'-')}">${esc(m.nome)}</a>`:esc(m.nome)}${m.interino?' <em>interino</em>':''}${m.papel?` <em>${esc(m.papel)}</em>`:''}</span><span class="hd">${dur(m)}${m.presidente?` · ${esc(m.presidente)}`:''}</span></div>`).join('')}</div></div>`;
+  <div class="hist">${ms.map(m=>`<div class="hm${m.fim?'':' cur'}"><span class="hy">${yrs(m.inicio)}${m.fim?'–'+yrs(m.fim):'–'}</span><span class="hn">${P['br-p-'+m.nome.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^a-z0-9]+/g,'-')]?`<a href="#br-p-${m.nome.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^a-z0-9]+/g,'-')}">${esc(m.nome)}</a>`:esc(m.nome)}${m.interino?' <em>interino</em>':''}${m.papel?` <em>${esc(m.papel)}</em>`:''}${m.idade?` <em>${m.idade} anos ao assumir</em>`:''}</span><span class="hd">${dur(m)}${m.presidente?` · ${esc(m.presidente)}`:''}</span>${m.falta_antes?`<span class="hg">O Wikidata registra um antecessor que não aparece nesta lista: falta um nome antes deste.</span>`:''}</div>`).join('')}</div></div>`;
 }
 function renderNode(n){
   const isPos = n.type==='dept_head';
@@ -1217,6 +1289,7 @@ function renderNode(n){
     ${kids?`<h3>Órgãos integrados e vinculados <span style="font-weight:400">· ${n.children.length}</span></h3><div class="list">${kids}</div>`:''}
   </div>
   ${subsidioHtml(n)}
+  ${tetoOrgaoHtml(n)}
   ${programasHtml(n)}
   ${composicaoHtml(n)}
   ${historicoHtml(n)}

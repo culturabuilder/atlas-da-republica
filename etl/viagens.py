@@ -54,7 +54,19 @@ def main():
         except Exception: return datetime.datetime.min
     people = {pid: {"viagens": v["n"], "diarias": round(v["diarias"], 2), "passagens": round(v["passagens"], 2), "total": round(v["diarias"] + v["passagens"], 2), "exterior": v["exterior"],
                     "destinos": [{"destino": k, "n": c} for k, c in v["dest"].most_common(4)], "ultimas": sorted(v["ultimas"], key=lambda x: dkey(x["inicio"]), reverse=True)[:4]} for pid, v in per.items()}
-    orgs = sorted(({"orgao": o, "viagens": d["n"], "diarias": round(d["diarias"], 2), "passagens": round(d["passagens"], 2), "total": round(d["diarias"] + d["passagens"], 2), "viajantes": len(d["viajantes"])} for o, d in org.items()), key=lambda x: -x["total"])
+    # O campo "node" existia no esquema e nunca era preenchido: o ranking de viagens mostrava o nome
+    # do órgão mas era o único bloco de dinheiro do site que não levava à página dele. Dois passes:
+    # nome exato e, depois, nome sem artigos — o SCDP escreve "Direitos Humanos e Cidadania" onde o
+    # grafo tem "e da Cidadania". Chave que aponta para mais de um nó é descartada, para não linkar errado.
+    by_key, by_nucleo = {}, {}
+    def _nucleo(t): return re.sub(r"\s+", " ", re.sub(r"\b(da|de|do|das|dos|e)\b", " ", norm(t))).strip()
+    for nd in N.values():
+        if nd["type"] == "dept_head": continue
+        for k in [nd["name"]] + list(nd.get("aliases") or []):
+            by_key.setdefault(norm(k), nd["id"]); kn = _nucleo(k)
+            if kn in by_nucleo and by_nucleo[kn] != nd["id"]: by_nucleo[kn] = None
+            else: by_nucleo.setdefault(kn, nd["id"])
+    orgs = sorted(({"orgao": o, "node": by_key.get(norm(o)) or by_nucleo.get(_nucleo(o)), "viagens": d["n"], "diarias": round(d["diarias"], 2), "passagens": round(d["passagens"], 2), "total": round(d["diarias"] + d["passagens"], 2), "viajantes": len(d["viajantes"])} for o, d in org.items()), key=lambda x: -x["total"])
     out = {"generated_at": TODAY.isoformat(), "ano": Y, "fonte": "Portal da Transparência, viagens a serviço (SCDP)", "people": people, "orgaos": orgs[:25], "total": round(sum(x["total"] for x in orgs), 2), "viagens_total": sum(x["viagens"] for x in orgs),
            "nota": "Viagens realizadas no ano, com diárias e passagens pagas pelo órgão; não inclui viagens do Legislativo e do Judiciário, que têm sistemas próprios."}
     (ROOT / "data" / "generated" / "viagens.yaml").write_text("# GERADO por etl/viagens.py. Não edite à mão.\n" + yaml.dump(out, allow_unicode=True, sort_keys=False, width=120), encoding="utf-8")

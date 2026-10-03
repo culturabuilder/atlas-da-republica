@@ -294,9 +294,28 @@ if _hi_p.exists():
         mand = sorted(mand, key=lambda m: str(m.get("inicio")))
         mand = [m for m in mand if str(m.get("fim") or "9999") >= "1985-03-15"]
         if not mand: continue
+        # Dois campos do Wikidata que o grafo descartava. "nascimento" dá a idade na posse, que é
+        # informação nova por mandato. "substituiu" quase nunca é: em 253 dos 346 casos é exatamente o
+        # mandato anterior da lista, ou seja, a ordem que já está na tela. Ele só vale quando aponta
+        # para alguém que NÃO está na lista — aí é prova de que falta um nome ali, e é isso que marcamos.
+        # A comparação usa os qids da lista inteira, antes do corte de 1985: o corte é escolha nossa,
+        # não lacuna da fonte, e marcar o primeiro mandato exibido como buraco seria mentira.
+        _qids_fonte = {m.get("qid") for m in (h.get("mandatos") or []) if m.get("qid")}
+        def _mand(m):
+            d = {k: m.get(k) for k in ("qid", "nome", "inicio", "fim", "dias", "interino", "presidente", "papel") if m.get(k) not in (None, False)}
+            nasc, ini = str(m.get("nascimento") or ""), str(m.get("inicio") or "")
+            if len(nasc) >= 4 and len(ini) >= 4:
+                try:
+                    _a = int(ini[:4]) - int(nasc[:4])
+                    if len(nasc) >= 7 and len(ini) >= 7 and ini[5:7] < nasc[5:7]: _a -= 1
+                    if 20 <= _a <= 95: d["idade"] = _a
+                except ValueError: pass
+            sub = m.get("substituiu")
+            if sub and sub not in _qids_fonte: d["falta_antes"] = True
+            return d
         nodes[pid]["historico"] = {"qid": h.get("qid"), "rota": h.get("rota"), "ocupantes": len({m.get("qid") for m in mand}), "mediana_dias": h.get("mediana_dias"),
                                    "por_presidente": h.get("por_presidente") or {}, "wikidata_atualizado": bool(h.get("wikidata_atualizado")),
-                                   "mandatos": [{k: m.get(k) for k in ("qid", "nome", "inicio", "fim", "dias", "interino", "presidente", "papel") if m.get(k) not in (None, False)} for m in mand[-40:]]}
+                                   "mandatos": [_mand(m) for m in mand[-40:]]}
         _hi_n += 1
     # ocupantes atuais conhecidos pela página oficial que o Wikidata ainda não registra entram com a data de posse oficial
     def _sp(a, b):
@@ -648,6 +667,13 @@ def _plain(o):
 def _load_yaml(name):
     p = DATA / "generated" / name
     return _plain(yaml.safe_load(open(p, encoding="utf-8")) or {}) if p.exists() else {}
+def _assunto_veto(resumo):
+    """O assunto do veto, sem o cabeçalho de praxe. Casa em 320 dos 321 resumos; no que não casa,
+    devolve o texto como está, truncado, que é melhor do que devolver nada."""
+    t = re.sub(r"\s+", " ", (resumo or "").strip())
+    m = re.search(r'\bque\s+["\u201c]?(.+)$', t)
+    t = (m.group(1) if m else t).strip(' "\u201c\u201d')
+    return t[:110] + ("\u2026" if len(t) > 110 else "")
 _om = _load_yaml("omissao.yaml")
 omissao = None
 if _om:
@@ -658,6 +684,12 @@ if _om:
     omissao = {"generated_at": str(_om.get("generated_at")), "summary": _om.get("summary"), "vetos": _v[:12], "vetos_by_year": {}, "mpvs": sorted(_m, key=lambda x: (x.get("days_left") if x.get("days_left") is not None else 9999))[:15],
                "rcps": [x for x in _r if x.get("status") in ("aguardando", "indeferido", "outro")][:15], "curated": _om.get("curated") or []}
     for x in _v: omissao["vetos_by_year"][str(x.get("date") or "")[:4] or "?"] = omissao["vetos_by_year"].get(str(x.get("date") or "")[:4] or "?", 0) + 1
+    # São 321 vetos esperando votação e a tela mostrava 6: o número é que é a notícia, não a amostra.
+    # Carregar os 321 inteiros custaria 213 KB no núcleo leve; esta lista enxuta custa 85 KB porque
+    # guarda só o assunto, e o resumo oficial de veto começa com um cabeçalho repetido ("Veto Parcial
+    # aposto ao Projeto de Lei ..., que") antes de dizer de que trata — é esse cabeçalho que sai aqui.
+    omissao["vetos_todos"] = [{"t": x.get("title"), "u": x.get("url"), "a": _assunto_veto(x.get("summary")),
+                               "n": x.get("norma"), "d": x.get("days"), "y": str(x.get("date") or "")[:4] or None} for x in _v]
 _ar = _load_yaml("arrecadacao.yaml")
 arrecadacao = None
 if _ar:
@@ -692,7 +724,10 @@ _tt = _load_yaml("teto.yaml")
 teto = None
 if _tt:
     teto = {k: _tt.get(k) for k in ("generated_at", "mes", "teto", "teto_fonte", "servidores", "com_abate_teto", "valor_abatido_mes", "indenizatorias_mes", "acima_do_teto_com_indenizatorias", "nota")}
-    teto["orgaos"] = (_tt.get("orgaos") or [])[:20]
+    # Eram 20 porque só o ranking da home consumia isto. Agora a página do órgão também mostra o
+    # abate-teto dele, e cortar em 20 deixaria 13 órgãos casados a nó sem o bloco, sem motivo: os
+    # 40 registros inteiros custam uns 16 KB.
+    teto["orgaos"] = _tt.get("orgaos") or []
 _at = _load_yaml("atividade.yaml")
 atividade = (_at.get("people") or {}) if _at else {}
 _em_people = (_em.get("people") or {}) if _em else {}
