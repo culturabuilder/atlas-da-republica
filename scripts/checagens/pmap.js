@@ -14,6 +14,6 @@ const { chromium } = require('playwright');
               faixas:box.querySelectorAll('.pmt').length, estouro, fotos:box.querySelectorAll('.pc img').length}; });
     console.log(w, JSON.stringify(r), 'erros', e);
     const el=await p.locator('#pmap').first(); const bb=await el.boundingBox();
-    if(bb) await p.screenshot({path:`shots/pmap-${n}.png`,clip:{x:0,y:Math.max(0,bb.y-150),width:Math.min(w,760),height:Math.min(h-20,bb.height+200)}});
+    if(bb) await p.screenshot({path:`${process.env.ATLAS_SHOTS||'/tmp/atlas-shots'}/pmap-${n}.png`,clip:{x:0,y:Math.max(0,bb.y-150),width:Math.min(w,760),height:Math.min(h-20,bb.height+200)}});
     await p.close(); }
   await b.close(); })();
