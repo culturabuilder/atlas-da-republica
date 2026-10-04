@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-03'
+generated_at: '2026-10-04'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-06'
+janela_inicio: '2026-07-07'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,11 +11,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 259
-    dias_com_agenda: 63
+    compromissos_90d: 257
+    dias_com_agenda: 62
     por_tipo:
       evento: 88
-      audiencia: 82
+      audiencia: 80
       viagem: 71
       reuniao: 14
       outro: 4
@@ -26,23 +26,23 @@ people:
       n: 12
     - nome: Oswaldo Malatesta (Chefe do Gabinete Adjunto de Agenda do Gabinete Pessoal do Presidente )
       n: 12
-    - nome: Dario Durigan (Ministro da Fazenda)
-      n: 4
     - nome: Mauro Vieira (Ministro das Relações Exteriores)
       n: 4
+    - nome: Dario Durigan (Ministro da Fazenda)
+      n: 3
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 2
     - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
       n: 2
     - nome: Oswaldo Malatesta Neto (Chefe do Gabinete Pessoal do Presidente da República)
       n: 2
-    - nome: Marco Aurélio Marcola (Chefe do Gabinete Pessoal do Presidente da República)
-      n: 1
     - nome: José Múcio (Ministro da Defesa)
+      n: 1
+    - nome: Rebecca Forattini Lemos Igreja (Secretária-Geral da Faculdade Latino-americana de Ciências Sociais (FL)
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 73
+      n: 71
     - nome: Palácio da Alvorada
       n: 43
     - nome: Base Aérea de Brasília
@@ -115,13 +115,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-06:
-      - hora: '15:00'
-        titulo: Ministro da Fazenda, Dario Durigan
-        local: Palácio do Planalto
-      - hora: '16:00'
-        titulo: Chefe do Gabinete Pessoal do Presidente da República, Marco Aurélio Marcola
-        local: Palácio do Planalto
       presidente/2026-07-07:
       - hora: 09:00
         titulo: Ministro da Defesa, José Múcio
@@ -1017,6 +1010,7 @@ people:
         local: Palácio da Alvorada
       presidente/2026-10-02: []
       presidente/2026-10-03: []
+      presidente/2026-10-04: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -1024,11 +1018,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 79
-    dias_com_agenda: 48
+    compromissos_90d: 78
+    dias_com_agenda: 47
     por_tipo:
       evento: 32
-      viagem: 22
+      viagem: 21
       audiencia: 14
       outro: 6
       reuniao: 5
@@ -1049,7 +1043,7 @@ people:
     - nome: Brasília/DF
       n: 18
     - nome: São Paulo/SP
-      n: 15
+      n: 14
     - nome: Palácio do Planalto, Anexo II
       n: 10
     - nome: Palácio da Alvorada
@@ -1117,11 +1111,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-06:
-      - hora: 08:00
-        titulo: Decolagem de São Paulo/SP para Brasília/DF
-        local: São Paulo/SP
-      vice/2026-07-06-b1: []
       vice/2026-07-07: []
       vice/2026-07-07-b1: []
       vice/2026-07-08:
@@ -1549,6 +1538,8 @@ people:
       vice/2026-10-02-b1: []
       vice/2026-10-03: []
       vice/2026-10-03-b1: []
+      vice/2026-10-04: []
+      vice/2026-10-04-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 259 compromissos em 63 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 79 compromissos em 48 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 257 compromissos em 62 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 78 compromissos em 47 dias (0 dias não lidos)'

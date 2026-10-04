@@ -1,19 +1,19 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-10-03'
+generated_at: '2026-10-04'
 mes: '202608'
 mes_senado: '202609'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1216
+  ocupantes_no_grafo: 1215
   com_remuneracao: 506
   por_setor:
     executivo:
-      ocupantes: 481
+      ocupantes: 480
       antes: 395
       depois: 422
-      pct_antes: 82.1
-      pct_depois: 87.7
+      pct_antes: 82.3
+      pct_depois: 87.9
     essenciais:
       ocupantes: 30
       antes: 4
@@ -44,13 +44,13 @@ resumo:
     alta: 479
     media: 27
   sem_remuneracao:
-    total: 86
+    total: 85
     por_motivo:
       ausente na folha: 24
       órgão fora do SIAPE (empresa publica com folha própria): 15
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
       só há homônimo por primeiro+último sobrenome fora do órgão (...): 12
-      no cadastro do SIAPE mas sem linha de remuneração no mês: 12
+      no cadastro do SIAPE mas sem linha de remuneração no mês: 11
       órgão fora do SIAPE (sociedade economia mista com folha própria): 6
       vários servidores compatíveis no órgão (...) sem desempate: 2
       a entidade não aparece como órgão na folha do SIAPE (folha própria): 1
@@ -16625,11 +16625,6 @@ nao_encontrados:
   cargo: Presidente da Telebras
   setor: executivo
   motivo: órgão fora do SIAPE (sociedade economia mista com folha própria)
-- id: br-p-wp-antonia-pellegrino
-  nome: Antonia Pellegrino
-  cargo: Diretor-Presidente da EBC
-  setor: executivo
-  motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
 - id: br-p-antonio-fernando-souza-oliveira
   nome: Antônio Fernando Souza Oliveira
   cargo: Diretor-Geral da Polícia Rodoviária Federal
