@@ -1206,10 +1206,21 @@ _exec = {"generated_at": datetime.date.today().isoformat(),
          "nota": "GERADO por scripts/build_graph.py a partir de build/_execucao.tsv (scripts/update.sh) e do generated_at de cada arquivo.",
          "conectores": _conectores, "blocos": _blocos}
 _ex_path.write_text("# GERADO por scripts/build_graph.py. Não edite à mão.\n" + yaml.dump(_exec, allow_unicode=True, sort_keys=False, width=120), encoding="utf-8")
-_falhas = sorted(k for k, v in _conectores.items() if v.get("status") == "falhou")
+# "falhou" era o único status contado, e um conector cortado por tempo tem status "tempo esgotado":
+# Programas e Transferências ficaram quatro dias sendo cortados enquanto o site e o eval diziam zero
+# falhas. Falha é qualquer coisa que não seja ter rodado bem — menos o dia errado da camada semanal,
+# que é escolha nossa.
+# Duas coisas diferentes, que viravam uma só: conector que quebrou ou estourou o tempo (falha de
+# verdade, alguém tem que olhar) e conector que depende de arquivo baixado à mão e por isso nunca roda
+# no runner (lacuna conhecida, caso do patrimônio do TSE). Juntar as duas treinaria o leitor a ignorar
+# o aviso, que é o oposto do que ele serve.
+_NAO_E_FALHA = ("ok", "fora do dia semanal")
+_falhas = sorted(k for k, v in _conectores.items()
+                 if (v.get("status") or "") not in _NAO_E_FALHA and (v.get("status") or "") != "falta arquivo local")
+_sem_arquivo = sorted(k for k, v in _conectores.items() if (v.get("status") or "") == "falta arquivo local")
 _velhos = sorted(k for k, v in _blocos.items() if v.get("lido_em") and v["lido_em"] < (datetime.date.today() - datetime.timedelta(days=7)).isoformat())
-stats["execucao"] = {"gerado_em": _exec["generated_at"], "conectores": len(_conectores), "falhas": _falhas, "blocos": _blocos, "blocos_velhos": _velhos}
-print(f"   execução: {len(_conectores)} conectores registrados, {len(_falhas)} com falha; {len(_velhos)} blocos com mais de 7 dias")
+stats["execucao"] = {"gerado_em": _exec["generated_at"], "conectores": len(_conectores), "falhas": _falhas, "sem_arquivo_local": _sem_arquivo, "blocos": _blocos, "blocos_velhos": _velhos}
+print(f"   execução: {len(_conectores)} conectores registrados, {len(_falhas)} com falha, {len(_sem_arquivo)} sem arquivo local; {len(_velhos)} blocos com mais de 7 dias")
 _readme = ROOT / "README.md"
 if _readme.exists() and "<!-- ATLAS:NUMEROS -->" in _readme.read_text(encoding="utf-8"):
     _t = _readme.read_text(encoding="utf-8")

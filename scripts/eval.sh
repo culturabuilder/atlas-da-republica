@@ -106,6 +106,34 @@ if naturais:
 f=ex.get("falhas") or []
 print(f"   {'!   ' if f else 'ok  '} conectores com falha no último update: {len(f)}{': '+', '.join(f[:6]) if f else ''}")
 PY
+  # Falhar uma vez é ruído; falhar dias seguidos é dado perdido todo dia. Programas e Transferências
+  # ficaram quatro dias sendo cortados por tempo e o eval só dizia "1 falha no último update", sem
+  # dizer que era a quarta seguida. Agora a conta é em dias desde o último sucesso.
+  $PY - <<'PYDIAS'
+import datetime, sys, yaml
+SEMANAIS = {"Posses", "Ocupantes pelo DOU", "Segundo escalão", "Dirigentes", "Agendas"}
+try: c = (yaml.safe_load(open("data/generated/_execucao.yaml", encoding="utf-8")) or {}).get("conectores") or {}
+except Exception as e:
+    print("   !    registro de execução ilegível:", str(e)[:60]); sys.exit(0)
+hoje = datetime.date.today(); ruim = 0; linhas = []
+for nome, v in sorted(c.items()):
+    ok = str(v.get("ok_em") or "")[:10]
+    if not ok: continue
+    try: dias = (hoje - datetime.date.fromisoformat(ok)).days
+    except ValueError: continue
+    # semanal tem direito a uma semana; o resto, a dois dias de folga
+    limite = 9 if nome in SEMANAIS else 2
+    if dias <= limite: continue
+    # conector que depende de arquivo baixado à mão não roda no runner: é lacuna conhecida, não alarme
+    if (v.get("status") or "") == "falta arquivo local":
+        linhas.append(("!", f"{nome}: {dias} dias sem sucesso, por falta de arquivo local (esperado no runner)")); continue
+    ruim += 1
+    linhas.append(("ERRO", f"{nome}: {dias} dias sem sucesso (último em {ok}, status {v.get('status')!r})"))
+for tag, txt in linhas: print(f"   {tag:<4} {txt}")
+if not ruim: print("   ok   nenhum conector acumulando dias sem sucesso")
+sys.exit(1 if ruim else 0)
+PYDIAS
+  [ $? -ne 0 ] && problemas=$((problemas+1))
 fi
 
 sec "build do site"

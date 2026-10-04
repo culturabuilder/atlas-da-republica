@@ -109,7 +109,12 @@ if _met.exists():
         _falhas = _ex.get("falhas") or []
         _nota = ("Cada bloco é lido por um conector próprio; a data abaixo é a da última leitura bem-sucedida daquela fonte. "
                  "Fontes com atualização mensal ou eleitoral aparecem com mais dias por natureza, não por falha.")
+        _sem_arq = _ex.get("sem_arquivo_local") or []
         _alerta = (f'<p style="color:var(--leg,#B8452E);font-size:13.5px;margin:0 0 8px"><b>Conectores com falha na última rodada:</b> {html.escape(", ".join(_falhas))}.</p>' if _falhas else "")
+        # Lacuna conhecida, não falha: estes leem arquivo que é baixado à mão (os zips do TSE) e por
+        # isso não rodam no servidor que atualiza o site todo dia. Dizer isso em cinza, e não em
+        # vermelho junto das falhas, é o que mantém o aviso vermelho significando alguma coisa.
+        _alerta += (f'<p style="color:var(--ink-3,#6b6b6b);font-size:13.5px;margin:0 0 8px"><b>À espera de arquivo baixado à mão:</b> {html.escape(", ".join(_sem_arq))}. Estes blocos só mudam quando alguém roda o conector com o arquivo da fonte em disco.</p>' if _sem_arq else "")
         _quadro = f'<div class="fresh"><h2>Quando cada bloco foi lido</h2><p>{_nota}</p>{_alerta}<div class="grid">{"".join(_its)}</div></div>'
     else:
         _quadro = ""
