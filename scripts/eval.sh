@@ -34,6 +34,11 @@ aviso(){ printf '   !    %s\n' "$1"; }
 sec "dependências"
 if $PY scripts/checar_dependencias.py >/dev/null 2>&1; then ok "todos os pacotes declarados e instalados"; else mal "faltam dependências (veja requirements.txt)"; fi
 
+sec "fonte de apoio derrubando conector"
+# O defeito que custou um dia do contador da arrecadação em 03/10/2026: fonte periférica, de outra
+# instituição, destruindo uma saída que já estava pronta. A checagem acha o padrão no código.
+if saida=$($PY scripts/checar_fontes.py 2>&1); then echo "$saida" | grep -E "^   (ok   nenhuma|!   )" ; else mal "fonte de apoio sem guarda em conector"; echo "$saida" | grep "ERRO" | sed 's/^/     /'; fi
+
 sec "repositório"
 git fetch -q origin 2>/dev/null
 atras=$(git rev-list --count HEAD..origin/main 2>/dev/null || echo 0)

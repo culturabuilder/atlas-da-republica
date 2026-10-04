@@ -47,6 +47,48 @@ def populacao():
 def juros():
     d = json.load(urllib.request.urlopen(urllib.request.Request(f"https://api.bcb.gov.br/dados/serie/bcdata.sgs.4607/dados?formato=json&dataInicial=01/01/{TODAY.year-2}&dataFinal={TODAY.strftime('%d/%m/%Y')}", headers=UA), timeout=120))
     return {f"{x['data'][6:10]}-{x['data'][3:5]}": float(x["valor"]) * 1e6 for x in d}
+_ANT = {}
+def anterior():
+    """O arquivo gerado na rodada passada. É a única cópia durável que existe no CI, porque o runner
+    começa limpo todo dia e build/ não é versionado — por isso o índice do IPCA e a população são
+    gravados na saída, não só no cache de disco."""
+    if "d" not in _ANT:
+        f = ROOT / "data" / "generated" / "arrecadacao.yaml"
+        try: _ANT["d"] = yaml.safe_load(f.read_text(encoding="utf-8")) or {}
+        except Exception: _ANT["d"] = {}
+    return _ANT["d"]
+
+
+def com_cache(nome, fn, do_anterior):
+    """Fonte de apoio que não pode derrubar o conector.
+
+    O IPCA e a população vêm do IBGE e servem para corrigir valor e dividir por habitante. Sem guarda,
+    uma indisponibilidade do SIDRA derrubava o conector inteiro e o número que abre a home ficava um dia
+    atrás — foi o que a série de juros do Banco Central fez em 03/10/2026. Índice de mês fechado e
+    população estimada não mudam de um dia para o outro: repetir a última cópia boa é correto.
+
+    Ordem de tentativa: a fonte, depois a cópia em disco (ajuda no uso local), depois o arquivo gerado
+    na rodada anterior (a que vale no CI). Devolve (valor, de_quando) — de_quando é None quando veio fresco."""
+    cp = CACHE / f"ibge-{nome}.json"
+    try:
+        v = fn()
+        try: cp.write_text(json.dumps(v), encoding="utf-8")
+        except Exception: pass
+        return v, None
+    except Exception as e:
+        print(f"{nome}: IBGE indisponível ({e})", file=sys.stderr)
+        if cp.exists():
+            quando = datetime.date.fromtimestamp(cp.stat().st_mtime).isoformat()
+            print(f"   usando a cópia local de {quando}", file=sys.stderr)
+            return json.loads(cp.read_text(encoding="utf-8")), quando
+        ant = do_anterior(anterior())
+        if ant:
+            quando = str(anterior().get("generated_at") or "desconhecida")
+            print(f"   usando o valor do arquivo de {quando}", file=sys.stderr)
+            return ant, quando
+        raise SystemExit(f"{nome}: IBGE indisponível e sem cópia anterior; arquivo anterior mantido")
+
+
 def juros_ou_anterior():
     """O juro vem de uma terceira fonte (Banco Central) e é informação lateral: o número que a home
     mostra é a arrecadação. Em 03/10/2026 o SGS caiu e levou o conector inteiro com ele, deixando o
@@ -71,7 +113,9 @@ def main():
     if TODAY.year not in years:
         # sem a receita do ano corrente não há o que calcular; dizer isso é melhor do que um KeyError
         sys.exit("receita do ano corrente indisponível no Portal da Transparência; arquivo anterior mantido")
-    idx = ipca(); pop, pop_year = populacao(); jur, jur_de = juros_ou_anterior()
+    idx, idx_de = com_cache("ipca", ipca, lambda ant: ant.get("ipca_index"))
+    (pop, pop_year), pop_de = com_cache("populacao", populacao, lambda ant: [ant.get("population"), ant.get("population_year")] if ant.get("population") else None)
+    jur, jur_de = juros_ou_anterior()
     cur = years[TODAY.year][0]; last_date = years[TODAY.year][2]
     last_month = last_date[:7]; complete_months = [m for m in cur if m < last_month]  # meses fechados
     ytd_months = complete_months + [last_month]
@@ -95,6 +139,10 @@ def main():
     j_ytd = sum(v for k, v in jur.items() if k.startswith(str(TODAY.year))); j_prev = sum(v for k, v in jur.items() if k.startswith(str(TODAY.year - 1)))
     out = {"generated_at": TODAY.isoformat(), "source_date": last_date, "year": TODAY.year, "months": {str(y): years[y][0] for y in years}, "kinds": years[TODAY.year][1], "prev_partial_month": {"month": pm, "through": cut, "value": prev_partial},
            "ipca_ref_month": max(k for k in idx if k <= last_month), "population": pop, "population_year": pop_year,
+           # só os meses que real() usa (ano corrente e os dois anteriores), para a rodada seguinte poder
+           # repetir se o SIDRA cair: a série inteira do IPCA são 400 meses e não cabe aqui
+           "ipca_index": {k: v for k, v in sorted(idx.items()) if k >= f"{TODAY.year - 2}-01"},
+           **({"ibge_repetido_de": {k: v for k, v in (("ipca", idx_de), ("populacao", pop_de)) if v}} if (idx_de or pop_de) else {}),
            "ytd": {"months": ytd_months, "nominal": ytd_now, "prev_nominal": ytd_prev, "prev_real": ytd_prev_real, "growth_nominal_pct": (ytd_now / ytd_prev - 1) * 100 if ytd_prev else None, "growth_real_pct": (ytd_now / ytd_prev_real - 1) * 100 if ytd_prev_real else None, "per_capita": ytd_now / pop},
            "rate_per_second": rate, "rate_months": last3, "anchor": {"date": last_date, "value": ytd_now},
            "full_years": {str(y): sum(years[y][0].values()) for y in years if y < TODAY.year},

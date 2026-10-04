@@ -84,9 +84,30 @@ def senado():
     return out, n
 
 def main():
-    cd, ncd = camara(); sf, nsf = senado()
-    out = {"generated_at": TODAY.isoformat(), "since": SINCE.isoformat(), "camara_votacoes": ncd, "senado_votacoes": nsf, "people": {**cd, **sf}}
-    (ROOT / "data" / "generated" / "atividade.yaml").write_text("# GERADO por etl/atividade.py. Não edite à mão.\n" + yaml.dump(out, allow_unicode=True, sort_keys=False, width=120), encoding="utf-8")
+    # Câmara e Senado são independentes: uma indisponibilidade na Câmara não é motivo para perder o
+    # Senado também, e era o que acontecia — a exceção subia e o conector morria com as duas metades.
+    # Quem falha é preenchido com o que o arquivo anterior tinha, e a origem fica registrada; se as
+    # duas falharem, não gravamos nada (o update.sh devolve o arquivo do último commit).
+    saida = ROOT / "data" / "generated" / "atividade.yaml"
+    try: ant = yaml.safe_load(saida.read_text(encoding="utf-8")) or {}
+    except Exception: ant = {}
+    def casa(nome, fn, prefixo):
+        try: return fn() + (None,)
+        except Exception as e:
+            print(f"{nome} falhou: {e}", file=sys.stderr)
+            velho = {k: v for k, v in (ant.get("people") or {}).items() if k.startswith(prefixo)}
+            if not velho: return None, None, "sem dado"
+            print(f"   repetindo {len(velho)} de {nome} do arquivo de {ant.get('generated_at')}", file=sys.stderr)
+            return velho, ant.get(f"{nome.lower()}_votacoes"), str(ant.get("generated_at") or "desconhecida")
+    cd, ncd, cd_de = casa("Camara", camara, "br-p-cd-")
+    sf, nsf, sf_de = casa("Senado", senado, "br-p-sf-")
+    if cd is None and sf is None:
+        raise SystemExit("Câmara e Senado indisponíveis e sem arquivo anterior; nada a gravar")
+    cd = cd or {}; sf = sf or {}
+    out = {"generated_at": TODAY.isoformat(), "since": SINCE.isoformat(), "camara_votacoes": ncd, "senado_votacoes": nsf,
+           **({"repetido_de": {k: v for k, v in (("camara", cd_de), ("senado", sf_de)) if v}} if (cd_de or sf_de) else {}),
+           "people": {**cd, **sf}}
+    saida.write_text("# GERADO por etl/atividade.py. Não edite à mão.\n" + yaml.dump(out, allow_unicode=True, sort_keys=False, width=120), encoding="utf-8")
     print(f"câmara: {ncd} votações nominais em plenário no ano legislativo, {len(cd)} deputados; senado: {nsf} votações, {len(sf)} senadores")
     top = sorted((v for v in cd.values() if v.get("cota")), key=lambda v: -v["cota"]["total"])[:3]
     for v in top: print("  cota:", v["cota"]["total"], v["cota"]["top"][:2])
