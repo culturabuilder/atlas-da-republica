@@ -19,6 +19,27 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m venv .venv && .venv/bin/pip install pyyaml pillow anthropic openpyxl
+      # Programas e Transferências leem os CSVs mensais de despesa da CGU: dois exercícios, 22 arquivos.
+      # O WAF da CGU bloqueia rajada, então há 20s de espera entre downloads — 440s só dormindo, num
+      # limite de 900s por conector. Em setembro eram 21 meses e cabia raspando; em outubro virou 22 e
+      # os dois passaram a ser cortados todo dia (último sucesso em 30/09/2026). Ler os 22 meses custa
+      # 11 segundos: o gasto é todo download. Com o cache, mês de exercício fechado é baixado uma vez
+      # na vida e o dia a dia baixa só o mês corrente.
+      - name: Cache dos arquivos mensais da CGU e do IBGE
+        uses: actions/cache@v4
+        with:
+          path: |
+            build/cache-programas
+            build/cache-transferencias
+            build/cache-arrecadacao
+            build/cache-atividade
+          # Chave única por rodada de propósito: com chave fixa o actions/cache não regrava no acerto, e
+          # o mês corrente — o único que muda — nunca entraria no cache. restore-keys pega a rodada
+          # anterior. O GitHub descarta as entradas mais antigas sozinho quando o repositório chega ao
+          # teto de 10 GB; cada entrada aqui tem uns 250 MB.
+          key: cgu-mensais-${{ github.run_id }}
+          restore-keys: |
+            cgu-mensais-
       - run: scripts/update.sh --fast
         env:
           ATLAS_LIMITE: "900"

@@ -24,7 +24,7 @@ Uso: .venv/bin/python etl/programas.py [--amostra N]
      --amostra N processa só os N meses mais recentes de cada ano e grava em
      build/cache-programas/programas-amostra.yaml, sem tocar em data/generated/.
 """
-import csv, io, json, re, sys, time, zipfile, pathlib, datetime, unicodedata, collections, urllib.request
+import csv, io, json, re, sys, time, zipfile, pathlib, datetime, unicodedata, collections, urllib.error, urllib.request
 import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -78,6 +78,12 @@ def fetch(ym, max_age_h=24 * 7):
             data = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=900).read()
             if len(data) < 1000: raise IOError(f"arquivo curto ({len(data)} bytes)")
             p.write_bytes(data); time.sleep(THROTTLE); return p
+        except urllib.error.HTTPError as e:
+            # 404 é "a CGU ainda não publicou este mês", não bloqueio de rajada: insistir custa 300s
+            # de espera (30+60+90+120) por mês inexistente, e o conector tem limite de tempo.
+            if e.code == 404:
+                print(f"  {name}: ainda não publicado (404)", file=sys.stderr); return None
+            print(f"  falhou ({e}); tentativa {i+1}/5", file=sys.stderr); time.sleep(30 * (i + 1))
         except Exception as e:
             print(f"  falhou ({e}); tentativa {i+1}/5", file=sys.stderr); time.sleep(30 * (i + 1))
     return None

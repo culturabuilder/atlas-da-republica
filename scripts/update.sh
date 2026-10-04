@@ -133,8 +133,11 @@ run "Cartão" $PY etl/cartao.py
 run "Subsídios" $PY etl/subsidios.py
 run "Remuneração" $PY etl/remuneracao.py
 run "Orçamento" $PY etl/orcamento.py
-run "Programas" $PY etl/programas.py
-run "Transferências" $PY etl/transferencias.py
+# 22 arquivos mensais da CGU com 20s de espera entre downloads: 440s só de throttle, mais o
+# download. Cabia em 900s com 21 meses e passou a ser cortado com 22. O cache do workflow
+# resolve no dia a dia; o limite maior é para o dia em que o cache está frio.
+LIM=2400 run "Programas" $PY etl/programas.py
+LIM=2400 run "Transferências" $PY etl/transferencias.py
 INICIO=$(date +%s)  # build e site ficam fora do orçamento: sem eles o job não publica nada
 LIM=1800 run "Build (2/2)" $PY scripts/build_graph.py
 LIM=1800 run "Site" $PY scripts/build_site.py --base "${SITE_BASE:-https://atlasdarepublica.org}" --prefix "${SITE_PREFIX:-}" --cname "${SITE_CNAME:-}"
