@@ -1,5 +1,5 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-10-04'
+generated_at: '2026-10-05'
 mes: '202608'
 mes_senado: '202609'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
@@ -47,10 +47,10 @@ resumo:
     total: 85
     por_motivo:
       ausente na folha: 24
-      órgão fora do SIAPE (empresa publica com folha própria): 15
+      órgão fora do SIAPE (empresa publica com folha própria): 14
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
       só há homônimo por primeiro+último sobrenome fora do órgão (...): 12
-      no cadastro do SIAPE mas sem linha de remuneração no mês: 11
+      no cadastro do SIAPE mas sem linha de remuneração no mês: 12
       órgão fora do SIAPE (sociedade economia mista com folha própria): 6
       vários servidores compatíveis no órgão (...) sem desempate: 2
       a entidade não aparece como órgão na folha do SIAPE (folha própria): 1
@@ -16600,11 +16600,6 @@ nao_encontrados:
   cargo: Ministro de Estado da Saúde
   setor: executivo
   motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
-- id: br-p-wp-aloizio-mercadante
-  nome: Aloizio Mercadante
-  cargo: Presidente do BNDES
-  setor: executivo
-  motivo: órgão fora do SIAPE (empresa publica com folha própria)
 - id: br-p-ana-paula-fioreza
   nome: Ana Paula Fioreza
   cargo: Diretor-Presidente da ANA
@@ -16625,6 +16620,11 @@ nao_encontrados:
   cargo: Presidente da Telebras
   setor: executivo
   motivo: órgão fora do SIAPE (sociedade economia mista com folha própria)
+- id: br-p-wp-antonia-pellegrino
+  nome: Antonia Pellegrino
+  cargo: Diretor-Presidente da EBC
+  setor: executivo
+  motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
 - id: br-p-antonio-fernando-souza-oliveira
   nome: Antônio Fernando Souza Oliveira
   cargo: Diretor-Geral da Polícia Rodoviária Federal
