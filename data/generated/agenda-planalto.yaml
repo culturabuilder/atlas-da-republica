@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-05'
+generated_at: '2026-10-06'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-08'
+janela_inicio: '2026-07-09'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,11 +11,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 254
-    dias_com_agenda: 61
+    compromissos_90d: 250
+    dias_com_agenda: 60
     por_tipo:
-      evento: 88
-      audiencia: 77
+      evento: 87
+      audiencia: 74
       viagem: 71
       reuniao: 14
       outro: 4
@@ -36,21 +36,21 @@ people:
       n: 2
     - nome: Oswaldo Malatesta Neto (Chefe do Gabinete Pessoal do Presidente da República)
       n: 2
-    - nome: Rebecca Forattini Lemos Igreja (Secretária-Geral da Faculdade Latino-americana de Ciências Sociais (FL)
-      n: 1
     - nome: André de Paula (Ministro da Agricultura e Pecuária)
+      n: 1
+    - nome: José Guimarães (Ministro da Secretaria de Relações Institucionais da Presidência da Re)
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 70
+      n: 67
     - nome: Palácio da Alvorada
       n: 41
     - nome: Base Aérea de Brasília
       n: 31
-    - nome: Palácio Itamaraty
-      n: 5
     - nome: Esplanada dos Ministérios, Brasília
       n: 5
+    - nome: Palácio Itamaraty
+      n: 4
     - nome: Aeroporto Internacional de Macapá
       n: 4
     - nome: Aeroporto de Congonhas
@@ -115,20 +115,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-08:
-      - hora: 09:30
-        titulo: Vice-Presidente da República Geraldo Alckmin
-        local: Palácio do Planalto
-      - hora: '12:00'
-        titulo: Cerimônia de entrega das Cartas Credenciais
-        local: Palácio Itamaraty
-      - hora: '15:00'
-        titulo: Secretária-Geral da Faculdade Latino-americana de Ciências Sociais (FLACSO), Rebecca Forattini Lemos Igreja
-        local: Palácio do Planalto
-      - hora: '16:00'
-        titulo: Ministro da Justiça e Segurança Pública, Wellington César Lima e Silva, e Secretário Nacional do Consumidor,
-          Ricardo Morishita Wada
-        local: Palácio do Planalto
       presidente/2026-07-09:
       - hora: '11:00'
         titulo: Ministro das Relações Exteriores, Mauro Vieira
@@ -1001,6 +987,7 @@ people:
       presidente/2026-10-03: []
       presidente/2026-10-04: []
       presidente/2026-10-05: []
+      presidente/2026-10-06: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -1008,19 +995,17 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 78
-    dias_com_agenda: 47
+    compromissos_90d: 76
+    dias_com_agenda: 46
     por_tipo:
       evento: 32
       viagem: 21
-      audiencia: 14
+      audiencia: 12
       outro: 6
       reuniao: 5
     entidades_top:
     - nome: Luiz Inácio Lula da Silva (Presidente da República)
-      n: 6
-    - nome: Laudemir André Müller (Presidente da ApexBrasil)
-      n: 1
+      n: 5
     - nome: Luis Felipe Salomão (Ministro do Superior Tribunal de Justiça - STJ)
       n: 1
     - nome: Ricardo Alban (Presidente da Confederação Nacional da Indústria - CNI)
@@ -1028,14 +1013,14 @@ people:
     - nome: Sérgio Leite (Presidente da Federação dos Trabalhadores nas Indústrias Químicas e Fa)
       n: 1
     locais_top:
-    - nome: Palácio do Planalto
-      n: 18
     - nome: Brasília/DF
       n: 18
+    - nome: Palácio do Planalto
+      n: 17
     - nome: São Paulo/SP
       n: 14
     - nome: Palácio do Planalto, Anexo II
-      n: 10
+      n: 9
     - nome: Palácio da Alvorada
       n: 4
     - nome: São José dos Campos/SP
@@ -1101,14 +1086,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-08:
-      - hora: 09:30
-        titulo: Luiz Inácio Lula da Silva, Presidente da República
-        local: Palácio do Planalto
-      - hora: '13:00'
-        titulo: Laudemir André Müller, Presidente da ApexBrasil
-        local: Palácio do Planalto, Anexo II
-      vice/2026-07-08-b1: []
       vice/2026-07-09:
       - hora: '14:30'
         titulo: Capela Musical Pontifícia Sistina
@@ -1530,6 +1507,8 @@ people:
       vice/2026-10-04-b1: []
       vice/2026-10-05: []
       vice/2026-10-05-b1: []
+      vice/2026-10-06: []
+      vice/2026-10-06-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 254 compromissos em 61 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 78 compromissos em 47 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 250 compromissos em 60 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 76 compromissos em 46 dias (0 dias não lidos)'
