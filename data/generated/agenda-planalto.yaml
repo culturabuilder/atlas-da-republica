@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-06'
+generated_at: '2026-10-07'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-09'
+janela_inicio: '2026-07-10'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,27 +11,27 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 250
+    compromissos_90d: 249
     dias_com_agenda: 60
     por_tipo:
       evento: 87
-      audiencia: 74
+      audiencia: 73
       viagem: 71
       reuniao: 14
       outro: 4
     entidades_top:
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
-      n: 22
-    - nome: Miriam Belchior (Ministra da Casa Civil)
-      n: 12
+      n: 21
     - nome: Oswaldo Malatesta (Chefe do Gabinete Adjunto de Agenda do Gabinete Pessoal do Presidente )
-      n: 12
+      n: 13
+    - nome: Miriam Belchior (Ministra da Casa Civil)
+      n: 11
     - nome: Mauro Vieira (Ministro das Relações Exteriores)
-      n: 4
+      n: 3
     - nome: Dario Durigan (Ministro da Fazenda)
       n: 3
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
-      n: 2
+      n: 3
     - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
       n: 2
     - nome: Oswaldo Malatesta Neto (Chefe do Gabinete Pessoal do Presidente da República)
@@ -42,9 +42,9 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 67
+      n: 65
     - nome: Palácio da Alvorada
-      n: 41
+      n: 42
     - nome: Base Aérea de Brasília
       n: 31
     - nome: Esplanada dos Ministérios, Brasília
@@ -61,8 +61,24 @@ people:
       n: 3
     - nome: Centro Industrial Nuclear de Aramar, Iperó (SP)
       n: 3
-    ultimo: '2026-10-01'
+    ultimo: '2026-10-07'
     recentes:
+    - data: '2026-10-07'
+      hora: '16:00'
+      titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Oswaldo Malatesta
+        entidade: Chefe do Gabinete Pessoal do Presidente da República
+    - data: '2026-10-07'
+      hora: 09:00
+      titulo: Ministro da Secretaria de Comunicação Social da Presidência da República, Sidônio Palmeira
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Sidônio Palmeira
+        entidade: Ministro da Secretaria de Comunicação Social da Presidência da República
     - data: '2026-10-01'
       hora: '18:00'
       titulo: Ministro da Secretaria de Comunicação Social, Sidônio Palmeira, e Secretário de Imprensa da Secretaria de Comunicação
@@ -101,30 +117,8 @@ people:
       tipo: evento
       local: Rua Boaventura da Silva – Umarizal, Belém
       participantes: []
-    - data: '2026-09-28'
-      hora: '15:15'
-      titulo: Chegada a Belém
-      tipo: viagem
-      local: Base Aérea de Belém
-      participantes: []
-    - data: '2026-09-28'
-      hora: '13:00'
-      titulo: Partida para Belém
-      tipo: viagem
-      local: Base Aérea de Brasília
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-09:
-      - hora: '11:00'
-        titulo: Ministro das Relações Exteriores, Mauro Vieira
-        local: Palácio da Alvorada
-      - hora: '15:00'
-        titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
-        local: Palácio do Planalto
-      - hora: '16:00'
-        titulo: Ministra da Casa Civil, Miriam Belchior
-        local: Palácio do Planalto
       presidente/2026-07-10:
       - hora: '15:00'
         titulo: Ministro das Relações Exteriores, Mauro Vieira, Ministro do Desenvolvimento, Indústria, Comércio e Serviços,
@@ -988,6 +982,13 @@ people:
       presidente/2026-10-04: []
       presidente/2026-10-05: []
       presidente/2026-10-06: []
+      presidente/2026-10-07:
+      - hora: 09:00
+        titulo: Ministro da Secretaria de Comunicação Social da Presidência da República, Sidônio Palmeira
+        local: Palácio da Alvorada
+      - hora: '16:00'
+        titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
+        local: Palácio da Alvorada
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -995,14 +996,14 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 76
-    dias_com_agenda: 46
+    compromissos_90d: 75
+    dias_com_agenda: 45
     por_tipo:
       evento: 32
       viagem: 21
       audiencia: 12
-      outro: 6
       reuniao: 5
+      outro: 5
     entidades_top:
     - nome: Luiz Inácio Lula da Silva (Presidente da República)
       n: 5
@@ -1016,7 +1017,7 @@ people:
     - nome: Brasília/DF
       n: 18
     - nome: Palácio do Planalto
-      n: 17
+      n: 16
     - nome: São Paulo/SP
       n: 14
     - nome: Palácio do Planalto, Anexo II
@@ -1086,11 +1087,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-09:
-      - hora: '14:30'
-        titulo: Capela Musical Pontifícia Sistina
-        local: Palácio do Planalto
-      vice/2026-07-09-b1: []
       vice/2026-07-10:
       - hora: '10:00'
         titulo: Luiz Inácio Lula da Silva, Presidente da República
@@ -1509,6 +1505,8 @@ people:
       vice/2026-10-05-b1: []
       vice/2026-10-06: []
       vice/2026-10-06-b1: []
+      vice/2026-10-07: []
+      vice/2026-10-07-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 250 compromissos em 60 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 76 compromissos em 46 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 249 compromissos em 60 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 75 compromissos em 45 dias (0 dias não lidos)'

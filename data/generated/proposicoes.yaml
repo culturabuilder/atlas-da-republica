@@ -1,12 +1,12 @@
 # GERADO por etl/proposicoes.py. Não edite à mão.
-generated_at: '2026-10-06'
+generated_at: '2026-10-07'
 since: '2026-02-02'
-duracao_s: 385
+duracao_s: 304
 resumo:
   camara:
     pessoas: 513
     com_proposicao: 507
-    proposicoes_distintas: 23955
+    proposicoes_distintas: 23958
     virou_norma: 6
     designacoes_relator: 6739
     designacoes_casadas: 6737
@@ -18,15 +18,15 @@ resumo:
     relatorias_fonte: eventos "Designação de Relator(a)" nas tramitações do ano, casados por nome parlamentar (proposições
       de qualquer ano)
   senado:
-    pessoas: 84
+    pessoas: 85
     erros: 0
     com_proposicao: 83
-    proposicoes_distintas: 2150
+    proposicoes_distintas: 2155
     virou_norma: 33
-    mediana_apresentadas: 33.0
-    mediana_projetos: 8.0
-    mediana_requerimentos: 24.0
-    mediana_relatorias: 15.0
+    mediana_apresentadas: 33
+    mediana_projetos: 8
+    mediana_requerimentos: 24
+    mediana_relatorias: 15
     fonte: legis.senado.leg.br/dadosabertos/processo (por autor) e /processo/relatoria (por relator)
     relatorias_fonte: relatorias designadas no ano legislativo (inclui requerimentos relatados na Comissão Diretora)
 people:
@@ -4315,10 +4315,10 @@ people:
     requerimentos: 19
     emendas: 2
     outros: 4
-    pareceres_como_relator: 6
+    pareceres_como_relator: 7
     por_tipo:
       REQ: 16
-      PRL: 5
+      PRL: 6
       PEC: 4
       REC: 4
       RPD: 3
@@ -6908,7 +6908,7 @@ people:
     requerimentos: 510
     emendas: 42
     outros: 14
-    pareceres_como_relator: 364
+    pareceres_como_relator: 365
     por_tipo:
       REQ: 378
       PRL: 192
@@ -6928,6 +6928,7 @@ people:
       CVO: 1
       DTQ: 1
       PES: 1
+      PRLE: 1
       RCP: 1
       REC: 1
       VTS: 1
@@ -9814,9 +9815,9 @@ people:
     requerimentos: 12
     emendas: 5
     outros: 1
-    pareceres_como_relator: 83
+    pareceres_como_relator: 84
     por_tipo:
-      PRL: 56
+      PRL: 57
       SBT: 9
       EMR: 8
       RDF: 6
@@ -11212,9 +11213,9 @@ people:
       RCP: 1
       REC: 1
     temas:
+    - Direitos Humanos e Minorias
     - Defesa e Segurança
     - Arte, Cultura e Religião
-    - Direitos Humanos e Minorias
     ultimas:
     - id: 2647299
       sigla: PL
@@ -14711,15 +14712,15 @@ people:
   br-p-cd-220604:
     house: camara
     window: ano
-    apresentadas: 118
-    como_primeiro_autor: 111
-    projetos: 96
+    apresentadas: 121
+    como_primeiro_autor: 114
+    projetos: 99
     requerimentos: 11
     emendas: 0
     outros: 11
     pareceres_como_relator: 28
     por_tipo:
-      PL: 90
+      PL: 93
       PRL: 20
       INC: 11
       REQ: 7
@@ -14735,6 +14736,39 @@ people:
     - Trabalho e Emprego
     - Administração Pública
     ultimas:
+    - id: 2647310
+      sigla: PL
+      numero: 5529
+      ano: 2026
+      ementa: Institui a Lei Rede de Proteção do Amanhã, para assegurar o planejamento antecipado e a sucessão programada
+        do apoio às pessoas com deficiência que necessitem…
+      situacao: Apresentação de Proposição
+      orgao: null
+      data: '2026-10-06'
+      apresentada: '2026-10-06'
+      url: https://www.camara.leg.br/propostas-legislativas/2647310
+    - id: 2647309
+      sigla: PL
+      numero: 5528
+      ano: 2026
+      ementa: Estabelece diretrizes nacionais para a Alta Segura e Assistida e para a transição coordenada do cuidado de pacientes
+        com redução temporária ou permanente de au…
+      situacao: Apresentação de Proposição
+      orgao: null
+      data: '2026-10-06'
+      apresentada: '2026-10-06'
+      url: https://www.camara.leg.br/propostas-legislativas/2647309
+    - id: 2647308
+      sigla: PL
+      numero: 5527
+      ano: 2026
+      ementa: Institui o Programa Cuidado Psicossocial Familiar, estabelece o acompanhamento psicossocial periódico das famílias
+        beneficiárias do Programa Bolsa Família como…
+      situacao: Apresentação de Proposição
+      orgao: null
+      data: '2026-10-06'
+      apresentada: '2026-10-06'
+      url: https://www.camara.leg.br/propostas-legislativas/2647308
     - id: 2647168
       sigla: PL
       numero: 5480
@@ -14757,39 +14791,6 @@ people:
       data: '2026-09-28'
       apresentada: '2026-09-28'
       url: https://www.camara.leg.br/propostas-legislativas/2647164
-    - id: 2642096
-      sigla: PL
-      numero: 4910
-      ano: 2026
-      ementa: Dispõe sobre a proteção do ponto de trabalho do vendedor ambulante tradicional e estabelece garantias para sua
-        remoção ou realocação em razão de interesse públ…
-      situacao: Aguardando Autorização do Despacho
-      orgao: SECAP(SGM)
-      data: '2026-08-05'
-      apresentada: '2026-08-05'
-      url: https://www.camara.leg.br/propostas-legislativas/2642096
-    - id: 2641772
-      sigla: PL
-      numero: 4853
-      ano: 2026
-      ementa: Revoga a Lei nº 14.790, de 29 de dezembro de 2023, proíbe a exploração, a operação, a comercialização, a publicidade
-        e a intermediação de apostas de quota fixa…
-      situacao: Aguardando Autorização do Despacho
-      orgao: SECAP(SGM)
-      data: '2026-07-31'
-      apresentada: '2026-07-31'
-      url: https://www.camara.leg.br/propostas-legislativas/2641772
-    - id: 2641771
-      sigla: PL
-      numero: 4852
-      ano: 2026
-      ementa: Institui a Lei Educação sem Exaustão – Lei Nacional de Prevenção da Fadiga e Proteção à Saúde dos Profissionais
-        e Trabalhadores da Educação; altera as Leis nº…
-      situacao: Aguardando Autorização do Despacho
-      orgao: SECAP(SGM)
-      data: '2026-07-31'
-      apresentada: '2026-07-31'
-      url: https://www.camara.leg.br/propostas-legislativas/2641771
     relatorias: 61
     relatorias_projetos: 52
     relatorias_por_orgao:
@@ -16048,8 +16049,8 @@ people:
       PEC: 1
     temas:
     - Direitos Humanos e Minorias
-    - Saúde
     - Esporte e Lazer
+    - Saúde
     ultimas:
     - id: 2647274
       sigla: PL
@@ -29778,8 +29779,8 @@ people:
       EMR: 1
       RCP: 1
     temas:
-    - Defesa e Segurança
     - Direito Penal e Processual Penal
+    - Defesa e Segurança
     - Direitos Humanos e Minorias
     ultimas:
     - id: 2647208
@@ -30036,8 +30037,8 @@ people:
       SBR: 1
     temas:
     - Finanças Públicas e Orçamento
+    - Esporte e Lazer
     - Saúde
-    - Direitos Humanos e Minorias
     ultimas:
     - id: 2647289
       sigla: PL
@@ -43459,16 +43460,16 @@ people:
   br-p-sf-6358:
     house: senado
     window: ano
-    apresentadas: 28
-    como_primeiro_autor: 22
+    apresentadas: 29
+    como_primeiro_autor: 23
     projetos: 13
-    requerimentos: 15
+    requerimentos: 16
     emendas: 0
     outros: 0
     pareceres_como_relator: null
     por_tipo:
       PL: 11
-      REQ: 9
+      REQ: 10
       RQS: 5
       PEC: 2
       R.S: 1
@@ -44110,9 +44111,9 @@ people:
       ano: 2026
       ementa: Altera a Lei nº 9.008, de 21 de março de 1995, para incluir representante do Ministério Público do Trabalho
         na composição do Conselho Federal Gestor do Fundo d…
-      situacao: Pronta para a pauta na comissão
+      situacao: Aguardando designação do relator
       orgao: SF
-      data: '2026-09-02'
+      data: '2026-10-06'
       apresentada: '2026-03-17'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/173084
@@ -44884,9 +44885,9 @@ people:
       numero: 339
       ano: 2026
       ementa: Requer licença saúde no dia 05/10/2026.
-      situacao: Aguardando despacho
+      situacao: Deferida
       orgao: CDIR
-      data: '2026-10-05'
+      data: '2026-10-06'
       apresentada: '2026-10-05'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175912
@@ -45467,9 +45468,9 @@ people:
       ano: 2026
       ementa: Altera a Lei nº 8.069, de 13 de julho de 1990 (Estatuto da Criança e do Adolescente), para punir a conduta de
         identificar, divulgar ou mencionar publicamente a…
-      situacao: Matéria com a relatoria
+      situacao: Aguardando designação do relator
       orgao: SF
-      data: '2026-08-18'
+      data: '2026-10-06'
       apresentada: '2026-03-11'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/173024
@@ -46792,9 +46793,9 @@ people:
       ano: 2026
       ementa: Requer licença para desempenhar missão oficial, a fim de participar do Fórum Parlamentar dos BRICS, em Nova
         Déli, Índia
-      situacao: Aguardando despacho
+      situacao: Aprovada
       orgao: CDIR
-      data: '2026-09-22'
+      data: '2026-10-06'
       apresentada: '2026-09-22'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175830
@@ -47067,16 +47068,16 @@ people:
   br-p-sf-5936:
     house: senado
     window: ano
-    apresentadas: 79
-    como_primeiro_autor: 26
+    apresentadas: 80
+    como_primeiro_autor: 27
     projetos: 9
-    requerimentos: 68
+    requerimentos: 69
     emendas: 0
     outros: 2
     pareceres_como_relator: null
     por_tipo:
       RQS: 42
-      REQ: 25
+      REQ: 26
       PEC: 6
       PCE: 1
       PDL: 1
@@ -47846,15 +47847,15 @@ people:
   br-p-sf-5207:
     house: senado
     window: ano
-    apresentadas: 12
-    como_primeiro_autor: 11
+    apresentadas: 13
+    como_primeiro_autor: 12
     projetos: 2
-    requerimentos: 10
+    requerimentos: 11
     emendas: 0
     outros: 0
     pareceres_como_relator: null
     por_tipo:
-      REQ: 10
+      REQ: 11
       PEC: 1
       PRS: 1
     temas: []
@@ -47882,6 +47883,17 @@ people:
       apresentada: '2026-05-20'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/174242
+    - id: 9112595
+      sigla: REQ
+      numero: 347
+      ano: 2026
+      ementa: Requerimento de licença
+      situacao: Aguardando despacho
+      orgao: CDIR
+      data: '2026-10-07'
+      apresentada: '2026-10-07'
+      norma: null
+      url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175923
     - id: 9105969
       sigla: REQ
       numero: 328
@@ -47905,18 +47917,6 @@ people:
       apresentada: '2026-08-13'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175503
-    - id: 9087032
-      sigla: REQ
-      numero: 290
-      ano: 2026
-      ementa: Requer licença para desempenhar missão política ou cultural de interesse parlamentar, nos termos dos arts. 13
-        e 215, I, “b”, do Regimento Interno do Senado Fed…
-      situacao: Deferida
-      orgao: CDIR
-      data: '2026-07-24'
-      apresentada: '2026-07-17'
-      norma: null
-      url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175225
     relatorias: 3
     relatorias_projetos: 1
     relatorias_por_colegiado:
@@ -49387,15 +49387,15 @@ people:
   br-p-sf-5942:
     house: senado
     window: ano
-    apresentadas: 28
-    como_primeiro_autor: 15
+    apresentadas: 29
+    como_primeiro_autor: 16
     projetos: 10
-    requerimentos: 17
+    requerimentos: 18
     emendas: 0
     outros: 1
     pareceres_como_relator: null
     por_tipo:
-      REQ: 14
+      REQ: 15
       PEC: 8
       PL: 2
       RQS: 2
@@ -49471,15 +49471,15 @@ people:
   br-p-sf-5422:
     house: senado
     window: ano
-    apresentadas: 50
-    como_primeiro_autor: 20
+    apresentadas: 51
+    como_primeiro_autor: 21
     projetos: 7
-    requerimentos: 41
+    requerimentos: 42
     emendas: 0
     outros: 2
     pareceres_como_relator: null
     por_tipo:
-      REQ: 35
+      REQ: 36
       PEC: 5
       RQS: 5
       PL: 2
@@ -49976,6 +49976,23 @@ people:
       CDH: 14
       CAS: 12
       CE: 9
+    virou_norma: 0
+  br-p-sf-5977:
+    house: senado
+    window: ano
+    apresentadas: 0
+    como_primeiro_autor: 0
+    projetos: 0
+    requerimentos: 0
+    emendas: 0
+    outros: 0
+    pareceres_como_relator: null
+    por_tipo: {}
+    temas: []
+    ultimas: []
+    relatorias: 0
+    relatorias_projetos: 0
+    relatorias_por_colegiado: {}
     virou_norma: 0
   br-p-sf-5257:
     house: senado
