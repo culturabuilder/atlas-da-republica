@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-10-07'
+generated_at: '2026-10-08'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,7 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-07-06': 80
+      '2026-07-06': 64
       '2026-07-13': 131
       '2026-07-20': 187
       '2026-07-27': 216
@@ -29,9 +29,9 @@ temas:
       '2026-09-14': 550
       '2026-09-21': 660
       '2026-09-28': 2501
-      '2026-10-05': 1775
-    total_90d: 8350
-    last7: 3916
+      '2026-10-05': 2247
+    total_90d: 8806
+    last7: 4146
     peak_week: 2501
   processes:
   - casa: camara
@@ -98,7 +98,7 @@ temas:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-07-06': 284
+      '2026-07-06': 235
       '2026-07-13': 384
       '2026-07-20': 444
       '2026-07-27': 450
@@ -111,9 +111,9 @@ temas:
       '2026-09-14': 9902
       '2026-09-21': 4671
       '2026-09-28': 5005
-      '2026-10-05': 1659
-    total_90d: 44379
-    last7: 5939
+      '2026-10-05': 2224
+    total_90d: 44895
+    last7: 6042
     peak_week: 10630
   processes:
   - casa: camara
@@ -128,7 +128,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
     requested: RCP 1/2026 (camara)
   state: parado
-  stalled_days: 79
+  stalled_days: 80
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -140,37 +140,38 @@ temas:
   - fim da escala
   - jornada 6x1
   curated: null
-  news_hits: 24
+  news_hits: 36
   news_weekly:
     '2026-09-14': 3
     '2026-09-28': 3
-    '2026-10-05': 18
+    '2026-10-05': 30
   news_recent:
-  - id: 6610cb5688ec750f
-    title: Confira a agenda dos presidenciáveis nesta quarta-feira (7)
-    date: '2026-10-07'
-    publication: Agência Brasil
-  - id: 9350708ea875bde8
-    title: 'Em novo vídeo, Lula cobra Flávio Bolsonaro sobre escala 6x1: ''Quero saber como vai votar'''
-    date: '2026-10-07'
+  - id: e270d4bdc9e2b12a
+    title: 'Vídeo: Davi diz que calendário especial para PEC do Fim da 6x1 depende de requerimento'
+    date: '2026-10-08'
+    publication: Agência Senado
+  - id: 322d846ea2ec153b
+    title: 'Vídeo: Governo e oposição divergem sobre calendário especial para PEC do Fim da Escala 6x1'
+    date: '2026-10-08'
+    publication: Agência Senado
+  - id: 7ffc9d1554094f2b
+    title: Cleitinho diverge da campanha de Flávio e defende fim da escala 6x1 ao declarar apoio ao candidato do PL no 2º
+      turno
+    date: '2026-10-08'
     publication: g1 Política
-  - id: c40d3ff7e2b0a8fe
-    title: Sete senadores tiveram mais votos que na eleição anterior, mas não conseguiram novo mandato
-    date: '2026-10-07'
+  - id: 99538418ad12b80c
+    title: Podemos declara apoio a Flávio Bolsonaro no segundo turno
+    date: '2026-10-08'
     publication: g1 Política
-  - id: a445c788617bf646
-    title: 'ANÁLISE: Escala 6x1 vira tema estratégico para Lula e Flávio Bolsonaro no 2º turno'
-    date: '2026-10-07'
-    publication: g1 Política
-  - id: dc8f457bfe33b913
-    title: Senado retoma nesta quarta discussão sobre PEC do fim da escala 6x1
-    date: '2026-10-07'
-    publication: g1 Política
+  - id: aeb587448090b3d0
+    title: Alcolumbre sinaliza votação da PEC do fim da escala 6×1 na próxima semana
+    date: '2026-10-08'
+    publication: JOTA
   wikipedia:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-07-06': 82
+      '2026-07-06': 67
       '2026-07-13': 137
       '2026-07-20': 161
       '2026-07-27': 195
@@ -183,10 +184,10 @@ temas:
       '2026-09-14': 677
       '2026-09-21': 1134
       '2026-09-28': 1898
-      '2026-10-05': 1598
-    total_90d: 8638
-    last7: 3058
-    peak_week: 1898
+      '2026-10-05': 2053
+    total_90d: 9078
+    last7: 3331
+    peak_week: 2053
   processes:
   - casa: camara
     id: PEC 8/2025
@@ -211,7 +212,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2233802
     requested: PEC 221/2019 (camara)
   state: parado
-  stalled_days: 132
+  stalled_days: 133
   silence_after_peak: false
   silent_and_stalled: false
 - id: isencao-ir
@@ -236,7 +237,7 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-07-06': 16
+      '2026-07-06': 15
       '2026-07-13': 28
       '2026-07-20': 41
       '2026-07-27': 34
@@ -249,9 +250,9 @@ temas:
       '2026-09-14': 71
       '2026-09-21': 72
       '2026-09-28': 34
-      '2026-10-05': 23
-    total_90d: 700
-    last7: 45
+      '2026-10-05': 25
+    total_90d: 701
+    last7: 42
     peak_week: 121
   processes:
   - casa: camara
@@ -289,12 +290,16 @@ temas:
   - pl da dosimetria
   - pl da anistia
   curated: null
-  news_hits: 4
+  news_hits: 5
   news_weekly:
     '2026-09-14': 1
     '2026-09-28': 1
-    '2026-10-05': 2
+    '2026-10-05': 3
   news_recent:
+  - id: fafcb7f77088ebaa
+    title: Nunes Marques deve levar revisão da pena de Bolsonaro para plenário depois do 2º turno
+    date: '2026-10-07'
+    publication: JOTA
   - id: c99baa800589d7f3
     title: 'Débora Rodrigues: relembre os crimes e o cálculo da pena de 14 anos'
     date: '2026-10-06'
@@ -327,7 +332,7 @@ temas:
       '2026-09-28': 1
       '2026-10-05': 0
     total_90d: 4
-    last7: 3
+    last7: 2
     peak_week: 2
   processes:
   - casa: camara
@@ -352,7 +357,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 152
+  stalled_days: 153
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -420,7 +425,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1211
+  stalled_days: 1212
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -461,7 +466,7 @@ temas:
     article: Precatório
     url: https://pt.wikipedia.org/wiki/Precatório
     weekly:
-      '2026-07-06': 22
+      '2026-07-06': 19
       '2026-07-13': 25
       '2026-07-20': 32
       '2026-07-27': 28
@@ -474,9 +479,9 @@ temas:
       '2026-09-14': 64
       '2026-09-21': 79
       '2026-09-28': 112
-      '2026-10-05': 18
-    total_90d: 598
-    last7: 103
+      '2026-10-05': 29
+    total_90d: 606
+    last7: 97
     peak_week: 112
   processes:
   - casa: camara
@@ -544,7 +549,7 @@ temas:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-07-06': 189
+      '2026-07-06': 165
       '2026-07-13': 390
       '2026-07-20': 175
       '2026-07-27': 183
@@ -557,10 +562,10 @@ temas:
       '2026-09-14': 214
       '2026-09-21': 186
       '2026-09-28': 366
-      '2026-10-05': 351
-    total_90d: 3741
-    last7: 651
-    peak_week: 390
+      '2026-10-05': 504
+    total_90d: 3870
+    last7: 752
+    peak_week: 504
   processes:
   - casa: camara
     id: PLP 210/2024

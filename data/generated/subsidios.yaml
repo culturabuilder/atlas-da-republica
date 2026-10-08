@@ -1,5 +1,5 @@
 # GERADO por etl/subsidios.py. Não edite à mão.
-generated_at: '2026-10-07'
+generated_at: '2026-10-08'
 cargos:
   br-advogado-geral-da-uniao:
     nome: Advogado-Geral da União
@@ -25493,6 +25493,74 @@ cargos:
       — mas esse é um caso, não o valor do cargo. Tudo fica abaixo do teto de R$ 46.366,19. Esta família cobre também os diretores-gerais dos
       CEFET e o reitor do Colégio Pedro II, que é da carreira do magistério do ensino básico, técnico e tecnológico, com tabela própria, e não
       da do magistério superior.
+  br-universidade-federal-da-fronteira-norte-reitor:
+    nome: Reitor da Universidade Federal da Fronteira Norte
+    subsidio_mensal_bruto: null
+    moeda: BRL
+    vigencia_desde: null
+    norma: Lei 12.772/2012 arts. 16, 17 e 21 (carreira do Magistério Superior), com os anexos na redação da Lei 15.141/2025; Lei 11.526/2007 art.
+      2º (opção de remuneração); Lei 8.168/1991 (Cargos de Direção)
+    norma_url: https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12772.htm
+    beneficios:
+    - nome: Vencimento básico da carreira do Magistério Superior (Titular 1, dedicação exclusiva)
+      valor_mensal_ou_teto: 12245.03
+      natureza: remuneratoria
+      papel: componente_do_salario
+      periodicidade: mensal
+      tipo_valor: fixo
+      norma: Lei 12.772/2012 Anexo III, na redação do Anexo LXXIX da Lei 15.141/2025 (efeitos de 1º/4/2026)
+      norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/Anexo/Anexo1a100-Lei15141.htm
+      note: 'Uma linha entre muitas: a tabela tem três regimes (20h, 40h, dedicação exclusiva) e as classes de Assistente a Titular. Associado
+        1 em dedicação exclusiva, por exemplo, são R$ 9.616,10.'
+    - nome: Retribuição por Titulação (doutorado, Titular 1, dedicação exclusiva)
+      valor_mensal_ou_teto: 14081.78
+      natureza: remuneratoria
+      papel: componente_do_salario
+      periodicidade: mensal
+      tipo_valor: fixo
+      norma: Lei 12.772/2012 art. 17 e Anexo IV, na redação do Anexo LXXX da Lei 15.141/2025 (efeitos de 1º/4/2026)
+      norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/Anexo/Anexo1a100-Lei15141.htm
+      note: 'Não é cumulativa entre titulações. Varia por classe, nível e regime: Associado 1 doutor em dedicação exclusiva recebe R$ 11.058,51.'
+    - nome: Cargo de Direção CD-1
+      valor_mensal_ou_teto: 22219.64
+      natureza: remuneratoria
+      papel: componente_do_salario
+      periodicidade: mensal
+      tipo_valor: fixo
+      norma: Lei 15.141/2025, Anexo CCXCVII, alínea "c" (efeitos de 1º/1/2026); Lei 8.168/1991
+      norma_url: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/Anexo/Anexo254a323-Lei15141.htm
+      note: Valor integral do CD-1. O docente em dedicação exclusiva quase sempre opta pelo vencimento do cargo efetivo mais 60% do CD-1, R$ 13.331,78
+        (Lei 11.526/2007 art. 2º III e §1º), porque o total sai maior. CD-2 são R$ 16.806,33; CD-3, R$ 12.291,61; CD-4, R$ 8.315,71.
+    - nome: Auxílio-alimentação
+      valor_mensal_ou_teto: 1192.0
+      natureza: indenizatoria
+      papel: beneficio
+      periodicidade: mensal
+      tipo_valor: fixo
+      norma: Portaria MGI 2.756/2026, de 31/3/2026; Lei 8.460/1992 art. 22
+      norma_url: https://www.in.gov.br/en/web/dou/-/portaria-mgi-n-2.756-de-31-de-marco-de-2026-697045786
+      note: null
+    - nome: Adicional de férias (um terço) e gratificação natalina
+      valor_mensal_ou_teto: null
+      natureza: remuneratoria
+      papel: componente_do_salario
+      periodicidade: anual
+      tipo_valor: sem_valor
+      norma: CF art. 7º VIII e XVII, aplicados pelo art. 39 §3º; Lei 8.112/1990 arts. 63 e 76
+      norma_url: https://www.planalto.gov.br/ccivil_03/leis/l8112cons.htm
+      note: Ao contrário dos detentores de mandato e dos remunerados por subsídio em parcela única, o servidor estatutário recebe 13º salário
+        e um terço de férias. Não são parcelas mensais.
+    familia: reitor-de-instituicao-federal-de-ensino
+    checked_at: *id008
+    observacao: Não existe um valor de cargo para reitor de universidade federal. O reitor é professor da carreira do Magistério Superior e sua
+      remuneração é a soma de parcelas tabeladas que dependem da classe, do nível, da titulação e do regime de trabalho dele, mais o Cargo de
+      Direção CD-1, e ainda da opção que ele faz entre as três formas do art. 2º da Lei 11.526/2007. Dois reitores de universidades diferentes
+      recebem valores diferentes, e o mesmo reitor recebe outro valor ao progredir na carreira. As parcelas estão listadas em `beneficios` como
+      componentes remuneratórios, com os valores da tabela. Um reitor professor titular em dedicação exclusiva, doutor, que opte pelos 60% do
+      CD-1, soma R$ 12.245,03 de vencimento básico, R$ 14.081,78 de retribuição por titulação e R$ 13.331,78 de CD-1, num bruto de R$ 39.658,59
+      — mas esse é um caso, não o valor do cargo. Tudo fica abaixo do teto de R$ 46.366,19. Esta família cobre também os diretores-gerais dos
+      CEFET e o reitor do Colégio Pedro II, que é da carreira do magistério do ensino básico, técnico e tecnológico, com tabela própria, e não
+      da do magistério superior.
   br-universidade-federal-da-fronteira-sul-reitor:
     nome: Reitor da Universidade Federal da Fronteira Sul
     subsidio_mensal_bruto: null
@@ -28674,7 +28742,7 @@ cargos:
       remuneração.'
 resumo:
   familias: 27
-  cargos_cobertos: 547
-  cargos_sem_valor: 189
-  cargos_no_grafo: 547
+  cargos_cobertos: 548
+  cargos_sem_valor: 190
+  cargos_no_grafo: 548
   cargos_sem_familia: 0

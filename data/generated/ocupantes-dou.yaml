@@ -1,12 +1,12 @@
 # GERADO por etl/ocupantes_dou.py. Não edite à mão.
-generated_at: '2026-10-01T16:31:18'
+generated_at: '2026-10-08T16:36:29'
 fonte: Diário Oficial da União — busca pública www.in.gov.br/consulta (todas as seções), consulta pelo nome do cargo
 nota: 'Ocupante achado buscando o CARGO no DOU (o inverso de etl/posses.py, que busca o nome). started_at = dia da PUBLICAÇÃO do ato de nomeação/designação/recondução, não o da posse. Só entra quando o
   cargo citado no ato casa com o cargo do grafo em todos os termos significativos; confiança alta = cargo e órgão casam, média = só o cargo casa (órgão vindo da sigla ou da hierarquia do ato) ou a nomeação
   é interina. Ato de exoneração/dispensa posterior descarta a pessoa. Em reitoria e estatal, ato anterior a quatro anos e meio cai para média: é o mais recente do DOU, mas o mandato já venceu.'
 janela:
   de: '2018-01-01'
-  ate: '2026-10-01'
+  ate: '2026-10-08'
 positions:
   br-autoridade-nacional-de-seguranca-nuclear-diretor-presidente:
   - id: br-p-alessandro-facure-neves-de-salles-soares
@@ -1269,6 +1269,246 @@ positions:
     ato: PORTARIAS DE 25 DE JANEIRO DE 2023 (DO2_EXTRA_C, 2023-01-25)
     cargo_no_ato: Secretário de Territórios e Sistemas Produtivos Quilombolas e Tradicionais do Ministério do Desenvolvimento Agrário e Agricultura Familiar
     note: 'NOMEAR publicado no DOU em 25/01/2023; cargo no ato: "Secretário de Territórios e Sistemas Produtivos Quilombolas e Tradicionais do Ministério d". Data = publicação do ato, não a posse.'
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-parana-reitor:
+  - id: br-p-adriano-willian-da-silva-viana-pereira
+    name: Adriano Willian Da Silva Viana Pereira
+    started_at: '2024-02-07'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-6-de-fevereiro-de-2024-541952576
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Instituto Federal de Educação, Ciência e Tecnologia do Paraná)
+    ato: DECRETO DE 6 DE FEVEREIRO DE 2024 (DO2, 2024-02-07)
+    cargo_no_ato: Reitor do referido Instituto
+    note: 'NOMEAR publicado no DOU em 07/02/2024; cargo no ato: "Reitor do referido Instituto". Data = publicação do ato, não a posse.'
+  br-secretaria-de-comunicacao-institucional-secretario:
+  - id: br-p-paulo-venicius-brito-da-silva
+    name: Paulo Venicius Brito Da Silva
+    started_at: '2025-01-20'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-17-de-janeiro-de-2025-607767057
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 17 DE JANEIRO DE 2025 (DO2, 2025-01-20)
+    cargo_no_ato: Secretário de Comunicação Institucional da Secretaria de Comunicação Social da Presidência da República
+    note: 'NOMEAR publicado no DOU em 20/01/2025; cargo no ato: "Secretário de Comunicação Institucional da Secretaria de Comunicação Social da Presidência". Data = publicação do ato, não a posse.'
+  br-secretaria-de-desenvolvimento-rural-secretario:
+  - id: br-p-clecivaldo-de-sousa-ribeiro
+    name: Clecivaldo De Sousa Ribeiro
+    started_at: '2026-09-18'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-17-de-setembro-de-2026-732559987
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 17 DE SETEMBRO DE 2026 (DO2, 2026-09-18)
+    cargo_no_ato: Secretário de Desenvolvimento Rural do Ministério da Agricultura e Pecuária
+    note: 'NOMEAR publicado no DOU em 18/09/2026; cargo no ato: "Secretário de Desenvolvimento Rural do Ministério da Agricultura e Pecuária". Data = publicação do ato, não a posse.'
+  br-secretaria-de-imprensa-secretario:
+  - id: br-p-laercio-portela-delgado
+    name: Laércio Portela Delgado
+    started_at: '2025-01-16'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-15-de-janeiro-de-2025-607274934
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 15 DE JANEIRO DE 2025 (DO2, 2025-01-16)
+    cargo_no_ato: Secretário de Imprensa da Secretaria de Comunicação Social da Presidência da República
+    note: 'NOMEAR publicado no DOU em 16/01/2025; cargo no ato: "Secretário de Imprensa da Secretaria de Comunicação Social da Presidência da República". Data = publicação do ato, não a posse.'
+  br-secretaria-de-politica-agricola-secretario:
+  - id: br-p-guilherme-campos-junior
+    name: Guilherme Campos Júnior
+    started_at: '2024-07-09'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-8-de-julho-de-2024-570854945
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 8 DE JULHO DE 2024 (DO2, 2024-07-09)
+    cargo_no_ato: Secretário de Política Agrícola do Ministério da Agricultura e Pecuária
+    note: 'NOMEAR publicado no DOU em 09/07/2024; cargo no ato: "Secretário de Política Agrícola do Ministério da Agricultura e Pecuária". Data = publicação do ato, não a posse.'
+  br-secretaria-de-politicas-digitais-secretario:
+  - id: br-p-joao-caldeira-brant-monteiro-de-castro
+    name: João Caldeira Brant Monteiro De Castro
+    started_at: '2023-01-27'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-27-de-janeiro-de-2023-460731646
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 27 DE JANEIRO DE 2023 (DO2_EXTRA_B, 2023-01-27)
+    cargo_no_ato: Secretário de Políticas Digitais da Secretaria de Comunicação Social da Presidência da República
+    note: 'NOMEAR publicado no DOU em 27/01/2023; cargo no ato: "Secretário de Políticas Digitais da Secretaria de Comunicação Social da Presidência da Rep". Data = publicação do ato, não a posse.'
+  br-secretaria-de-producao-e-divulgacao-de-conteudo-audiovisual-secretario:
+  - id: br-p-ricardo-henrique-stuckert
+    name: Ricardo Henrique Stuckert
+    started_at: '2023-01-27'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-26-de-janeiro-de-2023-460412069
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 26 DE JANEIRO DE 2023 (DO2, 2023-01-27)
+    cargo_no_ato: Secretário de Produção e Divulgação de Conteúdo Audiovisual da Secretaria de Comunicação Social da Presidência da República
+    note: 'NOMEAR publicado no DOU em 27/01/2023; cargo no ato: "Secretário de Produção e Divulgação de Conteúdo Audiovisual da Secretaria de Comunicação S". Data = publicação do ato, não a posse.'
+  br-secretaria-de-publicidade-e-patrocinios-secretario:
+  - id: br-p-fabricio-lazzarini-carbonel
+    name: Fabrício Lazzarini Carbonel
+    started_at: '2024-11-07'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-6-de-novembro-de-2024-594553152
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 6 DE NOVEMBRO DE 2024 (DO2, 2024-11-07)
+    cargo_no_ato: Secretário de Publicidade e Patrocínios da Secretaria de Comunicação Social da Presidência da República
+    note: 'NOMEAR publicado no DOU em 07/11/2024; cargo no ato: "Secretário de Publicidade e Patrocínios da Secretaria de Comunicação Social da Presidência". Data = publicação do ato, não a posse.'
+  br-secretaria-executiva-esporte-secretario:
+  - id: br-p-ivo-de-almeida-ico-filho
+    name: Ivo De Almeida Ico Filho
+    started_at: '2026-04-17'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-17-de-abril-de-2026-700468790
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: DECRETO DE 17 DE ABRIL DE 2026 (DO2_EXTRA_A, 2026-04-17)
+    cargo_no_ato: Secretário-Executivo do Ministério do Esporte
+    note: 'NOMEAR publicado no DOU em 17/04/2026; cargo no ato: "Secretário-Executivo do Ministério do Esporte". Data = publicação do ato, não a posse.'
+  br-secretaria-executiva-meio-ambiente-secretario:
+  - id: br-p-joao-paulo-ribeiro-capobianco
+    name: João Paulo Ribeiro Capobianco
+    started_at: '2023-02-14'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-13-de-fevereiro-de-2023-464380381
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: DECRETO DE 13 DE FEVEREIRO DE 2023 (DO2, 2023-02-14)
+    cargo_no_ato: Secretário-Executivo do Ministério do Meio Ambiente e Mudança do Clima
+    note: 'NOMEAR publicado no DOU em 14/02/2023; cargo no ato: "Secretário-Executivo do Ministério do Meio Ambiente e Mudança do Clima". Data = publicação do ato, não a posse.'
+  br-secretaria-extraordinaria-de-controle-do-desmatamento-e-ordenamento-ambiental-territorial-secretario:
+  - id: br-p-andre-rodolfo-de-lima
+    name: Andre Rodolfo De Lima
+    started_at: '2023-03-08'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-7-de-marco-de-2023-468426022
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 7 DE MARÇO DE 2023 (DO2, 2023-03-08)
+    cargo_no_ato: Secretário Extraordinário de Controle do Desmatamento e Ordenamento Ambiental Territorial do Ministério do Meio Ambiente e Mudança do Clima
+    note: 'NOMEAR publicado no DOU em 08/03/2023; cargo no ato: "Secretário Extraordinário de Controle do Desmatamento e Ordenamento Ambiental Territorial ". Data = publicação do ato, não a posse.'
+  br-secretaria-nacional-de-apostas-esportivas-e-de-desenvolvimento-economico-do-esporte-secretario:
+  - id: br-p-giovanni-rocco-neto
+    name: Giovanni Rocco Neto
+    started_at: '2024-09-02'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-30-de-agosto-de-2024-581566132
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 30 DE AGOSTO DE 2024 (DO2, 2024-09-02)
+    cargo_no_ato: Secretário Nacional de Apostas Esportivas e de Desenvolvimento Econômico do Esporte do Ministério do Esporte
+    note: 'NOMEAR publicado no DOU em 02/09/2024; cargo no ato: "Secretário Nacional de Apostas Esportivas e de Desenvolvimento Econômico do Esporte do Min". Data = publicação do ato, não a posse.'
+  br-secretaria-nacional-de-esporte-amador-educacao-lazer-e-inclusao-social-secretario:
+  - id: br-p-paulo-henrique-perna-cordeiro
+    name: Paulo Henrique Perna Cordeiro
+    started_at: '2023-10-20'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-19-de-outubro-de-2023-517480739
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 19 DE OUTUBRO DE 2023 (DO2, 2023-10-20)
+    cargo_no_ato: Secretário Nacional de Esporte Amador, Educação, Lazer e Inclusão Social do Ministério do Esporte
+    note: 'NOMEAR publicado no DOU em 20/10/2023; cargo no ato: "Secretário Nacional de Esporte Amador, Educação, Lazer e Inclusão Social do Ministério do ". Data = publicação do ato, não a posse.'
+  br-secretaria-nacional-de-mudanca-do-clima-secretario:
+  - id: br-p-aloisio-lopes-pereira-de-melo
+    name: Aloisio Lopes Pereira De Melo
+    started_at: '2025-05-08'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-7-de-maio-de-2025-627983886
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 7 DE MAIO DE 2025 (DO2, 2025-05-08)
+    cargo_no_ato: Secretário Nacional de Mudança do Clima do Ministério do Meio Ambiente e Mudança do Clima
+    note: 'NOMEAR publicado no DOU em 08/05/2025; cargo no ato: "Secretário Nacional de Mudança do Clima do Ministério do Meio Ambiente e Mudança do Clima". Data = publicação do ato, não a posse.'
+  br-secretaria-nacional-de-paradesporto-secretario:
+  - id: br-p-fabio-augusto-lima-de-araujo
+    name: Fabio Augusto Lima De Araujo
+    started_at: '2023-04-10'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-6-de-abril-de-2023-475807655
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 6 DE ABRIL DE 2023 (DO2, 2023-04-10)
+    cargo_no_ato: Secretário Nacional de Paradesporto do Ministério do Esporte
+    note: 'NOMEAR publicado no DOU em 10/04/2023; cargo no ato: "Secretário Nacional de Paradesporto do Ministério do Esporte". Data = publicação do ato, não a posse.'
+  br-secretaria-nacional-de-registro-monitoramento-e-pesquisa-da-pesca-e-aquicultura-secretario:
+  - id: br-p-luis-gustavo-cardoso
+    name: Luis Gustavo Cardoso
+    started_at: '2024-04-09'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-8-de-abril-de-2024-552839430
+    checked_at: '2026-10-08'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 8 DE ABRIL DE 2024 (DO2, 2024-04-09)
+    cargo_no_ato: Secretário Nacional de Registro, Monitoramento e Pesquisa da Pesca e Aquicultura do Ministério da Pesca e Aquicultura
+    note: 'NOMEAR publicado no DOU em 09/04/2024; cargo no ato: "Secretário Nacional de Registro, Monitoramento e Pesquisa da Pesca e Aquicultura do Minist". Data = publicação do ato, não a posse.'
 nao_encontrados:
 - br-amazonia-azul-tecnologias-de-defesa-s-a-presidente
 - br-banco-da-amazonia-s-a-presidente
@@ -1298,15 +1538,14 @@ nao_encontrados:
 - br-secretaria-de-defesa-agropecuaria-secretario
 - br-secretaria-de-estrategias-e-redes-secretario
 - br-secretaria-de-integridade-publica-secretario
-- br-secretaria-executiva-mulheres-secretario
-- br-secretaria-nacional-de-articulacao-intersetorial-e-interfederativa-e-participacao-politica-secretario
-- br-secretaria-nacional-de-autonomia-economica-e-politica-de-cuidados-secretario
+- br-secretaria-extraordinaria-da-copa-do-mundo-de-futebol-feminino-2027-secretario
 - br-secretaria-nacional-de-biodiversidade-florestas-e-direitos-animais-secretario
 - br-secretaria-nacional-de-bioeconomia-secretario
 - br-secretaria-nacional-de-enfrentamento-a-violencia-contra-mulheres-secretario
+- br-secretaria-nacional-de-excelencia-esportiva-secretario
 - br-secretaria-nacional-de-geologia-mineracao-e-transformacao-mineral-secretario
 - br-secretaria-nacional-de-meio-ambiente-urbano-recursos-hidricos-e-qualidade-ambiental-secretario
-- br-secretaria-nacional-de-relacoes-politico-sociais-secretario
+- br-universidade-federal-da-fronteira-norte-reitor
 - br-universidade-federal-do-esporte-reitor
 - br-universidade-federal-indigena-reitor
 - br-veiculo-de-desestatizacao-mg-investimentos-s-a-presidente
@@ -1465,7 +1704,13 @@ nao_encontrados_detalhe:
   cargo: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Sertão Paraibano
   tipo: reitoria
   consultas: 4
-  atos_lidos: 186
+  atos_lidos: 0
+  motivo: papel casa mas o órgão do ato (Universidade Federal do Amapá) não é o do grafo
+- cargo_id: br-universidade-federal-da-fronteira-norte-reitor
+  cargo: Reitor da Universidade Federal da Fronteira Norte
+  tipo: reitoria
+  consultas: 4
+  atos_lidos: 0
   motivo: papel casa mas o órgão do ato (Universidade Federal do Amapá) não é o do grafo
 - cargo_id: br-universidade-federal-do-esporte-reitor
   cargo: Reitor da Universidade Federal do Esporte
@@ -1497,20 +1742,8 @@ nao_encontrados_detalhe:
   consultas: 6
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-secretaria-executiva-mulheres-secretario
-  cargo: Secretário-Executivo do Ministério das Mulheres
-  tipo: secretaria
-  consultas: 6
-  atos_lidos: 60
-  motivo: cargo do ato (Secretário Executivo) não casa em todos os termos
-- cargo_id: br-secretaria-nacional-de-articulacao-intersetorial-e-interfederativa-e-participacao-politica-secretario
-  cargo: Secretário Nacional de Articulação Intersetorial e Interfederativa e Participação Política do Ministério das Mulheres
-  tipo: secretaria
-  consultas: 6
-  atos_lidos: 0
-  motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-secretaria-nacional-de-autonomia-economica-e-politica-de-cuidados-secretario
-  cargo: Secretário Nacional de Autonomia Econômica e Política de Cuidados do Ministério das Mulheres
+- cargo_id: br-secretaria-extraordinaria-da-copa-do-mundo-de-futebol-feminino-2027-secretario
+  cargo: Secretário Extraordinário da Copa do Mundo de Futebol Feminino 2027 do Ministério do Esporte
   tipo: secretaria
   consultas: 6
   atos_lidos: 0
@@ -1533,6 +1766,12 @@ nao_encontrados_detalhe:
   consultas: 6
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
+- cargo_id: br-secretaria-nacional-de-excelencia-esportiva-secretario
+  cargo: Secretário Nacional de Excelência Esportiva do Ministério do Esporte
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
 - cargo_id: br-secretaria-nacional-de-geologia-mineracao-e-transformacao-mineral-secretario
   cargo: Secretário Nacional de Geologia, Mineração e Transformação Mineral do Ministério de Minas e Energia
   tipo: secretaria
@@ -1545,24 +1784,19 @@ nao_encontrados_detalhe:
   consultas: 6
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-secretaria-nacional-de-relacoes-politico-sociais-secretario
-  cargo: Secretário Nacional de Relações Político-Sociais da Secretaria-Geral da Presidência da República
-  tipo: secretaria
-  consultas: 6
-  atos_lidos: 0
-  motivo: nenhum ato de nomeação citando o cargo
 resumo:
-  cargos_alvo: 42
+  cargos_alvo: 55
   cargos_alvo_por_tipo:
     autarquia: 2
     estatal: 21
     fundacao: 2
-    reitoria: 3
-    secretaria: 14
-  cargos_processados: 42
-  resolvidos: 84
+    reitoria: 5
+    secretaria: 25
+  cargos_processados: 55
+  resolvidos: 100
   por_confianca:
-    alta: 2
+    alta: 16
   por_tipo:
-    secretaria: 2
-  sem_ato: 40
+    reitoria: 1
+    secretaria: 15
+  sem_ato: 39

@@ -1,19 +1,19 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-10-07'
+generated_at: '2026-10-08'
 mes: '202608'
 mes_senado: '202609'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1203
-  com_remuneracao: 494
+  ocupantes_no_grafo: 1200
+  com_remuneracao: 491
   por_setor:
     executivo:
-      ocupantes: 468
-      antes: 386
-      depois: 410
-      pct_antes: 82.5
-      pct_depois: 87.6
+      ocupantes: 465
+      antes: 384
+      depois: 407
+      pct_antes: 82.6
+      pct_depois: 87.5
     essenciais:
       ocupantes: 30
       antes: 4
@@ -33,15 +33,15 @@ resumo:
       pct_antes: 0.0
       pct_depois: 0.0
   por_criterio:
-    nome_completo+orgao: 378
-    nome_completo: 90
+    nome_completo+orgao: 373
+    nome_completo: 92
     primeiro_ultimo+orgao: 18
     subsequencia_no_orgao: 5
     primeiro_ultimo_unico: 1
     nome_sem_sufixo: 1
     subsequencia_subsidio: 1
   por_confianca:
-    alta: 469
+    alta: 466
     media: 25
   sem_remuneracao:
     total: 85
@@ -10053,38 +10053,6 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO DE DIRECAO - CD - IFES
-  br-p-marluce-aparecida-souza-e-silva:
-    mes: '202608'
-    bruto: 43966.44
-    abate_teto: 0.0
-    bruto_apos_abate: 43966.44
-    liquido: 29976.23
-    componentes:
-      basica: 40093.09
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 3873.35
-      indenizatorias: 1374.71
-    orgao: Universidade Federal de Mato Grosso
-    orgao_superior: Ministério da Educação
-    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
-    funcao_na_folha: Sem informação
-    vinculo: Cargo
-    criterio: nome_completo+orgao
-    confianca: alta
-    nome_na_folha: MARLUCE APARECIDA SOUZA E SILVA
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/1164205
-    position: br-fundacao-universidade-federal-de-mato-grosso-reitor
-    position_name: Reitor da Fundação Universidade Federal de Mato Grosso
-    bruta: 40093.09
-    liquida: 29976.23
-    indenizatorias: 1374.71
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 3873.35
-    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
-    funcao: Sem informação
   br-p-camila-celeste-brandao-ferreira-itavo:
     mes: '202608'
     bruto: 39658.59
@@ -10102,13 +10070,13 @@ people:
     cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao_na_folha: Sem informação
     vinculo: Cargo
-    criterio: nome_completo+orgao
+    criterio: nome_completo
     confianca: alta
     nome_na_folha: CAMILA CELESTE BRANDAO FERREIRA ITAVO
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
     fonte_url: https://portaldatransparencia.gov.br/servidores/383242
-    position: br-fundacao-universidade-federal-de-mato-grosso-do-sul-reitor
-    position_name: Reitor da Fundação Universidade Federal de Mato Grosso do Sul
+    position: br-fundacao-universidade-federal-de-mato-grosso-reitor
+    position_name: Reitor da Fundação Universidade Federal de Mato Grosso
     bruta: 39658.59
     liquida: 26896.98
     indenizatorias: 1637.82
@@ -11429,38 +11397,6 @@ people:
     eventuais: 0.0
     cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
     funcao: Sem informação
-  br-p-adriano-willian-da-silva-viana-pereira:
-    mes: '202608'
-    bruto: 39658.59
-    abate_teto: 0.0
-    bruto_apos_abate: 39658.59
-    liquido: 27053.39
-    componentes:
-      basica: 39658.59
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 0.0
-      indenizatorias: 1751.64
-    orgao: Instituto Federal do Paraná
-    orgao_superior: Ministério da Educação
-    cargo_na_folha: Sem informaç
-    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
-    vinculo: Função
-    criterio: nome_completo+orgao
-    confianca: alta
-    nome_na_folha: ADRIANO WILLIAN DA SILVA VIANA PEREIRA
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/513244
-    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-parana-reitor
-    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Paraná
-    bruta: 39658.59
-    liquida: 27053.39
-    indenizatorias: 1751.64
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 0.0
-    cargo: Sem informaç
-    funcao: CARGO DE DIRECAO - CD - IFES
   br-p-paulo-henrique-gomes-de-lima:
     mes: '202608'
     bruto: 40651.31
@@ -12837,38 +12773,6 @@ people:
     eventuais: 0.0
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
-  br-p-gilmar-pereira-da-silva:
-    mes: '202608'
-    bruto: 43613.98
-    abate_teto: 0.0
-    bruto_apos_abate: 43613.98
-    liquido: 29815.33
-    componentes:
-      basica: 39781.04
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 3832.94
-      indenizatorias: 1192.0
-    orgao: Universidade Federal do Pará
-    orgao_superior: Ministério da Educação
-    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
-    funcao_na_folha: Sem informação
-    vinculo: Cargo
-    criterio: nome_completo+orgao
-    confianca: alta
-    nome_na_folha: GILMAR PEREIRA DA SILVA
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/991758
-    position: br-universidade-federal-do-para-reitor
-    position_name: Reitor da Universidade Federal do Pará
-    bruta: 39781.04
-    liquida: 29815.33
-    indenizatorias: 1192.0
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 3832.94
-    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
-    funcao: Sem informação
   br-p-marcos-sfair-sunye:
     mes: '202608'
     bruto: 40488.89
@@ -12886,13 +12790,13 @@ people:
     cargo_na_folha: Sem informaç
     funcao_na_folha: CARGO DE DIRECAO - CD - IFES
     vinculo: Função
-    criterio: nome_completo+orgao
+    criterio: nome_completo
     confianca: alta
     nome_na_folha: MARCOS SFAIR SUNYE
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
     fonte_url: https://portaldatransparencia.gov.br/servidores/3326812
-    position: br-universidade-federal-do-parana-reitor
-    position_name: Reitor da Universidade Federal do Paraná
+    position: br-universidade-federal-do-para-reitor
+    position_name: Reitor da Universidade Federal do Pará
     bruta: 40488.89
     liquida: 27399.62
     indenizatorias: 1557.42

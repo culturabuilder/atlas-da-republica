@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-07'
+generated_at: '2026-10-08'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-10'
+janela_inicio: '2026-07-11'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,34 +11,34 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 249
+    compromissos_90d: 247
     dias_com_agenda: 60
     por_tipo:
       evento: 87
       audiencia: 73
-      viagem: 71
+      viagem: 69
       reuniao: 14
       outro: 4
     entidades_top:
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
       n: 21
     - nome: Oswaldo Malatesta (Chefe do Gabinete Adjunto de Agenda do Gabinete Pessoal do Presidente )
-      n: 13
+      n: 14
     - nome: Miriam Belchior (Ministra da Casa Civil)
       n: 11
+    - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
+      n: 4
     - nome: Mauro Vieira (Ministro das Relações Exteriores)
       n: 3
     - nome: Dario Durigan (Ministro da Fazenda)
-      n: 3
-    - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 3
     - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
       n: 2
     - nome: Oswaldo Malatesta Neto (Chefe do Gabinete Pessoal do Presidente da República)
       n: 2
-    - nome: André de Paula (Ministro da Agricultura e Pecuária)
-      n: 1
     - nome: José Guimarães (Ministro da Secretaria de Relações Institucionais da Presidência da Re)
+      n: 1
+    - nome: Roberto Velasco (Secretário de Relações Exteriores do México)
       n: 1
     locais_top:
     - nome: Palácio do Planalto
@@ -46,23 +46,39 @@ people:
     - nome: Palácio da Alvorada
       n: 42
     - nome: Base Aérea de Brasília
-      n: 31
+      n: 30
     - nome: Esplanada dos Ministérios, Brasília
       n: 5
     - nome: Palácio Itamaraty
       n: 4
     - nome: Aeroporto Internacional de Macapá
       n: 4
-    - nome: Aeroporto de Congonhas
-      n: 3
     - nome: Instituto Mauá de Tecnologia (IMT), São Caetano do Sul (SP)
       n: 3
     - nome: Hospital Federal do Andaraí, Rio de Janeiro
       n: 3
     - nome: Centro Industrial Nuclear de Aramar, Iperó (SP)
       n: 3
-    ultimo: '2026-10-07'
+    - nome: Av. Gerassina Tavares – Jardim Veneza, São José do Rio Preto (SP)
+      n: 3
+    ultimo: '2026-10-08'
     recentes:
+    - data: '2026-10-08'
+      hora: '11:30'
+      titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Oswaldo Malatesta
+        entidade: Chefe do Gabinete Pessoal do Presidente da República
+    - data: '2026-10-08'
+      hora: '10:00'
+      titulo: Ministro da Secretaria de Comunicação Social da Presidência da República, Sidônio Palmeira
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Sidônio Palmeira
+        entidade: Ministro da Secretaria de Comunicação Social da Presidência da República
     - data: '2026-10-07'
       hora: '16:00'
       titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
@@ -105,34 +121,8 @@ people:
       tipo: audiencia
       local: Palácio do Planalto
       participantes: []
-    - data: '2026-09-28'
-      hora: '16:45'
-      titulo: Intervenções sobre a visita ao Hospital São João de Deus
-      tipo: evento
-      local: Rua Boaventura da Silva – Umarizal, Belém
-      participantes: []
-    - data: '2026-09-28'
-      hora: '16:00'
-      titulo: Visita ao Hospital João de Deus
-      tipo: evento
-      local: Rua Boaventura da Silva – Umarizal, Belém
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-10:
-      - hora: '15:00'
-        titulo: Ministro das Relações Exteriores, Mauro Vieira, Ministro do Desenvolvimento, Indústria, Comércio e Serviços,
-          Márcio Elias Rosa
-        local: Palácio da Alvorada
-      - hora: '16:00'
-        titulo: Ministro da Agricultura e Pecuária, André de Paula
-        local: Palácio da Alvorada
-      - hora: '18:00'
-        titulo: Partida para São paulo
-        local: Base Aérea de Brasília
-      - hora: '19:20'
-        titulo: Chegada a São Paulo
-        local: Aeroporto de Congonhas
       presidente/2026-07-11: []
       presidente/2026-07-12: []
       presidente/2026-07-13:
@@ -989,6 +979,13 @@ people:
       - hora: '16:00'
         titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
         local: Palácio da Alvorada
+      presidente/2026-10-08:
+      - hora: '10:00'
+        titulo: Ministro da Secretaria de Comunicação Social da Presidência da República, Sidônio Palmeira
+        local: Palácio da Alvorada
+      - hora: '11:30'
+        titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
+        local: Palácio da Alvorada
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -996,17 +993,17 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 75
-    dias_com_agenda: 45
+    compromissos_90d: 73
+    dias_com_agenda: 44
     por_tipo:
       evento: 32
-      viagem: 21
-      audiencia: 12
+      viagem: 20
+      audiencia: 11
       reuniao: 5
       outro: 5
     entidades_top:
     - nome: Luiz Inácio Lula da Silva (Presidente da República)
-      n: 5
+      n: 4
     - nome: Luis Felipe Salomão (Ministro do Superior Tribunal de Justiça - STJ)
       n: 1
     - nome: Ricardo Alban (Presidente da Confederação Nacional da Indústria - CNI)
@@ -1015,9 +1012,9 @@ people:
       n: 1
     locais_top:
     - nome: Brasília/DF
-      n: 18
+      n: 17
     - nome: Palácio do Planalto
-      n: 16
+      n: 15
     - nome: São Paulo/SP
       n: 14
     - nome: Palácio do Planalto, Anexo II
@@ -1087,14 +1084,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-10:
-      - hora: '10:00'
-        titulo: Luiz Inácio Lula da Silva, Presidente da República
-        local: Palácio do Planalto
-      - hora: '12:30'
-        titulo: Decolagem de Brasília/DF para São Paulo/SP
-        local: Brasília/DF
-      vice/2026-07-10-b1: []
       vice/2026-07-11: []
       vice/2026-07-11-b1: []
       vice/2026-07-12: []
@@ -1507,6 +1496,8 @@ people:
       vice/2026-10-06-b1: []
       vice/2026-10-07: []
       vice/2026-10-07-b1: []
+      vice/2026-10-08: []
+      vice/2026-10-08-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 249 compromissos em 60 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 75 compromissos em 45 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 247 compromissos em 60 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 73 compromissos em 44 dias (0 dias não lidos)'
