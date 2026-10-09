@@ -1,18 +1,18 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-10-08'
+generated_at: '2026-10-09'
 mes: '202608'
 mes_senado: '202609'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1200
-  com_remuneracao: 491
+  ocupantes_no_grafo: 1214
+  com_remuneracao: 503
   por_setor:
     executivo:
-      ocupantes: 465
-      antes: 384
-      depois: 407
-      pct_antes: 82.6
+      ocupantes: 479
+      antes: 396
+      depois: 419
+      pct_antes: 82.7
       pct_depois: 87.5
     essenciais:
       ocupantes: 30
@@ -33,23 +33,23 @@ resumo:
       pct_antes: 0.0
       pct_depois: 0.0
   por_criterio:
-    nome_completo+orgao: 373
-    nome_completo: 92
+    nome_completo+orgao: 384
+    nome_completo: 93
     primeiro_ultimo+orgao: 18
     subsequencia_no_orgao: 5
     primeiro_ultimo_unico: 1
     nome_sem_sufixo: 1
     subsequencia_subsidio: 1
   por_confianca:
-    alta: 466
+    alta: 478
     media: 25
   sem_remuneracao:
-    total: 85
+    total: 87
     por_motivo:
-      ausente na folha: 23
+      ausente na folha: 24
       órgão fora do SIAPE (empresa publica com folha própria): 15
+      só há homônimo por primeiro+último sobrenome fora do órgão (...): 13
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
-      só há homônimo por primeiro+último sobrenome fora do órgão (...): 12
       no cadastro do SIAPE mas sem linha de remuneração no mês: 12
       órgão fora do SIAPE (sociedade economia mista com folha própria): 6
       vários servidores compatíveis no órgão (...) sem desempate: 2
@@ -4517,6 +4517,70 @@ people:
     eventuais: 6587.57
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-clecivaldo-de-sousa-ribeiro:
+    mes: '202608'
+    bruto: 20327.48
+    abate_teto: 0.0
+    bruto_apos_abate: 20327.48
+    liquido: 14389.58
+    componentes:
+      basica: 20327.48
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: MINISTERIO DA AGRICULTURA E PECUARIA
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CLECIVALDO DE SOUSA RIBEIRO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2323776
+    position: br-secretaria-de-desenvolvimento-rural-secretario
+    position_name: Secretário de Desenvolvimento Rural do Ministério da Agricultura e Pecuária
+    bruta: 20327.48
+    liquida: 14389.58
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-guilherme-campos-junior:
+    mes: '202608'
+    bruto: 34928.17
+    abate_teto: 0.0
+    bruto_apos_abate: 34928.17
+    liquido: 27436.18
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 6985.0
+      indenizatorias: 1192.0
+    orgao: MINISTERIO DA AGRICULTURA E PECUARIA
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: GUILHERME CAMPOS JUNIOR
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1953670
+    position: br-secretaria-de-politica-agricola-secretario
+    position_name: Secretário de Política Agrícola do Ministério da Agricultura e Pecuária
+    bruta: 27943.17
+    liquida: 27436.18
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 6985.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-luis-manuel-rebelo-fernandes:
     mes: '202608'
     bruto: 39842.53
@@ -6283,6 +6347,39 @@ people:
     eventuais: 4830.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-luis-gustavo-cardoso:
+    mes: '202608'
+    bruto: 20674.61
+    abate_teto: 0.0
+    bruto_apos_abate: 20674.61
+    liquido: 15570.9
+    componentes:
+      basica: 20674.61
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1648.71
+    orgao: Universidade Federal do Rio Grande - RS
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo
+    confianca: alta
+    nome_na_folha: LUIS GUSTAVO CARDOSO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2841878
+    position: br-secretaria-nacional-de-registro-monitoramento-e-pesquisa-da-pesca-e-aquicultura-secretario
+    position_name: Secretário Nacional de Registro, Monitoramento e Pesquisa da Pesca e Aquicultura do Ministério da Pesca
+      e Aquicultura
+    bruta: 20674.61
+    liquida: 15570.9
+    indenizatorias: 1648.71
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
   br-p-felipe-cavalcante-e-silva:
     mes: '202608'
     bruto: 54575.52
@@ -8029,6 +8126,167 @@ people:
     eventuais: 13200.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-ivo-de-almeida-ico-filho:
+    mes: '202608'
+    bruto: 34327.09
+    abate_teto: 0.0
+    bruto_apos_abate: 34327.09
+    liquido: 25079.52
+    componentes:
+      basica: 31919.27
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 2407.82
+      indenizatorias: 1374.71
+    orgao: MINISTERIO DO ESPORTE
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: IVO DE ALMEIDA ICO FILHO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3026957
+    position: br-secretaria-executiva-esporte-secretario
+    position_name: Secretário-Executivo do Ministério do Esporte
+    bruta: 31919.27
+    liquida: 25079.52
+    indenizatorias: 1374.71
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 2407.82
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-giovanni-rocco-neto:
+    mes: '202608'
+    bruto: 33438.53
+    abate_teto: 0.0
+    bruto_apos_abate: 33438.53
+    liquido: 25946.54
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 5495.36
+      indenizatorias: 1192.0
+    orgao: MINISTERIO DO ESPORTE
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: GIOVANNI ROCCO NETO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3968322
+    position: br-secretaria-nacional-de-apostas-esportivas-e-de-desenvolvimento-economico-do-esporte-secretario
+    position_name: Secretário Nacional de Apostas Esportivas e de Desenvolvimento Econômico do Esporte do Ministério do Esporte
+    bruta: 27943.17
+    liquida: 25946.54
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 5495.36
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-fabio-augusto-lima-de-araujo:
+    mes: '202608'
+    bruto: 32255.1
+    abate_teto: 0.0
+    bruto_apos_abate: 32255.1
+    liquido: 22878.05
+    componentes:
+      basica: 32255.1
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: MINISTERIO DO ESPORTE
+    orgao_superior: Sem informação
+    cargo_na_folha: OFICIAL DE CHANCELARIA
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: FABIO AUGUSTO LIMA DE ARAUJO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/822712
+    position: br-secretaria-nacional-de-paradesporto-secretario
+    position_name: Secretário Nacional de Paradesporto do Ministério do Esporte
+    bruta: 32255.1
+    liquida: 22878.05
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: OFICIAL DE CHANCELARIA
+    funcao: Sem informação
+  br-p-andre-rodolfo-de-lima:
+    mes: '202608'
+    bruto: 32193.17
+    abate_teto: 0.0
+    bruto_apos_abate: 32193.17
+    liquido: 24753.32
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 4250.0
+      indenizatorias: 1192.0
+    orgao: MINISTERIO DO MEIO AMBIENTE
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ANDRE RODOLFO DE LIMA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1906715
+    position: br-secretaria-extraordinaria-de-controle-do-desmatamento-e-ordenamento-ambiental-territorial-secretario
+    position_name: Secretário Extraordinário de Controle do Desmatamento e Ordenamento Ambiental Territorial do Ministério
+      do Meio Ambiente e Mudança do Clima
+    bruta: 27943.17
+    liquida: 24753.32
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 4250.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-aloisio-lopes-pereira-de-melo:
+    mes: '202608'
+    bruto: 53459.9
+    abate_teto: 7093.7
+    bruto_apos_abate: 46366.2
+    liquido: 30380.89
+    componentes:
+      basica: 53459.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: MINISTERIO DO MEIO AMBIENTE
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ALOISIO LOPES PEREIRA DE MELO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1578618
+    position: br-secretaria-nacional-de-mudanca-do-clima-secretario
+    position_name: Secretário Nacional de Mudança do Clima do Ministério do Meio Ambiente e Mudança do Clima
+    bruta: 53459.9
+    liquida: 30380.89
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-edel-nazare-santiago-de-moraes:
     mes: '202608'
     bruto: 27943.17
@@ -9311,6 +9569,102 @@ people:
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 11579.15
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-laercio-portela-delgado:
+    mes: '202608'
+    bruto: 27943.17
+    abate_teto: 0.0
+    bruto_apos_abate: 27943.17
+    liquido: 20555.46
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1324.52
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: LAERCIO PORTELA DELGADO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3933204
+    position: br-secretaria-de-imprensa-secretario
+    position_name: Secretário de Imprensa da Secretaria de Comunicação Social da Presidência da República
+    bruta: 27943.17
+    liquida: 20555.46
+    indenizatorias: 1324.52
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-joao-caldeira-brant-monteiro-de-castro:
+    mes: '202608'
+    bruto: 27943.17
+    abate_teto: 0.0
+    bruto_apos_abate: 27943.17
+    liquido: 20555.46
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JOAO CALDEIRA BRANT MONTEIRO DE CASTRO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/985420
+    position: br-secretaria-de-politicas-digitais-secretario
+    position_name: Secretário de Políticas Digitais da Secretaria de Comunicação Social da Presidência da República
+    bruta: 27943.17
+    liquida: 20555.46
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-fabricio-lazzarini-carbonel:
+    mes: '202608'
+    bruto: 20327.48
+    abate_teto: 0.0
+    bruto_apos_abate: 20327.48
+    liquido: 14981.94
+    componentes:
+      basica: 20327.48
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1364.55
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: FABRICIO LAZZARINI CARBONEL
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/574660
+    position: br-secretaria-de-publicidade-e-patrocinios-secretario
+    position_name: Secretário de Publicidade e Patrocínios da Secretaria de Comunicação Social da Presidência da República
+    bruta: 20327.48
+    liquida: 14981.94
+    indenizatorias: 1364.55
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-marcelo-almeida-cunha-costa:
@@ -11397,6 +11751,38 @@ people:
     eventuais: 0.0
     cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
     funcao: Sem informação
+  br-p-adriano-willian-da-silva-viana-pereira:
+    mes: '202608'
+    bruto: 39658.59
+    abate_teto: 0.0
+    bruto_apos_abate: 39658.59
+    liquido: 27053.39
+    componentes:
+      basica: 39658.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1751.64
+    orgao: Instituto Federal do Paraná
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ADRIANO WILLIAN DA SILVA VIANA PEREIRA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/513244
+    position: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-parana-reitor
+    position_name: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Paraná
+    bruta: 39658.59
+    liquida: 27053.39
+    indenizatorias: 1751.64
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO DE DIRECAO - CD - IFES
   br-p-paulo-henrique-gomes-de-lima:
     mes: '202608'
     bruto: 40651.31
@@ -16319,6 +16705,11 @@ nao_encontrados:
   cargo: Diretor do Banco Central do Brasil
   setor: executivo
   motivo: ausente na folha
+- id: br-p-paulo-venicius-brito-da-silva
+  nome: Paulo Venicius Brito da Silva
+  cargo: Secretário de Comunicação Institucional da Secretaria de Comunicação Social da Presidência da República
+  setor: executivo
+  motivo: só há homônimo por primeiro+último sobrenome fora do órgão (624)
 - id: br-p-pedro-ivo
   nome: Pedro Ivo
   cargo: Secretário de Competitividade e Política Regulatória do Ministério do Desenvolvimento, Indústria, Comércio e Serviços
@@ -16339,6 +16730,12 @@ nao_encontrados:
   cargo: Secretário-Executivo do Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte
   setor: executivo
   motivo: só há homônimo por primeiro+último sobrenome fora do órgão (24)
+- id: br-p-ricardo-henrique-stuckert
+  nome: Ricardo Henrique Stuckert
+  cargo: Secretário de Produção e Divulgação de Conteúdo Audiovisual da Secretaria de Comunicação Social da Presidência da
+    República
+  setor: executivo
+  motivo: ausente na folha
 - id: br-p-wp-rodrigo-alves-teixeira
   nome: Rodrigo Alves Teixeira
   cargo: Diretor do Banco Central do Brasil

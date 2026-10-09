@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-08'
+generated_at: '2026-10-09'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-11'
+janela_inicio: '2026-07-12'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,11 +11,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 247
-    dias_com_agenda: 60
+    compromissos_90d: 248
+    dias_com_agenda: 61
     por_tipo:
       evento: 87
-      audiencia: 73
+      audiencia: 74
       viagem: 69
       reuniao: 14
       outro: 4
@@ -23,7 +23,7 @@ people:
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
       n: 21
     - nome: Oswaldo Malatesta (Chefe do Gabinete Adjunto de Agenda do Gabinete Pessoal do Presidente )
-      n: 14
+      n: 15
     - nome: Miriam Belchior (Ministra da Casa Civil)
       n: 11
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
@@ -44,7 +44,7 @@ people:
     - nome: Palácio do Planalto
       n: 65
     - nome: Palácio da Alvorada
-      n: 42
+      n: 43
     - nome: Base Aérea de Brasília
       n: 30
     - nome: Esplanada dos Ministérios, Brasília
@@ -61,8 +61,16 @@ people:
       n: 3
     - nome: Av. Gerassina Tavares – Jardim Veneza, São José do Rio Preto (SP)
       n: 3
-    ultimo: '2026-10-08'
+    ultimo: '2026-10-09'
     recentes:
+    - data: '2026-10-09'
+      hora: '15:30'
+      titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Oswaldo Malatesta
+        entidade: Chefe do Gabinete Pessoal do Presidente da República
     - data: '2026-10-08'
       hora: '11:30'
       titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
@@ -114,16 +122,8 @@ people:
       tipo: evento
       local: Palácio do Planalto
       participantes: []
-    - data: '2026-10-01'
-      hora: 09:00
-      titulo: Ministra da Casa Civil, Miriam Belchior, Ministro da Fazenda, Dario Durigan, e Ministro do Planejamento e Orçamento,
-        Bruno Moretti
-      tipo: audiencia
-      local: Palácio do Planalto
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-11: []
       presidente/2026-07-12: []
       presidente/2026-07-13:
       - hora: '10:00'
@@ -986,6 +986,10 @@ people:
       - hora: '11:30'
         titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
         local: Palácio da Alvorada
+      presidente/2026-10-09:
+      - hora: '15:30'
+        titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
+        local: Palácio da Alvorada
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -1084,8 +1088,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-11: []
-      vice/2026-07-11-b1: []
       vice/2026-07-12: []
       vice/2026-07-12-b1: []
       vice/2026-07-13:
@@ -1498,6 +1500,8 @@ people:
       vice/2026-10-07-b1: []
       vice/2026-10-08: []
       vice/2026-10-08-b1: []
+      vice/2026-10-09: []
+      vice/2026-10-09-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 247 compromissos em 60 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 248 compromissos em 61 dias (0 dias não lidos)'
 - 'br-p-geraldo-alckmin: 73 compromissos em 44 dias (0 dias não lidos)'
