@@ -1,19 +1,19 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-10-10'
+generated_at: '2026-10-11'
 mes: '202608'
 mes_senado: '202609'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1214
+  ocupantes_no_grafo: 1213
   com_remuneracao: 503
   por_setor:
     executivo:
-      ocupantes: 479
+      ocupantes: 478
       antes: 396
       depois: 419
-      pct_antes: 82.7
-      pct_depois: 87.5
+      pct_antes: 82.8
+      pct_depois: 87.7
     essenciais:
       ocupantes: 30
       antes: 4
@@ -44,13 +44,13 @@ resumo:
     alta: 478
     media: 25
   sem_remuneracao:
-    total: 87
+    total: 86
     por_motivo:
       ausente na folha: 24
       órgão fora do SIAPE (empresa publica com folha própria): 15
       só há homônimo por primeiro+último sobrenome fora do órgão (...): 13
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
-      no cadastro do SIAPE mas sem linha de remuneração no mês: 12
+      no cadastro do SIAPE mas sem linha de remuneração no mês: 11
       órgão fora do SIAPE (sociedade economia mista com folha própria): 6
       vários servidores compatíveis no órgão (...) sem desempate: 2
       a entidade não aparece como órgão na folha do SIAPE (folha própria): 1
@@ -16761,11 +16761,6 @@ nao_encontrados:
   cargo: Secretário Nacional de Futebol e Defesa dos Direitos do Torcedor do Ministério do Esporte
   setor: executivo
   motivo: só há homônimo por primeiro+último sobrenome fora do órgão (3)
-- id: br-p-wp-silvia-massruha
-  nome: Silvia Massruhá
-  cargo: Presidente da Embrapa
-  setor: executivo
-  motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
 - id: br-p-sergio-perini-rodrigues
   nome: Sérgio Perini Rodrigues
   cargo: Presidente da Casa da Moeda

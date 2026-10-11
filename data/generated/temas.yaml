@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-10-10'
+generated_at: '2026-10-11'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,7 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-07-06': 31
+      '2026-07-06': 19
       '2026-07-13': 131
       '2026-07-20': 187
       '2026-07-27': 216
@@ -29,10 +29,10 @@ temas:
       '2026-09-14': 550
       '2026-09-21': 660
       '2026-09-28': 2501
-      '2026-10-05': 2841
-    total_90d: 9367
-    last7: 4177
-    peak_week: 2841
+      '2026-10-05': 3016
+    total_90d: 9530
+    last7: 3898
+    peak_week: 3016
   processes:
   - casa: camara
     id: PEC 3/2021
@@ -67,13 +67,17 @@ temas:
   - cpi do master
   - vorcaro
   curated: cpmi-banco-master-2026
-  news_hits: 106
+  news_hits: 108
   news_weekly:
     '2026-09-14': 29
     '2026-09-21': 44
     '2026-09-28': 13
-    '2026-10-05': 20
+    '2026-10-05': 22
   news_recent:
+  - id: 9e0ef6fa8bd51f48
+    title: TSE suspende propaganda eleitoral de Lula sobre Flávio Bolsonaro e caso Master; campanha vai recorrer
+    date: '2026-10-11'
+    publication: g1 Política
   - id: 83d37ccec446d15e
     title: 'BRB: decisão de comprar Master foi tomada em reunião na Suíça com Ibaneis, Paulo Henrique e Vorcaro, aponta Polícia
       Federal'
@@ -83,23 +87,19 @@ temas:
     title: PT faz cinco ações contra divulgação de áudio atribuído a Vorcaro
     date: '2026-10-10'
     publication: Estadão
+  - id: 536ebea01090a48a
+    title: PF desmente Veja; Padilha aciona Justiça sobre fake news contra Lula
+    date: '2026-10-10'
+    publication: Agência Brasil
   - id: a42026b3e2c3cde3
     title: Vorcaro financiou filme de Lula em troca de acesso a fundos, diz revista
     date: '2026-10-09'
     publication: Poder360
-  - id: b254f36664f7a8cd
-    title: PT diz que reportagem da “Veja” é “peça eleitoral irresponsável”
-    date: '2026-10-09'
-    publication: Poder360
-  - id: 87adc0a2c444f857
-    title: Vorcaro encomendou ataque hacker durante prisão domiciliar para tentar apagar dados do celular
-    date: '2026-10-09'
-    publication: Estadão
   wikipedia:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-07-06': 106
+      '2026-07-06': 64
       '2026-07-13': 384
       '2026-07-20': 444
       '2026-07-27': 450
@@ -112,9 +112,9 @@ temas:
       '2026-09-14': 9902
       '2026-09-21': 4671
       '2026-09-28': 5005
-      '2026-10-05': 3944
-    total_90d: 46486
-    last7: 6348
+      '2026-10-05': 4916
+    total_90d: 47416
+    last7: 5881
     peak_week: 10630
   processes:
   - casa: camara
@@ -129,7 +129,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
     requested: RCP 1/2026 (camara)
   state: parado
-  stalled_days: 82
+  stalled_days: 83
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -171,7 +171,7 @@ temas:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-07-06': 31
+      '2026-07-06': 9
       '2026-07-13': 137
       '2026-07-20': 161
       '2026-07-27': 195
@@ -184,10 +184,10 @@ temas:
       '2026-09-14': 677
       '2026-09-21': 1134
       '2026-09-28': 1898
-      '2026-10-05': 2716
-    total_90d: 9705
-    last7: 3496
-    peak_week: 2716
+      '2026-10-05': 2950
+    total_90d: 9917
+    last7: 3484
+    peak_week: 2950
   processes:
   - casa: camara
     id: PEC 8/2025
@@ -212,7 +212,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2233802
     requested: PEC 221/2019 (camara)
   state: parado
-  stalled_days: 135
+  stalled_days: 136
   silence_after_peak: false
   silent_and_stalled: false
 - id: isencao-ir
@@ -237,7 +237,7 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-07-06': 9
+      '2026-07-06': 4
       '2026-07-13': 28
       '2026-07-20': 41
       '2026-07-27': 34
@@ -250,9 +250,9 @@ temas:
       '2026-09-14': 71
       '2026-09-21': 72
       '2026-09-28': 34
-      '2026-10-05': 40
-    total_90d: 710
-    last7: 51
+      '2026-10-05': 42
+    total_90d: 707
+    last7: 47
     peak_week: 121
   processes:
   - casa: camara
@@ -290,12 +290,16 @@ temas:
   - pl da dosimetria
   - pl da anistia
   curated: null
-  news_hits: 5
+  news_hits: 6
   news_weekly:
     '2026-09-14': 1
     '2026-09-28': 1
-    '2026-10-05': 3
+    '2026-10-05': 4
   news_recent:
+  - id: d7da20dfc9eb1849
+    title: Ala do STF vê Lei da Dosimetria como alternativa à revisão criminal de Bolsonaro
+    date: '2026-10-11'
+    publication: g1 Política
   - id: fafcb7f77088ebaa
     title: Nunes Marques deve levar revisão da pena de Bolsonaro para plenário depois do 2º turno
     date: '2026-10-07'
@@ -313,10 +317,6 @@ temas:
       do STF
     date: '2026-10-01'
     publication: g1 Política
-  - id: 9904ca987c474ee9
-    title: 'Lula diz não aceitar classificação de facções como terroristas: ''Terrorismo foi o 8 de Janeiro'''
-    date: '2026-09-18'
-    publication: g1 Política
   wikipedia:
     article: Ataques_de_8_de_janeiro_de_2023
     url: https://pt.wikipedia.org/wiki/Ataques_de_8_de_janeiro_de_2023
@@ -330,10 +330,10 @@ temas:
       '2026-09-14': 2
       '2026-09-21': 1
       '2026-09-28': 1
-      '2026-10-05': 2
-    total_90d: 6
-    last7: 4
-    peak_week: 2
+      '2026-10-05': 5
+    total_90d: 9
+    last7: 7
+    peak_week: 5
   processes:
   - casa: camara
     id: PL 2162/2023
@@ -357,7 +357,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 155
+  stalled_days: 156
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -425,7 +425,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1214
+  stalled_days: 1215
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -466,7 +466,7 @@ temas:
     article: Precatório
     url: https://pt.wikipedia.org/wiki/Precatório
     weekly:
-      '2026-07-06': 3
+      '2026-07-06': 2
       '2026-07-13': 25
       '2026-07-20': 32
       '2026-07-27': 28
@@ -479,9 +479,9 @@ temas:
       '2026-09-14': 64
       '2026-09-21': 79
       '2026-09-28': 112
-      '2026-10-05': 51
-    total_90d: 612
-    last7: 73
+      '2026-10-05': 59
+    total_90d: 619
+    last7: 69
     peak_week: 112
   processes:
   - casa: camara
@@ -549,7 +549,7 @@ temas:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-07-06': 107
+      '2026-07-06': 44
       '2026-07-13': 390
       '2026-07-20': 175
       '2026-07-27': 183
@@ -562,10 +562,10 @@ temas:
       '2026-09-14': 214
       '2026-09-21': 186
       '2026-09-28': 366
-      '2026-10-05': 760
-    total_90d: 4068
-    last7: 907
-    peak_week: 760
+      '2026-10-05': 890
+    total_90d: 4135
+    last7: 980
+    peak_week: 890
   processes:
   - casa: camara
     id: PLP 210/2024
