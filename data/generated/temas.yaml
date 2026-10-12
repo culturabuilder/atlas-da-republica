@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-10-11'
+generated_at: '2026-10-12'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,6 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-07-06': 19
       '2026-07-13': 131
       '2026-07-20': 187
       '2026-07-27': 216
@@ -29,10 +28,10 @@ temas:
       '2026-09-14': 550
       '2026-09-21': 660
       '2026-09-28': 2501
-      '2026-10-05': 3016
-    total_90d: 9530
-    last7: 3898
-    peak_week: 3016
+      '2026-10-05': 3172
+    total_90d: 9667
+    last7: 3172
+    peak_week: 3172
   processes:
   - casa: camara
     id: PEC 3/2021
@@ -99,7 +98,6 @@ temas:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-07-06': 64
       '2026-07-13': 384
       '2026-07-20': 444
       '2026-07-27': 450
@@ -112,9 +110,9 @@ temas:
       '2026-09-14': 9902
       '2026-09-21': 4671
       '2026-09-28': 5005
-      '2026-10-05': 4916
-    total_90d: 47416
-    last7: 5881
+      '2026-10-05': 5535
+    total_90d: 47971
+    last7: 5535
     peak_week: 10630
   processes:
   - casa: camara
@@ -129,7 +127,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
     requested: RCP 1/2026 (camara)
   state: parado
-  stalled_days: 83
+  stalled_days: 84
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -141,12 +139,21 @@ temas:
   - fim da escala
   - jornada 6x1
   curated: null
-  news_hits: 46
+  news_hits: 48
   news_weekly:
     '2026-09-14': 3
     '2026-09-28': 3
-    '2026-10-05': 40
+    '2026-10-05': 41
+    '2026-10-12': 1
   news_recent:
+  - id: 0f2e7f69385cb62d
+    title: Técnicos do TSE não encontram conteúdo falso no canal Exército do Lula
+    date: '2026-10-12'
+    publication: Agência Brasil
+  - id: 0c93c45de71c8a18
+    title: Mendonça proíbe PT de impulsionar vídeo que diz que Flávio Bolsonaro é contra a escala 6x1
+    date: '2026-10-11'
+    publication: g1 Política
   - id: 701204ded50a9360
     title: 'Vídeo: Escala 6x1 l Confira como foi o debate ao longo da semana no Senado'
     date: '2026-10-09'
@@ -159,19 +166,10 @@ temas:
     title: Brasil não será governado por sócios do Banco Master, diz Lula
     date: '2026-10-09'
     publication: Agência Brasil
-  - id: 4d56a07ebca00462
-    title: 'Fim da escala 6x1: Davi marca votação em 1º turno para quarta'
-    date: '2026-10-09'
-    publication: Agência Senado
-  - id: 2c3501f9c88a66b1
-    title: Alcolumbre pauta votação da PEC que prevê fim da escala 6x1 para a próxima quarta-feira
-    date: '2026-10-09'
-    publication: g1 Política
   wikipedia:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-07-06': 9
       '2026-07-13': 137
       '2026-07-20': 161
       '2026-07-27': 195
@@ -184,10 +182,10 @@ temas:
       '2026-09-14': 677
       '2026-09-21': 1134
       '2026-09-28': 1898
-      '2026-10-05': 2950
-    total_90d: 9917
-    last7: 3484
-    peak_week: 2950
+      '2026-10-05': 3170
+    total_90d: 10128
+    last7: 3170
+    peak_week: 3170
   processes:
   - casa: camara
     id: PEC 8/2025
@@ -212,7 +210,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2233802
     requested: PEC 221/2019 (camara)
   state: parado
-  stalled_days: 136
+  stalled_days: 137
   silence_after_peak: false
   silent_and_stalled: false
 - id: isencao-ir
@@ -237,7 +235,6 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-07-06': 4
       '2026-07-13': 28
       '2026-07-20': 41
       '2026-07-27': 34
@@ -250,9 +247,9 @@ temas:
       '2026-09-14': 71
       '2026-09-21': 72
       '2026-09-28': 34
-      '2026-10-05': 42
-    total_90d: 707
-    last7: 47
+      '2026-10-05': 43
+    total_90d: 704
+    last7: 43
     peak_week: 121
   processes:
   - casa: camara
@@ -357,7 +354,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 156
+  stalled_days: 157
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -425,7 +422,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1215
+  stalled_days: 1216
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -466,7 +463,6 @@ temas:
     article: Precatório
     url: https://pt.wikipedia.org/wiki/Precatório
     weekly:
-      '2026-07-06': 2
       '2026-07-13': 25
       '2026-07-20': 32
       '2026-07-27': 28
@@ -479,9 +475,9 @@ temas:
       '2026-09-14': 64
       '2026-09-21': 79
       '2026-09-28': 112
-      '2026-10-05': 59
+      '2026-10-05': 61
     total_90d: 619
-    last7: 69
+    last7: 61
     peak_week: 112
   processes:
   - casa: camara
@@ -549,7 +545,6 @@ temas:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-07-06': 44
       '2026-07-13': 390
       '2026-07-20': 175
       '2026-07-27': 183
@@ -562,10 +557,10 @@ temas:
       '2026-09-14': 214
       '2026-09-21': 186
       '2026-09-28': 366
-      '2026-10-05': 890
-    total_90d: 4135
-    last7: 980
-    peak_week: 890
+      '2026-10-05': 1023
+    total_90d: 4224
+    last7: 1023
+    peak_week: 1023
   processes:
   - casa: camara
     id: PLP 210/2024

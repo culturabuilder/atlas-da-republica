@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-11'
+generated_at: '2026-10-12'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-14'
+janela_inicio: '2026-07-15'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,21 +11,21 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 241
-    dias_com_agenda: 60
+    compromissos_90d: 239
+    dias_com_agenda: 59
     por_tipo:
       evento: 82
-      audiencia: 74
+      audiencia: 72
       viagem: 67
       reuniao: 14
       outro: 4
     entidades_top:
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
-      n: 21
+      n: 20
     - nome: Oswaldo Malatesta (Chefe do Gabinete Adjunto de Agenda do Gabinete Pessoal do Presidente )
       n: 15
     - nome: Miriam Belchior (Ministra da Casa Civil)
-      n: 11
+      n: 10
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 4
     - nome: Mauro Vieira (Ministro das Relações Exteriores)
@@ -42,7 +42,7 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 65
+      n: 63
     - nome: Palácio da Alvorada
       n: 43
     - nome: Base Aérea de Brasília
@@ -124,13 +124,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-14:
-      - hora: '15:00'
-        titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
-        local: Palácio do Planalto
-      - hora: '15:30'
-        titulo: Ministra da Casa Civil, Miriam Belchior
-        local: Palácio do Planalto
       presidente/2026-07-15:
       - hora: 09:00
         titulo: Ministra da Casa Civil, Miriam Belchior
@@ -968,6 +961,7 @@ people:
         local: Palácio da Alvorada
       presidente/2026-10-10: []
       presidente/2026-10-11: []
+      presidente/2026-10-12: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -1066,8 +1060,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-14: []
-      vice/2026-07-14-b1: []
       vice/2026-07-15:
       - hora: '13:30'
         titulo: Deputado Federal Alencar Santana - PT/SP
@@ -1470,6 +1462,8 @@ people:
       vice/2026-10-10-b1: []
       vice/2026-10-11: []
       vice/2026-10-11-b1: []
+      vice/2026-10-12: []
+      vice/2026-10-12-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 241 compromissos em 60 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 239 compromissos em 59 dias (0 dias não lidos)'
 - 'br-p-geraldo-alckmin: 70 compromissos em 43 dias (0 dias não lidos)'
