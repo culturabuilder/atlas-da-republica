@@ -1,12 +1,12 @@
 # GERADO por etl/proposicoes.py. Não edite à mão.
-generated_at: '2026-10-12'
+generated_at: '2026-10-13'
 since: '2026-02-02'
-duracao_s: 328
+duracao_s: 326
 resumo:
   camara:
     pessoas: 513
     com_proposicao: 507
-    proposicoes_distintas: 23986
+    proposicoes_distintas: 24062
     virou_norma: 6
     designacoes_relator: 6774
     designacoes_casadas: 6772
@@ -21,7 +21,7 @@ resumo:
     pessoas: 84
     erros: 0
     com_proposicao: 82
-    proposicoes_distintas: 2154
+    proposicoes_distintas: 2157
     virou_norma: 33
     mediana_apresentadas: 33.0
     mediana_projetos: 8.0
@@ -32435,6 +32435,35 @@ people:
       CDU: 7
       CINDRE: 2
     virou_norma: 0
+  br-p-cd-74550:
+    house: camara
+    window: ano
+    apresentadas: 1
+    como_primeiro_autor: 0
+    projetos: 0
+    requerimentos: 1
+    emendas: 0
+    outros: 0
+    pareceres_como_relator: 0
+    por_tipo:
+      REQ: 1
+    temas: []
+    ultimas:
+    - id: 2607035
+      sigla: REQ
+      numero: 1288
+      ano: 2026
+      ementa: Requer a dispensa do interstício regimental entre o primeiro e o segundo turno de deliberação da Proposta de
+        Emenda à Constituição nº 18, de 2025.
+      situacao: Tramitação Finalizada
+      orgao: MESA
+      data: '2026-03-04'
+      apresentada: '2026-03-04'
+      url: https://www.camara.leg.br/propostas-legislativas/2607035
+    relatorias: 0
+    relatorias_projetos: 0
+    relatorias_por_orgao: {}
+    virou_norma: 0
   br-p-cd-178910:
     house: camara
     window: ano
@@ -32613,87 +32642,6 @@ people:
     relatorias_por_orgao:
       CVT: 8
       PLEN: 1
-    virou_norma: 0
-  br-p-cd-235800:
-    house: camara
-    window: ano
-    apresentadas: 31
-    como_primeiro_autor: 29
-    projetos: 19
-    requerimentos: 6
-    emendas: 0
-    outros: 6
-    pareceres_como_relator: 2
-    por_tipo:
-      PL: 18
-      INC: 6
-      RIC: 5
-      PRL: 2
-      PEC: 1
-      REQ: 1
-    temas:
-    - Direitos Humanos e Minorias
-    - Trabalho e Emprego
-    - Direito e Defesa do Consumidor
-    ultimas:
-    - id: 2646865
-      sigla: PL
-      numero: 5418
-      ano: 2026
-      ementa: Assegura às mulheres em situação de violência doméstica e familiar prioridade de acesso às ações de qualificação
-        profissional e de intermediação de mão de obra…
-      situacao: Apresentação de Proposição
-      orgao: null
-      data: '2026-09-21'
-      apresentada: '2026-09-21'
-      url: https://www.camara.leg.br/propostas-legislativas/2646865
-    - id: 2646863
-      sigla: PL
-      numero: 5417
-      ano: 2026
-      ementa: Assegura prioridade na matrícula em creche, pré-escola e em escola de tempo integral das redes públicas de ensino
-        aos filhos e dependentes de mulheres em situa…
-      situacao: Apresentação de Proposição
-      orgao: null
-      data: '2026-09-21'
-      apresentada: '2026-09-21'
-      url: https://www.camara.leg.br/propostas-legislativas/2646863
-    - id: 2644889
-      sigla: PL
-      numero: 5228
-      ano: 2026
-      ementa: Altera a Consolidação das Leis do Trabalho (CLT), aprovada pelo Decreto-Lei nº 5.452, de 1º de maio de 1943,
-        para assegurar aos empregados em serviços de porta…
-      situacao: Apresentação de Proposição
-      orgao: null
-      data: '2026-08-31'
-      apresentada: '2026-08-31'
-      url: https://www.camara.leg.br/propostas-legislativas/2644889
-    - id: 2644045
-      sigla: PL
-      numero: 5123
-      ano: 2026
-      ementa: Institui o Programa Nacional de Mobilidade Inclusiva da Pessoa com Deficiência (Passe Livre PcD Brasil) e estabelece
-        mecanismos de integração, simplificação e…
-      situacao: Apresentação de Proposição
-      orgao: null
-      data: '2026-08-19'
-      apresentada: '2026-08-19'
-      url: https://www.camara.leg.br/propostas-legislativas/2644045
-    - id: 2641822
-      sigla: PL
-      numero: 4863
-      ano: 2026
-      ementa: Altera a Lei nº 11.340, de 7 de agosto de 2006 (Lei Maria da Penha), e a Lei nº 12.965, de 23 de abril de 2014
-        (Marco Civil da Internet), para conceituar a vio…
-      situacao: Aguardando Despacho do Presidente da Câmara dos Deputados (Chancela)
-      orgao: SECAP(SGM)
-      data: '2026-08-03'
-      apresentada: '2026-08-03'
-      url: https://www.camara.leg.br/propostas-legislativas/2641822
-    relatorias: 0
-    relatorias_projetos: 0
-    relatorias_por_orgao: {}
     virou_norma: 0
   br-p-cd-205550:
     house: camara
@@ -34232,6 +34180,87 @@ people:
     relatorias_projetos: 0
     relatorias_por_orgao: {}
     virou_norma: 0
+  br-p-cd-220616:
+    house: camara
+    window: ano
+    apresentadas: 139
+    como_primeiro_autor: 127
+    projetos: 20
+    requerimentos: 24
+    emendas: 3
+    outros: 92
+    pareceres_como_relator: 0
+    por_tipo:
+      INC: 92
+      REQ: 21
+      PL: 20
+      RIC: 3
+      EMC: 2
+      EMP: 1
+    temas:
+    - Homenagens e Datas Comemorativas
+    - Arte, Cultura e Religião
+    - Direitos Humanos e Minorias
+    ultimas:
+    - id: 2628628
+      sigla: PL
+      numero: 2686
+      ano: 2026
+      ementa: Inscreve o nome de Sérgio Vieira de Mello no Livro dos Heróis e Heroínas da Pátria, depositado no Panteão da
+        Pátria e da Liberdade Tancredo Neves.
+      situacao: Aguardando Parecer
+      orgao: CCULT
+      data: '2026-09-11'
+      apresentada: '2026-05-27'
+      url: https://www.camara.leg.br/propostas-legislativas/2628628
+    - id: 2628619
+      sigla: PL
+      numero: 2683
+      ano: 2026
+      ementa: Altera a Lei nº 9.250, de 26 de dezembro de 1995, para determinar a apuração segregada dos rendimentos de aposentadoria
+        e dos rendimentos do trabalho recebidos…
+      situacao: Aguardando Designação de Relator(a)
+      orgao: CFT
+      data: '2026-07-08'
+      apresentada: '2026-05-27'
+      url: https://www.camara.leg.br/propostas-legislativas/2628619
+    - id: 2628594
+      sigla: PL
+      numero: 2682
+      ano: 2026
+      ementa: Confere ao Município de Guapimirim, no Estado do Rio de Janeiro, o título de Capital Nacional do Dedo de Deus.
+      situacao: Aguardando Parecer
+      orgao: CTUR
+      data: '2026-09-01'
+      apresentada: '2026-05-27'
+      url: https://www.camara.leg.br/propostas-legislativas/2628594
+    - id: 2627590
+      sigla: PL
+      numero: 2587
+      ano: 2026
+      ementa: Altera a Lei nº 10.741, de 1º de outubro de 2003, para dispor sobre o apoio ao idoso nos procedimentos de embarque
+        e desembarque nos veículos do sistema de tra…
+      situacao: Aguardando Parecer
+      orgao: CVT
+      data: '2026-08-13'
+      apresentada: '2026-05-25'
+      url: https://www.camara.leg.br/propostas-legislativas/2627590
+    - id: 2627419
+      sigla: PL
+      numero: 2574
+      ano: 2026
+      ementa: Altera a Lei nº 9.472, de 16 de julho de 1997, para dispor sobre a gratuidade de ligações para a Central de
+        Atendimento do Instituto Nacional do Seguro Social…
+      situacao: Aguardando Designação de Relator(a)
+      orgao: CASP
+      data: '2026-07-02'
+      apresentada: '2026-05-25'
+      url: https://www.camara.leg.br/propostas-legislativas/2627419
+    relatorias: 1
+    relatorias_projetos: 1
+    relatorias_por_orgao:
+      CSAUDE: 1
+    virou_norma: 0
   br-p-cd-160510:
     house: camara
     window: ano
@@ -35378,90 +35407,6 @@ people:
     relatorias: 0
     relatorias_projetos: 0
     relatorias_por_orgao: {}
-    virou_norma: 0
-  br-p-cd-236375:
-    house: camara
-    window: ano
-    apresentadas: 32
-    como_primeiro_autor: 27
-    projetos: 15
-    requerimentos: 16
-    emendas: 0
-    outros: 1
-    pareceres_como_relator: 11
-    por_tipo:
-      REQ: 16
-      PL: 14
-      PRL: 5
-      SBT: 4
-      INC: 1
-      PEC: 1
-      PPP: 1
-      PRLP: 1
-    temas:
-    - Esporte e Lazer
-    - Direitos Humanos e Minorias
-    - Administração Pública
-    ultimas:
-    - id: 2643808
-      sigla: PL
-      numero: 5083
-      ano: 2026
-      ementa: Dispõe sobre a obrigatoriedade de emissão, controle e fiscalização do Perfil Profissiográfico Previdenciário
-        (PPP) e do Laudo Técnico das Condições Ambientais…
-      situacao: Apresentação de Proposição
-      orgao: null
-      data: '2026-08-14'
-      apresentada: '2026-08-14'
-      url: https://www.camara.leg.br/propostas-legislativas/2643808
-    - id: 2641425
-      sigla: PL
-      numero: 4730
-      ano: 2026
-      ementa: Institui o Programa Envelhecer nos Territórios e o Programa Viva Mais Cidadania, voltados à promoção e proteção
-        dos direitos humanos das pessoas idosas, e dá o…
-      situacao: Aguardando Despacho do Presidente da Câmara dos Deputados (Chancela)
-      orgao: SECAP(SGM)
-      data: '2026-07-20'
-      apresentada: '2026-07-20'
-      url: https://www.camara.leg.br/propostas-legislativas/2641425
-    - id: 2640228
-      sigla: PL
-      numero: 3767
-      ano: 2026
-      ementa: Confere à cidade de Santa Maria Madalena, no Estado do Rio de Janeiro, o título de Capital Nacional do Astroturismo
-        e a declara "Cidade das Estrelas" no âmbito…
-      situacao: Aguardando Designação de Relator(a)
-      orgao: CTUR
-      data: '2026-09-04'
-      apresentada: '2026-07-16'
-      url: https://www.camara.leg.br/propostas-legislativas/2640228
-    - id: 2639858
-      sigla: PL
-      numero: 3742
-      ano: 2026
-      ementa: Proíbe a monetização de conteúdos em qualquer plataforma digital, rede sociais, podcasts, canais de vídeos e
-        sites por detentores de mandatos eletivos que tenh…
-      situacao: Aguardando Despacho do Presidente da Câmara dos Deputados (Chancela)
-      orgao: SECAP(SGM)
-      data: '2026-07-15'
-      apresentada: '2026-07-15'
-      url: https://www.camara.leg.br/propostas-legislativas/2639858
-    - id: 2633488
-      sigla: PEC
-      numero: 15
-      ano: 2026
-      ementa: Altera os art. 150 Constituição Federal para incluir as entidades esportivas sem fins lucrativos.
-      situacao: Aguardando Despacho do Presidente da Câmara dos Deputados (Chancela)
-      orgao: SECAP(SGM)
-      data: '2026-07-20'
-      apresentada: '2026-06-17'
-      url: https://www.camara.leg.br/propostas-legislativas/2633488
-    relatorias: 11
-    relatorias_projetos: 11
-    relatorias_por_orgao:
-      CSAUDE: 6
-      CESPO: 5
     virou_norma: 0
   br-p-cd-220655:
     house: camara
@@ -44007,21 +43952,33 @@ people:
   br-p-sf-35:
     house: senado
     window: ano
-    apresentadas: 41
-    como_primeiro_autor: 37
-    projetos: 33
+    apresentadas: 42
+    como_primeiro_autor: 38
+    projetos: 34
     requerimentos: 8
     emendas: 0
     outros: 0
     pareceres_como_relator: null
     por_tipo:
-      PL: 31
+      PL: 32
       RQS: 4
       REQ: 3
       PEC: 2
       R.S: 1
     temas: []
     ultimas:
+    - id: 9113033
+      sigla: PL
+      numero: 5540
+      ano: 2026
+      ementa: Institui a Política Nacional de Bioenergia Amazônica para Sistemas Isolados (PROBIO-SI), destinada a incentivar
+        a substituição do óleo diesel fóssil por biocom…
+      situacao: Aguardando despacho
+      orgao: SF
+      data: '2026-10-13'
+      apresentada: '2026-10-13'
+      norma: null
+      url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175933
     - id: 9112372
       sigla: PL
       numero: 5526
@@ -44070,18 +44027,6 @@ people:
       apresentada: '2026-09-18'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175819
-    - id: 9108470
-      sigla: PL
-      numero: 5379
-      ano: 2026
-      ementa: Altera a Lei nº 8.069, de 13 de julho de 1990 (Estatuto da Criança e do Adolescente), para instituir o "Certificado
-        Instituição Amiga da Infância".
-      situacao: Aguardando despacho
-      orgao: SF
-      data: '2026-09-15'
-      apresentada: '2026-09-15'
-      norma: null
-      url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175799
     relatorias: 1
     relatorias_projetos: 1
     relatorias_por_colegiado:
@@ -44790,15 +44735,15 @@ people:
   br-p-sf-6342:
     house: senado
     window: ano
-    apresentadas: 62
-    como_primeiro_autor: 42
+    apresentadas: 63
+    como_primeiro_autor: 43
     projetos: 13
-    requerimentos: 46
+    requerimentos: 47
     emendas: 0
     outros: 3
     pareceres_como_relator: null
     por_tipo:
-      RQS: 29
+      RQS: 30
       REQ: 17
       PL: 7
       PEC: 4
@@ -46089,15 +46034,15 @@ people:
   br-p-sf-3806:
     house: senado
     window: ano
-    apresentadas: 55
-    como_primeiro_autor: 40
+    apresentadas: 56
+    como_primeiro_autor: 41
     projetos: 13
-    requerimentos: 39
+    requerimentos: 40
     emendas: 0
     outros: 3
     pareceres_como_relator: null
     por_tipo:
-      REQ: 26
+      REQ: 27
       RQS: 12
       PEC: 6
       PL: 5
@@ -49696,6 +49641,23 @@ people:
     relatorias_por_colegiado:
       CTFC: 1
     virou_norma: 0
+  br-p-sf-5257:
+    house: senado
+    window: ano
+    apresentadas: 0
+    como_primeiro_autor: 0
+    projetos: 0
+    requerimentos: 0
+    emendas: 0
+    outros: 0
+    pareceres_como_relator: null
+    por_tipo: {}
+    temas: []
+    ultimas: []
+    relatorias: 0
+    relatorias_projetos: 0
+    relatorias_por_colegiado: {}
+    virou_norma: 0
   br-p-sf-345:
     house: senado
     window: ano
@@ -49865,23 +49827,6 @@ people:
       CDH: 14
       CAS: 12
       CE: 9
-    virou_norma: 0
-  br-p-sf-5257:
-    house: senado
-    window: ano
-    apresentadas: 0
-    como_primeiro_autor: 0
-    projetos: 0
-    requerimentos: 0
-    emendas: 0
-    outros: 0
-    pareceres_como_relator: null
-    por_tipo: {}
-    temas: []
-    ultimas: []
-    relatorias: 0
-    relatorias_projetos: 0
-    relatorias_por_colegiado: {}
     virou_norma: 0
   br-p-sf-6025:
     house: senado

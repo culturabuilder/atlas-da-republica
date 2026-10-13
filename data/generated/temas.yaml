@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-10-12'
+generated_at: '2026-10-13'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,7 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-07-13': 131
+      '2026-07-13': 106
       '2026-07-20': 187
       '2026-07-27': 216
       '2026-08-03': 249
@@ -29,8 +29,9 @@ temas:
       '2026-09-21': 660
       '2026-09-28': 2501
       '2026-10-05': 3172
-    total_90d: 9667
-    last7: 3172
+      '2026-10-12': 199
+    total_90d: 9841
+    last7: 2163
     peak_week: 3172
   processes:
   - casa: camara
@@ -66,13 +67,26 @@ temas:
   - cpi do master
   - vorcaro
   curated: cpmi-banco-master-2026
-  news_hits: 108
+  news_hits: 111
   news_weekly:
     '2026-09-14': 29
     '2026-09-21': 44
     '2026-09-28': 13
     '2026-10-05': 22
+    '2026-10-12': 3
   news_recent:
+  - id: b1f107df3b88a562
+    title: Vini Jr. fechou contrato de R$ 9,2 milhões com Will Bank, de Vorcaro
+    date: '2026-10-13'
+    publication: Poder360
+  - id: 03459cc5bae2db17
+    title: Mensagens apontam Vorcaro como sócio de rede de prostituição e recrutamento de refugiadas, diz site
+    date: '2026-10-13'
+    publication: Estadão
+  - id: 374bd45860dfeb45
+    title: Vorcaro pagou hotel de ex-cunhado de Gilmar Mendes e recebeu foto da viagem
+    date: '2026-10-13'
+    publication: Estadão
   - id: 9e0ef6fa8bd51f48
     title: TSE suspende propaganda eleitoral de Lula sobre Flávio Bolsonaro e caso Master; campanha vai recorrer
     date: '2026-10-11'
@@ -82,23 +96,11 @@ temas:
       Federal'
     date: '2026-10-10'
     publication: g1 Política
-  - id: 3e2f4e74951f543c
-    title: PT faz cinco ações contra divulgação de áudio atribuído a Vorcaro
-    date: '2026-10-10'
-    publication: Estadão
-  - id: 536ebea01090a48a
-    title: PF desmente Veja; Padilha aciona Justiça sobre fake news contra Lula
-    date: '2026-10-10'
-    publication: Agência Brasil
-  - id: a42026b3e2c3cde3
-    title: Vorcaro financiou filme de Lula em troca de acesso a fundos, diz revista
-    date: '2026-10-09'
-    publication: Poder360
   wikipedia:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-07-13': 384
+      '2026-07-13': 313
       '2026-07-20': 444
       '2026-07-27': 450
       '2026-08-03': 427
@@ -111,8 +113,9 @@ temas:
       '2026-09-21': 4671
       '2026-09-28': 5005
       '2026-10-05': 5535
-    total_90d: 47971
-    last7: 5535
+      '2026-10-12': 506
+    total_90d: 48406
+    last7: 5098
     peak_week: 10630
   processes:
   - casa: camara
@@ -127,7 +130,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
     requested: RCP 1/2026 (camara)
   state: parado
-  stalled_days: 84
+  stalled_days: 85
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -139,38 +142,38 @@ temas:
   - fim da escala
   - jornada 6x1
   curated: null
-  news_hits: 48
+  news_hits: 54
   news_weekly:
     '2026-09-14': 3
     '2026-09-28': 3
     '2026-10-05': 41
-    '2026-10-12': 1
+    '2026-10-12': 7
   news_recent:
-  - id: 0f2e7f69385cb62d
-    title: Técnicos do TSE não encontram conteúdo falso no canal Exército do Lula
-    date: '2026-10-12'
+  - id: 0ae8d0b117191ad3
+    title: 'Fim da escala 6x1: confira próximos passos da tramitação no Senado'
+    date: '2026-10-13'
     publication: Agência Brasil
-  - id: 0c93c45de71c8a18
-    title: Mendonça proíbe PT de impulsionar vídeo que diz que Flávio Bolsonaro é contra a escala 6x1
-    date: '2026-10-11'
-    publication: g1 Política
-  - id: 701204ded50a9360
-    title: 'Vídeo: Escala 6x1 l Confira como foi o debate ao longo da semana no Senado'
-    date: '2026-10-09'
+  - id: 9275d8ba556f48f1
+    title: 'Vídeo: PEC do fim da escala 6x1 deve ser votada em primeiro turno na quarta'
+    date: '2026-10-13'
     publication: Agência Senado
-  - id: 8e1d305f6b512212
-    title: Alcolumbre marca votação da PEC pelo fim da 6x1 para quarta-feira
-    date: '2026-10-09'
-    publication: Agência Brasil
-  - id: b9d08e3eb87ba221
-    title: Brasil não será governado por sócios do Banco Master, diz Lula
-    date: '2026-10-09'
-    publication: Agência Brasil
+  - id: 132abf275d2c7dfa
+    title: Lula diz que PL decidiu apoiar fim da escala 6x1 'depois da pressão da sociedade'
+    date: '2026-10-13'
+    publication: g1 Política
+  - id: 6fed4e06f4b18987
+    title: 'Crítico da PEC do fim da 6x1, Flávio passa a declarar voto a favor da proposta: ''Vontade da maioria do povo'''
+    date: '2026-10-13'
+    publication: g1 Política
+  - id: 82a695940a12aa0c
+    title: JOTA Principal | PEC pelo fim da escala 6×1 impõe dilema a Flávio, que declara voto favorável
+    date: '2026-10-13'
+    publication: JOTA
   wikipedia:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-07-13': 137
+      '2026-07-13': 119
       '2026-07-20': 161
       '2026-07-27': 195
       '2026-08-03': 243
@@ -183,8 +186,9 @@ temas:
       '2026-09-21': 1134
       '2026-09-28': 1898
       '2026-10-05': 3170
-    total_90d: 10128
-    last7: 3170
+      '2026-10-12': 261
+    total_90d: 10371
+    last7: 2502
     peak_week: 3170
   processes:
   - casa: camara
@@ -210,7 +214,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2233802
     requested: PEC 221/2019 (camara)
   state: parado
-  stalled_days: 137
+  stalled_days: 138
   silence_after_peak: false
   silent_and_stalled: false
 - id: isencao-ir
@@ -235,7 +239,7 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-07-13': 28
+      '2026-07-13': 25
       '2026-07-20': 41
       '2026-07-27': 34
       '2026-08-03': 33
@@ -248,8 +252,9 @@ temas:
       '2026-09-21': 72
       '2026-09-28': 34
       '2026-10-05': 43
+      '2026-10-12': 3
     total_90d: 704
-    last7: 43
+    last7: 29
     peak_week: 121
   processes:
   - casa: camara
@@ -328,7 +333,8 @@ temas:
       '2026-09-21': 1
       '2026-09-28': 1
       '2026-10-05': 5
-    total_90d: 9
+      '2026-10-12': 1
+    total_90d: 10
     last7: 7
     peak_week: 5
   processes:
@@ -354,7 +360,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 157
+  stalled_days: 158
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -422,7 +428,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1216
+  stalled_days: 1217
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -463,7 +469,7 @@ temas:
     article: Precatório
     url: https://pt.wikipedia.org/wiki/Precatório
     weekly:
-      '2026-07-13': 25
+      '2026-07-13': 24
       '2026-07-20': 32
       '2026-07-27': 28
       '2026-08-03': 25
@@ -476,8 +482,9 @@ temas:
       '2026-09-21': 79
       '2026-09-28': 112
       '2026-10-05': 61
-    total_90d: 619
-    last7: 61
+      '2026-10-12': 4
+    total_90d: 622
+    last7: 54
     peak_week: 112
   processes:
   - casa: camara
@@ -545,7 +552,7 @@ temas:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-07-13': 390
+      '2026-07-13': 283
       '2026-07-20': 175
       '2026-07-27': 183
       '2026-08-03': 191
@@ -558,8 +565,9 @@ temas:
       '2026-09-21': 186
       '2026-09-28': 366
       '2026-10-05': 1023
-    total_90d: 4224
-    last7: 1023
+      '2026-10-12': 132
+    total_90d: 4249
+    last7: 971
     peak_week: 1023
   processes:
   - casa: camara

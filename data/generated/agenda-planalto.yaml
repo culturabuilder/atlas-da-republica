@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-12'
+generated_at: '2026-10-13'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-15'
+janela_inicio: '2026-07-16'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,27 +11,27 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 239
+    compromissos_90d: 236
     dias_com_agenda: 59
     por_tipo:
-      evento: 82
-      audiencia: 72
+      evento: 83
+      audiencia: 68
       viagem: 67
       reuniao: 14
       outro: 4
     entidades_top:
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
-      n: 20
+      n: 19
     - nome: Oswaldo Malatesta (Chefe do Gabinete Adjunto de Agenda do Gabinete Pessoal do Presidente )
-      n: 15
+      n: 14
     - nome: Miriam Belchior (Ministra da Casa Civil)
-      n: 10
+      n: 9
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 4
-    - nome: Mauro Vieira (Ministro das Relações Exteriores)
-      n: 3
     - nome: Dario Durigan (Ministro da Fazenda)
       n: 3
+    - nome: Mauro Vieira (Ministro das Relações Exteriores)
+      n: 2
     - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
       n: 2
     - nome: Oswaldo Malatesta Neto (Chefe do Gabinete Pessoal do Presidente da República)
@@ -42,7 +42,7 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 63
+      n: 60
     - nome: Palácio da Alvorada
       n: 43
     - nome: Base Aérea de Brasília
@@ -61,8 +61,14 @@ people:
       n: 3
     - nome: Estrada da Produção – Montes Claros (MG)
       n: 3
-    ultimo: '2026-10-09'
+    ultimo: '2026-10-13'
     recentes:
+    - data: '2026-10-13'
+      hora: '10:00'
+      titulo: Cerimônia sobre medidas para microempreendedores individuais
+      tipo: evento
+      local: Palácio do Planalto
+      participantes: []
     - data: '2026-10-09'
       hora: '15:30'
       titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
@@ -116,27 +122,8 @@ people:
       tipo: evento
       local: Palácio do Planalto
       participantes: []
-    - data: '2026-10-01'
-      hora: '10:00'
-      titulo: Assinatura da cessão onerosa do Centro de Treinamento Rei Pelé
-      tipo: evento
-      local: Palácio do Planalto
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-15:
-      - hora: 09:00
-        titulo: Ministra da Casa Civil, Miriam Belchior
-        local: Palácio do Planalto
-      - hora: '10:00'
-        titulo: Ministro das Relações Exteriores, Mauro Vieira
-        local: Palácio do Planalto
-      - hora: '15:00'
-        titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
-        local: Palácio do Planalto
-      - hora: '15:30'
-        titulo: Chefe do Gabinete Adjunto de Agenda do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
-        local: Palácio do Planalto
       presidente/2026-07-16:
       - hora: 09:00
         titulo: Chefe do Gabinete Adjunto de Agenda do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
@@ -962,6 +949,10 @@ people:
       presidente/2026-10-10: []
       presidente/2026-10-11: []
       presidente/2026-10-12: []
+      presidente/2026-10-13:
+      - hora: '10:00'
+        titulo: Cerimônia sobre medidas para microempreendedores individuais
+        local: Palácio do Planalto
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -969,12 +960,12 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 70
+    compromissos_90d: 71
     dias_com_agenda: 43
     por_tipo:
-      evento: 30
+      evento: 32
       viagem: 19
-      audiencia: 11
+      audiencia: 10
       reuniao: 5
       outro: 5
     entidades_top:
@@ -990,11 +981,11 @@ people:
     - nome: Brasília/DF
       n: 17
     - nome: Palácio do Planalto
-      n: 15
+      n: 16
     - nome: São Paulo/SP
       n: 14
     - nome: Palácio do Planalto, Anexo II
-      n: 9
+      n: 8
     - nome: Palácio da Alvorada
       n: 4
     - nome: Palácio do Itamaraty
@@ -1007,8 +998,20 @@ people:
       n: 1
     - nome: Jacareí/SP
       n: 1
-    ultimo: '2026-09-30'
+    ultimo: '2026-10-13'
     recentes:
+    - data: '2026-10-13'
+      hora: '15:00'
+      titulo: Cerimônia de Anúncio da Marca de 700 Mercados Abertos para o Agro Brasileiro
+      tipo: evento
+      local: Esplanada dos Ministérios, Bloco D
+      participantes: []
+    - data: '2026-10-13'
+      hora: '10:00'
+      titulo: Cerimônia sobre medidas para microempreendedores individuais
+      tipo: evento
+      local: Palácio do Planalto
+      participantes: []
     - data: '2026-09-30'
       hora: '11:00'
       titulo: Posse do Ministro Rodrigo Pacheco no Tribunal de Contas da União
@@ -1046,25 +1049,8 @@ people:
       tipo: evento
       local: Palácio do Planalto
       participantes: []
-    - data: '2026-09-14'
-      hora: '15:00'
-      titulo: Sanção do PLV nº 10/2026, que institui linhas de financiamento do MOVE para veículos novos
-      tipo: evento
-      local: Palácio do Planalto
-      participantes: []
-    - data: '2026-09-14'
-      hora: 07:00
-      titulo: Embarque de São Paulo/SP para Brasília/DF
-      tipo: viagem
-      local: São Paulo/SP
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-15:
-      - hora: '13:30'
-        titulo: Deputado Federal Alencar Santana - PT/SP
-        local: Palácio do Planalto, Anexo II
-      vice/2026-07-15-b1: []
       vice/2026-07-16: []
       vice/2026-07-16-b1: []
       vice/2026-07-17: []
@@ -1464,6 +1450,14 @@ people:
       vice/2026-10-11-b1: []
       vice/2026-10-12: []
       vice/2026-10-12-b1: []
+      vice/2026-10-13:
+      - hora: '10:00'
+        titulo: Cerimônia sobre medidas para microempreendedores individuais
+        local: Palácio do Planalto
+      - hora: '15:00'
+        titulo: Cerimônia de Anúncio da Marca de 700 Mercados Abertos para o Agro Brasileiro
+        local: Esplanada dos Ministérios, Bloco D
+      vice/2026-10-13-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 239 compromissos em 59 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 70 compromissos em 43 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 236 compromissos em 59 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 71 compromissos em 43 dias (0 dias não lidos)'
