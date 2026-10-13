@@ -1198,10 +1198,13 @@ for _lbl, _fn in BLOCOS.items():
     if not _fp.exists(): _blocos[_lbl] = {"arquivo": _fn, "existe": False}; continue
     try:
         _d = json.load(open(_fp, encoding="utf-8")) if _fn.endswith(".json") else yaml.safe_load(open(_fp, encoding="utf-8"))
-        _ga = str((_d or {}).get("generated_at") or "")[:10]
+        _ga = str((_d or {}).get("generated_at") or (_d or {}).get("updated_at") or "")[:10]
     except Exception: _ga = ""
-    if not _ga: _ga = datetime.date.fromtimestamp(_fp.stat().st_mtime).isoformat()
-    _blocos[_lbl] = {"arquivo": _fn, "existe": True, "lido_em": _ga}
+    # Antes caía no mtime do arquivo quando faltava a data dentro dele. No CI isso é a hora do
+    # checkout, então o bloco aparecia como "lido hoje" todo dia, mesmo parado há semanas: a
+    # metodologia dizia que as sabatinas eram de hoje enquanto o arquivo era de 12 dias antes.
+    # Num projeto de transparência, dizer "sem data" é melhor do que dizer uma data falsa.
+    _blocos[_lbl] = {"arquivo": _fn, "existe": True, "lido_em": _ga or None}
 _exec = {"generated_at": datetime.date.today().isoformat(),
          "nota": "GERADO por scripts/build_graph.py a partir de build/_execucao.tsv (scripts/update.sh) e do generated_at de cada arquivo.",
          "conectores": _conectores, "blocos": _blocos}

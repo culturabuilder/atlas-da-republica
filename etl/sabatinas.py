@@ -7,6 +7,7 @@ cargo do grafo por similaridade de nome.
 Uso: .venv/bin/python etl/sabatinas.py [--anos 2023,2024,2025,2026]
 """
 import json, re, sys, pathlib, argparse, urllib.request, unicodedata, difflib
+import datetime
 import yaml
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CACHE = ROOT / "build" / "cache-senado.json"
@@ -87,7 +88,7 @@ def main():
     out.sort(key=lambda r: r.get("deliberacao") or r.get("apresentacao") or "", reverse=True)
     class D(yaml.SafeDumper):
         def increase_indent(self, flow=False, indentless=False): return super().increase_indent(flow, False)
-    (ROOT / "data" / "generated" / "sabatinas.yaml").write_text("# GERADO por etl/sabatinas.py. Não edite à mão.\n" + yaml.dump({"generated_from": "legis.senado.leg.br/dadosabertos (MSF)", "sabatinas": out}, Dumper=D, allow_unicode=True, sort_keys=False, width=120), encoding="utf-8")
+    (ROOT / "data" / "generated" / "sabatinas.yaml").write_text("# GERADO por etl/sabatinas.py. Não edite à mão.\n" + yaml.dump({"generated_from": "legis.senado.leg.br/dadosabertos (MSF)", "generated_at": datetime.date.today().isoformat(), "sabatinas": out}, Dumper=D, allow_unicode=True, sort_keys=False, width=120), encoding="utf-8")
     from collections import Counter
     print(f"indicações={len(out)} com cargo casado={sum(1 for r in out if r['position_id'])} aprovadas={sum(1 for r in out if r['resultado']=='APROVADA_NO_PLENARIO')} em tramitação={sum(1 for r in out if r['tramitando'])}")
     print("sem casar:", [(r["cargo"] or "")[:60] for r in out if not r["position_id"]][:12])

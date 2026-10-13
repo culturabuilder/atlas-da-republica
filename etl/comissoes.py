@@ -11,6 +11,7 @@ Fontes sem chave:
 Uso: .venv/bin/python etl/comissoes.py [--cache DIR]
 """
 import json, sys, pathlib, argparse, urllib.request, re, unicodedata, time
+import datetime
 import yaml
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 UA = "Mozilla/5.0 (Macintosh) atlas-da-republica/0.1"
@@ -198,6 +199,9 @@ def main():
             q = idx.get(p["id"])
             if q and not p.get("image_url") and q.get("image_url"): p["image_url"] = q["image_url"]
     out = {"generated_from": "legis.senado.leg.br/dadosabertos + dadosabertos.camara.leg.br",
+           # sem esta data o painel de frescor cai no mtime do arquivo, que num clone do CI é a hora
+           # do checkout: o bloco aparecia como "lido hoje" para sempre, mesmo parado há semanas.
+           "generated_at": datetime.date.today().isoformat(),
            "pessoas_reaproveitadas": stats["reaproveitadas"],
            "ids_corrigidos": dict(sorted(stats["corrigidos"].items())),
            "pessoas_novas": sorted(stats["novas"].values()),

@@ -8,6 +8,7 @@ Fontes sem chave:
 Uso: .venv/bin/python etl/parlamentares.py [--cache DIR]
 """
 import json, sys, pathlib, argparse, urllib.request, re
+import datetime
 import yaml
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -38,7 +39,7 @@ def main():
     mesa_cd = [{"id": f"br-p-cd-{x['id']}", "name": x["nome"], "party": x.get("siglaPartido"), "uf": x.get("siglaUf"), "image_url": x.get("urlFoto"),
                 "role": x.get("titulo"), "entry_mode": "eleito", "started_at": x.get("dataInicio"), "source_url": x.get("uri")} for x in mesa]
     pres_cd = [dict(x, role=None) for x in mesa_cd if x.get("role") == "Presidente"]
-    out = {"generated_from": "dadosabertos.camara.leg.br + legis.senado.leg.br", "positions": {
+    out = {"generated_from": "dadosabertos.camara.leg.br + legis.senado.leg.br", "generated_at": datetime.date.today().isoformat(), "positions": {
         "br-deputado-federal": deputados, "br-senador": senadores,
         "br-mesa-da-camara-dos-deputados": [x for x in mesa_cd if x.get("role") and "Suplente" not in x["role"]],
         "br-presidente-da-camara-dos-deputados": pres_cd}}

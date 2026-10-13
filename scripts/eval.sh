@@ -39,6 +39,11 @@ sec "fonte de apoio derrubando conector"
 # instituição, destruindo uma saída que já estava pronta. A checagem acha o padrão no código.
 if saida=$($PY scripts/checar_fontes.py 2>&1); then echo "$saida" | grep -E "^   (ok   nenhuma|!   )" ; else mal "fonte de apoio sem guarda em conector"; echo "$saida" | grep "ERRO" | sed 's/^/     /'; fi
 
+sec "arquivo gerado que parou de atualizar"
+# Complementa o painel de frescor do site, que usa um mapa escrito à mão: esta varre data/generated
+# inteiro, então arquivo que ninguém lembrou de registrar não envelhece em silêncio.
+if saida=$($PY scripts/checar_frescor.py 2>&1); then echo "$saida" | grep -E "^   (ok|!)" ; else mal "arquivo gerado parado"; echo "$saida" | grep "ERRO" | sed 's/^/     /'; fi
+
 sec "repositório"
 git fetch -q origin 2>/dev/null
 atras=$(git rev-list --count HEAD..origin/main 2>/dev/null || echo 0)
@@ -118,7 +123,14 @@ except Exception as e:
 hoje = datetime.date.today(); ruim = 0; linhas = []
 for nome, v in sorted(c.items()):
     ok = str(v.get("ok_em") or "")[:10]
-    if not ok: continue
+    if not ok:
+        # Sem "ok_em" é conector que NUNCA teve sucesso registrado, o caso mais grave — e a primeira
+        # versão desta checagem pulava justamente ele. Foi assim que Posses passou 15 dias com o
+        # arquivo de 28/09 enquanto estourava o tempo toda segunda, sem ninguém ver.
+        if (v.get("status") or "") in ("ok", "fora do dia semanal"): continue
+        print(f"   ERRO {nome}: nenhum sucesso registrado (status {v.get('status')!r}, rodou em {v.get('rodou_em')})")
+        ruim += 1
+        continue
     try: dias = (hoje - datetime.date.fromisoformat(ok)).days
     except ValueError: continue
     # semanal tem direito a uma semana; o resto, a dois dias de folga
@@ -195,6 +207,25 @@ true
 
 if [ "$RAPIDO" != "--rapido" ] && [ -d "$PW" ]; then
   sec "interface"
+  # O node do PATH pode estar quebrado sem o projeto ter nada a ver: em 13/10/2026 o Homebrew subiu o
+  # simdutf para 9.2.1, trocando o nome da biblioteca, e o node@22 compilado contra a antiga parou de
+  # abrir — as cinco checagens acusaram erro com a interface inteira sã. Procuramos um node que rode de
+  # verdade antes de culpar a interface, e dizemos qual foi usado.
+  NODE=""
+  for cand in node /opt/homebrew/bin/node /usr/local/bin/node /opt/homebrew/Cellar/node/*/bin/node /usr/bin/node; do
+    command -v "$cand" >/dev/null 2>&1 || [ -x "$cand" ] || continue
+    if ( "$cand" -e "process.exit(0)" ) >/dev/null 2>&1; then NODE="$cand"; break; fi
+  done
+  if [ -z "$NODE" ]; then
+    mal "nenhum node funcional encontrado: as checagens de interface não rodaram"
+    echo "        o node do PATH não abre. Em mac com Homebrew: brew reinstall node@22" 
+    PW=""   # pula o laço abaixo sem fingir que passou
+  else
+    v=$("$NODE" -v 2>/dev/null)
+    [ "$NODE" = "node" ] || ok "usando $NODE ($v), porque o node do PATH não abre"
+  fi
+fi
+if [ "$RAPIDO" != "--rapido" ] && [ -n "$PW" ] && [ -d "$PW" ]; then
   curl -s -o /dev/null -m 3 "http://localhost:$PORTA/" || { (cd site && nohup python3 -m http.server $PORTA >/dev/null 2>&1 &) ; sleep 3; }
   # Cada checagem precisa dizer explicitamente que passou. Antes, qualquer saída que não casasse com
   # as palavras de falha virava "ok" — inclusive um crash do node por falta do playwright, que foi
@@ -209,7 +240,7 @@ if [ "$RAPIDO" != "--rapido" ] && [ -d "$PW" ]; then
   for par in "${PROVA[@]}"; do
     t=${par%%:*}; esperado=${par#*:}
     [ -f "$PW/$t.js" ] || { mal "$t: arquivo de checagem não existe em $PW"; continue; }
-    saida=$(node "$PW/$t.js" 2>&1); codigo=$?
+    saida=$(NODE_PATH="$PWD/node_modules" "$NODE" "$PW/$t.js" 2>&1); codigo=$?
     if [ $codigo -ne 0 ]; then mal "$t: node saiu com código $codigo"; echo "$saida" | tail -3 | sed 's/^/        /'
     elif echo "$saida" | grep -qiE "$esperado"; then ok "$t"
     else mal "$t: não confirmou que passou"; echo "$saida" | tail -4 | sed 's/^/        /'; fi

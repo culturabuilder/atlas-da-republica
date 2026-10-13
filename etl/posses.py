@@ -309,6 +309,7 @@ def main():
     ap.add_argument("--so-cache", action="store_true"); ap.add_argument("--so-nomes", default=None)
     ap.add_argument("--sem-reserva", action="store_true", help="não faz a busca só pelo nome quando a frase VERBO+NOME não acha nada")
     ap.add_argument("--desde-antigo", default=None, help="se nada for achado na janela, procura também a partir desta data (ex.: 2019-01-01, mandatos de agência)")
+    ap.add_argument("--reter-dias", type=int, default=60, help="não procurar de novo, por este tanto de dias, quem já foi procurado e não tinha ato no DOU")
     a = ap.parse_args()
     PAUSE["s"] = a.pause
     desde = datetime.date.fromisoformat(a.desde); ate = datetime.date.fromisoformat(a.ate) if a.ate else datetime.date.today()
@@ -320,6 +321,22 @@ def main():
         alvo_nomes = {fold(x.strip()) for x in a.so_nomes.split(",")}
         lista = [x for x in lista if fold(x["pessoa_nome"]) in alvo_nomes]
     if a.limite: lista = lista[:a.limite]
+    # Quem já foi procurado e não tinha ato no DOU não passa a ter na semana seguinte. Sem esta memória
+    # o conector refazia a varredura inteira toda segunda — 137 pessoas, zero resolvidas, 90 minutos,
+    # estourava o tempo e era devolvido, de modo que nunca registrou um sucesso. Agora cada rodada
+    # atende os ocupantes novos e um lote dos antigos, e termina.
+    vistos = {}
+    if OUT.exists() and not a.todos:
+        try:
+            _ant = yaml.safe_load(open(OUT, encoding="utf-8")) or {}
+            vistos = {str(k): str(v)[:10] for k, v in (_ant.get("procurados_sem_ato") or {}).items()}
+        except Exception: vistos = {}
+    corte = (datetime.date.today() - datetime.timedelta(days=a.reter_dias)).isoformat()
+    ja_procurados = {k for k, quando in vistos.items() if quando > corte}
+    antes_do_filtro = len(lista)
+    lista = [x for x in lista if fold(x["pessoa_nome"]) not in ja_procurados]
+    if antes_do_filtro != len(lista):
+        print(f"{antes_do_filtro - len(lista)} ocupantes pulados: procurados nos últimos {a.reter_dias} dias sem ato no DOU", file=sys.stderr, flush=True)
     print(f"{len(lista)} ocupantes a resolver (janela {desde} a {ate})", file=sys.stderr, flush=True)
 
     posses, conflitos, nao_encontrados = {}, [], []
@@ -383,6 +400,10 @@ def gravar(posses, conflitos, nao_encontrados, desde, ate, sem_data_antes, antig
            "conflitos": conflitos,
            "nao_encontrados": [x["pessoa"] for x in nao_encontrados],
            "nao_encontrados_detalhe": nao_encontrados,
+           # nome dobrado -> dia em que foi procurado sem achar ato; a próxima rodada pula quem está
+           # dentro de --reter-dias e gasta o tempo em quem ainda não foi tentado
+           "procurados_sem_ato": dict(sorted({**vistos,
+                                              **{fold(x["pessoa"]): datetime.date.today().isoformat() for x in nao_encontrados}}.items())),
            "resumo": {"ocupantes_sem_data_antes": sem_data_antes, "resolvidos": len(posses),
                       "por_confianca": por_conf, "conflitos": len(conflitos), "sem_ato": len(nao_encontrados)}}
     OUT.parent.mkdir(parents=True, exist_ok=True)

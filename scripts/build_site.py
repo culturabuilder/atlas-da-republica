@@ -103,8 +103,10 @@ if _met.exists():
         for _lbl, _v in _bl.items():
             if not _v.get("existe"): _its.append(f'<div class="it miss"><b>{html.escape(_lbl)}</b><span>sem dado</span></div>'); continue
             _d = _v.get("lido_em"); _n = _dias(_d) if _d else None
-            _cls = " old" if (_n is not None and _n > 7) else ""
-            _q = "hoje" if _n == 0 else ("ontem" if _n == 1 else (f"há {_n} dias" if _n is not None else "—"))
+            # bloco sem data é marcado como velho de propósito: não saber quando foi lido é um
+            # problema a mostrar, não um detalhe a esconder atrás de um travessão discreto
+            _cls = " old" if (_n is None or _n > 7) else ""
+            _q = "hoje" if _n == 0 else ("ontem" if _n == 1 else (f"há {_n} dias" if _n is not None else "sem data registrada"))
             _its.append(f'<div class="it{_cls}"><b>{html.escape(_lbl)}</b><span>{_q}</span></div>')
         _falhas = _ex.get("falhas") or []
         _nota = ("Cada bloco é lido por um conector próprio; a data abaixo é a da última leitura bem-sucedida daquela fonte. "
