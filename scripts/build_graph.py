@@ -250,6 +250,11 @@ if _tr_p.exists():
 # ---- data do ato de nomeação encontrada no Diário Oficial (etl/posses.py), para ocupantes sem data
 _ps_p = DATA / "generated" / "posses.yaml"
 _posses = ((yaml.safe_load(open(_ps_p, encoding="utf-8")) or {}).get("posses") or {}) if _ps_p.exists() else {}
+# ---- data de início de exercício pelo cadastro de PEPs (etl/pep.py), já conferida contra o órgão
+_pep_p = DATA / "generated" / "pep.yaml"
+_pep = (yaml.safe_load(open(_pep_p, encoding="utf-8")) or {}) if _pep_p.exists() else {}
+_pep_posses = _pep.get("posses") or {}
+_pep_saidas = _pep.get("ja_sairam") or []
 
 # ---- quanto o cargo paga, segundo a lei (subsídio e benefícios), anexado ao cargo
 _sb_p = DATA / "generated" / "subsidios.yaml"
@@ -594,6 +599,13 @@ for n in nodes.values():
         if _pos and _pos.get("data") and (not p.get("started_at")) and same_person(_pos.get("pessoa_nome") or "", p.get("name") or ""):
             e["dou"] = {"date": str(_pos["data"]), "url": _pos.get("dou_url"), "act": _pos.get("ato")}
             e["date"] = str(_pos["data"]); p["started_at"] = e["date"]; p["started_at_source"] = "dou"; e["date_is_ato"] = True
+        # O PEP dá a data de início de exercício numa chamada, já conferida contra o órgão do cargo.
+        # Vem depois do DOU, que é o ato em si, e antes de desistir: resolveu 34 ocupantes que a
+        # varredura do Diário Oficial não achava.
+        _pp = _pep_posses.get(p.get("id"))
+        if _pp and _pp.get("inicio") and not p.get("started_at") and _pp.get("cargo") == n["id"]:
+            e["date"] = str(_pp["inicio"]); p["started_at"] = e["date"]; p["started_at_source"] = "pep"
+            e["pep"] = {"date": str(_pp["inicio"]), "funcao": _pp.get("funcao_pep"), "orgao": _pp.get("orgao_pep")}
         dou = [d for d in n.get("dou") or [] if d.get("name") and same_person(d["name"], p.get("name") or "") and d.get("verb") in ("NOMEAR", "DESIGNAR")]
         if dou:
             d = max(dou, key=lambda d: str(d["date"])); e["dou"] = {"date": str(d["date"]), "url": d.get("url"), "act": d.get("act")}
@@ -1205,6 +1217,8 @@ if _ap_p.exists():
 stats["sinais"] = {"pessoas": sum(1 for r in people_index.values() if r.get("sinais")), "por_tipo": dict(__import__("collections").Counter(x["tipo"] for r in people_index.values() for x in r.get("sinais") or []))}
 stats["omissao"] = (omissao or {}).get("summary"); stats["resumos"] = len(_rs); stats["historico_cargos"] = _hi_n; stats["colegiados_com_composicao"] = _cg_n; stats["orgaos_com_programas"] = _pg_n; stats["dirigentes"] = _di_n; stats["cargos_com_subsidio"] = _sb_n; stats["orgaos_com_transferencias"] = _tr_n; stats["segundo_escalao"] = _se_n; stats["atividade_pessoas"] = len(atividade)
 stats["people"] = len(people_index)
+stats["pep"] = {"datas_aplicadas": sum(1 for r in people_index.values() if r.get("started_at_source") == "pep") or len(_pep_posses),
+                "a_conferir_saida": len(_pep_saidas), "recusados_por_orgao": len(_pep.get("recusados") or [])}
 # ---- números do projeto: o README descreve o que existe hoje, gerado a partir deste build
 def _cobertura():
     _pos = [n for n in nodes.values() if n["type"] == "dept_head"]
@@ -1231,7 +1245,7 @@ BLOCOS = {  # rótulo no site -> arquivo que o alimenta
     "Temas": "temas.yaml", "Arrecadação": "arrecadacao.yaml", "Atividade parlamentar": "atividade.yaml", "Proposições": "proposicoes.yaml",
     "Gabinetes": "gabinetes.yaml", "Gabinetes do Senado": "gabinetes-senado.yaml", "Emendas": "emendas.yaml", "Renúncias fiscais": "renuncias.yaml",
     "Acima do teto": "teto.yaml", "Remuneração": "remuneracao.yaml", "Viagens": "viagens.yaml", "Cartão corporativo": "cartao.yaml",
-    "Quem o governo recebeu": "recebidos.yaml", "Punições da CGU": "sancoes.yaml", "Contratos (PNCP)": "contratos.yaml",
+    "Quem o governo recebeu": "recebidos.yaml", "Punições da CGU": "sancoes.yaml", "Contratos (PNCP)": "contratos.yaml", "Pessoas expostas politicamente": "pep.yaml",
     "Orçamento": "orcamento.yaml", "Agenda pública": "agendas.yaml", "Agenda do Planalto": "agenda-planalto.yaml",
     "Patrimônio (TSE)": "patrimonio.yaml", "Doadores (TSE)": "doadores-2022.yaml", "Candidaturas (TSE)": "candidaturas.yaml",
     "Votos por município (TSE)": "votos-2022.yaml", "Resumos em linguagem simples": "resumos.yaml",

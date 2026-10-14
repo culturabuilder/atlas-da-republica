@@ -132,6 +132,9 @@ run "Viagens" $PY etl/viagens.py
 run "Cartão" $PY etl/cartao.py
 # Lê build/graph.br.json para casar o órgão: vai depois do primeiro build. Quatro ZIPs diários da
 # CGU, sem chave, e o casamento é determinístico — rápido e seguro para rodar todo dia.
+# Data de início de exercício pelo cadastro de PEPs: uma chamada por ocupante sem data, conferida
+# contra o órgão do cargo. Mais barato e mais confiável que caçar o ato no texto do DOU.
+run "PEP" $PY etl/pep.py --segundos 600
 run "Sanções" $PY etl/sancoes.py
 # Pagina o PNCP e filtra a esfera federal; acumula janela a janela. Lê o grafo para casar o órgão.
 LIM=1200 run "Contratos" $PY etl/contratos.py --dias 10 --paginas 160 --segundos 900

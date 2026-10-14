@@ -1181,7 +1181,9 @@ function renderHome(){
       [`${c.colegiados_sem_membros} de ${c.colegiados}`,'colegiados sem a composição registrada'],
       [`${c.nomeacoes_sem_data} de ${c.nomeacoes}`,'nomeações sem a data em que começaram'],
       [`${c.cadeiras-c.cadeiras_ocupadas} de ${c.cadeiras}`,'cadeiras sem ocupante identificado'],
-      [st.unverified||0,'citações curadas ainda por conferir']].filter(([v])=>v);
+      [st.unverified||0,'citações curadas ainda por conferir'],
+      [(st.pep||{}).a_conferir_saida,'ocupantes que o cadastro de PEPs indica já fora do cargo, a conferir'],
+      [(st.pep||{}).recusados_por_orgao,'registros de PEP com nome igual em outro órgão, não aproveitados']].filter(([v])=>v);
     return `<div class="card"><h2>O que falta no Atlas hoje</h2>
     <p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">Nenhum mapa de governo está completo, e um que não diz onde está incompleto não dá para conferir. Estes são os buracos conhecidos, contados pelo próprio build.</p>
     <div class="counts">${linhas.map(([v,l])=>`<span>${l}</span><span>${typeof v==='number'?v.toLocaleString('pt-BR'):v}</span>`).join('')}</div>

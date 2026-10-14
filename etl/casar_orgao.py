@@ -33,9 +33,12 @@ ABREV = {
     "com": "comercio", "ind": "industria", "publico": "publicos", "gen": "geral",
 }
 FORMA_JURIDICA = re.compile(r"\b(sa|s a|ltda|eireli|epp|mei|sociedade anonima)\b")
-PREFIXO_ADM = re.compile(r"^(departamento de|departamento|secretaria especial da|secretaria da|secretaria de|"
-                         r"superintendencia regional de|superintendencia de|superintendencia|"
-                         r"coordenacao geral de|coordenacao de|comando da|comando do|comando de)\s+")
+# Atenção: este padrão é aplicado ao NÚCLEO, que já teve artigos removidos — por isso não leva
+# "de"/"da"/"do". Escrevê-lo com artigo foi um erro que custou 137 registros do CEAF: "COMANDO DA
+# AERONAUTICA" virava núcleo "comando aeronautica", o padrão esperava "comando da " e não casava,
+# e a Força Aérea ficou de fora achando eu que ela não era nó do Atlas — e é, com apelido "Aeronáutica".
+PREFIXO_ADM = re.compile(r"^(departamento|secretaria especial|secretaria|superintendencia regional|"
+                         r"superintendencia|coordenacao geral|coordenacao|comando|servico)\s+")
 
 # Mesma pessoa jurídica, nome antigo ou administrativo na fonte -> nó de hoje. Um por um, conferido.
 NOMES_ALTERNATIVOS = {

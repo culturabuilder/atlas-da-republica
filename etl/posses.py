@@ -325,6 +325,19 @@ def main():
     # o conector refazia a varredura inteira toda segunda — 137 pessoas, zero resolvidas, 90 minutos,
     # estourava o tempo e era devolvido, de modo que nunca registrou um sucesso. Agora cada rodada
     # atende os ocupantes novos e um lote dos antigos, e termina.
+    # O PEP já resolve parte dos ocupantes sem data, numa chamada por pessoa. Caçar o ato no texto do
+    # DOU para quem já tem resposta é gasto puro: eram 137 alvos, e 34 saem daqui.
+    _pep_f = ROOT / "data" / "generated" / "pep.yaml"
+    if _pep_f.exists() and not a.todos:
+        try:
+            _pp = (yaml.safe_load(_pep_f.read_text(encoding="utf-8")) or {}).get("posses") or {}
+            _ids = {k for k, v in _pp.items() if (v or {}).get("inicio")}
+            _antes = len(lista)
+            lista = [x for x in lista if x.get("pessoa_id") not in _ids]
+            if _antes != len(lista):
+                print(f"{_antes - len(lista)} ocupantes já resolvidos pelo cadastro de PEPs", file=sys.stderr, flush=True)
+        except Exception as e:
+            print("pep.yaml ilegível, seguindo sem ele:", str(e)[:60], file=sys.stderr)
     vistos = {}
     if OUT.exists() and not a.todos:
         try:

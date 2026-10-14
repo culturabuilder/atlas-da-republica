@@ -27,7 +27,7 @@ ceaf:
     '2024': 360
     '2025': 373
     '2026': 221
-  orgaos_casados: 178
+  orgaos_casados: 179
   por_orgao:
     br-policia-rodoviaria-federal:
       n: 287
@@ -147,6 +147,14 @@ ceaf:
       nome: Agência Nacional de Transportes Terrestres
       por_categoria:
         Demissão: 20
+    br-ministerio-do-trabalho-e-emprego:
+      n: 20
+      nome: Ministério do Trabalho e Emprego
+      por_categoria:
+        Demissão: 13
+        Destituição: 4
+        Perda de Emprego/Cargo/Função Pública: 2
+        Cassação de aposentadoria: 1
     br-controladoria-geral-da-uniao:
       n: 19
       nome: Controladoria-Geral da União
@@ -206,13 +214,6 @@ ceaf:
       nome: Universidade Federal da Paraíba
       por_categoria:
         Demissão: 16
-    br-ministerio-do-trabalho-e-emprego:
-      n: 16
-      nome: Ministério do Trabalho e Emprego
-      por_categoria:
-        Demissão: 12
-        Perda de Emprego/Cargo/Função Pública: 2
-        Destituição: 2
     br-ministerio-das-relacoes-exteriores:
       n: 14
       nome: Ministério das Relações Exteriores
@@ -482,6 +483,12 @@ ceaf:
         Demissão: 5
         Cassação de aposentadoria: 1
         Destituição: 1
+    br-ministerio-da-fazenda:
+      n: 7
+      nome: Ministério da Fazenda
+      por_categoria:
+        Demissão: 6
+        Perda de Emprego/Cargo/Função Pública: 1
     br-instituto-federal-de-educacao-ciencia-e-tecnologia-da-bahia:
       n: 7
       nome: Instituto Federal de Educação, Ciência e Tecnologia da Bahia
@@ -621,11 +628,6 @@ ceaf:
       nome: Fundação Universidade Federal do Tocantins
       por_categoria:
         Demissão: 4
-    br-ministerio-da-fazenda:
-      n: 4
-      nome: Ministério da Fazenda
-      por_categoria:
-        Demissão: 4
     br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sudeste-de-minas-gerais:
       n: 4
       nome: Instituto Federal de Educação, Ciência e Tecnologia do Sudeste de Minas Gerais
@@ -690,6 +692,12 @@ ceaf:
       nome: Universidade Federal Rural de Pernambuco
       por_categoria:
         Demissão: 3
+    br-ministerio-do-esporte:
+      n: 3
+      nome: Ministério do Esporte
+      por_categoria:
+        Destituição: 2
+        Destituição de Cargo em Comissão: 1
     br-fundacao-universidade-federal-de-ouro-preto:
       n: 3
       nome: Fundação Universidade Federal de Ouro Preto
@@ -768,16 +776,16 @@ ceaf:
       nome: Instituto Federal de Educação, Ciência e Tecnologia de Sergipe
       por_categoria:
         Demissão: 2
+    br-forca-aerea-brasileira:
+      n: 2
+      nome: Força Aérea Brasileira
+      por_categoria:
+        Demissão: 2
     br-ana:
       n: 2
       nome: Agência Nacional de Águas e Saneamento Básico
       por_categoria:
         Demissão: 2
-    br-ministerio-do-esporte:
-      n: 2
-      nome: Ministério do Esporte
-      por_categoria:
-        Destituição: 2
     br-instituto-federal-de-educacao-ciencia-e-tecnologia-farroupilha:
       n: 2
       nome: Instituto Federal de Educação, Ciência e Tecnologia Farroupilha
@@ -3074,7 +3082,7 @@ ceaf:
     cargo: ''
     funcao: ''
     orgao: SECRETARIA DE TRABALHO
-    node: null
+    node: br-ministerio-do-trabalho-e-emprego
     data: '2026-02-04'
     fundamento: LEI 8429 - ART. 10, XII - PERMITIR, FACILITAR OU CONCORRER PARA QUE TERCEIRO SE ENRIQUEÇA ILICITAMENTE;LEI 8429 - ART. 9º, IX - PERCEBER
       VANTAGEM ECONÔMICA PARA INTERMEDIAR A LIBER
@@ -3085,7 +3093,7 @@ ceaf:
     cargo: ''
     funcao: ''
     orgao: SECRETARIA DE TRABALHO
-    node: null
+    node: br-ministerio-do-trabalho-e-emprego
     data: '2026-02-04'
     fundamento: 'LEI 8429 - ART. 10, XII - PERMITIR, FACILITAR OU CONCORRER PARA QUE TERCEIRO SE ENRIQUEÇA ILICITAMENTE;LEI 8429 - ART. 9º, I - RECEBER,
       PARA SI OU PARA OUTREM, DINHEIRO, BEM MÓVEL '
@@ -3096,7 +3104,7 @@ ceaf:
     cargo: ''
     funcao: ''
     orgao: SECRETARIA DE TRABALHO
-    node: null
+    node: br-ministerio-do-trabalho-e-emprego
     data: '2026-02-04'
     fundamento: 'LEI 8429 - ART. 10, XII - PERMITIR, FACILITAR OU CONCORRER PARA QUE TERCEIRO SE ENRIQUEÇA ILICITAMENTE;LEI 8429 - ART. 9º, I - RECEBER,
       PARA SI OU PARA OUTREM, DINHEIRO, BEM MÓVEL '
@@ -20114,7 +20122,7 @@ ceaf:
     cargo: CONTROLADOR DE TRAFEGO AEREO
     funcao: ''
     orgao: COMANDO DA AERONÁUTICA
-    node: null
+    node: br-forca-aerea-brasileira
     data: '2022-06-10'
     fundamento: ESTATUTO DOS SERVIDORES PÚBLICOS CIVIS DA UNIÃO - ART. 139 - ENTENDE-SE POR INASSIDUIDADE HABITUAL A FALTA AO SERVIÇO, SEM CAUSA JUSTIFICADA,
       POR SESSENTA DIAS, INTERPOLADAMENTE, D
@@ -23514,7 +23522,7 @@ ceaf:
     cargo: TECNICO EM INFORMACOES AERONAUTICAS
     funcao: ''
     orgao: COMANDO DA AERONÁUTICA
-    node: null
+    node: br-forca-aerea-brasileira
     data: '2021-12-21'
     fundamento: ESTATUTO DOS SERVIDORES PÚBLICOS CIVIS DA UNIÃO - ART. 138 - CONFIGURA ABANDONO DE CARGO A AUSÊNCIA INTENCIONAL DO SERVIDOR AO SERVIÇO POR
       MAIS DE TRINTA DIAS CONSECUTIVOS.;ESTATUT
@@ -33311,7 +33319,7 @@ ceaf:
     cargo: ''
     funcao: ''
     orgao: SECRETARIA ESPECIAL DO ESPORTE
-    node: null
+    node: br-ministerio-do-esporte
     data: '2020-04-29'
     fundamento: ESTATUTO DOS SERVIDORES PÚBLICOS CIVIS DA UNIÃO - ART. 132, IV - IMPROBIDADE ADMINISTRATIVA
     processo: 00190004986201672
@@ -34058,7 +34066,7 @@ ceaf:
     cargo: AGENTE ADMINISTRATIVO
     funcao: ''
     orgao: SECRETARIA ESPECIAL DE FAZENDA
-    node: null
+    node: br-ministerio-da-fazenda
     data: '2020-03-19'
     fundamento: DECISÃO JUDICIAL - - DECISÃO JUDICIAL
     processo: 14044.000015/2020-28
@@ -34272,7 +34280,7 @@ ceaf:
     cargo: AGENTE FEDERAL DE EXECUCAO PENAL
     funcao: ''
     orgao: SECRETARIA ESPECIAL DE FAZENDA
-    node: null
+    node: br-ministerio-da-fazenda
     data: '2020-03-10'
     fundamento: LEI 8429 - ART. 11 - CAPUT - CONSTITUI ATO DE IMPROBIDADE ADMINISTRATIVA QUE ATENTA CONTRA OS PRINCÍPIOS DA ADMINISTRAÇÃO PÚBLICA QUALQUER
       AÇÃO OU OMISSÃO QUE VIOLE OS DEVERES DE H
@@ -34446,7 +34454,7 @@ ceaf:
     cargo: ''
     funcao: ''
     orgao: SECRETARIA DE TRABALHO
-    node: null
+    node: br-ministerio-do-trabalho-e-emprego
     data: '2020-02-27'
     fundamento: ESTATUTO DOS SERVIDORES PÚBLICOS CIVIS DA UNIÃO - ART. 117, XVI - UTILIZAR PESSOAL OU RECURSOS MATERIAIS DA REPARTIÇÃO EM SERVIÇOS OU ATIVIDADES
       PARTICULARES;ESTATUTO DOS SERVIDORE
@@ -40153,7 +40161,7 @@ ceaf:
     cargo: AGENTE DE PORTARIA
     funcao: ''
     orgao: SECRETARIA ESPECIAL DE FAZENDA
-    node: null
+    node: br-ministerio-da-fazenda
     data: '2019-05-27'
     fundamento: ESTATUTO DOS SERVIDORES PÚBLICOS CIVIS DA UNIÃO - ART. 132, XIII - TRANSGRESSÃO DOS INCISOS IX A XVI DO ART. 117;ESTATUTO DOS SERVIDORES
       PÚBLICOS CIVIS DA UNIÃO - ART. 117, IX - VA
@@ -44683,6 +44691,8 @@ ceis:
       n: 37
     br-caixa-economica-federal:
       n: 121
+    br-forca-aerea-brasileira:
+      n: 163
     br-inss:
       n: 56
     br-ministerio-publico-da-uniao:
@@ -45286,7 +45296,7 @@ ceis:
     cnpj: '32289788000194'
     categoria: Impedimento/proibição de contratar com prazo determinado
     orgao: COMANDO DA AERONÁUTICA
-    node: null
+    node: br-forca-aerea-brasileira
     data: '2026-09-21'
     fim: '2027-09-22'
   - nome: A3 LOCACAO DE MAO DE OBRA E SERVICOS LTDA
@@ -45314,7 +45324,7 @@ ceis:
     cnpj: '33762284000102'
     categoria: Impedimento/proibição de contratar com prazo determinado
     orgao: COMANDO DA AERONÁUTICA
-    node: null
+    node: br-forca-aerea-brasileira
     data: '2026-09-16'
     fim: '2027-03-15'
   - nome: BASIC TERRAPLANAGEM E CONSTRUCAO LTDA
@@ -45818,7 +45828,7 @@ ceis:
     cnpj: '23352079000115'
     categoria: Impedimento/proibição de contratar com prazo determinado
     orgao: COMANDO DA AERONÁUTICA
-    node: null
+    node: br-forca-aerea-brasileira
     data: '2026-08-19'
     fim: '2028-08-18'
   - nome: OI S.A. - EM RECUPERACAO JUDICIAL
@@ -45846,7 +45856,7 @@ ceis:
     cnpj: '51596761000199'
     categoria: Impedimento/proibição de contratar com prazo determinado
     orgao: COMANDO DA AERONÁUTICA
-    node: null
+    node: br-forca-aerea-brasileira
     data: '2026-08-19'
     fim: '2028-08-18'
   - nome: MATERIAIS E SOLUCOES COMERCIAIS FERRARI LTDA
@@ -46049,7 +46059,7 @@ ceis:
     cnpj: '51596761000199'
     categoria: Impedimento/proibição de contratar com prazo determinado
     orgao: COMANDO DA AERONÁUTICA
-    node: null
+    node: br-forca-aerea-brasileira
     data: '2026-07-31'
     fim: '2028-07-30'
   - nome: DANDY LOCACAO DE VEICULOS LTDA
@@ -49193,8 +49203,8 @@ leniencia:
     processo: 00190.017877/2015-34
     efeitos: []
 orgaos_nao_casados:
-  entidades: 1403
-  registros: 6447
+  entidades: 1398
+  registros: 6274
   extintos_declarados:
     ministerio economia: existiu de 2019 a 2022; dividido em Fazenda, Gestão, MDIC e Planejamento
     ministerio trabalho previdencia: existiu de 2021 a 2023; dividido em Trabalho e Emprego e Previdência Social
@@ -49203,9 +49213,6 @@ orgaos_nao_casados:
     ministerio desenvolvimento regional: dividido em Integração e Desenvolvimento Regional e Cidades em 2023
     ministerio trabalho emprego previdencia social: o par Trabalho/Previdência mudou de desenho em 2023
   maiores:
-  - orgao: COMANDO DA AERONAUTICA
-    n: 137
-    motivo: não casou
   - orgao: JUSTICA FEDERAL
     n: 134
     motivo: genérico
@@ -49295,9 +49302,6 @@ orgaos_nao_casados:
   - orgao: 1º Grau - TRF1 / Seção Judiciária Maranhão - SJMA / Capital SJMA / 5ª São Luís
     n: 29
     motivo: não casou
-  - orgao: COMANDO DA AERONÁUTICA
-    n: 28
-    motivo: não casou
   - orgao: 1º Grau - TRF5 / Seção Judiciária da Paraíba / Varas / Juizo / 11ª VARA FEDERAL - MONTEIRO/PB
     n: 28
     motivo: não casou
@@ -49323,5 +49327,11 @@ orgaos_nao_casados:
     n: 25
     motivo: não casou
   - orgao: 1º Grau - TRF4 / SEÇÃO JUDICIÁRIA DO PARANÁ / SUBSEÇÃO JUDICIÁRIA DE GUARAPUAVA / 1ª VARA FEDERAL DE GUARAPUAVA
+    n: 24
+    motivo: não casou
+  - orgao: COMPANHIA. DES. DOS VAL. S FRANCISCO/PARNAÍBA
+    n: 24
+    motivo: não casou
+  - orgao: INST. FED. DE EDUC., CIENC. E TEC. DO PARANá
     n: 24
     motivo: não casou

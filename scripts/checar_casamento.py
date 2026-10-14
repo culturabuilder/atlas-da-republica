@@ -19,6 +19,8 @@ DEVE_CASAR = [
     ("MGI - MIN GESTAO E INOV EM SERV PUBLICOS", "br-ministerio-da-gestao", "sigla antes do travessão"),
     ("MIN.DA GEST.E DA INOVACAO EM SERVICOS PUBLICO", "br-ministerio-da-gestao", "abreviação do SIAPE"),
     ("COMANDO DO EXERCITO", "br-exercito-brasileiro", "nome administrativo da mesma força"),
+    ("COMANDO DA AERONAUTICA", "br-forca-aerea-brasileira", "a Força Aérea tem apelido 'Aeronáutica' no grafo; eu já concluí errado que ela não existia aqui"),
+    ("COMANDO DA MARINHA", "br-marinha-do-brasil", "nome administrativo da mesma força"),
     ("DEPARTAMENTO DE POLÍCIA FEDERAL", "br-policia-federal", "prefixo administrativo"),
     ("DEPARTAMENTO NACIONAL DE INFRA-ESTRUTURA DE TRANSPORTES", "br-dnit", "grafia com hífen, anterior a 2009"),
     ("FUNDAÇÃO NACIONAL DO ÍNDIO", "br-funai", "nome anterior a 2023"),
@@ -36,7 +38,7 @@ NAO_PODE_CASAR = [
     ("JUSTICA FEDERAL", "designa o conjunto, não um órgão"),
     ("SEÇÃO DE BENEFÍCIOS", "unidade interna, sem o órgão no nome"),
     ("DELEGACIA 02", "unidade interna, sem o órgão no nome"),
-    ("COMANDO DA AERONAUTICA", "a Força Aérea não é nó do Atlas; casar com outra força seria errado"),
+
     ("ITAU UNIBANCO S.A.", "empresa privada"),
     ("MATTOS FILHO, VEIGA FILHO, MARREY JR. E QUIROGA ADVOGADOS", "escritório de advocacia"),
 ]
