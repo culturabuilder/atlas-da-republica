@@ -1167,6 +1167,7 @@ function renderHome(){
   <div class="card acomp"><h2 class="acomp-h">Acompanhar <span>lido em ${fmtDate(st.generated_at)}</span></h2><div class="kpis" role="tablist" id="home-tablist" aria-label="Painéis da página inicial">${HOME_TABS.map(tab).join('')}</div><div id="home-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-${homeTab}"></div></div>
   ${recebidosHtml()}
   ${contratosHtml()}
+  ${falabrHtml()}
   ${sancoesHtml()}
   <div class="card"><h2>Por poder</h2><div class="counts">${Object.keys(ARC).map(s=>`<span class="k"><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</span><span>${bs[s]||0}</span>`).join('')}</div>
     <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
@@ -1251,6 +1252,35 @@ function recebidosHtml(){
   ${lista.length?`<h3>Mais recebidas</h3>${bars(lista, x=>x.nome.length>52?x.nome.slice(0,52)+'…':x.nome, x=>x.n, {fmt:(v,it)=>`${v} · ${ROT[it.classe]||it.classe}`, sub:it=>(it.recebida_por||[]).slice(0,3).map(q=>`${q.nome} (${q.n})`).join(' · ')})}`:''}
   ${(R.quem_recebeu||[]).length?`<h3>Quem mais recebeu</h3>${bars((R.quem_recebeu||[]).slice(0,12), x=>x.nome, x=>x.encontros, {fmt:(v,it)=>`${v} ${v===1?'encontro':'encontros'} · ${it.entidades} ${it.entidades===1?'entidade':'entidades'}`, link:x=>P[x.pessoa]?'#'+x.pessoa:null})}`:''}
   <p class="note">${esc(R.nota||'')} A classificação parte da junção com os ${(G.stats.nodes||0).toLocaleString('pt-BR')} órgãos do próprio Atlas, depois da razão social no nome. Fonte: ${esc(R.fonte||'')}, agenda lida em ${fmtDate(R.agenda_lida_em)}${R.janela_inicio?`, janela desde ${fmtDate(R.janela_inicio)}`:''}.</p></div>`;
+}
+function falabrOrgaoHtml(n){
+  // Quando alguém pergunta algo a este órgão, ele responde? É o que o cidadão sente na pele.
+  const f=n.falabr; if(!f||!f.pedidos) return '';
+  const F=G.falabr||{};
+  const st=(v,l)=>`<div class="stat"><div class="n">${v}</div><div class="l">${l}</div></div>`;
+  const bl=[st(f.pedidos.toLocaleString('pt-BR'),`pedidos de informação em ${F.ano||''}`)];
+  if(f.pct_negado_ou_parcial!=null) bl.push(st(`${f.pct_negado_ou_parcial.toLocaleString('pt-BR')}%`,`negados de todo ou concedidos em parte, de ${f.decididos.toLocaleString('pt-BR')} decididos`));
+  if(f.pct_prorrogado!=null) bl.push(st(`${f.pct_prorrogado.toLocaleString('pt-BR')}%`,'com prazo prorrogado'));
+  if(f.recursos) bl.push(st(f.recursos.toLocaleString('pt-BR'),'recursos abertos por quem não se deu por satisfeito'));
+  const geral=(F.resumo||{}).pct_negado_ou_parcial_geral;
+  return `<div class="card"><h2>Quando perguntam, este órgão responde?</h2>
+  <div class="om">${bl.join('')}</div>
+  ${f.pct_negado_ou_parcial!=null&&geral!=null?`<p style="font-size:13px;color:var(--ink-2);margin:2px 0 6px">No Executivo federal como um todo a taxa é de <b>${geral.toLocaleString('pt-BR')}%</b>.</p>`:''}
+  ${(f.motivos_top||[]).length?`<h3>Motivos que o órgão deu para negar</h3><div class="act">${f.motivos_top.map(x=>`<div class="row"><span>${esc(x.motivo)}</span><span class="v">${x.n}</span></div>`).join('')}</div>`:''}
+  ${(f.inexistente||f.sem_competencia)?`<p class="note">À parte da conta: ${f.inexistente?`${f.inexistente} pedidos respondidos como informação inexistente`:''}${f.inexistente&&f.sem_competencia?' e ':''}${f.sem_competencia?`${f.sem_competencia} como fora da competência do órgão`:''} — não entram na taxa de negativa, porque não são recusa de dado que o órgão tenha.</p>`:''}
+  <p class="note">Fonte: ${esc(F.fonte||'Fala.BR/CGU')}, lido em ${fmtDate(F.generated_at)}. <a href="https://falabr.cgu.gov.br/publico/Manifestacao/SelecionarTipoManifestacao.aspx" target="_blank" rel="noopener">Fazer um pedido ↗</a></p></div>`;
+}
+function falabrHtml(){
+  const F=G.falabr; if(!F||!F.resumo) return '';
+  const R=F.resumo;
+  const st=(v,l)=>`<div class="stat"><div class="n">${v}</div><div class="l">${l}</div></div>`;
+  return `<div class="card"><h2>Quando o cidadão pergunta, o governo responde?</h2>
+  <p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">A Lei de Acesso à Informação dá a qualquer pessoa o direito de perguntar, e obriga o órgão a responder. Estes são os pedidos de ${F.ano} no Executivo federal, pelo sistema Fala.BR. "Negado em parte" conta: resposta incompleta é o motivo mais comum de recurso.</p>
+  <div class="om">${st((R.pedidos||0).toLocaleString('pt-BR'),`pedidos de informação em ${F.ano}`)}${st(`${(R.pct_negado_ou_parcial_geral||0).toLocaleString('pt-BR')}%`,'negados de todo ou concedidos em parte')}${st((R.recursos||0).toLocaleString('pt-BR'),'recursos abertos por quem insistiu')}${st((R.orgaos||0).toLocaleString('pt-BR'),'órgãos que receberam pedido')}</div>
+  ${(F.mais_negam||[]).length?`<h3>Órgãos que mais negam</h3>
+  <p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">Só órgãos com 20 decisões ou mais. A taxa olha o que o órgão decidiu sobre informação que lhe cabia: pedido endereçado ao órgão errado fica fora da conta.</p>
+  ${bars(F.mais_negam.slice(0,12), x=>x.orgao.replace(/^[A-Z0-9\/\-]{2,12}\s*[–-]\s*/,''), x=>x.pct_negado_ou_parcial, {fmt:(v,it)=>`${v.toLocaleString('pt-BR')}% de ${it.decididos.toLocaleString('pt-BR')} decididos`, link:x=>x.node&&N[x.node]?'#'+x.node:null})}`:''}
+  <p class="note">${esc(R.orgaos_casados!=null?`${R.orgaos_casados} dos ${R.orgaos} órgãos da fonte têm página no Atlas. `:'')}${esc(F.nota||'')} Fonte: ${esc(F.fonte||'')}, lido em ${fmtDate(F.generated_at)}.</p></div>`;
 }
 function contratosOrgaoHtml(n){
   // Com quem o órgão assinou. O Atlas mostrava quanto cada órgão gastou, nunca com quem.
@@ -1394,6 +1424,7 @@ function renderNode(n){
   ${tetoOrgaoHtml(n)}
   ${sancoesOrgaoHtml(n)}
   ${contratosOrgaoHtml(n)}
+  ${falabrOrgaoHtml(n)}
   ${programasHtml(n)}
   ${composicaoHtml(n)}
   ${historicoHtml(n)}
