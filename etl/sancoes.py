@@ -164,9 +164,25 @@ def main():
         # todo dia, e nada no site a consome: as telas usam o agregado por órgão. Guardamos as 200
         # mais recentes, que é o bastante para conferir a leitura por amostra, e o total verdadeiro.
         itens.sort(key=lambda x: x.get("data") or "", reverse=True)
+        # Índice por CNPJ, enxuto: é o que permite perguntar se um fornecedor com contrato federal
+        # estava sob sanção na data em que assinou. Sem a abrangência a pergunta não se responde —
+        # "impedimento de licitar e contratar" vale na esfera de quem sancionou (Lei 14.133/2021
+        # art. 156), e declaração de inidoneidade vale em todas. Guardamos as datas e a abrangência
+        # para que a conferência seja possível, em vez de só a coincidência de CNPJ.
+        idx_cnpj = {}
+        for r in fed:
+            c = re.sub(r"\D", "", r.get("CPF OU CNPJ DO SANCIONADO") or "")
+            if len(c) != 14: continue
+            idx_cnpj.setdefault(c, []).append({
+                "nome": (r.get("RAZÃO SOCIAL - CADASTRO RECEITA") or r.get("NOME DO SANCIONADO") or "").strip()[:90],
+                "categoria": (r.get("CATEGORIA DA SANÇÃO") or "").strip(),
+                "de": dia(r.get("DATA INÍCIO SANÇÃO")) or dia(r.get("DATA PUBLICAÇÃO")),
+                "ate": dia(r.get("DATA FINAL SANÇÃO")),
+                "abrangencia": re.sub(r"\s+", " ", (r.get("ABRAGÊNCIA DA SANÇÃO") or "").strip())[:90],
+                "orgao": (r.get("ÓRGÃO SANCIONADOR") or "").strip()[:70]})
         return {"total": len(fed), "fora_do_escopo_federal": fora, "por_categoria": dict(por_cat.most_common()),
                 "por_orgao": {k: {"n": v["n"], **({"multa": round(v["multa"], 2)} if com_multa else {})} for k, v in por_org.items()},
-                "amostra_recente": itens[:200]}
+                "cnpjs": len(idx_cnpj), "por_cnpj": idx_cnpj, "amostra_recente": itens[:120]}
 
     ceis = empresas("ceis")
     cnep = empresas("cnep", com_multa=True)

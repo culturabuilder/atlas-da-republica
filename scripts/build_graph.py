@@ -771,6 +771,9 @@ if _ct2:
             d["n"] += x.get("n") or 0; d["valor"] += x.get("valor") or 0; d["orgaos"] += 1
     contratos["fornecedores_top"] = [{"nome": k, **{kk: (round(vv, 2) if kk == "valor" else vv) for kk, vv in v.items()}}
                                      for k, v in sorted(_f.items(), key=lambda kv: -kv[1]["valor"])[:14]]
+    _al = _ct2.get("fornecedor_sob_sancao") or {}
+    contratos["fornecedor_sob_sancao"] = {"nota": _al.get("nota"), "total": _al.get("total") or 0,
+                                          "casos": (_al.get("casos") or [])[:12]}
     _n_ct = 0
     for _nid, _v in _orgs.items():
         if _nid not in nodes: continue
@@ -778,7 +781,8 @@ if _ct2:
                                     "fornecedores_top": (_v.get("fornecedores_top") or [])[:8],
                                     "recentes": (_v.get("recentes") or [])[:12]}
         _n_ct += 1
-    stats["contratos"] = {"orgaos": _n_ct, **(_ct2.get("resumo") or {})}
+    stats["contratos"] = {"orgaos": _n_ct, **(_ct2.get("resumo") or {}),
+                          "fornecedor_sob_sancao": (_ct2.get("fornecedor_sob_sancao") or {}).get("total") or 0}
 _sn = _load_yaml("sancoes.yaml")
 # As 4.053 pessoas do CEAF custam 1,8 MB: vão para build/nodes/<id>.json, carregado sob demanda.
 # No núcleo fica o agregado, que é o que a home desenha.

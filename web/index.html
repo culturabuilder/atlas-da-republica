@@ -1273,6 +1273,13 @@ function contratosHtml(){
   <div class="om">${st((R.contratos||0).toLocaleString('pt-BR'),'contratos federais lidos')}${st(brl(R.valor),'em valor global somado')}${st((R.orgaos||0).toLocaleString('pt-BR'),'órgãos com contrato')}</div>
   ${(C.orgaos_top||[]).length?`<h3>Órgãos que mais contrataram</h3>${bars(C.orgaos_top.slice(0,10), x=>(N[x.id]?N[x.id].name:x.nome||x.id), x=>x.valor, {fmt:(v,it)=>`${brl(v)} · ${it.contratos} ${it.contratos===1?'contrato':'contratos'}`, link:x=>N[x.id]?'#'+x.id:null})}`:''}
   ${(C.fornecedores_top||[]).length?`<h3>Fornecedores que mais receberam</h3>${bars(C.fornecedores_top.slice(0,10), x=>tit(x.nome), x=>x.valor, {fmt:(v,it)=>`${brl(v)} · ${it.n} ${it.n===1?'contrato':'contratos'}${it.orgaos>1?` em ${it.orgaos} órgãos`:''}`})}`:''}
+  ${(()=>{ const A=C.fornecedor_sob_sancao; if(!A||!A.total) return '';
+    // Impedimento vigente no dia da assinatura. Multa e publicação da condenação ficam fora porque
+    // não barram contrato: sem esse filtro, um contrato legal de R$ 7,8 mi entrava aqui.
+    return `<h3>Contratos que valem conferir</h3>
+    <p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">${esc(A.nota||'')}</p>
+    <div class="act">${(A.casos||[]).slice(0,10).map(x=>`<div class="row"><span>${esc(tit(x.fornecedor||''))}<span class="d wrap" style="display:block">${esc((x.sancoes&&x.sancoes[0]&&x.sancoes[0].categoria)||'')} de ${fmtDate((x.sancoes&&x.sancoes[0]&&x.sancoes[0].de)||'')}${x.sancoes&&x.sancoes[0]&&x.sancoes[0].ate?` a ${fmtDate(x.sancoes[0].ate)}`:''}, aplicada por ${esc(((x.sancoes&&x.sancoes[0]&&x.sancoes[0].orgao)||'').slice(0,40))} · contrato assinado em ${fmtDate(x.assinado)} com ${N[x.orgao]?`<a href="#${x.orgao}">${esc(N[x.orgao].name)}</a>`:esc(x.orgao_nome||'')}</span></span><span class="v">${brl(x.valor)}</span></div>`).join('')}</div>
+    ${A.total>10?`<p class="sm" style="font-size:12px;color:var(--ink-3);margin:4px 0 0">${A.total} casos nas janelas já lidas; os 10 mais recentes acima.</p>`:''}`; })()}
   <p class="note">${R.com_emenda_parlamentar!=null?`O PNCP marca ${R.com_emenda_parlamentar} contratos desta janela como ligados a emenda parlamentar, mas só com um sim ou não: não diz qual emenda nem qual parlamentar, então não é possível cruzar com as emendas do Atlas por esta fonte. `:''}Fonte: ${esc(C.fonte||'')}, janela de ${fmtDate((C.janela_atual||{}).de)} a ${fmtDate((C.janela_atual||{}).ate)}, lida em ${fmtDate(C.generated_at)}.</p></div>`;
 }
 function sancoesOrgaoHtml(n){
