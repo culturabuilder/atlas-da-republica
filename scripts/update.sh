@@ -130,6 +130,9 @@ run "Renúncias" $PY etl/renuncias.py
 run "Teto" $PY etl/teto.py
 run "Viagens" $PY etl/viagens.py
 run "Cartão" $PY etl/cartao.py
+# Lê build/graph.br.json para casar o órgão: vai depois do primeiro build. Quatro ZIPs diários da
+# CGU, sem chave, e o casamento é determinístico — rápido e seguro para rodar todo dia.
+run "Sanções" $PY etl/sancoes.py
 run "Subsídios" $PY etl/subsidios.py
 run "Remuneração" $PY etl/remuneracao.py
 run "Orçamento" $PY etl/orcamento.py

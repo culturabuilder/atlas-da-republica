@@ -39,6 +39,11 @@ sec "fonte de apoio derrubando conector"
 # instituição, destruindo uma saída que já estava pronta. A checagem acha o padrão no código.
 if saida=$($PY scripts/checar_fontes.py 2>&1); then echo "$saida" | grep -E "^   (ok   nenhuma|!   )" ; else mal "fonte de apoio sem guarda em conector"; echo "$saida" | grep "ERRO" | sed 's/^/     /'; fi
 
+sec "casamento de órgão com nó do grafo"
+# Casos já conferidos à mão, que precisam continuar valendo — e as recusas, que são o que impede o
+# projeto de pendurar uma punição no órgão errado.
+if saida=$($PY scripts/checar_casamento.py 2>&1); then echo "$saida" | grep -E "^   (ok|!)"; else mal "casamento de órgão regrediu"; echo "$saida" | grep "ERRO" | sed 's/^/     /'; fi
+
 sec "arquivo gerado que parou de atualizar"
 # Complementa o painel de frescor do site, que usa um mapa escrito à mão: esta varre data/generated
 # inteiro, então arquivo que ninguém lembrou de registrar não envelhece em silêncio.

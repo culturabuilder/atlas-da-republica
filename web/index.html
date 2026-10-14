@@ -228,6 +228,11 @@ h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid va
 .om{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:8px 0 14px}
 .om .stat .n{font-size:22px}.om .stat .l{font-size:12px;color:var(--ink-3);line-height:1.3}
 .om-it{padding:9px 0;border-bottom:1px dashed var(--line-2);font-size:14px;line-height:1.4}
+.sanc{margin:2px 0 4px}
+.sanc-it{padding:7px 0;border-bottom:1px dashed var(--line-2);font-size:14px;line-height:1.35}
+.sanc-it .t{font-weight:600;display:block}
+.sanc-it .m{font-family:var(--mono);font-size:11px;color:var(--ink-3);display:block;margin-top:1px}
+.sanc-it .f{font-size:12px;color:var(--ink-2);display:block;margin-top:2px}
 .vt-all{margin-top:6px}
 .vt-ano h4{margin:12px 0 2px;font-size:13px;font-weight:600;color:var(--ink-2);display:flex;gap:8px;align-items:baseline;border-bottom:1px solid var(--line-2);padding-bottom:3px}
 .vt-ano h4 span{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-left:auto}
@@ -1155,6 +1160,7 @@ function renderHome(){
     <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div></div>
   <div class="card acomp"><h2 class="acomp-h">Acompanhar <span>lido em ${fmtDate(st.generated_at)}</span></h2><div class="kpis" role="tablist" id="home-tablist" aria-label="Painéis da página inicial">${HOME_TABS.map(tab).join('')}</div><div id="home-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-${homeTab}"></div></div>
   ${recebidosHtml()}
+  ${sancoesHtml()}
   <div class="card"><h2>Por poder</h2><div class="counts">${Object.keys(ARC).map(s=>`<span class="k"><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</span><span>${bs[s]||0}</span>`).join('')}</div>
     <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
     <h3>Cargos e colegiados</h3><div class="counts"><span>Cargos de chefia mapeados</span><span>${bt.dept_head||0}</span><span>Cadeiras (inclui 513 deputados e 81 senadores)</span><span>${st.seats_total}</span><span>Sabatinas do Senado desde 2023</span><span>${st.sabatinas||0}</span><span>Colegiados deliberativos</span><span>${bt.commission||0}</span></div></div>
@@ -1237,6 +1243,44 @@ function recebidosHtml(){
   ${(R.quem_recebeu||[]).length?`<h3>Quem mais recebeu</h3>${bars((R.quem_recebeu||[]).slice(0,12), x=>x.nome, x=>x.encontros, {fmt:(v,it)=>`${v} ${v===1?'encontro':'encontros'} · ${it.entidades} ${it.entidades===1?'entidade':'entidades'}`, link:x=>P[x.pessoa]?'#'+x.pessoa:null})}`:''}
   <p class="note">${esc(R.nota||'')} A classificação parte da junção com os ${(G.stats.nodes||0).toLocaleString('pt-BR')} órgãos do próprio Atlas, depois da razão social no nome. Fonte: ${esc(R.fonte||'')}, agenda lida em ${fmtDate(R.agenda_lida_em)}${R.janela_inicio?`, janela desde ${fmtDate(R.janela_inicio)}`:''}.</p></div>`;
 }
+function sancoesOrgaoHtml(n){
+  // Registro oficial de punição já aplicada e publicada em diário oficial, não acusação em apuração.
+  // O CPF não vem para cá: a CGU já o entrega mascarado, e CPF exposto no Brasil é risco de fraude.
+  const sn=n.sancoes; if(!sn) return '';
+  const S=G.sancoes||{}; const ex=sn.expulsoes||[]; const tot=sn.expulsoes_total||ex.length;
+  const st=(v,l)=>`<div class="stat"><div class="n">${v}</div><div class="l">${l}</div></div>`;
+  const cat=(c)=>({'Demissão':'demitido','Cassação de aposentadoria':'aposentadoria cassada','Destituição':'destituído','Destituição de Cargo em Comissão':'destituído do cargo em comissão','Perda de Emprego/Cargo/Função Pública':'perda do cargo'})[c]||(c||'').toLowerCase();
+  const pc={}; for(const x of ex) pc[x.categoria]=(pc[x.categoria]||0)+1;
+  const bl=[];
+  if(tot) bl.push(st(tot.toLocaleString('pt-BR'), tot===1?'servidor expulso da administração federal':'servidores expulsos da administração federal'));
+  if(sn.ceis&&sn.ceis.n) bl.push(st(sn.ceis.n.toLocaleString('pt-BR'),'empresas que este órgão impediu de contratar'));
+  if(sn.cnep&&sn.cnep.n) bl.push(st(sn.cnep.n.toLocaleString('pt-BR'),`empresas punidas pela Lei Anticorrupção${sn.cnep.multa?` · ${brl(sn.cnep.multa)} em multas`:''}`));
+  if(!bl.length) return '';
+  const item=x=>`<div class="sanc-it"><span class="t">${esc(x.nome||'')}</span><span class="m">${esc(cat(x.categoria))}${x.cargo?` · ${esc(tit(x.cargo))}`:''}${x.data?` · ${fmtDate(x.data)}`:''}</span>${x.fundamento?`<span class="f">${esc(x.fundamento)}</span>`:''}</div>`;
+  const mostra=ex.slice(0,10);
+  return `<div class="card"><h2>Punições registradas</h2>
+  <div class="om">${bl.join('')}</div>
+  ${ex.length?`<h3>Servidores expulsos</h3>
+  <p class="sm" style="font-size:12.5px;color:var(--ink-3);margin:0 0 4px">Punição já aplicada e publicada em diário oficial, com o fundamento legal. Demissão, cassação de aposentadoria e destituição são as três formas de expulsão previstas na Lei 8.112/1990. Não é acusação em apuração, e não há CPF aqui.</p>
+  <div class="sanc">${mostra.map(item).join('')}</div>
+  ${ex.length>mostra.length?`<details class="rel"><summary>Ver os outros ${ex.length-mostra.length}${tot>ex.length?` (de ${tot})`:''}<span class="n">expandir</span></summary><div class="sanc">${ex.slice(mostra.length).map(item).join('')}</div></details>`:''}`:''}
+  <p class="note">Fonte: ${esc(S.fonte||'Controladoria-Geral da União')}, arquivo de ${fmtDate(S.data_do_arquivo)}. <a href="https://portaldatransparencia.gov.br/sancoes" target="_blank" rel="noopener">Consultar na fonte ↗</a></p></div>`;
+}
+function sancoesHtml(){
+  const S=G.sancoes; if(!S||!S.ceaf) return '';
+  const C=S.ceaf, nc=S.orgaos_nao_casados||{};
+  const st=(v,l)=>`<div class="stat"><div class="n">${v}</div><div class="l">${l}</div></div>`;
+  const cat=Object.entries(C.por_categoria||{}).sort((a,b)=>b[1]-a[1]);
+  const anos=Object.entries(C.por_ano||{}).filter(([y])=>y>='2018').sort();
+  const orgs=Object.entries(C.por_orgao||{}).map(([id,v])=>({id,...v}));
+  return `<div class="card"><h2>Quem o Estado puniu</h2>
+  <p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">Punições já aplicadas e publicadas em diário oficial, nos quatro cadastros da Controladoria-Geral da União. Servidor expulso de um lado; empresa impedida de contratar, multada pela Lei Anticorrupção ou em acordo de leniência do outro. Só a esfera federal: ${((S.ceis||{}).fora_do_escopo_federal||0).toLocaleString('pt-BR')} sanções estaduais e municipais do CEIS ficam fora, porque o Atlas é federal.</p>
+  <div class="om">${st((C.total||0).toLocaleString('pt-BR'),'servidores federais expulsos')}${st(((S.ceis||{}).total||0).toLocaleString('pt-BR'),'empresas impedidas de contratar')}${st(((S.cnep||{}).total||0).toLocaleString('pt-BR'),'empresas punidas pela Lei Anticorrupção')}${st(((S.leniencia||{}).total||0).toLocaleString('pt-BR'),'acordos de leniência')}</div>
+  ${cat.length?`<h3>Como os servidores foram expulsos</h3><div class="counts">${cat.map(([k,v])=>`<span>${esc(k)}</span><span>${v.toLocaleString('pt-BR')}</span>`).join('')}</div>`:''}
+  ${orgs.length?`<h3>Órgãos com mais expulsões</h3>${bars(orgs.slice(0,10), x=>(N[x.id]?N[x.id].name:x.nome||x.id), x=>x.n, {fmt:v=>`${v.toLocaleString('pt-BR')} ${v===1?'expulso':'expulsos'}`, link:x=>N[x.id]?'#'+x.id:null})}`:''}
+  ${anos.length?`<h3>Por ano de publicação</h3>${bars(anos.map(([y,v])=>({y,v})), x=>x.y, x=>x.v, {fmt:v=>v.toLocaleString('pt-BR')})}`:''}
+  <p class="note">${C.com_orgao!=null&&C.total?`${(C.total-C.com_orgao).toLocaleString('pt-BR')} das ${C.total.toLocaleString('pt-BR')} expulsões não aparecem na página de um órgão: ou o órgão de lotação não é um nó do Atlas, ou é órgão extinto sem sucessor único — pendurar uma demissão do antigo Ministério da Economia na Fazenda de hoje seria atribuir a ela um fato que não é dela. `:''}O CPF não é publicado aqui: a própria CGU o entrega mascarado. Fonte: ${esc(S.fonte||'')}, arquivo de ${fmtDate(S.data_do_arquivo)}.</p></div>`;
+}
 function tetoOrgaoHtml(n){
   // O abate-teto existia só no ranking da home: quem abria a página do órgão não via nada sobre
   // salário acima do teto ali. Mesmas palavras do ranking, para não haver duas definições no site.
@@ -1309,6 +1353,7 @@ function renderNode(n){
   </div>
   ${subsidioHtml(n)}
   ${tetoOrgaoHtml(n)}
+  ${sancoesOrgaoHtml(n)}
   ${programasHtml(n)}
   ${composicaoHtml(n)}
   ${historicoHtml(n)}

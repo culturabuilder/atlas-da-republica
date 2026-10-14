@@ -29,27 +29,20 @@ cai em "empresa" até o Eikos classificar. Medido em 03/10/2026: 2 entidades, 2 
 
 Uso: .venv/bin/python etl/recebidos.py
 """
-import datetime, json, os, pathlib, re, sys, time, unicodedata
+import datetime, json, os, pathlib, re, sys, time
 from collections import Counter, defaultdict
 import yaml
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import eikos
+from casar_orgao import casar as casar_orgao, indices, nz
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "generated"
 SAIDA = DATA / "recebidos.yaml"
 TODAY = datetime.date.today()
 
-# Abreviações do SIAPE/SCDP que aparecem nos nomes de órgão da agenda ("MIN GESTAO E INOV EM SERV").
-ABREV = {"minist": "ministerio", "min": "ministerio", "nac": "nacional", "conserv": "conservacao",
-         "desen": "desenvolvimento", "desenv": "desenvolvimento", "cien": "ciencia", "tecn": "tecnologia",
-         "br": "brasileiro", "inst": "instituto", "univ": "universidade", "fund": "fundacao",
-         "secret": "secretaria", "sec": "secretaria", "agric": "agricultura", "assis": "assistencia",
-         "soci": "social", "famil": "familiar", "serv": "servicos", "educ": "educacao", "reg": "regional",
-         "integ": "integracao", "inov": "inovacao", "amb": "ambiente", "rec": "recursos", "nat": "naturais",
-         "pesq": "pesquisa", "adm": "administracao", "gest": "gestao", "transp": "transportes",
-         "com": "comercio", "ind": "industria"}
-FORMA = re.compile(r"\b(sa|s a|ltda|eireli|epp|mei|sociedade anonima)\b")
+# O casamento de nome de órgão com nó do grafo vive em etl/casar_orgao.py, compartilhado com
+# etl/sancoes.py: são regras sutis, apuradas caso a caso, e duas cópias divergiriam.
 ADVOCACIA = re.compile(r"\badvogados?\b|\badvocacia\b")
 EMPRESA = re.compile(r"\bltda\b|\bs a\b|\beireli\b|\bepp\b|\bmei\b|\bsa\b$")
 SETORIAL = re.compile(r"\bassociacao\b|\bfederacao\b|\bconfederacao\b|\bsindicato\b|\bsindicatos\b")
@@ -58,54 +51,6 @@ PUBLICO = re.compile(r"\bminister|secretari|prefeitur|municip|estadual|governo|c
                      r"conselho nacional|\buniao\b|\bfederal\b|embaixada|consulado|procuradoria|defensoria|"
                      r"policia|hospital universitario")
 
-def nz(s):
-    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", " ", unicodedata.normalize("NFKD", str(s or "")).encode("ascii", "ignore").decode().lower())).strip()
-def expandir(t): return " ".join(ABREV.get(w, w) for w in nz(t).split())
-def nucleo(s): return re.sub(r"\s+", " ", re.sub(r"\b(da|de|do|das|dos|e|em)\b", " ", expandir(s))).strip()
-def sem_forma(t): return re.sub(r"\s+", " ", FORMA.sub(" ", nucleo(t))).strip()
-
-def indices(N):
-    """Três índices sobre os nós do grafo: nome exato, núcleo e sigla. Chave ambígua vira None."""
-    por_nome, por_nucleo, por_sigla = {}, {}, {}
-    for nd in N.values():
-        if nd.get("type") == "dept_head": continue
-        for k in [nd.get("name")] + list(nd.get("aliases") or []):
-            if not k: continue
-            sg = str(k).strip()
-            if 2 <= len(sg) <= 12 and " " not in sg and not sg.isdigit():
-                ch = nz(sg)
-                por_sigla[ch] = nd["id"] if ch not in por_sigla or por_sigla[ch] == nd["id"] else None
-            if len(nz(k)) < 4: continue
-            por_nome.setdefault(nz(k), nd["id"])
-            kn = nucleo(k)
-            por_nucleo[kn] = nd["id"] if kn not in por_nucleo or por_nucleo[kn] == nd["id"] else None
-    return por_nome, {k: v for k, v in por_nucleo.items() if v}, {k: v for k, v in por_sigla.items() if v}
-
-def casar(nome, por_nome, por_nucleo, por_sigla):
-    """(id do nó, como casou) ou (None, None). Só determinístico."""
-    def prefixo(t):
-        if len(t) < 14: return None
-        cand = {v for k, v in por_nucleo.items() if k.startswith(t + " ")}
-        return next(iter(cand)) if len(cand) == 1 else None
-    if por_nome.get(nz(nome)): return por_nome[nz(nome)], "nome"
-    if por_nucleo.get(nucleo(nome)): return por_nucleo[nucleo(nome)], "nome"
-    if por_nucleo.get(sem_forma(nome)): return por_nucleo[sem_forma(nome)], "forma"
-    fim = re.match(r"^(.+?)\s*[-–]\s*([A-Za-z0-9\.]{2,12})$", nome.strip())
-    if fim:
-        if nz(fim.group(2)) in por_sigla: return por_sigla[nz(fim.group(2))], "sigla"
-        if por_nucleo.get(sem_forma(fim.group(1))): return por_nucleo[sem_forma(fim.group(1))], "forma"
-    ini = re.match(r"^([A-Za-z0-9\.]{2,12})\s*[-–]\s*(.+)$", nome.strip())
-    if ini:
-        if nz(ini.group(1)) in por_sigla: return por_sigla[nz(ini.group(1))], "sigla"
-        resto = ini.group(2)
-        if por_nome.get(nz(resto)): return por_nome[nz(resto)], "resto"
-        if por_nucleo.get(nucleo(resto)): return por_nucleo[nucleo(resto)], "resto"
-        p = prefixo(nucleo(resto))
-        if p: return p, "prefixo"
-    if nz(nome) in por_sigla: return por_sigla[nz(nome)], "sigla"
-    p = prefixo(nucleo(nome))
-    if p: return p, "prefixo"
-    return None, None
 
 def por_marca(nome, siglas_longas):
     """Classe pela marca jurídica no nome, ou None. Nome que contém sigla de órgão nosso não entra."""
@@ -179,7 +124,7 @@ def main():
 
     ent = {}; pedir = []
     for nome in enc:
-        nid, como = casar(nome, *idx)
+        nid, como = casar_orgao(nome, idx)
         if nid:
             ent[nome] = {"classe": "orgao_federal", "via": como, "no": nid}; continue
         cl = por_marca(nome, siglas_longas)

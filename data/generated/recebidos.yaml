@@ -1,5 +1,5 @@
 # GERADO por etl/recebidos.py. Não edite à mão.
-generated_at: '2026-10-13'
+generated_at: '2026-10-14'
 fonte: https://eagendas.cgu.gov.br (rotas públicas /pesquisa/orgaos, /pesquisa/agentes-publicos-obrigados-por-orgao e /?filtro_servidor=...)
 agenda_lida_em: '2026-10-11'
 janela_dias: 90
@@ -15,20 +15,20 @@ por_classe:
     entidades: 118
     encontros: 327
   empresa:
-    entidades: 861
-    encontros: 1792
+    entidades: 841
+    encontros: 1762
   nao_classificado:
-    entidades: 1868
-    encontros: 3585
+    entidades: 1797
+    encontros: 3368
   orgao_federal:
-    entidades: 768
-    encontros: 22550
+    entidades: 910
+    encontros: 22608
   publico_outro:
-    entidades: 566
-    encontros: 1052
+    entidades: 520
+    encontros: 1248
   setorial:
-    entidades: 395
-    encontros: 874
+    entidades: 390
+    encontros: 867
 privadas:
 - nome: ITAU UNIBANCO S.A.
   n: 41
@@ -2332,8 +2332,8 @@ privadas:
     nome: Daniel Cardoso Leal
     n: 1
 privadas_total:
-  entidades: 1374
-  encontros: 2993
+  entidades: 1349
+  encontros: 2956
 quem_recebeu:
 - pessoa: br-p-wp-paulo-picchetti
   nome: Paulo Picchetti
@@ -2349,8 +2349,8 @@ quem_recebeu:
   entidades: 41
 - pessoa: br-p-alex-sandro-de-avila
   nome: Alex Sandro de Avila
-  encontros: 63
-  entidades: 39
+  encontros: 62
+  entidades: 38
 - pessoa: br-p-wp-nilton-jos-schneider-david
   nome: Nilton José Schneider David
   encontros: 60
@@ -2359,14 +2359,14 @@ quem_recebeu:
   nome: Ailton de Aquino Santos
   encontros: 57
   entidades: 42
-- pessoa: br-p-daniela-marreco-cerqueira
-  nome: Daniela Marreco Cerqueira
-  encontros: 56
-  entidades: 37
 - pessoa: br-p-otto-eduardo-fonseca-de-albuquerque-lobo
   nome: Otto Eduardo Fonseca de Albuquerque Lobo
   encontros: 56
   entidades: 38
+- pessoa: br-p-daniela-marreco-cerqueira
+  nome: Daniela Marreco Cerqueira
+  encontros: 55
+  entidades: 36
 - pessoa: br-p-gentil-nogueira-de-sa-junior
   nome: Gentil Nogueira de Sa Junior
   encontros: 51
@@ -2377,32 +2377,28 @@ quem_recebeu:
   entidades: 41
 - pessoa: br-p-joao-daniel-de-andrade-cascalho
   nome: Joao Daniel de Andrade Cascalho
-  encontros: 45
-  entidades: 23
+  encontros: 44
+  entidades: 22
 - pessoa: br-p-willamy-moreira-frota
   nome: Willamy Moreira Frota
   encontros: 42
   entidades: 29
-- pessoa: br-p-dou-fabricio-de-oliveira-galvao
-  nome: Fabricio de Oliveira Galvao
-  encontros: 42
-  entidades: 33
 - pessoa: br-p-gabriel-galipolo
   nome: Gabriel Muricca Galípolo
   encontros: 41
   entidades: 35
+- pessoa: br-p-dou-fabricio-de-oliveira-galvao
+  nome: Fabricio de Oliveira Galvao
+  encontros: 41
+  entidades: 32
 - pessoa: br-p-wilson-diniz-wellisch
   nome: Wilson Diniz Wellisch
   encontros: 40
   entidades: 19
 - pessoa: br-p-marcio-fernando-elias-rosa
   nome: Marcio Fernando Elias Rosa
-  encontros: 39
-  entidades: 31
-- pessoa: br-p-tatiana-lacerda-prazeres
-  nome: Tatiana Lacerda Prazeres
-  encontros: 37
-  entidades: 28
+  encontros: 38
+  entidades: 30
 - pessoa: br-p-adrualdo-de-lima-catao
   nome: Adrualdo de Lima Catao
   encontros: 37
@@ -2427,14 +2423,18 @@ quem_recebeu:
   nome: Rodrigo Zerbone Loureiro
   encontros: 35
   entidades: 19
+- pessoa: br-p-tatiana-lacerda-prazeres
+  nome: Tatiana Lacerda Prazeres
+  encontros: 35
+  entidades: 27
 - pessoa: br-p-joao-carlos-de-andrade-uzeda-accioly
   nome: Joao Carlos de Andrade Uzeda Accioly
   encontros: 35
   entidades: 22
 - pessoa: br-p-frederico-carvalho-dias
   nome: Frederico Carvalho Dias
-  encontros: 34
-  entidades: 30
+  encontros: 33
+  entidades: 29
 - pessoa: br-p-uallace-moreira-lima
   nome: Uallace Moreira Lima
   encontros: 30
@@ -2714,8 +2714,9 @@ entidades:
     classe: empresa
     via: marca
   ACAI KAA INDUSTRIA COMERCIO, IMPORTACAO E EXPORTACAO LTDA:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   ACCORD FARMACEUTICA LTDA:
     classe: empresa
     via: marca
@@ -2881,8 +2882,9 @@ entidades:
     classe: nao_classificado
     via: null
   AKANNI INSTITUTO DE PESQUISA E ASSESSORIA EM DIREITOS HUMANOS, GENERO, RACA E ETNIA:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-dos-direitos-humanos-e-da-cidadania
   ALADA - Empresa de Projetos Aeroespaciais do Brasil S.A.:
     classe: empresa
     via: marca
@@ -3191,9 +3193,8 @@ entidades:
     classe: nao_classificado
     via: null
   APS - Autoridade Portuária de Santos:
-    classe: orgao_federal
-    via: prefixo
-    'no': br-autoridade-portuaria-de-santos-s-a
+    classe: nao_classificado
+    via: null
   APSEN FARMACEUTICA S/A:
     classe: empresa
     via: marca
@@ -3207,8 +3208,9 @@ entidades:
     classe: empresa
     via: marca
   ARCO FORJADO EXPORTACAO IMPORTACAO INDUSTRIA E COMERCIO LTDA:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   ARCON:
     classe: nao_classificado
     via: null
@@ -3636,8 +3638,9 @@ entidades:
     classe: nao_classificado
     via: null
   ASSOCIACAO DE CONTROLE DO TABAGISMO, PROMOCAO DA SAUDE E DOS DIREITOS HUMANOS:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-dos-direitos-humanos-e-da-cidadania
   ASSOCIACAO DE DUBLADORES DARIO DE CASTRO - ADDC:
     classe: setorial
     via: marca
@@ -3855,8 +3858,9 @@ entidades:
     classe: nao_classificado
     via: null
   ASSOCIACAO PELA INDUSTRIA E COMERCIO ESPORTIVO- APICE:
-    classe: setorial
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   ASSOCIACAO PERNAMBUCANA DAS PROFISSIONAIS DO SEXO:
     classe: setorial
     via: marca
@@ -4034,8 +4038,9 @@ entidades:
     classe: nao_classificado
     via: null
   Agência Brasileira de Cooperação do Ministério das Relações Exteriores:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-das-relacoes-exteriores
   Agência Brasileira de Desenvolvimento Industrial - (ABDI):
     classe: nao_classificado
     via: null
@@ -4082,8 +4087,9 @@ entidades:
     via: sigla
     'no': br-ans
   Agência Nacional de Saúde Suplementar/ANS:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ans
   Agência Nacional de Telecomunicações:
     classe: orgao_federal
     via: nome
@@ -4093,8 +4099,9 @@ entidades:
     via: nome
     'no': br-antaq
   Agência Nacional de Transportes Aquaviários (ANTAQ):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-antaq
   Agência Nacional de Transportes Terrestres:
     classe: orgao_federal
     via: nome
@@ -4451,16 +4458,14 @@ entidades:
     'no': br-banco-do-brasil
   BANCO DO BRASIL SA:
     classe: orgao_federal
-    via: forma
+    via: forma jurídica
     'no': br-banco-do-brasil
   BANCO DO NORDESTE:
-    classe: orgao_federal
-    via: prefixo
-    'no': br-banco-do-nordeste-do-brasil-s-a
+    classe: nao_classificado
+    via: null
   BANCO DO NORDESTE DO BRASIL:
-    classe: orgao_federal
-    via: prefixo
-    'no': br-banco-do-nordeste-do-brasil-s-a
+    classe: nao_classificado
+    via: null
   BANCO DO NORDESTE DO BRASIL SA:
     classe: empresa
     via: marca
@@ -4586,8 +4591,9 @@ entidades:
     classe: nao_classificado
     via: null
   BEYOND ADVICE RELACOES INSTITUCIONAIS LTDA:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-de-relacoes-institucionais
   BGC LIQUIDEZ DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS LTDA:
     classe: empresa
     via: marca
@@ -5039,8 +5045,9 @@ entidades:
     classe: empresa
     via: marca
   CASA DA MOEDA DO BRASIL CMB:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-casa-da-moeda-do-brasil
   CASA DOS VENTOS:
     classe: nao_classificado
     via: null
@@ -5098,14 +5105,16 @@ entidades:
     classe: nao_classificado
     via: null
   CEASA-MG - Centrais de Abastecimento de Minas Gerais S.A.:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-centrais-de-abastecimento-de-minas-gerais-s-a
   CEB Participações S.A:
     classe: empresa
     via: marca
   CEDINEPIR - Conselho Estadual dos Direitos do Negro e Promoção da Igualdade Racial:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-igualdade-racial
   CEFET/MG - CENTRO FED.DE EDUC.TECNOL.MINAS GERAIS:
     classe: nao_classificado
     via: null
@@ -5116,8 +5125,9 @@ entidades:
     classe: publico_outro
     via: marca
   CEITEC/S.A. - Centro Nacional de Tecnologia Eletrônica Avançada S. A:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-centro-nacional-de-tecnologia-eletronica-avancada-s-a
   CELBA - CENTRAIS ELETRICAS BARCARENA SA:
     classe: empresa
     via: marca
@@ -5273,8 +5283,9 @@ entidades:
     via: sigla
     'no': br-comissao-de-financas-e-tributacao-da-camara
   CGAEP/Decit/SCTIE/Ministério da Saúde:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-saude
   CGAM/DNASF:
     classe: nao_classificado
     via: null
@@ -5302,8 +5313,9 @@ entidades:
     classe: empresa
     via: marca
   CGIAD/Deaps/Saps/Ministério da Saúde:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-saude
   CGN BRASIL ENERGIA E PARTICIPACOES S.A.:
     classe: empresa
     via: marca
@@ -5407,8 +5419,9 @@ entidades:
     via: sigla
     'no': br-casa-da-moeda-do-brasil
   CMCTI - Conselho Municipal de Ciência, Tecnologia e Inovação:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
   CNB/CF:
     classe: nao_classificado
     via: null
@@ -5855,8 +5868,9 @@ entidades:
     classe: publico_outro
     via: marca
   CONSELHO NACIONAL DO MINISTÉRIO PÚBLICO (CNMP):
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-conselho-nacional-do-ministerio-publico
   CONSELHO PASTORAL DOS PESCADORES:
     classe: nao_classificado
     via: null
@@ -6029,8 +6043,9 @@ entidades:
     via: sigla
     'no': br-companhia-de-pesquisa-de-recursos-minerais
   CPSM/SEDES Secretaria de Desenvolvimento Social do Distrito Federal:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-social
   CR-BA:
     classe: orgao_federal
     via: sigla
@@ -6213,8 +6228,9 @@ entidades:
     classe: nao_classificado
     via: null
   Centro de Informática - Universidade Federal de Pernambuco:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-universidade-federal-de-pernambuco
   Centro de Operações Espacias - COES:
     classe: nao_classificado
     via: null
@@ -6234,8 +6250,9 @@ entidades:
     classe: nao_classificado
     via: null
   Chefe de Gabinete Substituta - MINISTERIO DO TURISMO:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-turismo
   China:
     classe: nao_classificado
     via: null
@@ -6292,17 +6309,20 @@ entidades:
     classe: nao_classificado
     via: null
   Comando da Marinha:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: nome alternativo
+    'no': br-marinha-do-brasil
   Comando de Defesa Cibernética (CDCiber) do Exército Brasileiro:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-exercito-brasileiro
   Comando de Operações Aeroespaciais/FAB:
     classe: nao_classificado
     via: null
   Comando do Exército:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: nome alternativo
+    'no': br-exercito-brasileiro
   Comerc Energia S. A.:
     classe: empresa
     via: marca
@@ -6325,8 +6345,9 @@ entidades:
     via: nome
     'no': br-comissao-de-valores-mobiliarios
   Comissão de Valores Mobiliários (CVM):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-comissao-de-valores-mobiliarios
   Comité Paralímpico de las Américas:
     classe: nao_classificado
     via: null
@@ -6456,8 +6477,9 @@ entidades:
     via: nome
     'no': br-cade
   Conselho Administrativo de Recursos Fiscais (Ministério da Fazenda):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-fazenda
   Conselho Consultivo/Anatel:
     classe: nao_classificado
     via: null
@@ -6492,8 +6514,9 @@ entidades:
     classe: publico_outro
     via: marca
   Conselho Nacional Segurança Alimentar e Nutricional - CONSEA/SG/PR:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-conselho-nacional-de-seguranca-alimentar-e-nutricional
   ? Conselho Nacional das Fundações de Apoio às instituições de Ensino Superior e de Pesquisa Científica e Tecnológica (CONFIES)
   : classe: publico_outro
     via: marca
@@ -6529,8 +6552,9 @@ entidades:
     via: nome
     'no': br-conselho-nacional-do-ministerio-publico
   Conselho Nacional do Ministério Público (CNMP):
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-conselho-nacional-do-ministerio-publico
   Conselho Nacional do Ministério Público – CNMP:
     classe: orgao_federal
     via: sigla
@@ -6581,8 +6605,9 @@ entidades:
     classe: nao_classificado
     via: null
   Consultoria Federal em Educação, Ciência e Tecnologia:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
   Consórcio Amazônia Legal:
     classe: nao_classificado
     via: null
@@ -6610,8 +6635,9 @@ entidades:
     via: nome
     'no': br-controladoria-geral-da-uniao
   Controladoria-Geral da União (CGU):
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-controladoria-geral-da-uniao
   Controladoria-Geral do Estado do RN:
     classe: nao_classificado
     via: null
@@ -6760,8 +6786,9 @@ entidades:
     classe: nao_classificado
     via: null
   Câmara de Deputados da República Argentina:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-camara-dos-deputados
   Câmara de Vereadores de Balneário Arroio do Silva/SC:
     classe: nao_classificado
     via: null
@@ -6777,8 +6804,9 @@ entidades:
     classe: nao_classificado
     via: null
   Câmara dos Deputados - Partido Liberal:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-camara-dos-deputados
   Câmara dos Representantes dos Estados Unidos:
     classe: nao_classificado
     via: null
@@ -6863,8 +6891,9 @@ entidades:
     classe: nao_classificado
     via: null
   DEPARTAMENTO DE POLICIA FEDERAL:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: prefixo administrativo
+    'no': br-policia-federal
   DEPARTAMENTO INTERSINDICAL DE EST ESTS SOCIO ECONOMICOS:
     classe: nao_classificado
     via: null
@@ -6941,8 +6970,9 @@ entidades:
     classe: nao_classificado
     via: null
   DGIP/SEC.EXECUTIVA/MINISTÉRIO DA SAÚDE:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-saude
   DIAGNOSTICOS DA AMERICA S.A .:
     classe: empresa
     via: marca
@@ -6991,8 +7021,9 @@ entidades:
     classe: nao_classificado
     via: null
   DPRF - DEPTO. DE POLICIA RODOVIARIA FEDERAL:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-policia-rodoviaria-federal
   DPU - DEFENSORIA PUBLICA DA UNIAO:
     classe: orgao_federal
     via: sigla
@@ -7002,8 +7033,9 @@ entidades:
     via: sigla
     'no': br-defensoria-publica-da-uniao
   DR. SCHAR BRASIL INDUSTRIA E COMERCIO DE ALIMENTOS LTDA.:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   DR.REDDY'S FARMACEUTICA DO BRASIL LTDA:
     classe: empresa
     via: marca
@@ -7042,9 +7074,8 @@ entidades:
     classe: nao_classificado
     via: null
   Defensoria Pública:
-    classe: orgao_federal
-    via: prefixo
-    'no': br-defensoria-publica-da-uniao
+    classe: publico_outro
+    via: marca
   Defensoria Pública (DPESP):
     classe: publico_outro
     via: marca
@@ -7062,8 +7093,9 @@ entidades:
     classe: nao_classificado
     via: null
   Delegacia da Receita Federal:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-receita-federal-do-brasil
   Delegacia do Estado do Rio Grande do Norte:
     classe: nao_classificado
     via: null
@@ -7097,8 +7129,9 @@ entidades:
     classe: nao_classificado
     via: null
   Departamento de Regulação assistencial e Controle/Ministério da Saúde:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-saude
   Departamento de Serviço Público e Administração da África do Sul:
     classe: nao_classificado
     via: null
@@ -7179,8 +7212,9 @@ entidades:
     classe: nao_classificado
     via: null
   ECOFIBRA INDUSTRIA E COMERCIO DE COMPOSITOS LTDA:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   ECOMETANO EMPREENDIMENTOS S.A.:
     classe: empresa
     via: marca
@@ -7301,8 +7335,9 @@ entidades:
     classe: nao_classificado
     via: null
   EMCFA/Ministério da Defesa:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-defesa
   EMGEA - Empresa Gestora de Ativos:
     classe: orgao_federal
     via: sigla
@@ -7344,8 +7379,9 @@ entidades:
     classe: empresa
     via: marca
   ENAP (Escola Nacional de Administração Pública):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-enap
   ENAP - FUNDACAO ESCOLA NACIONAL DE ADM. PUBLICA:
     classe: orgao_federal
     via: sigla
@@ -7461,8 +7497,9 @@ entidades:
     classe: empresa
     via: marca
   ETICA RELACOES INSTITUCIONAIS E GOVERNAMENTAIS LTDA:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-de-relacoes-institucionais
   EUQUEROINVESTIR GESTAO DE RECURSOS LTDA:
     classe: nao_classificado
     via: null
@@ -7696,15 +7733,17 @@ entidades:
     via: nome
     'no': br-correios
   Empresa Brasileira de Correios e Telégrafos (Correios):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-correios
   Empresa Brasileira de Hemoderivados e Biotecnologia:
     classe: orgao_federal
     via: nome
     'no': br-empresa-brasileira-de-hemoderivados-e-biotecnologia
   Empresa Brasileira de Hemoderivados e Biotecnologia/HEMOBRÁS:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-empresa-brasileira-de-hemoderivados-e-biotecnologia
   Empresa Brasileira de Infraestrutura Aeroportuária:
     classe: orgao_federal
     via: nome
@@ -7770,8 +7809,9 @@ entidades:
     classe: publico_outro
     via: marca
   Escritório Municipal de Relações Institucionais e Representação do Município de Caxias do Sul/RS em Brasília:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-de-relacoes-institucionais
   Escritório da Organização Internacional do Trabalho (OIT) para o Brasil:
     classe: nao_classificado
     via: null
@@ -7903,8 +7943,9 @@ entidades:
     classe: advocacia
     via: marca
   FAZENDAO INDUSTRIA E COMERCIO DE PRODUTOS AGROPECUARIOS LTDA:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   FBES:
     classe: nao_classificado
     via: null
@@ -8042,8 +8083,9 @@ entidades:
     classe: nao_classificado
     via: null
   FEDERAÇÃO DA INDUSTRIA E COMERCIO DE GOIÁS:
-    classe: setorial
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   FEDERAÇÃO DE ÓRGÃOS PARA ASSISTÊNCIA SOCIAL E EDUCACIONAL - FASE:
     classe: setorial
     via: marca
@@ -8134,8 +8176,9 @@ entidades:
     classe: nao_classificado
     via: null
   FLASH INDUSTRIA E COMERCIO DE PRODUTOS E SISTEMAS ELETROELETRONICOS LTDA:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   FLUKKA FARMACIA DE MANIPULACAO LTDA:
     classe: empresa
     via: marca
@@ -8185,8 +8228,9 @@ entidades:
     classe: nao_classificado
     via: null
   FOXCONN BRASIL INDUSTRIA E COMERCIO LTDA:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   FRANCA DA ROCHA & ADVOGADOS ASSOCIADOS:
     classe: advocacia
     via: marca
@@ -8282,8 +8326,9 @@ entidades:
     classe: nao_classificado
     via: null
   FUNDACAO ASSISTENCIAL DOS SERVIDORES DO MINISTERIO DA FAZENDA:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-fazenda
   FUNDACAO ATHOS BULCAO:
     classe: nao_classificado
     via: null
@@ -8558,8 +8603,9 @@ entidades:
     via: nome
     'no': br-fundacao-casa-de-rui-barbosa
   Fundação Coordenação de Aperfeiçoamento de Pessoal de Nível superior:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-capes
   Fundação Cultural Palmares:
     classe: orgao_federal
     via: nome
@@ -8568,8 +8614,9 @@ entidades:
     classe: nao_classificado
     via: null
   Fundação Escola Nacional de Administração Pública:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-enap
   Fundação Getulio Vargas:
     classe: nao_classificado
     via: null
@@ -8586,8 +8633,9 @@ entidades:
     classe: nao_classificado
     via: null
   Fundação Instituto Brasileiro de Geografia e Estatística:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ibge
   Fundação Jorge Duprat Figueiredo, de Segurança e Medicina do Trabalho:
     classe: orgao_federal
     via: nome
@@ -8604,14 +8652,17 @@ entidades:
     via: nome
     'no': br-funasa
   Fundação Nacional de Saúde/FUNASA:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-funasa
   Fundação Nacional de Saúde/Funasa:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-funasa
   Fundação Nacional do Índio:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: nome alternativo
+    'no': br-funai
   Fundação Nacional dos Povos Indígenas:
     classe: orgao_federal
     via: nome
@@ -8628,8 +8679,9 @@ entidades:
     via: nome
     'no': br-fiocruz
   Fundação Oswaldo Cruz (FIOCRUZ):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-fiocruz
   Fundação Universidade Federal de Ciências da Saúde de Porto Alegre:
     classe: orgao_federal
     via: nome
@@ -8728,8 +8780,9 @@ entidades:
     via: nome
     'no': br-fnde
   Fundo Nacional de Desenvolvimento da Educação (FNDE):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-fnde
   Fundo Soberano de Angola:
     classe: nao_classificado
     via: null
@@ -8848,8 +8901,9 @@ entidades:
     classe: nao_classificado
     via: null
   GICS INDUSTRIA, COMERCIO E SERVICOS S.A.:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   GILEAD SCIENCES FARMACEUTICA DO BRASIL LTDA:
     classe: empresa
     via: marca
@@ -9043,8 +9097,9 @@ entidades:
     classe: nao_classificado
     via: null
   Gabinete Secretaria Executiva do Ministério da Cultura:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-cultura
   Gabinete da Senadora Professora Dorinha Seabra:
     classe: nao_classificado
     via: null
@@ -9149,8 +9204,9 @@ entidades:
     classe: publico_outro
     via: marca
   Governo do Estado do Acre • Secretaria de Estado de Indústria, Ciência e Tecnologia – SEICT:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
   Governo do Estado do Acre- Secretaria de Planejamento:
     classe: nao_classificado
     via: null
@@ -9221,9 +9277,8 @@ entidades:
     classe: nao_classificado
     via: null
   Grupo Hospitalar Conceição:
-    classe: orgao_federal
-    via: prefixo
-    'no': br-grupo-hospitalar-conceicao-s-a
+    classe: nao_classificado
+    via: null
   Grupo Hospitalar Conceição/GHC:
     classe: nao_classificado
     via: null
@@ -9461,8 +9516,9 @@ entidades:
     classe: empresa
     via: marca
   ICCILA-INDUSTRIA , COMERCIO E CONSTRUCOES IBAGE LTDA:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   ICESP:
     classe: nao_classificado
     via: null
@@ -9470,8 +9526,9 @@ entidades:
     classe: nao_classificado
     via: null
   ICM-Bio:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: nome
+    'no': br-icmbio
   ICMBIO - INSTITUTO CHICO MENDES CONSERV.BIODIVER.:
     classe: orgao_federal
     via: sigla
@@ -9480,8 +9537,9 @@ entidades:
     classe: nao_classificado
     via: null
   ICONACY ORTHOPEDIC IMPLANTS INDUSTRIA E COMERCIO DE PRODUTOS MEDICO HOSPITALARES LTDA.:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   IEA - INSTITUTO DE ECOLOGIA APLICADA:
     classe: nao_classificado
     via: null
@@ -9864,8 +9922,9 @@ entidades:
     classe: nao_classificado
     via: null
   INSTITUTO EURO-AMERICANO DE EDUCACAO, CIENCIA E TECNOLOGIA S.A.:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
   INSTITUTO FED. DO NORTE DE MINAS GERAIS:
     classe: nao_classificado
     via: null
@@ -10089,8 +10148,9 @@ entidades:
     classe: nao_classificado
     via: null
   Indústria e Comércio da Federação da Rússia:
-    classe: setorial
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   InfoPerifa/SP:
     classe: nao_classificado
     via: null
@@ -10111,17 +10171,20 @@ entidades:
     classe: nao_classificado
     via: null
   Instituto Brasileiro de Geografia e Estatística (IBGE):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ibge
   Instituto Brasileiro de Governança Corporativa - IBGC:
     classe: nao_classificado
     via: null
   Instituto Brasileiro de Informação em Ciência e Tecnologia (Ibict):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
   Instituto Brasileiro de Informação em Ciência e Tecnologia - Ibict:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
   Instituto Brasileiro de Museus:
     classe: orgao_federal
     via: nome
@@ -10134,15 +10197,17 @@ entidades:
     via: nome
     'no': br-ibama
   Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis (IBAMA):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ibama
   Instituto Chico Mendes de Conservação da Biodiversidade:
     classe: orgao_federal
     via: nome
     'no': br-icmbio
   Instituto Chico Mendes de Conservação da Biodiversidade (ICMBio):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-icmbio
   Instituto Dominicano de Telecomunicações - Indotel:
     classe: nao_classificado
     via: null
@@ -10347,8 +10412,9 @@ entidades:
     via: nome
     'no': br-incra
   Instituto Nacional de Colonização e Reforma Agrária (INCRA):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-incra
   Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira:
     classe: orgao_federal
     via: nome
@@ -10366,8 +10432,9 @@ entidades:
     via: nome
     'no': br-iti
   Instituto Nacional de Tecnologia da Informação (ITI):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-iti
   Instituto Nacional de Tecnologias de Informação e Comunicação (INTIC):
     classe: nao_classificado
     via: null
@@ -10945,8 +11012,9 @@ entidades:
     via: sigla
     'no': br-ministerio-do-desenvolvimento-agrario
   MDH - MINISTÉRIO DOS DIREITOS HUMANOS E DA CIDADNIA:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-dos-direitos-humanos-e-da-cidadania
   MDHC:
     classe: orgao_federal
     via: nome
@@ -11118,8 +11186,9 @@ entidades:
     classe: empresa
     via: marca
   MIN DESENVOLV IND COMERCIO E SERVICOS:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   MIN DO DESENV AGR E AGRIC FAMILIAR:
     classe: nao_classificado
     via: null
@@ -11144,8 +11213,9 @@ entidades:
     classe: nao_classificado
     via: null
   MINISTERIO CIENCIA TECNOLOGIA INOVA:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
   MINISTERIO DA AGRICULTURA E PECUARIA:
     classe: orgao_federal
     via: nome
@@ -11187,8 +11257,9 @@ entidades:
     via: sigla
     'no': br-ministerio-da-defesa
   MINISTÉRIO DA EDUCAÇÃO DE ANGOLA:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-educacao
   MINISTÉRIO DA FAZENDA:
     classe: orgao_federal
     via: nome
@@ -11516,8 +11587,9 @@ entidades:
     via: nome
     'no': br-marinha-do-brasil
   Marinha do Brasil - Estado-Maior da Armada - Subchefia de Assuntos Marítimos:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-marinha-do-brasil
   Mario Seabra Suarez:
     classe: nao_classificado
     via: null
@@ -11613,11 +11685,11 @@ entidades:
     'no': br-ministerio-publico-do-trabalho
   Ministério Público do Trabalho - PE:
     classe: orgao_federal
-    via: forma
+    via: forma jurídica
     'no': br-ministerio-publico-do-trabalho
   Ministério Público do Trabalho - Recife:
     classe: orgao_federal
-    via: forma
+    via: forma jurídica
     'no': br-ministerio-publico-do-trabalho
   Ministério da Agricultura e Pecuária:
     classe: orgao_federal
@@ -11651,21 +11723,25 @@ entidades:
     via: sigla
     'no': br-ministerio-da-defesa
   Ministério da Defesa Nacional do Paraguai:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-defesa
   Ministério da Educação:
     classe: orgao_federal
     via: nome
     'no': br-ministerio-da-educacao
   Ministério da Educação - Assessoria da Chefia de Gabinete:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-educacao
   Ministério da Educação Básica da África do Sul:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-educacao
   Ministério da Educação da África do Sul:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-educacao
   Ministério da Educação – MEC:
     classe: orgao_federal
     via: sigla
@@ -11682,15 +11758,17 @@ entidades:
     via: nome
     'no': br-ministerio-da-gestao
   'Ministério da Gestão e Inovação em Serviços Públicos – MGI:':
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-gestao
   Ministério da Gestão e da Inovação em Serviços Públicos:
     classe: orgao_federal
     via: nome
     'no': br-ministerio-da-gestao
   Ministério da Gestão e da Inovação em Serviços Públicos (MGI):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-gestao
   Ministério da Gestão e da Inovação em Serviços Públicos - MGI:
     classe: orgao_federal
     via: sigla
@@ -11726,9 +11804,8 @@ entidades:
     via: sigla
     'no': br-ministerio-da-justica-e-seguranca-publica
   'Ministério da Justiça:':
-    classe: orgao_federal
-    via: prefixo
-    'no': br-ministerio-da-justica-e-seguranca-publica
+    classe: nao_classificado
+    via: null
   Ministério da Pesca e Aquicultura:
     classe: orgao_federal
     via: nome
@@ -11742,8 +11819,9 @@ entidades:
     via: nome
     'no': br-ministerio-da-saude
   Ministério da Saúde (MS):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-saude
   Ministério da Saúde - MS:
     classe: orgao_federal
     via: sigla
@@ -11764,25 +11842,28 @@ entidades:
     via: null
   Ministério das Cidades – MC:
     classe: orgao_federal
-    via: forma
+    via: forma jurídica
     'no': br-ministerio-das-cidades
   Ministério das Comunicações:
     classe: orgao_federal
     via: nome
     'no': br-ministerio-das-comunicacoes
   Ministério das Comunicações (MCOM):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-das-comunicacoes
   Ministério das Comunicações da África do Sul:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-das-comunicacoes
   Ministério das Mulheres:
     classe: orgao_federal
     via: nome
     'no': br-ministerio-das-mulheres
   Ministério das Relacões Exteriores da Suécia:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-das-relacoes-exteriores
   Ministério das Relações Exteriores:
     classe: orgao_federal
     via: nome
@@ -11792,11 +11873,13 @@ entidades:
     via: sigla
     'no': br-ministerio-das-relacoes-exteriores
   Ministério das Relações Exteriores da Dinamarca:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-das-relacoes-exteriores
   Ministério das Relações Exteriores e Desenvolvimento do Reino Unido:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-das-relacoes-exteriores
   Ministério de Minas e Energia:
     classe: orgao_federal
     via: nome
@@ -11806,8 +11889,9 @@ entidades:
     via: nome
     'no': br-ministerio-de-portos-e-aeroportos
   Ministério de Relações Exteriores e Pesca das Ilhas Faroé:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-das-relacoes-exteriores
   Ministério de portos e aeroportos:
     classe: orgao_federal
     via: nome
@@ -11817,14 +11901,17 @@ entidades:
     via: nome
     'no': br-ministerio-do-desenvolvimento-agrario
   Ministério do Desenvolvimento Agrário e Agricultura Familiar (MDA):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-agrario
   Ministério do Desenvolvimento Agrário e Agricultura Familiar - MDA):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-agrario
   Ministério do Desenvolvimento Social:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-social
   Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome:
     classe: orgao_federal
     via: nome
@@ -11834,8 +11921,9 @@ entidades:
     via: nome
     'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   Ministério do Desenvolvimento, Indústria, Comércio e Serviços (MDIC):
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   Ministério do Desenvolvimento, Indústria, Comércio e Serviços - MDIC:
     classe: orgao_federal
     via: sigla
@@ -11849,9 +11937,8 @@ entidades:
     via: nome
     'no': br-ministerio-do-esporte
   Ministério do Meio Ambiente:
-    classe: orgao_federal
-    via: prefixo
-    'no': br-ministerio-do-meio-ambiente-e-mudanca-do-clima
+    classe: publico_outro
+    via: marca
   Ministério do Meio Ambiente - MMA:
     classe: orgao_federal
     via: sigla
@@ -11865,8 +11952,9 @@ entidades:
     via: sigla
     'no': br-ministerio-do-meio-ambiente-e-mudanca-do-clima
   Ministério do Meio Ambiente e Mudança do Clima/ Departamento de Combate à Desertificação:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-meio-ambiente-e-mudanca-do-clima
   Ministério do Planejamento e Orçamento:
     classe: orgao_federal
     via: nome
@@ -11906,11 +11994,13 @@ entidades:
     via: nome
     'no': br-ministerio-dos-transportes
   Ministério dos Transportes (MT):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-dos-transportes
   Ministério dos Transportes/MT:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-dos-transportes
   Missão de Observação Eleitoral da Organização dos Estados Americanos (OEA) para as Eleições 2026:
     classe: nao_classificado
     via: null
@@ -12481,8 +12571,9 @@ entidades:
     classe: nao_classificado
     via: null
   Organização dos Povos Indígenas do Rio Juruá:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-dos-povos-indigenas
   Orion transmissão S.A:
     classe: empresa
     via: marca
@@ -12564,8 +12655,9 @@ entidades:
     via: sigla
     'no': br-petrobras
   PETROLEO BRASILEIRO S A PETROBRAS:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-petrobras
   PEZCO CONSULTORIA, EDITORA E DESENVOLVIMENTO LTDA:
     classe: empresa
     via: marca
@@ -12601,8 +12693,9 @@ entidades:
     classe: empresa
     via: marca
   PHILIP MORRIS BRASIL INDUSTRIA E COMERCIO LTDA.:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   PICPAY INSTITUICAO DE PAGAMENTO S/A:
     classe: empresa
     via: marca
@@ -12882,8 +12975,9 @@ entidades:
     via: nome
     'no': br-policia-federal
   Polícia Federal no Rio Grande do Norte:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-policia-federal
   Polícia Nacional da Colômbia:
     classe: publico_outro
     via: marca
@@ -13312,8 +13406,9 @@ entidades:
     classe: nao_classificado
     via: null
   Presidente do TST e do Conselho Superior da Justiça do Trabalho:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-conselho-superior-da-justica-do-trabalho
   Presidente do Todos Pela Educação:
     classe: nao_classificado
     via: null
@@ -13353,8 +13448,9 @@ entidades:
     via: nome
     'no': br-procuradoria-geral-federal
   Procuradoria-Geral da Fazenda Nacional (PGFN):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-procuradoria-geral-da-fazenda-nacional
   Procuradoria-Geral do Estado do Rio de Janeiro:
     classe: publico_outro
     via: marca
@@ -13467,8 +13563,9 @@ entidades:
     classe: empresa
     via: marca
   REFISA INDUSTRIA E COMERCIO LTDA:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   REL GOV BRASIL LTDA:
     classe: empresa
     via: marca
@@ -13531,11 +13628,13 @@ entidades:
     classe: empresa
     via: marca
   ROYAL CANIN DO BRASIL INDUSTRIA E COMERCIO LTDA:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   RUBIC BALOES INDUSTRIA E COMERCIO LTDA:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   RUBIK CAPITAL ASSET MANAGEMENT LTDA:
     classe: empresa
     via: marca
@@ -13567,8 +13666,9 @@ entidades:
     classe: publico_outro
     via: marca
   Receita Federal do Brasil:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-receita-federal-do-brasil
   Receita Federal do Brasil - Ministério da Fazenda:
     classe: nao_classificado
     via: null
@@ -13823,8 +13923,9 @@ entidades:
     classe: nao_classificado
     via: null
   SASE/MEC - Ministério da Educação.:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-educacao
   SATELIOT:
     classe: nao_classificado
     via: null
@@ -13897,8 +13998,9 @@ entidades:
     classe: publico_outro
     via: marca
   SECRETARIA DE ESTADO DE MEIO AMBIENTE, DESENVOLVIMENTO, CIENCIA, TECNOLOGIA E INOVACAO:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
   SECRETARIA DE ESTADO DE POLITICAS PARA AS MULHERES - SPM:
     classe: nao_classificado
     via: null
@@ -13921,25 +14023,28 @@ entidades:
     classe: publico_outro
     via: marca
   SECRETARIA ESPECIAL DO PROGRAMA DE PARCERIAS DE INVESTIMENTOS - SEPPI/CC/PR:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-especial-do-programa-de-parcerias-de-investimentos
   SECRETARIA NACIONAL DE FUNDOS E INSTRUMENTOS FINANCEIROS - SNFI:
     classe: orgao_federal
     via: sigla
     'no': br-secretaria-nacional-de-fundos-e-instrumentos-financeiros
   SECRETARIA-GERAL DA PRESIDÊNCIA DA REPÚBLICA- SGPR:
     classe: orgao_federal
-    via: forma
+    via: forma jurídica
     'no': br-secretaria-geral-da-presidencia
   SECTI - DF:
     classe: nao_classificado
     via: null
   SECTIES/ PB - Secretaria de Estado da Ciência, Tecnologia, inovação e Ensino Superior:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
   SECTIES/PB - Secretaria de Estado da Ciência, Tecnologia, inovação e Ensino Superior:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
   SECULT/GO:
     classe: nao_classificado
     via: null
@@ -13981,8 +14086,9 @@ entidades:
     classe: nao_classificado
     via: null
   SEGOV/PR - Secretaria de Governo da Presidência da República:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-presidencia-da-republica
   SEIDIGI/DATASUS/CGGOV/COGP:
     classe: nao_classificado
     via: null
@@ -14076,8 +14182,9 @@ entidades:
     classe: nao_classificado
     via: null
   SERVICO FEDERAL DE PROCESSAMENTO DE DADOS (SERPRO):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-serpro
   SERVICO NACIONAL DE APRENDIZAGEM COMERCIAL - SENAC:
     classe: nao_classificado
     via: null
@@ -14106,8 +14213,9 @@ entidades:
     classe: nao_classificado
     via: null
   SETA SOLUCOES EM RELACOES INSTITUCIONAIS E GOVERNAMENTAIS LTDA:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-de-relacoes-institucionais
   SETE COMERCIO E SERVICOS DE PNEUS LTDA:
     classe: empresa
     via: marca
@@ -14140,8 +14248,9 @@ entidades:
     classe: nao_classificado
     via: null
   SGPR:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: nome
+    'no': br-secretaria-geral-da-presidencia
   SHELL BRASIL PETROLEO LTDA:
     classe: empresa
     via: marca
@@ -14269,8 +14378,9 @@ entidades:
     classe: nao_classificado
     via: null
   ? SINDICATO DOS SERVIDORES PUBLICOS FEDERAIS DO PLANO DE CARREIRAS DA AREA DE CIENCIA E TECNOLOGIA DO INSTITUTO NACIONAL DE CANCER NO RJ
-  : classe: setorial
-    via: marca
+  : classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
   SINDICATO DOS TECNICOS INDUSTRIAIS NO ESTADO DE GOIAS:
     classe: setorial
     via: marca
@@ -14356,8 +14466,9 @@ entidades:
     classe: nao_classificado
     via: null
   SINDICATO NACIONAL DOS SERVIDORES PUBLICOS FEDERAIS NA AREA DE CIENCIA E TECNOLOGIA DO SETOR AEROESPACIAL - SINDCT:
-    classe: setorial
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
   SINDICATO NACIONAL DOS TRABALHADORES DE PESQUISA E DESENVOLVIMENTO AGROPECUARIO:
     classe: setorial
     via: marca
@@ -14389,8 +14500,9 @@ entidades:
     classe: nao_classificado
     via: null
   SINTFUB - SINDICATO DOS SERVIDORES TECNICO-ADMINISTRATIVOS DA FUNDACAO UNIVERSIDADE DE BRASILIA:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-fundacao-universidade-de-brasilia
   SINTRAF:
     classe: nao_classificado
     via: null
@@ -14712,15 +14824,16 @@ entidades:
     'no': br-receita-federal-do-brasil
   Secretaria Especial da Receita Federal do Brasil - SRFB:
     classe: orgao_federal
-    via: forma
+    via: forma jurídica
     'no': br-receita-federal-do-brasil
   Secretaria Especial de Análise Governamental - SAG:
     classe: orgao_federal
     via: sigla
     'no': br-secretaria-especial-de-analise-governamental
   Secretaria Especial de Análise Governamental – SAG/CC/PR:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-especial-de-analise-governamental
   Secretaria Especial de Assuntos Jurídicos – SAJ/CC/PR:
     classe: publico_outro
     via: marca
@@ -14731,11 +14844,13 @@ entidades:
     classe: nao_classificado
     via: null
   Secretaria Especial do Programa de Aceleração do Crescimento - SEPAC/CC/PR:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-especial-do-programa-de-aceleracao-do-crescimento
   Secretaria Especial para Assuntos Jurídicos da Casa Civil – SAJ/CC/PR:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-especial-para-assuntos-juridicos
   Secretaria Estadual da Agricultura Familiar (PI):
     classe: nao_classificado
     via: null
@@ -14744,8 +14859,8 @@ entidades:
     via: marca
   Secretaria Executiva/Ministério da Igualdade Racial:
     classe: orgao_federal
-    via: nome
-    'no': br-secretaria-executiva-igualdade-racial
+    via: contido no nome
+    'no': br-ministerio-da-igualdade-racial
   Secretaria Extraordinária de Atração de Investimentos (Seeai):
     classe: publico_outro
     via: marca
@@ -14754,8 +14869,9 @@ entidades:
     via: nome
     'no': br-secretaria-geral-da-presidencia
   Secretaria Geral da Marinha do Brasil:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-marinha-do-brasil
   Secretaria Geral do Exército:
     classe: nao_classificado
     via: null
@@ -14772,8 +14888,9 @@ entidades:
     classe: publico_outro
     via: marca
   Secretaria Municipal de Direitos Humanos e Cidadania de Muriaé/MG:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-dos-direitos-humanos-e-da-cidadania
   Secretaria Municipal de Habitação (SEHAB) São Paulo/SP:
     classe: publico_outro
     via: marca
@@ -14824,8 +14941,9 @@ entidades:
     via: nome
     'no': br-secretaria-nacional-de-aviacao-civil
   Secretaria Nacional de Biodiversidade, Florestas e Direitos Animais – SBio/MMA:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-nacional-de-biodiversidade-florestas-e-direitos-animais
   Secretaria Nacional de Direitos Digitais:
     classe: orgao_federal
     via: nome
@@ -14835,8 +14953,9 @@ entidades:
     via: nome
     'no': br-secretaria-nacional-de-habitacao
   Secretaria Nacional de Participação Social - SNPS/SG/PR:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-nacional-de-participacao-social
   Secretaria Nacional de Periferias:
     classe: orgao_federal
     via: nome
@@ -14846,8 +14965,9 @@ entidades:
     via: nome
     'no': br-secretaria-nacional-de-politicas-penais
   Secretaria Nacional de Políticas sobre Drogas e Gestão de Ativos/MJSP:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-nacional-de-politicas-sobre-drogas-e-gestao-de-ativos
   Secretaria Nacional de Segurança Pública:
     classe: orgao_federal
     via: nome
@@ -14857,8 +14977,9 @@ entidades:
     via: nome
     'no': br-secretaria-nacional-dos-direitos-da-pessoa-com-deficiencia
   Secretaria da Assistência Social, Trabalho e Direitos Humanos (PI):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-dos-direitos-humanos-e-da-cidadania
   Secretaria da Educação do Estado do Rio Grande do Sul – SEDUC/RS:
     classe: nao_classificado
     via: null
@@ -14938,11 +15059,13 @@ entidades:
     classe: nao_classificado
     via: null
   Secretaria de Articulação e Monitoramento - SAM/CC/PR:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-de-articulacao-e-monitoramento
   Secretaria de Articulação e Monitoramento da Casa Civil:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-de-articulacao-e-monitoramento
   Secretaria de Assuntos Internacionais e Desenvolvimento do Ministério do Planejamento e Orçamento:
     classe: nao_classificado
     via: null
@@ -14957,8 +15080,9 @@ entidades:
     via: nome
     'no': br-secretaria-de-comunicacao-social
   Secretaria de Coordenação e Governança das Empresas Estatais/MGI:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-de-coordenacao-e-governanca-das-empresas-estatais
   Secretaria de Cultura de Itarema:
     classe: nao_classificado
     via: null
@@ -14970,8 +15094,9 @@ entidades:
     via: nome
     'no': br-secretaria-de-desenvolvimento-rural
   Secretaria de Desenvolvimento Social:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-social
   Secretaria de Desenvolvimento e Economia:
     classe: publico_outro
     via: marca
@@ -14985,8 +15110,9 @@ entidades:
     classe: nao_classificado
     via: null
   Secretaria de Estado da Agricultura, Desenvolvimento Agrário e da Pesca:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-agrario
   Secretaria de Estado da Agricultura, Desenvolvimento e Inovação de Roraima:
     classe: nao_classificado
     via: null
@@ -15031,8 +15157,9 @@ entidades:
     classe: nao_classificado
     via: null
   Secretaria de Estado de Ciência e Tecnologia:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
   Secretaria de Estado de Compras e Licitações Sustentáveis do Amapá:
     classe: publico_outro
     via: marca
@@ -15096,8 +15223,9 @@ entidades:
     via: sigla
     'no': br-secretaria-de-gestao-do-trabalho-e-da-educacao-na-saude
   Secretaria de Inovação, Ciência e Tecnologia do Rio Grande do Sul:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-ciencia-tecnologia-e-inovacao
   Secretaria de Meio Ambiente de São Paulo:
     classe: publico_outro
     via: marca
@@ -15140,8 +15268,9 @@ entidades:
     classe: nao_classificado
     via: null
   Secretaria de Segurança Presidencial/GSI:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-de-seguranca-presidencial
   Secretaria de Trabalho e Bem-estar Social do Estado do Roraima:
     classe: nao_classificado
     via: null
@@ -15190,8 +15319,9 @@ entidades:
     classe: nao_classificado
     via: null
   Secretario da Secretaria de Competitividade e Politica Regulatoria:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-de-competitividade-e-politica-regulatoria
   Secretario de Saúde Licenciado do Estado do Piauí:
     classe: nao_classificado
     via: null
@@ -15244,8 +15374,9 @@ entidades:
     classe: nao_classificado
     via: null
   Secretária de Estadual da Mulher e Igualdade Racial e Pessoa Idosa do Paraná:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-igualdade-racial
   Secretária de Política para Mulheres do Estado da Bahia:
     classe: nao_classificado
     via: null
@@ -15294,8 +15425,9 @@ entidades:
     via: nome
     'no': br-serpro
   Serviço Federal de Processamento de Dados (Serpro):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-serpro
   Serviço Federal de Processamento de Dados – Serpro:
     classe: orgao_federal
     via: sigla
@@ -15390,20 +15522,23 @@ entidades:
     classe: empresa
     via: marca
   Subsecretaria de Programas de Infraestrutura/Secretaria de Orçamento Federal/MPO:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-secretaria-de-orcamento-federal
   Subsecretária dos Direitos da Mulheres do Estado de Minas Gerais:
     classe: nao_classificado
     via: null
   Superintendência Federal de Desenvolvimento Agrário do Amazonas - SFDA/AM:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-agrario
   Superintendência Federal de Pesca e Aquicultura - SFPA-PA:
     classe: nao_classificado
     via: null
   Superintendência Federal do Desenvolvimento Agrário da Bahia:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-agrario
   Superintendência Nacional de Previdência Complementar:
     classe: orgao_federal
     via: nome
@@ -15592,8 +15727,9 @@ entidades:
     classe: empresa
     via: marca
   TOTAL BIOTECNOLOGIA INDUSTRIA E COMERCIO LTDA:
-    classe: empresa
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-desenvolvimento-industria-comercio-e-servicos
   TOTAL LINHAS AEREAS S.A:
     classe: empresa
     via: marca
@@ -15771,18 +15907,21 @@ entidades:
     via: nome
     'no': br-tribunal-regional-federal-da-2a-regiao
   Tribunal Regional Federal da 3a. Região/SP:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-tribunal-regional-federal-da-3a-regiao
   Tribunal Regional Federal da 6ª Região (TRF6):
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-tribunal-regional-federal-da-6a-regiao
   Tribunal Superior Eleitoral:
     classe: orgao_federal
     via: nome
     'no': br-tribunal-superior-eleitoral
   Tribunal Superior Eleitoral (TSE):
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-tribunal-superior-eleitoral
   Tribunal Superior do Trabalho:
     classe: orgao_federal
     via: nome
@@ -15796,15 +15935,17 @@ entidades:
     via: nome
     'no': br-tribunal-de-contas-da-uniao
   Tribunal de Contas da União (TCU):
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-tribunal-de-contas-da-uniao
   Tribunal de Contas da União - TCU:
     classe: orgao_federal
     via: sigla
     'no': br-tribunal-de-contas-da-uniao
   Tribunal de Contas da União – TCU • Secretaria de Controle Externo de Infraestrutura— Secexlnfra:
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-tribunal-de-contas-da-uniao
   Tribunal de Contas do Distrito Federal -TCDF:
     classe: publico_outro
     via: marca
@@ -16254,8 +16395,9 @@ entidades:
     via: nome
     'no': br-universidade-federal-de-santa-catarina
   UNIVERSIDADE FEDERAL DE SÃO PAULO (USP):
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-universidade-federal-de-sao-paulo
   UNIÃO BRASILEIRA DOS ESTUDANTES SECUNDARISTAS - UBES:
     classe: publico_outro
     via: marca

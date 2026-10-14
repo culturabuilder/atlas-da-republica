@@ -36,6 +36,7 @@ PRAZO = {
     "resumos.yaml": 30,               # só muda quando há item novo para resumir
     "portal-cce.yaml": 30, "sabatinas.yaml": 20, "subsidios.yaml": 30,
     "teto.yaml": 40, "remuneracao.yaml": 40,   # folha mensal
+    "sancoes.yaml": 4, "recebidos.yaml": 4,
 }
 PADRAO = 3
 
