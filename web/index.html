@@ -292,8 +292,14 @@ details.fora>summary::-webkit-details-marker{display:none}
 .arrec .grid b{display:block;font-family:var(--disp);font-size:18px;color:var(--ink);font-variant-numeric:tabular-nums}
 .arrec .grid b.up{color:var(--ok)}.arrec .grid b.down{color:var(--leg)}
 .arrec details{margin-top:10px;font-size:13px;color:var(--ink-2)}.arrec summary{cursor:pointer;color:var(--accent)}
-.act{font-size:14px}.act .row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:5px 0;border-bottom:1px dashed var(--line-2)}
-.act .row .d{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap}.act .v{font-family:var(--mono);font-size:11px;padding:1px 6px;border-radius:3px;background:var(--panel);border:1px solid var(--line-2)}
+.act{font-size:14px}.act .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:5px 0;border-bottom:1px dashed var(--line-2)}
+/* Item de grid não encolhe abaixo do conteúdo sem isto, e o objeto de um contrato tem 150 caracteres:
+   a coluna passava por cima da do valor a 920px. minmax(0,1fr) + min-width:0 é o par que resolve. */
+.act .row>span{min-width:0;overflow-wrap:break-word}
+.act .row .d{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap}
+/* .d é nowrap porque em quase todo uso é uma data curta. No contrato a linha traz fornecedor mais
+   duas datas e não cabe: esta variante quebra, em vez de esticar a caixa por dentro. */
+.act .row .d.wrap{white-space:normal;overflow-wrap:break-word}.act .v{font-family:var(--mono);font-size:11px;padding:1px 6px;border-radius:3px;background:var(--panel);border:1px solid var(--line-2)}
 .tema{padding:12px 0;border-bottom:1px solid var(--line-2)}
 .tema .hd{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start}
 .tema .nm{font-family:var(--disp);font-weight:700;font-size:16px;letter-spacing:-.01em}
@@ -1160,6 +1166,7 @@ function renderHome(){
     <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div></div>
   <div class="card acomp"><h2 class="acomp-h">Acompanhar <span>lido em ${fmtDate(st.generated_at)}</span></h2><div class="kpis" role="tablist" id="home-tablist" aria-label="Painéis da página inicial">${HOME_TABS.map(tab).join('')}</div><div id="home-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-${homeTab}"></div></div>
   ${recebidosHtml()}
+  ${contratosHtml()}
   ${sancoesHtml()}
   <div class="card"><h2>Por poder</h2><div class="counts">${Object.keys(ARC).map(s=>`<span class="k"><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</span><span>${bs[s]||0}</span>`).join('')}</div>
     <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
@@ -1242,6 +1249,29 @@ function recebidosHtml(){
   ${lista.length?`<h3>Mais recebidas</h3>${bars(lista, x=>x.nome.length>52?x.nome.slice(0,52)+'…':x.nome, x=>x.n, {fmt:(v,it)=>`${v} · ${ROT[it.classe]||it.classe}`, sub:it=>(it.recebida_por||[]).slice(0,3).map(q=>`${q.nome} (${q.n})`).join(' · ')})}`:''}
   ${(R.quem_recebeu||[]).length?`<h3>Quem mais recebeu</h3>${bars((R.quem_recebeu||[]).slice(0,12), x=>x.nome, x=>x.encontros, {fmt:(v,it)=>`${v} ${v===1?'encontro':'encontros'} · ${it.entidades} ${it.entidades===1?'entidade':'entidades'}`, link:x=>P[x.pessoa]?'#'+x.pessoa:null})}`:''}
   <p class="note">${esc(R.nota||'')} A classificação parte da junção com os ${(G.stats.nodes||0).toLocaleString('pt-BR')} órgãos do próprio Atlas, depois da razão social no nome. Fonte: ${esc(R.fonte||'')}, agenda lida em ${fmtDate(R.agenda_lida_em)}${R.janela_inicio?`, janela desde ${fmtDate(R.janela_inicio)}`:''}.</p></div>`;
+}
+function contratosOrgaoHtml(n){
+  // Com quem o órgão assinou. O Atlas mostrava quanto cada órgão gastou, nunca com quem.
+  const c=n.contratos; if(!c||!c.contratos) return '';
+  const C=G.contratos||{};
+  const st=(v,l)=>`<div class="stat"><div class="n">${v}</div><div class="l">${l}</div></div>`;
+  const rec=(c.recentes||[]).slice(0,8);
+  return `<div class="card"><h2>Com quem este órgão assinou contrato</h2>
+  <div class="om">${st(c.contratos.toLocaleString('pt-BR'),c.contratos===1?'contrato publicado no PNCP':'contratos publicados no PNCP')}${st(brl(c.valor),'em valor global somado')}</div>
+  ${(c.fornecedores_top||[]).length?`<h3>Fornecedores que mais receberam</h3>${bars(c.fornecedores_top, x=>tit(x.nome), x=>x.valor, {fmt:(v,it)=>`${brl(v)} · ${it.n} ${it.n===1?'contrato':'contratos'}`})}`:''}
+  ${rec.length?`<h3>Contratos mais recentes</h3><div class="act">${rec.map(x=>`<div class="row"><span>${esc(x.objeto||'')}<span class="d wrap" style="display:block">${esc(tit(x.fornecedor||''))}${x.assinado?` · assinado em ${fmtDate(x.assinado)}`:''}${x.vigencia_fim?` · vigência até ${fmtDate(x.vigencia_fim)}`:''}</span></span><span class="v">${brl(x.valor)}</span></div>`).join('')}</div>`:''}
+  <p class="note">${esc(C.nota||'')} Fonte: ${esc(C.fonte||'PNCP')}, lido em ${fmtDate(C.generated_at)}.</p></div>`;
+}
+function contratosHtml(){
+  const C=G.contratos; if(!C||!C.resumo) return '';
+  const R=C.resumo;
+  const st=(v,l)=>`<div class="stat"><div class="n">${v}</div><div class="l">${l}</div></div>`;
+  return `<div class="card"><h2>Com quem a União assina contrato</h2>
+  <p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">O Atlas já mostrava quanto cada órgão gasta; faltava com quem ele assina. Estes são os contratos de esfera federal publicados no Portal Nacional de Contratações Públicas nas janelas já lidas — não o total de contratos da União. A cada dia o conector lê uma janela nova e soma ao que já havia.</p>
+  <div class="om">${st((R.contratos||0).toLocaleString('pt-BR'),'contratos federais lidos')}${st(brl(R.valor),'em valor global somado')}${st((R.orgaos||0).toLocaleString('pt-BR'),'órgãos com contrato')}</div>
+  ${(C.orgaos_top||[]).length?`<h3>Órgãos que mais contrataram</h3>${bars(C.orgaos_top.slice(0,10), x=>(N[x.id]?N[x.id].name:x.nome||x.id), x=>x.valor, {fmt:(v,it)=>`${brl(v)} · ${it.contratos} ${it.contratos===1?'contrato':'contratos'}`, link:x=>N[x.id]?'#'+x.id:null})}`:''}
+  ${(C.fornecedores_top||[]).length?`<h3>Fornecedores que mais receberam</h3>${bars(C.fornecedores_top.slice(0,10), x=>tit(x.nome), x=>x.valor, {fmt:(v,it)=>`${brl(v)} · ${it.n} ${it.n===1?'contrato':'contratos'}${it.orgaos>1?` em ${it.orgaos} órgãos`:''}`})}`:''}
+  <p class="note">${R.com_emenda_parlamentar!=null?`O PNCP marca ${R.com_emenda_parlamentar} contratos desta janela como ligados a emenda parlamentar, mas só com um sim ou não: não diz qual emenda nem qual parlamentar, então não é possível cruzar com as emendas do Atlas por esta fonte. `:''}Fonte: ${esc(C.fonte||'')}, janela de ${fmtDate((C.janela_atual||{}).de)} a ${fmtDate((C.janela_atual||{}).ate)}, lida em ${fmtDate(C.generated_at)}.</p></div>`;
 }
 function sancoesOrgaoHtml(n){
   // Registro oficial de punição já aplicada e publicada em diário oficial, não acusação em apuração.
@@ -1354,6 +1384,7 @@ function renderNode(n){
   ${subsidioHtml(n)}
   ${tetoOrgaoHtml(n)}
   ${sancoesOrgaoHtml(n)}
+  ${contratosOrgaoHtml(n)}
   ${programasHtml(n)}
   ${composicaoHtml(n)}
   ${historicoHtml(n)}
