@@ -180,9 +180,14 @@ def main():
                 "ate": dia(r.get("DATA FINAL SANÇÃO")),
                 "abrangencia": re.sub(r"\s+", " ", (r.get("ABRAGÊNCIA DA SANÇÃO") or "").strip())[:90],
                 "orgao": (r.get("ÓRGÃO SANCIONADOR") or "").strip()[:70]})
+        # O índice por CNPJ é insumo de etl/contratos.py, que roda na mesma passada do update.sh.
+        # Fica em build/, que não é versionado: 1,6 MB reescritos todo dia no git não se pagam, e
+        # quem precisa dele é a rodada, não o histórico.
+        (CACHE / f"indice-{cad}.json").write_text(json.dumps(idx_cnpj), encoding="utf-8")
         return {"total": len(fed), "fora_do_escopo_federal": fora, "por_categoria": dict(por_cat.most_common()),
                 "por_orgao": {k: {"n": v["n"], **({"multa": round(v["multa"], 2)} if com_multa else {})} for k, v in por_org.items()},
-                "cnpjs": len(idx_cnpj), "por_cnpj": idx_cnpj, "amostra_recente": itens[:120]}
+                "cnpjs": len(idx_cnpj), "indice_em": str((CACHE / f"indice-{cad}.json").relative_to(ROOT)),
+                "amostra_recente": itens[:120]}
 
     ceis = empresas("ceis")
     cnep = empresas("cnep", com_multa=True)

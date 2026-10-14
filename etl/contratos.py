@@ -74,17 +74,18 @@ def main():
     # começar — perfeitamente legal, e a interseção crua o acusaria. Só conta quando a sanção estava
     # vigente no dia da assinatura, e levamos a abrangência para a tela, porque é ela que decide se a
     # sanção alcançava aquele órgão (Lei 14.133/2021 art. 156).
+    # O índice vem de build/cache-sancoes/, escrito por etl/sancoes.py na mesma rodada. Se não
+    # existir — primeira execução, ou o conector de sanções falhou —, seguimos sem o cruzamento.
     sanc_cnpj = {}
-    _sf = ROOT / "data" / "generated" / "sancoes.yaml"
-    if _sf.exists():
+    for _bl, _arq in (("CEIS", "indice-ceis.json"), ("CNEP", "indice-cnep.json")):
+        _f = ROOT / "build" / "cache-sancoes" / _arq
+        if not _f.exists(): continue
         try:
-            _sd = yaml.safe_load(_sf.read_text(encoding="utf-8")) or {}
-            for _bl in ("ceis", "cnep"):
-                for _c, _lista in ((_sd.get(_bl) or {}).get("por_cnpj") or {}).items():
-                    sanc_cnpj.setdefault(str(_c), []).extend(dict(x, cadastro=_bl.upper()) for x in _lista)
-            print(f"índice de sanções: {len(sanc_cnpj)} CNPJ", file=sys.stderr)
+            for _c, _lista in (json.loads(_f.read_text(encoding="utf-8")) or {}).items():
+                sanc_cnpj.setdefault(str(_c), []).extend(dict(x, cadastro=_bl) for x in _lista)
         except Exception as e:
-            print("sancoes.yaml ilegível, seguindo sem o cruzamento:", str(e)[:60], file=sys.stderr)
+            print(f"{_arq} ilegível, seguindo sem ele:", str(e)[:50], file=sys.stderr)
+    print(f"índice de sanções: {len(sanc_cnpj)} CNPJ" if sanc_cnpj else "sem índice de sanções: cruzamento desligado nesta rodada", file=sys.stderr)
 
     # Só estas categorias proíbem contratar. Multa e publicação extraordinária da condenação são
     # punições da Lei 12.846 que NÃO barram contrato: sem este filtro, um contrato de R$ 7,8 mi da
