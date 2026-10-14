@@ -1,6 +1,7 @@
 # GERADO por etl/comissoes.py. Não edite à mão.
 generated_from: legis.senado.leg.br/dadosabertos + dadosabertos.camara.leg.br
-pessoas_reaproveitadas: 61
+generated_at: '2026-10-14'
+pessoas_reaproveitadas: 62
 ids_corrigidos:
   br-p-cd-353: br-p-cd-73788 (Ricardo Barros)
   br-p-cd-3695: br-p-cd-74858 (Lindbergh Farias)
@@ -18,6 +19,7 @@ ids_corrigidos:
   br-p-cd-5259: br-p-cd-160632 (Zé Silva)
   br-p-cd-5270: br-p-cd-160758 (Domingos Sávio)
   br-p-cd-5300: br-p-cd-160592 (Zeca Dirceu)
+  br-p-cd-5493: br-p-cd-171617 (Paulão)
   br-p-cd-552: br-p-cd-74090 (Átila Lins)
   br-p-cd-5642: br-p-cd-69871 (Bacelar)
   br-p-cd-5693: br-p-cd-178858 (Mário Negromonte Jr.)
@@ -2134,6 +2136,15 @@ positions:
       source: senado
       source_url: https://legis.senado.leg.br/comissoes/comissao?codcol=34
       image_url: http://www.senado.leg.br/senadores/img/fotos-oficiais/senador5977.jpg
+    - id: br-p-sf-5917
+      name: Fernando Dueire
+      party: PSD
+      uf: PE
+      role: Titular
+      entry_mode: eleito
+      source: senado
+      source_url: https://legis.senado.leg.br/comissoes/comissao?codcol=34
+      image_url: http://www.senado.leg.br/senadores/img/fotos-oficiais/senador5917.jpg
     - id: br-p-sf-6342
       name: Jorge Seif
       party: PL
@@ -12510,16 +12521,6 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/204540
-    - id: br-p-cd-74156
-      name: Leonardo Monteiro
-      party: PT
-      uf: MG
-      image_url: https://www.camara.leg.br/internet/deputado/bandep/74156.jpg
-      role: Suplente
-      started_at: '2026-04-13'
-      entry_mode: eleito
-      source: camara
-      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/74156
     - id: br-p-cd-220576
       name: Alfredo Gaspar
       party: PL
@@ -12710,6 +12711,16 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/160556
+    - id: br-p-cd-74057
+      name: Alice Portugal
+      party: PCdoB
+      uf: BA
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/74057.jpg
+      role: Suplente
+      started_at: '2026-10-13'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/74057
   br-comissao-de-industria-comercio-e-servicos-da-camara:
     - id: br-p-cd-160161
       name: Marcelo Queiroz
@@ -19933,6 +19944,15 @@ positions:
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
       image_url: https://www.camara.leg.br/internet/deputado/bandep/141456.jpg
+    - id: br-p-cd-171617
+      name: Paulão
+      party: PT
+      uf: AL
+      role: Titular
+      entry_mode: eleito
+      source: senado
+      source_url: https://www.congressonacional.leg.br/comissoes
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/171617.jpg
     - id: br-p-cd-74858
       name: Lindbergh Farias
       party: PT

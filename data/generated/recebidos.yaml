@@ -18,14 +18,14 @@ por_classe:
     entidades: 841
     encontros: 1762
   nao_classificado:
-    entidades: 1797
-    encontros: 3368
+    entidades: 1789
+    encontros: 3348
   orgao_federal:
-    entidades: 910
-    encontros: 22608
+    entidades: 919
+    encontros: 22629
   publico_outro:
-    entidades: 520
-    encontros: 1248
+    entidades: 519
+    encontros: 1247
   setorial:
     entidades: 390
     encontros: 867
@@ -5558,8 +5558,9 @@ entidades:
     classe: nao_classificado
     via: null
   COMANDO DA AERONÁUTICA:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: prefixo administrativo
+    'no': br-forca-aerea-brasileira
   COMATEX/CGPFP/DAF/SECTICS/MS:
     classe: nao_classificado
     via: null
@@ -6306,8 +6307,9 @@ entidades:
     via: nome
     'no': br-colegio-pedro-ii
   Comando da Aeronáutica:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: prefixo administrativo
+    'no': br-forca-aerea-brasileira
   Comando da Marinha:
     classe: orgao_federal
     via: nome alternativo
@@ -13986,8 +13988,9 @@ entidades:
     classe: nao_classificado
     via: null
   SECRETARIA DE EDUCAÇÃO SUPERIOR/MEC - Ministério da Educação:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-educacao
   SECRETARIA DE ESTADO DA MULHER (SEM):
     classe: publico_outro
     via: marca
@@ -15067,14 +15070,17 @@ entidades:
     via: contido no nome
     'no': br-secretaria-de-articulacao-e-monitoramento
   Secretaria de Assuntos Internacionais e Desenvolvimento do Ministério do Planejamento e Orçamento:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-do-planejamento-e-orcamento
   Secretaria de Atenção Primária à Sáude - Ministério da Saúde:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-saude
   Secretaria de Cidadania e Diversidade Cultural/ Ministério da Cultura:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-cultura
   Secretaria de Comunicação Social da Presidência da República:
     classe: orgao_federal
     via: nome
@@ -15095,7 +15101,7 @@ entidades:
     'no': br-secretaria-de-desenvolvimento-rural
   Secretaria de Desenvolvimento Social:
     classe: orgao_federal
-    via: contido no nome
+    via: prefixo administrativo
     'no': br-ministerio-do-desenvolvimento-social
   Secretaria de Desenvolvimento e Economia:
     classe: publico_outro
@@ -15242,8 +15248,9 @@ entidades:
     classe: nao_classificado
     via: null
   Secretaria de Prêmios e Apostas/Ministério da Fazenda:
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-fazenda
   Secretaria de Qualificação, Emprego e Renda:
     classe: publico_outro
     via: marca
@@ -15335,8 +15342,9 @@ entidades:
     classe: nao_classificado
     via: null
   Secretária Nacional de Direitos Territoriais Indígenas do Ministério dos Povos Indígenas (MPI):
-    classe: publico_outro
-    via: marca
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-dos-povos-indigenas
   Secretária da Mulher do Estado do Rio Grande do Sul:
     classe: publico_outro
     via: marca
@@ -15344,8 +15352,9 @@ entidades:
     classe: nao_classificado
     via: null
   Secretária de Educação Superior do Ministério da Educação (Sesu/MEC):
-    classe: nao_classificado
-    via: null
+    classe: orgao_federal
+    via: contido no nome
+    'no': br-ministerio-da-educacao
   Secretária de Estado da Cultura e Turismo SECULT/RORAIMA:
     classe: nao_classificado
     via: null

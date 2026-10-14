@@ -1,22 +1,22 @@
 # GERADO por etl/historico.py. Não edite à mão.
-generated_at: '2026-10-13T17:38:46Z'
+generated_at: '2026-10-14T15:31:01Z'
 fonte: wikidata.org — P39 (cargo ocupado) com qualificadores P580/P582/P585/P1365/P1366/P2868 via busca haswbstatement; ou
   P488/P169/P1037 no item do órgão (rota org_item); desde 1985
 resumo:
-  cargos_com_historico: 65
+  cargos_com_historico: 64
   cargos_por_rota:
     busca: 8
-    mapa: 43
+    mapa: 42
     org_item: 6
     override: 8
   cargos_sem_qid: 80
-  cargos_vazios_no_wikidata: 6
+  cargos_vazios_no_wikidata: 7
   qids_invalidos: {}
-  mandatos: 571
-  mandatos_com_inicio_e_fim: 492
-  mandatos_sem_data: 201
-  mediana_geral_dias: 549
-  atualizados: 22
+  mandatos: 563
+  mandatos_com_inicio_e_fim: 486
+  mandatos_sem_data: 199
+  mediana_geral_dias: 553
+  atualizados: 21
   sem_qid:
     - br-ana-diretor
     - br-ana-dirigente
@@ -100,6 +100,7 @@ resumo:
     - br-tribunal-superior-do-trabalho-presidente
   vazios:
     - br-ipea-dirigente
+    - br-petrobras-dirigente
     - br-agencia-espacial-brasileira-dirigente
     - br-anp-dirigente
     - br-procurador-geral-da-fazenda-nacional
@@ -3036,24 +3037,24 @@ cargos:
         nome: Fernando José de Portugal e Castro
       - qid: Q10341519
         nome: Orlando Bandeira Vilela
-      - qid: Q10324189
-        nome: Manuel Guilherme da Silveira Filho
-      - qid: Q10340898
-        nome: Onaldo Brancante Machado
       - qid: Q9594135
         nome: Alberto Andrade de Queirós
-      - qid: Q10346895
-        nome: Paulo de Lira Tavares
+      - qid: Q10340898
+        nome: Onaldo Brancante Machado
+      - qid: Q10324189
+        nome: Manuel Guilherme da Silveira Filho
       - qid: Q10270754
         nome: Eduardo Pereira de Carvalho
+      - qid: Q10346895
+        nome: Paulo de Lira Tavares
       - qid: Q10346779
         nome: Paulo Haddad
       - qid: Q10312521
         nome: João de Oliveira Castro Vianna Júnior
-      - qid: Q5102160
-        nome: Tomás António de Vila Nova Portugal
       - qid: Q10294738
         nome: Henrique Domingos Ribeiro Barbosa
+      - qid: Q5102160
+        nome: Tomás António de Vila Nova Portugal
       - qid: Q10293647
         nome: Hamilton Prisco Paraíso
       - qid: Q10336630
@@ -3754,10 +3755,10 @@ cargos:
         nome: Alfredo Buzaid
       - qid: Q10320820
         nome: Luiz Paulo Barreto
-      - qid: Q10287035
-        nome: Félix Gaspar de Barros e Almeida
       - qid: Q10310797
         nome: José de Jesus Filho
+      - qid: Q10287035
+        nome: Félix Gaspar de Barros e Almeida
       - qid: Q10342193
         nome: Oscar Pedroso Horta
       - qid: Q9587238
@@ -3772,12 +3773,12 @@ cargos:
         nome: Alfredo Pinto Vieira de Melo
       - qid: Q10287869
         nome: Gabriel Loureiro Bernardes
-      - qid: Q16488184
-        nome: Alexandre Dupeyrat
       - qid: Q10309086
         nome: José Carlos Dias
       - qid: Q10330142
         nome: Milton Seligman
+      - qid: Q16488184
+        nome: Alexandre Dupeyrat
       - qid: Q23893528
         nome: Wellington César Lima e Silva
       - qid: Q23893552
@@ -6187,124 +6188,6 @@ cargos:
         nome: Agenor Lafayette de Roure
       - qid: Q24680638
         nome: Mário Bittencourt Sampaio
-  br-petrobras-dirigente:
-    qid: Q98550858
-    rota: mapa
-    nome: Presidente da Petrobras
-    ocupantes: 8
-    mandatos_n: 8
-    mediana_dias: 419
-    mandatos:
-      - qid: Q10309215
-        nome: José Coutinho Barbosa
-        inicio: '1999-03-08'
-        fim: '1999-03-24'
-        interino: false
-        substituiu: Q10307590
-        substituido_por: Q10294694
-        nascimento: null
-        morte: null
-        dias: 16
-        presidente: Fernando Henrique Cardoso
-        papel: null
-      - qid: Q10284810
-        nome: Francisco Gros
-        inicio: '2002-01-02'
-        fim: '2003-01-02'
-        interino: false
-        substituiu: Q10294694
-        substituido_por: Q10309293
-        nascimento: '1942-04-21'
-        morte: '2010-05-20'
-        dias: 365
-        presidente: Fernando Henrique Cardoso
-        papel: null
-      - qid: Q6536816
-        nome: Sergio Gabrielli
-        inicio: '2005-07-22'
-        fim: '2012-02-13'
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: '1949-10-03'
-        morte: null
-        dias: 2397
-        presidente: Lula
-        papel: null
-      - qid: Q61000268
-        nome: Roberto Castello Branco
-        inicio: '2019-01-03'
-        fim: '2021-04-13'
-        interino: false
-        substituiu: Q55185590
-        substituido_por: null
-        nascimento: null
-        morte: null
-        dias: 831
-        presidente: Jair Bolsonaro
-        papel: null
-      - qid: Q112663880
-        nome: Caio Paes de Andrade
-        inicio: '2022-06-28'
-        fim: '2023-01-04'
-        interino: false
-        substituiu: Q112201439
-        substituido_por: Q59284434
-        nascimento: '1974-06-28'
-        morte: null
-        dias: 190
-        presidente: Jair Bolsonaro
-        papel: null
-      - qid: Q59284434
-        nome: Jean-Paul Prates
-        inicio: '2023-01-26'
-        fim: '2024-05-14'
-        interino: false
-        substituiu: Q112663880
-        substituido_por: Q16337823
-        nascimento: '1968-06-19'
-        morte: null
-        dias: 474
-        presidente: Lula
-        papel: null
-      - qid: Q16337823
-        nome: Magda Chambriard
-        inicio: 2024-05
-        fim: null
-        interino: false
-        substituiu: Q59284434
-        substituido_por: null
-        nascimento: '1957'
-        morte: null
-        dias: null
-        presidente: Lula
-        papel: null
-      - qid: Q125994974
-        nome: Clarice Coppetti
-        inicio: '2024-05-15'
-        fim: null
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: null
-        morte: null
-        dias: null
-        presidente: Lula
-        papel: null
-    por_presidente:
-      Fernando Henrique Cardoso: 2
-      Lula: 4
-      Jair Bolsonaro: 2
-    ocupante_atual: Magda Maria de Regina Chambriard
-    wikidata_mais_recente: Clarice Coppetti
-    wikidata_atualizado: true
-    ocupante_atual_no_wikidata: true
-    sem_data_n: 2
-    sem_data:
-      - qid: Q10309293
-        nome: José Eduardo Dutra
-      - qid: Q21290049
-        nome: Arthur Duarte Candal da Fonseca
   br-presidente-da-camara-dos-deputados:
     qid: Q20060698
     rota: mapa
@@ -7470,10 +7353,10 @@ cargos:
         nome: Joaquim Barbosa
       - qid: Q7322696
         nome: Ricardo Lewandowski
-      - qid: Q3625473
-        nome: Antonio Cezar Peluso
       - qid: Q3509658
         nome: Carlos Ayres Britto
+      - qid: Q3625473
+        nome: Antonio Cezar Peluso
   br-tribunal-superior-do-trabalho-ministro:
     qid: Q103815244
     rota: mapa
@@ -7898,10 +7781,10 @@ cargos:
         nome: null
       - qid: Q136214707
         nome: Kristjan Siigur
-      - qid: Q97919939
-        nome: Jørgen Jensen
       - qid: Q139937654
         nome: Fatoma Théra
+      - qid: Q97919939
+        nome: Jørgen Jensen
       - qid: Q136207507
         nome: Liina Naaber-Kivisoo
       - qid: Q3164332
