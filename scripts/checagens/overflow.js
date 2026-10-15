@@ -1,6 +1,10 @@
 // Contenção do painel: nada dentro dele pode passar da borda. Treze telas, cinco larguras.
 // Reescrito em 27/09/2026 porque a versão original vivia num diretório temporário e evaporou.
 const { chromium } = require('playwright');
+// O teto de 8s no goto não é impaciência: as páginas pedem fonte ao Google com carregamento
+// diferido, e em runner de CI a rede pode nunca 'aquietar'. Sem o teto, cada carregamento custa
+// os 30s padrão do Playwright — 65 deles aqui davam mais de meia hora, e o eval agendado batia
+// no limite de 60 minutos sem terminar. Passado o teto a página já está desenhada; seguir é certo.
 const BASE = process.argv[2] || 'http://localhost:8767';
 const TELAS = [
   ['home', '/', null], ['home-dinheiro', '/', 'dinheiro'], ['home-parado', '/', 'parado'],
@@ -18,7 +22,7 @@ const LARGURAS = [[1600, 950], [1440, 950], [1180, 900], [1000, 900], [920, 900]
     const p = await b.newPage({ viewport: { width: w, height: h } });
     p.on('pageerror', x => erros.push(`${w}px: ${String(x).slice(0, 110)}`));
     for (const [nome, url, aba] of TELAS) {
-      await p.goto(BASE + url, { waitUntil: 'networkidle' }).catch(() => {});
+      await p.goto(BASE + url, { waitUntil: 'networkidle', timeout: 8000 }).catch(() => {});
       await p.waitForTimeout(500);
       if (aba) { await p.click('#tab-' + aba).catch(() => {}); await p.waitForTimeout(400); }
       const maus = await p.evaluate(() => {

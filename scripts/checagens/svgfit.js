@@ -1,6 +1,10 @@
 const { chromium } = require('playwright');
+// O teto de 8s no goto não é impaciência: as páginas pedem fonte ao Google com carregamento
+// diferido, e em runner de CI a rede pode nunca 'aquietar'. Sem o teto, cada carregamento custa
+// os 30s padrão do Playwright — 65 deles aqui davam mais de meia hora, e o eval agendado batia
+// no limite de 60 minutos sem terminar. Passado o teto a página já está desenhada; seguir é certo.
 (async () => { const b=await chromium.launch(); const p=await b.newPage({viewport:{width:1280,height:900}});
-  await p.goto('http://localhost:8767/do-zero/',{waitUntil:'networkidle'});
+  await p.goto('http://localhost:8767/do-zero/',{ waitUntil: 'networkidle', timeout: 8000 });
   await p.evaluate(()=>window.scrollTo(0,document.body.scrollHeight)); await p.waitForTimeout(1500);
   const r=await p.evaluate(()=>[...document.querySelectorAll('svg.viz, svg.art')].map(s=>{
     const vb=s.getAttribute('viewBox').split(/\s+/).map(Number); const bb=s.getBBox();

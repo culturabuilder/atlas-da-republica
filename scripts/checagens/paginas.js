@@ -5,6 +5,10 @@
 // na barra era um `min-width:0` que existia só em comparar.html; em como-funciona era um <select> que
 // cresce com a opção mais longa. São páginas públicas, e celular é a maior parte do acesso.
 const { chromium } = require('playwright');
+// O teto de 8s no goto não é impaciência: as páginas pedem fonte ao Google com carregamento
+// diferido, e em runner de CI a rede pode nunca 'aquietar'. Sem o teto, cada carregamento custa
+// os 30s padrão do Playwright — 65 deles aqui davam mais de meia hora, e o eval agendado batia
+// no limite de 60 minutos sem terminar. Passado o teto a página já está desenhada; seguir é certo.
 const BASE = process.argv[2] || 'http://localhost:8767';
 const PAGINAS = ['/', '/dados/', '/metodologia/', '/comparar/', '/do-zero/', '/como-funciona/', '/novidades/'];
 const LARGURAS = [360, 390, 520, 768];
@@ -16,7 +20,7 @@ const LARGURAS = [360, 390, 520, 768];
     const erros = [];
     p.on('pageerror', x => erros.push(String(x).slice(0, 110)));
     for (const u of PAGINAS) {
-      const r = await p.goto(BASE + u, { waitUntil: 'networkidle' }).catch(() => null);
+      const r = await p.goto(BASE + u, { waitUntil: 'networkidle', timeout: 8000 }).catch(() => null);
       if (!r) { console.log(`  ${w}px ${u}: não carregou`); ruins++; continue; }
       await p.waitForTimeout(600);
       const d = await p.evaluate(() => {
