@@ -17,18 +17,43 @@ benefícios, perdendo as discordâncias). Não use para o que um regex já resol
 CORTE_CONFIANCA é o limite acima do qual a resposta pode valer sozinha. Acima de 0,80 ele acertou
 98% das vezes no porteiro de relevância, cobrindo 83% dos casos; abaixo de 0,60, só 25%.
 
-Experimento da Cultura Builder, sem garantia de disponibilidade. É HTTP sem criptografia: só mande
-texto que já é público. A chave vem de EIKOS_KEY, no ambiente ou no .env (que não vai para o git).
-Sem chave, todas as funções devolvem None e quem chama segue sem a checagem, nunca quebra.
+Endereço: EIKOS_URL, no ambiente ou no .env. O experimento original era http://154.59.156.40:33532 (HTTP
+sem criptografia, de onde vem a regra de só mandar texto já público); ele saiu do ar em outubro de 2026 e o
+serviço passou a https://api.openinterp.org (Ekbasis, da Open Interpretability), agora com TLS. O endpoint
+novo fica atrás de Cloudflare e recusa cliente sem User-Agent de navegador, com "error code: 1010" — que
+não é erro de credencial e engana quem for diagnosticar.
+
+A chave vem de EIKOS_KEY. Sem chave, ou com chave recusada, todas as funções devolvem None e quem chama
+segue sem a checagem, nunca quebra. Onde isso mudaria o que aparece na tela, o conector diz: etl/noticias.py
+tem porteiro de reserva, e etl/recebidos.py declara as entidades como não classificadas.
 
 Uso:
   .venv/bin/python etl/eikos.py            # teste de fumaça
   from eikos import avaliar, disponivel    # dentro de outro conector
 """
-import json, os, pathlib, time, urllib.error, urllib.request
+import json, os, pathlib, sys, time, urllib.error, urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-URL = os.environ.get("EIKOS_URL", "http://154.59.156.40:33532")
+def _do_ambiente_ou_env(nome, padrao=None):
+    """Variável do ambiente, ou do .env do projeto, ou o padrão.
+
+    O cliente lia a chave do .env mas o endereço só do ambiente. Resultado: trocar EIKOS_URL no .env
+    não tinha efeito nenhum, em silêncio — perdi tempo achando que a credencial nova estava sendo
+    recusada quando o cliente seguia batendo no endereço antigo, já desligado.
+    """
+    v = os.environ.get(nome)
+    if v: return v.strip()
+    env = ROOT / ".env"
+    if env.exists():
+        for ln in env.read_text(encoding="utf-8").splitlines():
+            if ln.startswith(nome + "="):
+                return ln.split("=", 1)[1].strip().strip('"').strip("'")
+    return padrao
+
+
+# O experimento original (http://154.59.156.40:33532) saiu do ar em outubro de 2026; o padrão passa a
+# ser o endereço novo, com TLS. EIKOS_URL continua mandando, para apontar para outro sem mexer no código.
+URL = (_do_ambiente_ou_env("EIKOS_URL", "https://api.openinterp.org") or "").rstrip("/")
 CORTE_CONFIANCA = float(os.environ.get("EIKOS_CORTE", "0.80"))
 LIMITE_POR_MINUTO = 120
 _ultimo = [0.0]
@@ -36,14 +61,7 @@ _gasto = {"chamadas": 0, "tokens": 0, "erros": 0}
 
 
 def _chave():
-    k = os.environ.get("EIKOS_KEY")
-    if k: return k.strip()
-    env = ROOT / ".env"
-    if env.exists():
-        for ln in env.read_text(encoding="utf-8").splitlines():
-            if ln.startswith("EIKOS_KEY="):
-                return ln.split("=", 1)[1].strip().strip('"').strip("'")
-    return None
+    return _do_ambiente_ou_env("EIKOS_KEY")
 
 
 def disponivel():
@@ -63,8 +81,14 @@ def avaliar(state, questions, tentativas=3, timeout=60):
     espera = 60.0 / LIMITE_POR_MINUTO - (time.time() - _ultimo[0])
     if espera > 0: time.sleep(espera)
     corpo = json.dumps({"state": state, "questions": questions}).encode()
+    # O User-Agent de navegador não é cosmético: o endereço novo fica atrás de Cloudflare, que recusa
+    # cliente sem assinatura de navegador com "error code: 1010" — e 1010 vem como 403, o que faz
+    # parecer credencial inválida quando é bloqueio de borda.
     req = urllib.request.Request(f"{URL}/v1/evaluate", data=corpo, method="POST",
-                                 headers={"Authorization": f"Bearer {chave}", "Content-Type": "application/json"})
+                                 headers={"Authorization": f"Bearer {chave}", "Content-Type": "application/json",
+                                          "Accept": "application/json",
+                                          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                                                        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36"})
     for t in range(tentativas):
         try:
             with urllib.request.urlopen(req, timeout=timeout) as r:
@@ -74,6 +98,16 @@ def avaliar(state, questions, tentativas=3, timeout=60):
             _gasto["tokens"] += (d.get("usage") or {}).get("input_tokens", 0)
             return d.get("answers") or {}
         except urllib.error.HTTPError as e:
+            # 401 e 403 são credencial recusada ou bloqueio de borda: insistir não resolve e só bate no
+            # serviço. Dizer o motivo uma vez, com o texto da resposta, poupa o diagnóstico de quem vier
+            # depois — antes isso saía como erro mudo e parecia o serviço estar fora.
+            if e.code in (401, 403):
+                if not _gasto.get("avisou"):
+                    try: detalhe = e.read()[:120].decode(errors="replace")
+                    except Exception: detalhe = ""
+                    print(f"Eikos recusou a credencial em {URL} (HTTP {e.code}): {detalhe}", file=sys.stderr)
+                    _gasto["avisou"] = True
+                _gasto["erros"] += 1; return None
             if e.code in (429, 502) and t < tentativas - 1: time.sleep(3 * 2 ** t); continue
             _gasto["erros"] += 1; return None
         except Exception:
