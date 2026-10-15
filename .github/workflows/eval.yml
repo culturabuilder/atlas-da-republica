@@ -1,35 +1,30 @@
 name: Eval a cada 3 dias
-# O eval só rodava quando alguém o disparava à mão, e por isso Programas e Transferências ficaram
-# quatro dias sendo cortados por tempo sem ninguém ver. Aqui ele roda sozinho, independente de
-# qualquer sessão: a saída fica no log e como artefato, e a rodada falha quando há o que corrigir.
+# O eval só rodava quando alguém o disparava à mão, e foi por isso que Programas e Transferências
+# ficaram quatro dias sendo cortados por tempo sem ninguém ver. Aqui ele roda sozinho.
 #
-# "*/3" no dia do mês dá dias 1, 4, 7 … 28, 31 — ou seja, a virada de mês encurta um intervalo.
-# É o preço de usar cron de 5 campos; o que importa é não passar de três dias sem olhar.
+# Dois trabalhos em paralelo, de propósito. Na primeira tentativa era um só e passou de 50 minutos
+# sem terminar: as checagens de navegador carregam a página mais de cem vezes, cada carregamento
+# puxando o grafo inteiro de um servidor local, e num runner de 2 núcleos isso rasteja. Separados,
+# cada um tem orçamento próprio e a falha de um não esconde o resultado do outro.
+#
+# "*/3" no dia do mês dá dias 1, 4, 7 … 28, 31 — a virada de mês encurta um intervalo. É limitação do
+# cron de 5 campos; o que importa é não passar de três dias sem olhar.
 on:
   schedule: [{ cron: "23 11 */3 * *" }]   # 08:23 em Brasília
   workflow_dispatch:
-# actions:read é para a seção "workflows" do eval, que usa o gh CLI para ver se a coleta diária e a
-# publicação terminaram bem. Sem o token ela degrada para "sem informação" — justamente o aviso que
-# deveria ter apontado os quatro dias de Programas e Transferências cortados por tempo.
 permissions: { contents: read, actions: read }
 concurrency: { group: eval, cancel-in-progress: false }
 jobs:
-  eval:
+  dados:
+    name: Dados, conectores e site no ar
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+        with: { python-version: "3.12" }
       - run: python -m venv .venv && .venv/bin/pip install -q -r requirements.txt
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-      # as seis checagens de interface pegaram defeitos que nenhuma outra pegaria (texto estourando o
-      # painel por dentro, três páginas rolando de lado no celular), então valem a instalação
-      - run: npm install --no-save playwright@1 && npx playwright install --with-deps chromium
-      - name: Rodar o eval
+      - name: Rodar o eval sem as checagens de navegador
         id: eval
         env:
           PORTAL_TRANSPARENCIA_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_KEY }}
@@ -37,30 +32,65 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set +e
-          scripts/eval.sh 2>&1 | tee eval.txt
-          codigo=${PIPESTATUS[0]}
-          echo "codigo=$codigo" >> "$GITHUB_OUTPUT"
-          # o resumo da aba de Actions: o que pede correção, para não ter de abrir o log
+          scripts/eval.sh --rapido 2>&1 | tee eval.txt
+          echo "codigo=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
           {
-            echo "## Eval de $(date -u +'%F %H:%M UTC')"
-            echo
-            if [ "$codigo" -eq 0 ]; then echo "Nada a corrigir."; else
-              echo "### O que pede correção"; echo '```'
-              grep -E "^   ERRO" eval.txt || true
-              echo '```'
+            echo "## Dados e conectores"
+            if [ "${PIPESTATUS[0]}" -eq 0 ]; then echo; echo "Nada a corrigir."; else
+              echo; echo "### Pede correção"; echo '```'; grep -E "^   ERRO" eval.txt || true; echo '```'
             fi
-            echo "### Avisos"; echo '```'
-            grep -E "^   !" eval.txt | head -20 || true
-            echo '```'
+            echo "### Avisos"; echo '```'; grep -E "^   !" eval.txt | head -20 || true; echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
           exit 0
       - uses: actions/upload-artifact@v4
-        with:
-          name: eval
-          path: eval.txt
-          retention-days: 30
-      - name: Falhar quando há o que corrigir
-        if: steps.eval.outputs.codigo != '0'
+        with: { name: eval-dados, path: eval.txt, retention-days: 30 }
+      - if: steps.eval.outputs.codigo != '0'
+        run: echo "Há itens que pedem correção; veja o resumo." && exit 1
+
+  interface:
+    name: Interface em várias larguras
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python -m venv .venv && .venv/bin/pip install -q -r requirements.txt
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: npm install --no-save playwright@1 && npx playwright install --with-deps chromium
+      - name: Construir o site e rodar as seis checagens
+        id: checagens
         run: |
-          echo "O eval encontrou itens que pedem correção; veja o resumo da rodada."
-          exit 1
+          set +e
+          .venv/bin/python scripts/build_graph.py > /dev/null 2>&1
+          .venv/bin/python scripts/build_site.py > /dev/null 2>&1
+          (cd site && nohup python3 -m http.server 8767 >/dev/null 2>&1 &)
+          sleep 4
+          ruins=0
+          : > checagens.txt
+          # cada checagem precisa dizer que passou; saída que não casa a frase conta como falha, porque
+          # em 27/09/2026 cinco checagens apareceram verdes com as cinco quebrando por falta do playwright
+          for par in "overflow:contenção ok" "dzov:contenção ok" "quebra:nenhuma palavra quebrada" \
+                     "svgfit:ok" "pmap:erros \[\]" "paginas:nenhuma página rola de lado"; do
+            t=${par%%:*}; esperado=${par#*:}
+            saida=$(node "scripts/checagens/$t.js" 2>&1); codigo=$?
+            if [ $codigo -ne 0 ]; then
+              echo "   ERRO $t: node saiu com código $codigo" | tee -a checagens.txt
+              echo "$saida" | tail -3 | sed 's/^/        /' | tee -a checagens.txt
+              ruins=$((ruins+1))
+            elif echo "$saida" | grep -qiE "$esperado"; then
+              echo "   ok   $t" | tee -a checagens.txt
+            else
+              echo "   ERRO $t: não confirmou que passou" | tee -a checagens.txt
+              echo "$saida" | tail -4 | sed 's/^/        /' | tee -a checagens.txt
+              ruins=$((ruins+1))
+            fi
+          done
+          echo "codigo=$ruins" >> "$GITHUB_OUTPUT"
+          { echo "## Interface"; echo '```'; cat checagens.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          exit 0
+      - uses: actions/upload-artifact@v4
+        with: { name: eval-interface, path: checagens.txt, retention-days: 30 }
+      - if: steps.checagens.outputs.codigo != '0'
+        run: echo "Checagens de interface com falha; veja o resumo." && exit 1
