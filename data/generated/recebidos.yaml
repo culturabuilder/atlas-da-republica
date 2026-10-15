@@ -1,5 +1,5 @@
 # GERADO por etl/recebidos.py. Não edite à mão.
-generated_at: '2026-10-14'
+generated_at: '2026-10-15'
 fonte: https://eagendas.cgu.gov.br (rotas públicas /pesquisa/orgaos, /pesquisa/agentes-publicos-obrigados-por-orgao e /?filtro_servidor=...)
 agenda_lida_em: '2026-10-11'
 janela_dias: 90
@@ -15,17 +15,20 @@ por_classe:
     entidades: 118
     encontros: 327
   empresa:
-    entidades: 841
-    encontros: 1762
+    entidades: 878
+    encontros: 1857
+  estrangeira:
+    entidades: 65
+    encontros: 119
   nao_classificado:
-    entidades: 1789
-    encontros: 3348
+    entidades: 1628
+    encontros: 2997
   orgao_federal:
     entidades: 919
     encontros: 22629
   publico_outro:
-    entidades: 519
-    encontros: 1247
+    entidades: 578
+    encontros: 1384
   setorial:
     entidades: 390
     encontros: 867
@@ -434,6 +437,29 @@ privadas:
   - pessoa: br-p-marina-palma-copola
     nome: Marina Palma Copola de Carvalho
     n: 2
+- nome: CONFEDERACAO DA AGRICULTURA E PECUARIA DO BRASIL
+  n: 11
+  classe: empresa
+  via: eikos
+  recebida_por:
+  - pessoa: br-p-andre-carlos-alves-de-paula-filho
+    nome: Andre Carlos Alves de Paula Filho
+    n: 2
+  - pessoa: br-p-dou-mauro-oliveira-pires
+    nome: Mauro Oliveira Pires
+    n: 2
+  - pessoa: br-p-guilherme-campos-junior
+    nome: Guilherme Campos Junior
+    n: 2
+  - pessoa: br-p-dario-carnevalli-durigan
+    nome: Dario Carnevalli Durigan
+    n: 1
+  - pessoa: br-p-larissa-oliveira-rego
+    nome: Larissa Oliveira Rego
+    n: 1
+  - pessoa: br-p-debora-freire
+    nome: Débora Freire Cardoso
+    n: 1
 - nome: CONFEDERACAO NACIONAL DA INDUSTRIA
   n: 11
   classe: setorial
@@ -1016,6 +1042,26 @@ privadas:
   - pessoa: br-p-wp-gilneu-francisco-astolfi-vivan
     nome: Gilneu Francisco Astolfi Vivan
     n: 1
+- nome: Movimento dos Pequenos agricultores
+  n: 9
+  classe: empresa
+  via: eikos
+  recebida_por:
+  - pessoa: br-p-fernanda-machiaveli-morao-de-oliveira
+    nome: Fernanda Machiaveli Morao de Oliveira
+    n: 3
+  - pessoa: br-p-eric-sousa-moura
+    nome: Eric Sousa Moura
+    n: 2
+  - pessoa: br-p-ana-terra-reis
+    nome: Ana Terra Reis
+    n: 2
+  - pessoa: br-p-vanderley-ziger
+    nome: Vanderley Ziger
+    n: 1
+  - pessoa: br-p-wagner-caetano-alves-de-oliveira
+    nome: Wagner Caetano Alves de Oliveira
+    n: 1
 - nome: VESTAS DO BRASIL ENERGIA EOLICA LTDA
   n: 9
   classe: empresa
@@ -1318,6 +1364,26 @@ privadas:
     n: 2
   - pessoa: br-p-gabriel-galipolo
     nome: Gabriel Muricca Galípolo
+    n: 1
+- nome: Brasscom
+  n: 7
+  classe: empresa
+  via: eikos
+  recebida_por:
+  - pessoa: br-p-rodrigo-zerbone-loureiro
+    nome: Rodrigo Zerbone Loureiro
+    n: 2
+  - pessoa: br-p-henrique-eduardo-medeiros-aquino
+    nome: Henrique Eduardo Medeiros Aquino
+    n: 2
+  - pessoa: br-p-marcio-fernando-elias-rosa
+    nome: Marcio Fernando Elias Rosa
+    n: 1
+  - pessoa: br-p-luiz-marinho
+    nome: Luiz Marinho
+    n: 1
+  - pessoa: br-p-rogerio-souza-mascarenhas
+    nome: Rogerio Souza Mascarenhas
     n: 1
 - nome: CAMINATI E BUENO ADVOGADOS
   n: 7
@@ -2150,6 +2216,23 @@ privadas:
   - pessoa: br-p-sandoval-de-araujo-feitosa-neto
     nome: Sandoval de Araujo Feitosa Neto
     n: 1
+- nome: Aegea Saneamento e Participações
+  n: 5
+  classe: empresa
+  via: eikos
+  recebida_por:
+  - pessoa: br-p-marcio-leao-coelho
+    nome: Marcio Leao Coelho
+    n: 2
+  - pessoa: br-p-jose-wellington-barroso-de-araujo-dias
+    nome: Jose Wellington Barroso de Araujo Dias
+    n: 1
+  - pessoa: br-p-rafael-guerreiro-osorio
+    nome: Rafael Guerreiro Osorio
+    n: 1
+  - pessoa: br-p-luiz-carlos-everton-de-farias
+    nome: Luiz Carlos Everton de Farias
+    n: 1
 - nome: BANCO J. P. MORGAN S.A.
   n: 5
   classe: empresa
@@ -2263,77 +2346,9 @@ privadas:
   - pessoa: br-p-henrique-eduardo-medeiros-aquino
     nome: Henrique Eduardo Medeiros Aquino
     n: 1
-- nome: FREDERICO BEDRAN ADVOGADOS
-  n: 5
-  classe: advocacia
-  via: marca
-  recebida_por:
-  - pessoa: br-p-alexandre-silveira-de-oliveira
-    nome: Alexandre Silveira de Oliveira
-    n: 1
-  - pessoa: br-p-miriam-belchior
-    nome: Miriam Belchior
-    n: 1
-  - pessoa: br-p-mauro-henrique-moreira-sousa
-    nome: Mauro Henrique Moreira Sousa
-    n: 1
-  - pessoa: br-p-luiz-paniago-neves
-    nome: Luiz Paniago Neves
-    n: 1
-  - pessoa: br-p-fabio-fernando-borges
-    nome: Fabio Fernando Borges
-    n: 1
-- nome: HUAWEI DO BRASIL TELECOMUNICACOES LTDA
-  n: 5
-  classe: empresa
-  via: marca
-  recebida_por:
-  - pessoa: br-p-rogerio-souza-mascarenhas
-    nome: Rogerio Souza Mascarenhas
-    n: 2
-  - pessoa: br-p-gentil-nogueira-de-sa-junior
-    nome: Gentil Nogueira de Sa Junior
-    n: 1
-  - pessoa: br-p-tatiana-lacerda-prazeres
-    nome: Tatiana Lacerda Prazeres
-    n: 1
-  - pessoa: br-p-raiane-patricia-severino-assumpcao
-    nome: Raiane Patricia Severino Assumpcao
-    n: 1
-- nome: INTERFARMA ASSOCIACAO DA INDUSTRIA FARMACEUTICA DE PESQUISA
-  n: 5
-  classe: setorial
-  via: marca
-  recebida_por:
-  - pessoa: br-p-daniela-marreco-cerqueira
-    nome: Daniela Marreco Cerqueira
-    n: 2
-  - pessoa: br-p-fernanda-de-negri
-    nome: Fernanda de Negri
-    n: 2
-  - pessoa: br-p-lenise-barcellos-de-mello-secchin
-    nome: Lenise Barcellos de Mello Secchin
-    n: 1
-- nome: ITAU UNIBANCO ASSET MANAGEMENT LTDA
-  n: 5
-  classe: empresa
-  via: marca
-  recebida_por:
-  - pessoa: br-p-guilherme-santos-mello
-    nome: Guilherme Santos Mello
-    n: 2
-  - pessoa: br-p-luiz-marinho
-    nome: Luiz Marinho
-    n: 1
-  - pessoa: br-p-wp-nilton-jos-schneider-david
-    nome: Nilton José Schneider David
-    n: 1
-  - pessoa: br-p-dou-daniel-cardoso-leal
-    nome: Daniel Cardoso Leal
-    n: 1
 privadas_total:
-  entidades: 1349
-  encontros: 2956
+  entidades: 1386
+  encontros: 3051
 quem_recebeu:
 - pessoa: br-p-wp-paulo-picchetti
   nome: Paulo Picchetti
@@ -2377,8 +2392,12 @@ quem_recebeu:
   entidades: 41
 - pessoa: br-p-joao-daniel-de-andrade-cascalho
   nome: Joao Daniel de Andrade Cascalho
+  encontros: 45
+  entidades: 23
+- pessoa: br-p-marcio-fernando-elias-rosa
+  nome: Marcio Fernando Elias Rosa
   encontros: 44
-  entidades: 22
+  entidades: 35
 - pessoa: br-p-willamy-moreira-frota
   nome: Willamy Moreira Frota
   encontros: 42
@@ -2391,14 +2410,14 @@ quem_recebeu:
   nome: Fabricio de Oliveira Galvao
   encontros: 41
   entidades: 32
+- pessoa: br-p-rodrigo-zerbone-loureiro
+  nome: Rodrigo Zerbone Loureiro
+  encontros: 40
+  entidades: 22
 - pessoa: br-p-wilson-diniz-wellisch
   nome: Wilson Diniz Wellisch
   encontros: 40
   entidades: 19
-- pessoa: br-p-marcio-fernando-elias-rosa
-  nome: Marcio Fernando Elias Rosa
-  encontros: 38
-  entidades: 30
 - pessoa: br-p-adrualdo-de-lima-catao
   nome: Adrualdo de Lima Catao
   encontros: 37
@@ -2419,10 +2438,6 @@ quem_recebeu:
   nome: Diogo Thomson de Andrade
   encontros: 35
   entidades: 25
-- pessoa: br-p-rodrigo-zerbone-loureiro
-  nome: Rodrigo Zerbone Loureiro
-  encontros: 35
-  entidades: 19
 - pessoa: br-p-tatiana-lacerda-prazeres
   nome: Tatiana Lacerda Prazeres
   encontros: 35
@@ -2435,26 +2450,26 @@ quem_recebeu:
   nome: Frederico Carvalho Dias
   encontros: 33
   entidades: 29
+- pessoa: br-p-dario-carnevalli-durigan
+  nome: Dario Carnevalli Durigan
+  encontros: 32
+  entidades: 27
 - pessoa: br-p-uallace-moreira-lima
   nome: Uallace Moreira Lima
-  encontros: 30
-  entidades: 22
+  encontros: 32
+  entidades: 24
+- pessoa: br-p-frederico-de-siqueira-filho
+  nome: Frederico de Siqueira Filho
+  encontros: 31
+  entidades: 24
+- pessoa: br-p-marcio-leao-coelho
+  nome: Marcio Leao Coelho
+  encontros: 29
+  entidades: 16
 - pessoa: br-p-fernanda-de-negri
   nome: Fernanda de Negri
   encontros: 29
   entidades: 19
-- pessoa: br-p-frederico-de-siqueira-filho
-  nome: Frederico de Siqueira Filho
-  encontros: 29
-  entidades: 22
-- pessoa: br-p-marina-palma-copola
-  nome: Marina Palma Copola de Carvalho
-  encontros: 29
-  entidades: 21
-- pessoa: br-p-caio-cesar-farias-leoncio
-  nome: Caio Cesar Farias Leoncio
-  encontros: 28
-  entidades: 28
 entidades:
   (BNetzA) Germany):
     classe: nao_classificado
@@ -2693,8 +2708,10 @@ entidades:
     classe: setorial
     via: marca
   ABRINQ ASSOC BRASILEIRA DOS FABRICANTES DE BRINQUEDOS:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.924
+    em: '2026-10-15'
   ABSAE:
     classe: nao_classificado
     via: null
@@ -2772,8 +2789,10 @@ entidades:
     classe: setorial
     via: marca
   AERO CONCEPTS:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.881
+    em: '2026-10-15'
   AEROMASTER TAXI AEREO LTDA:
     classe: empresa
     via: marca
@@ -2818,11 +2837,15 @@ entidades:
     classe: nao_classificado
     via: null
   AGENCIA BRASILEIRA DE DESENVOLVIMENTO INDUSTRIAL - ABDI:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.924
+    em: '2026-10-15'
   AGENCIA DE PROMOCAO DE EXPORTACOES DO BRASIL - APEX-BRASIL:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.928
+    em: '2026-10-15'
   AGENCIA NACIONAL DE ASSISTENCIA TECNICA E EXTENSAO RURAL ANATER:
     classe: publico_outro
     via: marca
@@ -3151,8 +3174,10 @@ entidades:
     classe: nao_classificado
     via: null
   APEX Brasil:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.932
+    em: '2026-10-15'
   APEX GROUP INVESTIMENTOS LTDA:
     classe: empresa
     via: marca
@@ -3181,8 +3206,10 @@ entidades:
     classe: empresa
     via: marca
   APOST-RJ ASSOCIACAO DAS AGENCIAS DOS CORREIOS FRANQUEADAS DO ESTADO DO RIO DE JANEIRO:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.852
+    em: '2026-10-15'
   APP SINDICATO DOS TRABALHADORES EM EDUCACAO PUBLICA DO PARANA:
     classe: nao_classificado
     via: null
@@ -3248,8 +3275,10 @@ entidades:
     classe: nao_classificado
     via: null
   ASEAN:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.936
+    em: '2026-10-15'
   ASSEMAE:
     classe: nao_classificado
     via: null
@@ -3771,8 +3800,10 @@ entidades:
     classe: setorial
     via: marca
   ASSOCIACAO NACIONAL DA AGRICULTURA CAMPONESA:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.86
+    em: '2026-10-15'
   ASSOCIACAO NACIONAL DA INDUSTRIA DE PNEUMATICOS ANIP:
     classe: setorial
     via: marca
@@ -3998,8 +4029,10 @@ entidades:
     classe: advocacia
     via: marca
   Aegea Saneamento e Participações:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.928
+    em: '2026-10-15'
   Aeronáutica Rio Grande do Sul:
     classe: nao_classificado
     via: null
@@ -4045,8 +4078,10 @@ entidades:
     classe: nao_classificado
     via: null
   Agência Brasileira de Desenvolvimento Industrial-ABDI:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.915
+    em: '2026-10-15'
   Agência Brasileira de Promoção de Exportações e Investimentos:
     classe: nao_classificado
     via: null
@@ -4055,8 +4090,10 @@ entidades:
     via: nome
     'no': br-agencia-espacial-brasileira
   Agência Federal de Pesca da Rússia (Rosrybolovstvo):
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.955
+    em: '2026-10-15'
   Agência Nacional de Assistência Técnica e Extensão Rural - ANATER:
     classe: publico_outro
     via: marca
@@ -4157,8 +4194,10 @@ entidades:
     classe: nao_classificado
     via: null
   Alerj:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.947
+    em: '2026-10-15'
   Alto Tamaya:
     classe: nao_classificado
     via: null
@@ -4181,8 +4220,10 @@ entidades:
     classe: nao_classificado
     via: null
   Ambev:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.943
+    em: '2026-10-15'
   Anamma associação nacional de municípios de meio ambiente:
     classe: publico_outro
     via: marca
@@ -4196,8 +4237,10 @@ entidades:
     classe: nao_classificado
     via: null
   Angola:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.95
+    em: '2026-10-15'
   ApexBrasil:
     classe: nao_classificado
     via: null
@@ -4205,8 +4248,10 @@ entidades:
     classe: nao_classificado
     via: null
   Arari/MA:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.91
+    em: '2026-10-15'
   Arcebispado da Arquidiocese de Manaus:
     classe: nao_classificado
     via: null
@@ -4377,8 +4422,10 @@ entidades:
     classe: nao_classificado
     via: null
   Autoridade Internacional dos Fundos Marinhos:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.924
+    em: '2026-10-15'
   Autoridade Nacional de Segurança Nuclear:
     classe: orgao_federal
     via: nome
@@ -4479,8 +4526,10 @@ entidades:
     classe: empresa
     via: marca
   BANCO INTERAMERICANO DE DESENVOLVIMENTO:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.94
+    em: '2026-10-15'
   BANCO ITAU BBA S.A.:
     classe: empresa
     via: marca
@@ -4813,11 +4862,15 @@ entidades:
     classe: nao_classificado
     via: null
   Banco Interamericano de Desenvolvimento - BID:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.932
+    em: '2026-10-15'
   Banco Interamericano de Desenvolvimento -BID:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.936
+    em: '2026-10-15'
   Banco ItauBBA:
     classe: nao_classificado
     via: null
@@ -4901,14 +4954,18 @@ entidades:
     classe: nao_classificado
     via: null
   Boa Esperança do Norte/MT:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.867
+    em: '2026-10-15'
   Boeing:
     classe: nao_classificado
     via: null
   Bolívia:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.95
+    em: '2026-10-15'
   Bracell:
     classe: nao_classificado
     via: null
@@ -4922,8 +4979,10 @@ entidades:
     classe: nao_classificado
     via: null
   Brasscom:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.905
+    em: '2026-10-15'
   Brevan Howard:
     classe: nao_classificado
     via: null
@@ -4978,8 +5037,10 @@ entidades:
     via: nome
     'no': br-caixa-loterias-s-a
   CAMARA BRASILEIRA DA INDUSTRIA DA CONSTRUCAO:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.915
+    em: '2026-10-15'
   CAMARA BRASILEIRA DE DIAGNOSTICO LABORATORIAL-CBDL:
     classe: nao_classificado
     via: null
@@ -5699,8 +5760,10 @@ entidades:
     classe: setorial
     via: marca
   CONFAB INDUSTRIAL SOCIEDADE ANONIMA:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.936
+    em: '2026-10-15'
   CONFAP:
     classe: orgao_federal
     via: nome
@@ -5724,8 +5787,10 @@ entidades:
     classe: setorial
     via: marca
   CONFEDERACAO DA AGRICULTURA E PECUARIA DO BRASIL:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.905
+    em: '2026-10-15'
   CONFEDERACAO DAS COOPERATIVAS DO SICREDI - CONFEDERACAO SICREDI:
     classe: setorial
     via: marca
@@ -5973,8 +6038,10 @@ entidades:
     classe: empresa
     via: marca
   COOPERATIVA BAIANA DOS TRANSPORTADORES RODOVIARIOS DE CARGAS E CAMINHONEIROS AUTONOMOS - COOPCAMINHOES:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.91
+    em: '2026-10-15'
   COOPERATIVA CENTRAL DE CREDITO COM INTERACAO SOLIDARIA - CENTRAL CRESOL BASER:
     classe: nao_classificado
     via: null
@@ -5988,8 +6055,10 @@ entidades:
     classe: nao_classificado
     via: null
   COOPERATIVA DE TRABALHO E SERVICOS TECNICOS, ASSESSORIA, CONSULTORIA E TREINAMENTOS:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.887
+    em: '2026-10-15'
   COOPERATIVA DO AGRONEGOCIO DOS FORNECEDORES DE CANA - COAF:
     classe: nao_classificado
     via: null
@@ -5997,8 +6066,10 @@ entidades:
     classe: nao_classificado
     via: null
   COOPERATIVA DOS TRABALHADORES AUTONOMOS EM TRANSPORTES RODOVIARIOS DE CARGAS E PASSAGEIROS DE SANTOS - COOPERCAPS:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.899
+    em: '2026-10-15'
   COPE - FAB:
     classe: orgao_federal
     via: sigla
@@ -6058,8 +6129,10 @@ entidades:
     classe: empresa
     via: marca
   CROPLIFE BRASIL:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.86
+    em: '2026-10-15'
   CRT-BA:
     classe: nao_classificado
     via: null
@@ -6085,8 +6158,10 @@ entidades:
     classe: nao_classificado
     via: null
   CTI - Centro de Tecnologia da Informação Renato Archer:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.91
+    em: '2026-10-15'
   CUT Brasil:
     classe: nao_classificado
     via: null
@@ -6101,8 +6176,10 @@ entidades:
     classe: empresa
     via: marca
   Cabo Verde:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.924
+    em: '2026-10-15'
   Cabo Verde - Embaixada:
     classe: publico_outro
     via: marca
@@ -6144,8 +6221,10 @@ entidades:
     via: nome
     'no': br-camara-dos-deputados
   Canadá:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.958
+    em: '2026-10-15'
   Capital Group:
     classe: nao_classificado
     via: null
@@ -6236,8 +6315,10 @@ entidades:
     classe: nao_classificado
     via: null
   Centro de Pesquisa e Desenvolvimento em Telecomunicações - CPQD:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.827
+    em: '2026-10-15'
   Chapleau Exploração Mineral Ltda:
     classe: empresa
     via: marca
@@ -6273,8 +6354,10 @@ entidades:
     classe: nao_classificado
     via: null
   Cidade de Torino - Itália:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.915
+    em: '2026-10-15'
   Cirad:
     classe: nao_classificado
     via: null
@@ -6351,11 +6434,15 @@ entidades:
     via: contido no nome
     'no': br-comissao-de-valores-mobiliarios
   Comité Paralímpico de las Américas:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.924
+    em: '2026-10-15'
   Comitê Paralímpico das Américas:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.92
+    em: '2026-10-15'
   Companhia Baiana de Pesquisa Mineral (CBPM):
     classe: nao_classificado
     via: null
@@ -6407,8 +6494,10 @@ entidades:
     classe: nao_classificado
     via: null
   Comunicações e Tecnologia da Informação do Irã:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.95
+    em: '2026-10-15'
   Comunidades ribeirinhas do condor, Cabo gato e entorno, Peixinhos, Recife - PE:
     classe: nao_classificado
     via: null
@@ -6653,8 +6742,10 @@ entidades:
     classe: nao_classificado
     via: null
   Coordenador Residente do Sistema das Nações Unidas No Brasil:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.92
+    em: '2026-10-15'
   Coordenador de Desenvolvimento Energético e Fiscal do Convênio com a UFRN:
     classe: nao_classificado
     via: null
@@ -6715,8 +6806,10 @@ entidades:
     classe: nao_classificado
     via: null
   CÂMARA MUNICIPAL DE SÃO PAULO-SP:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.96
+    em: '2026-10-15'
   CÂMARA MUNICIPAL DE TIMÓTEO:
     classe: nao_classificado
     via: null
@@ -6737,14 +6830,18 @@ entidades:
     classe: nao_classificado
     via: null
   Câmara Municipal:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.955
+    em: '2026-10-15'
   Câmara Municipal de Altônia/PR:
     classe: nao_classificado
     via: null
   Câmara Municipal de Boa Esperança do Norte:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.96
+    em: '2026-10-15'
   Câmara Municipal de Campo Grande/MS:
     classe: nao_classificado
     via: null
@@ -6764,11 +6861,15 @@ entidades:
     classe: nao_classificado
     via: null
   Câmara Municipal de Esplanada:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.958
+    em: '2026-10-15'
   Câmara Municipal de Ibitiara/BA:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.963
+    em: '2026-10-15'
   Câmara Municipal de Luziânia (GO):
     classe: nao_classificado
     via: null
@@ -6810,8 +6911,10 @@ entidades:
     via: contido no nome
     'no': br-camara-dos-deputados
   Câmara dos Representantes dos Estados Unidos:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.955
+    em: '2026-10-15'
   Câmara dos Vereadores:
     classe: nao_classificado
     via: null
@@ -7092,8 +7195,10 @@ entidades:
     classe: publico_outro
     via: marca
   Defesa Civil (PI):
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.95
+    em: '2026-10-15'
   Delegacia da Receita Federal:
     classe: orgao_federal
     via: contido no nome
@@ -7125,8 +7230,10 @@ entidades:
     classe: nao_classificado
     via: null
   Departamento de Frota, Portos e Cooperação Internacional:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.893
+    em: '2026-10-15'
   Departamento de Provisão Habitacional (DPH):
     classe: nao_classificado
     via: null
@@ -7153,8 +7260,10 @@ entidades:
     classe: nao_classificado
     via: null
   Diplo Foundation:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.899
+    em: '2026-10-15'
   Diretor-fundador do Iede:
     classe: nao_classificado
     via: null
@@ -7165,8 +7274,10 @@ entidades:
     classe: nao_classificado
     via: null
   Diretoria de Patrimônio Imobiliário e Meio Ambiente:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.899
+    em: '2026-10-15'
   Direção:
     classe: nao_classificado
     via: null
@@ -7328,8 +7439,10 @@ entidades:
     classe: nao_classificado
     via: null
   EMBRATUR - AGENCIA BRASILEIRA DE PROMOCAO INTERNACIONAL DO TURISMO:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.94
+    em: '2026-10-15'
   EMBRATUR - Instituto Brasileiro de Turismo:
     classe: nao_classificado
     via: null
@@ -7475,8 +7588,10 @@ entidades:
     classe: nao_classificado
     via: null
   ESG - São Carlos/SP:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.808
+    em: '2026-10-15'
   ESH CAPITAL INVESTIMENTOS LTDA:
     classe: empresa
     via: marca
@@ -7490,8 +7605,10 @@ entidades:
     classe: empresa
     via: marca
   ESTADO DE MATO GROSSO:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.953
+    em: '2026-10-15'
   ESTRATÉGIAS & SOLUÇÕES:
     classe: nao_classificado
     via: null
@@ -7725,8 +7842,10 @@ entidades:
     classe: nao_classificado
     via: null
   Embraer Defesa e Segurança:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.924
+    em: '2026-10-15'
   Emirates na América Latina:
     classe: nao_classificado
     via: null
@@ -7818,14 +7937,18 @@ entidades:
     classe: nao_classificado
     via: null
   Esmênia Miranda Ferreira da Silva, Prefeita de São Luís:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.95
+    em: '2026-10-15'
   Espanha:
     classe: nao_classificado
     via: null
   Esperança do Norte/MT:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.893
+    em: '2026-10-15'
   Estado Paraná:
     classe: nao_classificado
     via: null
@@ -7833,23 +7956,33 @@ entidades:
     classe: nao_classificado
     via: null
   Estado de São Paulo/SP:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.95
+    em: '2026-10-15'
   Estado do Ceará:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.953
+    em: '2026-10-15'
   Estado do Piauí:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.953
+    em: '2026-10-15'
   Estado do Rio Grande do Norte - RN:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.953
+    em: '2026-10-15'
   Estado do Rio Grande do Sul:
     classe: nao_classificado
     via: null
   Estado do Rio de Janeiro/RJ:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.947
+    em: '2026-10-15'
   Estado do piauí:
     classe: nao_classificado
     via: null
@@ -7860,8 +7993,10 @@ entidades:
     classe: nao_classificado
     via: null
   Estados Unidos da América:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.958
+    em: '2026-10-15'
   Eurasia Group:
     classe: nao_classificado
     via: null
@@ -7921,8 +8056,10 @@ entidades:
     classe: empresa
     via: marca
   FAO-Brazil​ Food and Agriculture Organization of the United Nations:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.936
+    em: '2026-10-15'
   FAPEC - Fundação de Apoio à Pesquisa, ao Ensino e à Cultura:
     classe: nao_classificado
     via: null
@@ -7983,8 +8120,10 @@ entidades:
     classe: setorial
     via: marca
   FEDERACAO DA AGRICULTURA DO ESTADO DO RIO GRANDE DO SUL:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.887
+    em: '2026-10-15'
   FEDERACAO DAS ASSOCIACOES DAS EMPRESAS BRASILEIRAS DE TECNOLOGIA DA INFORMACAO:
     classe: setorial
     via: marca
@@ -8270,11 +8409,15 @@ entidades:
     classe: empresa
     via: marca
   FSB COMUNICACOES LTDA:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.943
+    em: '2026-10-15'
   FSB Comunicação:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.91
+    em: '2026-10-15'
   FTD Educação:
     classe: nao_classificado
     via: null
@@ -8408,8 +8551,10 @@ entidades:
     classe: nao_classificado
     via: null
   FUNDACAO RAPHAEL MONTORO:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.874
+    em: '2026-10-15'
   FUNDACAO SEVERINO SOMBRA:
     classe: nao_classificado
     via: null
@@ -8528,8 +8673,10 @@ entidades:
     classe: nao_classificado
     via: null
   Filipinas:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.947
+    em: '2026-10-15'
   Fio Cruz:
     classe: nao_classificado
     via: null
@@ -8786,8 +8933,10 @@ entidades:
     via: contido no nome
     'no': br-fnde
   Fundo Soberano de Angola:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.943
+    em: '2026-10-15'
   Fundo Soberano de Singapura:
     classe: nao_classificado
     via: null
@@ -8825,8 +8974,10 @@ entidades:
     classe: empresa
     via: marca
   G1 e TV Globo/SP:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.932
+    em: '2026-10-15'
   G5 ADMINISTRADORA DE RECURSOS LTDA.:
     classe: empresa
     via: marca
@@ -8900,8 +9051,10 @@ entidades:
     classe: empresa
     via: marca
   GIC (Private Limited) Fundo Soberano de Singapura:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.947
+    em: '2026-10-15'
   GICS INDUSTRIA, COMERCIO E SERVICOS S.A.:
     classe: orgao_federal
     via: contido no nome
@@ -9084,8 +9237,10 @@ entidades:
     classe: nao_classificado
     via: null
   GT de Mulheres da ANA:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.874
+    em: '2026-10-15'
   GUERINO SEISCENTO TRANSPORTES S.A.:
     classe: nao_classificado
     via: null
@@ -9149,8 +9304,10 @@ entidades:
     classe: nao_classificado
     via: null
   Globo:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.905
+    em: '2026-10-15'
   Globo Comunicação e Participações:
     classe: nao_classificado
     via: null
@@ -9466,14 +9623,18 @@ entidades:
     classe: nao_classificado
     via: null
   IATA:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.924
+    em: '2026-10-15'
   IATA INTERNATIONAL AIR TRANSPORT ASSOCIATION:
     classe: nao_classificado
     via: null
   IBA - INDUSTRIA BRASILEIRA DE ARVORES:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.887
+    em: '2026-10-15'
   IBAMA - INST. BR. MEIO AMB. REC. NAT. RENOVAVEIS:
     classe: orgao_federal
     via: sigla
@@ -9846,8 +10007,10 @@ entidades:
     classe: nao_classificado
     via: null
   INSTITUTO BRASILEIRO DE MINERACAO IBRAM:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.893
+    em: '2026-10-15'
   INSTITUTO BRASILEIRO DE PETROLEO E GAS:
     classe: nao_classificado
     via: null
@@ -9894,8 +10057,10 @@ entidades:
     classe: nao_classificado
     via: null
   INSTITUTO DE MEIO AMBIENTE DE MATO GROSSO DO SUL:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.92
+    em: '2026-10-15'
   INSTITUTO DE PESQUISA DIREITOS E MOVIMENTOS SOCIAIS:
     classe: nao_classificado
     via: null
@@ -9935,8 +10100,10 @@ entidades:
     via: sigla
     'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-roraima
   INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DO RIO GRANDE DO NORTE (IFRN):
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.955
+    em: '2026-10-15'
   INSTITUTO FEDERAL DE SANTA CATARINA:
     classe: publico_outro
     via: marca
@@ -10015,8 +10182,10 @@ entidades:
     classe: nao_classificado
     via: null
   INSTITUTO SOS AGRO SOLUCOES:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.852
+    em: '2026-10-15'
   INSTITUTO TECNOLOGICO DAS CADEIAS BIOSSUSTENTAVEIS - ITCBIO:
     classe: nao_classificado
     via: null
@@ -10282,8 +10451,10 @@ entidades:
     via: nome
     'no': br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-pernambuco
   Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco (IFPE):
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.953
+    em: '2026-10-15'
   Instituto Federal de Educação, Ciência e Tecnologia de Rondônia:
     classe: orgao_federal
     via: nome
@@ -10454,8 +10625,10 @@ entidades:
     classe: nao_classificado
     via: null
   Instituto Russo de Pesquisa de Pesca e Oceanografia (VNIRO):
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.95
+    em: '2026-10-15'
   Instituto Terena:
     classe: nao_classificado
     via: null
@@ -10515,14 +10688,18 @@ entidades:
     classe: nao_classificado
     via: null
   Itaú Asset:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.936
+    em: '2026-10-15'
   Itaú BBA Assessoria Financeira S.A.:
     classe: empresa
     via: marca
   Itaú Unibanco:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.947
+    em: '2026-10-15'
   Ité Consultoria:
     classe: nao_classificado
     via: null
@@ -10548,8 +10725,10 @@ entidades:
     classe: nao_classificado
     via: null
   JGP GESTAO DE RECURSOS LTDA:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.932
+    em: '2026-10-15'
   JL RODRIGUES & CONSULTORES ASSOCIADOS S/S LTDA:
     classe: empresa
     via: marca
@@ -10602,8 +10781,10 @@ entidades:
     classe: empresa
     via: marca
   JURCAIB-JUNTA DE REPRES DAS CIAS AEREAS NO BRASIL:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.867
+    em: '2026-10-15'
   JUSTEN E ASSOCIADOS - SOCIEDADE DE ADVOGADOS:
     classe: advocacia
     via: marca
@@ -10617,11 +10798,15 @@ entidades:
     classe: nao_classificado
     via: null
   Japan Post:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.95
+    em: '2026-10-15'
   Japão:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.958
+    em: '2026-10-15'
   Johns Hopkins University NONE:
     classe: nao_classificado
     via: null
@@ -10629,8 +10814,10 @@ entidades:
     classe: nao_classificado
     via: null
   Jornal Metrópoles:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.899
+    em: '2026-10-15'
   KAIZEN GAMING BRASIL LTDA.:
     classe: empresa
     via: marca
@@ -10809,8 +10996,10 @@ entidades:
     classe: nao_classificado
     via: null
   Laboratório de Geoprocessamento e Estudos Ambientais - LAGEAMB UFPR:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.932
+    em: '2026-10-15'
   Laboratório de Transportes e Logística - LabTrans/UFSC:
     classe: nao_classificado
     via: null
@@ -10845,8 +11034,10 @@ entidades:
     classe: nao_classificado
     via: null
   Liga dos Estados Árabes:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.932
+    em: '2026-10-15'
   Ligga Telecomunicações S.A:
     classe: empresa
     via: marca
@@ -11606,8 +11797,10 @@ entidades:
     via: sigla
     'no': br-ministerio-do-desenvolvimento-social
   Mecanismo de Apoio da Aliança Global Contra a Fome e a Pobreza:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.827
+    em: '2026-10-15'
   Mecanismo de Apoio da Aliança Global Contra a Fome e a Pobreza Em Brasília:
     classe: nao_classificado
     via: null
@@ -11634,8 +11827,10 @@ entidades:
     via: sigla
     'no': br-ministerio-da-cultura
   Ministro de Relações Exteriores e Pesca das Ilhas Faroé:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.936
+    em: '2026-10-15'
   Ministério Federal das Finanças da Alemanha - Alemanha:
     classe: publico_outro
     via: marca
@@ -11974,8 +12169,10 @@ entidades:
     via: nome
     'no': br-ministerio-do-trabalho-e-emprego
   Ministério dos Assuntos Internos e Comunicações do Japão (MIC):
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.955
+    em: '2026-10-15'
   Ministério dos Direitos Humanos e Cidadania:
     classe: orgao_federal
     via: nome
@@ -12004,8 +12201,10 @@ entidades:
     via: contido no nome
     'no': br-ministerio-dos-transportes
   Missão de Observação Eleitoral da Organização dos Estados Americanos (OEA) para as Eleições 2026:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.928
+    em: '2026-10-15'
   Modal Consult:
     classe: nao_classificado
     via: null
@@ -12083,8 +12282,10 @@ entidades:
     via: sigla
     'no': br-ministerio-da-pesca-e-aquicultura
   Movimento dos Pequenos agricultores:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.835
+    em: '2026-10-15'
   Movimento dos Trabalhadores Rurais Sem Terra (MST):
     classe: nao_classificado
     via: null
@@ -12324,8 +12525,10 @@ entidades:
     classe: nao_classificado
     via: null
   Nações Unidas:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.95
+    em: '2026-10-15'
   Neoenergia:
     classe: nao_classificado
     via: null
@@ -12345,8 +12548,10 @@ entidades:
     classe: empresa
     via: marca
   Norges Bank Investment Management:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.947
+    em: '2026-10-15'
   Norsul:
     classe: nao_classificado
     via: null
@@ -12453,11 +12658,15 @@ entidades:
     classe: nao_classificado
     via: null
   ONU Mulheres Brasil:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.893
+    em: '2026-10-15'
   ONU Mulheres no Brasil:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.92
+    em: '2026-10-15'
   ONU Turismo:
     classe: nao_classificado
     via: null
@@ -12480,8 +12689,10 @@ entidades:
     classe: empresa
     via: marca
   ORGANIZACAO DAS COOPERATIVAS BRASILEIRAS:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.899
+    em: '2026-10-15'
   ORGANIZACAO DAS NACOES UNIDAS PARA EDUCACAO, CIENCIA E CULTURA:
     classe: nao_classificado
     via: null
@@ -12552,14 +12763,18 @@ entidades:
     classe: nao_classificado
     via: null
   Organização das Nações Unidas para Alimentação e Agricultura - FAO no Brasil:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.936
+    em: '2026-10-15'
   Organização das Nações Unidas para a Alimentação e a Agricultura (FAO):
     classe: nao_classificado
     via: null
   Organização das Nações Unidas para a Alimentação e a Agricultura no Brasil (FAO-Brasil):
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.924
+    em: '2026-10-15'
   Organização das Nações Unidas para a Educação, a Ciência e a Cultura – UNESCO:
     classe: nao_classificado
     via: null
@@ -12640,8 +12855,10 @@ entidades:
     classe: publico_outro
     via: marca
   PDT/DF:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.874
+    em: '2026-10-15'
   PEDRO VICTOR JESUS BONFIM TORRES:
     classe: nao_classificado
     via: null
@@ -12994,8 +13211,10 @@ entidades:
     via: nome
     'no': br-policia-rodoviaria-federal
   Porto Brasil Sul:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.899
+    em: '2026-10-15'
   Porto de Itajaí:
     classe: nao_classificado
     via: null
@@ -13009,8 +13228,10 @@ entidades:
     classe: nao_classificado
     via: null
   Portugal:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.95
+    em: '2026-10-15'
   Povo Kariú Kariri:
     classe: nao_classificado
     via: null
@@ -13021,8 +13242,10 @@ entidades:
     classe: nao_classificado
     via: null
   Preeitura de Garanhuns:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.953
+    em: '2026-10-15'
   Prefeita de Lavras MG:
     classe: nao_classificado
     via: null
@@ -13396,14 +13619,20 @@ entidades:
     via: nome
     'no': br-presidente-da-republica
   Presidente da Assembleia Legislativa do Estado do Acre:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.947
+    em: '2026-10-15'
   Presidente da Assembleia Legislativa do Estado do Amazonas:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.943
+    em: '2026-10-15'
   Presidente da Cooperativa COPECITROS:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.874
+    em: '2026-10-15'
   Presidente do Parlamento Amazônico:
     classe: nao_classificado
     via: null
@@ -13672,8 +13901,10 @@ entidades:
     via: contido no nome
     'no': br-receita-federal-do-brasil
   Receita Federal do Brasil - Ministério da Fazenda:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.958
+    em: '2026-10-15'
   Reddy’s Farmacêutica do Brasil:
     classe: nao_classificado
     via: null
@@ -13684,8 +13915,10 @@ entidades:
     classe: nao_classificado
     via: null
   Rede Nacional de Ensino e Pesquisa - RNP:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.835
+    em: '2026-10-15'
   Rede de Feminimos e Agroecologia:
     classe: nao_classificado
     via: null
@@ -13696,20 +13929,30 @@ entidades:
     classe: nao_classificado
     via: null
   Reino Unido no Brasil:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.947
+    em: '2026-10-15'
   Reino da Dinamarca:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.958
+    em: '2026-10-15'
   Reino da Tailândia:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.958
+    em: '2026-10-15'
   Reino do Bahrein:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.958
+    em: '2026-10-15'
   Reino dos Países Baixos:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.958
+    em: '2026-10-15'
   Reitor do Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso (IFMT):
     classe: nao_classificado
     via: null
@@ -13723,8 +13966,10 @@ entidades:
     classe: nao_classificado
     via: null
   Representante comercial da Rússia no Brasil:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.94
+    em: '2026-10-15'
   Representante da CONAQ:
     classe: nao_classificado
     via: null
@@ -13738,8 +13983,10 @@ entidades:
     classe: nao_classificado
     via: null
   Representação de Sergipe em Brasília:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.932
+    em: '2026-10-15'
   Representação do Governo de Tocantins:
     classe: publico_outro
     via: marca
@@ -13753,8 +14000,10 @@ entidades:
     classe: nao_classificado
     via: null
   República Helênica:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.963
+    em: '2026-10-15'
   República Islâmica do Irã:
     classe: nao_classificado
     via: null
@@ -13762,41 +14011,61 @@ entidades:
     classe: nao_classificado
     via: null
   República Popular da China:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.958
+    em: '2026-10-15'
   República Popular do Bangladesh:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.963
+    em: '2026-10-15'
   República Portuguesa:
     classe: nao_classificado
     via: null
   República da Coreia:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.963
+    em: '2026-10-15'
   República da Eslovênia:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.96
+    em: '2026-10-15'
   República da Lituânia:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.965
+    em: '2026-10-15'
   República da Índia:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.96
+    em: '2026-10-15'
   República de Cuba:
     classe: nao_classificado
     via: null
   República de Gana:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.963
+    em: '2026-10-15'
   República de Singapura:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.963
+    em: '2026-10-15'
   República do Congo:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.958
+    em: '2026-10-15'
   República do Equador:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.96
+    em: '2026-10-15'
   República do Paraguai:
     classe: nao_classificado
     via: null
@@ -13834,8 +14103,10 @@ entidades:
     classe: nao_classificado
     via: null
   Rússia:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.953
+    em: '2026-10-15'
   S B CONSTRUCOES LTDA.:
     classe: empresa
     via: marca
@@ -13855,8 +14126,10 @@ entidades:
     classe: advocacia
     via: marca
   SADA (PI):
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.867
+    em: '2026-10-15'
   SADJ-II/SEPAC/CC/PR - Casa Civil da Presidência da República:
     classe: nao_classificado
     via: null
@@ -13922,15 +14195,19 @@ entidades:
     classe: empresa
     via: marca
   SASC (PI):
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.91
+    em: '2026-10-15'
   SASE/MEC - Ministério da Educação.:
     classe: orgao_federal
     via: contido no nome
     'no': br-ministerio-da-educacao
   SATELIOT:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.835
+    em: '2026-10-15'
   SBPC:
     classe: nao_classificado
     via: null
@@ -13956,11 +14233,15 @@ entidades:
     classe: empresa
     via: marca
   SEAGRI - BA:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.936
+    em: '2026-10-15'
   SEAGRO:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.86
+    em: '2026-10-15'
   SEARA ALIMENTOS LTDA:
     classe: empresa
     via: marca
@@ -14436,8 +14717,10 @@ entidades:
     classe: setorial
     via: marca
   SINDICATO NACIONAL DA INDUSTRIA DE PRODUTOS PARA DEFESA VEGETAL - SINDIVEG:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.899
+    em: '2026-10-15'
   SINDICATO NACIONAL DAS EMPRESAS DE NAVEGACAO MARITIMA:
     classe: setorial
     via: marca
@@ -14510,8 +14793,10 @@ entidades:
     classe: nao_classificado
     via: null
   SINTRAUTO- SIND TRANS A DE A E CONG DO E DE MG E MICRO-EMPRESAS T DE AUTOMOVEIS:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.893
+    em: '2026-10-15'
   SINTTROMAR:
     classe: nao_classificado
     via: null
@@ -14558,8 +14843,10 @@ entidades:
     classe: nao_classificado
     via: null
   SOCIEDADE REGIONAL DE ENSINO E SAUDE LTDA:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.893
+    em: '2026-10-15'
   SOCIEDADE RURAL BRASILEIRA:
     classe: nao_classificado
     via: null
@@ -14585,8 +14872,10 @@ entidades:
     classe: nao_classificado
     via: null
   SOUTH AFRICAN AIRWAYS STATE OWNED COMPANY (SOC) LIMITED:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.947
+    em: '2026-10-15'
   SOUZA CRUZ LTDA:
     classe: empresa
     via: marca
@@ -14841,8 +15130,10 @@ entidades:
     classe: publico_outro
     via: marca
   Secretaria Especial de Planejamento, Orçamento e Inovação do Estado de Sergipe:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.947
+    em: '2026-10-15'
   Secretaria Especial do PAC da Casa Civil da Presidência da República - SEPAC/CC/PR:
     classe: nao_classificado
     via: null
@@ -14855,8 +15146,10 @@ entidades:
     via: contido no nome
     'no': br-secretaria-especial-para-assuntos-juridicos
   Secretaria Estadual da Agricultura Familiar (PI):
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.958
+    em: '2026-10-15'
   Secretaria Executiva do CGFGTS:
     classe: publico_outro
     via: marca
@@ -14910,8 +15203,10 @@ entidades:
     classe: nao_classificado
     via: null
   Secretaria Municipal de Saúde de Ibitiara/BA:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.963
+    em: '2026-10-15'
   Secretaria Municipal de Saúde de Londrina:
     classe: nao_classificado
     via: null
@@ -14984,8 +15279,10 @@ entidades:
     via: contido no nome
     'no': br-ministerio-dos-direitos-humanos-e-da-cidadania
   Secretaria da Educação do Estado do Rio Grande do Sul – SEDUC/RS:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.963
+    em: '2026-10-15'
   Secretaria da Fazenda do Estado da Bahia:
     classe: nao_classificado
     via: null
@@ -15059,8 +15356,10 @@ entidades:
     classe: publico_outro
     via: marca
   Secretaria de Agricultura de Esplanada/BA:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.943
+    em: '2026-10-15'
   Secretaria de Articulação e Monitoramento - SAM/CC/PR:
     classe: orgao_federal
     via: contido no nome
@@ -15113,8 +15412,10 @@ entidades:
     classe: nao_classificado
     via: null
   Secretaria de Estado da Agricultura Familiar do Piauí:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.955
+    em: '2026-10-15'
   Secretaria de Estado da Agricultura, Desenvolvimento Agrário e da Pesca:
     classe: orgao_federal
     via: contido no nome
@@ -15136,8 +15437,10 @@ entidades:
     classe: nao_classificado
     via: null
   Secretaria de Estado da Fazenda de Sergipe (SEFAZ-SE):
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.963
+    em: '2026-10-15'
   Secretaria de Estado da Fazenda do Acre:
     classe: nao_classificado
     via: null
@@ -15316,8 +15619,10 @@ entidades:
     classe: nao_classificado
     via: null
   Secretaria-Geral da Marinha (SGM):
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.955
+    em: '2026-10-15'
   Secretaria-Geral da Presidência da República:
     classe: orgao_federal
     via: nome
@@ -15442,8 +15747,10 @@ entidades:
     via: sigla
     'no': br-serpro
   Serviço Florestal Brasileiro – SFB:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.936
+    em: '2026-10-15'
   Serviço Geológico do Brasil – CPRM:
     classe: orgao_federal
     via: sigla
@@ -15492,8 +15799,10 @@ entidades:
     classe: publico_outro
     via: marca
   Sistema das Nações Unidas no Brasil:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.928
+    em: '2026-10-15'
   Sociedade Anónima Espanhola de Ibertest (SAE IBERTEST):
     classe: nao_classificado
     via: null
@@ -15579,8 +15888,10 @@ entidades:
     via: nome
     'no': br-sudene
   Superintendência do Porto de Itajaí:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.887
+    em: '2026-10-15'
   Superior Tribunal de Justiça:
     classe: orgao_federal
     via: nome
@@ -15590,8 +15901,10 @@ entidades:
     via: nome
     'no': br-supremo-tribunal-federal
   São Tomé e Príncipe:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.947
+    em: '2026-10-15'
   TAKEDA PHARMA LTDA.:
     classe: empresa
     via: marca
@@ -15882,8 +16195,10 @@ entidades:
     classe: nao_classificado
     via: null
   Timor-Leste:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.953
+    em: '2026-10-15'
   Titular da 2ª Vara Cível e JEF Adjunto de Sete Lagoas:
     classe: nao_classificado
     via: null
@@ -15971,8 +16286,10 @@ entidades:
     classe: publico_outro
     via: marca
   Tribunal de Justiça da Bahia:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.953
+    em: '2026-10-15'
   Tribunal de Justiça de São Paulo:
     classe: nao_classificado
     via: null
@@ -16163,8 +16480,10 @@ entidades:
     via: sigla
     'no': br-universidade-federal-do-rio-grande-do-sul
   UFRGS/RS - UNIVERSIDADE FED. DO RIO GRANDE DO SUL:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.955
+    em: '2026-10-15'
   UFRJ - UNIVERSIDADE FEDERAL DO RIO DE JANEIRO:
     classe: orgao_federal
     via: sigla
@@ -16242,14 +16561,18 @@ entidades:
     classe: nao_classificado
     via: null
   UNESCO:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.943
+    em: '2026-10-15'
   UNESCO - Organização das Nações Unidas para a Educação, a Ciência e a Cultura:
     classe: nao_classificado
     via: null
   UNESCO no Brasil:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.924
+    em: '2026-10-15'
   UNESP:
     classe: nao_classificado
     via: null
@@ -16263,8 +16586,10 @@ entidades:
     classe: publico_outro
     via: marca
   UNIAO DAS COOPERATIVAS DA AGRICULTURA FAMILIAR E DE ECONOMIA SOLIDARIA DE PERNAMBUCO - UNICAFES/PE:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.867
+    em: '2026-10-15'
   UNIAO DAS COOPERATIVAS E ASSOCIACOES DE REFORMA AGRARIA DO BRASIL:
     classe: publico_outro
     via: marca
@@ -16302,8 +16627,10 @@ entidades:
     classe: nao_classificado
     via: null
   UNICAMP:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.932
+    em: '2026-10-15'
   UNICOPAS:
     classe: nao_classificado
     via: null
@@ -16751,8 +17078,10 @@ entidades:
     classe: nao_classificado
     via: null
   Uruguai:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.95
+    em: '2026-10-15'
   V.TAL - REDE NEUTRA DE TELECOMUNICACOES S.A.:
     classe: empresa
     via: marca
@@ -16794,8 +17123,10 @@ entidades:
     classe: empresa
     via: marca
   VENTURUS:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.827
+    em: '2026-10-15'
   VERDE BRASIL INDUSTRIA DE PRODUTOS PLASTICOS LTDA:
     classe: empresa
     via: marca
@@ -16919,8 +17250,10 @@ entidades:
     classe: nao_classificado
     via: null
   Vibra Energia:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.94
+    em: '2026-10-15'
   Vice-Presidente do Parlamento Amazônico:
     classe: orgao_federal
     via: sigla
@@ -17089,8 +17422,10 @@ entidades:
     classe: nao_classificado
     via: null
   seleção feminina de futebol do Afeganistão.:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.95
+    em: '2026-10-15'
   tce:
     classe: nao_classificado
     via: null
@@ -17099,8 +17434,10 @@ entidades:
     via: nome
     'no': br-universidade-federal-do-estado-do-rio-de-janeiro
   África do Sul:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.955
+    em: '2026-10-15'
   Índia:
     classe: nao_classificado
     via: null

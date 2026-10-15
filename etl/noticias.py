@@ -139,8 +139,11 @@ def porteiro(a):
     return True
 
 # --- porteiro de reserva, para quando o Eikos não responder --------------------------------------
-# Medido em 15/10/2026 contra os 2.211 vereditos que o Eikos já havia dado: 96,2% de precisão e 68,1%
-# de cobertura — a mesma precisão do regex que o Eikos substituiu, com o trabalho já feito. O sinal é
+# Medido duas vezes. Primeiro contra os 2.211 vereditos que o Eikos já havia dado, o que sugeria 96,2%
+# de precisão e 68,1% de cobertura. Depois, quando o Eikos voltou e reviu 399 artigos que a regra havia
+# julgado, o número verdadeiro apareceu: 91,6% de precisão e 64,2% de cobertura — a regra deixou passar
+# 18 que o Eikos barrou e perdeu 110 notícias federais. Pior do que a estimativa, e ainda assim muito
+# melhor do que deixar tudo entrar. Fica claro para que serve: tapar o buraco, não substituir. O sinal é
 # a ligação que o próprio Atlas faz: artigo que cita órgão ou pessoa do grafo quase sempre é do
 # governo federal. O que estraga é eleição estadual, que cita senador disputando governo de estado —
 # e em outubro de ano eleitoral isso inunda os feeds. Daí o segundo teste, negativo.

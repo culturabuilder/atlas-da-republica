@@ -53,7 +53,11 @@ def _do_ambiente_ou_env(nome, padrao=None):
 
 # O experimento original (http://154.59.156.40:33532) saiu do ar em outubro de 2026; o padrão passa a
 # ser o endereço novo, com TLS. EIKOS_URL continua mandando, para apontar para outro sem mexer no código.
-URL = (_do_ambiente_ou_env("EIKOS_URL", "https://api.openinterp.org") or "").rstrip("/")
+URL = (_do_ambiente_ou_env("EIKOS_URL", "https://openinterp.org/api/v1") or "").rstrip("/")
+# A rota é /v1/systemone sobre uma base que já termina em /api/v1 — o "/v1" dobrado é do serviço, não
+# engano: está assim no openapi.json (servers: .../api/v1, paths: /v1/systemone). Qualquer outra
+# combinação devolve 404, e com chave válida o 404 parece credencial recusada.
+ROTA = os.environ.get("EIKOS_ROTA", "/v1/systemone")
 CORTE_CONFIANCA = float(os.environ.get("EIKOS_CORTE", "0.80"))
 LIMITE_POR_MINUTO = 120
 _ultimo = [0.0]
@@ -84,7 +88,7 @@ def avaliar(state, questions, tentativas=3, timeout=60):
     # O User-Agent de navegador não é cosmético: o endereço novo fica atrás de Cloudflare, que recusa
     # cliente sem assinatura de navegador com "error code: 1010" — e 1010 vem como 403, o que faz
     # parecer credencial inválida quando é bloqueio de borda.
-    req = urllib.request.Request(f"{URL}/v1/evaluate", data=corpo, method="POST",
+    req = urllib.request.Request(f"{URL}{ROTA}", data=corpo, method="POST",
                                  headers={"Authorization": f"Bearer {chave}", "Content-Type": "application/json",
                                           "Accept": "application/json",
                                           "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -116,13 +120,35 @@ def avaliar(state, questions, tentativas=3, timeout=60):
     return None
 
 
+def confianca(resposta):
+    """A confiança calibrada, quando o serviço a oferece.
+
+    O Ekbasis devolve dois números: `confidence` cru e `calibrated.confidence`, corrigido por
+    temperatura. No teste de 15/10/2026 o cru deu 0,94 e o calibrado 0,85 para a mesma resposta —
+    usar o cru inflaria a certeza e deixaria o corte de 0,80 mais permissivo do que o que foi medido.
+    """
+    if not isinstance(resposta, dict): return 0.0
+    cal = resposta.get("calibrated")
+    if isinstance(cal, dict) and cal.get("confidence") is not None:
+        return float(cal["confidence"])
+    return float(resposta.get("confidence") or 0)
+
+
+def probabilidade(resposta):
+    if not isinstance(resposta, dict): return 0.0
+    cal = resposta.get("calibrated")
+    if isinstance(cal, dict) and cal.get("probability") is not None:
+        return float(cal["probability"])
+    return float(resposta.get("probability") or 0)
+
+
 def sim_nao(state, pergunta, quando_sim, quando_nao, chave="r"):
-    """Atalho para uma pergunta binária. Devolve (valor, confiança) ou (None, 0)."""
+    """Atalho para uma pergunta binária. Devolve (valor, confiança calibrada) ou (None, 0)."""
     a = avaliar(state, {chave: {"type": "boolean", "instructions": pergunta,
                                 "criteria": {"true": quando_sim, "false": quando_nao}}})
     if not a or chave not in a: return None, 0.0
     r = a[chave]
-    return bool(r.get("value")), float(r.get("confidence") or 0)
+    return bool(r.get("value")), confianca(r)
 
 
 def decide_sozinho(confianca):
