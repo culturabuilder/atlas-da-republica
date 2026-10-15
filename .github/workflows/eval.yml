@@ -1,0 +1,62 @@
+name: Eval a cada 3 dias
+# O eval só rodava quando alguém o disparava à mão, e por isso Programas e Transferências ficaram
+# quatro dias sendo cortados por tempo sem ninguém ver. Aqui ele roda sozinho, independente de
+# qualquer sessão: a saída fica no log e como artefato, e a rodada falha quando há o que corrigir.
+#
+# "*/3" no dia do mês dá dias 1, 4, 7 … 28, 31 — ou seja, a virada de mês encurta um intervalo.
+# É o preço de usar cron de 5 campos; o que importa é não passar de três dias sem olhar.
+on:
+  schedule: [{ cron: "23 11 */3 * *" }]   # 08:23 em Brasília
+  workflow_dispatch:
+permissions: { contents: read }
+concurrency: { group: eval, cancel-in-progress: false }
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m venv .venv && .venv/bin/pip install -q -r requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      # as seis checagens de interface pegaram defeitos que nenhuma outra pegaria (texto estourando o
+      # painel por dentro, três páginas rolando de lado no celular), então valem a instalação
+      - run: npm install --no-save playwright@1 && npx playwright install --with-deps chromium
+      - name: Rodar o eval
+        id: eval
+        env:
+          PORTAL_TRANSPARENCIA_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_KEY }}
+          EIKOS_KEY: ${{ secrets.EIKOS_KEY }}
+        run: |
+          set +e
+          scripts/eval.sh 2>&1 | tee eval.txt
+          codigo=${PIPESTATUS[0]}
+          echo "codigo=$codigo" >> "$GITHUB_OUTPUT"
+          # o resumo da aba de Actions: o que pede correção, para não ter de abrir o log
+          {
+            echo "## Eval de $(date -u +'%F %H:%M UTC')"
+            echo
+            if [ "$codigo" -eq 0 ]; then echo "Nada a corrigir."; else
+              echo "### O que pede correção"; echo '```'
+              grep -E "^   ERRO" eval.txt || true
+              echo '```'
+            fi
+            echo "### Avisos"; echo '```'
+            grep -E "^   !" eval.txt | head -20 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: eval
+          path: eval.txt
+          retention-days: 30
+      - name: Falhar quando há o que corrigir
+        if: steps.eval.outputs.codigo != '0'
+        run: |
+          echo "O eval encontrou itens que pedem correção; veja o resumo da rodada."
+          exit 1
