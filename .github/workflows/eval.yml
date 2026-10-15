@@ -8,7 +8,10 @@ name: Eval a cada 3 dias
 on:
   schedule: [{ cron: "23 11 */3 * *" }]   # 08:23 em Brasília
   workflow_dispatch:
-permissions: { contents: read }
+# actions:read é para a seção "workflows" do eval, que usa o gh CLI para ver se a coleta diária e a
+# publicação terminaram bem. Sem o token ela degrada para "sem informação" — justamente o aviso que
+# deveria ter apontado os quatro dias de Programas e Transferências cortados por tempo.
+permissions: { contents: read, actions: read }
 concurrency: { group: eval, cancel-in-progress: false }
 jobs:
   eval:
@@ -31,6 +34,7 @@ jobs:
         env:
           PORTAL_TRANSPARENCIA_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_KEY }}
           EIKOS_KEY: ${{ secrets.EIKOS_KEY }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set +e
           scripts/eval.sh 2>&1 | tee eval.txt
