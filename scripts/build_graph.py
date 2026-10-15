@@ -1297,7 +1297,13 @@ _ex_path = DATA / "generated" / "_execucao.yaml"
 _ant = (yaml.safe_load(open(_ex_path, encoding="utf-8")) if _ex_path.exists() else None) or {}
 _conectores = dict((_ant.get("conectores") or {}))
 _tsv = OUT / "_execucao.tsv"
-if _tsv.exists():
+# O tsv é o registro DAQUELA execução do update.sh, que o trunca ao começar. Rodando o build sozinho
+# — o eval faz isso — ele lê o tsv que estiver no disco, e um tsv de dias atrás faz o registro afirmar
+# que conector rodou hoje sem ter rodado. Foi assim que eu commitei "Agendas: ok em 15/10/2026" num
+# conector semanal que roda no domingo. Tsv de outro dia é resíduo: ignorar.
+if _tsv.exists() and datetime.date.fromtimestamp(_tsv.stat().st_mtime) < datetime.date.today():
+    print(f"   registro: build/_execucao.tsv é de {datetime.date.fromtimestamp(_tsv.stat().st_mtime)}, não de hoje; ignorado")
+elif _tsv.exists():
     _hoje = datetime.date.today().isoformat()
     for _ln in _tsv.read_text(encoding="utf-8").splitlines():
         _pt = _ln.split("\t")
