@@ -1307,6 +1307,20 @@ if _tsv.exists():
         _r.update({"status": _st, "segundos": _sg, "rodou_em": _hoje})
         if _st == "ok": _r["ok_em"] = _hoje
         _conectores[_nm] = _r
+# Conector que não existe mais no update.sh sai do registro. Em 30/09/2026 eu testei o run() com dois
+# nomes de mentira ("Forçado", "Pulado") e eles ficaram commitados: o eval passou a acusar "15 dias sem
+# sucesso" de um conector fantasma, para sempre. Registro que guarda o que já não existe treina a
+# gente a ignorar o alarme.
+try:
+    _sh = (ROOT / "scripts" / "update.sh").read_text(encoding="utf-8")
+    _vivos = {a or b for a, b in re.findall(r'run "([^"]+)"|semanal \d+ \d+ "([^"]+)"', _sh)}
+    _vivos |= {"Build (1/2)", "Build (2/2)"}
+    _fantasmas = [k for k in _conectores if k not in _vivos]
+    for k in _fantasmas: _conectores.pop(k, None)
+    if _fantasmas: print(f"   registro: {len(_fantasmas)} conector(es) fora do update.sh removido(s): {', '.join(_fantasmas)}")
+except Exception as _e:
+    print(f"   registro: não deu para conferir os conectores vivos ({str(_e)[:50]})")
+
 _blocos = {}
 for _lbl, _fn in BLOCOS.items():
     _fp = DATA / "generated" / _fn

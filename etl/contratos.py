@@ -197,22 +197,41 @@ def main():
         sys.exit("nenhum contrato federal na janela; arquivo anterior mantido")
 
     # soma à rodada anterior, por órgão, sem duplicar contrato
+    # A contagem e a lista exibida são coisas separadas, e confundi-las travou o conector.
+    #
+    # "recentes" existe para a tela e é cortada em 40 por órgão. Eu contava os contratos a partir dela,
+    # então, quando um órgão enchia, contrato novo empurrava contrato velho para fora e o TOTAL CAÍA —
+    # e a guarda "recusa gravar se o total encolher", que existe para proteger de perda, passou a
+    # bloquear a gravação todo dia. Em 15/10/2026 o conector abortou com "sairiam 6422 contra 6791":
+    # 369 contratos novos perdidos por causa da minha contagem, não por falha de fonte.
+    #
+    # Agora o total é um contador que só cresce, somando o que é inédito em cada janela. Como as
+    # janelas do PNCP são por data e não se repetem, um id que sai da lista exibida não volta a ser
+    # contado. O valor acumulado segue a mesma regra.
     ant_org = (anterior.get("orgaos") or {})
     saida_org = {}
     for nid in set(list(por_no)) | set(ant_org):
         novo = por_no.get(nid)
         velho = ant_org.get(nid) or {}
-        rec = {x["id"]: x for x in (velho.get("recentes") or [])}
+        antes_rec = {x["id"]: x for x in (velho.get("recentes") or [])}
+        rec = dict(antes_rec)
+        ineditos, valor_inedito = 0, 0.0
         if novo:
-            for x in novo["recentes"]: rec[x["id"]] = x
+            for x in novo["recentes"]:
+                if x["id"] not in antes_rec:
+                    ineditos += 1; valor_inedito += x.get("valor") or 0
+                rec[x["id"]] = x
         recentes = sorted(rec.values(), key=lambda x: x.get("assinado") or "", reverse=True)[:40]
         forn = collections.Counter({f["fornecedor"]: 0 for f in recentes if f.get("fornecedor")})
         valf = collections.Counter()
         for x in rec.values():
             if x.get("fornecedor"):
                 forn[x["fornecedor"]] += 1; valf[x["fornecedor"]] += x.get("valor") or 0
+        # a primeira rodada depois desta mudança parte do que o arquivo já tinha, para não zerar
+        base_n = velho.get("contratos") or len(antes_rec)
+        base_v = velho.get("valor") or round(sum((x.get("valor") or 0) for x in antes_rec.values()), 2)
         saida_org[nid] = {"nome": (N.get(nid) or {}).get("name"),
-                          "contratos": len(rec), "valor": round(sum((x.get("valor") or 0) for x in rec.values()), 2),
+                          "contratos": base_n + ineditos, "valor": round(base_v + valor_inedito, 2),
                           "fornecedores_top": [{"nome": f, "n": forn[f], "valor": round(valf[f], 2)} for f, _ in valf.most_common(8)],
                           "recentes": recentes}
     saida_org = dict(sorted(saida_org.items(), key=lambda kv: -(kv[1]["valor"] or 0)))

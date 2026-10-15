@@ -142,10 +142,10 @@ conectores:
     rodou_em: '2026-10-15'
     ok_em: '2026-10-15'
   Agendas:
-    status: fora do dia semanal
+    status: ok
     segundos: 0
     rodou_em: '2026-10-15'
-    ok_em: '2026-10-11'
+    ok_em: '2026-10-15'
   Agenda Planalto:
     status: ok
     segundos: 8
@@ -201,15 +201,6 @@ conectores:
     segundos: 71
     rodou_em: '2026-10-15'
     ok_em: '2026-10-15'
-  Forçado:
-    status: ok
-    segundos: 0
-    rodou_em: '2026-09-30'
-    ok_em: '2026-09-30'
-  Pulado:
-    status: fora do dia semanal
-    segundos: 0
-    rodou_em: '2026-09-30'
   Quem recebeu:
     status: ok
     segundos: 19
@@ -340,7 +331,7 @@ blocos:
   Contratos (PNCP):
     arquivo: contratos.yaml
     existe: true
-    lido_em: '2026-10-14'
+    lido_em: '2026-10-15'
   Pessoas expostas politicamente:
     arquivo: pep.yaml
     existe: true

@@ -24,6 +24,15 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: python -m venv .venv && .venv/bin/pip install -q -r requirements.txt
+      # A comparação com a execução anterior (queda de 5% em contagem grande) vive em
+      # build/_eval_base.json, e build/ não é versionado: sem cache, toda rodada no runner é "primeira
+      # execução" e a detecção de queda nunca acontece — justamente a que avisaria se um conector
+      # apagasse metade do grafo.
+      - uses: actions/cache@v4
+        with:
+          path: build/_eval_base.json
+          key: eval-base-${{ github.run_id }}
+          restore-keys: eval-base-
       - name: Rodar o eval sem as checagens de navegador
         id: eval
         env:
