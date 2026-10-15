@@ -149,6 +149,9 @@ run "Orçamento" $PY etl/orcamento.py
 LIM=2400 run "Programas" $PY etl/programas.py
 LIM=2400 run "Transferências" $PY etl/transferencias.py
 INICIO=$(date +%s)  # build e site ficam fora do orçamento: sem eles o job não publica nada
+# O que mudou no Atlas, do histórico do git. No runner o checkout é raso e não há histórico: o
+# script mantém o arquivo que já veio no commit, sem apagar nada.
+run "Novidades" $PY scripts/novidades.py
 LIM=1800 run "Build (2/2)" $PY scripts/build_graph.py
 LIM=1800 run "Site" $PY scripts/build_site.py --base "${SITE_BASE:-https://atlasdarepublica.org}" --prefix "${SITE_PREFIX:-}" --cname "${SITE_CNAME:-}"
 awk -F'\t' '{printf "   %-22s %-16s %ss\n", $1, $2, $3}' "$EXEC_LOG" | sort -t' ' -k3 -rn | head -8

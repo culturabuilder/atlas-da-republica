@@ -495,6 +495,10 @@ if news_path.exists():
     stats["power_links_total"] = sum(1 for e in edges if e["type"] == "nomeia")
     stats["noticias_com_porteiro"] = _com_porteiro
     stats["noticias_barradas"] = sum(1 for a in arts if a.get("gov") is False)
+    # veredito provisório dado pela regra, porque o classificador não respondeu: tem de estar dito,
+    # senão o leitor acha que a triagem foi a boa. O Eikos refaz esses quando voltar.
+    stats["noticias_porteiro"] = {"eikos": sum(1 for a in arts if a.get("gov_fonte") == "eikos"),
+                                  "regra": sum(1 for a in arts if a.get("gov_fonte") == "regra")}
     stats["articles_90d"] = sum(1 for a in arts if (a.get("date") or "") >= cutoff90); stats["news_sources"] = len(store.get("feeds") or [])
 stats["sabatinas"] = len(sabatinas)
 # mudanças: sabatinas deliberadas + posses recentes (started_at) como eventos
@@ -755,6 +759,12 @@ _vg = _load_yaml("viagens.yaml"); _vg_people = (_vg.get("people") or {}) if _vg 
 _ct = _load_yaml("cartao.yaml"); _ct_people = {}  # o extrato do CPGF identifica o portador (servidor de execução), não o ocupante: sem bloco por pessoa
 viagens = {k: _vg.get(k) for k in ("generated_at", "ano", "fonte", "orgaos", "total", "viagens_total", "nota")} if _vg else None
 cartao = {k: _ct.get(k) for k in ("generated_at", "ano", "meses", "fonte", "orgaos", "total", "nota", "orgaos_casados")} if _ct else None
+_nv = _load_yaml("novidades.yaml")
+# Só as três últimas e a contagem: a lista inteira é a página /novidades/.
+novidades = None
+if _nv:
+    novidades = {"total": _nv.get("total"), "generated_at": _nv.get("generated_at"),
+                 "itens": [{k: x.get(k) for k in ("data", "titulo", "texto", "areas")} for x in (_nv.get("novidades") or [])[:3]]}
 _fb = _load_yaml("falabr.yaml")
 # Pedidos de acesso à informação por órgão: o agregado no núcleo, o detalhe no nó.
 falabr = None
@@ -1278,7 +1288,7 @@ BLOCOS = {  # rótulo no site -> arquivo que o alimenta
     "Temas": "temas.yaml", "Arrecadação": "arrecadacao.yaml", "Atividade parlamentar": "atividade.yaml", "Proposições": "proposicoes.yaml",
     "Gabinetes": "gabinetes.yaml", "Gabinetes do Senado": "gabinetes-senado.yaml", "Emendas": "emendas.yaml", "Renúncias fiscais": "renuncias.yaml",
     "Acima do teto": "teto.yaml", "Remuneração": "remuneracao.yaml", "Viagens": "viagens.yaml", "Cartão corporativo": "cartao.yaml",
-    "Quem o governo recebeu": "recebidos.yaml", "Punições da CGU": "sancoes.yaml", "Contratos (PNCP)": "contratos.yaml", "Pessoas expostas politicamente": "pep.yaml", "Pedidos de acesso à informação": "falabr.yaml",
+    "Quem o governo recebeu": "recebidos.yaml", "Punições da CGU": "sancoes.yaml", "Contratos (PNCP)": "contratos.yaml", "Pessoas expostas politicamente": "pep.yaml", "Pedidos de acesso à informação": "falabr.yaml", "O que mudou no Atlas": "novidades.yaml",
     "Orçamento": "orcamento.yaml", "Agenda pública": "agendas.yaml", "Agenda do Planalto": "agenda-planalto.yaml",
     "Patrimônio (TSE)": "patrimonio.yaml", "Doadores (TSE)": "doadores-2022.yaml", "Candidaturas (TSE)": "candidaturas.yaml",
     "Votos por município (TSE)": "votos-2022.yaml", "Resumos em linguagem simples": "resumos.yaml",
@@ -1350,7 +1360,7 @@ Atualizado em {stats['generated_at']}.
     _readme.write_text(_t, encoding="utf-8")
     print("   README atualizado com os números deste build")
 
-graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao, "falabr": falabr, "contratos": contratos, "sancoes": sancoes, "recebidos": recebidos, "transferencias": transferencias}
+graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao, "novidades": novidades, "falabr": falabr, "contratos": contratos, "sancoes": sancoes, "recebidos": recebidos, "transferencias": transferencias}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
 HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "composicao", "subsidio", "custo", "programas", "transferencias", "budget", "dou", "candidaturas", "sancoes", "contratos", "falabr", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
@@ -1370,7 +1380,7 @@ core_people = {pid: {"id": r["id"], "name": r["name"], "party": r.get("party"), 
 _pp = OUT / "people"; _pp.mkdir(exist_ok=True)
 for pid, r in people_index.items():
     json.dump({"id": pid, "positions": r["positions"], "source": r.get("source"), "activity": r.get("activity"), "emendas": r.get("emendas"), "candidaturas": r.get("candidaturas"), "gabinete": r.get("gabinete"), "patrimonio": r.get("patrimonio"), "remuneracao": r.get("remuneracao"), "doadores": r.get("doadores"), "sinais": r.get("sinais"), "viagens": r.get("viagens"), "cartao": r.get("cartao"), "proposicoes": r.get("proposicoes"), "agenda": r.get("agenda")}, open(_pp / (pid + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
-core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao, "falabr": falabr, "contratos": contratos, "sancoes": sancoes, "recebidos": recebidos, "transferencias": transferencias, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
+core = {"layout": layout, "nodes": core_nodes, "edges": core_edges, "stats": stats, "news": core_news, "power": power, "power_links": graph.get("power_links", []), "changes": core_changes, "people": core_people, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao, "novidades": novidades, "falabr": falabr, "contratos": contratos, "sancoes": sancoes, "recebidos": recebidos, "transferencias": transferencias, "detail_base": "/nodes/", "people_base": "/people/", "img_base": "/img/"}
 cjs = json.dumps(core, ensure_ascii=False, separators=(",", ":"))
 (OUT / "graph.core.js").write_text("window.ATLAS=" + cjs + ";", encoding="utf-8")
 print(f"   build/graph.core.js = {len(cjs)//1024} KB + {len(core_nodes)} arquivos de detalhe")

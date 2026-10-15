@@ -37,6 +37,7 @@ PRAZO = {
     "portal-cce.yaml": 30, "sabatinas.yaml": 20, "subsidios.yaml": 30,
     "teto.yaml": 40, "remuneracao.yaml": 40,   # folha mensal
     "sancoes.yaml": 4, "recebidos.yaml": 4, "contratos.yaml": 4, "pep.yaml": 9, "falabr.yaml": 9,
+    "novidades.yaml": 45,   # só muda quando há mudança no projeto; semana sem mexer é normal
 }
 PADRAO = 3
 

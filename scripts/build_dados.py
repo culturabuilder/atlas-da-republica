@@ -137,7 +137,7 @@ def index_html(files, out, prefix, base, today):
 body{{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55}}
 a{{color:var(--accent)}}
 .bar{{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:14px;padding:8px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-2)}}
-.bar .brand{{display:flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap}}
+.bar .brand{{display:flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}}
 .bar .brand .mark{{width:16px;height:16px;border-radius:50%;background:var(--povo);box-shadow:0 0 0 2px var(--card),0 0 0 3px var(--povo)}}
 .bar .crumb{{color:var(--ink-3);font-weight:500}}
 .bar .sp{{flex:1}}

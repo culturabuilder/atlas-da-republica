@@ -135,7 +135,35 @@ def porteiro(a):
     a["gov"] = bool(v.get("value"))
     a["gov_p"] = round(float(v.get("probability") or 0), 3)
     a["gov_conf"] = round(float(v.get("confidence") or 0), 3)
+    a["gov_fonte"] = "eikos"
     return True
+
+# --- porteiro de reserva, para quando o Eikos não responder --------------------------------------
+# Medido em 15/10/2026 contra os 2.211 vereditos que o Eikos já havia dado: 96,2% de precisão e 68,1%
+# de cobertura — a mesma precisão do regex que o Eikos substituiu, com o trabalho já feito. O sinal é
+# a ligação que o próprio Atlas faz: artigo que cita órgão ou pessoa do grafo quase sempre é do
+# governo federal. O que estraga é eleição estadual, que cita senador disputando governo de estado —
+# e em outubro de ano eleitoral isso inunda os feeds. Daí o segundo teste, negativo.
+#
+# Por que isso importa: sem veredito o artigo ENTRA no site (o build só barra gov=False). Com o Eikos
+# fora desde 1º/10/2026, 1.331 artigos entraram sem porteiro nenhum, e 479 deles não são do governo
+# federal. Falhar deixando tudo passar é o pior padrão para um projeto que vive de precisão.
+ESTADUAL = re.compile(
+    r"\bgovernador|\bgoverno d[eo]\s+[a-z]|\bassembleia legislativa|\bdeputad[oa] estadual|"
+    r"\bprefeit|\bcamara municipal|\bvereador|\buniversidade estadual|\bno estado d|"
+    r"\b(?:no|em|do) (?:ac|al|ap|am|ba|ce|df|es|go|ma|mt|ms|mg|pa|pb|pr|pe|pi|rj|rn|rs|ro|rr|sc|sp|se|to)\b")
+
+def _sem_acento(t):
+    return unicodedata.normalize("NFKD", str(t or "")).encode("ascii", "ignore").decode().lower()
+
+def porteiro_reserva(a):
+    """Veredito provisório pela regra. Marcado como 'regra' para o Eikos refazer quando voltar."""
+    ligado = bool(a.get("entities")) or bool(a.get("people"))
+    a["gov"] = bool(ligado and not ESTADUAL.search(_sem_acento(a.get("title"))))
+    a["gov_fonte"] = "regra"
+    a.pop("gov_p", None); a.pop("gov_conf", None)
+    return True
+
 
 def carga_inicial(artigos):
     """Aproveita a passada completa já paga, se o arquivo existir. Devolve quantos vereditos entraram."""
@@ -176,7 +204,13 @@ def main():
     # porteiro: só os artigos sem veredito. O normal cobre os novos; --porteiro-acervo cobre o resto.
     acervo = "--porteiro-acervo" in sys.argv
     do_seed = carga_inicial(store["articles"]) if acervo else 0
-    alvos = [k for k in (store["articles"] if acervo else novos) if k in store["articles"] and "gov" not in store["articles"][k]]
+    # sem veredito, ou com veredito provisório da regra — o Eikos tem prioridade e refaz o provisório
+    def pendente(x): return "gov" not in x or x.get("gov_fonte") == "regra"
+    alvos = [k for k in (store["articles"] if acervo else novos) if k in store["articles"] and pendente(store["articles"][k])]
+    if not acervo:
+        # o provisório acumulado de rodadas anteriores também volta para a fila, aos poucos
+        extras = [k for k, x in store["articles"].items() if x.get("gov_fonte") == "regra" and k not in set(alvos)]
+        alvos += extras[:400]
     feitos = falhas = 0
     if alvos and eikos.disponivel():
         for i, aid in enumerate(alvos, 1):
@@ -185,8 +219,16 @@ def main():
                 falhas += 1
                 if falhas >= 5 and feitos == 0: print("porteiro: 5 falhas seguidas, desistindo desta execução", file=sys.stderr); break
             if acervo and i % 50 == 0: print(f"  porteiro {i}/{len(alvos)}…", file=sys.stderr)
-    elif alvos:
-        print("porteiro: sem EIKOS_KEY, artigos seguem sem veredito de relevância", file=sys.stderr)
+    # veredito anterior à existência do campo de origem: quem tem gov_conf veio do Eikos
+    for x in store["articles"].values():
+        if "gov" in x and "gov_fonte" not in x:
+            x["gov_fonte"] = "eikos" if x.get("gov_conf") is not None else "regra"
+    # o que o Eikos não julgou fica com o veredito provisório da regra, em vez de entrar sem porteiro
+    reserva = 0
+    for aid, x in store["articles"].items():
+        if "gov" not in x:
+            porteiro_reserva(x); reserva += 1
+    if reserva: print(f"porteiro de reserva (regra): {reserva} artigos, provisórios até o Eikos voltar", file=sys.stderr)
 
     store["updated_at"] = datetime.date.today().isoformat(); store["feeds"] = [p for p, _ in FEEDS]
     json.dump(store, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
@@ -195,7 +237,9 @@ def main():
     print(f"novos={new} total={len(store['articles'])} com entidade/pessoa={linked}")
     entraram = sum(1 for a in arts if a.get("gov") is True)
     barrados = sum(1 for a in arts if a.get("gov") is False)
-    baixa = sum(1 for a in arts if a.get("gov") is not None and a.get("gov_conf", 0) < eikos.CORTE_CONFIANCA)
+    baixa = sum(1 for a in arts if a.get("gov_fonte") == "eikos" and a.get("gov_conf", 0) < eikos.CORTE_CONFIANCA)
+    por_regra = sum(1 for a in arts if a.get("gov_fonte") == "regra")
+    if por_regra: print(f"vereditos provisórios pela regra: {por_regra}", file=sys.stderr)
     g = eikos.gasto()
     print(f"porteiro: entraram={entraram} barrados={barrados} sem veredito={len(store['articles']) - entraram - barrados}"
           f" · classificados agora={feitos}" + (f" (+{do_seed} da carga inicial)" if do_seed else "")

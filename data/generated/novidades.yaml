@@ -1,0 +1,1497 @@
+# GERADO por scripts/novidades.py. Não edite à mão.
+generated_at: '2026-10-15'
+nota: 'O que mudou no Atlas, tirado do histórico do projeto. Os commits automáticos de dado ficam fora: o que eles mudam aparece no painel de
+  frescor da metodologia.'
+total: 151
+por_mes:
+  2026-10: 19
+  2026-09: 132
+novidades:
+- id: 198c024de
+  data: '2026-10-15'
+  ordem: 1792067883
+  titulo: Área "O que mudou no Atlas", e o porteiro de notícias volta a existir
+  texto: 'Duas coisas nesta rodada: a área de novidades que faltava, e o conserto de uma degradação silenciosa que o Eikos fora do ar tinha causado
+    no site.'
+  areas:
+  - tela
+  - coleta
+  arquivos: 18
+- id: b1dcfbd9e
+  data: '2026-10-14'
+  ordem: 1791986015
+  titulo: Quando o cidadão pergunta, o governo responde? A taxa de negativa por órgão
+  texto: 'O Atlas mostrava o que cada órgão faz, quanto gasta e quem o chefia. Faltava uma coisa que o cidadão sente na pele: se ele perguntar
+    algo a este órgão, vem resposta?'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 6
+- id: 9b1f20fd6
+  data: '2026-10-14'
+  ordem: 1791985484
+  titulo: 'O índice de CNPJ sai do repositório: é insumo da rodada, não histórico'
+  texto: O índice por CNPJ das sanções custa 1,6 MB e serve só para etl/contratos.py perguntar se um fornecedor estava impedido no dia da assinatura.
+    Os dois conectores rodam na mesma passada do update.sh, então o índice não precisa ser versionado — e 1,6 MB reescritos no git todo dia não
+    se pagam. Passou para build/cache-sancoes/, que não vai para o git; sancoes.yaml voltou de 3,9 para 2,1 MB.
+  areas:
+  - coleta
+  arquivos: 4
+- id: 975bdaa21
+  data: '2026-10-14'
+  ordem: 1791984780
+  titulo: Empresa impedida de contratar que assinou contrato federal, com os três filtros
+  texto: 'O cruzamento que justifica o projeto: os contratos federais do PNCP contra as empresas impedidas de contratar nos cadastros da CGU.
+    Oito contratos, numa janela de dez dias, foram assinados por empresa que tinha impedimento vigente naquele dia.'
+  areas:
+  - tela
+  - coleta
+  arquivos: 6
+- id: afeb2e725
+  data: '2026-10-14'
+  ordem: 1791983912
+  titulo: A data de posse vem do cadastro de PEPs, e o Atlas descobre quem já saiu
+  texto: 'O conector etl/posses.py caça a data de posse no texto do Diário Oficial: de 1 a 6 consultas por pessoa mais o download dos atos, e
+    para 137 ocupantes não achava nada — gastando 90 minutos toda segunda-feira para resolver zero. O Portal da Transparência mantém a lista oficial
+    de PEPs, com data de início e fim de exercício, e responde numa chamada. 34 datas resolvidas de primeira, e os alvos da varredura caíram de
+    137 para 103.'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 10
+- id: a641a9bea
+  data: '2026-10-14'
+  ordem: 1791982993
+  titulo: 'Com quem a União assina contrato: o PNCP entra no Atlas'
+  texto: Bloco 3, segunda metade, e a maior lacuna que o projeto tinha. O Atlas mostrava quanto cada órgão gasta e para onde o orçamento foi empenhado,
+    mas nunca COM QUEM cada órgão assina. Contrato é onde o dinheiro vira decisão.
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 6
+- id: e2bf9656b
+  data: '2026-10-14'
+  ordem: 1791980997
+  titulo: 'Quem o Estado puniu: os quatro cadastros de sanção da CGU'
+  texto: 'Bloco 3, primeira metade. Entram as punições já aplicadas e publicadas em diário oficial: 4.053 servidores federais expulsos (CEAF),
+    8.666 empresas impedidas de contratar (CEIS), 1.187 punidas pela Lei Anticorrupção (CNEP) e 152 acordos de leniência. Acrescenta ao Atlas
+    a dimensão que faltava inteira — poder perdido.'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 11
+- id: f8a75fd05
+  data: '2026-10-13'
+  ordem: 1791921726
+  titulo: A metodologia dizia "lido hoje" para bloco parado há 12 dias
+  texto: 'Pior achado de hoje, e o mais grave num projeto de transparência: a página de metodologia afirmava que as Sabatinas tinham sido lidas
+    hoje, com o arquivo de 1º de outubro. A causa é que o build caía no mtime do arquivo quando a data não estava dentro dele — e no CI o mtime
+    é a hora do checkout, então o bloco aparecia como fresco todo dia, para sempre. Três arquivos estavam nessa situação (sabatinas, comissoes,
+    parlamentares): os conectores não gravavam data nenhuma.'
+  areas:
+  - coleta
+  - verificação
+  arquivos: 8
+- id: 0dd07acff
+  data: '2026-10-04'
+  ordem: 1791149401
+  titulo: Timeout passa a contar como falha, e o eval conta os dias sem sucesso
+  texto: 'Programas e Transferências ficaram quatro dias sendo cortados por tempo e ninguém viu, porque duas coisas colaboraram para esconder:'
+  areas:
+  - verificação
+  - método
+  arquivos: 3
+- id: 1be308576
+  data: '2026-10-04'
+  ordem: 1791148741
+  titulo: 'Programas e Transferências voltam a caber no tempo: cache dos mensais da CGU'
+  texto: 'Os dois vinham sendo cortados por tempo todo dia desde 30/09/2026 — quatro dias de dado perdido. A causa não era lentidão da CGU: é
+    que o runner do CI começa limpo todo dia e os dois baixam dois exercícios inteiros em arquivos mensais, 22 no total, com 20 segundos de espera
+    entre downloads porque o WAF da CGU bloqueia rajada. São 440 segundos só dormindo, num limite de 900 por conector. Em setembro eram 21 meses
+    e cabia raspando; em outubro virou 22 e passou a estourar todo dia.'
+  areas:
+  - coleta
+  - método
+  arquivos: 4
+- id: 0fd000bb5
+  data: '2026-10-03'
+  ordem: 1791072531
+  titulo: Fonte de apoio não derruba mais conector, e a checagem impede a volta
+  texto: 'Varredura da classe de defeito que apareceu duas vezes em 03/10/2026: fonte periférica, de outra instituição, destruindo uma saída que
+    já estava pronta. Fiz por análise do código, não a olho — função que faz rede sem try nenhum, chamada crua dentro do main.'
+  areas:
+  - coleta
+  - verificação
+  arquivos: 4
+- id: 529d1aba0
+  data: '2026-10-03'
+  ordem: 1791071289
+  titulo: 'Quem o governo recebeu de fora: as 456 agendas públicas, somadas'
+  texto: 'A agenda pública diz com quem cada autoridade se reuniu, mas o site só mostrava uma agenda por vez. Somadas as 456, a primeira coisa
+    que aparece é que 85% dos encontros registrados são do governo federal com o próprio governo federal — Casa Civil, Presidência, Fazenda. O
+    que interessa é a minoria que vem de fora: 844 encontros com 362 entidades de interesse privado, lideradas por escritório de advocacia (Mattos
+    Filho, Barbosa Müssnich, Renteria, Trindade, Pinheiro Neto), bancos e associações setoriais.'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 6
+- id: 44777d1b9
+  data: '2026-10-03'
+  ordem: 1791068415
+  titulo: 'Bloco 1: sete blocos de dado que o Atlas coletava e não mostrava'
+  texto: O projeto vinha coletando mais do que exibia. Nada aqui é fonte nova — é dado que já estava no disco e não tinha tela.
+  areas:
+  - tela
+  - coleta
+  arquivos: 4
+- id: ad539ce7c
+  data: '2026-10-03'
+  ordem: 1791064932
+  titulo: Juros do Banco Central não derrubam mais o contador da arrecadação
+  texto: 'Em 03/10/2026 a série SGS 4607 do Banco Central não respondeu e levou o conector inteiro com ela: o número que abre a home ficou um
+    dia atrás, embora a receita do Portal da Transparência e os índices do IBGE tivessem vindo normalmente.'
+  areas:
+  - coleta
+  arquivos: 1
+- id: 543c80a52
+  data: '2026-10-03'
+  ordem: 1791045832
+  titulo: A arrecadação abre a home, antes de qualquer outra coisa
+  texto: 'É o número que as pessoas mais procuram e ele estava escondido atrás de uma aba. Agora é a primeira coisa depois da declaração de que
+    o projeto é apartidário: uma faixa com a grandeza em laranja grande, o contador correndo logo abaixo, o ritmo por segundo, a variação real
+    sobre o ano anterior e a procedência. Clicar leva para a aba do dinheiro, onde está a conta inteira.'
+  areas:
+  - tela
+  arquivos: 1
+- id: 6cb4ab535
+  data: '2026-10-03'
+  ordem: 1791044933
+  titulo: Cada pergunta da home ganha a cor do seu assunto
+  texto: 'Mesmo com o número grande, os quatro cartões continuavam iguais entre si e o bloco não saltava aos olhos. Entra cor, e ela significa
+    alguma coisa em vez de decorar: é a mesma chave que o site já usa em outros blocos. Laranja é dinheiro, âmbar é pendência, verde é movimento,
+    azul é Executivo e, por extensão, a cobertura do dia a dia.'
+  areas:
+  - tela
+  arquivos: 1
+- id: edcef8260
+  data: '2026-10-03'
+  ordem: 1791044121
+  titulo: As quatro perguntas da home ganham peso de indicador
+  texto: 'Elas são a navegação principal do site e pareciam abas secundárias: título pequeno e o número diluído numa frase cinza de 10px, do mesmo
+    tamanho da legenda. "Para onde vai o dinheiro" mostrava R$ 2,06 trilhões com menos destaque do que os contadores de cadeiras vagas logo abaixo.'
+  areas:
+  - método
+  arquivos: 4
+- id: b90b491bf
+  data: '2026-10-03'
+  ordem: 1791044121
+  titulo: As quatro perguntas da home ganham peso de indicador
+  texto: 'Elas são a navegação principal do site e pareciam abas secundárias: título pequeno e o número diluído numa frase cinza de 10px, do mesmo
+    tamanho da legenda. "Para onde vai o dinheiro" mostrava R$ 2,06 trilhões com menos destaque do que os contadores de cadeiras vagas logo abaixo.'
+  areas:
+  - tela
+  arquivos: 1
+- id: 8d1d688f6
+  data: '2026-10-01'
+  ordem: 1790891536
+  titulo: Teto recua para o mês que existe, em vez de quebrar
+  texto: 'O conector pedia a folha do SIAPE de um mês fixo, calculado como "hoje menos 45 dias". A publicação da CGU tem atraso variável: em 01/10/2026
+    o arquivo de agosto ainda devolvia 403 e o de julho já estava lá. Resultado, o conector quebrava com erro de HTTP toda vez que a fonte atrasava,
+    e o dado de quem está acima do teto parava de atualizar sem explicação.'
+  areas:
+  - coleta
+  arquivos: 2
+- id: b67c1fad7
+  data: '2026-09-30'
+  ordem: 1790805264
+  titulo: Página oficial que não responde deixa de virar cargo vago
+  texto: 'O site vinha perdendo cerca de dez pessoas por dia, dois dias seguidos, e achei a origem: o conector de dirigentes varre 195 sites oficiais
+    e, quando um não responde, gravava o cargo como sem ocupante. Hoje foram 11. Fui conferir três à mão: duas páginas continuam mostrando exatamente
+    o nome que ele descartou, e a terceira devolve 403 a acesso automatizado. Não é troca de gestão, é varredura que falhou.'
+  areas:
+  - coleta
+  arquivos: 2
+- id: 26023f37d
+  data: '2026-09-30'
+  ordem: 1790761956
+  titulo: Ocupantes pelo DOU também se autodestruía; quarto caso do mesmo padrão
+  texto: 'Varri os conectores atrás da forma que já tinha derrubado dirigentes, posses e segundo escalão. Achei mais um, e era o que faltava para
+    fechar a família: ocupantes pelo DOU procura cargo SEM ocupante e, quando acha o nome, o cargo deixa de estar sem ocupante no grafo da rodada
+    seguinte. Reescrevendo do zero, ele jogava fora o que já tinha descoberto.'
+  areas:
+  - coleta
+  arquivos: 1
+- id: c164a66d5
+  data: '2026-09-30'
+  ordem: 1790740547
+  titulo: Limpa a fila de artigos sem veredito acumulada antes do segredo existir
+  texto: 'Com a chave no Actions, a coleta passou a classificar os artigos novos de cada rodada sozinha, e isso funcionou: 91 na primeira vez.
+    Mas sobravam 98 de antes, porque o job classifica só o que chega, não o acervo.'
+  areas:
+  - tela
+  arquivos: 5
+- id: f4a23bd88
+  data: '2026-09-29'
+  ordem: 1790719069
+  titulo: Segundo escalão parava de reconhecer as próprias secretarias, e o site perdia 592 páginas
+  texto: A coleta de hoje derrubou o grafo de 1.366 nós para 968 e o site de 2.618 páginas para 2.026. Os 201 nós do segundo escalão foram todos
+    descartados no build.
+  areas:
+  - coleta
+  arquivos: 1
+- id: 4e6321b05
+  data: '2026-09-29'
+  ordem: 1790702994
+  titulo: Job diario le a variavel EIKOS_KEY dos segredos do repositorio
+  texto: 'Sem o segredo criado, a variavel chega vazia e nada muda: o conector avisa no log e os artigos ficam sem veredito, como hoje. Com ele,
+    o job classifica sozinho e ninguem precisa rodar --porteiro-acervo a mao depois.'
+  areas:
+  - publicação
+  arquivos: 1
+- id: 0aaf4b0e8
+  data: '2026-09-28'
+  ordem: 1790633540
+  titulo: Classifica os artigos sem veredito e junta com os da coleta
+  texto: Quinta rodada seguida fazendo isso à mão, porque o GitHub Actions não tem EIKOS_KEY. Agora são 1.007 artigos dentro do escopo e 630 fora,
+    nenhum pendente, de um acervo de 1.637.
+  areas:
+  - tela
+  arquivos: 4
+- id: 2490fc7d5
+  data: '2026-09-28'
+  ordem: 1790624106
+  titulo: Restaura as 255 posses que eu mesmo apaguei, e conserta a raiz
+  texto: 'Ao medir quanto o conector de posses demora, deixei ele rodando em segundo plano e no meio disso publiquei uma mudança de horário com
+    git add -A. O add varreu o arquivo que a medição tinha acabado de truncar, e o commit levou 255 posses para 1. Erro meu, não do job: em produção
+    a rede de segurança do update.sh pega isso.'
+  areas:
+  - tela
+  - coleta
+  arquivos: 5
+- id: 08880373d
+  data: '2026-09-28'
+  ordem: 1790623836
+  titulo: Agendamento sai do horário de pico do GitHub
+  texto: 'A coleta de hoje simplesmente não disparou: o horário venceu às 9h30 UTC e às 15h50 nada. Não foi caso isolado. Medido nesta semana:
+    5h10 de atraso num dia, 4h17 noutro, e hoje ausência.'
+  areas:
+  - publicação
+  arquivos: 2
+- id: 6eb97a953
+  data: '2026-09-28'
+  ordem: 1790567650
+  titulo: Eval separa dado que envelhece por natureza de dado atrasado
+  texto: 'Três blocos passaram a aparecer como "mais de 7 dias": candidaturas, doadores e votos por município, todos do TSE. Eles são arquivo
+    fechado das eleições de 2018 e 2022 e nunca vão ficar mais novos; a leitura só muda em ano de eleição, quando alguém baixa os zips à mão.'
+  areas:
+  - verificação
+  - método
+  arquivos: 1
+- id: 508d04611
+  data: '2026-09-27'
+  ordem: 1790535276
+  titulo: Classifica os artigos sem veredito e junta as duas versões do arquivo
+  texto: Quarta rodada seguida classificando à mão, porque o GitHub Actions não tem EIKOS_KEY. Agora são 843 artigos dentro do escopo e 585 fora,
+    nenhum pendente.
+  areas:
+  - tela
+  arquivos: 5
+- id: 611c5d4b9
+  data: '2026-09-27'
+  ordem: 1790517040
+  titulo: Cada conector longo ganha o seu dia da semana e 90 minutos
+  texto: 'O teste de domingo respondeu: 45 minutos não bastam. Quatro dos cinco foram cortados no limite, somando três horas gastas sem produzir
+    nada, e os dados deles ficaram congelados.'
+  areas:
+  - método
+  arquivos: 1
+- id: 62b616a46
+  data: '2026-09-27'
+  ordem: 1790482574
+  titulo: As verificações de interface saem do diretório temporário e passam a provar que passaram
+  texto: Duas falhas encadeadas, e a segunda é grave.
+  areas:
+  - verificação
+  - método
+  arquivos: 11
+- id: 56149b302
+  data: '2026-09-26'
+  ordem: 1790459628
+  titulo: Classifica os 180 artigos que o job diário deixou sem veredito
+  texto: 'Terceira rodada seguida em que preciso fazer isso à mão. O GitHub Actions não tem EIKOS_KEY, então o porteiro de relevância não roda
+    lá: o conector avisa no log e deixa o artigo sem os campos, como projetado, mas cada coleta acumula artigos sem veredito que entram na contagem
+    de menções por pessoa como se fossem todos sobre o governo federal.'
+  areas:
+  - tela
+  arquivos: 3
+- id: 1a2eeb1e0
+  data: '2026-09-26'
+  ordem: 1790443441
+  titulo: Wikipédia avisa quando uma página não veio, em vez de encolher calada
+  texto: 'A coleta de hoje perdeu Enap e Dataprev, e o site foi de 1.225 para 1.223 pessoas. Fui conferir: a página da Enap continua mostrando
+    a presidente no infobox, então não era mudança da fonte. Rodando aqui, as duas voltam. Foi falha momentânea de rede contra a Wikipédia, e
+    o conector gravou menos sem dizer nada.'
+  areas:
+  - tela
+  - coleta
+  arquivos: 7
+- id: c522b8388
+  data: '2026-09-26'
+  ordem: 1790442143
+  titulo: Conector sem o arquivo baixado à mão não conta como falha
+  texto: 'O patrimônio depende de zips do TSE que são baixados à mão e nunca existem num runner limpo. Desde ontem ele sai com código 2 em vez
+    de gravar vazio, o que é o certo, mas o registro de execução passou a marcar "falhou" todos os dias. Falha diária esperada é ruído: esconde
+    a falha de verdade, que foi exatamente o problema que eu acabei de tirar do eval.'
+  areas:
+  - método
+  arquivos: 1
+- id: bd2a03c4a
+  data: '2026-09-26'
+  ordem: 1790437817
+  titulo: Conserta o passo de commit do job diário, que eu quebrei ontem
+  texto: A atualização de hoje coletou tudo em 1h04 e morreu no mesmo passo de ontem, por causa do meu próprio conserto. Eu troquei o push direto
+    por um rebase, e rebase exige árvore limpa. O `git add` do job cobre data/generated, assets/img e web/graph.br.js, mas o build também reescreve
+    o README, que é onde mora a tabela de cobertura. Ele ficava como alteração solta e o rebase se recusava a rodar, nas três tentativas.
+  areas:
+  - publicação
+  arquivos: 1
+- id: a57971513
+  data: '2026-09-26'
+  ordem: 1790416374
+  titulo: Eval devolve a árvore como a encontrou, para não travar a rodada seguinte
+  texto: 'Esta rodada começou com o `git pull --rebase` recusando trabalhar: quatro arquivos modificados sem commit. Não era ninguém mexendo no
+    repositório, era o próprio eval. Ele constrói para verificar, e construir reescreve README, _execucao.yaml, tenures.json e graph.br.js. O
+    campo last_seen carimba a data de hoje, então todo primeiro eval de um dia novo suja a árvore e trava o pull do eval seguinte.'
+  areas:
+  - verificação
+  - método
+  arquivos: 1
+- id: 0cad4229d
+  data: '2026-09-25'
+  ordem: 1790373186
+  titulo: Eval para de acusar falha que uma rodada posterior já resolveu
+  texto: 'Desde ontem o eval acusa a falha das 14h21, cuja causa eu consertei e publiquei. Ela seguiria aparecendo em vermelho a cada seis horas
+    até sair da janela, e relatório que está sempre vermelho é relatório que ninguém lê: o alarme de verdade se perde no meio.'
+  areas:
+  - verificação
+  - método
+  arquivos: 1
+- id: 10e5f73dc
+  data: '2026-09-25'
+  ordem: 1790356750
+  titulo: Classifica os artigos que o job diário deixou sem veredito
+  texto: 'O GitHub Actions não tem EIKOS_KEY, então o porteiro de relevância degrada como projetado: o conector avisa no log e deixa o artigo
+    sem os campos, em vez de quebrar. O efeito é que cada rodada diária acumula artigos sem veredito, e eles entram na contagem de menções por
+    pessoa como se fossem todos sobre o governo federal.'
+  areas:
+  - tela
+  arquivos: 2
+- id: 50841b467
+  data: '2026-09-25'
+  ordem: 1790356206
+  titulo: Job diário se reconcilia antes de publicar, e mais três consertos da rodada
+  texto: 'A atualização que rodei ontem coletou tudo durante 1h26 e morreu no último passo: o push foi rejeitado porque eu publiquei commits enquanto
+    ela trabalhava. O job faz checkout no início e empurra horas depois, sem puxar antes. Um dia inteiro de coleta perdido, e isso ia se repetir
+    a cada correção publicada.'
+  areas:
+  - tela
+  - coleta
+  arquivos: 6
+- id: 83751809e
+  data: '2026-09-25'
+  ordem: 1790346266
+  titulo: 'Conferi à mão os seis alertas do Eikos: todos improcedentes'
+  texto: 'Os seis resumos que o classificador marcou foram conferidos contra o texto- fonte, um a um. Nenhum inventa fato nem erra número. O que
+    o alerta pegou, nos seis casos, foi explicação cívica correta que carrega número: o prazo de 120 dias da medida provisória, os 30 dias que
+    a Constituição dá ao Congresso para apreciar veto, e a data de publicação do veto reescrita por extenso em vez do formato do arquivo.'
+  areas:
+  - verificação
+  - método
+  arquivos: 3
+- id: 1456437b0
+  data: '2026-09-25'
+  ordem: 1790346015
+  titulo: Eval completo em um comando
+  texto: 'scripts/eval.sh constrói, compara com a execução anterior, olha o site no ar e roda as verificações de navegador. Cobre: dependências
+    declaradas, estado do repositório, arquivo gerado que encolheu, build do grafo com comparação de contagens contra uma linha de base, blocos
+    de dado com mais de sete dias, conectores que falharam no último update, build do site, fila de revisão do Eikos, seis endereços no ar mais
+    o sitemap, resultado dos dois workflows, e contenção, quebra de palavra, moldura dos desenhos e o mapa de quem está na notícia.'
+  areas:
+  - verificação
+  - método
+  arquivos: 2
+- id: fcfa83828
+  data: '2026-09-25'
+  ordem: 1790335682
+  titulo: Corrige a causa da falha de casamento do patrimônio, que eu tinha errado
+  texto: No commit anterior escrevi que os parlamentares sem declaração ligada falhavam "quase sempre por diferença entre nome de urna e nome
+    completo, em casos como Júnior, abreviaturas e títulos". Fui medir e não é isso.
+  areas:
+  - tela
+  arquivos: 1
+- id: 7d2131128
+  data: '2026-09-25'
+  ordem: 1790335442
+  titulo: Metodologia declara quem fica de fora do patrimônio, e por quê
+  texto: 'O bloco não dizia o alcance do dado. Só quem disputou eleição tem declaração no TSE: 558 das 1.225 pessoas do Atlas. Ministro de tribunal,
+    membro do Ministério Público e reitor nunca aparecem, e a ausência do bloco na ficha não quer dizer que a pessoa não tenha bens.'
+  areas:
+  - tela
+  arquivos: 1
+- id: 332071d0e
+  data: '2026-09-25'
+  ordem: 1790333808
+  titulo: 'Metodologia: o sinal de patrimônio é de uma pessoa, não do conjunto'
+  texto: 'A frase dizia "o total declarado ao TSE mais que dobrou em valor real", o que se lê como afirmação sobre todo mundo. O sinal é individual:
+    ele aparece na ficha de quem dobrou, e hoje são 36 fichas.'
+  areas:
+  - tela
+  arquivos: 1
+- id: c99b61e4b
+  data: '2026-09-25'
+  ordem: 1790333281
+  titulo: Conector que grava bem menos do que já existia é tratado como falha
+  texto: 'Já aconteceu três vezes por caminhos diferentes: dirigentes colidindo com o próprio dado, posses cortada no meio da gravação, e patrimônio
+    gravando vazio porque os zips do TSE são baixados à mão e não existem num runner limpo. Nos três casos o conector terminou "com sucesso" e
+    o commit diário publicou a perda.'
+  areas:
+  - tela
+  - método
+  arquivos: 3
+- id: 56f66ef29
+  data: '2026-09-25'
+  ordem: 1790333198
+  titulo: Restaura o patrimônio declarado ao TSE, que o CI vinha zerando
+  texto: 'O conector lê zips do TSE baixados à mão, que não existem num runner limpo: gravava people vazio e o commit diário publicava isso. São
+    558 pessoas com bens declarados, 345 delas com 2018 e 2022 para comparar.'
+  areas:
+  - projeto
+  arquivos: 1
+- id: 7afff22a8
+  data: '2026-09-25'
+  ordem: 1790332655
+  titulo: 'Quem está na notícia: o mapa ganha os fios de quem nomeou quem'
+  texto: 'A lista de pessoas mais citadas virou um mapa. Quem nomeia fica em cima, quem foi nomeado logo abaixo, e uma curva desenhada liga os
+    dois. Essa é a parte que é nossa: um agregador de notícias sabe quem apareceu, só o Atlas sabe quem colocou aquela pessoa no cargo.'
+  areas:
+  - tela
+  - método
+  arquivos: 7
+- id: 54de72a84
+  data: '2026-09-25'
+  ordem: 1790332655
+  titulo: Eikos entra em produção como porteiro das notícias e conferente dos resumos
+  texto: 'O classificador Eikos-27B responde pergunta tipada com probabilidade calibrada e zero token de saída. Foi medido contra dado do próprio
+    Atlas antes de entrar: acerta pergunta binária com resposta factual conferível, e erra taxonomia que exige julgamento de domínio. Entram as
+    duas tarefas do primeiro tipo, ambas coisas que hoje ninguém fazia.'
+  areas:
+  - fonte nova
+  arquivos: 3
+- id: 24b892f5e
+  data: '2026-09-25'
+  ordem: 1790331518
+  titulo: Unifica três ministros que estavam no grafo como seis pessoas
+  texto: André Mendonça, Nunes Marques e Dias Toffoli compõem o Supremo e também o Tribunal Superior Eleitoral. O site do STF publica o nome usual
+    e o do TSE o nome de registro, então cada um entrou duas vezes, com um cargo em cada registro. O histórico da cadeira, a ligação com as notícias
+    e qualquer ranking por pessoa contavam os três em dobro.
+  areas:
+  - tela
+  - dado curado
+  arquivos: 5
+- id: c49f94a5f
+  data: '2026-09-24'
+  ordem: 1790284201
+  titulo: Renúncias falhava todo dia porque o CI não instalava openpyxl
+  texto: 'O conector lê o demonstrativo de gastos tributários da Receita, que vem em xlsx, e importa openpyxl. O job instalava pyyaml, pillow
+    e anthropic. Erro de importação sai em zero segundo e some no meio de três horas de log, por isso passou semanas sem ser notado: o site vinha
+    mostrando renúncias com a data da última vez que alguém rodou o conector à mão.'
+  areas:
+  - verificação
+  - método
+  arquivos: 5
+- id: 23b2bd3e5
+  data: '2026-09-24'
+  ordem: 1790283747
+  titulo: Os quatro conectores longos passam a rodar uma vez por semana
+  texto: Posses, ocupantes pelo DOU, segundo escalão e agendas varrem centenas de páginas oficiais uma a uma e passam de 15 minutos cada. No job
+    de hoje os quatro foram cortados no limite e somaram uma hora gasta sem produzir nada. Cortados todo dia, nunca mais atualizariam.
+  areas:
+  - método
+  arquivos: 1
+- id: 329cad407
+  data: '2026-09-24'
+  ordem: 1790283647
+  titulo: Corte por tempo devolve o arquivo ao estado anterior em vez de deixar metade
+  texto: 'O limite de tempo que entrou hoje partiu do princípio errado de que um conector morto não grava nada. Vários gravam em partes durante
+    a execução: cortados, deixaram meio arquivo, e a atualização publicou isso. Posses caiu de 171 KB para 2 KB, ocupantes pelo DOU de 75 KB para
+    10 KB, e o site perdeu 78 páginas de pessoa.'
+  areas:
+  - tela
+  - método
+  arquivos: 4
+- id: 378058ede
+  data: '2026-09-24'
+  ordem: 1790283515
+  titulo: Restaura posses, ocupantes do DOU e dirigentes, esvaziados pela atualização de hoje
+  texto: 'Os três conectores gravam em partes. Cortados no limite de tempo que entrou hoje, deixaram meio arquivo, e o job publicou isso: o site
+    caiu de 2.617 para 2.539 páginas. O conteúdo volta ao estado da véspera.'
+  areas:
+  - projeto
+  arquivos: 2
+- id: e13bb6c27
+  data: '2026-09-24'
+  ordem: 1790283383
+  titulo: Conserta o conector de dirigentes, que apagou os 194 cargos que ele mesmo criou
+  texto: 'A atualização de hoje gravou dirigentes.yaml com zero cargos e publicou isso. A causa é colisão do conector com o próprio dado: ele
+    procura órgãos do tipo department sem nenhum cargo de chefia apontando para eles, e os cargos que ele criou ontem já estão no grafo que ele
+    lê hoje. Na segunda rodada não sobra nenhum órgão faltando, e o arquivo é reescrito vazio.'
+  areas:
+  - tela
+  - coleta
+  arquivos: 9
+- id: 53b7221c2
+  data: '2026-09-24'
+  ordem: 1790283075
+  titulo: 'Notícias: usa o feed de política do Estadão, não o geral'
+  texto: O feed do Estadão era o de últimas notícias do jornal inteiro. Ele sozinho respondia por 53% do acervo e rendia 14% de artigos ligados
+    a algum órgão ou pessoa, contra 79% do g1 Política. O que entrava por ali era receita de pão francês, futebol, reality show e oferta de celular.
+  areas:
+  - coleta
+  arquivos: 2
+- id: 73cefdc7c
+  data: '2026-09-24'
+  ordem: 1790274369
+  titulo: Atualização diária passa a ter limite de tempo e sempre publica
+  texto: O job cresceu de 15 minutos para 2h30 conforme os conectores foram entrando, e nos últimos dias bateu o teto de 6 horas do GitHub e foi
+    cancelado sem publicar nada.
+  areas:
+  - método
+  - publicação
+  arquivos: 2
+- id: bea142ba7
+  data: '2026-09-24'
+  ordem: 1790274223
+  titulo: Custo dos cargos volta ao ar, refeito e apresentado em três fichas
+  texto: 'O cálculo antigo errava o bastante para inverter a conclusão: mostrava o deputado custando mais que o senador. Refeito, o senador custa
+    R$ 9,5 milhões por cadeira/ano contra R$ 3,8 milhões do deputado.'
+  areas:
+  - tela
+  - coleta
+  arquivos: 8
+- id: da3c78ee9
+  data: '2026-09-24'
+  ordem: 1790273474
+  titulo: Corrige a grade de 513 cadeiras, que passava por cima do texto
+  texto: 'A grade de deputados tinha 29 colunas e 18 linhas, mas o desenho foi dimensionado para caber menos: as últimas linhas cobriam o rótulo
+    dos senadores. Agora são 38 colunas em 14 linhas, com moldura de 196 de altura, e a legenda do veto no capítulo da lei deixou de sair pela
+    esquerda.'
+  areas:
+  - método
+  arquivos: 1
+- id: c8c8b9628
+  data: '2026-09-24'
+  ordem: 1790272266
+  titulo: Do zero ganha desenho, fotos e curiosidades verificadas
+  texto: 'Cada um dos 14 capítulos passa a ter um visual próprio: diagramas em SVG para governo, poderes, caminho da lei, medida provisória, fiscalização
+    e emenda; grades com as fotos reais de presidente, vice, ministros e STF; número grande animado para arrecadação e para o tamanho do Atlas;
+    barras dos seis maiores programas do orçamento.'
+  areas:
+  - tela
+  - coleta
+  arquivos: 12
+- id: 36ea5112d
+  data: '2026-09-24'
+  ordem: 1790243564
+  titulo: 'Área ''Do zero'': o governo explicado em palavras simples, para quem nunca estudou isso'
+  texto: '14 perguntas, da mais básica à mais específica: o que é governo, por que existem três poderes, o que faz um ministro, quem escreve as
+    leis, como uma lei nasce, por que medida provisória tem prazo, quem vigia o governo, de onde vem e para onde vai o dinheiro, o que é emenda
+    parlamentar e como acompanhar. Cada uma com resposta curta, explicação em frases de até 15 palavras, uma comparação do dia a dia, as palavras
+    difíceis explicadas e o link para ver aquilo no mapa. Mais um glossário de 18 termos.'
+  areas:
+  - tela
+  - dado curado
+  arquivos: 4
+- id: 0e97333ce
+  data: '2026-09-24'
+  ordem: 1790242844
+  titulo: Declaração de neutralidade no topo da home, na metodologia e no menu
+  texto: O site passa a dizer, antes de qualquer dado, que é apartidário, de código aberto e mantido por colaboradores, sem financiamento de partido,
+    campanha ou governo; que não dá nota nem classifica ninguém; e que quando a fonte não publica um dado, o site diz isso em vez de estimar.
+    A metodologia ganhou a seção completa e o menu, o atalho.
+  areas:
+  - tela
+  arquivos: 3
+- id: 02da33645
+  data: '2026-09-23'
+  ordem: 1790170284
+  titulo: Retira do ar o custo da cadeira e a comparação entre cargos até refazer o cálculo
+  texto: 'A auditoria interna mediu quatro erros no que estava publicado, contra 13 folhas mensais do SIAPE: - extrapolar um mês para o ano erra
+    de -21% a +74% conforme o mês; o mês usado (julho) subestimava em 10% - o 13º do Executivo cai em junho e novembro, e não entrava na conta
+    - parcelas já contidas no salário da folha eram somadas de novo como benefício (reitores e comandantes), o que fazia ''reitor'' aparecer como
+    a segunda cadeira mais cara - auxílio-moradia entrava pelo teto legal, não pelo gasto, em todas as cadeiras - 236 dos 249 cargos com viagens
+    tinham amostra de uma pessoa - o divisor da cota parlamentar usava 9 meses onde o arquivo tem 6,55, subestimando em 37% - a equipe do gabinete
+    do Senado entrava como zero, omitindo cerca de meio bilhão por ano'
+  areas:
+  - tela
+  arquivos: 1
+- id: 9732e24a1
+  data: '2026-09-23'
+  ordem: 1790168810
+  titulo: 'Custo da cadeira: o salário é só uma parte, e agora o site mostra o resto'
+  texto: 'Página do cargo: ''Quanto custa esta cadeira por ano'', com barra empilhada em camadas (salário, benefícios pessoais, equipe do gabinete,
+    custeio do mandato, viagens), cada uma rotulada por natureza (vai para a pessoa, paga outras pessoas, reembolsa despesa) e pela origem do
+    número (folha, gasto real ou norma). Traz o total do colegiado, a escala em salários mínimos, o que a fonte não publica e o que fica de fora
+    da conta. Aba do dinheiro: comparação entre famílias de cargo, com barras proporcionais entre si. Medido: uma cadeira de deputado custa R$
+    2,9 mi por ano e o salário é 19% disso; as 513 somam R$ 1,5 bi. Senador R$ 1 mi (53% salário), ministro de Estado R$ 940 mil (67%), ministro
+    do Supremo R$ 556 mil (100%).'
+  areas:
+  - tela
+  - método
+  arquivos: 5
+- id: e13ead34b
+  data: '2026-09-23'
+  ordem: 1790166647
+  titulo: 'Comparação anual na ficha: só o salário contra salário mais benefícios'
+  texto: Duas barras no fim do bloco 'Dinheiro no mês', com a diferença em reais e em porcentagem. Benefícios mensais contam doze vezes; os anuais,
+    uma; os eventuais, como ajuda de custo de posse ou de fim de mandato, ficam fora da soma e aparecem com o valor por ocorrência, para não inflar
+    o total. Benefícios que pagam a estrutura do cargo (cota, gabinete, passagens) continuam separados e nunca entram nessa conta.
+  areas:
+  - tela
+  arquivos: 2
+- id: 54abe67d3
+  data: '2026-09-23'
+  ordem: 1790164947
+  titulo: 'Ficha de pessoa: bloco ''Dinheiro no mês'', separando o que é pago à pessoa do que paga a estrutura do cargo'
+  texto: 'Pago à pessoa: salário bruto do mês, gratificações, verbas eventuais e indenizatórias; quando a folha não é nominal (deputados, Judiciário,
+    estatais), entra o subsídio que a lei fixa para o cargo, com o aviso. Estrutura do cargo: cota do mandato, equipe do gabinete, diárias e passagens
+    fora da cota, imóvel funcional ou auxílio-moradia, viagens a serviço. Os dois grupos nunca são somados, e cada item aponta para o bloco detalhado
+    logo abaixo.'
+  areas:
+  - tela
+  arquivos: 2
+- id: f836aa21b
+  data: '2026-09-22'
+  ordem: 1790109487
+  titulo: 'Ocupantes que faltavam, achados pelo ato de nomeação no Diário Oficial: 82 dos 118 cargos vazios'
+  texto: 'etl/ocupantes_dou.py busca pelo nome do cargo (o inverso de etl/posses.py, que busca por pessoa). Destravou as reitorias: o decreto
+    qualifica a pessoa pela universidade e depois escreve ''cargo de Reitor da referida Universidade'', então a consulta pelo nome da universidade
+    devolvia zero.'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 6
+- id: 387c752ed
+  data: '2026-09-22'
+  ordem: 1790106146
+  titulo: 'Correção: na página inicial todo cargo aparecia como ''sem dado'''
+  texto: 'A lista de cargos que mudam com a posse de 2027 lia o ocupante dentro do nó, mas o núcleo carregado na home não traz os ocupantes (eles
+    ficam nos arquivos de detalhe). Agora o ocupante é obtido do índice de pessoas, e o rótulo passou a ser ''sem ocupante conhecido'', que é
+    o que a lacuna significa. Restam 112 cargos realmente sem nome: 69 reitores, 22 estatais, 18 secretarias e 3 autarquias e fundações.'
+  areas:
+  - tela
+  arquivos: 1
+- id: 4ef962e3b
+  data: '2026-09-22'
+  ordem: 1790087597
+  titulo: Quanto cada cargo paga por lei, e data de posse para 255 ocupantes que não tinham
+  texto: '- data/subsidios.yaml + etl/subsidios.py: 27 famílias cobrem os 547 cargos; 358 com subsídio bruto mensal e a norma que o fixa, 189
+    com explicação de por que não há valor único (estatais decidem em assembleia, reitor é remunerado pela carreira do magistério, comandantes
+    por soldo e adicionais) - benefícios por cargo, separados entre remuneração e verba indenizatória, com a norma de cada um; registra a tese
+    do STF de março de 2026 que unificou o teto e extinguiu auxílios no Judiciário e no Ministério Público - etl/posses.py: acha o ato de nomeação
+    no Diário Oficial pela busca por nome; 255 de 391 ocupantes sem data agora têm data, todos com casamento de confiança alta. A ficha diz ''desde
+    a publicação do ato'', porque a posse pode ser dias depois - etl/dou.py ganha varredura retroativa por janelas mensais, com cache retomável
+    - nomeações sem data caem de 372 para 120'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 12
+- id: 70d17680d
+  data: '2026-09-22'
+  ordem: 1790086844
+  titulo: 'Remuneração: cobertura de 323 para 438 pessoas, senadores incluídos, e composição do valor na ficha'
+  texto: '- etl/remuneracao.py: casamento com a folha usa o órgão do ocupante para desempatar e aceita variações de nome só quando únicas no órgão;
+    nunca grava casamento ambíguo (411 de confiança alta, 27 média, conferidas uma a uma) - Executivo 330 → 354 de 403; senadores 0 → 80 de 81,
+    pela folha mensal do Senado; deputados seguem sem fonte nominal (a Câmara publica o consolidado sem identificar a pessoa) - ficha mostra a
+    composição entre salário base, gratificações, verbas eventuais e indenizatórias, e diz quando o casamento foi por aproximação - metodologia:
+    bloco 10 novo, separando o que o cargo paga por lei do que a pessoa recebeu no mês - página do cargo preparada para o bloco ''Quanto o cargo
+    paga'' (conector de subsídios em curso)'
+  areas:
+  - tela
+  - coleta
+  arquivos: 8
+- id: 9f61d007b
+  data: '2026-09-22'
+  ordem: 1790081903
+  titulo: 'Contenção do painel por arquitetura, e prioridades 5 e 7: dirigentes de tribunais, estatais e universidades'
+  texto: 'Layout (o conteúdo transbordava a coluna em alguns casos): - o painel recorta o que passar da borda e todo item de grid/flex pode encolher;
+    palavras longas quebram em vez de empurrar - lista de ocupantes: nome numa linha, metadado embaixo, sem competir por largura - barras: rótulo
+    e valor curto na primeira linha, barra na segunda, detalhe na terceira; nomes de órgão vêm do grafo, não do CSV truncado - verificação automatizada
+    (scratchpad/pw/overflow.js) percorre páginas, abas e cinco larguras: zero elementos fora do painel'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 7
+- id: 7473ef6af
+  data: '2026-09-22'
+  ordem: 1790079190
+  titulo: 'Correção: o conector do segundo escalão colidia com os próprios nós do dia anterior e renomeava as 199 secretarias com sufixo, derrubando
+    o grafo de 1.171 para 773 nós no job diário'
+  texto: Agora ignora como colisão os nós que ele mesmo gerou (marca de origem ou cluster de secretaria no anel 3). Achado ao integrar a execução
+    automática de 21/09.
+  areas:
+  - tela
+  - coleta
+  arquivos: 5
+- id: 88bdea141
+  data: '2026-09-22'
+  ordem: 1790078729
+  titulo: 'README: números do build atual'
+  texto: ''
+  areas:
+  - projeto
+  arquivos: 1
+- id: dcca5e3a1
+  data: '2026-09-22'
+  ordem: 1790077480
+  titulo: 'Prioridades 9 e 10: orçamento por programa e ação em cada órgão, e transferências a estados e municípios'
+  texto: '- etl/programas.py: execução do orçamento dos arquivos mensais do Portal (a API não cruza órgão com programa); 195 órgãos casados, 0%
+    do pago sem nó, conferido contra a API por órgão (193/193 com diferença abaixo de 0,1%) - etl/transferencias.py: repasses a estados, DF e
+    municípios por órgão, UF, município e por habitante; R$ 533,6 bi em 2026 até setembro - página do órgão ganha ''Para onde vai o orçamento''
+    (programas, ações do maior programa) e as transferências do órgão; a aba Dinheiro ganha o panorama por estado e município - metodologia: bloco
+    17 novo, com a ressalva de que transferências constitucionais e royalties não têm órgão de origem'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 9
+- id: 22fb0c3ca
+  data: '2026-09-22'
+  ordem: 1790076066
+  titulo: 'Prioridade 6: composição dos 20 colegiados de maior peso (CMN, Copom, Camex, Confaz, CNPE, Conama, CNE, CNS e outros)'
+  texto: Composição lida da norma que cria cada conselho, curada em data/colegiados-composicao.yaml com artigo e link; etl/colegiados.py valida
+    ids contra o grafo. A página do colegiado ganha 'Quem compõe', com o cargo, o ocupante de hoje e o tipo do assento (nato, indicado, eleito,
+    externo); assentos de sociedade civil aparecem como contagem, sem nomear pessoas. 199 membros em 571 assentos; 95 casados com cargo do grafo,
+    todos com ocupante.
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 7
+- id: 1b78b29ec
+  data: '2026-09-22'
+  ordem: 1790075569
+  titulo: 'Prioridades 1, 2, 3 e 8 do levantamento: números reais no README, fim das pessoas duplicadas, registro de execução por conector e cartão
+    corporativo por órgão'
+  texto: '- build_graph escreve no README o quadro de cobertura do build (nós, cargos com e sem ocupante, órgãos sem chefia, colegiados sem membros,
+    nomeações sem data) e remove as afirmações desatualizadas - etl/comissoes.py reaproveita o id da Câmara para deputados de comissões mistas
+    e etl/wikipedia.py reaproveita ids canônicos: 66 pessoas duplicadas → 0 - update.sh registra status e duração de cada conector; build_graph
+    gera data/generated/_execucao.yaml e a metodologia ganha o quadro ''quando cada bloco foi lido'', com aviso de conector que falhou - etl/cartao.py
+    deixa de prometer gasto por ocupante (o portador do extrato é servidor de execução): agora agrega por órgão, unidade gestora e favorecido,
+    com o órgão ligado ao nó do grafo'
+  areas:
+  - tela
+  - coleta
+  arquivos: 15
+- id: 0f038c6d6
+  data: '2026-09-22'
+  ordem: 1790074623
+  titulo: 'Menu geral: botão fixo no canto superior direito e gaveta com tudo o que o site faz (explorar, acompanhar, RSS, dados e método, ajustes
+    da roda, participar), em todas as páginas'
+  texto: 'Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>'
+  areas:
+  - tela
+  - método
+  arquivos: 5
+- id: 1b495c29a
+  data: '2026-09-21'
+  ordem: 1790003187
+  titulo: 'Home: quatro perguntas no lugar de sete abas (O que mudou · O que está parado · Para onde vai o dinheiro · Na imprensa), com um número
+    de resumo em cada cartão'
+  texto: '- Transição 2027 entra em ''O que mudou''; Temas entra em ''O que está parado''; o arrecadômetro passa a abrir ''Para onde vai o dinheiro'';
+    Notícias e ''Na notícia'' viram um seletor Artigos/Pessoas dentro de ''Na imprensa'' - filtro de período fica dentro da seção a que pertence;
+    no celular os cartões viram duas colunas'
+  areas:
+  - tela
+  arquivos: 2
+- id: e61d7520e
+  data: '2026-09-21'
+  ordem: 1790001233
+  titulo: 'Voltar ao início: link ''← Início'' no topo de toda ficha (órgão, pessoa, notícia, erro), botão ''⌂ Início'' na barra da roda (recentra
+    e volta à home) e tecla Escape'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  arquivos: 2
+- id: bbd829408
+  data: '2026-09-21'
+  ordem: 1790000839
+  titulo: 'Câmera: Foco suave como modo padrão (aprovado no teste da prévia)'
+  texto: ''
+  areas:
+  - tela
+  arquivos: 1
+- id: a37d21bc1
+  data: '2026-09-21'
+  ordem: 1790000574
+  titulo: 'Roda: grupos de unidades recolhidos (marcador com contagem ao lado do órgão; secretarias, colegiados e universidades abrem ao selecionar
+    o órgão, um membro ou o marcador); numerais dos anéis na divisa e nomes na legenda; membros abertos em arco curto de 1 ou 2 fileiras'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  arquivos: 3
+- id: 690f19305
+  data: '2026-09-21'
+  ordem: 1789999841
+  titulo: 'Roda: comissões do Congresso em três arcos por Casa (Senado, mistas, Câmara) em vez de grades sobrepostas; fatia angular dos clusters
+    proporcional ao tamanho; rótulo de subgrupo afastado do arco mais externo'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  arquivos: 1
+- id: 5a3a70144
+  data: '2026-09-21'
+  ordem: 1789999344
+  titulo: 'Prévia: clique do mouse num órgão voltava à home (captura de ponteiro no pointerdown redirecionava o click); captura só quando o arraste
+    começa'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  arquivos: 1
+- id: 29a99cae2
+  data: '2026-09-21'
+  ordem: 1789993577
+  titulo: 'Prévia: rotação pura (sem corte), arraste gira no modo rotação, dois dedos giram, pinça no Safari, tolerância de toque, recorte na
+    janela da roda, dicas, cabeçalho e faixa no celular'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  arquivos: 2
+- id: b40094604
+  data: '2026-09-21'
+  ordem: 1789992681
+  titulo: 'Prévia UX: câmera reversível da roda, robustez da seleção, estados de erro, acessibilidade, ordem mobile, leitura ampla, tema em 3
+    estados'
+  texto: 'Branch de testes, publicada em https://culturabuilder.github.io/atlas-previa/ (noindex, faixa de aviso), sem tocar no site oficial.
+    - web/atlas-camera.js (novo, só navegador): Sem movimento / Foco suave / Rotação, arraste, pinça, Ctrl+roda, Visão geral; respeita prefers-reduced-motion;
+    build injeta a tag (render_wheel.js não o carrega) - index.html: selSeq contra respostas fora de ordem; fetch distingue 404 de erro (card
+    com Tentar de novo, sem cachear falha); busca com aria-expanded coerente, total e Ver todos; abas WAI-ARIA com teclado; contraste do centro
+    e dos chips; ''lido em''; celular com marca, busca e ações antes da roda + folha de resumo no rodapé; Ampliar leitura no desktop; explicação
+    dos anéis; tema Auto/Claro/Escuro; correção do select inicial nas páginas estáticas; valor de MP só a partir de R$ 1 mil - scripts/build_site.py
+    --previa; scripts/deploy_previa.sh'
+  areas:
+  - tela
+  - método
+  arquivos: 5
+- id: f153b9fda
+  data: '2026-09-21'
+  ordem: 1789992492
+  titulo: Resumos em linguagem simples gerados (51 itens) via Cultura Builder; conector aceita culturabuilder ou Anthropic
+  texto: '- etl/resumos.py: provedor auto (CLI culturabuilder run, modelo builder-ai/builder-fast; ou SDK Anthropic com chave); texto-fonte sem
+    contagens de dias para o hash não mudar todo dia - data/generated/resumos.yaml versionado: o job diário não tem provedor e mantém os resumos
+    existentes'
+  areas:
+  - tela
+  - coleta
+  arquivos: 5
+- id: 3937885ec
+  data: '2026-09-20'
+  ordem: 1789941220
+  titulo: Agenda oficial do presidente e do vice-presidente (site do Planalto)
+  texto: O presidente e o vice não estão no e-Agendas; etl/agenda_planalto.py lê as páginas diárias da agenda oficial (hora, título, local), classifica
+    o tipo, extrai quem foi recebido dos títulos 'cargo, nome' e guarda os dias lidos no próprio YAML para o job diário só buscar os dias novos
+    (o Planalto limita o ritmo com 429).
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 7
+- id: 6e44571d8
+  data: '2026-09-20'
+  ordem: 1789939454
+  titulo: Agenda pública (e-Agendas/CGU) na ficha de 150 dirigentes e em 96 órgãos
+  texto: '- etl/agendas.py: rotas públicas do e-Agendas, casamento por nome com desempate por órgão, 90 dias por pessoa (por tipo, entidades mais
+    recebidas, últimos compromissos com participantes) e soma por órgão; sem CPF, CNPJ, e-mail ou telefone - bloco ''Agenda pública'' na ficha
+    da pessoa e ''Agenda pública dos dirigentes'' na página do órgão; estilo de barras compartilhado'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 5
+- id: 4a2754c08
+  data: '2026-09-20'
+  ordem: 1789939149
+  titulo: Histórico de cada cadeira (Wikidata), segundo escalão dos ministérios (SIORG + páginas oficiais) e resumos em linguagem simples (Claude
+    API, opcional)
+  texto: '- etl/historico.py: ocupantes por cargo desde 1985 via P39/P580/P582, descoberta de QIDs, dirigentes via item do órgão; bloco ''Quem
+    ocupou este cargo'' nas páginas de cargo, com posse oficial dos atuais quando o Wikidata não os tem - etl/segundo_escalao.py: 199 secretarias
+    de 1º nível de 37 órgãos, 183 com ocupante das páginas Quem é quem; nós em anel 3 (cluster) ligados ao ministério, cargo de secretário com
+    trajetória - etl/resumos.py: resumos de MPs, vetos, pedidos de CPI e temas com cache por hash; só roda com ANTHROPIC_API_KEY; marcados como
+    ''resumo automático'' - integração da agenda pública (e-Agendas) no build e nas fichas, dados chegam no próximo commit - metodologia: blocos
+    16-18; correções de itens do Wikidata (vice-presidente, presidente do Senado)'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 13
+- id: 4c5a592d2
+  data: '2026-09-20'
+  ordem: 1789912961
+  titulo: Proposições e relatorias por parlamentar no ano legislativo (projetos, requerimentos, relatorias, normas geradas, temas e últimas proposições)
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 7
+- id: e7051acf3
+  data: '2026-09-20'
+  ordem: 1789912386
+  titulo: Comparador e rankings, feeds RSS, imagens de compartilhamento, dados abertos (CSV/JSON, CC BY) e página de metodologia; metas Open Graph
+    em todas as páginas
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - método
+  arquivos: 10
+- id: 1d2ccf57a
+  data: '2026-09-20'
+  ordem: 1789911833
+  titulo: Busca por combinação (Casa, UF, partido, cargo), link para avisar erro em cada ficha e página, painel pré-renderizado visível antes
+    do JS, versão curta do Como funciona; corrige página estática de pessoa que abria a home
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - método
+  arquivos: 3
+- id: ee42e4fa2
+  data: '2026-09-20'
+  ordem: 1789909943
+  titulo: 'Ficha de transparência, etapa 5: viagens a serviço e cartão corporativo (por ocupante e por órgão) e sinais ''para verificar'' com
+    redação neutra'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 11
+- id: 15addf515
+  data: '2026-09-20'
+  ordem: 1789906361
+  titulo: 'Ficha de transparência, etapas 3 e 4: remuneração mensal dos ocupantes do Executivo (folha SIAPE) e receitas da campanha de 2022 por
+    origem e maiores fontes'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 9
+- id: 35616fef4
+  data: '2026-09-20'
+  ordem: 1789906136
+  titulo: 'Ficha de transparência, etapa 3: patrimônio declarado ao TSE em 2018 e 2022 com variação nominal e real, na página da pessoa'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 7
+- id: 7c58aaf7b
+  data: '2026-09-20'
+  ordem: 1789905948
+  titulo: 'Ficha de transparência, etapa 2: gabinetes do Senado (equipe com folha real, cotas por tipo, auxílio-moradia e imóvel funcional, custo
+    do mandato e medianas)'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 7
+- id: '308511468'
+  data: '2026-09-20'
+  ordem: 1789905719
+  titulo: 'Ficha de transparência, etapa 1: equipe do gabinete, folha estimada e custo do mandato de cada deputado, com medianas da Câmara'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 8
+- id: '798622492'
+  data: '2026-09-20'
+  ordem: 1789904993
+  titulo: 'Temas: linha de atenção com classe própria (a regra .spark da home fixava 16 px e causava sobreposição)'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  arquivos: 1
+- id: 0007d31ce
+  data: '2026-09-20'
+  ordem: 1789904946
+  titulo: 'Fase 3 completa: votação por município (TSE 2022) cruzada com emendas por município; candidaturas dos ocupantes (partido pelo qual
+    concorreu); correções de layout na aba Temas e do link para pedir um grafo'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 11
+- id: 6e8bf758e
+  data: '2026-09-20'
+  ordem: 1789903877
+  titulo: 'Fase 3: emendas parlamentares (autor, ano, município, ano eleitoral), renúncias fiscais por função e benefício × orçamento, servidores
+    acima do teto por órgão; aba Dinheiro e seção Emendas na pessoa'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 11
+- id: '798074954'
+  data: '2026-09-20'
+  ordem: 1789902466
+  titulo: 'Temas: verbetes corretos da Wikipédia e palavras-chave mais precisas'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - dado curado
+  arquivos: 3
+- id: 47c89bb22
+  data: '2026-09-20'
+  ordem: 1789902408
+  titulo: 'Fase 2: temas em debate cruzados com o andamento dos processos (Câmara, Senado, Congresso) e a atenção pública (Wikipédia, notícias);
+    aba Temas na home'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 8
+- id: cb7ff96f5
+  data: '2026-09-20'
+  ordem: 1789902031
+  titulo: 'Fase 1 do plano: placar da omissão (vetos, MPs, pedidos de CPI, casos curados), arrecadômetro com comparação real e projeção explícita,
+    atividade dos parlamentares (presença, últimos votos, cota)'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 13
+- id: 7ccd487e6
+  data: '2026-09-19'
+  ordem: 1789843870
+  titulo: 'Corrige o job diário: SIORG em modo rápido reaproveita pais e colegiados do arquivo anterior (o grafo tinha encolhido para 570 nós);
+    restaura siorg.yaml; sabatinas rodam depois do primeiro build'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - coleta
+  arquivos: 5
+- id: c8ef0a0a8
+  data: '2026-09-19'
+  ordem: 1789842887
+  titulo: Workflow diário em grupo de concorrência próprio, para não ser cancelado por um push
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - publicação
+  arquivos: 1
+- id: ad7b997aa
+  data: '2026-09-19'
+  ordem: 1789842829
+  titulo: 'DOU: atos de 15 a 18/09 lidos com paginação por cursor (400 atos, 16 registros de nomeação de segundo escalão); log de progresso e
+    gravação periódica'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - coleta
+  arquivos: 2
+- id: 03dbc70f2
+  data: '2026-09-19'
+  ordem: 1789842554
+  titulo: 'update.sh: conectores tolerantes a falha de rede (o build segue com os dados do último dia); inclui nascimentos'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - método
+  arquivos: 1
+- id: 68fbb6815
+  data: '2026-09-19'
+  ordem: 1789841974
+  titulo: 'update.sh: garante a pasta build/ (cache dos conectores) em ambientes limpos como o CI'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - método
+  arquivos: 1
+- id: 9ff5bf068
+  data: '2026-09-19'
+  ordem: 1789841873
+  titulo: 'Workflow diário: não tentar commitar build/ (ignorado); README dos novos conectores'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - publicação
+  arquivos: 2
+- id: '868636269'
+  data: '2026-09-19'
+  ordem: 1789838318
+  titulo: Home com os dois primeiros cartões já no HTML e CSS da roda embutido, para pintar antes do JS
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - método
+  arquivos: 2
+- id: 23b5ad364
+  data: '2026-09-19'
+  ordem: 1789838198
+  titulo: Fontes carregadas sem bloquear a renderização (preconnect + stylesheet assíncrono)
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  arquivos: 2
+- id: 3b12d6d90
+  data: '2026-09-19'
+  ordem: 1789838101
+  titulo: Roda pré-renderizada na home e na área educativa; datas de nascimento (Wikidata) e aposentadoria compulsória aos 75 para ministros de
+    tribunais e do TCU; conector do DOU com paginação por cursor e período
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 10
+- id: c03c12b0d
+  data: '2026-09-19'
+  ordem: 1789827287
+  titulo: Nomes acessíveis nos links de foto e na barra de capítulos
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - método
+  arquivos: 2
+- id: a61e21bf6
+  data: '2026-09-19'
+  ordem: 1789827259
+  titulo: 'Acessibilidade e mobile: doctype e lang, landmark main, ordem de títulos, roda não focável na área educativa, alvos de toque na barra
+    de progresso, coluna sem estouro no celular'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - método
+  arquivos: 3
+- id: 970dfe597
+  data: '2026-09-19'
+  ordem: 1789827079
+  titulo: 'Área educativa ''Como funciona a República'': 10 capítulos guiados pela roda, glossário, dados vivos e seis interações; roda e tema
+    extraídos para atlas.js/atlas.css; cartão ''Comece por aqui'' na home'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - dado curado
+  arquivos: 9
+- id: b807511de
+  data: '2026-09-19'
+  ordem: 1789825899
+  titulo: Ocupantes de todos os 152 cargos (42 cargos preenchidos por páginas oficiais), 69 fotos novas (TST, CNJ, CNMP, BC, ministros, dirigentes)
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - dado curado
+  arquivos: 77
+- id: d4224d391
+  data: '2026-09-19'
+  ordem: 1789822693
+  titulo: 'Trajetória até o cargo: quem nomeou/elegeu, data, sabatina, posse e fim do mandato em cada pessoa e cargo; tema escuro por padrão;
+    datas de posse do STF'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - coleta
+  arquivos: 7
+- id: 858cb3d03
+  data: '2026-09-19'
+  ordem: 1789822277
+  titulo: 'Página de pessoa: papel na comissão sem separador solto'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  arquivos: 1
+- id: d61fea057
+  data: '2026-09-19'
+  ordem: 1789822174
+  titulo: 'Comissões do Congresso: Mesa do Senado, 47 comissões permanentes e 4 mistas com composição; ocupantes aprovados em sabatina como fallback;
+    detalhe de pessoa sob demanda'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 70
+- id: 7b01c5460
+  data: '2026-09-19'
+  ordem: 1789820707
+  titulo: 'Pages: domínio próprio atlasdarepublica.org'
+  texto: ''
+  areas:
+  - método
+  - publicação
+  arquivos: 3
+- id: d935b30bc
+  data: '2026-09-19'
+  ordem: 1789820293
+  titulo: 'Pages: volta ao github.io até o DNS do domínio ser corrigido; CNAME só com --cname'
+  texto: ''
+  areas:
+  - método
+  - publicação
+  arquivos: 3
+- id: 08272cc4f
+  data: '2026-09-19'
+  ordem: 1789819910
+  titulo: 'Domínio próprio atlasdarepublica.org: CNAME, base sem subcaminho'
+  texto: ''
+  areas:
+  - método
+  - publicação
+  arquivos: 4
+- id: 27c6d2929
+  data: '2026-09-19'
+  ordem: 1789818983
+  titulo: 'Workflows: sintaxe de environment em bloco'
+  texto: ''
+  areas:
+  - publicação
+  arquivos: 2
+- id: f96b66e93
+  data: '2026-09-19'
+  ordem: 1789818939
+  titulo: 'GitHub Pages: workflow de publicação e atualização diária com deploy'
+  texto: ''
+  areas:
+  - método
+  - publicação
+  arquivos: 4
+- id: af1db8a58
+  data: '2026-09-19'
+  ordem: 1789818902
+  titulo: Fotos versionadas em assets/img; site com --prefix para GitHub Pages
+  texto: ''
+  areas:
+  - coleta
+  - método
+  arquivos: 767
+- id: 6bc7dac88
+  data: '2026-09-19'
+  ordem: 1789816332
+  titulo: 'Notícia: todo título abre a vista no grafo; link de fonte separado; até 12 ocupantes por cargo nos envolvidos'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  arquivos: 1
+- id: 1b265a8b7
+  data: '2026-09-19'
+  ordem: 1789816140
+  titulo: 'Notícia: terceiro nível, quem pode ser afetado (vinculadas e integradas com citação legal), expansível'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  arquivos: 1
+- id: 931ad5684
+  data: '2026-09-19'
+  ordem: 1789815970
+  titulo: 'Notícia como nó: envolvidos diretos e indiretos pelo grafo, com o motivo de cada ligação e destaque na roda'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  arquivos: 1
+- id: 0166c021b
+  data: '2026-09-19'
+  ordem: 1789815443
+  titulo: 'Notícias: pessoas por formas curtas e apelidos curados; power map com manchete, sparkline, calor e relações; chips de participantes
+    nas notícias'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - coleta
+  arquivos: 7
+- id: 465bc46e5
+  data: '2026-09-18'
+  ordem: 1789770533
+  titulo: 'Fotos: reverte homônimos do Commons, busca só pelo nome completo, bloqueio persistente'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - coleta
+  arquivos: 3
+- id: daabce4ad
+  data: '2026-09-18'
+  ordem: 1789770511
+  titulo: 'Fotos: variantes de nome no Commons, lista de bloqueio'
+  texto: ''
+  areas:
+  - tela
+  - coleta
+  arquivos: 3
+- id: 4d3881ae7
+  data: '2026-09-18'
+  ordem: 1789767009
+  titulo: 'Fotos: passada final do Commons; remoção de foto duvidosa'
+  texto: ''
+  areas:
+  - coleta
+  arquivos: 1
+- id: 7ca713b4b
+  data: '2026-09-18'
+  ordem: 1789764476
+  titulo: 'Fotos: fallback no Wikimedia Commons por nome completo'
+  texto: ''
+  areas:
+  - tela
+  - coleta
+  arquivos: 2
+- id: 5601a0650
+  data: '2026-09-18'
+  ordem: 1789761631
+  titulo: 'Fotos: Wikidata por nome com variantes, páginas oficiais do STF e STM (etl/fotos_oficiais.py), 739 de 824 pessoas'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 6
+- id: c9347c905
+  data: '2026-09-18'
+  ordem: 1789755379
+  titulo: 'Fotos: busca no Wikidata por nome, embutidas no protótipo, manifesto nome→foto; Presidente e Vice via Planalto; avisos de origem mais
+    claros'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - coleta
+  arquivos: 6
+- id: '796710678'
+  data: '2026-09-18'
+  ordem: 1789754313
+  titulo: 'Roda: arcos contíguos e rótulos de anel no setor esparso; README'
+  texto: ''
+  areas:
+  - tela
+  arquivos: 2
+- id: 34dadf51e
+  data: '2026-09-18'
+  ordem: 1789754223
+  titulo: 'Prioridades: linha do tempo de mudanças com histórico, notícias com entidades no texto, fotos e páginas de pessoa, estatais via Wikipédia,
+    CNMP e Cade, arcos de subgrupo, seletor de graphs'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 11
+- id: b95f0a3cd
+  data: '2026-09-18'
+  ordem: 1789752737
+  titulo: 'Site: página por nó seleciona o próprio nó no carregamento'
+  texto: ''
+  areas:
+  - método
+  arquivos: 1
+- id: 8a066fdcd
+  data: '2026-09-18'
+  ordem: 1789752657
+  titulo: Núcleo leve + detalhe por nó, viewport, defer, contraste, favicon; terceira passada do DOU
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - coleta
+  arquivos: 6
+- id: 8b34ac983
+  data: '2026-09-18'
+  ordem: 1789752006
+  titulo: 'DOU assinaturas: segunda passada com variantes'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - coleta
+  arquivos: 3
+- id: 70e8b3f25
+  data: '2026-09-18'
+  ordem: 1789751495
+  titulo: Dirigentes pela assinatura no DOU e tabelas da Wikipédia (STJ, TST, CNJ, BC, Anatel)
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 8
+- id: a388a634c
+  data: '2026-09-18'
+  ordem: 1789748525
+  titulo: 'DOU: casamento exige papel igual e score alto'
+  texto: ''
+  areas:
+  - tela
+  - coleta
+  arquivos: 3
+- id: cbaa9e792
+  data: '2026-09-18'
+  ordem: 1789748507
+  titulo: 'DOU: primeira coleta diária'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  arquivos: 2
+- id: fad150fd5
+  data: '2026-09-18'
+  ordem: 1789747604
+  titulo: 'README: camadas de dados, DOU com throttle, orçamento'
+  texto: ''
+  areas:
+  - coleta
+  arquivos: 3
+- id: a14008872
+  data: '2026-09-18'
+  ordem: 1789747475
+  titulo: Busca inclui pessoas; skip link; DOU parcial
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  arquivos: 1
+- id: 67abb9785
+  data: '2026-09-18'
+  ordem: 1789747436
+  titulo: Orçamento por órgão (Portal da Transparência), aba Transição 2027, fontes dos ocupantes no painel
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 6
+- id: 28dbf6103
+  data: '2026-09-18'
+  ordem: 1789747175
+  titulo: site/ gerado fica fora do git
+  texto: ''
+  areas:
+  - projeto
+  arquivos: 739
+- id: 4f91b6e96
+  data: '2026-09-18'
+  ordem: 1789747163
+  titulo: 'Fase 2: sabatinas do Senado, notícias e power map, ocupantes oficiais (Planalto, STF, TCU, TSE, STM), Wikidata, DOU, site estático
+    com sitemap e JSON-LD, atualização diária'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 757
+- id: 92588ec5e
+  data: '2026-09-18'
+  ordem: 1789743497
+  titulo: 'SIORG: estrutura completa, colegiados nacionais (214), clusters por ministério'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - coleta
+  arquivos: 5
+- id: 5562e8017
+  data: '2026-09-18'
+  ordem: 1789743355
+  titulo: 'Fase 1: ocupantes da Câmara e do Senado (594 cadeiras), partidos no painel'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 5
+- id: 757e1502e
+  data: '2026-09-18'
+  ordem: 1789743210
+  titulo: 'Fase 1: conector SIORG (330 órgãos), merge com curadoria, clusters na roda'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 7
+- id: 71f01dfa7
+  data: '2026-09-17'
+  ordem: 1789677843
+  titulo: 'Fase 0: modelo de dados, 320 nós com citação legal, build e protótipo da roda'
+  texto: 'Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>'
+  areas:
+  - tela
+  - dado curado
+  arquivos: 19

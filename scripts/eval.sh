@@ -241,6 +241,7 @@ if [ "$RAPIDO" != "--rapido" ] && [ -n "$PW" ] && [ -d "$PW" ]; then
     "quebra:nenhuma palavra quebrada"
     "svgfit:ok"
     "pmap:erros \[\]"
+    "paginas:nenhuma página rola de lado"
   )
   for par in "${PROVA[@]}"; do
     t=${par%%:*}; esperado=${par#*:}

@@ -27,9 +27,11 @@
       { t: 'Mudanças de ocupante', href: u('/feeds/mudancas.xml'), ext: true },
       { t: 'Prazos que vencem', href: u('/feeds/prazos.xml'), ext: true },
       { t: 'Temas em acompanhamento', href: u('/feeds/temas.xml'), ext: true },
-      { t: 'Notícias', href: u('/feeds/noticias.xml'), ext: true }
+      { t: 'Notícias', href: u('/feeds/noticias.xml'), ext: true },
+      { t: 'Novidades do Atlas', href: u('/feeds/novidades.xml'), ext: true }
     ] },
     { h: 'Dados e método', items: [
+      { t: 'O que mudou no Atlas', d: 'Fonte nova, tela nova e conserto, mudança por mudança', href: u('/novidades/') },
       { t: 'Dados abertos', d: 'Planilhas e JSON de tudo que o site mostra, CC BY 4.0', href: u('/dados/') },
       { t: 'Metodologia', d: 'Fonte, regra e limite de cada bloco', href: u('/metodologia/') }
     ] },

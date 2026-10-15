@@ -228,6 +228,14 @@ h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid va
 .om{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:8px 0 14px}
 .om .stat .n{font-size:22px}.om .stat .l{font-size:12px;color:var(--ink-3);line-height:1.3}
 .om-it{padding:9px 0;border-bottom:1px dashed var(--line-2);font-size:14px;line-height:1.4}
+.nov{display:flex;flex-direction:column;gap:2px}
+.nov-it{padding:8px 0;border-bottom:1px dashed var(--line-2);font-size:14px;line-height:1.4}
+.nov-it:last-child{border-bottom:0}
+.nov-it .hd{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:2px}
+.nov-it time{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.nov-it .tag{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;padding:1px 6px;border-radius:999px;color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent)}
+.nov-it b{display:block;font-weight:600}
+.nov-it .tx{display:block;font-size:13px;color:var(--ink-3);margin-top:2px}
 .sanc{margin:2px 0 4px}
 .sanc-it{padding:7px 0;border-bottom:1px dashed var(--line-2);font-size:14px;line-height:1.35}
 .sanc-it .t{font-weight:600;display:block}
@@ -1160,11 +1168,12 @@ function renderHome(){
   // verde é movimento, azul é o Executivo e por extensão a cobertura do dia a dia.
   const COR_ABA = {mudou:'var(--accent)', parado:'var(--jud)', dinheiro:'var(--povo)', imprensa:'var(--exe)'};
   const tab = ([id,label])=>`<button type="button" role="tab" id="tab-${id}" aria-selected="${homeTab===id}" aria-controls="home-panel" tabindex="${homeTab===id?0:-1}" data-tab="${id}" style="--c:${COR_ABA[id]||'var(--accent)'}"><span class="q">${label}</span><span class="v">${esc(String((kp[id]||{}).n ?? ''))}</span><span class="l">${esc((kp[id]||{}).l||'')}</span></button>`;
-  content.innerHTML = `<div class="neutro"><b>Projeto apartidário e de código aberto.</b> O Atlas não defende partido, candidato nem ideologia: mostra quem ocupa cada cargo, quem nomeia quem e para onde vai o dinheiro, sempre com a fonte oficial ao lado. É feito por colaboradores, e qualquer pessoa pode conferir, corrigir ou reaproveitar os dados. <a href="/metodologia/">Como apuramos</a> · <a href="https://github.com/culturabuilder/atlas-da-republica" target="_blank" rel="noopener">Código e dados ↗</a></div>`+``+heroArrec()+`<a class="card start zero" href="/do-zero/"><span class="eyebrow">Nunca estudou isso?</span><b>Do zero</b><span>O governo explicado em palavras simples, em 14 perguntas: o que faz um ministro, quem escreve as leis, de onde vem o dinheiro. Sem pressa e sem termo difícil.</span><span class="go">Começar do zero →</span></a>`+`<a class="card start" href="/como-funciona/"><span class="eyebrow">Depois disto</span><b>Como funciona a República</b><span>Uma visita guiada de 9 minutos pela roda: quem você elege, quem nomeia quem, quem vigia quem. Para quem nunca precisou entender isso e agora quer.</span><span class="go">Começar →</span></a><nav class="quick" aria-label="Outras páginas"><a href="/do-zero/">Do zero</a><a href="/comparar/">Comparar parlamentares</a><a href="/dados/">Dados abertos</a><a href="/metodologia/">Metodologia</a><a href="/feeds/mudancas.xml">Feed RSS</a></nav>`+`
+  content.innerHTML = `<div class="neutro"><b>Projeto apartidário e de código aberto.</b> O Atlas não defende partido, candidato nem ideologia: mostra quem ocupa cada cargo, quem nomeia quem e para onde vai o dinheiro, sempre com a fonte oficial ao lado. É feito por colaboradores, e qualquer pessoa pode conferir, corrigir ou reaproveitar os dados. <a href="/metodologia/">Como apuramos</a> · <a href="https://github.com/culturabuilder/atlas-da-republica" target="_blank" rel="noopener">Código e dados ↗</a></div>`+``+heroArrec()+`<a class="card start zero" href="/do-zero/"><span class="eyebrow">Nunca estudou isso?</span><b>Do zero</b><span>O governo explicado em palavras simples, em 14 perguntas: o que faz um ministro, quem escreve as leis, de onde vem o dinheiro. Sem pressa e sem termo difícil.</span><span class="go">Começar do zero →</span></a>`+`<a class="card start" href="/como-funciona/"><span class="eyebrow">Depois disto</span><b>Como funciona a República</b><span>Uma visita guiada de 9 minutos pela roda: quem você elege, quem nomeia quem, quem vigia quem. Para quem nunca precisou entender isso e agora quer.</span><span class="go">Começar →</span></a><nav class="quick" aria-label="Outras páginas"><a href="/do-zero/">Do zero</a><a href="/comparar/">Comparar parlamentares</a><a href="/novidades/">O que mudou</a><a href="/dados/">Dados abertos</a><a href="/metodologia/">Metodologia</a><a href="/feeds/mudancas.xml">Feed RSS</a></nav>`+`
   <div class="card"><h1>Quem manda em quê no governo federal</h1>
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
     <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div></div>
   <div class="card acomp"><h2 class="acomp-h">Acompanhar <span>lido em ${fmtDate(st.generated_at)}</span></h2><div class="kpis" role="tablist" id="home-tablist" aria-label="Painéis da página inicial">${HOME_TABS.map(tab).join('')}</div><div id="home-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-${homeTab}"></div></div>
+  ${novidadesHtml()}
   ${recebidosHtml()}
   ${contratosHtml()}
   ${falabrHtml()}
@@ -1234,6 +1243,15 @@ function composicaoHtml(n){
   ${nat.length?`<div class="cmp">${nat.map(row).join('')}</div>`:''}
   ${out2.length?`<h4 style="margin:10px 0 4px;font-size:13px">Indicados, eleitos e externos</h4><div class="cmp">${out2.map(row).join('')}</div>`:''}
   ${c.vagas_sociedade?`<p style="font-size:12.5px;color:var(--ink-3);margin:8px 0 0">${c.vagas_sociedade} assentos são de representação da sociedade civil, de entidades ou de outros entes federativos; o Atlas não nomeia essas pessoas.</p>`:''}</div>`;
+}
+function novidadesHtml(){
+  // O Atlas muda todo dia e isso não aparecia em lugar nenhum. As três últimas aqui, o resto na página.
+  const V=G.novidades; if(!V||!V.itens||!V.itens.length) return '';
+  const COR={'fonte nova':'var(--povo)','tela':'var(--exe)','coleta':'var(--exe)','verificação':'var(--jud)','método':'var(--jud)','dado curado':'var(--accent)','publicação':'var(--leg)','projeto':'var(--ink-3)'};
+  return `<div class="card"><h2>O que mudou no Atlas <span style="color:var(--ink-3);font-weight:500">· ${V.total} mudanças</span></h2>
+  <p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">O projeto se atualiza todo dia. Estas são as últimas mudanças; a lista inteira sai do histórico aberto do projeto.</p>
+  <div class="nov">${V.itens.slice(0,3).map(x=>`<div class="nov-it"><div class="hd"><time>${fmtDate(x.data)}</time>${(x.areas||[]).map(t=>`<span class="tag" style="--c:${COR[t]||'var(--ink-3)'}">${esc(t)}</span>`).join('')}</div><b>${esc(x.titulo)}</b>${x.texto?`<span class="tx">${esc(x.texto)}</span>`:''}</div>`).join('')}</div>
+  <p class="note"><a href="/novidades/">Ver as ${V.total} mudanças</a> · <a href="/feeds/novidades.xml">acompanhar por RSS</a></p></div>`;
 }
 function recebidosHtml(){
   // A agenda pública mostra com quem cada autoridade se reuniu, mas só uma por vez: ninguém

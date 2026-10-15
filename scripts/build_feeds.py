@@ -126,6 +126,24 @@ def feed_noticias(G, base):
     return items
 
 
+def feed_novidades(G, base):
+    """O que mudou no Atlas, de data/generated/novidades.yaml. Quem acompanha o projeto segue por aqui
+    em vez de voltar à página."""
+    import yaml as _yaml
+    f = ROOT / "data" / "generated" / "novidades.yaml"
+    if not f.exists(): return []
+    try: d = _yaml.safe_load(f.read_text(encoding="utf-8")) or {}
+    except Exception: return []
+    items = []
+    for x in (d.get("novidades") or [])[:80]:
+        areas = ", ".join(x.get("areas") or [])
+        desc = (x.get("texto") or "").strip() or x.get("titulo") or ""
+        if areas: desc = f"[{areas}] {desc}"
+        items.append(item(x.get("titulo") or "", f"{base}/novidades/#m{str(x.get('data') or '')[:7]}",
+                          guid("novidade", x.get("id")), x.get("data"), desc))
+    return items
+
+
 def build(site_dir, prefix, base, G):
     site = pathlib.Path(site_dir); base = base.rstrip("/"); prefix = (prefix or "").rstrip("/")
     d = site / "feeds"; d.mkdir(parents=True, exist_ok=True)
@@ -135,6 +153,7 @@ def build(site_dir, prefix, base, G):
         ("prazos.xml", "Atlas da República · Prazos", "Medidas provisórias a vencer em 30 dias e vetos com prazo constitucional vencido.", feed_prazos),
         ("temas.xml", "Atlas da República · Temas", "Temas acompanhados: estado do processo e dias parado.", feed_temas),
         ("noticias.xml", "Atlas da República · Notícias", "Notícias sobre órgãos e ocupantes, com link para a fonte original.", feed_noticias),
+        ("novidades.xml", "Atlas da República · Novidades", "O que mudou no Atlas: fonte nova, tela nova, conserto de coleta e verificação.", feed_novidades),
     ]
     urls = []
     for fn, title, desc, fn_items in specs:
