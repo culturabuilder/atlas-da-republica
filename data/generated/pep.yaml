@@ -1,13 +1,13 @@
 # GERADO por etl/pep.py. Não edite à mão.
-generated_at: '2026-10-14'
+generated_at: '2026-10-15'
 fonte: Portal da Transparência, cadastro de Pessoas Expostas Politicamente (/api-de-dados/peps)
 nota: 'Data de início e fim de exercício de quem ocupa função de poder no Executivo federal. A data só é aceita quando o órgão do registro no
   PEP casa com o órgão do cargo no Atlas: o nome sozinho não basta, porque homônimo existe e a data entraria no cargo errado. O que não casa fica
   em ''recusados'', para conferência humana, e não é usado.'
 resumo:
-  consultados_nesta_rodada: 0
-  posses_conhecidas: 34
-  novas_nesta_rodada: 0
+  consultados_nesta_rodada: 1
+  posses_conhecidas: 35
+  novas_nesta_rodada: 1
   recusados: 0
   ja_sairam_segundo_o_pep: 0
   sem_registro: 101
@@ -42,6 +42,12 @@ posses:
     funcao_pep: MINISTRO
     orgao_pep: TRIBUNAL DE CONTAS DA UNIAO
     em: '2026-10-14'
+  br-p-christiano-peres-coelho:
+    inicio: '2024-01-31'
+    cargo: br-universidade-federal-de-jatai-reitor
+    funcao_pep: REITOR
+    orgao_pep: UNIVERSIDADE FEDERAL DE JATAI
+    em: '2026-10-15'
   br-p-dou-ana-paula-do-rego-menezes:
     inicio: '2024-02-23'
     cargo: br-empresa-brasileira-de-hemoderivados-e-biotecnologia-presidente

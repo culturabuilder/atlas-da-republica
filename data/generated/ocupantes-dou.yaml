@@ -1,12 +1,12 @@
 # GERADO por etl/ocupantes_dou.py. Não edite à mão.
-generated_at: '2026-10-08T16:36:29'
+generated_at: '2026-10-15T14:38:29'
 fonte: Diário Oficial da União — busca pública www.in.gov.br/consulta (todas as seções), consulta pelo nome do cargo
 nota: 'Ocupante achado buscando o CARGO no DOU (o inverso de etl/posses.py, que busca o nome). started_at = dia da PUBLICAÇÃO do ato de nomeação/designação/recondução, não o da posse. Só entra quando o
   cargo citado no ato casa com o cargo do grafo em todos os termos significativos; confiança alta = cargo e órgão casam, média = só o cargo casa (órgão vindo da sigla ou da hierarquia do ato) ou a nomeação
   é interina. Ato de exoneração/dispensa posterior descarta a pessoa. Em reitoria e estatal, ato anterior a quatro anos e meio cai para média: é o mais recente do DOU, mas o mandato já venceu.'
 janela:
   de: '2018-01-01'
-  ate: '2026-10-08'
+  ate: '2026-10-15'
 positions:
   br-autoridade-nacional-de-seguranca-nuclear-diretor-presidente:
   - id: br-p-alessandro-facure-neves-de-salles-soares
@@ -1509,6 +1509,66 @@ positions:
     ato: PORTARIAS DE 8 DE ABRIL DE 2024 (DO2, 2024-04-09)
     cargo_no_ato: Secretário Nacional de Registro, Monitoramento e Pesquisa da Pesca e Aquicultura do Ministério da Pesca e Aquicultura
     note: 'NOMEAR publicado no DOU em 09/04/2024; cargo no ato: "Secretário Nacional de Registro, Monitoramento e Pesquisa da Pesca e Aquicultura do Minist". Data = publicação do ato, não a posse.'
+  br-secretaria-de-ciencia-e-tecnologia-para-transformacao-digital-secretario:
+  - id: br-p-henrique-de-oliveira-miguel
+    name: Henrique De Oliveira Miguel
+    started_at: '2023-06-21'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-20-de-junho-de-2023-491038875
+    checked_at: '2026-10-15'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 20 DE JUNHO DE 2023 (DO2, 2023-06-21)
+    cargo_no_ato: Secretário de Ciência e Tecnologia para Transformação Digital do Ministério da Ciência, Tecnologia e Inovação
+    note: 'NOMEAR publicado no DOU em 21/06/2023; cargo no ato: "Secretário de Ciência e Tecnologia para Transformação Digital do Ministério da Ciência, Te". Data = publicação do ato, não a posse.'
+  br-secretaria-de-controle-interno-itamaraty-secretario:
+  - id: br-p-joao-andre-pinto-dias-lima
+    name: João André Pinto Dias Lima
+    started_at: '2021-12-30'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-29-de-dezembro-de-2021-370958690
+    checked_at: '2026-10-15'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 29 DE DEZEMBRO DE 2021 (DO2, 2021-12-30)
+    cargo_no_ato: Secretário de Controle Interno do Ministério das Relações Exteriores
+    note: 'NOMEAR publicado no DOU em 30/12/2021; cargo no ato: "Secretário de Controle Interno do Ministério das Relações Exteriores". Data = publicação do ato, não a posse.'
+  br-secretaria-de-gestao-de-pessoas-secretario:
+  - id: br-p-jose-celso-pereira-cardoso-junior
+    name: José Celso Pereira Cardoso Júnior
+    started_at: '2023-08-02'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-1-de-agosto-de-2023-500246382
+    checked_at: '2026-10-15'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 1º DE AGOSTO DE 2023 (DO2, 2023-08-02)
+    cargo_no_ato: Secretário de Gestão de Pessoas do Ministério da Gestão e da Inovação em Serviços Públicos
+    note: 'NOMEAR publicado no DOU em 02/08/2023; cargo no ato: "Secretário de Gestão de Pessoas do Ministério da Gestão e da Inovação em Serviços Públicos". Data = publicação do ato, não a posse.'
+  br-secretaria-extraordinaria-para-a-transformacao-do-estado-secretario:
+  - id: br-p-francisco-gaetani
+    name: Francisco Gaetani
+    started_at: '2023-01-24'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portarias-de-23-de-janeiro-de-2023-459688190
+    checked_at: '2026-10-15'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIAS DE 23 DE JANEIRO DE 2023 (DO2, 2023-01-24)
+    cargo_no_ato: Secretário Extraordinário para a Transformação do Estado do Ministério da Gestão e da Inovação em Serviços Públicos
+    note: 'NOMEAR publicado no DOU em 24/01/2023; cargo no ato: "Secretário Extraordinário para a Transformação do Estado do Ministério da Gestão e da Inov". Data = publicação do ato, não a posse.'
 nao_encontrados:
 - br-amazonia-azul-tecnologias-de-defesa-s-a-presidente
 - br-banco-da-amazonia-s-a-presidente
@@ -1519,6 +1579,7 @@ nao_encontrados:
 - br-caixa-loterias-s-a-presidente
 - br-caixa-seguridade-participacoes-s-a-presidente
 - br-centrais-de-abastecimento-de-minas-gerais-s-a-presidente
+- br-codevasf-dirigente
 - br-companhia-das-docas-do-estado-da-bahia-presidente
 - br-companhia-de-entrepostos-e-armazens-gerais-de-sao-paulo-presidente
 - br-companhia-de-pesquisa-de-recursos-minerais-presidente
@@ -1537,14 +1598,19 @@ nao_encontrados:
 - br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sertao-paraibano-reitor
 - br-secretaria-de-defesa-agropecuaria-secretario
 - br-secretaria-de-estrategias-e-redes-secretario
+- br-secretaria-de-gestao-e-inovacao-secretario
 - br-secretaria-de-integridade-publica-secretario
-- br-secretaria-extraordinaria-da-copa-do-mundo-de-futebol-feminino-2027-secretario
+- br-secretaria-de-politicas-e-programas-estrategicos-secretario
+- br-secretaria-de-relacoes-de-trabalho-secretario
+- br-secretaria-do-patrimonio-da-uniao-secretario
+- br-secretaria-executiva-ciencia-e-tecnologia-secretario
+- br-secretaria-executiva-mulheres-secretario
+- br-secretaria-nacional-de-articulacao-intersetorial-e-interfederativa-e-participacao-politica-secretario
+- br-secretaria-nacional-de-autonomia-economica-e-politica-de-cuidados-secretario
 - br-secretaria-nacional-de-biodiversidade-florestas-e-direitos-animais-secretario
-- br-secretaria-nacional-de-bioeconomia-secretario
 - br-secretaria-nacional-de-enfrentamento-a-violencia-contra-mulheres-secretario
-- br-secretaria-nacional-de-excelencia-esportiva-secretario
 - br-secretaria-nacional-de-geologia-mineracao-e-transformacao-mineral-secretario
-- br-secretaria-nacional-de-meio-ambiente-urbano-recursos-hidricos-e-qualidade-ambiental-secretario
+- br-secretaria-nacional-de-relacoes-politico-sociais-secretario
 - br-universidade-federal-da-fronteira-norte-reitor
 - br-universidade-federal-do-esporte-reitor
 - br-universidade-federal-indigena-reitor
@@ -1600,6 +1666,12 @@ nao_encontrados_detalhe:
   motivo: nenhum ato de nomeação citando o cargo
 - cargo_id: br-centrais-de-abastecimento-de-minas-gerais-s-a-presidente
   cargo: Presidente das Centrais de Abastecimento de Minas Gerais S.A.
+  tipo: estatal
+  consultas: 4
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
+- cargo_id: br-codevasf-dirigente
+  cargo: Presidente da Codevasf
   tipo: estatal
   consultas: 4
   atos_lidos: 0
@@ -1704,7 +1776,7 @@ nao_encontrados_detalhe:
   cargo: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Sertão Paraibano
   tipo: reitoria
   consultas: 4
-  atos_lidos: 0
+  atos_lidos: 186
   motivo: papel casa mas o órgão do ato (Universidade Federal do Amapá) não é o do grafo
 - cargo_id: br-universidade-federal-da-fronteira-norte-reitor
   cargo: Reitor da Universidade Federal da Fronteira Norte
@@ -1736,14 +1808,56 @@ nao_encontrados_detalhe:
   consultas: 6
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
+- cargo_id: br-secretaria-de-gestao-e-inovacao-secretario
+  cargo: Secretário de Gestão e Inovação do Ministério da Gestão e da Inovação em Serviços Públicos
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
 - cargo_id: br-secretaria-de-integridade-publica-secretario
   cargo: Secretário de Integridade Pública da Controladoria-Geral da União
   tipo: secretaria
   consultas: 6
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-secretaria-extraordinaria-da-copa-do-mundo-de-futebol-feminino-2027-secretario
-  cargo: Secretário Extraordinário da Copa do Mundo de Futebol Feminino 2027 do Ministério do Esporte
+- cargo_id: br-secretaria-de-politicas-e-programas-estrategicos-secretario
+  cargo: Secretário de Políticas e Programas Estratégicos do Ministério da Ciência, Tecnologia e Inovação
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
+- cargo_id: br-secretaria-de-relacoes-de-trabalho-secretario
+  cargo: Secretário de Relações de Trabalho do Ministério da Gestão e da Inovação em Serviços Públicos
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 5
+  motivo: cargo do ato (Diretora do Departamento de Suporte e Normas da Secretaria de Defesa A) não casa em todos os termos
+- cargo_id: br-secretaria-do-patrimonio-da-uniao-secretario
+  cargo: Secretário do Patrimônio da União do Ministério da Gestão e da Inovação em Serviços Públicos
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 3
+  motivo: cargo do ato (Diretora do Departamento de Monitoramento e Avaliação da Secretaria de) não casa em todos os termos
+- cargo_id: br-secretaria-executiva-ciencia-e-tecnologia-secretario
+  cargo: Secretário-Executivo do Ministério da Ciência, Tecnologia e Inovação
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 60
+  motivo: cargo do ato (Coordenador de Repressão a Crimes Cibernéticos Relacionados ao Abuso S) não casa em todos os termos
+- cargo_id: br-secretaria-executiva-mulheres-secretario
+  cargo: Secretário-Executivo do Ministério das Mulheres
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 23
+  motivo: cargo do ato (Coordenador de Repressão a Crimes Cibernéticos Relacionados ao Abuso S) não casa em todos os termos
+- cargo_id: br-secretaria-nacional-de-articulacao-intersetorial-e-interfederativa-e-participacao-politica-secretario
+  cargo: Secretário Nacional de Articulação Intersetorial e Interfederativa e Participação Política do Ministério das Mulheres
+  tipo: secretaria
+  consultas: 6
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
+- cargo_id: br-secretaria-nacional-de-autonomia-economica-e-politica-de-cuidados-secretario
+  cargo: Secretário Nacional de Autonomia Econômica e Política de Cuidados do Ministério das Mulheres
   tipo: secretaria
   consultas: 6
   atos_lidos: 0
@@ -1754,20 +1868,8 @@ nao_encontrados_detalhe:
   consultas: 6
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-secretaria-nacional-de-bioeconomia-secretario
-  cargo: Secretário Nacional de Bioeconomia do Ministério do Meio Ambiente e Mudança do Clima
-  tipo: secretaria
-  consultas: 6
-  atos_lidos: 0
-  motivo: nenhum ato de nomeação citando o cargo
 - cargo_id: br-secretaria-nacional-de-enfrentamento-a-violencia-contra-mulheres-secretario
   cargo: Secretário Nacional de Enfrentamento à Violência contra Mulheres do Ministério das Mulheres
-  tipo: secretaria
-  consultas: 6
-  atos_lidos: 0
-  motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-secretaria-nacional-de-excelencia-esportiva-secretario
-  cargo: Secretário Nacional de Excelência Esportiva do Ministério do Esporte
   tipo: secretaria
   consultas: 6
   atos_lidos: 0
@@ -1778,25 +1880,24 @@ nao_encontrados_detalhe:
   consultas: 6
   atos_lidos: 1
   motivo: cargo do ato (Assessora Especial da Secretaria-Executiva da Secretaria de Relações I) não casa em todos os termos
-- cargo_id: br-secretaria-nacional-de-meio-ambiente-urbano-recursos-hidricos-e-qualidade-ambiental-secretario
-  cargo: Secretário Nacional de Meio Ambiente Urbano, Recursos Hídricos e Qualidade Ambiental do Ministério do Meio Ambiente e Mudança do Clima
+- cargo_id: br-secretaria-nacional-de-relacoes-politico-sociais-secretario
+  cargo: Secretário Nacional de Relações Político-Sociais da Secretaria-Geral da Presidência da República
   tipo: secretaria
   consultas: 6
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
 resumo:
-  cargos_alvo: 55
+  cargos_alvo: 49
   cargos_alvo_por_tipo:
     autarquia: 2
-    estatal: 21
+    estatal: 22
     fundacao: 2
-    reitoria: 5
-    secretaria: 25
-  cargos_processados: 55
-  resolvidos: 100
+    reitoria: 4
+    secretaria: 19
+  cargos_processados: 49
+  resolvidos: 104
   por_confianca:
-    alta: 16
+    alta: 4
   por_tipo:
-    reitoria: 1
-    secretaria: 15
-  sem_ato: 39
+    secretaria: 4
+  sem_ato: 45
