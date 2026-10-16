@@ -1,19 +1,19 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-10-15'
+generated_at: '2026-10-16'
 mes: '202608'
 mes_senado: '202609'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1204
-  com_remuneracao: 494
+  ocupantes_no_grafo: 1208
+  com_remuneracao: 497
   por_setor:
     executivo:
-      ocupantes: 470
-      antes: 386
-      depois: 410
+      ocupantes: 475
+      antes: 390
+      depois: 413
       pct_antes: 82.1
-      pct_depois: 87.2
+      pct_depois: 86.9
     essenciais:
       ocupantes: 30
       antes: 4
@@ -27,30 +27,30 @@ resumo:
       pct_antes: 0.0
       pct_depois: 13.5
     judiciario:
-      ocupantes: 110
+      ocupantes: 109
       antes: 0
       depois: 0
       pct_antes: 0.0
       pct_depois: 0.0
   por_criterio:
-    nome_completo+orgao: 379
-    nome_completo: 89
+    nome_completo+orgao: 381
+    nome_completo: 90
     primeiro_ultimo+orgao: 17
     subsequencia_no_orgao: 6
     primeiro_ultimo_unico: 1
     nome_sem_sufixo: 1
     subsequencia_subsidio: 1
   por_confianca:
-    alta: 469
+    alta: 472
     media: 25
   sem_remuneracao:
-    total: 87
+    total: 89
     por_motivo:
       ausente na folha: 25
-      órgão fora do SIAPE (empresa publica com folha própria): 14
+      órgão fora do SIAPE (empresa publica com folha própria): 15
       só há homônimo por primeiro+último sobrenome fora do órgão (...): 13
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
-      no cadastro do SIAPE mas sem linha de remuneração no mês: 12
+      no cadastro do SIAPE mas sem linha de remuneração no mês: 13
       órgão fora do SIAPE (sociedade economia mista com folha própria): 6
       vários servidores compatíveis no órgão (...) sem desempate: 2
       a entidade não aparece como órgão na folha do SIAPE (folha própria): 1
@@ -4581,6 +4581,38 @@ people:
     eventuais: 6985.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-henrique-de-oliveira-miguel:
+    mes: '202608'
+    bruto: 27943.17
+    abate_teto: 0.0
+    bruto_apos_abate: 27943.17
+    liquido: 20316.49
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Ministério da Ciência, Tecnologia, Inovações e Comunicações
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo
+    confianca: alta
+    nome_na_folha: HENRIQUE DE OLIVEIRA MIGUEL
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2818337
+    position: br-secretaria-de-ciencia-e-tecnologia-para-transformacao-digital-secretario
+    position_name: Secretário de Ciência e Tecnologia para Transformação Digital do Ministério da Ciência, Tecnologia e Inovação
+    bruta: 27943.17
+    liquida: 20316.49
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-daniel-gomes-de-almeida-filho:
     mes: '202608'
     bruto: 41743.17
@@ -5317,6 +5349,39 @@ people:
     eventuais: 988.07
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-francisco-gaetani:
+    mes: '202608'
+    bruto: 27943.17
+    abate_teto: 0.0
+    bruto_apos_abate: 27943.17
+    liquido: 20451.18
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 0.0
+    orgao: MIN GESTAO E INOV EM SERV PUBLICOS
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: FRANCISCO GAETANI
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1454334
+    position: br-secretaria-extraordinaria-para-a-transformacao-do-estado-secretario
+    position_name: Secretário Extraordinário para a Transformação do Estado do Ministério da Gestão e da Inovação em Serviços
+      Públicos
+    bruta: 27943.17
+    liquida: 20451.18
+    indenizatorias: 0.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-elisa-vieira-leonel:
     mes: '202608'
     bruto: 45885.61
@@ -5349,6 +5414,38 @@ people:
     ferias: 0.0
     eventuais: 0.0
     cargo: ESP EM REG DE SERV PUB DE TELECOMNICACAO
+    funcao: Sem informação
+  br-p-jose-celso-pereira-cardoso-junior:
+    mes: '202608'
+    bruto: 53459.9
+    abate_teto: 7093.7
+    bruto_apos_abate: 46366.2
+    liquido: 35909.5
+    componentes:
+      basica: 53459.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1356.33
+    orgao: MIN GESTAO E INOV EM SERV PUBLICOS
+    orgao_superior: Sem informação
+    cargo_na_folha: TECNICO DE PLANEJAMENTO E PESQUISA
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JOSE CELSO PEREIRA CARDOSO JUNIOR
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3226038
+    position: br-secretaria-de-gestao-de-pessoas-secretario
+    position_name: Secretário de Gestão de Pessoas do Ministério da Gestão e da Inovação em Serviços Públicos
+    bruta: 53459.9
+    liquida: 35909.5
+    indenizatorias: 1356.33
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: TECNICO DE PLANEJAMENTO E PESQUISA
     funcao: Sem informação
   br-p-rogerio-souza-mascarenhas:
     mes: '202608'
@@ -16345,6 +16442,11 @@ nao_encontrados:
   cargo: Ministro de Estado do Desenvolvimento e Assistência Social, Família e Combate à Fome
   setor: executivo
   motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
+- id: br-p-joao-andre-pinto-dias-lima
+  nome: João André Pinto Dias Lima
+  cargo: Secretário de Controle Interno do Ministério das Relações Exteriores
+  setor: executivo
+  motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
 - id: br-p-kenarik-boujikian
   nome: Kenarik Boujikian
   cargo: Secretária Nacional de Diálogos Sociais e Articulação de Políticas Públicas da Secretaria-Geral da Presidência da
@@ -16381,6 +16483,11 @@ nao_encontrados:
   cargo: Presidente da Petrobras
   setor: executivo
   motivo: órgão fora do SIAPE (sociedade economia mista com folha própria)
+- id: br-p-wp-marcelo-andrade-moreira-pinto
+  nome: Marcelo Andrade Moreira Pinto
+  cargo: Presidente da Codevasf
+  setor: executivo
+  motivo: órgão fora do SIAPE (empresa publica com folha própria)
 - id: br-p-margareth-menezes-da-purificacao-costa
   nome: Margareth Menezes da Purificação Costa
   cargo: Ministro de Estado da Cultura
