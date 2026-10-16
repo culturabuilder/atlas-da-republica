@@ -50,6 +50,26 @@ def item(title, link, gid, date, desc, extra=""):
             f"<pubDate>{rfc822(date)}</pubDate>\n<description>{escape(desc)}</description>\n{extra}</item>\n")
 
 
+def _hoje(G):
+    """A data do build, não a do relógio: o feed tem de datar igual ao resto do site."""
+    return ((G.get("stats") or {}).get("generated_at")) or datetime.date.today().isoformat()
+
+
+def item_alerta(title, link, gid, desc, quando_do_fato, hoje, extra=""):
+    """Item de feed de ALERTA, em que pubDate é a data da publicação, não a do fato.
+
+    Em RSS, pubDate quer dizer "quando este item foi publicado no feed". Nos feeds de evento
+    (mudanças, notícias, novidades) o fato É a notícia, e usar a data do fato está certo. Nos feeds
+    de alerta — prazo vencendo, tema parado — o fato pode ser antigo e o alerta é de hoje: um veto
+    de 2006 chegava ao leitor datado de 2006 e nunca aparecia como novo. Em 16/10/2026, 12 dos 26
+    itens de /feeds/prazos.xml tinham mais de 400 dias, e o primeiro dizia "vence hoje" com data de
+    junho. A data do fato não se perde: vai para a descrição, onde é informação e não ordenação.
+    """
+    if quando_do_fato:
+        desc = f"{desc} Fato de {fmt_date(quando_do_fato)}."
+    return item(title, link, gid, hoje, desc, extra)
+
+
 def channel(title, self_url, site_link, desc, items, build_date):
     return ('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n'
             f"<title>{escape(title)}</title>\n<link>{escape(site_link)}</link>\n<description>{escape(desc)}</description>\n<language>pt-BR</language>\n"
@@ -86,7 +106,7 @@ def feed_prazos(G, base):
         if m.get("responsible_name"): desc += f" Responsável: {m['responsible_name']}" + (f" ({m['responsible_person']})" if m.get("responsible_person") else "") + "."
         if m.get("url"): desc += f" Fonte: {m['url']}"
         link = f"{base}/#{m.get('responsible_position') or ''}" if m.get("responsible_position") else f"{base}/"
-        items.append(item(title, link, guid("prazo", m.get("id")), m.get("date"), desc, f'<category>MP</category>\n' + (f'<source url="{escape(m["url"])}">Congresso Nacional</source>\n' if m.get("url") else "")))
+        items.append(item_alerta(title, link, guid("prazo", m.get("id")), desc, m.get("date"), _hoje(G), f'<category>MP</category>\n' + (f'<source url="{escape(m["url"])}">Congresso Nacional</source>\n' if m.get("url") else "")))
     vetos = [v for v in om.get("vetos") or [] if v.get("overdue")]
     vetos.sort(key=lambda v: -(v.get("days") or 0))
     for v in vetos:
@@ -97,7 +117,7 @@ def feed_prazos(G, base):
         if v.get("responsible_name"): desc += f" Responsável: {v['responsible_name']}" + (f" ({v['responsible_person']})" if v.get("responsible_person") else "") + "."
         if v.get("url"): desc += f" Fonte: {v['url']}"
         link = f"{base}/#{v.get('responsible_position') or ''}" if v.get("responsible_position") else f"{base}/"
-        items.append(item(title, link, guid("prazo", v.get("id")), v.get("date"), desc, '<category>Veto</category>\n' + (f'<source url="{escape(v["url"])}">Congresso Nacional</source>\n' if v.get("url") else "")))
+        items.append(item_alerta(title, link, guid("prazo", v.get("id")), desc, v.get("date"), _hoje(G), '<category>Veto</category>\n' + (f'<source url="{escape(v["url"])}">Congresso Nacional</source>\n' if v.get("url") else "")))
     return items
 
 
@@ -112,7 +132,7 @@ def feed_temas(G, base):
         if t.get("news_hits"): parts.append(f"{t['news_hits']} notícias nos últimos 90 dias.")
         if t.get("silent_and_stalled"): parts.append("Silêncio com prazo vencido: a cobertura caiu e o processo não anda.")
         last = max([p.get("last_move") or "" for p in t.get("processes") or []] + [(t.get("news_recent") or [{}])[0].get("date") or ""]) or (G.get("temas") or {}).get("generated_at")
-        items.append(item(title, f"{base}/", guid("tema", t.get("id")), last, " ".join(x for x in parts if x), f"<category>{escape(st)}</category>\n"))
+        items.append(item_alerta(title, f"{base}/", guid("tema", t.get("id")), " ".join(x for x in parts if x), last, _hoje(G), f"<category>{escape(st)}</category>\n"))
     return items
 
 

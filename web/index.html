@@ -1315,7 +1315,7 @@ function contratosOrgaoHtml(n){
   const st=(v,l)=>`<div class="stat"><div class="n">${v}</div><div class="l">${l}</div></div>`;
   const rec=(c.recentes||[]).slice(0,8);
   return `<div class="card"><h2>Com quem este órgão assinou contrato</h2>
-  <div class="om">${st(c.contratos.toLocaleString('pt-BR'),c.contratos===1?'contrato publicado no PNCP':'contratos publicados no PNCP')}${st(brl(c.valor),'em valor global somado')}</div>
+  <div class="om">${st(c.contratos.toLocaleString('pt-BR'),c.contratos===1?'contrato lido no PNCP — não é o total do órgão':'contratos lidos no PNCP — não é o total do órgão')}${st(brl(c.valor),'somados nesses contratos')}</div>
   ${(c.fornecedores_top||[]).length?`<h3>Fornecedores que mais receberam</h3>${bars(c.fornecedores_top, x=>tit(x.nome), x=>x.valor, {fmt:(v,it)=>`${brl(v)} · ${it.n} ${it.n===1?'contrato':'contratos'}`})}`:''}
   ${rec.length?`<h3>Contratos mais recentes</h3><div class="act">${rec.map(x=>`<div class="row"><span>${esc(x.objeto||'')}<span class="d wrap" style="display:block">${esc(tit(x.fornecedor||''))}${x.assinado?` · assinado em ${fmtDate(x.assinado)}`:''}${x.vigencia_fim?` · vigência até ${fmtDate(x.vigencia_fim)}`:''}</span></span><span class="v">${brl(x.valor)}</span></div>`).join('')}</div>`:''}
   <p class="note">${esc(C.nota||'')} Fonte: ${esc(C.fonte||'PNCP')}, lido em ${fmtDate(C.generated_at)}.</p></div>`;
@@ -1326,7 +1326,7 @@ function contratosHtml(){
   const st=(v,l)=>`<div class="stat"><div class="n">${v}</div><div class="l">${l}</div></div>`;
   return `<div class="card"><h2>Com quem a União assina contrato</h2>
   <p style="font-size:14px;color:var(--ink-2);margin:0 0 8px">O Atlas já mostrava quanto cada órgão gasta; faltava com quem ele assina. Estes são os contratos de esfera federal publicados no Portal Nacional de Contratações Públicas nas janelas já lidas — não o total de contratos da União. A cada dia o conector lê uma janela nova e soma ao que já havia.</p>
-  <div class="om">${st((R.contratos||0).toLocaleString('pt-BR'),'contratos federais lidos')}${st(brl(R.valor),'em valor global somado')}${st((R.orgaos||0).toLocaleString('pt-BR'),'órgãos com contrato')}</div>
+  <div class="om">${st((R.contratos||0).toLocaleString('pt-BR'),'contratos federais lidos até agora — não é o total da União')}${st(brl(R.valor),'somados nesses contratos')}${st((R.orgaos||0).toLocaleString('pt-BR'),'órgãos com contrato lido')}</div>
   ${(C.orgaos_top||[]).length?`<h3>Órgãos que mais contrataram</h3>${bars(C.orgaos_top.slice(0,10), x=>(N[x.id]?N[x.id].name:x.nome||x.id), x=>x.valor, {fmt:(v,it)=>`${brl(v)} · ${it.contratos} ${it.contratos===1?'contrato':'contratos'}`, link:x=>N[x.id]?'#'+x.id:null})}`:''}
   ${(C.fornecedores_top||[]).length?`<h3>Fornecedores que mais receberam</h3>${bars(C.fornecedores_top.slice(0,10), x=>tit(x.nome), x=>x.valor, {fmt:(v,it)=>`${brl(v)} · ${it.n} ${it.n===1?'contrato':'contratos'}${it.orgaos>1?` em ${it.orgaos} órgãos`:''}`})}`:''}
   ${(()=>{ const A=C.fornecedor_sob_sancao; if(!A||!A.total) return '';

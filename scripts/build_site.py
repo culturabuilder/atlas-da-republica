@@ -42,6 +42,15 @@ REL = {"elege": "elege", "nomeia": "nomeia", "sabatina": "sabatina e aprova", "f
 TYPE_SCHEMA = {"department": "GovernmentOrganization", "elected": "GovernmentOrganization", "commission": "GovernmentOrganization", "advisory": "GovernmentOrganization", "dept_head": "Role", "constituency": "Organization"}
 esc = html.escape
 
+def brl(v):
+    """Valor em reais, na mesma forma que a tela usa, para o HTML entregue casar com o que o app mostra."""
+    try: v = float(v or 0)
+    except (TypeError, ValueError): return "—"
+    if abs(v) >= 1e9: return f"R$ {v/1e9:,.1f} bi".replace(",", "X").replace(".", ",").replace("X", ".")
+    if abs(v) >= 1e6: return f"R$ {v/1e6:,.1f} mi".replace(",", "X").replace(".", ",").replace("X", ".")
+    return f"R$ {v:,.0f}".replace(",", ".")
+
+
 def page(n):
     url = f"{BASE}/br/{n['id']}/"
     desc = (n.get("description") or "")[:300]
@@ -60,8 +69,41 @@ def page(n):
         rels.append(f'<li>{esc(n["name"]) if e["from"]==n["id"] else esc(o["name"])} <em>{REL.get(e["type"], e["type"])}</em> <a href="/br/{other}/">{esc(o["name"]) if e["from"]==n["id"] else esc(n["name"])}</a> <small>({esc(e.get("cite") or "")})</small></li>')
     people = "".join(f'<li>{esc(p.get("name") or "")}{(" · " + esc(p["party"])) if p.get("party") else ""}{(" · desde " + esc(p["started_at"])) if p.get("started_at") else ""}</li>' for p in (n.get("people") or [])[:600])
     kids = "".join(f'<li><a href="/br/{k}/">{esc(N[k]["name"])}</a></li>' for k in n.get("children", []) if k in N)
+    # Os números que o app desenha no cliente também vão para o HTML entregue. Até 16/10/2026 esta
+    # página trazia nome, descrição, ocupantes e relações, e mais nada: orçamento, contratos, punições,
+    # acesso à informação e agenda só existiam depois do JavaScript rodar. Quem busca "quanto o
+    # Ministério da Saúde contratou" ou "quem é o presidente da Codevasf" não achava nada — e são
+    # 2.607 páginas no sitemap, a maior parte assim. A ordem segue a da tela: dinheiro antes de controle.
+    fatos = []
+    _b = n.get("budget") or {}
+    if _b:
+        _y = sorted(_b)[-1]; _v = _b[_y]
+        if isinstance(_v, dict) and _v.get("empenhado"):
+            fatos.append(f'<li><b>Despesa {esc(_y)}:</b> {esc(brl(_v["empenhado"]))} empenhado{(", " + esc(brl(_v["pago"])) + " pago") if _v.get("pago") else ""} <small>({esc(_v.get("escopo") or "")})</small></li>')
+    _pg = n.get("programas") or {}
+    if isinstance(_pg, dict) and _pg.get("programas"):
+        _t = _pg["programas"][0]
+        fatos.append(f'<li><b>Maior programa:</b> {esc(str(_t.get("nome") or ""))} — {esc(brl(_t.get("pago") or 0))}</li>')
+    _ct = n.get("contratos") or {}
+    if _ct.get("contratos"):
+        _f = (_ct.get("fornecedores_top") or [{}])[0]
+        fatos.append(f'<li><b>Contratos no PNCP:</b> {_ct["contratos"]} lidos nas janelas já consultadas (não é o total do órgão), {esc(brl(_ct.get("valor") or 0))} somados{("; maior fornecedor " + esc(str(_f.get("nome")))) if _f.get("nome") else ""}</li>')
+    _sn = n.get("sancoes") or {}
+    if _sn.get("expulsoes_total"):
+        fatos.append(f'<li><b>Servidores expulsos registrados:</b> {_sn["expulsoes_total"]}</li>')
+    if (_sn.get("ceis") or {}).get("n"):
+        fatos.append(f'<li><b>Empresas que este órgão impediu de contratar:</b> {_sn["ceis"]["n"]}</li>')
+    _fb = n.get("falabr") or {}
+    if _fb.get("pedidos"):
+        _pct = _fb.get("pct_negado_ou_parcial")
+        _pcts = f"{_pct:.1f}".replace(".", ",") if _pct is not None else ""
+        fatos.append(f'<li><b>Pedidos de acesso à informação:</b> {_fb["pedidos"]}{(f", {_pcts}% negados ou concedidos em parte") if _pct is not None else ""}</li>')
+    _tt = (n.get("agenda") or {})
+    if _tt.get("compromissos_total"):
+        fatos.append(f'<li><b>Compromissos na agenda pública:</b> {_tt["compromissos_total"]}</li>')
+    bloco_fatos = ("<h2>Em números</h2><ul>" + "".join(fatos) + "</ul>") if fatos else ""
     ssr = f'''<div id="ssr"><article><h1>{esc(n["name"])}</h1><p>{esc(n.get("description") or "")}</p><p>Fonte legal: {esc(n.get("cite") or "")}</p>
-{("<h2>Ocupantes</h2><ul>" + people + "</ul>") if people else ""}{("<h2>Órgãos integrados e vinculados</h2><ul>" + kids + "</ul>") if kids else ""}<h2>Relações</h2><ul>{"".join(rels)}</ul><p><a href="/">Atlas da República</a></p></article></div>'''
+{bloco_fatos}{("<h2>Ocupantes</h2><ul>" + people + "</ul>") if people else ""}{("<h2>Órgãos integrados e vinculados</h2><ul>" + kids + "</ul>") if kids else ""}<h2>Relações</h2><ul>{"".join(rels)}</ul><p><a href="/">Atlas da República</a></p></article></div>'''
     og_img = f"{BASE}{PREFIX}/og/{n['id']}.png" if n["id"] in OG_IDS else f"{BASE}{PREFIX}/og/atlas.png"
     head = f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc)}">\n<link rel="canonical" href="{url}">\n<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{url}"><meta property="og:type" content="website"><meta property="og:image" content="{og_img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
     out = tpl.replace("<title>Atlas da República</title>\n", head, 1)
