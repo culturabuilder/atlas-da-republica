@@ -100,7 +100,10 @@ run "Sabatinas" $PY etl/sabatinas.py
 run "Notícias" $PY etl/noticias.py
 LIM=1200 run "DOU" $PY etl/dou.py
 LIM=1200 run "DOU assinaturas" $PY etl/dou_assinaturas.py
-semanal 1 5400 "Posses" $PY etl/posses.py
+# --segundos 4200 fica abaixo do corte de 5400 do semanal(), de propósito: o conector precisa parar
+# sozinho e GRAVAR, senão o run() devolve o arquivo e a memória de quem já foi procurado nunca
+# passa a existir. Foi esse impasse que o deixou 18 dias sem atualizar.
+semanal 1 5400 "Posses" $PY etl/posses.py --segundos 4200
 semanal 4 5400 "Ocupantes pelo DOU" $PY etl/ocupantes_dou.py
 semanal 2 5400 "Segundo escalão" $PY etl/segundo_escalao.py
 semanal 3 5400 "Dirigentes" $PY etl/dirigentes.py

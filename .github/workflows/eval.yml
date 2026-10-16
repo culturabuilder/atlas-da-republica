@@ -28,7 +28,7 @@ jobs:
       # build/_eval_base.json, e build/ não é versionado: sem cache, toda rodada no runner é "primeira
       # execução" e a detecção de queda nunca acontece — justamente a que avisaria se um conector
       # apagasse metade do grafo.
-      - uses: actions/cache@v4
+      - uses: actions/cache/restore@v4
         with:
           path: build/_eval_base.json
           key: eval-base-${{ github.run_id }}
@@ -51,7 +51,17 @@ jobs:
             echo "### Avisos"; echo '```'; grep -E "^   !" eval.txt | head -20 || true; echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
           exit 0
+      # Gravar o cache ANTES do passo que falha, e com if: always(). A primeira versão usava
+      # actions/cache, cujo passo de gravação é PULADO quando o trabalho falha — e este trabalho falha
+      # justamente quando há achado. Resultado: a linha de base nunca persistia nas rodadas em que
+      # serviria, e a detecção de queda ficava para sempre em "primeira execução".
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: build/_eval_base.json
+          key: eval-base-${{ github.run_id }}
       - uses: actions/upload-artifact@v4
+        if: always()
         with: { name: eval-dados, path: eval.txt, retention-days: 30 }
       - if: steps.eval.outputs.codigo != '0'
         run: echo "Há itens que pedem correção; veja o resumo." && exit 1
@@ -100,6 +110,7 @@ jobs:
           { echo "## Interface"; echo '```'; cat checagens.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
           exit 0
       - uses: actions/upload-artifact@v4
+        if: always()
         with: { name: eval-interface, path: checagens.txt, retention-days: 30 }
       - if: steps.checagens.outputs.codigo != '0'
         run: echo "Checagens de interface com falha; veja o resumo." && exit 1

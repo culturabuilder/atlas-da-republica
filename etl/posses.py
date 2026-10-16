@@ -310,6 +310,7 @@ def main():
     ap.add_argument("--sem-reserva", action="store_true", help="não faz a busca só pelo nome quando a frase VERBO+NOME não acha nada")
     ap.add_argument("--desde-antigo", default=None, help="se nada for achado na janela, procura também a partir desta data (ex.: 2019-01-01, mandatos de agência)")
     ap.add_argument("--reter-dias", type=int, default=60, help="não procurar de novo, por este tanto de dias, quem já foi procurado e não tinha ato no DOU")
+    ap.add_argument("--segundos", type=int, default=0, help="orçamento de tempo; ao esgotar, grava o que já apurou e sai (0 = sem limite)")
     a = ap.parse_args()
     PAUSE["s"] = a.pause
     desde = datetime.date.fromisoformat(a.desde); ate = datetime.date.fromisoformat(a.ate) if a.ate else datetime.date.today()
@@ -338,14 +339,14 @@ def main():
                 print(f"{_antes - len(lista)} ocupantes já resolvidos pelo cadastro de PEPs", file=sys.stderr, flush=True)
         except Exception as e:
             print("pep.yaml ilegível, seguindo sem ele:", str(e)[:60], file=sys.stderr)
-    vistos = {}
+    memoria_sem_ato = {}
     if OUT.exists() and not a.todos:
         try:
             _ant = yaml.safe_load(open(OUT, encoding="utf-8")) or {}
-            vistos = {str(k): str(v)[:10] for k, v in (_ant.get("procurados_sem_ato") or {}).items()}
-        except Exception: vistos = {}
+            memoria_sem_ato = {str(k): str(v)[:10] for k, v in (_ant.get("procurados_sem_ato") or {}).items()}
+        except Exception: memoria_sem_ato = {}
     corte = (datetime.date.today() - datetime.timedelta(days=a.reter_dias)).isoformat()
-    ja_procurados = {k for k, quando in vistos.items() if quando > corte}
+    ja_procurados = {k for k, quando in memoria_sem_ato.items() if quando > corte}
     antes_do_filtro = len(lista)
     lista = [x for x in lista if fold(x["pessoa_nome"]) not in ja_procurados]
     if antes_do_filtro != len(lista):
@@ -354,7 +355,18 @@ def main():
 
     posses, conflitos, nao_encontrados = {}, [], []
     t0 = time.time()
+    # Impasse que este orçamento desfaz: a memória de quem já foi procurado sem achar ato só era
+    # gravada no FIM, e o conector é cortado pelo update.sh em 5400s antes de terminar os alvos. O
+    # run() então devolvia o arquivo ao estado do último commit, a memória nunca existia, e a segunda
+    # seguinte refazia a varredura inteira — 18 dias sem atualizar, sem nunca ter registrado sucesso.
+    # Agora ele para antes do corte externo e grava o que apurou, inclusive a memória: cada rodada
+    # avança um pedaço em vez de recomeçar do zero para sempre.
+    cortado = None
     for i, alvo in enumerate(lista, 1):
+        if a.segundos and time.time() - t0 > a.segundos:
+            cortado = {"em": i - 1, "de": len(lista)}
+            print(f"orçamento de {a.segundos}s esgotado em {i-1} de {len(lista)}; gravando o que apurei", file=sys.stderr, flush=True)
+            break
         nome = alvo["pessoa_nome"]
         entrada, saida = {}, {}
         for v in VERBOS:                       # caminho barato: uma consulta por verbo, frase "VERBO NOME"
@@ -396,11 +408,12 @@ def main():
         if i % 10 == 0 or i == len(lista):
             print(f"  {i}/{len(lista)} — {len(posses)} posses, {len(conflitos)} conflitos, {len(nao_encontrados)} sem ato "
                   f"({(time.time()-t0)/i:.1f}s/pessoa)", file=sys.stderr, flush=True)
-            gravar(posses, conflitos, nao_encontrados, desde, ate, sem_data_antes, antigo)
-    gravar(posses, conflitos, nao_encontrados, desde, ate, sem_data_antes, antigo)
+            gravar(posses, conflitos, nao_encontrados, desde, ate, sem_data_antes, antigo, memoria_sem_ato, cortado)
+    gravar(posses, conflitos, nao_encontrados, desde, ate, sem_data_antes, antigo, memoria_sem_ato, cortado)
     print(f"posses={len(posses)} conflitos={len(conflitos)} sem ato={len(nao_encontrados)} → {OUT}")
 
-def gravar(posses, conflitos, nao_encontrados, desde, ate, sem_data_antes, antigo=None):
+def gravar(posses, conflitos, nao_encontrados, desde, ate, sem_data_antes, antigo=None, memoria_sem_ato=None, cortado=None):
+    memoria_sem_ato = memoria_sem_ato or {}   # nome longo de propósito: 'vistos' já existe no main
     por_conf = {"alta": sum(1 for p in posses.values() if p["confianca"] == "alta"),
                 "media": sum(1 for p in posses.values() if p["confianca"] == "media")}
     doc = {"generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
@@ -415,8 +428,9 @@ def gravar(posses, conflitos, nao_encontrados, desde, ate, sem_data_antes, antig
            "nao_encontrados_detalhe": nao_encontrados,
            # nome dobrado -> dia em que foi procurado sem achar ato; a próxima rodada pula quem está
            # dentro de --reter-dias e gasta o tempo em quem ainda não foi tentado
-           "procurados_sem_ato": dict(sorted({**vistos,
+           "procurados_sem_ato": dict(sorted({**memoria_sem_ato,
                                               **{fold(x["pessoa"]): datetime.date.today().isoformat() for x in nao_encontrados}}.items())),
+           **({"cortado_por_tempo": cortado} if cortado else {}),
            "resumo": {"ocupantes_sem_data_antes": sem_data_antes, "resolvidos": len(posses),
                       "por_confianca": por_conf, "conflitos": len(conflitos), "sem_ato": len(nao_encontrados)}}
     OUT.parent.mkdir(parents=True, exist_ok=True)
