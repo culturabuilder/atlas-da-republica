@@ -110,10 +110,15 @@ def visual_de(cid, G, prefix):
     P = (G or {}).get("people") or {}
 
     def ocupantes(node_id, limite=12):
+        """Ocupantes do órgão, uma vez cada. A grade somava os cargos do órgão sem deduplicar pessoa,
+        e quem acumula dois cargos aparecia duas vezes: Edson Fachin saía repetido na grade dos onze
+        ministros do STF, porque é ministro E presidente da corte. Vale para qualquer acumulação."""
         n = N.get(node_id) or {}
-        out = []
+        out, vistos = [], set()
         for pid in (n.get("positions") or []):
             for p in (N.get(pid) or {}).get("people") or []:
+                if p["id"] in vistos: continue
+                vistos.add(p["id"])
                 out.append({"id": p["id"], "name": p["name"], "cargo": p["name"],
                             "_img": (P.get(p["id"]) or {}).get("photo")})
         return out[:limite]
@@ -271,7 +276,15 @@ def visual_de(cid, G, prefix):
             f'<div class="brow"><span class="bk">{esc(prog_nome(x.get("nome")))}</span>'
             f'<span class="bv">{brl(x["pago"])}</span>'
             f'<span class="bb"><i style="width:{100*x["pago"]/tot:.1f}%"></i></span></div>' for x in mp)
-        return f'<div class="bars2">{linhas}</div><p class="cap-viz">Os seis maiores programas do orçamento federal, pelo que já foi pago no ano.</p>'
+        # O primeiro da lista é "Refinanciamento da dívida", e sem explicação isso ensina algo falso:
+        # que o governo gasta mais rolando dívida do que com tudo o resto. Refinanciamento é dívida
+        # velha paga com dívida nova — dinheiro que entra e sai no mesmo ato —, não serviço comprado.
+        # Quem lê /do-zero/ está aprendendo o que é orçamento; deixar isso sem rótulo é o pior erro
+        # pedagógico que o site podia ter.
+        _tem_refin = any("REFINANCIAMENTO" in (x.get("nome") or "").upper() for x in mp)
+        _nota = (' <b>Refinanciamento da dívida</b> é dívida velha paga com dívida nova: o dinheiro entra e sai '
+                 'no mesmo ato, e não é serviço comprado pelo governo.' if _tem_refin else '')
+        return f'<div class="bars2">{linhas}</div><p class="cap-viz">Os seis maiores programas do orçamento federal, pelo que já foi pago no ano.{_nota}</p>'
 
     if cid == "emenda-parlamentar":
         return svg('<g class="dr" fill="none" stroke="currentColor" stroke-width="2"><circle cx="36" cy="76" r="16"/></g>'
