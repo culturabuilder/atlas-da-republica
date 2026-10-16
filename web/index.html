@@ -228,6 +228,12 @@ h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid va
 .om{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:8px 0 14px}
 .om .stat .n{font-size:22px}.om .stat .l{font-size:12px;color:var(--ink-3);line-height:1.3}
 .om-it{padding:9px 0;border-bottom:1px dashed var(--line-2);font-size:14px;line-height:1.4}
+.sumario{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;padding:10px 14px;margin:0 0 10px;background:var(--card);border:1px solid var(--line-2);border-radius:10px;font-size:13.5px}
+.sumario b{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;width:100%}
+.sumario a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line)}
+.sumario a:hover{border-color:var(--accent)}
+/* a âncora precisa de folga, senão o título fica atrás do topo fixo do painel */
+[id^="sec-"]{scroll-margin-top:12px}
 .nov{display:flex;flex-direction:column;gap:2px}
 .nov-it{padding:8px 0;border-bottom:1px dashed var(--line-2);font-size:14px;line-height:1.4}
 .nov-it:last-child{border-bottom:0}
@@ -241,6 +247,7 @@ h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid va
 .sanc-it .t{font-weight:600;display:block}
 .sanc-it .m{font-family:var(--mono);font-size:11px;color:var(--ink-3);display:block;margin-top:1px}
 .sanc-it .f{font-size:12px;color:var(--ink-2);display:block;margin-top:2px}
+.sanc-it .p{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);display:block;margin-top:2px}
 .vt-all{margin-top:6px}
 .vt-ano h4{margin:12px 0 2px;font-size:13px;font-weight:600;color:var(--ink-2);display:flex;gap:8px;align-items:baseline;border-bottom:1px solid var(--line-2);padding-bottom:3px}
 .vt-ano h4 span{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-left:auto}
@@ -1344,7 +1351,10 @@ function sancoesOrgaoHtml(n){
   if(sn.ceis&&sn.ceis.n) bl.push(st(sn.ceis.n.toLocaleString('pt-BR'),'empresas que este órgão impediu de contratar'));
   if(sn.cnep&&sn.cnep.n) bl.push(st(sn.cnep.n.toLocaleString('pt-BR'),`empresas punidas pela Lei Anticorrupção${sn.cnep.multa?` · ${brl(sn.cnep.multa)} em multas`:''}`));
   if(!bl.length) return '';
-  const item=x=>`<div class="sanc-it"><span class="t">${esc(x.nome||'')}</span><span class="m">${esc(cat(x.categoria))}${x.cargo?` · ${esc(tit(x.cargo))}`:''}${x.data?` · ${fmtDate(x.data)}`:''}</span>${x.fundamento?`<span class="f">${esc(x.fundamento)}</span>`:''}</div>`;
+  // O número do processo e a publicação em diário vêm na tela de propósito: é o que permite conferir
+  // o nome na fonte. Sem eles, o site afirma e não deixa verificar — o pior dos dois mundos quando o
+  // que está publicado é a punição de uma pessoa identificada.
+  const item=x=>`<div class="sanc-it"><span class="t">${esc(x.nome||'')}</span><span class="m">${esc(cat(x.categoria))}${x.cargo?` · ${esc(tit(x.cargo))}`:''}${x.data?` · ${fmtDate(x.data)}`:''}</span>${x.fundamento?`<span class="f">${esc(x.fundamento)}</span>`:''}${x.processo||x.publicacao?`<span class="p">${x.processo?`processo ${esc(x.processo)}`:''}${x.processo&&x.publicacao?' · ':''}${x.publicacao?esc(x.publicacao):''}</span>`:''}</div>`;
   const mostra=ex.slice(0,10);
   return `<div class="card"><h2>Punições registradas</h2>
   <div class="om">${bl.join('')}</div>
@@ -1439,15 +1449,31 @@ function renderNode(n){
     ${poss?`<h3>Cargos</h3><div class="list">${poss}</div>`:''}
     ${kids?`<h3>Órgãos integrados e vinculados <span style="font-weight:400">· ${n.children.length}</span></h3><div class="list">${kids}</div>`:''}
   </div>
-  ${subsidioHtml(n)}
-  ${tetoOrgaoHtml(n)}
-  ${sancoesOrgaoHtml(n)}
-  ${contratosOrgaoHtml(n)}
-  ${falabrOrgaoHtml(n)}
-  ${programasHtml(n)}
-  ${composicaoHtml(n)}
-  ${historicoHtml(n)}
-  ${agendaOrgaoHtml(n)}
+  ${(()=>{
+    // Ordem e sumário. A ordem anterior era herdada da ordem em que cada bloco foi escrito, e punha
+    // três seções de controladoria antes do dinheiro: na página do INSS, a primeira coisa sobre a
+    // autarquia que paga 40 milhões de benefícios era o abate-teto dos próprios servidores, e os
+    // R$ 110 bi apareciam a 72% da rolagem. Agora vem primeiro o que o órgão faz com o dinheiro
+    // público, depois quem compõe e sua história, e por fim o controle.
+    const SECOES = [
+      ['orcamento',  'Orçamento',            programasHtml],
+      ['composicao', 'Quem compõe',          composicaoHtml],
+      ['historico',  'Quem ocupou',          historicoHtml],
+      ['subsidio',   'Quanto o cargo paga',  subsidioHtml],
+      ['contratos',  'Contratos',            contratosOrgaoHtml],
+      ['lai',        'Acesso à informação',  falabrOrgaoHtml],
+      ['punicoes',   'Punições',             sancoesOrgaoHtml],
+      ['teto',       'Acima do teto',        tetoOrgaoHtml],
+      ['agenda',     'Agenda',               agendaOrgaoHtml],
+    ];
+    const feitas = SECOES.map(([id,rot,fn])=>({id,rot,html:fn(n)})).filter(x=>x.html);
+    if(!feitas.length) return '';
+    // o sumário só aparece quando há o bastante para valer um atalho
+    const sumario = feitas.length >= 3
+      ? `<nav class="sumario" aria-label="Seções desta página"><b>Nesta página</b>${feitas.map(x=>`<a href="#sec-${x.id}">${esc(x.rot)}</a>`).join('')}</nav>`
+      : '';
+    return sumario + feitas.map(x=>`<div id="sec-${x.id}">${x.html}</div>`).join('');
+  })()}
   ${n.sabatinas&&n.sabatinas.length?`<div class="card"><h2>Sabatinas no Senado <span style="color:var(--ink-3);font-weight:500">· ${n.sabatinas.length}</span></h2>${n.sabatinas.slice(0,12).map(sb=>`<div class="sab"><span><a href="${sb.url}" target="_blank" rel="noopener" style="color:var(--ink);text-decoration:none">${esc(sb.name||sb.msf)}</a><br><span style="color:var(--ink-3);font-size:12.5px">${esc((sb.cargo||'').slice(0,90))}</span></span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:sb.resultado==='REJEITADO_PLENARIO'?'rejeitado':(sb.resultado||'').toLowerCase().replace(/_/g,' ')}</span></div>`).join('')}</div>`:''}
   ${(()=>{ const na=(G.news||[]).filter(a=>(a.entities||[]).includes(n.id)||(a.people||[]).some(p=>p.position===n.id)).slice(0,6); return na.length?`<div class="card"><h2>Na notícia</h2><div class="news">${na.map(a=>`<div class="it"><a class="t" href="#news:${a.id}">${esc(a.title)}</a><a class="ext" href="${a.url}" target="_blank" rel="noopener" title="Ler na fonte">fonte ↗</a>${(()=>{ const ps=(a.people||[]).filter(q=>q.position!==n.id).slice(0,4).map(q=>`<a href="#${P[q.id]?q.id:q.position}"><span class="av">${avatar(P[q.id]||{id:q.id,name:q.name})}</span>${esc(q.name)}</a>`); return ps.length?`<span class="who">${ps.join('')}</span>`:''; })()}<span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('')}</div></div>`:''; })()}
   <div class="card"><h2>Relações <span style="color:var(--ink-3);font-weight:500">· ${(n.edges||[]).length}</span></h2>${rels||'<p>Nenhuma relação registrada.</p>'}</div>`;
@@ -1457,7 +1483,18 @@ function renderNode(n){
 // ---------- busca ----------
 const q = document.getElementById('q'), res = document.getElementById('results'), rlist = document.getElementById('results-list'), rcount = document.getElementById('results-count');
 const norm = s => s.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
-const index = Object.values(N).map(n => ({id:n.id, name:n.name, type:n.type, sector:n.sector, hay: norm([n.name, ...(n.aliases||[])].join(' ')), al: norm((n.aliases||[]).join(' '))}));
+// O cargo passa a carregar o nome e a sigla do ÓRGÃO que ele chefia. Sem isso, "ministro do STF"
+// devolvia "nada encontrado, tente a sigla": o nó do cargo chama-se "Ministro do Supremo Tribunal
+// Federal" e não contém "STF" em lugar nenhum — a sigla está no órgão. É a formulação mais óbvia que
+// um leigo digita, e era justamente a que falhava.
+const index = Object.values(N).map(n => {
+  const org = n.type === 'dept_head' && n.head_of ? N[n.head_of] : null;
+  const doOrgao = org ? norm([org.name, ...(org.aliases||[])].join(' ')) : '';
+  return {id:n.id, name:n.name, type:n.type, sector:n.sector,
+          hay: norm([n.name, ...(n.aliases||[])].join(' ')),
+          al: norm((n.aliases||[]).join(' ')),
+          meta: doOrgao};
+});
 const UFN2 = {AC:'acre',AL:'alagoas',AM:'amazonas',AP:'amapa',BA:'bahia',CE:'ceara',DF:'distrito federal brasilia',ES:'espirito santo',GO:'goias',MA:'maranhao',MG:'minas gerais',MS:'mato grosso do sul',MT:'mato grosso',PA:'para',PB:'paraiba',PE:'pernambuco',PI:'piaui',PR:'parana',RJ:'rio de janeiro',RN:'rio grande do norte',RO:'rondonia',RR:'roraima',RS:'rio grande do sul',SC:'santa catarina',SE:'sergipe',SP:'sao paulo',TO:'tocantins'};
 for (const p of Object.values(P)) if (p.name) { const n = N[(p.positions||[])[0]] || {}; const cargos=(p.positions||[]).map(id=>N[id]?N[id].name:'').join(' '); const casa=(p.positions||[]).includes('br-deputado-federal')?'deputado deputada camara':(p.positions||[]).includes('br-senador')?'senador senadora senado':''; index.push({id:p.id, name:p.name, type:'pessoa', sub:[n.name, [p.party,p.uf].filter(Boolean).join('·')].filter(Boolean).join(' · '), sector:n.sector, hay:norm(p.name), al:'', meta:norm([p.party||'', p.uf||'', UFN2[p.uf]||'', casa, cargos].join(' '))}); }
 // abrir/fechar sempre por aqui, para aria-expanded, hidden e aria-activedescendant andarem juntos
@@ -1475,7 +1512,11 @@ function renderHits(){
 }
 q.addEventListener('input', () => {
   const v = norm(q.value.trim()); if (v.length < 2) { sHits = []; closeSearch(); return; }
-  const toks = v.split(' ').filter(Boolean);
+  // artigo e preposição não precisam casar: "ministro do stf" não deve depender de encontrar "do".
+  // Mantemos o termo inteiro na busca de frase (sc 100/60/40/20); isto vale só para a busca por termos.
+  const PARADAS = new Set(['do','da','de','dos','das','e','em','no','na','o','a','os','as','para','por']);
+  const toks = v.split(' ').filter(t => t && !PARADAS.has(t));
+  if (!toks.length) { sHits = []; closeSearch(); return; }
   sAll = false;
   sHits = index.map(x => { let sc = 0; if (x.al.split(' ').includes(v)) sc = 100; else if (x.hay.startsWith(v)) sc = 60; else if (x.hay.includes(' '+v)) sc = 40; else if (x.hay.includes(v)) sc = 20;
     if (!sc && toks.length > 1) { const full = ' ' + x.hay + ' ' + (x.meta||'') + ' '; const hit = t => t.length <= 3 ? full.includes(' '+t+' ') : full.includes(t); if (toks.every(hit)) sc = 30 + toks.filter(t=>x.hay.includes(t)).length * 5; }

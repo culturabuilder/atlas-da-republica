@@ -132,7 +132,11 @@ def main():
                "funcao": "" if func.lower().startswith("sem informa") else func,
                "orgao": orgao, "node": nid,
                "data": dia(r.get("DATA PUBLICAÇÃO")) or dia(r.get("DATA INÍCIO SANÇÃO")),
-               "fundamento": re.sub(r"\s+", " ", (r.get("FUNDAMENTAÇÃO LEGAL") or "").strip())[:180],
+               # Sem corte. Truncar em 180 caracteres cortava no meio da palavra — "ART. 132, XIII -
+               # TRANSGRESSÃO DOS INCI" — em 41 de 60 casos. Truncar o fundamento legal de uma demissão
+               # é indefensável: é exatamente o que permite ao leitor conferir se a punição corresponde
+               # ao que se afirma. O campo da CGU tem no máximo uns 600 caracteres.
+               "fundamento": re.sub(r"\s+", " ", (r.get("FUNDAMENTAÇÃO LEGAL") or "").strip()),
                "processo": (r.get("NÚMERO DO PROCESSO") or "").strip(),
                "publicacao": re.sub(r"\s+", " ", (r.get("PUBLICAÇÃO") or "").strip())[:90]}
         ceaf_pessoas.append(reg)

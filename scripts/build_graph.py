@@ -843,7 +843,7 @@ if _sn:
     # por nó: quem foi expulso daquele órgão, e quantas empresas aquele órgão puniu
     _por_no = {}
     for _x in (_ceaf.get("pessoas") or []):
-        if _x.get("node"): _por_no.setdefault(_x["node"], []).append({k: _x[k] for k in ("nome", "categoria", "cargo", "funcao", "data", "fundamento", "processo") if _x.get(k)})
+        if _x.get("node"): _por_no.setdefault(_x["node"], []).append({k: _x[k] for k in ("nome", "categoria", "cargo", "funcao", "data", "fundamento", "processo", "publicacao") if _x.get(k)})
     _n_sanc = 0
     for _nid, _lista in _por_no.items():
         if _nid not in nodes: continue
@@ -899,8 +899,22 @@ def _sinais(rec):
     out = []
     gb = rec.get("gabinete") or {}
     if gb.get("mesmo_sobrenome"):
-        out.append({"tipo": "sobrenome", "texto": f"{len(gb['mesmo_sobrenome'])} {'pessoa da equipe tem' if len(gb['mesmo_sobrenome']) == 1 else 'pessoas da equipe têm'} sobrenome em comum com o parlamentar: {', '.join(gb['mesmo_sobrenome'][:4])}{'…' if len(gb['mesmo_sobrenome']) > 4 else ''}.",
-                    "nota": "Sobrenome igual não prova parentesco. A Súmula Vinculante 13 do STF veda nomear cônjuge, companheiro ou parente até o 3º grau para cargo em comissão."})
+        # O NOME do assessor sai daqui, e isso é deliberado. Até 16/10/2026 este sinal publicava o nome
+        # completo de pessoas privadas — 94 fichas de parlamentares — ao lado da Súmula Vinculante 13,
+        # a partir de um casamento de sobrenome. Três coisas tornavam isso indefensável: o nomeado é
+        # pessoa privada e não agente eleito; a inferência é sobrenome comum (Rodrigues, Gomes, Silva);
+        # e a ressalva não desfaz a adjacência com uma regra sobre nepotismo. A metodologia ainda
+        # admitia que o sinal não passa por revisão humana.
+        #
+        # O fato de interesse público — quantos assessores partilham o sobrenome de quem os nomeou —
+        # fica. Quem o nome é, não: isso só se publica com parentesco confirmado em certidão ou
+        # declaração, e aí deixa de ser sinal automático e passa a ser apuração.
+        _n = len(gb["mesmo_sobrenome"])
+        out.append({"tipo": "sobrenome",
+                    "texto": f"{_n} {'pessoa' if _n == 1 else 'pessoas'} da equipe {'tem' if _n == 1 else 'têm'} sobrenome em comum com o parlamentar.",
+                    "nota": ("Sobrenome igual não prova parentesco, e por isso não publicamos os nomes: quem são está na "
+                             "folha de pagamento do gabinete, pública na Câmara e no Senado. A Súmula Vinculante 13 do STF "
+                             "veda nomear cônjuge, companheiro ou parente até o 3º grau para cargo em comissão.")})
     if gb.get("casa") == "camara" and gb.get("assessores") and gb.get("nomeados_no_ano") and gb["nomeados_no_ano"] >= max(6, 0.5 * gb["assessores"]):
         out.append({"tipo": "equipe", "texto": f"{gb['nomeados_no_ano']} das {gb['assessores']} pessoas do gabinete começaram neste ano.", "nota": "Troca grande de equipe num ano eleitoral pode ter explicações comuns; vale olhar as datas."})
     em = rec.get("emendas") or {}; vt = em.get("votos_2022") or {}

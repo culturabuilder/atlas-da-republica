@@ -84,6 +84,9 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
       <li><a href="#emendas"><b>07</b><span>Emendas</span></a></li>
       <li><a href="#renuncias"><b>08</b><span>Renúncias fiscais</span></a></li>
       <li><a href="#teto"><b>09</b><span>Acima do teto</span></a></li>
+      <li><a href="#punicoes"><b>09b</b><span>Punições</span></a></li>
+      <li><a href="#contratos"><b>09c</b><span>Contratos</span></a></li>
+      <li><a href="#lai"><b>09d</b><span>Acesso à informação</span></a></li>
       <li><a href="#pagamento"><b>10</b><span>Salário e benefícios</span></a></li>
       <li><a href="#gabinetes"><b>11</b><span>Gabinetes</span></a></li>
       <li><a href="#patrimonio"><b>12</b><span>Patrimônio</span></a></li>
@@ -219,6 +222,46 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
     </dl>
   </section>
 
+
+  <section id="punicoes">
+    <div class="eyebrow">Bloco 09b</div>
+    <h2>Punições: servidores expulsos e empresas impedidas</h2>
+    <p>Quatro cadastros da Controladoria-Geral da União. O CEAF reúne servidores federais expulsos — demissão, cassação de aposentadoria e destituição, as três formas previstas na Lei 8.112/1990. O CEIS reúne empresas impedidas de contratar com o poder público; o CNEP, empresas punidas pela Lei Anticorrupção (Lei 12.846/2013); e há ainda os acordos de leniência.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Portal da Transparência, download de dados dos cadastros CEAF, CEIS, CNEP e acordos de leniência, em arquivo diário. São registros de punição <strong>já aplicada e publicada em diário oficial</strong>, não de apuração em curso.</dd>
+      <dt>Alcance</dt><dd>Só a esfera federal, porque o Atlas é federal: as sanções estaduais e municipais do CEIS e do CNEP ficam fora, e o número que ficou fora aparece na tela. Órgão extinto sem sucessor único não é atribuído a nenhum órgão de hoje — uma demissão do antigo Ministério da Economia, extinto em 2022 e dividido em quatro, não pertence à Fazenda atual.</dd>
+      <dt>O que não publicamos</dt><dd>O CPF. A própria CGU o entrega mascarado, e CPF exposto é risco de fraude sem ganho para o leitor. Publicamos nome, cargo, órgão, data, fundamento legal integral, número do processo e a publicação em diário — o bastante para qualquer pessoa conferir na fonte.</dd>
+      <dt>Limite importante</dt><dd>Uma punição administrativa <strong>pode ser revertida na Justiça</strong>, e a baixa não sempre aparece no cadastro na mesma hora. Quem encontrar aqui uma punição já desconstituída, escreva: corrigimos e dizemos que corrigimos. O mesmo vale para a sanção de empresa.</dd>
+      <dt>Atualização</dt><dd>Diária.</dd>
+    </dl>
+  </section>
+
+  <section id="contratos">
+    <div class="eyebrow">Bloco 09c</div>
+    <h2>Contratos federais, e o cruzamento com empresa impedida</h2>
+    <p>Contratos de esfera federal publicados no Portal Nacional de Contratações Públicas (Lei 14.133/2021), e a lista de contratos assinados por empresa que tinha impedimento vigente naquele dia.</p>
+    <dl>
+      <dt>Fonte</dt><dd>API pública de consulta do PNCP, sem chave.</dd>
+      <dt>Alcance</dt><dd><strong>Não é o total de contratos da União.</strong> A API não filtra por esfera e federal é 5% a 14% do volume conforme a janela; o Atlas lê janelas de dez dias e acumula. O que está na tela é o que foi lido, não o universo — para a série completa, a fonte é o próprio PNCP.</dd>
+      <dt>O cruzamento</dt><dd>Entram só as sanções que <strong>proíbem contratar</strong> — impedimento, suspensão e declaração de inidoneidade —, vigentes no dia da assinatura, e cuja abrangência registrada alcançava o órgão contratante. Multa e publicação extraordinária da condenação ficam fora, porque não barram contrato: sem esse filtro, um contrato legal de R$ 7,8 milhões entrava na lista por causa de uma multa aplicada por outra estatal.</dd>
+      <dt>Não é conclusão de irregularidade</dt><dd>Há exceções legais, a sanção pode estar suspensa na Justiça sem baixa no cadastro, e a abrangência às vezes vem como "sem informação" — nesse caso dizemos que o alcance é desconhecido. É lista para conferir na fonte, com o número do contrato na tela.</dd>
+      <dt>O que esta fonte NÃO permite</dt><dd>Amarrar emenda parlamentar a contrato. O PNCP tem um campo de emenda, mas é um sim/não: quando vem, vem sem número de emenda e sem nome de parlamentar.</dd>
+      <dt>Atualização</dt><dd>Diária, uma janela por rodada.</dd>
+    </dl>
+  </section>
+
+  <section id="lai">
+    <div class="eyebrow">Bloco 09d</div>
+    <h2>Pedidos de acesso à informação</h2>
+    <p>Quantos pedidos cada órgão recebeu pela Lei de Acesso à Informação, quantos negou, quantos concedeu em parte e quantos recursos o cidadão abriu.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Fala.BR (Lei 12.527/2011), dados abertos da CGU.</dd>
+      <dt>Como a taxa é calculada</dt><dd>Só sobre os pedidos que o órgão <strong>decidiu sobre informação que lhe cabia</strong>. "Informação inexistente" e "não tem competência para responder" são contados à parte: somá-los inflaria a opacidade de quem apenas recebeu pedido endereçado errado. A taxa só aparece com 20 decisões ou mais.</dd>
+      <dt>Recursos</dt><dd>Atribuídos ao órgão reclamado, não a quem julga. Sem isso, a CGU — que julga em terceira instância — apareceria como o órgão mais recorrido do governo.</dd>
+      <dt>Atualização</dt><dd>A CGU republica o arquivo do ano a cada poucos dias.</dd>
+    </dl>
+  </section>
+
   <section id="pagamento">
     <div class="eyebrow">Bloco 10</div>
     <h2>Quanto o cargo paga e quanto a pessoa recebeu</h2>
@@ -307,7 +350,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
     <p>Na página de cada pessoa, o Atlas pode mostrar sinais gerados por regras fixas sobre os dados acima. Um sinal é um convite a olhar mais de perto. Não é conclusão, não é acusação e não passa por revisão humana antes de aparecer.</p>
     <h3>Regras</h3>
     <ul>
-      <li><strong>Sobrenome em comum.</strong> Alguém da equipe do gabinete tem sobrenome igual ao do parlamentar. Sobrenome igual não prova parentesco. A Súmula Vinculante 13 do STF veda nomear cônjuge, companheiro ou parente até o 3º grau para cargo em comissão; só a comprovação do parentesco diz se a regra se aplica.</li>
+      <li><strong>Sobrenome em comum.</strong> Quantas pessoas da equipe do gabinete têm sobrenome igual ao do parlamentar. <strong>Não publicamos os nomes.</strong> O assessor é pessoa privada, a inferência é casamento de sobrenome — e sobrenome igual não prova parentesco —, e nomear alguém ao lado de uma regra sobre nepotismo, sem parentesco confirmado, é injusto com quem foi nomeado. Até 16 de outubro de 2026 o Atlas publicava esses nomes, em 94 fichas; retiramos. Quem são está na folha de pagamento do gabinete, pública na Câmara e no Senado. A Súmula Vinculante 13 do STF veda nomear cônjuge, companheiro ou parente até o 3º grau para cargo em comissão; só a comprovação do parentesco diz se a regra se aplica.</li>
       <li><strong>Troca de equipe.</strong> Parte grande do gabinete começou no ano corrente. Em ano eleitoral isso tem explicações comuns; as datas de entrada estão na página.</li>
       <li><strong>Emendas e votos.</strong> Percentual alto das emendas com município definido foi para os 15 municípios de maior votação em 2022. Emenda é instrumento legítimo de representação local; o número só indica onde está a base eleitoral.</li>
       <li><strong>Patrimônio.</strong> O patrimônio que <em>aquela pessoa</em> declarou ao TSE mais que dobrou em valor real entre 2018 e 2022. O sinal é individual e hoje aparece em 36 fichas; no conjunto das 356 pessoas que declararam nas duas eleições, o total subiu 7% em valor real e a variação da pessoa mediana foi de −3%. Declarações são do próprio candidato, a valor de aquisição; herança, venda ou mudança de critério explicam muitas variações.</li>
