@@ -1,5 +1,5 @@
 # GERADO por etl/recebidos.py. Não edite à mão.
-generated_at: '2026-10-16'
+generated_at: '2026-10-17'
 fonte: https://eagendas.cgu.gov.br (rotas públicas /pesquisa/orgaos, /pesquisa/agentes-publicos-obrigados-por-orgao e /?filtro_servidor=...)
 agenda_lida_em: '2026-10-11'
 janela_dias: 90
@@ -15,20 +15,20 @@ por_classe:
     entidades: 118
     encontros: 327
   empresa:
-    entidades: 944
-    encontros: 1996
+    entidades: 996
+    encontros: 2098
   estrangeira:
-    entidades: 87
-    encontros: 147
+    entidades: 109
+    encontros: 184
   nao_classificado:
-    entidades: 1479
-    encontros: 2646
+    entidades: 1371
+    encontros: 2442
   orgao_federal:
     entidades: 919
     encontros: 22629
   publico_outro:
-    entidades: 639
-    encontros: 1568
+    entidades: 673
+    encontros: 1633
   setorial:
     entidades: 390
     encontros: 867
@@ -437,6 +437,23 @@ privadas:
   - pessoa: br-p-marina-palma-copola
     nome: Marina Palma Copola de Carvalho
     n: 2
+- nome: BARBOSA, MUSSNICH & ARAGAO
+  n: 11
+  classe: empresa
+  via: eikos
+  recebida_por:
+  - pessoa: br-p-marina-palma-copola
+    nome: Marina Palma Copola de Carvalho
+    n: 4
+  - pessoa: br-p-otto-eduardo-fonseca-de-albuquerque-lobo
+    nome: Otto Eduardo Fonseca de Albuquerque Lobo
+    n: 3
+  - pessoa: br-p-igor-muniz
+    nome: Igor Muniz
+    n: 3
+  - pessoa: br-p-joao-carlos-de-andrade-uzeda-accioly
+    nome: Joao Carlos de Andrade Uzeda Accioly
+    n: 1
 - nome: CONFEDERACAO DA AGRICULTURA E PECUARIA DO BRASIL
   n: 11
   classe: empresa
@@ -1637,6 +1654,23 @@ privadas:
   - pessoa: br-p-joao-carlos-de-andrade-uzeda-accioly
     nome: Joao Carlos de Andrade Uzeda Accioly
     n: 1
+- nome: PORTO CONSULTORIA EM GESTAO E TECNOLOGIA EIRELI
+  n: 7
+  classe: empresa
+  via: eikos
+  recebida_por:
+  - pessoa: br-p-alex-sandro-de-avila
+    nome: Alex Sandro de Avila
+    n: 3
+  - pessoa: br-p-frederico-carvalho-dias
+    nome: Frederico Carvalho Dias
+    n: 2
+  - pessoa: br-p-wilson-pereira-de-lima-filho
+    nome: Wilson Pereira de Lima Filho
+    n: 1
+  - pessoa: br-p-alber-furtado-de-vasconcelos-neto
+    nome: Alber Furtado de Vasconcelos Neto
+    n: 1
 - nome: SALOMAO, COTTA & GOMES SOCIEDADE DE ADVOGADOS
   n: 7
   classe: advocacia
@@ -2318,80 +2352,46 @@ privadas:
   - pessoa: br-p-sandoval-de-araujo-feitosa-neto
     nome: Sandoval de Araujo Feitosa Neto
     n: 1
-- nome: Aegea Saneamento e Participações
-  n: 5
-  classe: empresa
-  via: eikos
-  recebida_por:
-  - pessoa: br-p-marcio-leao-coelho
-    nome: Marcio Leao Coelho
-    n: 2
-  - pessoa: br-p-jose-wellington-barroso-de-araujo-dias
-    nome: Jose Wellington Barroso de Araujo Dias
-    n: 1
-  - pessoa: br-p-rafael-guerreiro-osorio
-    nome: Rafael Guerreiro Osorio
-    n: 1
-  - pessoa: br-p-luiz-carlos-everton-de-farias
-    nome: Luiz Carlos Everton de Farias
-    n: 1
-- nome: BANCO J. P. MORGAN S.A.
-  n: 5
-  classe: empresa
-  via: marca
-  recebida_por:
-  - pessoa: br-p-wp-paulo-picchetti
-    nome: Paulo Picchetti
-    n: 2
-  - pessoa: br-p-wp-nilton-jos-schneider-david
-    nome: Nilton José Schneider David
-    n: 1
-  - pessoa: br-p-wp-gilneu-francisco-astolfi-vivan
-    nome: Gilneu Francisco Astolfi Vivan
-    n: 1
-  - pessoa: br-p-dou-daniel-cardoso-leal
-    nome: Daniel Cardoso Leal
-    n: 1
 privadas_total:
-  entidades: 1452
-  encontros: 3190
+  entidades: 1504
+  encontros: 3292
 quem_recebeu:
+- pessoa: br-p-wp-paulo-picchetti
+  nome: Paulo Picchetti
+  encontros: 79
+  entidades: 49
 - pessoa: br-p-sandoval-de-araujo-feitosa-neto
   nome: Sandoval de Araujo Feitosa Neto
   encontros: 79
   entidades: 48
-- pessoa: br-p-wp-paulo-picchetti
-  nome: Paulo Picchetti
-  encontros: 73
-  entidades: 45
 - pessoa: br-p-wp-gilneu-francisco-astolfi-vivan
   nome: Gilneu Francisco Astolfi Vivan
-  encontros: 72
-  entidades: 49
+  encontros: 73
+  entidades: 50
 - pessoa: br-p-daniela-marreco-cerqueira
   nome: Daniela Marreco Cerqueira
   encontros: 68
   entidades: 40
+- pessoa: br-p-wp-nilton-jos-schneider-david
+  nome: Nilton José Schneider David
+  encontros: 65
+  entidades: 51
 - pessoa: br-p-alex-sandro-de-avila
   nome: Alex Sandro de Avila
-  encontros: 62
-  entidades: 38
+  encontros: 65
+  entidades: 39
 - pessoa: br-p-gentil-nogueira-de-sa-junior
   nome: Gentil Nogueira de Sa Junior
   encontros: 61
   entidades: 49
-- pessoa: br-p-wp-nilton-jos-schneider-david
-  nome: Nilton José Schneider David
-  encontros: 60
-  entidades: 47
 - pessoa: br-p-wp-ailton-de-aquino-santos
   nome: Ailton de Aquino Santos
-  encontros: 57
-  entidades: 42
+  encontros: 60
+  entidades: 45
 - pessoa: br-p-otto-eduardo-fonseca-de-albuquerque-lobo
   nome: Otto Eduardo Fonseca de Albuquerque Lobo
-  encontros: 56
-  entidades: 38
+  encontros: 60
+  entidades: 40
 - pessoa: br-p-agnes-maria-de-aragao-da-costa
   nome: Agnes Maria de Aragao da Costa
   encontros: 54
@@ -2410,8 +2410,8 @@ quem_recebeu:
   entidades: 24
 - pessoa: br-p-gabriel-galipolo
   nome: Gabriel Muricca Galípolo
-  encontros: 41
-  entidades: 35
+  encontros: 42
+  entidades: 36
 - pessoa: br-p-dou-fabricio-de-oliveira-galvao
   nome: Fabricio de Oliveira Galvao
   encontros: 41
@@ -2426,32 +2426,44 @@ quem_recebeu:
   entidades: 19
 - pessoa: br-p-adrualdo-de-lima-catao
   nome: Adrualdo de Lima Catao
-  encontros: 37
-  entidades: 26
+  encontros: 40
+  entidades: 27
 - pessoa: br-p-igor-muniz
   nome: Igor Muniz
+  encontros: 40
+  entidades: 25
+- pessoa: br-p-frederico-carvalho-dias
+  nome: Frederico Carvalho Dias
+  encontros: 39
+  entidades: 33
+- pessoa: br-p-leandro-de-sousa-mendes
+  nome: Leandro de Sousa Mendes
   encontros: 37
-  entidades: 24
+  entidades: 34
+- pessoa: br-p-diogo-thomson-de-andrade
+  nome: Diogo Thomson de Andrade
+  encontros: 36
+  entidades: 26
 - pessoa: br-p-ludimila-lima-da-silva
   nome: Ludimila Lima da Silva
   encontros: 36
   entidades: 32
-- pessoa: br-p-leandro-de-sousa-mendes
-  nome: Leandro de Sousa Mendes
-  encontros: 35
-  entidades: 32
-- pessoa: br-p-diogo-thomson-de-andrade
-  nome: Diogo Thomson de Andrade
-  encontros: 35
-  entidades: 25
+- pessoa: br-p-joao-carlos-de-andrade-uzeda-accioly
+  nome: Joao Carlos de Andrade Uzeda Accioly
+  encontros: 36
+  entidades: 23
 - pessoa: br-p-tatiana-lacerda-prazeres
   nome: Tatiana Lacerda Prazeres
   encontros: 35
   entidades: 27
-- pessoa: br-p-joao-carlos-de-andrade-uzeda-accioly
-  nome: Joao Carlos de Andrade Uzeda Accioly
-  encontros: 35
-  entidades: 22
+- pessoa: br-p-marina-palma-copola
+  nome: Marina Palma Copola de Carvalho
+  encontros: 34
+  entidades: 23
+- pessoa: br-p-alber-furtado-de-vasconcelos-neto
+  nome: Alber Furtado de Vasconcelos Neto
+  encontros: 34
+  entidades: 28
 - pessoa: br-p-fernanda-de-negri
   nome: Fernanda de Negri
   encontros: 33
@@ -2460,26 +2472,16 @@ quem_recebeu:
   nome: Luiz Marinho
   encontros: 33
   entidades: 29
-- pessoa: br-p-frederico-carvalho-dias
-  nome: Frederico Carvalho Dias
-  encontros: 33
-  entidades: 29
 - pessoa: br-p-dario-carnevalli-durigan
   nome: Dario Carnevalli Durigan
   encontros: 32
   entidades: 27
-- pessoa: br-p-uallace-moreira-lima
-  nome: Uallace Moreira Lima
-  encontros: 32
-  entidades: 24
-- pessoa: br-p-frederico-de-siqueira-filho
-  nome: Frederico de Siqueira Filho
-  encontros: 31
-  entidades: 24
 entidades:
   (BNetzA) Germany):
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.96
+    em: '2026-10-17'
   (CONASS):
     classe: nao_classificado
     via: null
@@ -2769,8 +2771,10 @@ entidades:
     classe: empresa
     via: marca
   ACREFI ASSOC NAC DAS INST DE CRED FINANC E INVESTIMENTO:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.91
+    em: '2026-10-17'
   ACROPOLIS ENERGIA LTDA:
     classe: empresa
     via: marca
@@ -3311,17 +3315,23 @@ entidades:
     classe: nao_classificado
     via: null
   ASSOC BRAS DAS EMPRS DE CARTOES DE CREDT E SERVS ABECS:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.928
+    em: '2026-10-17'
   ASSOC BRAS ENTIDADES CRED HABIT CIA HIPOTECARIAS-ABECH:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.899
+    em: '2026-10-17'
   ASSOC BRASILEIRA DA INDUSTRIA ELETRICA E ELETRONICA:
     classe: nao_classificado
     via: null
   ASSOC BRASILEIRA DE CONCESSIONARIAS DE RODOVIAS ABCR:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.92
+    em: '2026-10-17'
   ASSOC NAC DIRIGENTES DAS INST FED DE ENSINO SUPERIOR:
     classe: nao_classificado
     via: null
@@ -3496,8 +3506,10 @@ entidades:
     classe: setorial
     via: marca
   ASSOCIACAO BRASILEIRA DE EMPRESAS DE TELEMEDICINA E SAUDE DIGITAL - SAUDE DIGITAL BRASIL:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.867
+    em: '2026-10-17'
   ASSOCIACAO BRASILEIRA DE EVENTOS:
     classe: setorial
     via: marca
@@ -3991,8 +4003,10 @@ entidades:
     classe: nao_classificado
     via: null
   Abiove:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.844
+    em: '2026-10-17'
   Abra Group Limited - BANCO BTG PACTUAL S/A:
     classe: empresa
     via: marca
@@ -4045,8 +4059,10 @@ entidades:
     classe: publico_outro
     via: marca
   Administração dos Portos de Paranaguá e Antonina - APPA:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.947
+    em: '2026-10-17'
   Advocacia-Geral da União:
     classe: orgao_federal
     via: nome
@@ -4216,14 +4232,18 @@ entidades:
     classe: nao_classificado
     via: null
   Agência de Águas do Estado de São Paulo (SP Águas):
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.936
+    em: '2026-10-17'
   Ail Group:
     classe: nao_classificado
     via: null
   Alcance Solutions:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.893
+    em: '2026-10-17'
   Alejandro Ramos Cardoso:
     classe: nao_classificado
     via: null
@@ -4459,8 +4479,10 @@ entidades:
     via: sigla
     'no': br-tribunal-de-contas-da-uniao
   Authority for the Prevention of Online Terrorist Content and Child Sexual Abuse Material (ATKM):
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.818
+    em: '2026-10-17'
   Autoridade Internacional dos Fundos Marinhos:
     classe: estrangeira
     via: eikos
@@ -4531,8 +4553,10 @@ entidades:
     classe: empresa
     via: marca
   BANCO DE LA PROVINCIA DE BUENOS AIRES:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.943
+    em: '2026-10-17'
   BANCO DE OLHOS DE SOROCABA:
     classe: nao_classificado
     via: null
@@ -4619,8 +4643,10 @@ entidades:
     classe: empresa
     via: marca
   BARBOSA, MUSSNICH & ARAGAO:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.887
+    em: '2026-10-17'
   BARBOSA, MUSSNICH E ARAGAO ADVOGADOS:
     classe: advocacia
     via: marca
@@ -4677,8 +4703,10 @@ entidades:
     classe: empresa
     via: marca
   BEE4 SA BALCAO ORGANIZADO DE EMPRESAS EMERGENTES:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.818
+    em: '2026-10-17'
   BEYOND ADVICE RELACOES INSTITUCIONAIS LTDA:
     classe: orgao_federal
     via: contido no nome
@@ -4741,8 +4769,10 @@ entidades:
     classe: empresa
     via: marca
   BMA:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.915
+    em: '2026-10-17'
   BMJ CONSULTORIA EMPRESARIAL LTDA:
     classe: empresa
     via: marca
@@ -4792,8 +4822,10 @@ entidades:
     classe: empresa
     via: marca
   BRAM OFFSHORE TRANSPORTES MARITIMOS LTDA:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.95
+    em: '2026-10-17'
   BRASBUNKER PARTICIPACOES S/A:
     classe: empresa
     via: marca
@@ -4810,8 +4842,10 @@ entidades:
     classe: empresa
     via: marca
   BRASILPREV SEGUROS E PREVIDENCIA S/A:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.893
+    em: '2026-10-17'
   BRASKEM S.A:
     classe: empresa
     via: marca
@@ -4845,8 +4879,10 @@ entidades:
     classe: advocacia
     via: marca
   BSM SUPERVISAO DE MERCADOS:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.844
+    em: '2026-10-17'
   BTG PACTUAL ASSET MANAGEMENT S.A. DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS:
     classe: empresa
     via: marca
@@ -4917,8 +4953,10 @@ entidades:
     classe: nao_classificado
     via: null
   Banco Mundial:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.955
+    em: '2026-10-17'
   Banco Nacional de Desenvolvimento Econômico e Social - BNDES:
     classe: orgao_federal
     via: sigla
@@ -4937,14 +4975,18 @@ entidades:
     classe: nao_classificado
     via: null
   Banco de Compensações Internacionais - BIS:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.943
+    em: '2026-10-17'
   Banco de Desenvolvimento KfW:
     classe: nao_classificado
     via: null
   Banco de Espanha - BdE:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.932
+    em: '2026-10-17'
   Banco do Brasil:
     classe: orgao_federal
     via: nome
@@ -5009,8 +5051,10 @@ entidades:
     conf: 0.95
     em: '2026-10-15'
   Bracell:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.893
+    em: '2026-10-17'
   Bracell SP Celulose Ltda.:
     classe: empresa
     via: marca
@@ -5254,8 +5298,10 @@ entidades:
     classe: empresa
     via: marca
   CENIPA:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.953
+    em: '2026-10-17'
   CENSIPAM:
     classe: nao_classificado
     via: null
@@ -5353,8 +5399,10 @@ entidades:
     classe: empresa
     via: marca
   CERTIFER SOLUTIONS AMERICA LATINA - ANALISES E INSPECAO TECNICA SOCIEDADE UNIPESSOAL LIMITADA:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.947
+    em: '2026-10-17'
   CERVEJARIA CIDADE IMPERIAL S.A.:
     classe: empresa
     via: marca
@@ -5411,8 +5459,10 @@ entidades:
     classe: nao_classificado
     via: null
   CGCTIR/DSC/SSIC/GSI/PR:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.953
+    em: '2026-10-17'
   CGEE:
     classe: orgao_federal
     via: nome
@@ -5435,8 +5485,10 @@ entidades:
     classe: empresa
     via: marca
   CGNA/DECEA:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.95
+    em: '2026-10-17'
   CGPS/Departamento de Universalização e Políticas Sociais de Energia Eletrica- SNEE/MME:
     classe: nao_classificado
     via: null
@@ -5741,16 +5793,20 @@ entidades:
     classe: nao_classificado
     via: null
   COMPANHIA NACIONAL DE CINEMAS:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.835
+    em: '2026-10-17'
   COMPANHIA PARANAENSE DE ENERGIA - COPEL:
     classe: publico_outro
     via: eikos
     conf: 0.924
     em: '2026-10-16'
   COMPANHIA SIDERURGICA NACIONAL:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.893
+    em: '2026-10-17'
   COMPANHIA SUL SERGIPANA DE ELETRICIDADE:
     classe: nao_classificado
     via: null
@@ -5972,8 +6028,10 @@ entidades:
     classe: nao_classificado
     via: null
   CONSELHO DOS EXPORTADORES DE CAFE DO BRASIL - CECAFE:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.881
+    em: '2026-10-17'
   CONSELHO FEDERAL DE CONTABILIDADE:
     classe: publico_outro
     via: marca
@@ -6120,8 +6178,10 @@ entidades:
     classe: nao_classificado
     via: null
   COOPERATIVA DE CREDITO SICOOB METROPOLITANO:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.905
+    em: '2026-10-17'
   COOPERATIVA DE DESENVOLVIMENTO DAS ATIVIDADES RURAIS E AMBIENTAIS - VIA DO TRABALHO:
     classe: nao_classificado
     via: null
@@ -6362,8 +6422,10 @@ entidades:
     classe: nao_classificado
     via: null
   Centro Aeroespacial Alemão:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.955
+    em: '2026-10-17'
   Centro Apoio Operacional - Consumidor e DP/RJ:
     classe: nao_classificado
     via: null
@@ -6550,8 +6612,10 @@ entidades:
     via: sigla
     'no': br-conab
   Companhia Paulista de Parcerias:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.827
+    em: '2026-10-17'
   Companhia de Desenvolvimento dos Vales do São Francisco e do Parnaíba:
     classe: orgao_federal
     via: nome
@@ -6590,11 +6654,15 @@ entidades:
     classe: nao_classificado
     via: null
   Concessionaria 116 sertoes:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.893
+    em: '2026-10-17'
   Concessionária de Saneamento do Amapá - CSA Equatorial:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.844
+    em: '2026-10-17'
   Condeferação Nacional do Comércio de Bens, Serviço e Turismo:
     classe: empresa
     via: eikos
@@ -6666,8 +6734,10 @@ entidades:
     via: contido no nome
     'no': br-ministerio-da-fazenda
   Conselho Consultivo/Anatel:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.947
+    em: '2026-10-17'
   Conselho Deliberativo da SUDENE:
     classe: nao_classificado
     via: null
@@ -6757,8 +6827,10 @@ entidades:
     classe: nao_classificado
     via: null
   Conselho de Controle de Atividades Financeiras:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.928
+    em: '2026-10-17'
   Conselho de Turismo da Fecomércio:
     classe: nao_classificado
     via: null
@@ -6787,8 +6859,10 @@ entidades:
     classe: nao_classificado
     via: null
   Consultoria:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.881
+    em: '2026-10-17'
   Consultoria Federal em Educação, Ciência e Tecnologia:
     classe: orgao_federal
     via: contido no nome
@@ -7076,8 +7150,10 @@ entidades:
     classe: advocacia
     via: marca
   DECEA:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.844
+    em: '2026-10-17'
   DECIP/SGP - DEP.DE CENTRAL.SERV.DE INATIVOS E PENS.:
     classe: nao_classificado
     via: null
@@ -7324,8 +7400,10 @@ entidades:
     classe: nao_classificado
     via: null
   Delegação da Direcção dos Serviços da Proteção de Dados Pessoais de Macau:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.947
+    em: '2026-10-17'
   Delegação da União Europeia no Brasil:
     classe: publico_outro
     via: marca
@@ -7600,11 +7678,15 @@ entidades:
     classe: nao_classificado
     via: null
   EMPRESA DE NAVEGACAO ERLON ROCHA TRANSPORTES LTDA:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.95
+    em: '2026-10-17'
   EMPRESA MARANHENSE DE ADMINISTRACAO PORTUARIA - EMAP:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.92
+    em: '2026-10-17'
   EMS:
     classe: nao_classificado
     via: null
@@ -7663,8 +7745,10 @@ entidades:
     classe: empresa
     via: marca
   ENTIDADE AUTARQUICA DE ASSISTENCIA TECNICA E EXTENSAO RURAL DO ESTADO DE RONDONIA:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.95
+    em: '2026-10-17'
   EPAMIG:
     classe: nao_classificado
     via: null
@@ -7738,8 +7822,10 @@ entidades:
     via: contido no nome
     'no': br-secretaria-de-relacoes-institucionais
   EUQUEROINVESTIR GESTAO DE RECURSOS LTDA:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.932
+    em: '2026-10-17'
   EURASIA GROUP, LTD.:
     classe: nao_classificado
     via: null
@@ -7773,11 +7859,15 @@ entidades:
     classe: empresa
     via: marca
   Ecoa Consultoria Economica:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.94
+    em: '2026-10-17'
   Ecoa Consultoria Econômica:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.936
+    em: '2026-10-17'
   Edições SM:
     classe: nao_classificado
     via: null
@@ -7960,8 +8050,10 @@ entidades:
     classe: setorial
     via: marca
   Embaixador da República Popular da China no Brasil:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.936
+    em: '2026-10-17'
   Embaixadora da Suécia:
     classe: nao_classificado
     via: null
@@ -8004,8 +8096,10 @@ entidades:
     classe: nao_classificado
     via: null
   Empresa Maranhense de Administração Portuária - EMAP:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.94
+    em: '2026-10-17'
   Empresa Tron Controles Elétricos Ltda.:
     classe: empresa
     via: marca
@@ -8288,8 +8382,10 @@ entidades:
     classe: setorial
     via: marca
   FEDERACAO DO COMERCIO DE BENS, SERVICOS E TURISMO DO ESTADO DE SAO PAULO:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.924
+    em: '2026-10-17'
   FEDERACAO DOS TRABALHADORES (AS) RURAIS EMPREGADOS (AS) ASSALARIADOS E ASSALARIADAS DO ESTADO DE GOIAS:
     classe: setorial
     via: marca
@@ -8671,8 +8767,10 @@ entidades:
     conf: 0.95
     em: '2026-10-16'
   FUNDACAO JOAO MANGABEIRA:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.818
+    em: '2026-10-17'
   FUNDACAO JOAO PAULO II:
     classe: nao_classificado
     via: null
@@ -8790,8 +8888,10 @@ entidades:
     classe: setorial
     via: marca
   Federação da Agricultura do estado do Paraná (Faesp):
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.91
+    em: '2026-10-17'
   Federação da Agricultura e Pecuária do Pará (FAEPA - PA):
     classe: nao_classificado
     via: null
@@ -8840,14 +8940,18 @@ entidades:
     classe: nao_classificado
     via: null
   Formosa Produção e Distribuição de Filmes:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.924
+    em: '2026-10-17'
   Foro de São Paulo:
     classe: nao_classificado
     via: null
   Forte Logística:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.928
+    em: '2026-10-17'
   Força Sindical (FS):
     classe: nao_classificado
     via: null
@@ -9066,8 +9170,10 @@ entidades:
     classe: nao_classificado
     via: null
   Fundo Monetário Internacional - FMI:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.958
+    em: '2026-10-17'
   Fundo Nacional de Desenvolvimento da Educação:
     classe: orgao_federal
     via: nome
@@ -9082,8 +9188,10 @@ entidades:
     conf: 0.943
     em: '2026-10-15'
   Fundo Soberano de Singapura:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.95
+    em: '2026-10-17'
   Fundo das Nações Unidas para a Infância:
     classe: nao_classificado
     via: null
@@ -9174,8 +9282,10 @@ entidades:
     classe: empresa
     via: marca
   GENIAL ENERGY GESTAO E COMERCIALIZACAO DE ENERGIA LTDA.:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.95
+    em: '2026-10-17'
   GENIAL INSTITUCIONAL CORRETORA DE CAMBIO, TITULOS E VALORES MOBILIARIOS S.A.:
     classe: empresa
     via: marca
@@ -9207,8 +9317,10 @@ entidades:
     classe: empresa
     via: marca
   GIZ:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.928
+    em: '2026-10-17'
   GLAXOSMITHKLINE BRASIL LTDA:
     classe: empresa
     via: marca
@@ -9388,8 +9500,10 @@ entidades:
     conf: 0.874
     em: '2026-10-15'
   GUERINO SEISCENTO TRANSPORTES S.A.:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.943
+    em: '2026-10-17'
   GUSTAVO GONZALEZ ADVOGADOS:
     classe: advocacia
     via: marca
@@ -9462,8 +9576,10 @@ entidades:
     classe: nao_classificado
     via: null
   Gol Linhas Aéreas:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.924
+    em: '2026-10-17'
   Gorodissky & Partners:
     classe: nao_classificado
     via: null
@@ -9577,8 +9693,10 @@ entidades:
     classe: nao_classificado
     via: null
   Grupo EPR:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.874
+    em: '2026-10-17'
   Grupo Equatorial:
     classe: empresa
     via: eikos
@@ -9597,8 +9715,10 @@ entidades:
     classe: nao_classificado
     via: null
   Grupo Shore:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.86
+    em: '2026-10-17'
   Grupo Vallya:
     classe: nao_classificado
     via: null
@@ -10037,8 +10157,10 @@ entidades:
     classe: empresa
     via: marca
   IMPA - Instituto de Matemática Pura e Aplicada:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.91
+    em: '2026-10-17'
   IN GLOW BRASIL INTERMEDIACAO DE NEGOCIOS LTDA:
     classe: empresa
     via: marca
@@ -10082,8 +10204,10 @@ entidades:
     classe: publico_outro
     via: marca
   INFOGLOBO COMUNICACOES S.A.:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.953
+    em: '2026-10-17'
   INFRACOMMERCE NEGOCIOS E SOLUCOES EM INTERNET LTDA.:
     classe: empresa
     via: marca
@@ -10846,8 +10970,10 @@ entidades:
     via: nome
     'no': br-iphan
   Instituto Água e Terra do Paraná (IAT):
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.947
+    em: '2026-10-17'
   IntegraGov:
     classe: nao_classificado
     via: null
@@ -10867,8 +10993,10 @@ entidades:
     via: nome
     'no': br-ministerio-das-relacoes-exteriores
   Itau Unibanco:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.955
+    em: '2026-10-17'
   Itaú Asset:
     classe: empresa
     via: eikos
@@ -10883,8 +11011,10 @@ entidades:
     conf: 0.947
     em: '2026-10-15'
   Ité Consultoria:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.928
+    em: '2026-10-17'
   J&F S.A.:
     classe: empresa
     via: marca
@@ -11153,8 +11283,10 @@ entidades:
     classe: empresa
     via: marca
   LOGISTICA BRASIL - ASSOCIACAO BRASILEIRA DOS USUARIOS DOS PORTOS, DE TRANSPORTES E DA LOGISTICA:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.867
+    em: '2026-10-17'
   LORIA E KALANSKY SOCIEDADE DE ADVOGADOS:
     classe: advocacia
     via: marca
@@ -11554,11 +11686,15 @@ entidades:
     via: sigla
     'no': br-ministerio-da-integracao-e-do-desenvolvimento-regional
   MIDR/SNFI:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.932
+    em: '2026-10-17'
   MIDR/SNSH:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.924
+    em: '2026-10-17'
   MILENIUM EMPREEDIMENTOS E PARTICIPACOES LTDA:
     classe: empresa
     via: marca
@@ -12006,8 +12142,10 @@ entidades:
     classe: nao_classificado
     via: null
   Merco Shipping:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.915
+    em: '2026-10-17'
   Metalúrgicos de Canos e Nova Santa Rita:
     classe: nao_classificado
     via: null
@@ -12398,8 +12536,10 @@ entidades:
     conf: 0.928
     em: '2026-10-15'
   Modal Consult:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.905
+    em: '2026-10-17'
   Mombak:
     classe: nao_classificado
     via: null
@@ -12407,8 +12547,10 @@ entidades:
     classe: nao_classificado
     via: null
   Mongolian Sustainable Finance Association:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.924
+    em: '2026-10-17'
   Morgan Stanley:
     classe: nao_classificado
     via: null
@@ -12647,8 +12789,10 @@ entidades:
     classe: empresa
     via: marca
   NORTE ASSET MANAGEMENT GESTAO DE RECURSOS S.A.:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.947
+    em: '2026-10-17'
   NORTE ENERGIA LTDA:
     classe: empresa
     via: marca
@@ -12736,11 +12880,15 @@ entidades:
     conf: 0.915
     em: '2026-10-16'
   New Development Bank - NDB:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.947
+    em: '2026-10-17'
   Nitshore:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.915
+    em: '2026-10-17'
   Nomasil Threads:
     classe: nao_classificado
     via: null
@@ -12756,8 +12904,10 @@ entidades:
     classe: nao_classificado
     via: null
   Norte Energia:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.932
+    em: '2026-10-17'
   Norte Energia SA:
     classe: empresa
     via: marca
@@ -12783,8 +12933,10 @@ entidades:
     classe: nao_classificado
     via: null
   Núcleo de Defesa do Consumidor:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.808
+    em: '2026-10-17'
   OAB MG:
     classe: nao_classificado
     via: null
@@ -12946,8 +13098,10 @@ entidades:
     classe: nao_classificado
     via: null
   Opportunity Gestora de Recursos:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.915
+    em: '2026-10-17'
   Organização Internacional do Trabalho:
     classe: estrangeira
     via: eikos
@@ -12995,8 +13149,10 @@ entidades:
     classe: nao_classificado
     via: null
   Organização de Estados Ibero-Americanos - OEI:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.943
+    em: '2026-10-17'
   Organização dos Estados Americanos - OEA:
     classe: nao_classificado
     via: null
@@ -13167,8 +13323,10 @@ entidades:
     classe: nao_classificado
     via: null
   PNUD/MIDR:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.932
+    em: '2026-10-17'
   PNUMA - Programa das Nações Unidas para o Meio Ambiente:
     classe: nao_classificado
     via: null
@@ -13185,8 +13343,10 @@ entidades:
     classe: empresa
     via: marca
   PORTO CONSULTORIA EM GESTAO E TECNOLOGIA EIRELI:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.943
+    em: '2026-10-17'
   PORTO DO RECIFE S/A:
     classe: empresa
     via: marca
@@ -13447,8 +13607,10 @@ entidades:
     classe: nao_classificado
     via: null
   Portos do Paraná:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.893
+    em: '2026-10-17'
   Portugal:
     classe: estrangeira
     via: eikos
@@ -13941,8 +14103,10 @@ entidades:
     classe: empresa
     via: marca
   QUANTITAS GESTAO DE RECURSOS LTDA.:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.943
+    em: '2026-10-17'
   QUANTUM PARTICIPACOES S.A.:
     classe: empresa
     via: marca
@@ -14107,8 +14271,10 @@ entidades:
     classe: empresa
     via: marca
   Raccord Produções:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.92
+    em: '2026-10-17'
   Rakuten:
     classe: nao_classificado
     via: null
@@ -14321,8 +14487,10 @@ entidades:
     classe: nao_classificado
     via: null
   Rocha Terminais Portuários e Logística:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.915
+    em: '2026-10-17'
   Rohde & Schwarz:
     classe: nao_classificado
     via: null
@@ -14421,8 +14589,10 @@ entidades:
     classe: empresa
     via: marca
   SANTANDER BRASIL GESTAO DE RECURSOS LTDA.:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.936
+    em: '2026-10-17'
   SANTOS BRASIL PARTICIPACOES S.A.:
     classe: empresa
     via: marca
@@ -14620,8 +14790,10 @@ entidades:
     classe: nao_classificado
     via: null
   SEMAS/PA:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.955
+    em: '2026-10-17'
   SEMESP:
     classe: nao_classificado
     via: null
@@ -14648,8 +14820,10 @@ entidades:
     via: sigla
     'no': br-secretaria-especial-do-programa-de-aceleracao-do-crescimento
   SEPAC/CASA CIVIL/PR:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.963
+    em: '2026-10-17'
   SEPAC/CC/PR:
     classe: nao_classificado
     via: null
@@ -14761,15 +14935,19 @@ entidades:
     classe: nao_classificado
     via: null
   SFPLAN/SE/MT:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.955
+    em: '2026-10-17'
   SG - Secretaria-Geral da Presidência da República:
     classe: orgao_federal
     via: resto
     'no': br-secretaria-geral-da-presidencia
   SGB - Serviço Geológico do Brasil:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.928
+    em: '2026-10-17'
   SGD/MGI:
     classe: nao_classificado
     via: null
@@ -15029,8 +15207,10 @@ entidades:
     classe: setorial
     via: marca
   SINTER (Assessor Jurídico ):
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.86
+    em: '2026-10-17'
   SINTFUB - SINDICATO DOS SERVIDORES TECNICO-ADMINISTRATIVOS DA FUNDACAO UNIVERSIDADE DE BRASILIA:
     classe: orgao_federal
     via: contido no nome
@@ -15103,8 +15283,10 @@ entidades:
     classe: empresa
     via: marca
   SONY PICTURES RELEASING OF BRASIL INC:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.947
+    em: '2026-10-17'
   SOPESP - Sindicato dos Operadores Portuários do Estado de São Paulo:
     classe: setorial
     via: marca
@@ -15287,8 +15469,10 @@ entidades:
     classe: empresa
     via: marca
   SVSA/MS:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.92
+    em: '2026-10-17'
   SWAP INSTITUICAO DE PAGAMENTO S.A.:
     classe: empresa
     via: marca
@@ -15341,8 +15525,10 @@ entidades:
     classe: nao_classificado
     via: null
   Santos Brasil:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.915
+    em: '2026-10-17'
   Sarau Cultura Brasileira:
     classe: nao_classificado
     via: null
@@ -15350,8 +15536,10 @@ entidades:
     classe: nao_classificado
     via: null
   Saudi Arabia air transport development:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.932
+    em: '2026-10-17'
   Saúde Digital Brasil:
     classe: nao_classificado
     via: null
@@ -15436,8 +15624,10 @@ entidades:
     classe: publico_outro
     via: marca
   Secretaria Municipal de Agricultura e Comércio da Prefeitura de Dom Basílio:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.977
+    em: '2026-10-17'
   Secretaria Municipal de Assistência Social de Belo Horizonte:
     classe: publico_outro
     via: marca
@@ -16008,8 +16198,10 @@ entidades:
     classe: nao_classificado
     via: null
   Serasa Experian:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.95
+    em: '2026-10-17'
   Serviço Federal de Processamento de Dados:
     classe: orgao_federal
     via: nome
@@ -16035,8 +16227,10 @@ entidades:
     classe: nao_classificado
     via: null
   Serviço geológico do Brasil - SGB/CPRM:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.936
+    em: '2026-10-17'
   Serviço nacional de aprendizagem industrial- SENAI/PA:
     classe: nao_classificado
     via: null
@@ -16107,8 +16301,10 @@ entidades:
     classe: nao_classificado
     via: null
   Stern School of Business at New York University:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.965
+    em: '2026-10-17'
   Suape:
     classe: nao_classificado
     via: null
@@ -16321,8 +16517,10 @@ entidades:
     classe: nao_classificado
     via: null
   TOLEDO, PAGES & ASSOCIADOS CONSULTORIA ECONOMICA S.S.:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.947
+    em: '2026-10-17'
   TONIOLO, BUSNELLO S/A - TUNEIS, TERRAPLENAGENS E PAVIMENTACOES - EM RECUPERACAO JUDICIAL:
     classe: empresa
     via: marca
@@ -16600,8 +16798,10 @@ entidades:
     conf: 0.91
     em: '2026-10-16'
   U.S. Department of Commerce:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.958
+    em: '2026-10-17'
   UAEWORLD HOLDING LTDA:
     classe: empresa
     via: marca
@@ -16618,8 +16818,10 @@ entidades:
     classe: nao_classificado
     via: null
   UERJ:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.96
+    em: '2026-10-17'
   UERJ hospital Pedro Ernesto:
     classe: publico_outro
     via: eikos
@@ -16848,8 +17050,10 @@ entidades:
     via: sigla
     'no': br-fundacao-universidade-de-brasilia
   UNDP:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.953
+    em: '2026-10-17'
   UNESCO:
     classe: estrangeira
     via: eikos
@@ -16943,8 +17147,10 @@ entidades:
     via: sigla
     'no': br-universidade-da-integracao-internacional-da-lusofonia-afro-brasileira
   UNIMED BLUMENAU - COOPERATIVA DE TRABALHO MEDICO:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.827
+    em: '2026-10-17'
   UNIMED DO BRASIL CONFEDERACAO NAC DAS COOPERATIVAS MED:
     classe: setorial
     via: marca
@@ -17092,8 +17298,10 @@ entidades:
     classe: nao_classificado
     via: null
   United Nations Development Programme:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.96
+    em: '2026-10-17'
   Universidade Católica de Brasília - UCB:
     classe: nao_classificado
     via: null
@@ -17342,8 +17550,10 @@ entidades:
     classe: nao_classificado
     via: null
   Universidade de São Paulo - USP:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.96
+    em: '2026-10-17'
   Universidade do Estado de Santa Catarina:
     classe: nao_classificado
     via: null
@@ -17633,11 +17843,15 @@ entidades:
     classe: nao_classificado
     via: null
   Wilson Sons:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.874
+    em: '2026-10-17'
   World Bank - WB:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.96
+    em: '2026-10-17'
   World Employment Confederation para a América Latina - WEC LATAM:
     classe: estrangeira
     via: eikos
@@ -17668,8 +17882,10 @@ entidades:
     classe: nao_classificado
     via: null
   YouTube (Google Brasil):
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.947
+    em: '2026-10-17'
   Z BULL POWER LTDA:
     classe: empresa
     via: marca
