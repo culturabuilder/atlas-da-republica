@@ -1,19 +1,19 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-10-17'
+generated_at: '2026-10-18'
 mes: '202608'
 mes_senado: '202609'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1208
+  ocupantes_no_grafo: 1209
   com_remuneracao: 497
   por_setor:
     executivo:
-      ocupantes: 474
+      ocupantes: 475
       antes: 390
       depois: 413
-      pct_antes: 82.3
-      pct_depois: 87.1
+      pct_antes: 82.1
+      pct_depois: 86.9
     essenciais:
       ocupantes: 30
       antes: 4
@@ -44,10 +44,10 @@ resumo:
     alta: 472
     media: 25
   sem_remuneracao:
-    total: 88
+    total: 89
     por_motivo:
       ausente na folha: 25
-      órgão fora do SIAPE (empresa publica com folha própria): 14
+      órgão fora do SIAPE (empresa publica com folha própria): 15
       só há homônimo por primeiro+último sobrenome fora do órgão (...): 13
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
       no cadastro do SIAPE mas sem linha de remuneração no mês: 13
@@ -16483,6 +16483,11 @@ nao_encontrados:
   cargo: Presidente da Petrobras
   setor: executivo
   motivo: órgão fora do SIAPE (sociedade economia mista com folha própria)
+- id: br-p-wp-marcelo-andrade-moreira-pinto
+  nome: Marcelo Andrade Moreira Pinto
+  cargo: Presidente da Codevasf
+  setor: executivo
+  motivo: órgão fora do SIAPE (empresa publica com folha própria)
 - id: br-p-margareth-menezes-da-purificacao-costa
   nome: Margareth Menezes da Purificação Costa
   cargo: Ministro de Estado da Cultura
