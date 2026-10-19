@@ -1,5 +1,5 @@
 # GERADO por etl/recebidos.py. Não edite à mão.
-generated_at: '2026-10-18'
+generated_at: '2026-10-19'
 fonte: https://eagendas.cgu.gov.br (rotas públicas /pesquisa/orgaos, /pesquisa/agentes-publicos-obrigados-por-orgao e /?filtro_servidor=...)
 agenda_lida_em: '2026-10-18'
 janela_dias: 90
@@ -15,20 +15,20 @@ por_classe:
     entidades: 115
     encontros: 337
   empresa:
-    entidades: 1029
-    encontros: 2137
+    entidades: 1032
+    encontros: 2140
   estrangeira:
-    entidades: 114
-    encontros: 195
+    entidades: 115
+    encontros: 197
   nao_classificado:
-    entidades: 1338
-    encontros: 2295
+    entidades: 1328
+    encontros: 2282
   orgao_federal:
     entidades: 908
     encontros: 22025
   publico_outro:
-    entidades: 649
-    encontros: 1575
+    entidades: 655
+    encontros: 1583
   setorial:
     entidades: 406
     encontros: 881
@@ -2332,8 +2332,8 @@ privadas:
     nome: Renato Cabral Dias Dutra
     n: 1
 privadas_total:
-  entidades: 1550
-  encontros: 3355
+  entidades: 1553
+  encontros: 3358
 quem_recebeu:
 - pessoa: br-p-sandoval-de-araujo-feitosa-neto
   nome: Sandoval de Araujo Feitosa Neto
@@ -3271,8 +3271,10 @@ entidades:
     classe: empresa
     via: marca
   ARTESP:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.95
+    em: '2026-10-19'
   ASA ASSET MANAGEMENT LTDA:
     classe: empresa
     via: marca
@@ -7147,8 +7149,10 @@ entidades:
     via: nome
     'no': br-camara-dos-deputados
   Cãmara Federal:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.808
+    em: '2026-10-19'
   D'PONTA MIDIAS E CONSULTORIA LTDA:
     classe: empresa
     via: marca
@@ -7940,8 +7944,10 @@ entidades:
     conf: 0.936
     em: '2026-10-17'
   Edições SM:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.915
+    em: '2026-10-19'
   Edvaldo Ramos:
     classe: nao_classificado
     via: null
@@ -8732,8 +8738,10 @@ entidades:
     conf: 0.91
     em: '2026-10-15'
   FTD Educação:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.915
+    em: '2026-10-19'
   FUAM - FUNDACAO UNIVERSIDADE DO AMAZONAS:
     classe: orgao_federal
     via: resto
@@ -10747,8 +10755,10 @@ entidades:
     classe: empresa
     via: marca
   Imagem Geosistemas:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.915
+    em: '2026-10-19'
   Inatel:
     classe: nao_classificado
     via: null
@@ -13116,8 +13126,10 @@ entidades:
     conf: 0.899
     em: '2026-10-15'
   ORGANIZACAO DAS NACOES UNIDAS PARA EDUCACAO, CIENCIA E CULTURA:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.953
+    em: '2026-10-19'
   ORGANIZACAO PAN-AMERICANA DA SAUDE/ORGANIZACAO MUNDIAL DA SAUDE - OPAS/OMS:
     classe: nao_classificado
     via: null
@@ -14698,8 +14710,10 @@ entidades:
     classe: empresa
     via: marca
   SDR/MIDR:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.94
+    em: '2026-10-19'
   SEACREST PETROLEO SPE NORTE CAPIXABA LTDA - EM RECUPERACAO JUDICIAL:
     classe: empresa
     via: marca
@@ -14830,8 +14844,10 @@ entidades:
     classe: setorial
     via: marca
   SEFAZ:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.95
+    em: '2026-10-19'
   SEGOV/PR - Secretaria de Governo da Presidência da República:
     classe: orgao_federal
     via: contido no nome
@@ -14890,8 +14906,10 @@ entidades:
     classe: nao_classificado
     via: null
   SEPROD/SG/MD:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.969
+    em: '2026-10-19'
   SER EDUCACIONAL S.A.:
     classe: empresa
     via: marca
@@ -17500,8 +17518,10 @@ entidades:
     classe: nao_classificado
     via: null
   Universidade de São Paulo:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.958
+    em: '2026-10-19'
   Universidade de São Paulo- USP:
     classe: nao_classificado
     via: null

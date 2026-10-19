@@ -1,5 +1,5 @@
 # GERADO por etl/historico.py. Não edite à mão.
-generated_at: '2026-10-18T13:18:56Z'
+generated_at: '2026-10-19T18:03:27Z'
 fonte: wikidata.org — P39 (cargo ocupado) com qualificadores P580/P582/P585/P1365/P1366/P2868 via busca haswbstatement; ou
   P488/P169/P1037 no item do órgão (rota org_item); desde 1985
 resumo:
@@ -12,9 +12,9 @@ resumo:
   cargos_sem_qid: 80
   cargos_vazios_no_wikidata: 6
   qids_invalidos: {}
-  mandatos: 571
+  mandatos: 572
   mandatos_com_inicio_e_fim: 492
-  mandatos_sem_data: 201
+  mandatos_sem_data: 200
   mediana_geral_dias: 549
   atualizados: 22
   sem_qid:
@@ -5755,8 +5755,8 @@ cargos:
     qid: Q15722501
     rota: mapa
     nome: Ministro de Estado do Turismo
-    ocupantes: 15
-    mandatos_n: 15
+    ocupantes: 16
+    mandatos_n: 16
     mediana_dias: 731
     mandatos:
       - qid: Q134699492
@@ -5903,6 +5903,18 @@ cargos:
         dias: null
         presidente: Lula
         papel: null
+      - qid: Q139676553
+        nome: Viviane Dewa
+        inicio: '2024'
+        fim: null
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: null
+        morte: null
+        dias: null
+        presidente: Lula
+        papel: null
       - qid: Q133730287
         nome: Mazen al-Salhani
         inicio: '2025-03-29'
@@ -5943,7 +5955,7 @@ cargos:
       José Sarney: 1
       Fernando Collor: 2
       Fernando Henrique Cardoso: 3
-      Lula: 5
+      Lula: 6
       Dilma Rousseff: 1
       Michel Temer: 1
       Jair Bolsonaro: 2
@@ -8053,10 +8065,8 @@ cargos:
     wikidata_mais_recente: Geraldo Alckmin
     wikidata_atualizado: true
     ocupante_atual_no_wikidata: true
-    sem_data_n: 1
-    sem_data:
-      - qid: Q52871852
-        nome: Hamilton Mourão
+    sem_data_n: 0
+    sem_data: []
   br-anvisa-dirigente:
     qid: Q295815
     rota: org_item

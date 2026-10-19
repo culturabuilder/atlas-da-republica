@@ -1,12 +1,22 @@
 # GERADO por scripts/novidades.py. Não edite à mão.
-generated_at: '2026-10-18'
+generated_at: '2026-10-19'
 nota: 'O que mudou no Atlas, tirado do histórico do projeto. Os commits automáticos de dado ficam fora: o que eles mudam aparece no painel de
   frescor da metodologia.'
-total: 155
+total: 156
 por_mes:
-  2026-10: 23
+  2026-10: 24
   2026-09: 132
 novidades:
+- id: 78e9dfcf9
+  data: '2026-10-19'
+  ordem: 1792415879
+  titulo: O alarme de arquivo parado acusava um arquivo que ninguém lê
+  texto: 'O eval de hoje achou portal-cce.yaml com 31 dias sem atualizar. Fui ver: etl/portal_cce.py existe, mas não está no update.sh e a saída
+    não é lida por nenhum build — é resultado de um experimento de 18/09/2026, com 10 cargos, que nunca foi ligado.'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 1068
 - id: 03ab16c27
   data: '2026-10-16'
   ordem: 1792185023
