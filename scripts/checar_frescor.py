@@ -17,6 +17,16 @@ import yaml
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DIR = ROOT / "data" / "generated"
 
+# arquivo -> por que envelhecer nele não é falha de coleta, e sim trabalho parado de propósito.
+# Um alarme sobre arquivo que ninguém lê treina a gente a ignorar o alarme, que é o contrário do que
+# esta checagem serve. Cada entrada aqui foi verificada: o arquivo não é produzido por conector
+# agendado NEM consumido por nenhum build.
+NAO_EM_USO = {
+    "portal-cce.yaml": ("etl/portal_cce.py existe mas não está no update.sh e a saída não é lida por "
+                        "nenhum build — é resultado de um experimento de 18/09/2026 com 10 cargos. "
+                        "Decidir: ligar no update.sh ou remover os dois."),
+}
+
 # arquivo -> por que não tem generated_at
 SEM_DATA = {
     "historico-qids.yaml": "mapa de QIDs do Wikidata, cresce por acréscimo",
@@ -47,6 +57,8 @@ def main():
     for p in sorted(DIR.glob("*")):
         if p.suffix not in (".yaml", ".json") or p.name.startswith("_"): continue
         if p.name in SEM_DATA: continue
+        if p.name in NAO_EM_USO:
+            print(f"   !    {p.name}: fora de uso — {NAO_EM_USO[p.name]}"); avisos += 1; continue
         try:
             d = json.load(open(p, encoding="utf-8")) if p.suffix == ".json" else yaml.safe_load(p.read_text(encoding="utf-8"))
             g = str((d or {}).get("generated_at") or (d or {}).get("updated_at") or "")[:10]
