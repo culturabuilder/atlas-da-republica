@@ -1,5 +1,5 @@
 # GERADO por etl/recebidos.py. Não edite à mão.
-generated_at: '2026-10-19'
+generated_at: '2026-10-20'
 fonte: https://eagendas.cgu.gov.br (rotas públicas /pesquisa/orgaos, /pesquisa/agentes-publicos-obrigados-por-orgao e /?filtro_servidor=...)
 agenda_lida_em: '2026-10-18'
 janela_dias: 90
@@ -15,20 +15,20 @@ por_classe:
     entidades: 115
     encontros: 337
   empresa:
-    entidades: 1032
-    encontros: 2140
+    entidades: 1034
+    encontros: 2145
   estrangeira:
-    entidades: 115
-    encontros: 197
+    entidades: 116
+    encontros: 198
   nao_classificado:
-    entidades: 1328
-    encontros: 2282
+    entidades: 1321
+    encontros: 2266
   orgao_federal:
     entidades: 908
     encontros: 22025
   publico_outro:
-    entidades: 655
-    encontros: 1583
+    entidades: 659
+    encontros: 1593
   setorial:
     entidades: 406
     encontros: 881
@@ -2332,8 +2332,8 @@ privadas:
     nome: Renato Cabral Dias Dutra
     n: 1
 privadas_total:
-  entidades: 1553
-  encontros: 3358
+  entidades: 1555
+  encontros: 3363
 quem_recebeu:
 - pessoa: br-p-sandoval-de-araujo-feitosa-neto
   nome: Sandoval de Araujo Feitosa Neto
@@ -2395,6 +2395,10 @@ quem_recebeu:
   nome: Ludimila Lima da Silva
   encontros: 46
   entidades: 42
+- pessoa: br-p-dou-fabricio-de-oliveira-galvao
+  nome: Fabricio de Oliveira Galvao
+  encontros: 46
+  entidades: 34
 - pessoa: br-p-rodrigo-zerbone-loureiro
   nome: Rodrigo Zerbone Loureiro
   encontros: 43
@@ -2403,10 +2407,6 @@ quem_recebeu:
   nome: Camila Cabral Pires Alves
   encontros: 41
   entidades: 26
-- pessoa: br-p-dou-fabricio-de-oliveira-galvao
-  nome: Fabricio de Oliveira Galvao
-  encontros: 41
-  entidades: 32
 - pessoa: br-p-alber-furtado-de-vasconcelos-neto
   nome: Alber Furtado de Vasconcelos Neto
   encontros: 41
@@ -3262,8 +3262,10 @@ entidades:
     classe: empresa
     via: marca
   ARTELESTE CONSTRUCOES LIMITADA:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.94
+    em: '2026-10-20'
   ARTERIS S.A.:
     classe: empresa
     via: marca
@@ -6133,8 +6135,10 @@ entidades:
     classe: empresa
     via: marca
   CONSTRUTORA CIDADE LIMITADA:
-    classe: nao_classificado
-    via: null
+    classe: empresa
+    via: eikos
+    conf: 0.947
+    em: '2026-10-20'
   CONSTRUTORA CIDADE LTDA:
     classe: empresa
     via: marca
@@ -6478,8 +6482,10 @@ entidades:
     classe: nao_classificado
     via: null
   Centro Regional para la Salvaguarda del Patrimonio Cultural Inmaterial de América Latina - CRESPIAL:
-    classe: nao_classificado
-    via: null
+    classe: estrangeira
+    via: eikos
+    conf: 0.905
+    em: '2026-10-20'
   Centro Universitário Doctum de Teófilo Otoni:
     classe: nao_classificado
     via: null
@@ -7700,8 +7706,10 @@ entidades:
     conf: 0.94
     em: '2026-10-15'
   EMBRATUR - Instituto Brasileiro de Turismo:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.96
+    em: '2026-10-20'
   EMCFA:
     classe: nao_classificado
     via: null
@@ -8101,8 +8109,10 @@ entidades:
     classe: publico_outro
     via: marca
   'Embaixada do Brasil na Guiné-Bissau Fonte: Agência Senado':
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.928
+    em: '2026-10-20'
   Embaixada do Brasil na República Socialista do Vietnã:
     classe: publico_outro
     via: marca
@@ -14146,8 +14156,10 @@ entidades:
     classe: nao_classificado
     via: null
   Promotoria de Justiça Criminal de Feijó/AC:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.955
+    em: '2026-10-20'
   Prospectiva Public Affairs LAT.AM:
     classe: nao_classificado
     via: null
@@ -17172,8 +17184,10 @@ entidades:
     classe: nao_classificado
     via: null
   UNIVERSIDADE DE SAO PAULO:
-    classe: nao_classificado
-    via: null
+    classe: publico_outro
+    via: eikos
+    conf: 0.958
+    em: '2026-10-20'
   UNIVERSIDADE DO ESTADO DO AMAZONAS - UEA:
     classe: nao_classificado
     via: null

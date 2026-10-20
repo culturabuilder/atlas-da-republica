@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-19'
+generated_at: '2026-10-20'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-22'
+janela_inicio: '2026-07-23'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,21 +11,21 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 221
-    dias_com_agenda: 57
+    compromissos_90d: 217
+    dias_com_agenda: 56
     por_tipo:
-      evento: 79
+      evento: 78
       viagem: 63
-      audiencia: 61
+      audiencia: 58
       reuniao: 14
       outro: 4
     entidades_top:
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
-      n: 16
+      n: 15
     - nome: Oswaldo Malatesta (Chefe do Gabinete Adjunto de Agenda do Gabinete Pessoal do Presidente )
-      n: 13
+      n: 12
     - nome: Miriam Belchior (Ministra da Casa Civil)
-      n: 8
+      n: 7
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 4
     - nome: Dario Durigan (Ministro da Fazenda)
@@ -42,7 +42,7 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 56
+      n: 52
     - nome: Palácio da Alvorada
       n: 40
     - nome: Base Aérea de Brasília
@@ -124,20 +124,6 @@ people:
         entidade: Ministro da Secretaria de Comunicação Social da Presidência da República
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-22:
-      - hora: '10:00'
-        titulo: Ministra da Casa Civil, Miriam Belchior
-        local: Palácio do Planalto
-      - hora: '14:40'
-        titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
-        local: Palácio do Planalto
-      - hora: '15:00'
-        titulo: Sanção do Projeto de Lei de Conversão nº 7, de 2026, que destina recursos a linhas de crédito do Programa
-          Brasil Soberano
-        local: Palácio do Planalto
-      - hora: '16:00'
-        titulo: Chefe do Gabinete Adjunto de Agenda do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
-        local: Palácio do Planalto
       presidente/2026-07-23:
       - hora: '10:00'
         titulo: Chefe do Gabinete Adjunto de Agenda do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
@@ -907,6 +893,7 @@ people:
       presidente/2026-10-17: []
       presidente/2026-10-18: []
       presidente/2026-10-19: []
+      presidente/2026-10-20: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -914,11 +901,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 69
-    dias_com_agenda: 41
+    compromissos_90d: 65
+    dias_com_agenda: 40
     por_tipo:
-      evento: 31
-      viagem: 19
+      evento: 29
+      viagem: 17
       audiencia: 9
       reuniao: 5
       outro: 5
@@ -931,11 +918,11 @@ people:
       n: 1
     locais_top:
     - nome: Brasília/DF
-      n: 17
+      n: 16
     - nome: Palácio do Planalto
-      n: 15
-    - nome: São Paulo/SP
       n: 14
+    - nome: São Paulo/SP
+      n: 12
     - nome: Palácio do Planalto, Anexo II
       n: 7
     - nome: Palácio da Alvorada
@@ -1003,21 +990,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-22:
-      - hora: '15:00'
-        titulo: Sanção do Projeto de Lei de Conversão nº 7 de 2026, que destina recursos a linhas de crédito do Programa Brasil
-          Soberano
-        local: Palácio do Planalto
-      - hora: '16:00'
-        titulo: Decolagem de Brasília/DF para São Paulo/SP
-        local: Brasília/DF
-      - hora: '18:30'
-        titulo: Lançamento da nova BandNews TV
-        local: São Paulo/SP
-      - hora: '21:00'
-        titulo: Decolagem de São Paulo/SP para Brasília/DF
-        local: São Paulo/SP
-      vice/2026-07-22-b1: []
       vice/2026-07-23:
       - hora: '16:15'
         titulo: Decolagem de Brasília/DF para o Rio de Janeiro/RJ
@@ -1403,6 +1375,8 @@ people:
       vice/2026-10-18-b1: []
       vice/2026-10-19: []
       vice/2026-10-19-b1: []
+      vice/2026-10-20: []
+      vice/2026-10-20-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 221 compromissos em 57 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 69 compromissos em 41 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 217 compromissos em 56 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 65 compromissos em 40 dias (0 dias não lidos)'
