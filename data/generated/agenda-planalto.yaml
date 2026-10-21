@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-20'
+generated_at: '2026-10-21'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-23'
+janela_inicio: '2026-07-24'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,19 +11,19 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 217
+    compromissos_90d: 215
     dias_com_agenda: 56
     por_tipo:
-      evento: 78
+      evento: 79
       viagem: 63
-      audiencia: 58
+      audiencia: 55
       reuniao: 14
       outro: 4
     entidades_top:
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
-      n: 15
-    - nome: Oswaldo Malatesta (Chefe do Gabinete Adjunto de Agenda do Gabinete Pessoal do Presidente )
-      n: 12
+      n: 14
+    - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República Substituto)
+      n: 11
     - nome: Miriam Belchior (Ministra da Casa Civil)
       n: 7
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
@@ -42,9 +42,9 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 52
+      n: 51
     - nome: Palácio da Alvorada
-      n: 40
+      n: 39
     - nome: Base Aérea de Brasília
       n: 27
     - nome: Esplanada dos Ministérios, Brasília
@@ -61,8 +61,15 @@ people:
       n: 3
     - nome: Estrada da Produção – Montes Claros (MG)
       n: 3
-    ultimo: '2026-10-16'
+    ultimo: '2026-10-21'
     recentes:
+    - data: '2026-10-21'
+      hora: '11:00'
+      titulo: Sanção do PLP nº 186/2026 (limites do MEI e remissão de créditos da União) e envio de PEC sobre tarifa zero
+        no transporte coletivo aos fins de semana e feriados
+      tipo: evento
+      local: Palácio do Planalto
+      participantes: []
     - data: '2026-10-16'
       hora: 09:20
       titulo: Cerimônia de Promulgação das Propostas de Emenda à Constituição que Põem Fim à Escala de Trabalho 6x1 e Estabelecem
@@ -114,27 +121,8 @@ people:
       participantes:
       - nome: Oswaldo Malatesta
         entidade: Chefe do Gabinete Pessoal do Presidente da República
-    - data: '2026-10-07'
-      hora: 09:00
-      titulo: Ministro da Secretaria de Comunicação Social da Presidência da República, Sidônio Palmeira
-      tipo: audiencia
-      local: Palácio da Alvorada
-      participantes:
-      - nome: Sidônio Palmeira
-        entidade: Ministro da Secretaria de Comunicação Social da Presidência da República
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-23:
-      - hora: '10:00'
-        titulo: Chefe do Gabinete Adjunto de Agenda do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
-        local: Palácio da Alvorada
-      - hora: '14:40'
-        titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
-        local: Palácio do Planalto
-      - hora: '15:00'
-        titulo: Presidente do Superior Tribunal de Justiça (STJ), Ministro Herman Benjamin, e Vice-Presidente do Superior
-          Tribunal de Justiça (STJ), Ministro Luis Felipe Salomão
-        local: Palácio do Planalto
       presidente/2026-07-24:
       - hora: 08:00
         titulo: Partida para São José dos Campos
@@ -894,6 +882,11 @@ people:
       presidente/2026-10-18: []
       presidente/2026-10-19: []
       presidente/2026-10-20: []
+      presidente/2026-10-21:
+      - hora: '11:00'
+        titulo: Sanção do PLP nº 186/2026 (limites do MEI e remissão de créditos da União) e envio de PEC sobre tarifa zero
+          no transporte coletivo aos fins de semana e feriados
+        local: Palácio do Planalto
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -901,11 +894,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 65
-    dias_com_agenda: 40
+    compromissos_90d: 63
+    dias_com_agenda: 39
     por_tipo:
-      evento: 29
-      viagem: 17
+      evento: 28
+      viagem: 16
       audiencia: 9
       reuniao: 5
       outro: 5
@@ -918,7 +911,7 @@ people:
       n: 1
     locais_top:
     - nome: Brasília/DF
-      n: 16
+      n: 15
     - nome: Palácio do Planalto
       n: 14
     - nome: São Paulo/SP
@@ -933,9 +926,9 @@ people:
       n: 2
     - nome: São José dos Campos/SP
       n: 2
-    - nome: Rio de Janeiro/RJ
-      n: 1
     - nome: Jacareí/SP
+      n: 1
+    - nome: São José do Rio Preto/SP
       n: 1
     ultimo: '2026-10-13'
     recentes:
@@ -990,14 +983,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-23:
-      - hora: '16:15'
-        titulo: Decolagem de Brasília/DF para o Rio de Janeiro/RJ
-        local: Brasília/DF
-      - hora: '18:00'
-        titulo: Posse da Diretoria e dos Conselhos FECOMÉRCIO RJ, SESC RJ e SENAC RJ - Gestão 2026-2030
-        local: Rio de Janeiro/RJ
-      vice/2026-07-23-b1: []
       vice/2026-07-24:
       - hora: '10:00'
         titulo: Visita a unidades industriais da empresa Avibras Aeroco
@@ -1377,6 +1362,8 @@ people:
       vice/2026-10-19-b1: []
       vice/2026-10-20: []
       vice/2026-10-20-b1: []
+      vice/2026-10-21: []
+      vice/2026-10-21-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 217 compromissos em 56 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 65 compromissos em 40 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 215 compromissos em 56 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 63 compromissos em 39 dias (0 dias não lidos)'
