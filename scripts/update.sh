@@ -83,7 +83,9 @@ run() {  # run "Nome visível" comando...   (LIM=1800 run ... para um limite mai
             local oc_antes=$($PY scripts/contar_ocupantes.py --git "HEAD:$f")
             if [ "${oc_antes:-0}" -ge 20 ]; then
               local oc_agora=$($PY scripts/contar_ocupantes.py "$f")
-              if [ "${oc_agora:-0}" -lt $(( oc_antes * 9 / 10 )) ]; then
+              # 10% e pelo menos 5 pessoas: percentual sozinho, em arquivo pequeno, devolveria queda
+              # legítima de dois ou três nomes e congelaria o dado — o estrago oposto, igualmente ruim.
+              if [ "${oc_agora:-0}" -lt $(( oc_antes * 9 / 10 )) ] && [ $(( oc_antes - ${oc_agora:-0} )) -ge 5 ]; then
                 encolheu="$encolheu $f"
                 echo "   $f: cargos com ocupante caíram de $oc_antes para $oc_agora"
               fi
