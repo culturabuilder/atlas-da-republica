@@ -1,14 +1,14 @@
 # GERADO por etl/pep.py. Não edite à mão.
-generated_at: '2026-10-21'
+generated_at: '2026-10-22'
 fonte: Portal da Transparência, cadastro de Pessoas Expostas Politicamente (/api-de-dados/peps)
 nota: 'Data de início e fim de exercício de quem ocupa função de poder no Executivo federal. A data só é aceita quando o órgão do registro no
   PEP casa com o órgão do cargo no Atlas: o nome sozinho não basta, porque homônimo existe e a data entraria no cargo errado. O que não casa fica
   em ''recusados'', para conferência humana, e não é usado.'
 resumo:
-  consultados_nesta_rodada: 7
-  posses_conhecidas: 36
+  consultados_nesta_rodada: 1
+  posses_conhecidas: 37
   novas_nesta_rodada: 1
-  recusados: 2
+  recusados: 0
   ja_sairam_segundo_o_pep: 0
   sem_registro: 107
 posses:
@@ -36,6 +36,12 @@ posses:
     funcao_pep: REITOR
     orgao_pep: UNIVERSIDADE FEDERAL DE MINAS GERAIS
     em: '2026-10-14'
+  br-p-alfredo-macedo-gomes:
+    inicio: '2019-10-17'
+    cargo: br-universidade-federal-de-pernambuco-reitor
+    funcao_pep: REITOR
+    orgao_pep: UNIVERSIDADE FEDERAL DE PERNAMBUCO
+    em: '2026-10-22'
   br-p-benjamin-zymler:
     inicio: '2001-11-11'
     cargo: br-ministro-do-tcu
@@ -229,19 +235,7 @@ posses:
     orgao_pep: AGENCIA NACIONAL DE TELECOMUNICACOES
     em: '2026-10-14'
 ja_sairam: []
-recusados:
-- pessoa: br-p-george-andre-palermo-santoro
-  nome: George Andre Palermo Santoro
-  cargo: br-secretaria-executiva-transportes-secretario
-  pep_orgao: MINISTERIO DOS TRANSPORTES
-  pep_funcao: MINISTRO DE ESTADO
-  motivo: órgão do PEP não é o órgão do cargo no Atlas
-- pessoa: br-p-wagner-caetano-alves-de-oliveira
-  nome: Wagner Caetano Alves de Oliveira
-  cargo: br-secretaria-nacional-de-relacoes-politico-sociais-secretario
-  pep_orgao: PRESIDENCIA DA REPUBLICA
-  pep_funcao: SECRETARIO
-  motivo: órgão do PEP não é o órgão do cargo no Atlas
+recusados: []
 sem_registro:
   br-p-adriana-pionttkovsky-barcellos: '2026-10-14'
   br-p-aguimar-martins-peixoto: '2026-10-14'

@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-21'
+generated_at: '2026-10-22'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-24'
+janela_inicio: '2026-07-25'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,13 +11,13 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 215
-    dias_com_agenda: 56
+    compromissos_90d: 210
+    dias_com_agenda: 55
     por_tipo:
-      evento: 79
-      viagem: 63
+      evento: 77
+      viagem: 61
       audiencia: 55
-      reuniao: 14
+      reuniao: 13
       outro: 4
     entidades_top:
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
@@ -46,7 +46,7 @@ people:
     - nome: Palácio da Alvorada
       n: 39
     - nome: Base Aérea de Brasília
-      n: 27
+      n: 26
     - nome: Esplanada dos Ministérios, Brasília
       n: 5
     - nome: Palácio Itamaraty
@@ -123,22 +123,6 @@ people:
         entidade: Chefe do Gabinete Pessoal do Presidente da República
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-24:
-      - hora: 08:00
-        titulo: Partida para São José dos Campos
-        local: Base Aérea de Brasília
-      - hora: 09:20
-        titulo: Chegada a São José dos Campos
-        local: Aeroporto Professor Urbano Ernesto Stumpf
-      - hora: '10:00'
-        titulo: Visita a unidades industriais da empresa Avibras Aeroco
-        local: Rodovia dos Tamoios, km 14 – Estrada do Varadouro, Jacareí (SP)
-      - hora: '11:30'
-        titulo: Intervenções sobre o início das atividades da empresa Avibras Aeroco
-        local: Fábrica veicular, sede da Avibras Aeroco, Jacareí (SP)
-      - hora: '14:00'
-        titulo: Encontro com lideranças do sistema de ciência e tecnologia no Brasil
-        local: Sede da SBPC, Rua Maria Antônia, Vila Buarque, São Paulo
       presidente/2026-07-25: []
       presidente/2026-07-26:
       - hora: '11:30'
@@ -887,6 +871,7 @@ people:
         titulo: Sanção do PLP nº 186/2026 (limites do MEI e remissão de créditos da União) e envio de PEC sobre tarifa zero
           no transporte coletivo aos fins de semana e feriados
         local: Palácio do Planalto
+      presidente/2026-10-22: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -894,10 +879,10 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 63
-    dias_com_agenda: 39
+    compromissos_90d: 62
+    dias_com_agenda: 38
     por_tipo:
-      evento: 28
+      evento: 27
       viagem: 16
       audiencia: 9
       reuniao: 5
@@ -926,9 +911,9 @@ people:
       n: 2
     - nome: São José dos Campos/SP
       n: 2
-    - nome: Jacareí/SP
-      n: 1
     - nome: São José do Rio Preto/SP
+      n: 1
+    - nome: Esplanada dos Ministérios, Brasília/DF
       n: 1
     ultimo: '2026-10-13'
     recentes:
@@ -983,11 +968,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-24:
-      - hora: '10:00'
-        titulo: Visita a unidades industriais da empresa Avibras Aeroco
-        local: Jacareí/SP
-      vice/2026-07-24-b1: []
       vice/2026-07-25: []
       vice/2026-07-25-b1: []
       vice/2026-07-26: []
@@ -1364,6 +1344,8 @@ people:
       vice/2026-10-20-b1: []
       vice/2026-10-21: []
       vice/2026-10-21-b1: []
+      vice/2026-10-22: []
+      vice/2026-10-22-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 215 compromissos em 56 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 63 compromissos em 39 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 210 compromissos em 55 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 62 compromissos em 38 dias (0 dias não lidos)'

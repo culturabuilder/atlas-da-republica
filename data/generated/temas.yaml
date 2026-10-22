@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-10-21'
+generated_at: '2026-10-22'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,7 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-07-20': 159
+      '2026-07-20': 125
       '2026-07-27': 216
       '2026-08-03': 249
       '2026-08-10': 240
@@ -29,9 +29,9 @@ temas:
       '2026-09-28': 2501
       '2026-10-05': 3172
       '2026-10-12': 1098
-      '2026-10-19': 529
-    total_90d: 11135
-    last7: 1276
+      '2026-10-19': 789
+    total_90d: 11361
+    last7: 1376
     peak_week: 3172
   processes:
   - casa: camara
@@ -67,15 +67,19 @@ temas:
   - cpi do master
   - vorcaro
   curated: cpmi-banco-master-2026
-  news_hits: 138
+  news_hits: 139
   news_weekly:
     '2026-09-14': 29
     '2026-09-21': 44
     '2026-09-28': 13
     '2026-10-05': 22
     '2026-10-12': 25
-    '2026-10-19': 5
+    '2026-10-19': 6
   news_recent:
+  - id: 9d8dbc04040d270f
+    title: Metrópoles prepara ataque mentiroso ao Estadão por expor influência de Vorcaro no portal
+    date: '2026-10-22'
+    publication: Estadão
   - id: ceae2a77023586da
     title: PGR defende manter prisão cautelar de parentes de Daniel Vorcaro e outros envolvidos no caso Master
     date: '2026-10-20'
@@ -93,15 +97,11 @@ temas:
     title: Lula e Flávio fazem primeiro debate das eleições na TV Band
     date: '2026-10-19'
     publication: Agência Brasil
-  - id: 9a4c3e9205defe7d
-    title: 'Caso Master: PGR defende manutenção da prisão de familiares e assessores de Vorcaro'
-    date: '2026-10-19'
-    publication: g1 Política
   wikipedia:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-07-20': 334
+      '2026-07-20': 270
       '2026-07-27': 450
       '2026-08-03': 427
       '2026-08-10': 484
@@ -114,9 +114,9 @@ temas:
       '2026-09-28': 5005
       '2026-10-05': 5535
       '2026-10-12': 4756
-      '2026-10-19': 1278
-    total_90d: 53511
-    last7: 4952
+      '2026-10-19': 1719
+    total_90d: 53888
+    last7: 4837
     peak_week: 10630
   processes:
   - casa: camara
@@ -131,7 +131,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
     requested: RCP 1/2026 (camara)
   state: parado
-  stalled_days: 93
+  stalled_days: 94
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -175,7 +175,7 @@ temas:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-07-20': 112
+      '2026-07-20': 93
       '2026-07-27': 195
       '2026-08-03': 243
       '2026-08-10': 276
@@ -188,9 +188,9 @@ temas:
       '2026-09-28': 1898
       '2026-10-05': 3170
       '2026-10-12': 10778
-      '2026-10-19': 1248
-    total_90d: 21968
-    last7: 11345
+      '2026-10-19': 1703
+    total_90d: 22404
+    last7: 10859
     peak_week: 10778
   processes:
   - casa: camara
@@ -241,7 +241,7 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-07-20': 21
+      '2026-07-20': 12
       '2026-07-27': 34
       '2026-08-03': 33
       '2026-08-10': 29
@@ -254,8 +254,8 @@ temas:
       '2026-09-28': 34
       '2026-10-05': 43
       '2026-10-12': 29
-      '2026-10-19': 26
-    total_90d: 711
+      '2026-10-19': 31
+    total_90d: 707
     last7: 47
     peak_week: 121
   processes:
@@ -326,7 +326,6 @@ temas:
     article: Ataques_de_8_de_janeiro_de_2023
     url: https://pt.wikipedia.org/wiki/Ataques_de_8_de_janeiro_de_2023
     weekly:
-      '2026-07-20': 0
       '2026-08-10': 0
       '2026-08-17': 0
       '2026-08-24': 0
@@ -338,7 +337,7 @@ temas:
       '2026-10-12': 8
       '2026-10-19': 0
     total_90d: 17
-    last7: 4
+    last7: 3
     peak_week: 8
   processes:
   - casa: camara
@@ -363,7 +362,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 166
+  stalled_days: 167
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -376,11 +375,16 @@ temas:
   - mp 1344
   - preco do diesel
   curated: null
-  news_hits: 2
+  news_hits: 3
   news_weekly:
     '2026-09-14': 1
     '2026-09-21': 1
+    '2026-10-19': 1
   news_recent:
+  - id: e768510a00854e46
+    title: Refinarias privadas buscam acordo antes de judicializar subsídio ao diesel
+    date: '2026-10-22'
+    publication: JOTA
   - id: 039853d002cdcbb8
     title: Governo prorroga subvenção ao diesel por mais 30 dias, às vésperas da eleição
     date: '2026-09-26'
@@ -431,7 +435,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1225
+  stalled_days: 1226
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -473,7 +477,7 @@ temas:
     article: Precatório
     url: https://pt.wikipedia.org/wiki/Precatório
     weekly:
-      '2026-07-20': 24
+      '2026-07-20': 17
       '2026-07-27': 28
       '2026-08-03': 25
       '2026-08-10': 33
@@ -486,9 +490,9 @@ temas:
       '2026-09-28': 112
       '2026-10-05': 61
       '2026-10-12': 87
-      '2026-10-19': 17
-    total_90d: 690
-    last7: 91
+      '2026-10-19': 33
+    total_90d: 699
+    last7: 104
     peak_week: 112
   processes:
   - casa: camara
@@ -559,7 +563,7 @@ temas:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-07-20': 125
+      '2026-07-20': 87
       '2026-07-27': 183
       '2026-08-03': 191
       '2026-08-10': 202
@@ -572,9 +576,9 @@ temas:
       '2026-09-28': 366
       '2026-10-05': 1023
       '2026-10-12': 754
-      '2026-10-19': 214
-    total_90d: 4752
-    last7: 716
+      '2026-10-19': 338
+    total_90d: 4838
+    last7: 718
     peak_week: 1023
   processes:
   - casa: camara

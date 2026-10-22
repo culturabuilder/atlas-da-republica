@@ -1,19 +1,19 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-10-21'
+generated_at: '2026-10-22'
 mes: '202608'
 mes_senado: '202609'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1176
-  com_remuneracao: 464
+  ocupantes_no_grafo: 1209
+  com_remuneracao: 497
   por_setor:
     executivo:
-      ocupantes: 442
-      antes: 360
-      depois: 380
-      pct_antes: 81.4
-      pct_depois: 86.0
+      ocupantes: 474
+      antes: 393
+      depois: 413
+      pct_antes: 82.9
+      pct_depois: 87.1
     essenciais:
       ocupantes: 30
       antes: 4
@@ -27,28 +27,28 @@ resumo:
       pct_antes: 0.0
       pct_depois: 13.5
     judiciario:
-      ocupantes: 110
+      ocupantes: 111
       antes: 0
       depois: 0
       pct_antes: 0.0
       pct_depois: 0.0
   por_criterio:
-    nome_completo+orgao: 346
-    nome_completo: 92
+    nome_completo+orgao: 380
+    nome_completo: 91
     primeiro_ultimo+orgao: 17
     subsequencia_no_orgao: 6
     primeiro_ultimo_unico: 1
     nome_sem_sufixo: 1
     subsequencia_subsidio: 1
   por_confianca:
-    alta: 439
+    alta: 472
     media: 25
   sem_remuneracao:
-    total: 89
+    total: 88
     por_motivo:
       ausente na folha: 25
-      órgão fora do SIAPE (empresa publica com folha própria): 15
       no cadastro do SIAPE mas sem linha de remuneração no mês: 15
+      órgão fora do SIAPE (empresa publica com folha própria): 14
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
       só há homônimo por primeiro+último sobrenome fora do órgão (...): 12
       órgão fora do SIAPE (sociedade economia mista com folha própria): 6
@@ -3429,38 +3429,6 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
-  br-p-wp-betania-lemos:
-    mes: '202608'
-    bruto: 51468.14
-    abate_teto: 5101.94
-    bruto_apos_abate: 46366.2
-    liquido: 34812.84
-    componentes:
-      basica: 51468.14
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 0.0
-      indenizatorias: 1192.0
-    orgao: Função Escola Nacional de Administração Pública
-    orgao_superior: MIN GESTAO E INOV EM SERV PUBLICOS
-    cargo_na_folha: AUDITOR FEDERAL DE FINANCAS E CONTROLE
-    funcao_na_folha: Sem informação
-    vinculo: Cargo
-    criterio: primeiro_ultimo+orgao
-    confianca: media
-    nome_na_folha: BETANIA PEIXOTO LEMOS
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/3067974
-    position: br-enap-dirigente
-    position_name: Presidente da Enap
-    bruta: 51468.14
-    liquida: 34812.84
-    indenizatorias: 1192.0
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 0.0
-    cargo: AUDITOR FEDERAL DE FINANCAS E CONTROLE
-    funcao: Sem informação
   br-p-dou-deyvesson-gusmao:
     mes: '202608'
     bruto: 26476.9
@@ -5447,6 +5415,38 @@ people:
     eventuais: 0.0
     cargo: TECNICO DE PLANEJAMENTO E PESQUISA
     funcao: Sem informação
+  br-p-rogerio-souza-mascarenhas:
+    mes: '202608'
+    bruto: 66170.81
+    abate_teto: 14404.61
+    bruto_apos_abate: 51766.2
+    liquido: 37412.37
+    componentes:
+      basica: 60770.81
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 5400.0
+      indenizatorias: 1374.71
+    orgao: MIN GESTAO E INOV EM SERV PUBLICOS
+    orgao_superior: Sem informação
+    cargo_na_folha: AUDITOR-FISCAL DA RECEITA FEDERAL BRASIL
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ROGERIO SOUZA MASCARENHAS
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2806127
+    position: br-secretaria-de-governo-digital-secretario
+    position_name: Secretário de Governo Digital do Ministério da Gestão e da Inovação em Serviços Públicos
+    bruta: 60770.81
+    liquida: 37412.37
+    indenizatorias: 1374.71
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 5400.0
+    cargo: AUDITOR-FISCAL DA RECEITA FEDERAL BRASIL
+    funcao: Sem informação
   br-p-isabela-gomes-gebrim:
     mes: '202608'
     bruto: 35230.64
@@ -6091,37 +6091,69 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
-  br-p-luis-gustavo-cardoso:
+  br-p-carlos-mello:
     mes: '202608'
-    bruto: 20674.61
+    bruto: 32773.17
     abate_teto: 0.0
-    bruto_apos_abate: 20674.61
-    liquido: 15570.9
+    bruto_apos_abate: 32773.17
+    liquido: 25281.18
     componentes:
-      basica: 20674.61
+      basica: 27943.17
       gratificacoes: 0.0
       funcao: null
-      eventuais: 0.0
-      indenizatorias: 1648.71
-    orgao: Universidade Federal do Rio Grande - RS
-    orgao_superior: Ministério da Educação
+      eventuais: 4830.0
+      indenizatorias: 1192.0
+    orgao: MINISTERIO DA PESCA E AQUICULTURA
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: primeiro_ultimo+orgao
+    confianca: media
+    nome_na_folha: CARLOS CESAR DE MELLO JUNIOR
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2404982
+    position: br-secretaria-nacional-de-pesca-industrial-amadora-e-esportiva-secretario
+    position_name: Secretário Nacional de Pesca Industrial, Amadora e Esportiva do Ministério da Pesca e Aquicultura
+    bruta: 27943.17
+    liquida: 25281.18
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 4830.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-carolina-rodrigues-da-costa-doria:
+    mes: '202608'
+    bruto: 48892.71
+    abate_teto: 0.0
+    bruto_apos_abate: 48892.71
+    liquido: 35334.02
+    componentes:
+      basica: 43092.71
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 5800.0
+      indenizatorias: 1520.66
+    orgao: MINISTERIO DA PESCA E AQUICULTURA
+    orgao_superior: Sem informação
     cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao_na_folha: Sem informação
     vinculo: Cargo
-    criterio: nome_completo
+    criterio: nome_completo+orgao
     confianca: alta
-    nome_na_folha: LUIS GUSTAVO CARDOSO
+    nome_na_folha: CAROLINA RODRIGUES DA COSTA DORIA
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/2841878
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3052922
     position: br-secretaria-nacional-de-registro-monitoramento-e-pesquisa-da-pesca-e-aquicultura-secretario
     position_name: Secretário Nacional de Registro, Monitoramento e Pesquisa da Pesca e Aquicultura do Ministério da Pesca
       e Aquicultura
-    bruta: 20674.61
-    liquida: 15570.9
-    indenizatorias: 1648.71
+    bruta: 43092.71
+    liquida: 35334.02
+    indenizatorias: 1520.66
     gratificacao_natalina: 0.0
     ferias: 0.0
-    eventuais: 0.0
+    eventuais: 5800.0
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
   br-p-felipe-cavalcante-e-silva:
@@ -6861,6 +6893,38 @@ people:
     eventuais: 5788.07
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
+  br-p-maria-laura-da-rocha:
+    mes: '202608'
+    bruto: 61560.52
+    abate_teto: 9479.37
+    bruto_apos_abate: 52081.15
+    liquido: 34628.5
+    componentes:
+      basica: 55845.56
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 5714.96
+      indenizatorias: 1192.0
+    orgao: Ministério das Relações Exteriores
+    orgao_superior: Sem informação
+    cargo_na_folha: MINISTRO DE PRIMEIRA CLASSE
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MARIA LAURA DA ROCHA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2700128
+    position: br-secretaria-geral-das-relacoes-exteriores-secretario
+    position_name: Secretário-Geral das Relações Exteriores do Ministério das Relações Exteriores
+    bruta: 55845.56
+    liquida: 34628.5
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 5714.96
+    cargo: MINISTRO DE PRIMEIRA CLASSE
+    funcao: Sem informação
   br-p-gustavo-cerqueira-ataide:
     mes: '202608'
     bruto: 57233.29
@@ -7021,6 +7085,169 @@ people:
     eventuais: 11139.22
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-daniel-ramos-longo:
+    mes: '202608'
+    bruto: 44374.62
+    abate_teto: 0.0
+    bruto_apos_abate: 44374.62
+    liquido: 32885.15
+    componentes:
+      basica: 44374.62
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1336.71
+    orgao: MINISTERIO DE PORTOS E AEROPORTOS
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: DANIEL RAMOS LONGO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2786984
+    position: br-secretaria-nacional-de-aviacao-civil-secretario
+    position_name: Secretário Nacional de Aviação Civil do Ministério de Portos e Aeroportos
+    bruta: 44374.62
+    liquida: 32885.15
+    indenizatorias: 1336.71
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-alex-sandro-de-avila:
+    mes: '202608'
+    bruto: 32443.17
+    abate_teto: 0.0
+    bruto_apos_abate: 32443.17
+    liquido: 25107.59
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 4500.0
+      indenizatorias: 1192.0
+    orgao: MINISTERIO DE PORTOS E AEROPORTOS
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ALEX SANDRO DE AVILA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3397544
+    position: br-secretaria-nacional-de-portos-secretario
+    position_name: Secretário Nacional de Portos do Ministério de Portos e Aeroportos
+    bruta: 27943.17
+    liquida: 25107.59
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 4500.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-ana-terra-reis:
+    mes: '202608'
+    bruto: 31507.8
+    abate_teto: 0.0
+    bruto_apos_abate: 31507.8
+    liquido: 24015.81
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 3564.63
+      indenizatorias: 1471.82
+    orgao: MIN DO DESENV AGR E AGRIC FAMILIAR
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ANA TERRA REIS
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3954229
+    position: br-secretaria-de-abastecimento-cooperativismo-e-soberania-alimentar-secretario
+    position_name: Secretário de Abastecimento, Cooperativismo e Soberania Alimentar do Ministério do Desenvolvimento Agrário
+      e Agricultura Familiar
+    bruta: 27943.17
+    liquida: 24015.81
+    indenizatorias: 1471.82
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 3564.63
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-vanderley-ziger:
+    mes: '202608'
+    bruto: 41507.56
+    abate_teto: 0.0
+    bruto_apos_abate: 41507.56
+    liquido: 32529.83
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 13564.39
+      indenizatorias: 1192.0
+    orgao: MIN DO DESENV AGR E AGRIC FAMILIAR
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: VANDERLEY ZIGER
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3939119
+    position: br-secretaria-de-agricultura-familiar-e-agroecologia-secretario
+    position_name: Secretário de Agricultura Familiar e Agroecologia do Ministério do Desenvolvimento Agrário e Agricultura
+      Familiar
+    bruta: 27943.17
+    liquida: 32529.83
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 9314.39
+    eventuais: 4250.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-moises-savian:
+    mes: '202608'
+    bruto: 27943.17
+    abate_teto: 0.0
+    bruto_apos_abate: 27943.17
+    liquido: 22602.8
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: MIN DO DESENV AGR E AGRIC FAMILIAR
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MOISES SAVIAN
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1170626
+    position: br-secretaria-de-governanca-fundiaria-desenvolvimento-territorial-e-socioambiental-secretario
+    position_name: Secretário de Governança Fundiária, Desenvolvimento Territorial e Socioambiental do Ministério do Desenvolvimento
+      Agrário e Agricultura Familiar
+    bruta: 27943.17
+    liquida: 22602.8
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-edmilton-cerqueira:
     mes: '202608'
     bruto: 27943.17
@@ -7085,6 +7312,39 @@ people:
     ferias: 0.0
     eventuais: 0.0
     cargo: ESP POL PUBL GESTAO GOVERNAMENTAL
+    funcao: Sem informação
+  br-p-pedro-ivo-sebba-ramalho:
+    mes: '202608'
+    bruto: 61180.81
+    abate_teto: 0.0
+    bruto_apos_abate: 61180.81
+    liquido: 40434.57
+    componentes:
+      basica: 45885.61
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 15295.2
+      indenizatorias: 1498.51
+    orgao: MIN DESENVOLV IND COMERCIO E SERVICOS
+    orgao_superior: Sem informação
+    cargo_na_folha: ESP EM REGULACAO E VIGILANCIA SANITARIA
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: PEDRO IVO SEBBA RAMALHO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/208754
+    position: br-secretaria-de-competitividade-e-politica-regulatoria-secretario
+    position_name: Secretário de Competitividade e Política Regulatória do Ministério do Desenvolvimento, Indústria, Comércio
+      e Serviços
+    bruta: 45885.61
+    liquida: 40434.57
+    indenizatorias: 1498.51
+    gratificacao_natalina: 0.0
+    ferias: 15295.2
+    eventuais: 0.0
+    cargo: ESP EM REGULACAO E VIGILANCIA SANITARIA
     funcao: Sem informação
   br-p-tatiana-lacerda-prazeres:
     mes: '202608'
@@ -7181,6 +7441,335 @@ people:
     indenizatorias: 1192.0
     gratificacao_natalina: 0.0
     ferias: 9314.39
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-osmar-ribeiro-de-almeida-junior:
+    mes: '202608'
+    bruto: 38821.59
+    abate_teto: 0.0
+    bruto_apos_abate: 38821.59
+    liquido: 30236.17
+    componentes:
+      basica: 31919.27
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 6902.32
+      indenizatorias: 1192.0
+    orgao: MIN DESENV ASSIS SOCI FAMIL COMBATE FOME
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: OSMAR RIBEIRO DE ALMEIDA JUNIOR
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/63988
+    position: br-secretaria-executiva-desenvolvimento-social-secretario
+    position_name: Secretário-Executivo do Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome
+    bruta: 31919.27
+    liquida: 30236.17
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 6902.32
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-valeria-torres-amaral-burity:
+    mes: '202608'
+    bruto: 26476.9
+    abate_teto: 0.0
+    bruto_apos_abate: 26476.9
+    liquido: 19417.02
+    componentes:
+      basica: 26476.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1353.8
+    orgao: MIN DESENV ASSIS SOCI FAMIL COMBATE FOME
+    orgao_superior: Sem informação
+    cargo_na_folha: ANALISTA TECN EM POLITICAS SOCIAIS
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: VALERIA TORRES AMARAL BURITY
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1580772
+    position: br-secretaria-extraordinaria-de-combate-a-pobreza-e-a-fome-secretario
+    position_name: Secretário Extraordinário de Combate à Pobreza e à Fome do Ministério do Desenvolvimento e Assistência
+      Social, Família e Combate à Fome
+    bruta: 26476.9
+    liquida: 19417.02
+    indenizatorias: 1353.8
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: ANALISTA TECN EM POLITICAS SOCIAIS
+    funcao: Sem informação
+  br-p-lais-wendel-abramo:
+    mes: '202608'
+    bruto: 27943.17
+    abate_teto: 0.0
+    bruto_apos_abate: 27943.17
+    liquido: 20451.18
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: MIN DESENV ASSIS SOCI FAMIL COMBATE FOME
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: LAIS WENDEL ABRAMO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2546614
+    position: br-secretaria-nacional-da-politica-de-cuidados-e-familia-secretario
+    position_name: Secretário Nacional da Política de Cuidados e Família do Ministério do Desenvolvimento e Assistência Social,
+      Família e Combate à Fome
+    bruta: 27943.17
+    liquida: 20451.18
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-rosilene-cristina-rocha:
+    mes: '202608'
+    bruto: 31943.17
+    abate_teto: 0.0
+    bruto_apos_abate: 31943.17
+    liquido: 24451.18
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 4000.0
+      indenizatorias: 1192.0
+    orgao: MIN DESENV ASSIS SOCI FAMIL COMBATE FOME
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ROSILENE CRISTINA ROCHA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/4118583
+    position: br-secretaria-nacional-de-assistencia-social-secretario
+    position_name: Secretário Nacional de Assistência Social do Ministério do Desenvolvimento e Assistência Social, Família
+      e Combate à Fome
+    bruta: 27943.17
+    liquida: 24451.18
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 4000.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-amarildo-baesso:
+    mes: '202608'
+    bruto: 59174.86
+    abate_teto: 7093.7
+    bruto_apos_abate: 52081.16
+    liquido: 34576.38
+    componentes:
+      basica: 53459.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 5714.96
+      indenizatorias: 1192.0
+    orgao: MIN DESENV ASSIS SOCI FAMIL COMBATE FOME
+    orgao_superior: Sem informação
+    cargo_na_folha: ESP POL PUBL GESTAO GOVERNAMENTAL
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: AMARILDO BAESSO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1451250
+    position: br-secretaria-nacional-de-beneficios-assistenciais-secretario
+    position_name: Secretário Nacional de Benefícios Assistenciais do Ministério do Desenvolvimento e Assistência Social,
+      Família e Combate à Fome
+    bruta: 53459.9
+    liquida: 34576.38
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 5714.96
+    cargo: ESP POL PUBL GESTAO GOVERNAMENTAL
+    funcao: Sem informação
+  br-p-analucia-faggion-alonso:
+    mes: '202608'
+    bruto: 32270.56
+    abate_teto: 0.0
+    bruto_apos_abate: 32270.56
+    liquido: 24778.57
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 4327.39
+      indenizatorias: 1192.0
+    orgao: MIN DESENV ASSIS SOCI FAMIL COMBATE FOME
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ANALUCIA FAGGION ALONSO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1015471
+    position: br-secretaria-nacional-de-integracao-e-articulacao-de-plataformas-sociais-eletronicas-secretario
+    position_name: Secretário Nacional de Integração e Articulação de Plataformas Sociais Eletrônicas do Ministério do Desenvolvimento
+      e Assistência Social, Família e Combate à Fome
+    bruta: 27943.17
+    liquida: 24778.57
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 4327.39
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-eliane-aquino-custodio:
+    mes: '202608'
+    bruto: 34743.17
+    abate_teto: 0.0
+    bruto_apos_abate: 34743.17
+    liquido: 27303.32
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 6800.0
+      indenizatorias: 1476.88
+    orgao: MIN DESENV ASSIS SOCI FAMIL COMBATE FOME
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ELIANE AQUINO CUSTODIO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2863355
+    position: br-secretaria-nacional-de-renda-de-cidadania-secretario
+    position_name: Secretário Nacional de Renda de Cidadania do Ministério do Desenvolvimento e Assistência Social, Família
+      e Combate à Fome
+    bruta: 27943.17
+    liquida: 27303.32
+    indenizatorias: 1476.88
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 6800.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-lilian-dos-santos-rahal:
+    mes: '202608'
+    bruto: 53459.9
+    abate_teto: 7093.7
+    bruto_apos_abate: 46366.2
+    liquido: 34864.29
+    componentes:
+      basica: 53459.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1476.88
+    orgao: MIN DESENV ASSIS SOCI FAMIL COMBATE FOME
+    orgao_superior: Sem informação
+    cargo_na_folha: ESP POL PUBL GESTAO GOVERNAMENTAL
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: LILIAN DOS SANTOS RAHAL
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1307108
+    position: br-secretaria-nacional-de-seguranca-alimentar-e-nutricional-secretario
+    position_name: Secretário Nacional de Segurança Alimentar e Nutricional do Ministério do Desenvolvimento e Assistência
+      Social, Família e Combate à Fome
+    bruta: 53459.9
+    liquida: 34864.29
+    indenizatorias: 1476.88
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: ESP POL PUBL GESTAO GOVERNAMENTAL
+    funcao: Sem informação
+  br-p-rafael-guerreiro-osorio:
+    mes: '202608'
+    bruto: 53459.9
+    abate_teto: 7093.7
+    bruto_apos_abate: 46366.2
+    liquido: 34519.63
+    componentes:
+      basica: 53459.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1353.8
+    orgao: MIN DESENV ASSIS SOCI FAMIL COMBATE FOME
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: RAFAEL GUERREIRO OSORIO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/433129
+    position: br-secretaria-de-avaliacao-gestao-da-informacao-e-cadastro-unico-secretario
+    position_name: Secretário de Avaliação, Gestão da Informação e Cadastro Único do Ministério do Desenvolvimento e Assistência
+      Social, Família e Combate à Fome
+    bruta: 53459.9
+    liquida: 34519.63
+    indenizatorias: 1353.8
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-luiz-carlos-everton-de-farias:
+    mes: '202608'
+    bruto: 27943.17
+    abate_teto: 0.0
+    bruto_apos_abate: 27943.17
+    liquido: 20451.18
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: MIN DESENV ASSIS SOCI FAMIL COMBATE FOME
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: LUIZ CARLOS EVERTON DE FARIAS
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1893690
+    position: br-secretaria-de-inclusao-socioeconomica-secretario
+    position_name: Secretário de Inclusão Socioeconômica do Ministério do Desenvolvimento e Assistência Social, Família e
+      Combate à Fome
+    bruta: 27943.17
+    liquida: 20451.18
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
@@ -7507,6 +8096,71 @@ people:
     eventuais: 4250.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-carina-mendonca-pimenta:
+    mes: '202608'
+    bruto: 32443.17
+    abate_teto: 0.0
+    bruto_apos_abate: 32443.17
+    liquido: 25003.32
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 4500.0
+      indenizatorias: 1631.09
+    orgao: MINISTERIO DO MEIO AMBIENTE
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CARINA MENDONCA PIMENTA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/852572
+    position: br-secretaria-nacional-de-bioeconomia-secretario
+    position_name: Secretário Nacional de Bioeconomia do Ministério do Meio Ambiente e Mudança do Clima
+    bruta: 27943.17
+    liquida: 25003.32
+    indenizatorias: 1631.09
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 4500.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-adalberto-felicio-maluf-filho:
+    mes: '202608'
+    bruto: 34928.93
+    abate_teto: 0.0
+    bruto_apos_abate: 34928.93
+    liquido: 27541.22
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 6985.76
+      indenizatorias: 1631.09
+    orgao: MINISTERIO DO MEIO AMBIENTE
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ADALBERTO FELICIO MALUF FILHO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2050323
+    position: br-secretaria-nacional-de-meio-ambiente-urbano-recursos-hidricos-e-qualidade-ambiental-secretario
+    position_name: Secretário Nacional de Meio Ambiente Urbano, Recursos Hídricos e Qualidade Ambiental do Ministério do Meio
+      Ambiente e Mudança do Clima
+    bruta: 27943.17
+    liquida: 27541.22
+    indenizatorias: 1631.09
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 6985.76
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-aloisio-lopes-pereira-de-melo:
     mes: '202608'
     bruto: 53459.9
@@ -7572,6 +8226,166 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-guilherme-santos-mello:
+    mes: '202608'
+    bruto: 19151.56
+    abate_teto: 0.0
+    bruto_apos_abate: 19151.56
+    liquido: 14960.6
+    componentes:
+      basica: 19151.56
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 0.0
+    orgao: MINISTERIO DO PLANEJAMENTO E ORCAMENTO
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: GUILHERME SANTOS MELLO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3399440
+    position: br-secretaria-executiva-planejamento-secretario
+    position_name: Secretário-Executivo do Ministério do Planejamento e Orçamento
+    bruta: 19151.56
+    liquida: 14960.6
+    indenizatorias: 0.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-antonio-negromonte-nascimento-junior:
+    mes: '202608'
+    bruto: 16765.9
+    abate_teto: 3485.81
+    bruto_apos_abate: 13280.09
+    liquido: 10703.78
+    componentes:
+      basica: 16765.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 0.0
+    orgao: MINISTERIO DO PLANEJAMENTO E ORCAMENTO
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: FUNCÃO COMISSIONADA EXECUTIVA
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ANTONIO NEGROMONTE NASCIMENTO JUNIOR
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2850041
+    position: br-secretaria-de-assuntos-internacionais-e-desenvolvimento-secretario
+    position_name: Secretário de Assuntos Internacionais e Desenvolvimento do Ministério do Planejamento e Orçamento
+    bruta: 16765.9
+    liquida: 10703.78
+    indenizatorias: 0.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: FUNCÃO COMISSIONADA EXECUTIVA
+  br-p-otavio-augusto-ferreira-ventura:
+    mes: '202608'
+    bruto: 53459.9
+    abate_teto: 7093.71
+    bruto_apos_abate: 46366.19
+    liquido: 34589.84
+    componentes:
+      basica: 53459.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: MINISTERIO DO PLANEJAMENTO E ORCAMENTO
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: OTAVIO AUGUSTO FERREIRA VENTURA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3410885
+    position: br-secretaria-de-monitoramento-e-avaliacao-de-politicas-publicas-secretario
+    position_name: Secretário de Monitoramento e Avaliação de Políticas Públicas do Ministério do Planejamento e Orçamento
+    bruta: 53459.9
+    liquida: 34589.84
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-clayton-luiz-montes:
+    mes: '202608'
+    bruto: 53459.9
+    abate_teto: 7093.71
+    bruto_apos_abate: 46366.19
+    liquido: 36231.49
+    componentes:
+      basica: 53459.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1876.39
+    orgao: MINISTERIO DO PLANEJAMENTO E ORCAMENTO
+    orgao_superior: Sem informação
+    cargo_na_folha: ANALISTA DE PLANEJAMENTO E ORCAMENTO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CLAYTON LUIZ MONTES
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1088312
+    position: br-secretaria-de-orcamento-federal-secretario
+    position_name: Secretário de Orçamento Federal do Ministério do Planejamento e Orçamento
+    bruta: 53459.9
+    liquida: 36231.49
+    indenizatorias: 1876.39
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: ANALISTA DE PLANEJAMENTO E ORCAMENTO
+    funcao: Sem informação
+  br-p-francisco-macena-da-silva:
+    mes: '202608'
+    bruto: 38019.27
+    abate_teto: 0.0
+    bruto_apos_abate: 38019.27
+    liquido: 29433.85
+    componentes:
+      basica: 31919.27
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 6100.0
+      indenizatorias: 1557.42
+    orgao: MINISTERIO DO TRABALHO E EMPREGO
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: FRANCISCO MACENA DA SILVA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1017422
+    position: br-secretaria-executiva-trabalho-secretario
+    position_name: Secretário-Executivo do Ministério do Trabalho e Emprego
+    bruta: 31919.27
+    liquida: 29433.85
+    indenizatorias: 1557.42
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 6100.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-fernando-zamban:
     mes: '202608'
     bruto: 27943.17
@@ -7602,6 +8416,134 @@ people:
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-henrique-eduardo-medeiros-aquino:
+    mes: '202608'
+    bruto: 24995.59
+    abate_teto: 0.0
+    bruto_apos_abate: 24995.59
+    liquido: 18657.06
+    componentes:
+      basica: 24995.59
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1433.03
+    orgao: MINISTERIO DO TRABALHO E EMPREGO
+    orgao_superior: Sem informação
+    cargo_na_folha: AGENTE ADMINISTRATIVO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: HENRIQUE EDUARDO MEDEIROS AQUINO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3256615
+    position: br-secretaria-nacional-de-qualificacao-emprego-e-juventude-secretario
+    position_name: Secretário Nacional de Qualificação, Emprego e Juventude do Ministério do Trabalho e Emprego
+    bruta: 24995.59
+    liquida: 18657.06
+    indenizatorias: 1433.03
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: AGENTE ADMINISTRATIVO
+    funcao: Sem informação
+  br-p-luiz-henrique-ramos-lopes:
+    mes: '202608'
+    bruto: 52119.0
+    abate_teto: 0.0
+    bruto_apos_abate: 52119.0
+    liquido: 38761.26
+    componentes:
+      basica: 44004.91
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 8114.09
+      indenizatorias: 1192.0
+    orgao: MINISTERIO DO TRABALHO E EMPREGO
+    orgao_superior: Sem informação
+    cargo_na_folha: AUDITOR FISCAL DO TRABALHO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: LUIZ HENRIQUE RAMOS LOPES
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1655200
+    position: br-secretaria-de-inspecao-do-trabalho-secretario
+    position_name: Secretário de Inspeção do Trabalho do Ministério do Trabalho e Emprego
+    bruta: 44004.91
+    liquida: 38761.26
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 8114.09
+    cargo: AUDITOR FISCAL DO TRABALHO
+    funcao: Sem informação
+  br-p-carlos-augusto-simoes-goncalves-junior:
+    mes: '202608'
+    bruto: 27943.17
+    abate_teto: 0.0
+    bruto_apos_abate: 27943.17
+    liquido: 20451.18
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: MINISTERIO DO TRABALHO E EMPREGO
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CARLOS AUGUSTO SIMOES GONCALVES JUNIOR
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1277006
+    position: br-secretaria-de-protecao-ao-trabalhador-secretario
+    position_name: Secretário de Proteção ao Trabalhador do Ministério do Trabalho e Emprego
+    bruta: 27943.17
+    liquida: 20451.18
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-marcos-perioto:
+    mes: '202608'
+    bruto: 42297.56
+    abate_teto: 0.0
+    bruto_apos_abate: 42297.56
+    liquido: 33319.83
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 14354.39
+      indenizatorias: 1374.71
+    orgao: MINISTERIO DO TRABALHO E EMPREGO
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MARCOS PERIOTO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3475483
+    position: br-secretaria-de-relacoes-do-trabalho-secretario
+    position_name: Secretário de Relações do Trabalho do Ministério do Trabalho e Emprego
+    bruta: 27943.17
+    liquida: 33319.83
+    indenizatorias: 1374.71
+    gratificacao_natalina: 0.0
+    ferias: 9314.39
+    eventuais: 5040.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-fernanda-camara-norat:
@@ -8116,6 +9058,38 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-francisca-lucileide-de-carvalho:
+    mes: '202608'
+    bruto: 31919.27
+    abate_teto: 0.0
+    bruto_apos_abate: 31919.27
+    liquido: 23385.99
+    componentes:
+      basica: 31919.27
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1478.55
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: FRANCISCA LUCILEIDE DE CARVALHO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/300474
+    position: br-secretaria-executiva-cc-pr-secretario
+    position_name: Secretário-Executivo da Casa Civil da Presidência da República
+    bruta: 31919.27
+    liquida: 23385.99
+    indenizatorias: 1478.55
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-bruno-de-carvalho-duarte:
     mes: '202608'
     bruto: 46898.73
@@ -8244,6 +9218,38 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-washington-rocha-triani:
+    mes: '202608'
+    bruto: 19990.41
+    abate_teto: 10848.22
+    bruto_apos_abate: 9142.19
+    liquido: 7703.8
+    componentes:
+      basica: 19990.41
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 0.0
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: WASHINGTON ROCHA TRIANI
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3162691
+    position: br-secretaria-executiva-gsi-pr-secretario
+    position_name: Secretário-Executivo do Gabinete de Segurança Institucional da Presidência da República
+    bruta: 19990.41
+    liquida: 7703.8
+    indenizatorias: 0.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-alex-azevedo-urbancg:
     mes: '202608'
     bruto: 16765.9
@@ -8271,6 +9277,104 @@ people:
       Presidência da República
     bruta: 16765.9
     liquida: 9377.21
+    indenizatorias: 0.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-marcos-aurelio-vilela-valenca:
+    mes: '202608'
+    bruto: 16765.9
+    abate_teto: 10124.71
+    bruto_apos_abate: 6641.19
+    liquido: 5890.58
+    componentes:
+      basica: 16765.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 0.0
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MARCOS AURELIO VILELA VALENCA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1494769
+    position: br-secretaria-de-coordenacao-e-assuntos-aeroespaciais-secretario
+    position_name: Secretário de Coordenação e Assuntos Aeroespaciais do Gabinete de Segurança Institucional da Presidência
+      da República
+    bruta: 16765.9
+    liquida: 5890.58
+    indenizatorias: 0.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-ricardo-santos-taranto:
+    mes: '202608'
+    bruto: 16765.9
+    abate_teto: 6918.71
+    bruto_apos_abate: 9847.19
+    liquido: 8214.93
+    componentes:
+      basica: 16765.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 0.0
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: RICARDO SANTOS TARANTO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2335829
+    position: br-secretaria-de-seguranca-presidencial-secretario
+    position_name: Secretário de Segurança Presidencial do Gabinete de Segurança Institucional da Presidência da República
+    bruta: 16765.9
+    liquida: 8214.93
+    indenizatorias: 0.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-andre-luiz-bandeira-molina:
+    mes: '202608'
+    bruto: 16765.9
+    abate_teto: 16362.56
+    bruto_apos_abate: 403.34
+    liquido: 403.34
+    componentes:
+      basica: 16765.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 0.0
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ANDRE LUIZ BANDEIRA MOLINA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2439190
+    position: br-secretaria-de-seguranca-da-informacao-e-cibernetica-secretario
+    position_name: Secretário de Segurança da Informação e Cibernética do Gabinete de Segurança Institucional da Presidência
+      da República
+    bruta: 16765.9
+    liquida: 403.34
     indenizatorias: 0.0
     gratificacao_natalina: 0.0
     ferias: 0.0
@@ -8435,6 +9539,38 @@ people:
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 6300.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-marcelo-almeida-cunha-costa:
+    mes: '202608'
+    bruto: 51989.05
+    abate_teto: 5622.85
+    bruto_apos_abate: 46366.2
+    liquido: 30964.27
+    componentes:
+      basica: 51989.05
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MARCELO ALMEIDA CUNHA COSTA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/16311
+    position: br-secretaria-executiva-sri-pr-secretario
+    position_name: Secretário-Executivo da Secretaria de Relações Institucionais da Presidência da República
+    bruta: 51989.05
+    liquida: 30964.27
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-laina-peternella-ferreira:
@@ -8953,38 +10089,6 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
-  br-p-mauricio-saldanha-motta:
-    mes: '202608'
-    bruto: 41595.58
-    abate_teto: 0.0
-    bruto_apos_abate: 41595.58
-    liquido: 28160.39
-    componentes:
-      basica: 37588.49
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 4007.09
-      indenizatorias: 1192.0
-    orgao: Centro Federal de Educação Tecnológica Celso Suckow da Fonseca
-    orgao_superior: Ministério da Educação
-    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
-    funcao_na_folha: Sem informação
-    vinculo: Cargo
-    criterio: nome_completo+orgao
-    confianca: alta
-    nome_na_folha: MAURICIO SALDANHA MOTTA
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/1057799
-    position: br-centro-federal-de-educacao-tecnologica-celso-suckow-da-fonseca-diretor-geral
-    position_name: Diretor-Geral do Centro Federal de Educação Tecnológica - Celso Suckow da Fonseca
-    bruta: 37588.49
-    liquida: 28160.39
-    indenizatorias: 1192.0
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 4007.09
-    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
-    funcao: Sem informação
   br-p-carla-simone-chamon:
     mes: '202608'
     bruto: 36655.51
@@ -11321,38 +12425,6 @@ people:
     eventuais: 0.0
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
-  br-p-girlene-alves-da-silva:
-    mes: '202608'
-    bruto: 43613.98
-    abate_teto: 0.0
-    bruto_apos_abate: 43613.98
-    liquido: 29749.99
-    componentes:
-      basica: 39781.04
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 3832.94
-      indenizatorias: 1677.97
-    orgao: Universidade Federal de Juiz de Fora - MG
-    orgao_superior: Ministério da Educação
-    cargo_na_folha: Sem informaç
-    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
-    vinculo: Função
-    criterio: nome_completo+orgao
-    confianca: alta
-    nome_na_folha: GIRLENE ALVES DA SILVA
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/1681441
-    position: br-universidade-federal-de-juiz-de-fora-reitor
-    position_name: Reitor da Universidade Federal de Juiz de Fora
-    bruta: 39781.04
-    liquida: 29749.99
-    indenizatorias: 1677.97
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 3832.94
-    cargo: Sem informaç
-    funcao: CARGO DE DIRECAO - CD - IFES
   br-p-jose-roberto-soares-scolforo:
     mes: '202608'
     bruto: 46493.91
@@ -15494,11 +16566,6 @@ nao_encontrados:
   cargo: Diretor do Banco Central do Brasil
   setor: executivo
   motivo: só há homônimo por primeiro+último sobrenome fora do órgão (27)
-- id: br-p-wp-rodrigo-assumpcao
-  nome: Rodrigo Assumpção
-  cargo: Presidente da Dataprev
-  setor: executivo
-  motivo: órgão fora do SIAPE (empresa publica com folha própria)
 - id: br-p-wp-rogerio-amado-barzellay
   nome: Rogério Amado Barzellay
   cargo: Presidente da Infraero

@@ -1,12 +1,23 @@
 # GERADO por scripts/novidades.py. Não edite à mão.
-generated_at: '2026-10-21'
+generated_at: '2026-10-22'
 nota: 'O que mudou no Atlas, tirado do histórico do projeto. Os commits automáticos de dado ficam fora: o que eles mudam aparece no painel de
   frescor da metodologia.'
-total: 156
+total: 157
 por_mes:
-  2026-10: 24
+  2026-10: 25
   2026-09: 132
 novidades:
+- id: 8a4d17fc1
+  data: '2026-10-22'
+  ordem: 1792676853
+  titulo: 'Guarda por ocupante: cobrir os outros formatos de cargo com ocupante'
+  texto: A primeira versão só entendia `positions` como lista, então protegia dois arquivos (dirigentes e segundo escalão) e deixava de fora posses
+    (255), ocupantes pelo DOU (104), colegiados, comissões e ocupantes curados — todos no formato dicionário. Agora são 12 arquivos; conferido
+    contra os últimos 12 commits, a contagem é estável em todos.
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 1070
 - id: 78e9dfcf9
   data: '2026-10-19'
   ordem: 1792415879

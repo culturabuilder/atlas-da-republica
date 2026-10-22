@@ -1,12 +1,12 @@
 # GERADO por etl/ocupantes_dou.py. Não edite à mão.
-generated_at: '2026-10-15T14:38:29'
+generated_at: '2026-10-22T14:57:53'
 fonte: Diário Oficial da União — busca pública www.in.gov.br/consulta (todas as seções), consulta pelo nome do cargo
 nota: 'Ocupante achado buscando o CARGO no DOU (o inverso de etl/posses.py, que busca o nome). started_at = dia da PUBLICAÇÃO do ato de nomeação/designação/recondução, não o da posse. Só entra quando o
   cargo citado no ato casa com o cargo do grafo em todos os termos significativos; confiança alta = cargo e órgão casam, média = só o cargo casa (órgão vindo da sigla ou da hierarquia do ato) ou a nomeação
   é interina. Ato de exoneração/dispensa posterior descarta a pessoa. Em reitoria e estatal, ato anterior a quatro anos e meio cai para média: é o mais recente do DOU, mas o mandato já venceu.'
 janela:
   de: '2018-01-01'
-  ate: '2026-10-15'
+  ate: '2026-10-22'
 positions:
   br-autoridade-nacional-de-seguranca-nuclear-diretor-presidente:
   - id: br-p-alessandro-facure-neves-de-salles-soares
@@ -1569,6 +1569,36 @@ positions:
     ato: PORTARIAS DE 23 DE JANEIRO DE 2023 (DO2, 2023-01-24)
     cargo_no_ato: Secretário Extraordinário para a Transformação do Estado do Ministério da Gestão e da Inovação em Serviços Públicos
     note: 'NOMEAR publicado no DOU em 24/01/2023; cargo no ato: "Secretário Extraordinário para a Transformação do Estado do Ministério da Gestão e da Inov". Data = publicação do ato, não a posse.'
+  br-centro-federal-de-educacao-tecnologica-celso-suckow-da-fonseca-diretor-geral:
+  - id: br-p-mauricio-saldanha-motta
+    name: Maurício Saldanha Motta
+    started_at: '2025-02-28'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/portaria-mec-n-146-de-26-de-fevereiro-de-2025-615399616
+    checked_at: '2026-10-22'
+    verified: false
+    confianca: alta
+    criterio: cargo e órgão do grafo aparecem por extenso no ato
+    ato: PORTARIA MEC Nº 146, DE 26 DE FEVEREIRO DE 2025 (DO2, 2025-02-28)
+    cargo_no_ato: Diretor-Geral do Centro Federal de Educação Tecnológica Celso Suckow da Fonseca
+    note: 'RECONDUZIDO publicado no DOU em 28/02/2025; cargo no ato: "Diretor-Geral do Centro Federal de Educação Tecnológica Celso Suckow da Fonseca". Data = publicação do ato, não a posse.'
+  br-universidade-federal-de-juiz-de-fora-reitor:
+  - id: br-p-girlene-alves-da-silva
+    name: Girlene Alves Da Silva
+    started_at: '2024-04-02'
+    entry_mode: nomeado
+    acting: false
+    source: dou
+    source_url: https://www.in.gov.br/web/dou/-/decreto-de-1-de-abril-de-2024-551207284
+    checked_at: '2026-10-22'
+    verified: false
+    confianca: alta
+    criterio: papel casa e o órgão vem da qualificação no ato (Universidade Federal de Juiz de Fora)
+    ato: DECRETO DE 1º DE ABRIL DE 2024 (DO2, 2024-04-02)
+    cargo_no_ato: Reitora da referida Universidade
+    note: 'NOMEAR publicado no DOU em 02/04/2024; cargo no ato: "Reitora da referida Universidade". Data = publicação do ato, não a posse.'
 nao_encontrados:
 - br-amazonia-azul-tecnologias-de-defesa-s-a-presidente
 - br-banco-da-amazonia-s-a-presidente
@@ -1579,17 +1609,18 @@ nao_encontrados:
 - br-caixa-loterias-s-a-presidente
 - br-caixa-seguridade-participacoes-s-a-presidente
 - br-centrais-de-abastecimento-de-minas-gerais-s-a-presidente
-- br-codevasf-dirigente
 - br-companhia-das-docas-do-estado-da-bahia-presidente
 - br-companhia-de-entrepostos-e-armazens-gerais-de-sao-paulo-presidente
 - br-companhia-de-pesquisa-de-recursos-minerais-presidente
 - br-companhia-docas-do-ceara-presidente
 - br-companhia-docas-do-para-presidente
+- br-dataprev-dirigente
 - br-eletronuclear-s-a-presidente
 - br-empresa-brasileira-de-participacoes-em-energia-nuclear-e-binacional-s-a-presidente
 - br-empresa-de-trens-urbanos-de-porto-alegre-s-a-presidente
 - br-empresa-gerencial-de-projetos-navais-presidente
 - br-empresa-gestora-de-ativos-presidente
+- br-enap-dirigente
 - br-fundacao-habitacional-do-exercito-diretor-presidente
 - br-fundacao-osorio-diretor
 - br-grupo-hospitalar-conceicao-s-a-presidente
@@ -1604,13 +1635,9 @@ nao_encontrados:
 - br-secretaria-de-relacoes-de-trabalho-secretario
 - br-secretaria-do-patrimonio-da-uniao-secretario
 - br-secretaria-executiva-ciencia-e-tecnologia-secretario
-- br-secretaria-executiva-mulheres-secretario
-- br-secretaria-nacional-de-articulacao-intersetorial-e-interfederativa-e-participacao-politica-secretario
-- br-secretaria-nacional-de-autonomia-economica-e-politica-de-cuidados-secretario
 - br-secretaria-nacional-de-biodiversidade-florestas-e-direitos-animais-secretario
 - br-secretaria-nacional-de-enfrentamento-a-violencia-contra-mulheres-secretario
 - br-secretaria-nacional-de-geologia-mineracao-e-transformacao-mineral-secretario
-- br-secretaria-nacional-de-relacoes-politico-sociais-secretario
 - br-universidade-federal-da-fronteira-norte-reitor
 - br-universidade-federal-do-esporte-reitor
 - br-universidade-federal-indigena-reitor
@@ -1670,12 +1697,6 @@ nao_encontrados_detalhe:
   consultas: 4
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-codevasf-dirigente
-  cargo: Presidente da Codevasf
-  tipo: estatal
-  consultas: 4
-  atos_lidos: 0
-  motivo: nenhum ato de nomeação citando o cargo
 - cargo_id: br-companhia-das-docas-do-estado-da-bahia-presidente
   cargo: Presidente da Companhia das Docas do Estado da Bahia
   tipo: estatal
@@ -1702,6 +1723,12 @@ nao_encontrados_detalhe:
   motivo: nenhum ato de nomeação citando o cargo
 - cargo_id: br-companhia-docas-do-para-presidente
   cargo: Presidente da Companhia Docas do Pará
+  tipo: estatal
+  consultas: 4
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
+- cargo_id: br-dataprev-dirigente
+  cargo: Presidente da Dataprev
   tipo: estatal
   consultas: 4
   atos_lidos: 0
@@ -1760,6 +1787,12 @@ nao_encontrados_detalhe:
   consultas: 4
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
+- cargo_id: br-enap-dirigente
+  cargo: Presidente da Enap
+  tipo: fundacao
+  consultas: 4
+  atos_lidos: 0
+  motivo: nenhum ato de nomeação citando o cargo
 - cargo_id: br-fundacao-habitacional-do-exercito-diretor-presidente
   cargo: Diretor-Presidente da Fundação Habitacional do Exército
   tipo: fundacao
@@ -1776,26 +1809,26 @@ nao_encontrados_detalhe:
   cargo: Reitor do Instituto Federal de Educação, Ciência e Tecnologia do Sertão Paraibano
   tipo: reitoria
   consultas: 4
-  atos_lidos: 186
-  motivo: papel casa mas o órgão do ato (Universidade Federal do Amapá) não é o do grafo
+  atos_lidos: 187
+  motivo: papel casa mas o órgão do ato (Instituto Federal de Educação, Ciência e Tecnologia de Sergi) não é o do grafo
 - cargo_id: br-universidade-federal-da-fronteira-norte-reitor
   cargo: Reitor da Universidade Federal da Fronteira Norte
   tipo: reitoria
   consultas: 4
   atos_lidos: 0
-  motivo: papel casa mas o órgão do ato (Universidade Federal do Amapá) não é o do grafo
+  motivo: papel casa mas o órgão do ato (Instituto Federal de Educação, Ciência e Tecnologia de Sergi) não é o do grafo
 - cargo_id: br-universidade-federal-do-esporte-reitor
   cargo: Reitor da Universidade Federal do Esporte
   tipo: reitoria
   consultas: 4
   atos_lidos: 0
-  motivo: papel casa mas o órgão do ato (Universidade Federal do Amapá) não é o do grafo
+  motivo: papel casa mas o órgão do ato (Instituto Federal de Educação, Ciência e Tecnologia de Sergi) não é o do grafo
 - cargo_id: br-universidade-federal-indigena-reitor
   cargo: Reitor da Universidade Federal Indígena
   tipo: reitoria
   consultas: 4
   atos_lidos: 0
-  motivo: papel casa mas o órgão do ato (Universidade Federal do Amapá) não é o do grafo
+  motivo: papel casa mas o órgão do ato (Instituto Federal de Educação, Ciência e Tecnologia de Sergi) não é o do grafo
 - cargo_id: br-secretaria-de-defesa-agropecuaria-secretario
   cargo: Secretário de Defesa Agropecuária do Ministério da Agricultura e Pecuária
   tipo: secretaria
@@ -1843,25 +1876,7 @@ nao_encontrados_detalhe:
   tipo: secretaria
   consultas: 6
   atos_lidos: 60
-  motivo: cargo do ato (Coordenador de Repressão a Crimes Cibernéticos Relacionados ao Abuso S) não casa em todos os termos
-- cargo_id: br-secretaria-executiva-mulheres-secretario
-  cargo: Secretário-Executivo do Ministério das Mulheres
-  tipo: secretaria
-  consultas: 6
-  atos_lidos: 23
-  motivo: cargo do ato (Coordenador de Repressão a Crimes Cibernéticos Relacionados ao Abuso S) não casa em todos os termos
-- cargo_id: br-secretaria-nacional-de-articulacao-intersetorial-e-interfederativa-e-participacao-politica-secretario
-  cargo: Secretário Nacional de Articulação Intersetorial e Interfederativa e Participação Política do Ministério das Mulheres
-  tipo: secretaria
-  consultas: 6
-  atos_lidos: 0
-  motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-secretaria-nacional-de-autonomia-economica-e-politica-de-cuidados-secretario
-  cargo: Secretário Nacional de Autonomia Econômica e Política de Cuidados do Ministério das Mulheres
-  tipo: secretaria
-  consultas: 6
-  atos_lidos: 0
-  motivo: nenhum ato de nomeação citando o cargo
+  motivo: cargo do ato (SECRETÁRIO EXECUTIVO, matrícula SIAPE nº 1655166, da função gratificad) não casa em todos os termos
 - cargo_id: br-secretaria-nacional-de-biodiversidade-florestas-e-direitos-animais-secretario
   cargo: Secretário Nacional de Biodiversidade, Florestas e Direitos Animais do Ministério do Meio Ambiente e Mudança do Clima
   tipo: secretaria
@@ -1880,24 +1895,18 @@ nao_encontrados_detalhe:
   consultas: 6
   atos_lidos: 1
   motivo: cargo do ato (Assessora Especial da Secretaria-Executiva da Secretaria de Relações I) não casa em todos os termos
-- cargo_id: br-secretaria-nacional-de-relacoes-politico-sociais-secretario
-  cargo: Secretário Nacional de Relações Político-Sociais da Secretaria-Geral da Presidência da República
-  tipo: secretaria
-  consultas: 6
-  atos_lidos: 0
-  motivo: nenhum ato de nomeação citando o cargo
 resumo:
-  cargos_alvo: 49
+  cargos_alvo: 44
   cargos_alvo_por_tipo:
     autarquia: 2
     estatal: 22
-    fundacao: 2
-    reitoria: 4
-    secretaria: 19
-  cargos_processados: 49
-  resolvidos: 104
+    fundacao: 3
+    reitoria: 6
+    secretaria: 11
+  cargos_processados: 44
+  resolvidos: 106
   por_confianca:
-    alta: 4
+    alta: 2
   por_tipo:
-    secretaria: 4
-  sem_ato: 45
+    reitoria: 2
+  sem_ato: 42
