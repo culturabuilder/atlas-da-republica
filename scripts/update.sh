@@ -75,6 +75,20 @@ run() {  # run "Nome visível" comando...   (LIM=1800 run ... para um limite mai
         local antes=$(git show "HEAD:$f" 2>/dev/null | wc -c | tr -d ' ')
         local agora=$(wc -c < "$f" 2>/dev/null | tr -d ' ')
         [ "${antes:-0}" -gt 2000 ] && [ "${agora:-0}" -lt $(( antes * 2 / 5 )) ] && encolheu="$encolheu $f"
+        # (3) Byte não enxerga perda de ocupante: em 20/10/2026 o segundo escalão trocou 29 nomes por cargo
+        #     vago (páginas oficiais fora do ar) mantendo as 201 posições e quase o mesmo tamanho. Quem
+        #     publica ocupante de cargo é comparado por ocupante, não por byte.
+        case "$f" in
+          *.yaml|*.json)
+            local oc_antes=$($PY scripts/contar_ocupantes.py --git "HEAD:$f")
+            if [ "${oc_antes:-0}" -ge 20 ]; then
+              local oc_agora=$($PY scripts/contar_ocupantes.py "$f")
+              if [ "${oc_agora:-0}" -lt $(( oc_antes * 9 / 10 )) ]; then
+                encolheu="$encolheu $f"
+                echo "   $f: cargos com ocupante caíram de $oc_antes para $oc_agora"
+              fi
+            fi ;;
+        esac
       done <<< "$sujos"
     fi
     if [ -n "$encolheu" ]; then

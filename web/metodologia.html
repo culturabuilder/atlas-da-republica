@@ -127,7 +127,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
       <li>Wikidata, propriedade "ocupante do cargo".</li>
     </ol>
     <dl>
-      <dt>Marcação</dt><dd>Nomes que vêm só da Wikipédia ou do Wikidata, sem confirmação em página oficial, DOU ou API, aparecem como <strong>não conferido</strong>. Cargos sem nome encontrado aparecem como vagos ou sem informação.</dd>
+      <dt>Marcação</dt><dd>Nomes que vêm só da Wikipédia ou do Wikidata, sem confirmação em página oficial, DOU ou API, aparecem como <strong>não conferido</strong>. Cargos sem nome encontrado aparecem como vagos ou sem informação. Fonte fora do ar não é cargo vago: quando a página oficial não responde, o Atlas mantém o último nome lido e escreve isso na ficha, com a data da última conferência.</dd>
       <dt>Atualização</dt><dd>Diária. A data de conferência de cada nome fica no campo <code>checked_at</code>.</dd>
       <dt>Estimativa</dt><dd>Nenhuma. "Interino" e "substituto" seguem o que a fonte diz.</dd>
     </dl>
@@ -400,7 +400,7 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
     <p>As secretarias de primeiro nível de cada ministério e órgão da Presidência (Secretaria-Executiva, secretarias nacionais e especiais) e quem as chefia, com página própria na roda, ligadas ao ministério.</p>
     <dl>
       <dt>Fonte</dt><dd>Estrutura: SIORG, estrutura completa do Executivo (unidades de primeiro nível cujo nome começa por "Secretaria"; gabinetes, assessorias, consultorias, corregedorias e ouvidorias ficam de fora). Ocupantes: páginas "Quem é quem" e "Composição" de cada ministério no gov.br, com data da conferência; em segundo lugar, atos de nomeação e exoneração no DOU.</dd>
-      <dt>Regra</dt><dd>A Receita Federal e o Tesouro Nacional já existem como órgãos próprios e não são duplicados. Substitutos aparecem como interinos. Secretaria sem nome na página oficial fica sem ocupante, nunca com nome inferido.</dd>
+      <dt>Regra</dt><dd>A Receita Federal e o Tesouro Nacional já existem como órgãos próprios e não são duplicados. Substitutos aparecem como interinos. Nenhum nome é inferido: ou está na página oficial, ou está num ato do DOU, ou o cargo fica sem ocupante. Página oficial que não responde no dia não esvazia o cargo: o último nome lido continua, dizendo na ficha que foi mantido da leitura anterior. Página que responde e não traz o nome mantém o último lido por até 21 dias, marcado como não localizado; depois disso o cargo fica sem ocupante.</dd>
       <dt>Atualização</dt><dd>Diária, com releitura das páginas oficiais.</dd>
       <dt>Estimativa</dt><dd>Os nomes dependem de o ministério manter a página atualizada. O gênero do título ("Secretária") vem da página ou do prenome e pode errar. O cargo é comissionado, de livre nomeação: a data de início vem do DOU quando houver ato registrado, senão fica em branco.</dd>
     </dl>

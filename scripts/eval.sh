@@ -60,6 +60,47 @@ while read -r f; do
 done < <(find data/generated -type f)
 [ "$enc" -eq 0 ] && ok "nenhum arquivo encolheu"
 
+# Perda de ocupante não encolhe o arquivo: em 20/10/2026 o segundo escalão trocou 29 nomes por cargo vago
+# mantendo as 201 posições e quase o mesmo tamanho. Aqui se olha o outro lado do conserto: quantos nomes
+# estão sendo sustentados de uma leitura anterior, e por quanto tempo.
+sec "ocupante mantido de leitura anterior"
+$PY - <<'PY'
+import glob, yaml, datetime, re
+hoje = datetime.date.today()
+def dias(d):
+    try: return (hoje - datetime.date.fromisoformat(str(d)[:10])).days
+    except Exception: return None
+MARCA = ("mantido da leitura anterior", "não localizado na página oficial")
+achou = False
+for f in sorted(glob.glob("data/generated/*.yaml")):
+    # ler 4 MB de YAML em todos os arquivos custa minutos; só vale parsear quem tem a marca no texto
+    try: bruto = open(f, encoding="utf-8").read()
+    except Exception: continue
+    if not any(m in bruto for m in MARCA): continue
+    try: d = yaml.safe_load(bruto) or {}
+    except Exception: continue
+    if not isinstance(d, dict) or not isinstance(d.get("positions"), list): continue
+    com = mant = 0; velhos = []
+    for q in d["positions"]:
+        gente = q.get("people") or []
+        if gente: com += 1
+        for pz in gente:
+            if re.match(r"^(mantido da leitura anterior|não localizado na página oficial)", str(pz.get("note") or "")):
+                mant += 1
+                n = dias(pz.get("checked_at"))
+                if n is not None and n > 45: velhos.append((n, q["id"], pz.get("name")))
+                break
+    if not mant: continue
+    achou = True
+    nome = f.split("/")[-1]
+    frac = mant * 100 // max(com, 1)
+    linha = f"{nome}: {mant} de {com} cargos com ocupante vêm de leitura anterior ({frac}%)"
+    print(("   !    " if frac > 30 or velhos else "   ok   ") + linha)
+    for n, i, nm in sorted(velhos, reverse=True)[:5]:
+        print(f"        {n} dias sem confirmar: {nm} em {i}")
+if not achou: print("   ok   nenhum ocupante sustentado de leitura anterior")
+PY
+
 sec "build do grafo"
 saida=$($PY scripts/build_graph.py 2>&1); codigo=$?
 if [ $codigo -ne 0 ]; then mal "build_graph falhou"; echo "$saida" | tail -4

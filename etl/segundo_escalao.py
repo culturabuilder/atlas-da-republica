@@ -24,6 +24,11 @@ SIORG_FULL_URL = "https://estruturaorganizacional.dados.gov.br/doc/estrutura-org
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
       "Accept-Language": "pt-BR,pt;q=0.9", "Accept": "text/html,*/*;q=0.8"}
 TODAY = datetime.date.today().isoformat()
+
+def dias_desde(d):
+    """Dias entre a data ISO d e hoje; 10**6 se d estiver vazia ou ilegível (trata como velho demais)."""
+    try: return (datetime.date.today() - datetime.date.fromisoformat(str(d)[:10])).days
+    except Exception: return 10 ** 6
 AMOSTRA = ["br-ministerio-da-fazenda", "br-ministerio-da-saude", "br-ministerio-da-justica-e-seguranca-publica"]
 # caminhos candidatos das páginas de composição, na ordem de preferência
 PATHS = ["composicao/quem-e-quem", "acesso-a-informacao/institucional/quem-e-quem", "composicao", "institucional/quem-e-quem",
@@ -283,10 +288,10 @@ def volto_people(base, units, cache_dir, refresh):
     return out
 
 def harvest(org, units, cache_dir, refresh, log):
-    """Lê as páginas do órgão (hubs de composição e subpáginas por unidade); devolve ({unit_id: person}, [pages_used], erro)."""
+    """Lê as páginas do órgão (hubs de composição e subpáginas por unidade); devolve ({unit_id: person}, [pages_used], erro, {unidades cuja página não respondeu})."""
     base = site_base(org)
-    if not base: return {}, [], "sem official_url"
-    todo = {u["id"] for u in units}; res = {}; pages = []; errors = []
+    if not base: return {}, [], "sem official_url", {u["id"] for u in units}
+    todo = {u["id"] for u in units}; res = {}; pages = []; errors = []; ilegiveis = set()
     seen = set(); hubs = [base + p for p in PATHS] + [base]; nhub = 0
     for uid, per in volto_people(base, units, cache_dir, refresh).items():
         res[uid] = per; todo.discard(uid); pages.append(per["source_url"])
@@ -321,7 +326,7 @@ def harvest(org, units, cache_dir, refresh, log):
                 if u["id"] not in todo: break
                 sh, sfinal = fetch(href, cache_dir, refresh)
                 seen.add(href)
-                if not sh: continue
+                if not sh: ilegiveis.add(u["id"]); continue
                 seen.add(sfinal)
                 sub = extract(to_lines(sh), units, forced=u)
                 for uid, per in sub.items():
@@ -336,9 +341,11 @@ def harvest(org, units, cache_dir, refresh, log):
                         seen.add(f2)
                         for uid, per in extract(to_lines(s2), units, forced=u).items():
                             if uid in todo: res[uid] = dict(per, source_url=f2); todo.discard(uid); pages.append(f2)
-    err = None if pages or not errors else "; ".join(errors[:3])
-    log(f"  {org['id']}: {len(res)}/{len(units)} ocupantes nas páginas oficiais" + (f" ({err})" if err else ""))
-    return res, pages, err
+    # erro de leitura é registrado mesmo quando alguma página foi lida: é ele que decide o carry-over
+    # do ocupante anterior lá embaixo. Página que não responde não é cargo vago.
+    err = "; ".join(errors[:3]) if errors else None
+    log(f"  {org['id']}: {len(res)}/{len(units)} ocupantes nas páginas oficiais" + (f" ({err})" if err and not pages else ""))
+    return res, pages, err, ilegiveis - set(res)
 
 # ---------------------------------------------------------------- DOU
 def dou_occupants(orgs_units, dou_path):
@@ -383,6 +390,7 @@ def main():
     ap.add_argument("--no-web", action="store_true", help="não lê as páginas gov.br (só SIORG + DOU)")
     ap.add_argument("--refresh", action="store_true", help="ignora o cache de HTML")
     ap.add_argument("--out", default=str(OUT))
+    ap.add_argument("--force-shrink", action="store_true", help="grava mesmo que o número de cargos com ocupante caia mais de 10%%")
     args = ap.parse_args()
     t0 = time.time()
     log = lambda *a: print(*a, file=sys.stderr, flush=True)
@@ -448,14 +456,31 @@ def main():
 
     # ocupantes
     dou = dou_occupants(orgs_units, ROOT / "data" / "generated" / "dou.json")
-    web = {}; pages_by_org = {}; unreadable = []
+    web = {}; pages_by_org = {}; unreadable = []; sem_leitura = set()
     if not args.no_web:
         cdir = BUILD / "cache-segundo-escalao"
         for o, us in orgs_units:
             if not us: continue
-            res, pages, err = harvest(o, us, cdir, args.refresh, log)
+            res, pages, err, ilegiveis = harvest(o, us, cdir, args.refresh, log)
             web.update(res); pages_by_org[o["id"]] = pages
             if not pages: unreadable.append({"orgao": o["id"], "motivo": err or "páginas lidas, mas sem nomes reconhecíveis"})
+            # Nenhuma página do órgão respondeu: não se leu nada sobre nenhuma das unidades dele.
+            # Ou a subpágina da unidade não respondeu. Nos dois casos o ocupante anterior é mantido.
+            if not pages: sem_leitura |= {u["id"] for u in us} - set(res)
+            else: sem_leitura |= ilegiveis
+
+    # Página oficial que não responde não é cargo vago. Sem isto o conector trocava o ocupante por nada
+    # a cada varredura em que um site caiu: entre 13 e 20/10/2026 foram 29 cargos com ocupante perdidos de
+    # uma vez (163 → 134), 36 dos 38 em órgãos cujas páginas devolveram URLError ou 404 no dia. As 201
+    # posições continuaram lá, então nem a guarda de encolhimento nem a regra dos 5% de pessoas apitaram.
+    # É o mesmo conserto que etl/dirigentes.py recebeu em 30/09/2026.
+    ant_people = {}
+    if pathlib.Path(args.out).exists():
+        try:
+            _a = yaml.safe_load(open(args.out, encoding="utf-8")) or {}
+            ant_people = {q.get("id"): (q.get("people") or []) for q in (_a.get("positions") or []) if q.get("people")}
+        except Exception:
+            ant_people = {}
 
     out_nodes, out_pos = [], []
     stats = Counter(); per_org = {}
@@ -481,6 +506,28 @@ def main():
                                "source": src, "source_url": per.get("source_url"), "checked_at": TODAY, "verified": False,
                                "note": ("substituto(a)/interino(a) segundo a página oficial; " if per.get("acting") else "") + (f"página Quem é quem do órgão; cargo na página: {per.get('cargo')}" if src == "oficial" else f"ato de nomeação no DOU em {per.get('started_at')}")})
                 stats[src] += 1
+            elif ant_people.get(f"{u['id']}-secretario"):
+                # Dois casos de "não achei o nome hoje", com tratamento diferente:
+                #  - a página não respondeu: o ocupante anterior fica (página fora do ar não é cargo vago);
+                #  - a página respondeu e o nome não casou: o ocupante anterior fica por até 21 dias, com a
+                #    nota dizendo que não foi localizado hoje. Foi assim que o MDIC "perdeu" Pedro Ivo Sebba
+                #    Ramalho em 20/10/2026 — conferido à mão na página oficial, ele continua no cargo, e o
+                #    nome que estava no Atlas já vinha truncado ("Pedro Ivo"): falha de extração, não vacância.
+                #    Passados 21 dias sem casar, o nome cai: o conector não sustenta nome indefinidamente.
+                caiu = args.no_web or u["id"] in sem_leitura
+                herdados = [dict(q) for q in ant_people[f"{u['id']}-secretario"]]
+                if not caiu:
+                    herdados = [q for q in herdados if dias_desde(q.get("checked_at")) <= 21]
+                for q in herdados:
+                    # tira o prefixo que uma execução anterior já pôs, para a nota não virar uma pilha deles
+                    nota = re.sub(r"^(?:(?:mantido da leitura anterior|não localizado na página oficial)[^;]*; )?(?:último nome lido em [^;]*; )?",
+                                  "", str(q.get("note") or ""))
+                    q["note"] = (("mantido da leitura anterior porque as páginas oficiais não foram consultadas nesta execução; " if args.no_web
+                                  else f"mantido da leitura anterior porque a página oficial não respondeu em {TODAY}; " if caiu
+                                  else f"não localizado na página oficial em {TODAY}; último nome lido em {q.get('checked_at')}; ") + nota)
+                    people.append(q)
+                if herdados: stats["mantido" if caiu else "nao_localizado"] += 1
+                else: stats["sem"] += 1
             else: stats["sem"] += 1
             out_pos.append({"id": f"{u['id']}-secretario", "type": "dept_head", "head_of": u["id"], "name": title, "nomeado_por": "br-presidente-da-republica", "seats": 1,
                             "cite": "Lei 14.600/2023; Decreto 9.727/2019 (critérios para cargos em comissão)",
@@ -490,13 +537,21 @@ def main():
 
     counts = [v for v in per_org.values() if v]
     resumo = {"ministerios_cobertos": sum(1 for v in per_org.values() if v), "orgaos_sem_secretaria": [k for k, v in per_org.items() if not v], "secretarias": len(out_nodes),
-              "com_ocupante": {"oficial": stats["oficial"], "dou": stats["dou"]}, "sem_ocupante": stats["sem"],
+              "com_ocupante": {"oficial": stats["oficial"], "dou": stats["dou"], "mantido": stats["mantido"], "nao_localizado": stats["nao_localizado"]}, "sem_ocupante": stats["sem"],
               "mediana_secretarias_por_ministerio": statistics.median(counts) if counts else 0, "por_ministerio": per_org,
               "paginas_nao_lidas": unreadable, "ja_no_grafo": ja_no_grafo, "duracao_s": round(time.time() - t0)}
+    # Guarda por OCUPANTE, não por posição: a perda de 29 ocupantes de 13 a 20/10/2026 passou por todas as
+    # guardas existentes porque o número de posições não mudou. Queda de mais de 10% devolve o arquivo anterior.
+    com = stats["oficial"] + stats["dou"] + stats["mantido"] + stats["nao_localizado"]
+    antes = len([1 for v in ant_people.values() if v])
+    if antes >= 20 and com < antes * 0.9 and not args.force_shrink and not args.amostra:
+        print(f"ERRO: cargos com ocupante caíram de {antes} para {com} (-{antes - com}). Não vou gravar menos do que já "
+              f"estava publicado; use --force-shrink se a queda for real.", file=sys.stderr)
+        sys.exit(1)
     out = {"generated_from": "SIORG estrutura completa + páginas Quem é quem (gov.br) + DOU (data/generated/dou.json)", "generated_at": TODAY, "siorg_versao": generated_at,
            "resumo": resumo, "nodes": out_nodes, "positions": out_pos}
     pathlib.Path(args.out).write_text("# GERADO por etl/segundo_escalao.py. Não edite à mão.\n" + yaml.dump(out, allow_unicode=True, sort_keys=False, width=120), encoding="utf-8")
-    print(f"órgãos: {resumo['ministerios_cobertos']}  secretarias: {len(out_nodes)}  ocupantes oficial: {stats['oficial']}  dou: {stats['dou']}  sem: {stats['sem']}  "
+    print(f"órgãos: {resumo['ministerios_cobertos']}  secretarias: {len(out_nodes)}  ocupantes oficial: {stats['oficial']}  dou: {stats['dou']}  mantido: {stats['mantido']}  não localizado hoje: {stats['nao_localizado']}  sem: {stats['sem']}  "
           f"mediana/órgão: {resumo['mediana_secretarias_por_ministerio']}  páginas não lidas: {len(unreadable)}  {resumo['duracao_s']}s")
 
 if __name__ == "__main__": main()
