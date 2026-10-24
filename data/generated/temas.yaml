@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-10-23'
+generated_at: '2026-10-24'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,7 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-07-20': 106
+      '2026-07-20': 77
       '2026-07-27': 216
       '2026-08-03': 249
       '2026-08-10': 240
@@ -29,9 +29,9 @@ temas:
       '2026-09-28': 2501
       '2026-10-05': 3172
       '2026-10-12': 1098
-      '2026-10-19': 1002
-    total_90d: 11555
-    last7: 1428
+      '2026-10-19': 1209
+    total_90d: 11733
+    last7: 1483
     peak_week: 3172
   processes:
   - casa: camara
@@ -101,7 +101,7 @@ temas:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-07-20': 196
+      '2026-07-20': 113
       '2026-07-27': 450
       '2026-08-03': 427
       '2026-08-10': 484
@@ -114,9 +114,9 @@ temas:
       '2026-09-28': 5005
       '2026-10-05': 5535
       '2026-10-12': 4756
-      '2026-10-19': 2248
-    total_90d: 54343
-    last7: 4609
+      '2026-10-19': 2814
+    total_90d: 54826
+    last7: 4303
     peak_week: 10630
   processes:
   - casa: camara
@@ -131,7 +131,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
     requested: RCP 1/2026 (camara)
   state: parado
-  stalled_days: 95
+  stalled_days: 96
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -143,13 +143,13 @@ temas:
   - fim da escala
   - jornada 6x1
   curated: null
-  news_hits: 147
+  news_hits: 148
   news_weekly:
     '2026-09-14': 3
     '2026-09-28': 3
     '2026-10-05': 41
     '2026-10-12': 92
-    '2026-10-19': 8
+    '2026-10-19': 9
   news_recent:
   - id: ae88fd62350d687d
     title: 'Negociar com patrão, mudar jornadas e regular apps: o que Lula e Flávio propõem aos trabalhadores'
@@ -157,6 +157,10 @@ temas:
     publication: g1 Política
   - id: 9af9e7e801ef2952
     title: 'Quaest: fim da escala 6x1 e Caso Master tiveram maior impacto no voto para presidente no 1º turno'
+    date: '2026-10-23'
+    publication: g1 Política
+  - id: fb9f0d00a2fe2f7b
+    title: 'Datafolha: para 59%, o fim da escala de trabalho 6x1 é positiva para a vida pessoal'
     date: '2026-10-23'
     publication: g1 Política
   - id: d0485f22a040f234
@@ -167,15 +171,11 @@ temas:
     title: Se eleito, Flávio Bolsonaro teria que superar obstáculos constitucionais para rever o fim da escala 6×1
     date: '2026-10-21'
     publication: JOTA
-  - id: c96987dd2b64f0b6
-    title: O custo do fim da escala 6×1 nos contratos públicos
-    date: '2026-10-21'
-    publication: JOTA
   wikipedia:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-07-20': 69
+      '2026-07-20': 47
       '2026-07-27': 195
       '2026-08-03': 243
       '2026-08-10': 276
@@ -188,9 +188,9 @@ temas:
       '2026-09-28': 1898
       '2026-10-05': 3170
       '2026-10-12': 10778
-      '2026-10-19': 1868
-    total_90d: 22545
-    last7: 4855
+      '2026-10-19': 1990
+    total_90d: 22645
+    last7: 2748
     peak_week: 10778
   processes:
   - casa: camara
@@ -241,7 +241,7 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-07-20': 7
+      '2026-07-20': 6
       '2026-07-27': 34
       '2026-08-03': 33
       '2026-08-10': 29
@@ -254,9 +254,9 @@ temas:
       '2026-09-28': 34
       '2026-10-05': 43
       '2026-10-12': 29
-      '2026-10-19': 43
-    total_90d: 714
-    last7: 54
+      '2026-10-19': 59
+    total_90d: 729
+    last7: 68
     peak_week: 121
   processes:
   - casa: camara
@@ -294,14 +294,19 @@ temas:
   - pl da dosimetria
   - pl da anistia
   curated: null
-  news_hits: 9
+  news_hits: 10
   news_weekly:
     '2026-09-14': 1
     '2026-09-28': 1
     '2026-10-05': 4
     '2026-10-12': 2
-    '2026-10-19': 1
+    '2026-10-19': 2
   news_recent:
+  - id: 474a6f6b8241902f
+    title: Após Flávio citar volta do Perse, governo fala em projeto para perdoar dívidas de bares, restaurantes e empresas
+      de eventos do Simples
+    date: '2026-10-23'
+    publication: g1 Política
   - id: ddf2844775857f35
     title: Flávio Bolsonaro tem 51% dos votos válidos, ante 49% de Lula, diz pesquisa Palver
     date: '2026-10-21'
@@ -318,10 +323,6 @@ temas:
     title: Ala do STF vê Lei da Dosimetria como alternativa à revisão criminal de Bolsonaro
     date: '2026-10-11'
     publication: g1 Política
-  - id: fafcb7f77088ebaa
-    title: Nunes Marques deve levar revisão da pena de Bolsonaro para plenário depois do 2º turno
-    date: '2026-10-07'
-    publication: JOTA
   wikipedia:
     article: Ataques_de_8_de_janeiro_de_2023
     url: https://pt.wikipedia.org/wiki/Ataques_de_8_de_janeiro_de_2023
@@ -335,9 +336,9 @@ temas:
       '2026-09-28': 1
       '2026-10-05': 5
       '2026-10-12': 8
-      '2026-10-19': 0
-    total_90d: 17
-    last7: 2
+      '2026-10-19': 2
+    total_90d: 19
+    last7: 4
     peak_week: 8
   processes:
   - casa: camara
@@ -362,7 +363,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 168
+  stalled_days: 169
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -435,7 +436,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1227
+  stalled_days: 1228
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -477,7 +478,7 @@ temas:
     article: Precatório
     url: https://pt.wikipedia.org/wiki/Precatório
     weekly:
-      '2026-07-20': 10
+      '2026-07-20': 7
       '2026-07-27': 28
       '2026-08-03': 25
       '2026-08-10': 33
@@ -490,9 +491,9 @@ temas:
       '2026-09-28': 112
       '2026-10-05': 61
       '2026-10-12': 87
-      '2026-10-19': 40
-    total_90d: 699
-    last7: 92
+      '2026-10-19': 53
+    total_90d: 709
+    last7: 73
     peak_week: 112
   processes:
   - casa: camara
@@ -563,7 +564,7 @@ temas:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-07-20': 56
+      '2026-07-20': 29
       '2026-07-27': 183
       '2026-08-03': 191
       '2026-08-10': 202
@@ -576,9 +577,9 @@ temas:
       '2026-09-28': 366
       '2026-10-05': 1023
       '2026-10-12': 754
-      '2026-10-19': 462
-    total_90d: 4931
-    last7: 706
+      '2026-10-19': 589
+    total_90d: 5031
+    last7: 732
     peak_week: 1023
   processes:
   - casa: camara

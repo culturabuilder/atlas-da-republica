@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-23'
+generated_at: '2026-10-24'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-26'
+janela_inicio: '2026-07-27'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,13 +11,13 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 210
-    dias_com_agenda: 55
+    compromissos_90d: 206
+    dias_com_agenda: 54
     por_tipo:
-      evento: 77
-      viagem: 61
+      evento: 76
+      viagem: 59
       audiencia: 55
-      reuniao: 13
+      reuniao: 12
       outro: 4
     entidades_top:
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
@@ -44,9 +44,9 @@ people:
     - nome: Palácio do Planalto
       n: 51
     - nome: Palácio da Alvorada
-      n: 39
+      n: 38
     - nome: Base Aérea de Brasília
-      n: 26
+      n: 25
     - nome: Esplanada dos Ministérios, Brasília
       n: 5
     - nome: Palácio Itamaraty
@@ -123,19 +123,6 @@ people:
         entidade: Chefe do Gabinete Pessoal do Presidente da República
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-26:
-      - hora: '11:30'
-        titulo: Cerimônia de Posse da Nova Diretoria do Sindicato dos Metalúrgicos do ABC
-        local: Estância Alto da Serra, São Bernardo do Campo (SP)
-      - hora: '14:30'
-        titulo: Partida para Brasília
-        local: Aeroporto de Congonhas
-      - hora: '15:50'
-        titulo: Chegada a Brasília
-        local: Base Aérea de Brasília
-      - hora: '22:00'
-        titulo: Telefonema com o Presidente da República Popular da China, Xi Jinping
-        local: Palácio da Alvorada
       presidente/2026-07-27:
       - hora: '10:30'
         titulo: Cerimônia oficial de chegada do Presidente da República da Coreia, Lee Jae Myung, e da senhora Kim Hea Kyung
@@ -872,6 +859,7 @@ people:
         local: Palácio do Planalto
       presidente/2026-10-22: []
       presidente/2026-10-23: []
+      presidente/2026-10-24: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -968,8 +956,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-26: []
-      vice/2026-07-26-b1: []
       vice/2026-07-27:
       - hora: '10:30'
         titulo: Cerimônia oficial de chegada do Presidente da República da Coreia, Lee Jae Myung, e da senhora Kim Hea Kyung
@@ -1346,6 +1332,8 @@ people:
       vice/2026-10-22-b1: []
       vice/2026-10-23: []
       vice/2026-10-23-b1: []
+      vice/2026-10-24: []
+      vice/2026-10-24-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 210 compromissos em 55 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 206 compromissos em 54 dias (0 dias não lidos)'
 - 'br-p-geraldo-alckmin: 62 compromissos em 38 dias (0 dias não lidos)'
