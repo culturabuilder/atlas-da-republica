@@ -101,6 +101,17 @@ for f in sorted(glob.glob("data/generated/*.yaml")):
 if not achou: print("   ok   nenhum ocupante sustentado de leitura anterior")
 PY
 
+# O atraso de resumos.yaml só aparecia 30 dias depois, pelo prazo do arquivo: em 25/10/2026 havia 15 itens
+# sem resumo havia um mês, porque o CI não tem provedor de modelo (nenhum ANTHROPIC_API_KEY nos secrets) e o
+# conector sai "ok" em 0s sem gerar nada. Medir o que falta é direto e pega no primeiro dia; --dry-run não
+# chama a API nem gasta nada.
+sec "resumos em linguagem simples pendentes"
+pend=$($PY etl/resumos.py --dry-run 2>/dev/null | sed -n 's/.*pendentes: \([0-9]*\).*/\1/p' | head -1)
+if [ -z "$pend" ]; then aviso "não deu para medir os pendentes (etl/resumos.py --dry-run não respondeu)"
+elif [ "$pend" -eq 0 ]; then ok "nenhum item esperando resumo"
+else aviso "$pend item(ns) sem resumo em linguagem simples; o site mostra só a ementa oficial nesses. O conector precisa de provedor de modelo, que o runner não tem — gerar na máquina local ou pôr ANTHROPIC_API_KEY nos secrets."
+fi
+
 sec "build do grafo"
 saida=$($PY scripts/build_graph.py 2>&1); codigo=$?
 if [ $codigo -ne 0 ]; then mal "build_graph falhou"; echo "$saida" | tail -4
@@ -204,12 +215,30 @@ else echo "$saida" | tail -1 | sed 's/^/   ok   /'; fi
 
 sec "fila de revisão do Eikos"
 $PY - <<'PY'
-import yaml, json
+import yaml, json, sys, pathlib
+sys.path.insert(0, "etl")
+# A seção contava a fila como se o serviço estivesse de pé. Em 25/10/2026 o Eikos estava encerrado havia
+# cinco dias (HTTP 410) e a fila parecia saudável: 0 sem veredito, porque as reservas de cada conector
+# assumiram em silêncio. Primeiro se diz se o serviço responde; a fila vem depois.
+try:
+    import eikos
+    if not eikos._chave(): print("   !    Eikos sem chave configurada: os conectores estão nas reservas")
+    else:
+        eikos.avaliar("teste de fumaça do eval", [{"id": "q", "question": "Isto é um teste?"}], tentativas=1, timeout=25)
+        g = eikos.gasto()
+        if g.get("encerrado"): print(f"   !    Eikos ENCERRADO pelo provedor: {str(eikos.ENCERRADO_MOTIVO[0])[:150]}")
+        elif g.get("chamadas"): print("   ok   Eikos responde")
+        else: print("   !    Eikos não respondeu ao teste de fumaça (os conectores seguem nas reservas)")
+except Exception as e: print("   !    Eikos:", str(e)[:90])
 try:
     r=yaml.safe_load(open("data/generated/resumos.yaml"))["resumos"]
     al=[v for v in r.values() if v.get("alertas")]
     novos=[(v.get("conf",0), v.get("title")) for v in al if not v.get("revisto_em")]
     print(f"   {'!   ' if novos else 'ok  '} resumos com alerta: {len(al)} de {len(r)}, sendo {len(novos)} ainda sem revisão humana")
+    # resumo sem o campo "conferido" nunca passou pela conferência: não ter alerta não é o mesmo que
+    # estar limpo, e era assim que 15 resumos gerados com o Eikos fora do ar apareciam como saudáveis.
+    nunca=[v for v in r.values() if "conferido" not in v]
+    if nunca: print(f"   !    {len(nunca)} de {len(r)} resumos nunca passaram pela conferência (gerados com o Eikos fora do ar)")
     for c,t in sorted(novos, reverse=True)[:5]: print(f"        {c:.2f} {t}")
 except Exception as e: print("   !    resumos:", str(e)[:70])
 try:

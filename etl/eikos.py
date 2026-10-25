@@ -17,11 +17,18 @@ benefícios, perdendo as discordâncias). Não use para o que um regex já resol
 CORTE_CONFIANCA é o limite acima do qual a resposta pode valer sozinha. Acima de 0,80 ele acertou
 98% das vezes no porteiro de relevância, cobrindo 83% dos casos; abaixo de 0,60, só 25%.
 
-Endereço: EIKOS_URL, no ambiente ou no .env. O experimento original era http://154.59.156.40:33532 (HTTP
-sem criptografia, de onde vem a regra de só mandar texto já público); ele saiu do ar em outubro de 2026 e o
-serviço passou a https://api.openinterp.org (Ekbasis, da Open Interpretability), agora com TLS. O endpoint
-novo fica atrás de Cloudflare e recusa cliente sem User-Agent de navegador, com "error code: 1010" — que
-não é erro de credencial e engana quem for diagnosticar.
+Endereço: EIKOS_URL (ou EKBASIS_URL), no ambiente ou no .env. O experimento original era
+http://154.59.156.40:33532 (HTTP sem criptografia, de onde vem a regra de só mandar texto já público); ele
+saiu do ar em outubro de 2026 e o serviço passou a https://openinterp.org/api/v1 (Ekbasis, da Open
+Interpretability), com TLS e atrás de Cloudflare, que recusa cliente sem User-Agent de navegador com
+"error code: 1010" — que não é erro de credencial e engana quem for diagnosticar.
+
+A API HOSPEDADA FOI ENCERRADA em 20/10/2026: devolve HTTP 410 com code "hosted_api_discontinued" e manda
+rodar o modelo por conta própria (pesos e servidor System One em
+https://huggingface.co/caiovicentino1/Ekbasis-Skopos-27B-INT4, cliente aponta para EKBASIS_URL). Descoberto
+em 25/10/2026, ao ver etl/resumos.py gravar 15 resumos com "15 erros" do Eikos e nenhuma explicação: o 410
+caía no ramo mudo de erro. Agora o encerramento é dito uma vez, em voz alta, e desliga o cliente pelo resto
+da execução — insistir item a item só gasta tempo e esconde o motivo.
 
 A chave vem de EIKOS_KEY. Sem chave, ou com chave recusada, todas as funções devolvem None e quem chama
 segue sem a checagem, nunca quebra. Onde isso mudaria o que aparece na tela, o conector diz: etl/noticias.py
@@ -53,7 +60,7 @@ def _do_ambiente_ou_env(nome, padrao=None):
 
 # O experimento original (http://154.59.156.40:33532) saiu do ar em outubro de 2026; o padrão passa a
 # ser o endereço novo, com TLS. EIKOS_URL continua mandando, para apontar para outro sem mexer no código.
-URL = (_do_ambiente_ou_env("EIKOS_URL", "https://openinterp.org/api/v1") or "").rstrip("/")
+URL = (_do_ambiente_ou_env("EIKOS_URL") or _do_ambiente_ou_env("EKBASIS_URL", "https://openinterp.org/api/v1") or "").rstrip("/")
 # A rota é /v1/systemone sobre uma base que já termina em /api/v1 — o "/v1" dobrado é do serviço, não
 # engano: está assim no openapi.json (servers: .../api/v1, paths: /v1/systemone). Qualquer outra
 # combinação devolve 404, e com chave válida o 404 parece credencial recusada.
@@ -62,15 +69,17 @@ CORTE_CONFIANCA = float(os.environ.get("EIKOS_CORTE", "0.80"))
 LIMITE_POR_MINUTO = 120
 _ultimo = [0.0]
 _gasto = {"chamadas": 0, "tokens": 0, "erros": 0}
+# o texto que o serviço devolveu ao se declarar encerrado, para o conector e o eval poderem repetir o motivo
+ENCERRADO_MOTIVO = [None]
 
 
 def _chave():
-    return _do_ambiente_ou_env("EIKOS_KEY")
+    return _do_ambiente_ou_env("EIKOS_KEY") or _do_ambiente_ou_env("EKBASIS_KEY")
 
 
 def disponivel():
-    """Há chave configurada? Quem chama deve seguir sem a checagem quando não houver."""
-    return bool(_chave())
+    """Há chave configurada e o serviço não se declarou encerrado nesta execução?"""
+    return bool(_chave()) and not _gasto.get("encerrado")
 
 
 def gasto():
@@ -82,6 +91,9 @@ def avaliar(state, questions, tentativas=3, timeout=60):
     """Devolve o dicionário de respostas, ou None se não der (sem chave, fora do ar, erro)."""
     chave = _chave()
     if not chave: return None
+    # declarado encerrado nesta execução: não bate mais. Sem isto, 15 itens viravam 15 requisições
+    # inúteis, e a nona delas acordava o disjuntor do etl/recebidos.py como se a rede estivesse ruim.
+    if _gasto.get("encerrado"): return None
     espera = 60.0 / LIMITE_POR_MINUTO - (time.time() - _ultimo[0])
     if espera > 0: time.sleep(espera)
     corpo = json.dumps({"state": state, "questions": questions}).encode()
@@ -102,6 +114,18 @@ def avaliar(state, questions, tentativas=3, timeout=60):
             _gasto["tokens"] += (d.get("usage") or {}).get("input_tokens", 0)
             return d.get("answers") or {}
         except urllib.error.HTTPError as e:
+            # 410 "hosted_api_discontinued": a API hospedada foi desligada em 20/10/2026. Não é falha de
+            # rede nem de credencial, e nenhuma tentativa muda isso — desliga o cliente e diz o motivo.
+            if e.code == 410:
+                try: corpo_erro = json.loads(e.read().decode(errors="replace"))
+                except Exception: corpo_erro = {}
+                motivo = corpo_erro.get("error") or "a API hospedada do Ekbasis foi encerrada (HTTP 410)"
+                if not _gasto.get("encerrado"):
+                    print(f"Eikos/Ekbasis encerrado: {motivo}\n"
+                          f"  O cliente segue funcionando contra um servidor próprio: aponte EKBASIS_URL "
+                          f"(ou EIKOS_URL) para ele. Até lá, cada conector usa a sua reserva.", file=sys.stderr)
+                _gasto["encerrado"] = True; ENCERRADO_MOTIVO[0] = motivo
+                _gasto["erros"] += 1; return None
             # 401 e 403 são credencial recusada ou bloqueio de borda: insistir não resolve e só bate no
             # serviço. Dizer o motivo uma vez, com o texto da resposta, poupa o diagnóstico de quem vier
             # depois — antes isso saía como erro mudo e parecia o serviço estar fora.
