@@ -1,12 +1,23 @@
 # GERADO por scripts/novidades.py. Não edite à mão.
-generated_at: '2026-10-25'
+generated_at: '2026-10-26'
 nota: 'O que mudou no Atlas, tirado do histórico do projeto. Os commits automáticos de dado ficam fora: o que eles mudam aparece no painel de
   frescor da metodologia.'
-total: 157
+total: 158
 por_mes:
-  2026-10: 25
+  2026-10: 26
   2026-09: 132
 novidades:
+- id: 0f431d270
+  data: '2026-10-25'
+  ordem: 1792942550
+  titulo: 'Eikos: a API hospedada foi encerrada em 20/10 e o Atlas não sabia'
+  texto: 'Como eu soube: o eval de hoje passou verde, mas um aviso dizia que resumos.yaml estava parado além do prazo. Fui medir: 15 itens sem
+    resumo havia 30 dias, porque o runner não tem provedor de modelo (não existe ANTHROPIC_API_KEY nos secrets) e o conector sai "ok" em 0s sem
+    gerar nada. Gerei os 15 na máquina local — e aí apareceu a coisa maior: a conferência do Eikos falhou nos 15, sem dizer por quê.'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 1070
 - id: 8a4d17fc1
   data: '2026-10-22'
   ordem: 1792676853

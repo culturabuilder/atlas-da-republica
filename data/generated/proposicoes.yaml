@@ -1,12 +1,12 @@
 # GERADO por etl/proposicoes.py. Não edite à mão.
-generated_at: '2026-10-25'
+generated_at: '2026-10-26'
 since: '2026-02-02'
-duracao_s: 268
+duracao_s: 574
 resumo:
   camara:
     pessoas: 513
-    com_proposicao: 507
-    proposicoes_distintas: 24850
+    com_proposicao: 508
+    proposicoes_distintas: 24859
     virou_norma: 6
     designacoes_relator: 7001
     designacoes_casadas: 6999
@@ -21,7 +21,7 @@ resumo:
     pessoas: 84
     erros: 0
     com_proposicao: 83
-    proposicoes_distintas: 2207
+    proposicoes_distintas: 2209
     virou_norma: 33
     mediana_apresentadas: 33.5
     mediana_projetos: 8.5
@@ -8619,7 +8619,7 @@ people:
       numero: 4969
       ano: 2026
       ementa: Reconhece o Município de Tiradentes, no Estado de Minas Gerais, como a Cidade Símbolo da Liberdade do Brasil.
-      situacao: Aguardando Despacho do Presidente da Câmara dos Deputados
+      situacao: Aguardando Autorização do Despacho
       orgao: SECAP(SGM)
       data: '2026-08-11'
       apresentada: '2026-08-11'
@@ -32958,23 +32958,6 @@ people:
       CSAUDE: 1
       CFFC: 1
     virou_norma: 0
-  br-p-cd-74140:
-    house: camara
-    window: ano
-    apresentadas: 0
-    como_primeiro_autor: 0
-    projetos: 0
-    requerimentos: 0
-    emendas: 0
-    outros: 0
-    pareceres_como_relator: 0
-    por_tipo: {}
-    temas: []
-    ultimas: []
-    relatorias: 0
-    relatorias_projetos: 0
-    relatorias_por_orgao: {}
-    virou_norma: 0
   br-p-cd-204391:
     house: camara
     window: ano
@@ -34004,6 +33987,91 @@ people:
     relatorias_por_orgao:
       CVT: 6
       CDU: 1
+    virou_norma: 0
+  br-p-cd-80815:
+    house: camara
+    window: ano
+    apresentadas: 23
+    como_primeiro_autor: 11
+    projetos: 10
+    requerimentos: 10
+    emendas: 1
+    outros: 2
+    pareceres_como_relator: 11
+    por_tipo:
+      REQ: 8
+      PEC: 5
+      PL: 5
+      PRL: 5
+      SBT: 4
+      INC: 2
+      EMP: 1
+      PRLP: 1
+      RCP: 1
+      RDF: 1
+      RIC: 1
+    temas:
+    - Direito Penal e Processual Penal
+    - Trabalho e Emprego
+    - Finanças Públicas e Orçamento
+    ultimas:
+    - id: 2634848
+      sigla: PL
+      numero: 3268
+      ano: 2026
+      ementa: Altera as Leis nº 13.643, de 3 de abril de 2018, e nº 13.869, de 5 de setembro de 2019, para dispor sobre o
+        exercício das atividades de estética e cosmetologia…
+      situacao: Tramitando em Conjunto
+      orgao: CTRAB
+      data: '2026-09-02'
+      apresentada: '2026-06-23'
+      url: https://www.camara.leg.br/propostas-legislativas/2634848
+    - id: 2633488
+      sigla: PEC
+      numero: 15
+      ano: 2026
+      ementa: Altera os art. 150 Constituição Federal para incluir as entidades esportivas sem fins lucrativos.
+      situacao: Aguardando Despacho do Presidente da Câmara dos Deputados (Chancela)
+      orgao: SECAP(SGM)
+      data: '2026-07-20'
+      apresentada: '2026-06-17'
+      url: https://www.camara.leg.br/propostas-legislativas/2633488
+    - id: 2631190
+      sigla: PEC
+      numero: 13
+      ano: 2026
+      ementa: Altera o art. 9º da Emenda Constitucional nº 132, de 20 de dezembro de 2023, para permitir a concessão de créditos
+        do Imposto sobre Bens e Serviços através de…
+      situacao: Pronta para Pauta
+      orgao: CCJC
+      data: '2026-07-20'
+      apresentada: '2026-06-10'
+      url: https://www.camara.leg.br/propostas-legislativas/2631190
+    - id: 2623604
+      sigla: PEC
+      numero: 9
+      ano: 2026
+      ementa: Altera o art. 228 da Constituição Federal, para reduzir a idade mínima de imputabilidade penal, nas condições
+        que estabelece.
+      situacao: Tramitando em Conjunto
+      orgao: MESA
+      data: '2026-08-12'
+      apresentada: '2026-05-12'
+      url: https://www.camara.leg.br/propostas-legislativas/2623604
+    - id: 2623400
+      sigla: PEC
+      numero: 8
+      ano: 2026
+      ementa: Altera o art. 228 da Constituição Federal para admitir, em caráter excepcional, a redução da maioridade penal
+        em casos de crimes hediondos e de crueldade extre…
+      situacao: Tramitando em Conjunto
+      orgao: MESA
+      data: '2026-08-12'
+      apresentada: '2026-05-11'
+      url: https://www.camara.leg.br/propostas-legislativas/2623400
+    relatorias: 0
+    relatorias_projetos: 0
+    relatorias_por_orgao: {}
     virou_norma: 0
   br-p-cd-122195:
     house: camara
@@ -46647,13 +46715,13 @@ people:
       apresentada: '2026-08-11'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175417
-    relatorias: 34
-    relatorias_projetos: 31
+    relatorias: 35
+    relatorias_projetos: 32
     relatorias_por_colegiado:
       CCT: 20
       CDH: 6
       CE: 3
-      CCJ: 2
+      CCJ: 3
     virou_norma: 1
   br-p-sf-5783:
     house: senado
@@ -47088,16 +47156,16 @@ people:
   br-p-sf-6342:
     house: senado
     window: ano
-    apresentadas: 63
-    como_primeiro_autor: 43
+    apresentadas: 65
+    como_primeiro_autor: 45
     projetos: 13
-    requerimentos: 47
+    requerimentos: 49
     emendas: 0
     outros: 3
     pareceres_como_relator: null
     por_tipo:
       RQS: 30
-      REQ: 17
+      REQ: 19
       PL: 7
       PEC: 4
       PDL: 2

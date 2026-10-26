@@ -1,16 +1,16 @@
 # GERADO por etl/falabr.py. Não edite à mão.
-generated_at: '2026-10-25'
+generated_at: '2026-10-26'
 ano: 2026
 fonte: Fala.BR (Lei 12.527/2011), dados abertos da Controladoria-Geral da União
 nota: 'Pedidos de acesso à informação de esfera federal registrados no ano. A taxa de negativa olha só os pedidos que o órgão decidiu sobre informação que
   lhe cabia: ''informação inexistente'' e ''não tem competência'' são contados à parte, porque somá-los inflaria a opacidade de quem apenas recebeu pedido
   endereçado errado. Recurso é atribuído ao órgão reclamado, não a quem julga. Taxa só é calculada com 20 decisões ou mais.'
 resumo:
-  pedidos: 66078
+  pedidos: 66079
   orgaos: 321
   orgaos_casados: 290
   recursos: 8795
-  decididos: 59156
+  decididos: 59157
   pct_negado_ou_parcial_geral: 19.1
   orgaos_com_taxa: 272
 mais_negam:
@@ -455,8 +455,8 @@ orgaos:
       n: 1156
   ANEEL – Agência Nacional de Energia Elétrica:
     node: br-aneel
-    pedidos: 1138
-    concedido: 822
+    pedidos: 1139
+    concedido: 823
     negado: 105
     parcial: 60
     inexistente: 65
@@ -466,12 +466,12 @@ orgaos:
     outra: 0
     prorrogados: 110
     recursos: 71
-    decididos: 987
+    decididos: 988
     pct_negado_ou_parcial: 16.7
     pct_prorrogado: 9.7
     motivos_top:
     - motivo: "\0"
-      n: 1123
+      n: 1124
     - motivo: 'Base Legal desta resposta: art. 7º, § 3º, da LAI, art. 3º e art. 55 do'
       n: 4
     - motivo: Dados pessoais.
@@ -480,7 +480,7 @@ orgaos:
       n: 2
     assuntos_top:
     - assunto: Energia
-      n: 490
+      n: 491
     - assunto: Transparência e acesso à informação
       n: 232
     - assunto: Informações processuais
