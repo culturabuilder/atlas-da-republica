@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-26'
+generated_at: '2026-10-27'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-29'
+janela_inicio: '2026-07-30'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,27 +11,25 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 193
+    compromissos_90d: 195
     dias_com_agenda: 53
     por_tipo:
-      evento: 67
-      audiencia: 57
+      evento: 66
+      audiencia: 59
       viagem: 56
-      reuniao: 9
+      reuniao: 10
       outro: 4
     entidades_top:
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
-      n: 14
+      n: 13
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República Substituto)
-      n: 11
+      n: 12
     - nome: Miriam Belchior (Ministra da Casa Civil)
-      n: 7
+      n: 8
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 4
     - nome: Mauro Vieira (Ministro das Relações Exteriores)
       n: 3
-    - nome: Dario Durigan (Ministro da Fazenda)
-      n: 2
     - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
       n: 2
     - nome: Oswaldo Malatesta Neto (Chefe do Gabinete Pessoal do Presidente da República)
@@ -40,11 +38,13 @@ people:
       n: 1
     - nome: Embaixador Audo Faleiro (Assessor-Chefe Adjunto da Assessoria Especial do Presidente da Repúbli)
       n: 1
+    - nome: Dario Durigan (Ministro da Fazenda)
+      n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 51
+      n: 48
     - nome: Palácio da Alvorada
-      n: 35
+      n: 40
     - nome: Base Aérea de Brasília
       n: 24
     - nome: Esplanada dos Ministérios, Brasília
@@ -61,10 +61,33 @@ people:
       n: 3
     - nome: Aeroporto de Congonhas
       n: 2
-    ultimo: '2026-10-26'
+    ultimo: '2026-10-27'
     recentes:
-    - data: '2026-10-26'
-      hora: '16:00'
+    - data: '2026-10-27'
+      hora: '15:30'
+      titulo: Ministro da Secretaria de Comunicação Social, Sidônio Palmeira, e Secretário de Imprensa da Secretaria de Comunicação
+        Social, Laércio Portela
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes: []
+    - data: '2026-10-27'
+      hora: '15:00'
+      titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Oswaldo Malatesta
+        entidade: Chefe do Gabinete Pessoal do Presidente da República
+    - data: '2026-10-27'
+      hora: '10:00'
+      titulo: Ministra da Casa Civil, Miriam Belchior
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Miriam Belchior
+        entidade: Ministra da Casa Civil
+    - data: '2026-10-27'
+      hora: 09:30
       titulo: Ministro da Defesa, José Mucio
       tipo: audiencia
       local: Palácio da Alvorada
@@ -72,13 +95,26 @@ people:
       - nome: José Mucio
         entidade: Ministro da Defesa
     - data: '2026-10-26'
-      hora: '15:00'
+      hora: '16:30'
+      titulo: Presidente do Senado Federal e do Congresso Nacional, Senador Davi Alcolumbre, e Presidente da Câmara dos Deputados,
+        Deputado Hugo Motta
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes: []
+    - data: '2026-10-26'
+      hora: '15:30'
       titulo: Ministro das Relações Exteriores, Mauro Vieira
       tipo: audiencia
       local: Palácio da Alvorada
       participantes:
       - nome: Mauro Vieira
         entidade: Ministro das Relações Exteriores
+    - data: '2026-10-26'
+      hora: '15:00'
+      titulo: Telefonema com a Presidenta do México, Claudia Sheinbaum
+      tipo: reuniao
+      local: Palácio da Alvorada
+      participantes: []
     - data: '2026-10-26'
       hora: '11:00'
       titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
@@ -87,53 +123,8 @@ people:
       participantes:
       - nome: Oswaldo Malatesta
         entidade: Chefe do Gabinete Pessoal do Presidente da República
-    - data: '2026-10-26'
-      hora: 03:00
-      titulo: Chegada a Brasília
-      tipo: viagem
-      local: Base Aérea de Brasília
-      participantes: []
-    - data: '2026-10-26'
-      hora: 01:30
-      titulo: Partida para Brasília
-      tipo: viagem
-      local: Aeroporto de Congonhas
-      participantes: []
-    - data: '2026-10-21'
-      hora: '11:00'
-      titulo: Sanção do PLP nº 186/2026 (limites do MEI e remissão de créditos da União) e envio de PEC sobre tarifa zero
-        no transporte coletivo aos fins de semana e feriados
-      tipo: evento
-      local: Palácio do Planalto
-      participantes: []
-    - data: '2026-10-16'
-      hora: 09:20
-      titulo: Cerimônia de Promulgação das Propostas de Emenda à Constituição que Põem Fim à Escala de Trabalho 6x1 e Estabelecem
-        a Aposentadoria Diferenciada para Agentes
-      tipo: evento
-      local: Plenário do Senado Federal
-      participantes: []
-    - data: '2026-10-14'
-      hora: '12:00'
-      titulo: Assinatura do Decreto que regulamenta o Marco Legal da Indústria de Jogos Eletrônicos
-      tipo: evento
-      local: Palácio do Planalto
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-29:
-      - hora: '14:40'
-        titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
-        local: Palácio do Planalto
-      - hora: '15:00'
-        titulo: Sanção do PL 4300/2025, que dispõe sobre a divulgação do serviço telefônico de denúncias relacionadas à violência
-          contra a mulher; do PL 4978/2023 (Pix Pensão), sobre o pagamento automático da pensão alimentícia; e assinatura
-          dos decretos do Sistema Integrado Mulher Segura, e de regulamentação da Lei 15.383/2026, sobre monitoração eletrônica
-          de agressores
-        local: Palácio do Planalto
-      - hora: '16:30'
-        titulo: Ministro da Fazenda, Dario Durigan
-        local: Palácio do Planalto
       presidente/2026-07-30:
       - hora: '11:00'
         titulo: Sanção do PLV nº 8/2026, que dispõe sobre as receitas e a destinação de recursos do Fundo para Aparelhamento
@@ -812,10 +803,28 @@ people:
         titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
         local: Palácio da Alvorada
       - hora: '15:00'
+        titulo: Telefonema com a Presidenta do México, Claudia Sheinbaum
+        local: Palácio da Alvorada
+      - hora: '15:30'
         titulo: Ministro das Relações Exteriores, Mauro Vieira
         local: Palácio da Alvorada
-      - hora: '16:00'
+      - hora: '16:30'
+        titulo: Presidente do Senado Federal e do Congresso Nacional, Senador Davi Alcolumbre, e Presidente da Câmara dos
+          Deputados, Deputado Hugo Motta
+        local: Palácio da Alvorada
+      presidente/2026-10-27:
+      - hora: 09:30
         titulo: Ministro da Defesa, José Mucio
+        local: Palácio da Alvorada
+      - hora: '10:00'
+        titulo: Ministra da Casa Civil, Miriam Belchior
+        local: Palácio da Alvorada
+      - hora: '15:00'
+        titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
+        local: Palácio da Alvorada
+      - hora: '15:30'
+        titulo: Ministro da Secretaria de Comunicação Social, Sidônio Palmeira, e Secretário de Imprensa da Secretaria de
+          Comunicação Social, Laércio Portela
         local: Palácio da Alvorada
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
@@ -824,12 +833,12 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 52
-    dias_com_agenda: 36
+    compromissos_90d: 50
+    dias_com_agenda: 35
     por_tipo:
-      evento: 24
+      evento: 23
       viagem: 13
-      audiencia: 8
+      audiencia: 7
       outro: 4
       reuniao: 3
     entidades_top:
@@ -838,14 +847,14 @@ people:
     - nome: Sérgio Leite (Presidente da Federação dos Trabalhadores nas Indústrias Químicas e Fa)
       n: 1
     locais_top:
-    - nome: Palácio do Planalto
-      n: 14
     - nome: Brasília/DF
       n: 14
+    - nome: Palácio do Planalto
+      n: 13
     - nome: São Paulo/SP
       n: 10
     - nome: Palácio do Planalto, Anexo II
-      n: 6
+      n: 5
     - nome: Belo Horizonte/MG
       n: 2
     - nome: São José dos Campos/SP
@@ -911,17 +920,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-29:
-      - hora: '15:00'
-        titulo: Sanção do PL 4300/2025, que dispõe sobre a divulgação do serviço telefônico de denúncias relacionadas à violência
-          contra a mulher; do PL 4978/2023 (Pix Pensão), sobre o pagamento automático da pensão alimentícia; e assinatura
-          dos decretos do Sistema Integrado Mulher Segura, e de regulamentação da Lei 15.383/2026, sobre monitoração eletrônica
-          de agressores
-        local: Palácio do Planalto
-      - hora: '16:00'
-        titulo: Paulo Pereira, Ministro do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte
-        local: Palácio do Planalto, Anexo II
-      vice/2026-07-29-b1: []
       vice/2026-07-30: []
       vice/2026-07-30-b1: []
       vice/2026-07-31:
@@ -1257,6 +1255,8 @@ people:
       vice/2026-10-25-b1: []
       vice/2026-10-26: []
       vice/2026-10-26-b1: []
+      vice/2026-10-27: []
+      vice/2026-10-27-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 193 compromissos em 53 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 52 compromissos em 36 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 195 compromissos em 53 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 50 compromissos em 35 dias (0 dias não lidos)'

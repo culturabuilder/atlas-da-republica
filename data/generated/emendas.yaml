@@ -1,5 +1,5 @@
 # GERADO por etl/emendas.py. Não edite à mão.
-generated_at: '2026-10-26'
+generated_at: '2026-10-27'
 year: 2026
 voto_emenda:
   parlamentares: 435
@@ -44,8 +44,8 @@ por_ano:
     empenhado: 47076757626.89
     pago: 31538556159.54
   '2026':
-    empenhado: 40269294702.42
-    pago: 25909958443.66
+    empenhado: 40297451280.27
+    pago: 25910227230.48
 por_tipo_ano:
   '2024':
     Emenda Individual - Transferências com Finalidade Definida: 16994412388.94
@@ -58,9 +58,9 @@ por_tipo_ano:
     Emenda de Comissão: 11247983228.35
     Emenda Individual - Transferências Especiais: 6965791192.24
   '2026':
-    Emenda Individual - Transferências com Finalidade Definida: 16942152514.09
-    Emenda de Comissão: 9734557410.16
-    Emenda de Bancada: 7477975479.44
+    Emenda Individual - Transferências com Finalidade Definida: 16950217571.19
+    Emenda de Comissão: 9753797386.16
+    Emenda de Bancada: 7478827024.19
     Emenda Individual - Transferências Especiais: 6114609298.73
 ano_eleitoral:
   empenhado_2022_vs_2021: 0.76
@@ -76,7 +76,7 @@ ano_eleitoral:
     '2023': 25235079257.67
     '2024': 29771903672.49
     '2025': 31041000967.89
-    '2026': 35389162135.22
+    '2026': 35393445562.21
   ultimo_mes: '202610'
 autores_top:
 - autor: CID GOMES
@@ -130,27 +130,27 @@ coletivos_top:
 - autor: COM. ASSUNTOS SOCIAIS
   empenhado: 1738553580.0
 - autor: COM. DESENV REGIONAL E TURISMO
-  empenhado: 1064557128.7
+  empenhado: 1066907128.7
 - autor: COM. DE INTEGRACAO NACIONAL E DES. REGIONAL
-  empenhado: 898309479.95
+  empenhado: 898481215.95
 - autor: COM. DESENV. URBANO
-  empenhado: 654191104.2
+  empenhado: 666901177.2
 - autor: COM. ESPORTE
   empenhado: 488469270.01
 - autor: BANCADA DO AMAZONAS
   empenhado: 401871467.0
 - autor: BANCADA DO PARA
-  empenhado: 388465300.96
+  empenhado: 388465324.95
 - autor: BANCADA DE ALAGOAS
   empenhado: 364681656.29
-- autor: BANCADA DO CEARA
-  empenhado: 364394432.97
+- autor: COM. TURISMO
+  empenhado: 364451248.99
 municipios_por_habitante_top:
 - codigo: '1200435'
   nome: Santa Rosa Do Purus (Acre)
-  empenhado: 11999560.14
+  empenhado: 12000000.0
   populacao: 7285
-  por_habitante: 1647.16
+  por_habitante: 1647.22
 - codigo: '1400407'
   nome: Normandia (Roraima)
   empenhado: 25595359.0
@@ -247,7 +247,7 @@ people:
         empenhado: 36629006.98
         pago: 33940132.82
       '2026':
-        empenhado: 38054692.59
+        empenhado: 38123386.99
         pago: 29280011.51
     top_municipios:
     - nome: São João Del Rei (MG)
@@ -2973,7 +2973,7 @@ people:
     base: pagamentos a favorecidos por município
     favorecidos_pj:
     - nome: Banco Do Brasil Sa
-      valor: 19878320.6
+      valor: 19915120.6
     - nome: Fundo Municipal De Saude
       valor: 10661395.0
     - nome: Fiotec - Fundacao Para O Desenvolvimento Cientifico E Tecnologico Em Saude
@@ -4536,7 +4536,7 @@ people:
         empenhado: 36166539.05
         pago: 34422941.62
       '2026':
-        empenhado: 38931646.26
+        empenhado: 38934503.97
         pago: 27539070.47
     top_municipios:
     - nome: Janaúba (MG)
@@ -5234,7 +5234,7 @@ people:
     - nome: Tabatinga (AM)
       valor: 4000000.0
       pct: 2.3
-    - nome: Manacapuru (AM)
+    - nome: Maués (AM)
       valor: 4000000.0
       pct: 2.3
     concentracao_top5_pct: 26.4
@@ -7183,7 +7183,7 @@ people:
         empenhado: 30314411.94
         pago: 12375856.0
       '2026':
-        empenhado: 14468974.41
+        empenhado: 14556748.23
         pago: 4849247.73
     top_municipios:
     - nome: Rio De Janeiro (RJ)
@@ -7984,7 +7984,7 @@ people:
     top_municipios:
     - nome: Rio De Janeiro (RJ)
       valor: 43607893.15
-      pct: 55.7
+      pct: 55.5
     - nome: Niterói (RJ)
       valor: 8014378.0
       pct: 10.2
@@ -7994,9 +7994,9 @@ people:
     - nome: São Paulo (SP)
       valor: 2892127.13
       pct: 3.7
-    - nome: Duque De Caxias (RJ)
-      valor: 2355025.99
-      pct: 3.0
+    - nome: Campos Dos Goytacazes (RJ)
+      valor: 2500811.4
+      pct: 3.2
     concentracao_top5_pct: 76.4
     municipios: 95
     desde: 2023
@@ -8036,6 +8036,8 @@ people:
       valor: 1400000.0
     - nome: Linet Do Brasil Comercio, Importacao E Exportacao De Produtos Medicos Hospitalares Ltda
       valor: 1208900.0
+    - nome: Ferthymar Empreendimentos E Participacoes Ltda
+      valor: 1123092.25
     - nome: Municipio De Petropolis
       valor: 1000000.0
     - nome: Fundo Municipal De Saude De Japeri
@@ -8046,8 +8048,6 @@ people:
       valor: 946040.28
     - nome: Allent Comercio, Importacao E Distribuicao De Materiais Medicos Ltda.
       valor: 940000.0
-    - nome: Ferthymar Empreendimentos E Participacoes Ltda
-      valor: 930519.95
     - nome: Instituto Teatro Novo
       valor: 900000.0
     - nome: Orquestrando A Vida - Oravi
@@ -8085,8 +8085,8 @@ people:
     votos_2022:
       votos: 168108
       top15_votos_pct: 86.3
-      emendas_com_municipio: 78345674.12
-      emendas_nos_top15_pct: 78.3
+      emendas_com_municipio: 78538246.42
+      emendas_nos_top15_pct: 78.4
       top15:
       - Rio De Janeiro (54.4%)
       - Niterói (5.1%)
@@ -8382,7 +8382,7 @@ people:
         empenhado: 35275983.08
         pago: 34889605.08
       '2026':
-        empenhado: 39984479.39
+        empenhado: 39996009.21
         pago: 31606184.73
     top_municipios:
     - nome: Itaguaçu Da Bahia (BA)
@@ -9409,7 +9409,7 @@ people:
     votos_2022:
       votos: 620600
       top15_votos_pct: 59.2
-      emendas_com_municipio: 167284619.34
+      emendas_com_municipio: 167402613.71
       emendas_nos_top15_pct: 32.7
       top15:
       - Aracaju (19.8%)
@@ -9442,7 +9442,7 @@ people:
         empenhado: 37218487.0
         pago: 34225361.94
       '2026':
-        empenhado: 37777431.57
+        empenhado: 37828952.37
         pago: 29697902.54
     top_municipios:
     - nome: Teófilo Otoni (MG)
@@ -9581,7 +9581,7 @@ people:
         empenhado: 35491131.54
         pago: 22747932.27
       '2026':
-        empenhado: 28514023.89
+        empenhado: 28526221.94
         pago: 18452377.84
     top_municipios:
     - nome: Salvador (BA)
@@ -10725,7 +10725,7 @@ people:
         empenhado: 37142580.3
         pago: 33346986.0
       '2026':
-        empenhado: 35973147.0
+        empenhado: 36053434.46
         pago: 26087081.74
     top_municipios:
     - nome: Maringá (PR)
@@ -11269,7 +11269,7 @@ people:
         empenhado: 67526715.0
         pago: 64053753.49
       '2026':
-        empenhado: 68616034.62
+        empenhado: 68812034.62
         pago: 39910456.43
     top_municipios:
     - nome: São Paulo (SP)
@@ -12617,12 +12617,12 @@ people:
         empenhado: 36013551.79
         pago: 19712163.16
       '2026':
-        empenhado: 31995509.03
+        empenhado: 31997182.63
         pago: 21178929.08
     top_municipios:
     - nome: Belo Horizonte (MG)
       valor: 9210950.7
-      pct: 10.0
+      pct: 9.9
     - nome: Conselheiro Lafaiete (MG)
       valor: 4493207.44
       pct: 4.9
@@ -12635,7 +12635,7 @@ people:
     - nome: Indaiatuba (SP)
       valor: 2302340.0
       pct: 2.5
-    concentracao_top5_pct: 25.0
+    concentracao_top5_pct: 24.9
     municipios: 292
     desde: 2023
     base: pagamentos a favorecidos por município
@@ -12723,8 +12723,8 @@ people:
     votos_2022:
       votos: 171436
       top15_votos_pct: 33.6
-      emendas_com_municipio: 92424373.18
-      emendas_nos_top15_pct: 30.8
+      emendas_com_municipio: 92615373.18
+      emendas_nos_top15_pct: 31.0
       top15:
       - Januária (3.9%)
       - Ponte Nova (3.7%)
@@ -13418,11 +13418,11 @@ people:
         pago: 28330886.82
       '2026':
         empenhado: 32900619.92
-        pago: 25194808.86
+        pago: 25207055.09
     top_municipios:
     - nome: Porto Alegre (RS)
-      valor: 6257331.63
-      pct: 13.2
+      valor: 6269151.63
+      pct: 13.3
     - nome: Santa Maria (RS)
       valor: 5552604.13
       pct: 11.7
@@ -13523,7 +13523,7 @@ people:
     votos_2022:
       votos: 446218
       top15_votos_pct: 42.5
-      emendas_com_municipio: 47297900.77
+      emendas_com_municipio: 47310147.0
       emendas_nos_top15_pct: 34.1
       top15:
       - Santa Maria (14.8%)
@@ -14169,7 +14169,7 @@ people:
         empenhado: 37258998.2
         pago: 29262586.07
       '2026':
-        empenhado: 31133738.39
+        empenhado: 31374168.79
         pago: 25436424.03
     top_municipios:
     - nome: Belo Horizonte (MG)
@@ -14971,7 +14971,7 @@ people:
         empenhado: 36695407.69
         pago: 31027155.15
       '2026':
-        empenhado: 32348423.79
+        empenhado: 31348423.79
         pago: 25629551.55
     top_municipios:
     - nome: Anápolis (GO)
@@ -15237,7 +15237,7 @@ people:
         empenhado: 34552132.76
         pago: 31507402.3
       '2026':
-        empenhado: 37697446.25
+        empenhado: 37705315.25
         pago: 30251051.49
     top_municipios:
     - nome: Curitiba (PR)
@@ -15377,7 +15377,7 @@ people:
         empenhado: 37274113.11
         pago: 36870993.97
       '2026':
-        empenhado: 35546208.0
+        empenhado: 36311757.0
         pago: 19837810.94
     top_municipios:
     - nome: Sátiro Dias (BA)
@@ -17011,7 +17011,7 @@ people:
         empenhado: 68538463.99
         pago: 64570052.99
       '2026':
-        empenhado: 57772140.99
+        empenhado: 57787732.06
         pago: 19293205.18
     top_municipios:
     - nome: Goiânia (GO)
@@ -17554,7 +17554,7 @@ people:
         empenhado: 36565711.15
         pago: 30864054.41
       '2026':
-        empenhado: 35334830.0
+        empenhado: 35434830.0
         pago: 23110373.11
     top_municipios:
     - nome: Alegrete (RS)
@@ -18229,7 +18229,7 @@ people:
     - nome: Campos Dos Goytacazes (RJ)
       valor: 3210019.0
       pct: 3.3
-    - nome: Barra Mansa (RJ)
+    - nome: São Fidélis (RJ)
       valor: 3000000.0
       pct: 3.1
     concentracao_top5_pct: 60.5
@@ -21934,7 +21934,7 @@ people:
         empenhado: 37274633.68
         pago: 33322376.4
       '2026':
-        empenhado: 35047428.51
+        empenhado: 35347428.51
         pago: 28645349.56
     top_municipios:
     - nome: Salvador (BA)
@@ -24907,7 +24907,7 @@ people:
         empenhado: 36462822.08
         pago: 34395443.08
       '2026':
-        empenhado: 38187551.02
+        empenhado: 38387551.02
         pago: 22737843.39
     top_municipios:
     - nome: Ijuí (RS)
@@ -25666,7 +25666,7 @@ people:
         empenhado: 37275958.7
         pago: 35022613.95
       '2026':
-        empenhado: 37232826.0
+        empenhado: 37234852.0
         pago: 30048233.88
     top_municipios:
     - nome: Parnarama (MA)
@@ -26447,7 +26447,7 @@ people:
     votos_2022:
       votos: 148526
       top15_votos_pct: 54.2
-      emendas_com_municipio: 86707549.95
+      emendas_com_municipio: 86714158.76
       emendas_nos_top15_pct: 52.9
       top15:
       - Fazenda Rio Grande (15.3%)
@@ -26481,7 +26481,7 @@ people:
         pago: 63487762.27
       '2026':
         empenhado: 64558580.28
-        pago: 54655494.12
+        pago: 54657204.12
     top_municipios:
     - nome: Curral Velho (PB)
       valor: 3593881.0
@@ -27280,7 +27280,7 @@ people:
         empenhado: 35807963.52
         pago: 23183298.9
       '2026':
-        empenhado: 30213333.13
+        empenhado: 30332721.93
         pago: 22272152.9
     top_municipios:
     - nome: Belo Horizonte (MG)
@@ -27679,7 +27679,7 @@ people:
         pago: 27379307.58
     top_municipios:
     - nome: Recife (PE)
-      valor: 12171719.91
+      valor: 12178131.13
       pct: 11.4
     - nome: Garanhuns (PE)
       valor: 11935473.0
@@ -27781,7 +27781,7 @@ people:
     votos_2022:
       votos: 153056
       top15_votos_pct: 91.6
-      emendas_com_municipio: 106784684.33
+      emendas_com_municipio: 106791095.55
       emendas_nos_top15_pct: 25.5
       top15:
       - Recife (45.1%)
@@ -29528,7 +29528,7 @@ people:
       pct: 6.7
     - nome: Serra Preta (BA)
       valor: 9970000.0
-      pct: 5.2
+      pct: 5.1
     - nome: Cardeal Da Silva (BA)
       valor: 9695000.0
       pct: 5.0
@@ -30731,7 +30731,7 @@ people:
       pct: 7.8
     - nome: Poção (PE)
       valor: 8136150.0
-      pct: 7.5
+      pct: 7.4
     - nome: Tabira (PE)
       valor: 5802005.08
       pct: 5.3
@@ -30741,7 +30741,7 @@ people:
     - nome: São José Do Belmonte (PE)
       valor: 4000000.0
       pct: 3.7
-    concentracao_top5_pct: 28.7
+    concentracao_top5_pct: 28.6
     municipios: 107
     desde: 2023
     base: pagamentos a favorecidos por município
@@ -30829,7 +30829,7 @@ people:
     votos_2022:
       votos: 254964
       top15_votos_pct: 46.2
-      emendas_com_municipio: 109146300.72
+      emendas_com_municipio: 109227043.76
       emendas_nos_top15_pct: 15.6
       top15:
       - Recife (11.1%)
@@ -31751,7 +31751,7 @@ people:
         pago: 21567888.24
       '2026':
         empenhado: 31673942.32
-        pago: 16797154.95
+        pago: 16801644.94
     top_municipios:
     - nome: Rio De Janeiro (RJ)
       valor: 10835431.46
@@ -31856,8 +31856,8 @@ people:
     votos_2022:
       votos: 105166
       top15_votos_pct: 75.6
-      emendas_com_municipio: 77735513.1
-      emendas_nos_top15_pct: 43.8
+      emendas_com_municipio: 77740003.09
+      emendas_nos_top15_pct: 43.7
       top15:
       - Rio De Janeiro (45.0%)
       - Campos Dos Goytacazes (3.8%)
@@ -32538,7 +32538,7 @@ people:
         empenhado: 36224966.0
         pago: 34962996.97
       '2026':
-        empenhado: 27940581.61
+        empenhado: 27941685.53
         pago: 16066876.17
     top_municipios:
     - nome: Pelotas (RS)
@@ -33060,7 +33060,7 @@ people:
         empenhado: 36975984.64
         pago: 29956702.64
       '2026':
-        empenhado: 37416244.04
+        empenhado: 37439462.04
         pago: 20098992.67
     top_municipios:
     - nome: Montes Claros (MG)
@@ -34806,7 +34806,7 @@ people:
         empenhado: 34924783.58
         pago: 20955932.43
       '2026':
-        empenhado: 28866144.13
+        empenhado: 31267644.13
         pago: 18500528.0
     top_municipios:
     - nome: Porto Alegre (RS)
@@ -36532,7 +36532,7 @@ people:
         empenhado: 35045965.06
         pago: 30272223.47
       '2026':
-        empenhado: 37087156.98
+        empenhado: 36352156.98
         pago: 27368858.95
     top_municipios:
     - nome: Duque De Caxias (RJ)
@@ -37051,7 +37051,7 @@ people:
         empenhado: 37275559.69
         pago: 33619486.18
       '2026':
-        empenhado: 37688316.51
+        empenhado: 37942017.71
         pago: 29796273.99
     top_municipios:
     - nome: Arinos (MG)
@@ -37187,7 +37187,7 @@ people:
         empenhado: 68128886.47
         pago: 11569000.0
       '2026':
-        empenhado: 15133882.11
+        empenhado: 15633882.11
         pago: 12679901.0
     top_municipios:
     - nome: Araguaína (TO)
@@ -39243,7 +39243,7 @@ people:
         empenhado: 37272983.09
         pago: 36037859.41
       '2026':
-        empenhado: 38705408.79
+        empenhado: 38867008.79
         pago: 28297287.0
     top_municipios:
     - nome: Jequié (BA)
@@ -41770,7 +41770,7 @@ people:
         empenhado: 35922807.04
         pago: 15644915.83
       '2026':
-        empenhado: 23226716.97
+        empenhado: 23726716.97
         pago: 15229498.12
     top_municipios:
     - nome: Natal (RN)
@@ -44539,7 +44539,7 @@ people:
         empenhado: 36875974.24
         pago: 28778725.15
       '2026':
-        empenhado: 36677633.62
+        empenhado: 36681259.35
         pago: 30862361.56
     top_municipios:
     - nome: São Paulo (SP)
@@ -44675,7 +44675,7 @@ people:
         empenhado: 35803445.74
         pago: 19721164.8
       '2026':
-        empenhado: 13377086.49
+        empenhado: 13422559.49
         pago: 5696233.44
     top_municipios:
     - nome: São Paulo (SP)
@@ -45219,7 +45219,7 @@ people:
         empenhado: 37275477.72
         pago: 26438707.72
       '2026':
-        empenhado: 32093274.35
+        empenhado: 32123604.35
         pago: 18147322.38
     top_municipios:
     - nome: Ji-Paraná (RO)
@@ -45992,7 +45992,7 @@ people:
         empenhado: 32103340.0
         pago: 25768156.0
       '2026':
-        empenhado: 38412656.02
+        empenhado: 38412655.95
         pago: 29380683.64
     top_municipios:
     - nome: Araguaína (TO)
@@ -46526,14 +46526,14 @@ people:
         pago: 43788191.22
       '2026':
         empenhado: 72784706.95
-        pago: 67602329.16
+        pago: 67740042.66
     top_municipios:
     - nome: São Luís (MA)
-      valor: 21751162.49
+      valor: 21881329.59
       pct: 12.8
     - nome: São Paulo (SP)
       valor: 11001760.07
-      pct: 6.5
+      pct: 6.4
     - nome: Peritoró (MA)
       valor: 8407375.0
       pct: 4.9
@@ -46559,7 +46559,7 @@ people:
     - nome: De Nigris Distribuidora De Veiculos Ltda
       valor: 6243981.0
     - nome: Municipio De Sao Jose De Ribamar
-      valor: 5187935.9
+      valor: 5195482.3
     - nome: Municipio De Magalhaes De Almeida
       valor: 4351694.02
     - nome: Fundo Municipal De Saude De Araioses
@@ -47990,7 +47990,7 @@ people:
         empenhado: 68412501.08
         pago: 65822957.0
       '2026':
-        empenhado: 68122830.61
+        empenhado: 69152087.45
         pago: 59761085.23
     top_municipios:
     - nome: Campo Grande (MS)
@@ -48236,7 +48236,7 @@ people:
         empenhado: 36846269.19
         pago: 27952599.12
       '2026':
-        empenhado: 31339147.12
+        empenhado: 31365287.12
         pago: 23351709.05
     top_municipios:
     - nome: São Paulo (SP)
@@ -48897,7 +48897,7 @@ people:
         empenhado: 27261284.69
         pago: 18684815.15
       '2026':
-        empenhado: 39138097.47
+        empenhado: 38840107.47
         pago: 14906075.18
     top_municipios:
     - nome: Rorainópolis (RR)
@@ -50080,7 +50080,7 @@ people:
         empenhado: 37002216.26
         pago: 27304985.43
       '2026':
-        empenhado: 27062197.87
+        empenhado: 27548387.87
         pago: 18441127.72
     top_municipios:
     - nome: Juiz De Fora (MG)
@@ -50721,7 +50721,7 @@ people:
         empenhado: 68121826.68
         pago: 56123986.45
       '2026':
-        empenhado: 49017476.49
+        empenhado: 49214181.75
         pago: 17589195.52
     top_municipios:
     - nome: São Paulo (SP)
@@ -51837,7 +51837,7 @@ people:
         empenhado: 36543788.08
         pago: 19096743.49
       '2026':
-        empenhado: 28243957.38
+        empenhado: 28273835.98
         pago: 20670752.82
     top_municipios:
     - nome: Curitiba (PR)
@@ -51944,7 +51944,7 @@ people:
     votos_2022:
       votos: 261308
       top15_votos_pct: 76.6
-      emendas_com_municipio: 72750805.46
+      emendas_com_municipio: 72752171.56
       emendas_nos_top15_pct: 55.7
       top15:
       - Curitiba (46.8%)
@@ -52086,7 +52086,7 @@ people:
         empenhado: 36475309.07
         pago: 15393114.73
       '2026':
-        empenhado: 26404847.73
+        empenhado: 26509312.93
         pago: 20672593.34
     top_municipios:
     - nome: Belo Horizonte (MG)
@@ -52845,7 +52845,7 @@ people:
     - nome: Peixoto De Azevedo (MT)
       valor: 2900000.0
       pct: 4.1
-    - nome: Poconé (MT)
+    - nome: Alto Araguaia (MT)
       valor: 2000000.0
       pct: 2.8
     concentracao_top5_pct: 55.8
@@ -53563,11 +53563,11 @@ people:
         empenhado: 68483464.95
         pago: 32022264.86
       '2026':
-        empenhado: 44296724.81
+        empenhado: 45431724.81
         pago: 8793474.95
     top_municipios:
     - nome: Brasília (DF)
-      valor: 88955931.86
+      valor: 88956288.79
       pct: 79.2
     - nome: Águas Lindas De Goiás (GO)
       valor: 4000000.0
@@ -53669,7 +53669,7 @@ people:
     votos_2022:
       votos: 1429124
       top15_votos_pct: 100.0
-      emendas_com_municipio: 112302529.32
+      emendas_com_municipio: 112302886.25
       emendas_nos_top15_pct: 79.2
       top15:
       - Brasília (100.0%)
@@ -53687,7 +53687,7 @@ people:
         pago: 19708269.84
     top_municipios:
     - nome: Uberlândia (MG)
-      valor: 18933368.39
+      valor: 18934418.39
       pct: 26.4
     - nome: Belo Horizonte (MG)
       valor: 7147872.7
@@ -53789,7 +53789,7 @@ people:
     votos_2022:
       votos: 172068
       top15_votos_pct: 69.8
-      emendas_com_municipio: 71734210.65
+      emendas_com_municipio: 71735260.65
       emendas_nos_top15_pct: 60.2
       top15:
       - Uberlândia (40.7%)
@@ -55850,7 +55850,7 @@ people:
         empenhado: 37269502.14
         pago: 7768418.13
       '2026':
-        empenhado: 33272474.33
+        empenhado: 33291412.97
         pago: 20394954.63
     top_municipios:
     - nome: Rio De Janeiro (RJ)
@@ -57924,7 +57924,7 @@ people:
         pago: 23840852.44
       '2026':
         empenhado: 30250676.5
-        pago: 22487171.03
+        pago: 22553655.02
     top_municipios:
     - nome: Natal (RN)
       valor: 13250457.28
@@ -59532,7 +59532,7 @@ people:
         empenhado: 37162752.32
         pago: 20435992.79
       '2026':
-        empenhado: 39446017.88
+        empenhado: 39446532.88
         pago: 12642803.8
     top_municipios:
     - nome: Boa Vista (RR)
@@ -59769,7 +59769,7 @@ people:
         empenhado: 37263181.0
         pago: 34922011.0
       '2026':
-        empenhado: 35444726.0
+        empenhado: 35460824.0
         pago: 23247520.77
     top_municipios:
     - nome: Itabaiana (SE)
@@ -65155,7 +65155,7 @@ people:
         empenhado: 37275903.16
         pago: 35183308.01
       '2026':
-        empenhado: 38328211.97
+        empenhado: 38392100.77
         pago: 29933184.35
     top_municipios:
     - nome: Belo Horizonte (MG)
@@ -66847,7 +66847,7 @@ people:
         empenhado: 36012462.22
         pago: 19314187.1
       '2026':
-        empenhado: 23079392.5
+        empenhado: 23241108.95
         pago: 12879224.13
     top_municipios:
     - nome: São Paulo (SP)
@@ -67441,7 +67441,7 @@ people:
         empenhado: 37146912.5
         pago: 14298027.0
       '2026':
-        empenhado: 33864485.35
+        empenhado: 34239485.35
         pago: 21198755.86
     top_municipios:
     - nome: Rio De Janeiro (RJ)
@@ -68255,7 +68255,7 @@ people:
         empenhado: 34492141.34
         pago: 13102985.0
       '2026':
-        empenhado: 33213265.5
+        empenhado: 33303623.5
         pago: 15728716.84
     top_municipios:
     - nome: Rio De Janeiro (RJ)
@@ -68875,7 +68875,7 @@ people:
         empenhado: 36831980.8
         pago: 26500645.08
       '2026':
-        empenhado: 33710660.01
+        empenhado: 33714040.01
         pago: 20165834.44
     top_municipios:
     - nome: Salvador (BA)
@@ -70330,7 +70330,7 @@ people:
         empenhado: 35294700.6
         pago: 19582041.14
       '2026':
-        empenhado: 27026309.53
+        empenhado: 27032166.11
         pago: 16969433.18
     top_municipios:
     - nome: Curitiba (PR)
@@ -70454,7 +70454,7 @@ people:
         empenhado: 37048300.06
         pago: 10043047.73
       '2026':
-        empenhado: 24712754.95
+        empenhado: 24720611.69
         pago: 6715701.6
     top_municipios:
     - nome: Rio De Janeiro (RJ)
@@ -70578,7 +70578,7 @@ people:
         empenhado: 67922815.1
         pago: 42136182.08
       '2026':
-        empenhado: 56692969.72
+        empenhado: 56564679.44
         pago: 40277920.62
     top_municipios:
     - nome: Recife (PE)
