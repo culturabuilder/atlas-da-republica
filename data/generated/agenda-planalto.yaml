@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-27'
+generated_at: '2026-10-28'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-30'
+janela_inicio: '2026-07-31'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,24 +11,24 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 195
-    dias_com_agenda: 53
+    compromissos_90d: 191
+    dias_com_agenda: 52
     por_tipo:
-      evento: 66
-      audiencia: 59
+      evento: 64
+      audiencia: 57
       viagem: 56
       reuniao: 10
       outro: 4
     entidades_top:
-    - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
-      n: 13
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República Substituto)
+      n: 12
+    - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
       n: 12
     - nome: Miriam Belchior (Ministra da Casa Civil)
       n: 8
-    - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
-      n: 4
     - nome: Mauro Vieira (Ministro das Relações Exteriores)
+      n: 3
+    - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 3
     - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
       n: 2
@@ -42,9 +42,9 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 48
+      n: 47
     - nome: Palácio da Alvorada
-      n: 40
+      n: 37
     - nome: Base Aérea de Brasília
       n: 24
     - nome: Esplanada dos Ministérios, Brasília
@@ -125,21 +125,6 @@ people:
         entidade: Chefe do Gabinete Pessoal do Presidente da República
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-30:
-      - hora: '11:00'
-        titulo: Sanção do PLV nº 8/2026, que dispõe sobre as receitas e a destinação de recursos do Fundo para Aparelhamento
-          e Operacionalização das Atividades-fim da Polícia Federal (FUNAPOL) e ajusta a distribuição da arrecadação das apostas
-          de quota fixa
-        local: Palácio do Planalto
-      - hora: '15:00'
-        titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
-        local: Palácio da Alvorada
-      - hora: '16:00'
-        titulo: Ministro da Secretaria de Comunicação Social da Presidência da República, Sidônio Palmeira
-        local: Palácio da Alvorada
-      - hora: '18:30'
-        titulo: Podcast Inteligência LTDA
-        local: Palácio da Alvorada
       presidente/2026-07-31:
       - hora: '14:00'
         titulo: Partida para Fortaleza
@@ -826,6 +811,7 @@ people:
         titulo: Ministro da Secretaria de Comunicação Social, Sidônio Palmeira, e Secretário de Imprensa da Secretaria de
           Comunicação Social, Laércio Portela
         local: Palácio da Alvorada
+      presidente/2026-10-28: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -920,8 +906,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-30: []
-      vice/2026-07-30-b1: []
       vice/2026-07-31:
       - hora: '14:00'
         titulo: Sessão Solene de Posse dos novos Acadêmicos e Acadêmicas Titulares da Academia Brasileira de Medicina Veterinária
@@ -1257,6 +1241,8 @@ people:
       vice/2026-10-26-b1: []
       vice/2026-10-27: []
       vice/2026-10-27-b1: []
+      vice/2026-10-28: []
+      vice/2026-10-28-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 195 compromissos em 53 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 191 compromissos em 52 dias (0 dias não lidos)'
 - 'br-p-geraldo-alckmin: 50 compromissos em 35 dias (0 dias não lidos)'
