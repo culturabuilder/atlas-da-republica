@@ -83,8 +83,13 @@ def corpo(G):
     fb = G.get("falabr") or {}
     if fb.get("resumo"):
         r = fb["resumo"]; mais = fb.get("mais_negam") or []
+        # a chave do nó é "node"; com "id" saíam 12 links para /br// — achado ao conferir o HTML gerado
+        def _cel(x):
+            nome = esc(x.get("orgao") or x.get("nome") or "")
+            nid = x.get("node") or x.get("id")
+            return f'<a href="__PREFIX__/br/{esc(nid)}/">{nome}</a>' if nid else nome
         linhas = "".join(
-            f'<tr><td><a href="__PREFIX__/br/{esc(x.get("id") or "")}/">{esc(x.get("nome") or x.get("orgao") or "")}</a></td>'
+            f'<tr><td>{_cel(x)}</td>'
             f'<td style="text-align:right;font-family:var(--mono)">{x.get("pedidos", "—")}</td>'
             f'<td style="text-align:right;font-family:var(--mono)">{str(x.get("pct_negado_ou_parcial", "—")).replace(".", ",")}%</td></tr>'
             for x in mais[:12])
