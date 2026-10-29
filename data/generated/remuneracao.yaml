@@ -1,19 +1,19 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-10-28'
+generated_at: '2026-10-29'
 mes: '202608'
 mes_senado: '202609'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1214
+  ocupantes_no_grafo: 1215
   com_remuneracao: 504
   por_setor:
     executivo:
-      ocupantes: 479
+      ocupantes: 480
       antes: 397
       depois: 420
-      pct_antes: 82.9
-      pct_depois: 87.7
+      pct_antes: 82.7
+      pct_depois: 87.5
     essenciais:
       ocupantes: 30
       antes: 4
@@ -44,10 +44,10 @@ resumo:
     alta: 479
     media: 25
   sem_remuneracao:
-    total: 86
+    total: 87
     por_motivo:
       ausente na folha: 26
-      órgão fora do SIAPE (empresa publica com folha própria): 14
+      órgão fora do SIAPE (empresa publica com folha própria): 15
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
       só há homônimo por primeiro+último sobrenome fora do órgão (...): 12
       no cadastro do SIAPE mas sem linha de remuneração no mês: 11
@@ -16543,6 +16543,11 @@ nao_encontrados:
   cargo: Ministro de Estado da Saúde
   setor: executivo
   motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
+- id: br-p-wp-aloizio-mercadante
+  nome: Aloizio Mercadante
+  cargo: Presidente do BNDES
+  setor: executivo
+  motivo: órgão fora do SIAPE (empresa publica com folha própria)
 - id: br-p-ana-paula-fioreza
   nome: Ana Paula Fioreza
   cargo: Diretor-Presidente da ANA

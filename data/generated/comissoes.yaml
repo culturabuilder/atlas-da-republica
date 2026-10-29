@@ -1,6 +1,6 @@
 # GERADO por etl/comissoes.py. Não edite à mão.
 generated_from: legis.senado.leg.br/dadosabertos + dadosabertos.camara.leg.br
-generated_at: '2026-10-27'
+generated_at: '2026-10-29'
 pessoas_reaproveitadas: 62
 ids_corrigidos:
   br-p-cd-353: br-p-cd-73788 (Ricardo Barros)
@@ -401,11 +401,11 @@ nodes:
       - Comissão de Cultura
     description: 'Comissão permanente da Câmara dos Deputados (CCULT). Discute e vota as proposições da sua área
       temática, podendo aprová-las em caráter conclusivo sem passar pelo Plenário, e fiscaliza os atos do Executivo
-      no seu campo. Composição atual: 14 titulares.'
+      no seu campo. Composição atual: 16 titulares.'
     cite: CF/88 art. 58; RICD arts. 22 e 32
     cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
     official_url: https://www.camara.leg.br/comissoes/ccult
-    seats_count: 14
+    seats_count: 16
     verified: true
   - id: br-comissao-de-defesa-do-consumidor-da-camara
     type: commission
@@ -420,11 +420,11 @@ nodes:
       - Comissão de Defesa do Consumidor
     description: 'Comissão permanente da Câmara dos Deputados (CDC). Discute e vota as proposições da sua área temática,
       podendo aprová-las em caráter conclusivo sem passar pelo Plenário, e fiscaliza os atos do Executivo no seu
-      campo. Composição atual: 7 titulares.'
+      campo. Composição atual: 8 titulares.'
     cite: CF/88 art. 58; RICD arts. 22 e 32
     cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
     official_url: https://www.camara.leg.br/comissoes/cdc
-    seats_count: 7
+    seats_count: 8
     verified: true
   - id: br-comissao-de-desenvolvimento-economico-da-camara
     type: commission
@@ -496,11 +496,11 @@ nodes:
       - Comissão de Educação
     description: 'Comissão permanente da Câmara dos Deputados (CE). Discute e vota as proposições da sua área temática,
       podendo aprová-las em caráter conclusivo sem passar pelo Plenário, e fiscaliza os atos do Executivo no seu
-      campo. Composição atual: 33 titulares.'
+      campo. Composição atual: 34 titulares.'
     cite: CF/88 art. 58; RICD arts. 22 e 32
     cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
     official_url: https://www.camara.leg.br/comissoes/ce
-    seats_count: 33
+    seats_count: 34
     verified: true
   - id: br-comissao-do-esporte-da-camara
     type: commission
@@ -727,11 +727,11 @@ nodes:
       - Comissão da Amazônia e dos Povos Originários e Tradicionais
     description: 'Comissão permanente da Câmara dos Deputados (CPOVOS). Discute e vota as proposições da sua área
       temática, podendo aprová-las em caráter conclusivo sem passar pelo Plenário, e fiscaliza os atos do Executivo
-      no seu campo. Composição atual: 10 titulares.'
+      no seu campo. Composição atual: 11 titulares.'
     cite: CF/88 art. 58; RICD arts. 22 e 32
     cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
     official_url: https://www.camara.leg.br/comissoes/cpovos
-    seats_count: 10
+    seats_count: 11
     verified: true
   - id: br-comissao-de-relacoes-exteriores-e-de-defesa-nacional-da-camara
     type: commission
@@ -765,11 +765,11 @@ nodes:
       - Comissão de Saúde
     description: 'Comissão permanente da Câmara dos Deputados (CSAUDE). Discute e vota as proposições da sua área
       temática, podendo aprová-las em caráter conclusivo sem passar pelo Plenário, e fiscaliza os atos do Executivo
-      no seu campo. Composição atual: 48 titulares.'
+      no seu campo. Composição atual: 49 titulares.'
     cite: CF/88 art. 58; RICD arts. 22 e 32
     cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
     official_url: https://www.camara.leg.br/comissoes/csaude
-    seats_count: 48
+    seats_count: 49
     verified: true
   - id: br-comissao-de-seguranca-publica-e-combate-ao-crime-organizado-da-camara
     type: commission
@@ -9288,6 +9288,26 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220654
+    - id: br-p-cd-220571
+      name: Daniel Agrobom
+      party: PSD
+      uf: GO
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220571.jpg
+      role: Titular
+      started_at: '2026-10-29'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220571
+    - id: br-p-cd-72442
+      name: Felipe Carreras
+      party: PSB
+      uf: PE
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/72442.jpg
+      role: Titular
+      started_at: '2026-10-29'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/72442
     - id: br-p-cd-220623
       name: Duda Salabert
       party: PSOL
@@ -9519,6 +9539,16 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/204365
+    - id: br-p-cd-171617
+      name: Paulão
+      party: PT
+      uf: AL
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/171617.jpg
+      role: Titular
+      started_at: '2026-10-28'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/171617
     - id: br-p-cd-220645
       name: Erika Hilton
       party: PSOL
@@ -10943,6 +10973,16 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/204481
+    - id: br-p-cd-74044
+      name: Wilson Santiago
+      party: REPUBLIC
+      uf: PB
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/74044.jpg
+      role: Titular
+      started_at: '2026-10-27'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/74044
     - id: br-p-cd-220563
       name: Icaro de Valmir
       party: REPUBLIC
@@ -16036,6 +16076,16 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/206018
+    - id: br-p-cd-230767
+      name: Rodrigo da Zaeli
+      party: PL
+      uf: MT
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/230767.jpg
+      role: Titular
+      started_at: '2026-10-27'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/230767
     - id: br-p-cd-74075
       name: Elcione Barbalho
       party: MDB
@@ -17208,6 +17258,16 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220616
+    - id: br-p-cd-80815
+      name: Leo Prates
+      party: REPUBLIC
+      uf: BA
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/80815.jpg
+      role: Titular
+      started_at: '2026-10-29'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/80815
     - id: br-p-cd-233594
       name: Rafael Fera
       party: PODE

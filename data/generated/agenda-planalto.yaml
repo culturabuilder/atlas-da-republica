@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-28'
+generated_at: '2026-10-29'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-07-31'
+janela_inicio: '2026-08-01'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -14,20 +14,20 @@ people:
     compromissos_90d: 191
     dias_com_agenda: 52
     por_tipo:
-      evento: 64
-      audiencia: 57
-      viagem: 56
+      evento: 63
+      audiencia: 60
+      viagem: 54
       reuniao: 10
       outro: 4
     entidades_top:
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República Substituto)
-      n: 12
+      n: 13
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
       n: 12
     - nome: Miriam Belchior (Ministra da Casa Civil)
-      n: 8
+      n: 9
     - nome: Mauro Vieira (Ministro das Relações Exteriores)
-      n: 3
+      n: 4
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 3
     - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
@@ -44,9 +44,9 @@ people:
     - nome: Palácio do Planalto
       n: 47
     - nome: Palácio da Alvorada
-      n: 37
+      n: 40
     - nome: Base Aérea de Brasília
-      n: 24
+      n: 23
     - nome: Esplanada dos Ministérios, Brasília
       n: 5
     - nome: Aeroporto Internacional de Macapá
@@ -61,8 +61,32 @@ people:
       n: 3
     - nome: Aeroporto de Congonhas
       n: 2
-    ultimo: '2026-10-27'
+    ultimo: '2026-10-29'
     recentes:
+    - data: '2026-10-29'
+      hora: '15:00'
+      titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Oswaldo Malatesta
+        entidade: Chefe do Gabinete Pessoal do Presidente da República
+    - data: '2026-10-29'
+      hora: '10:30'
+      titulo: Ministra da Casa Civil, Miriam Belchior
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Miriam Belchior
+        entidade: Ministra da Casa Civil
+    - data: '2026-10-29'
+      hora: 09:30
+      titulo: Ministro das Relações Exteriores, Mauro Vieira
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Mauro Vieira
+        entidade: Ministro das Relações Exteriores
     - data: '2026-10-27'
       hora: '15:30'
       titulo: Ministro da Secretaria de Comunicação Social, Sidônio Palmeira, e Secretário de Imprensa da Secretaria de Comunicação
@@ -101,40 +125,8 @@ people:
       tipo: audiencia
       local: Palácio da Alvorada
       participantes: []
-    - data: '2026-10-26'
-      hora: '15:30'
-      titulo: Ministro das Relações Exteriores, Mauro Vieira
-      tipo: audiencia
-      local: Palácio da Alvorada
-      participantes:
-      - nome: Mauro Vieira
-        entidade: Ministro das Relações Exteriores
-    - data: '2026-10-26'
-      hora: '15:00'
-      titulo: Telefonema com a Presidenta do México, Claudia Sheinbaum
-      tipo: reuniao
-      local: Palácio da Alvorada
-      participantes: []
-    - data: '2026-10-26'
-      hora: '11:00'
-      titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
-      tipo: audiencia
-      local: Palácio da Alvorada
-      participantes:
-      - nome: Oswaldo Malatesta
-        entidade: Chefe do Gabinete Pessoal do Presidente da República
     dias_nao_lidos: 0
     dias:
-      presidente/2026-07-31:
-      - hora: '14:00'
-        titulo: Partida para Fortaleza
-        local: Base Aérea de Brasília
-      - hora: '16:30'
-        titulo: Chegada a Fortaleza
-        local: Base Aérea de Fortaleza
-      - hora: '17:00'
-        titulo: Visita ao Hospital Universitário do Ceará (HUC)
-        local: Rua Betel – Itaperi, Fortaleza
       presidente/2026-08-01: []
       presidente/2026-08-02: []
       presidente/2026-08-03:
@@ -812,6 +804,16 @@ people:
           Comunicação Social, Laércio Portela
         local: Palácio da Alvorada
       presidente/2026-10-28: []
+      presidente/2026-10-29:
+      - hora: 09:30
+        titulo: Ministro das Relações Exteriores, Mauro Vieira
+        local: Palácio da Alvorada
+      - hora: '10:30'
+        titulo: Ministra da Casa Civil, Miriam Belchior
+        local: Palácio da Alvorada
+      - hora: '15:00'
+        titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
+        local: Palácio da Alvorada
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -819,12 +821,12 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 50
+    compromissos_90d: 51
     dias_com_agenda: 35
     por_tipo:
-      evento: 23
+      evento: 22
       viagem: 13
-      audiencia: 7
+      audiencia: 9
       outro: 4
       reuniao: 3
     entidades_top:
@@ -832,15 +834,17 @@ people:
       n: 4
     - nome: Sérgio Leite (Presidente da Federação dos Trabalhadores nas Indústrias Químicas e Fa)
       n: 1
+    - nome: Sidônio Palmeira (Ministro-Chefe da Secretaria de Comunicação Social - SECOM)
+      n: 1
     locais_top:
-    - nome: Brasília/DF
-      n: 14
     - nome: Palácio do Planalto
+      n: 13
+    - nome: Brasília/DF
       n: 13
     - nome: São Paulo/SP
       n: 10
     - nome: Palácio do Planalto, Anexo II
-      n: 5
+      n: 7
     - nome: Belo Horizonte/MG
       n: 2
     - nome: São José dos Campos/SP
@@ -853,8 +857,22 @@ people:
       n: 1
     - nome: Esplanada dos Ministérios, Bloco D
       n: 1
-    ultimo: '2026-10-13'
+    ultimo: '2026-10-28'
     recentes:
+    - data: '2026-10-28'
+      hora: '17:30'
+      titulo: Sidônio Palmeira, Ministro-Chefe da Secretaria de Comunicação Social - SECOM
+      tipo: audiencia
+      local: Palácio do Planalto, Anexo II
+      participantes:
+      - nome: Sidônio Palmeira
+        entidade: Ministro-Chefe da Secretaria de Comunicação Social - SECOM
+    - data: '2026-10-28'
+      hora: '12:30'
+      titulo: Senador Chico Rodrigues - PSB/RR
+      tipo: audiencia
+      local: Palácio do Planalto, Anexo II
+      participantes: []
     - data: '2026-10-13'
       hora: '15:00'
       titulo: Cerimônia de Anúncio da Marca de 700 Mercados Abertos para o Agro Brasileiro
@@ -891,26 +909,8 @@ people:
       tipo: reuniao
       local: Registro/SP
       participantes: []
-    - data: '2026-09-16'
-      hora: '16:00'
-      titulo: Sanção do PL nº 2.780/2024, que institui a Política Nacional de Minerais Críticos, Estratégicos e Terras Raras
-      tipo: evento
-      local: Palácio do Planalto
-      participantes: []
-    - data: '2026-09-15'
-      hora: '11:00'
-      titulo: Sanção do Projeto de Lei nº 278/2026, que institui o Regime Especial de Tributação para Serviços de Datacenter
-        (Redata)
-      tipo: evento
-      local: Palácio do Planalto
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-07-31:
-      - hora: '14:00'
-        titulo: Sessão Solene de Posse dos novos Acadêmicos e Acadêmicas Titulares da Academia Brasileira de Medicina Veterinária
-        local: Brasília/DF
-      vice/2026-07-31-b1: []
       vice/2026-08-01: []
       vice/2026-08-01-b1: []
       vice/2026-08-02: []
@@ -1241,8 +1241,16 @@ people:
       vice/2026-10-26-b1: []
       vice/2026-10-27: []
       vice/2026-10-27-b1: []
-      vice/2026-10-28: []
+      vice/2026-10-28:
+      - hora: '12:30'
+        titulo: Senador Chico Rodrigues - PSB/RR
+        local: Palácio do Planalto, Anexo II
+      - hora: '17:30'
+        titulo: Sidônio Palmeira, Ministro-Chefe da Secretaria de Comunicação Social - SECOM
+        local: Palácio do Planalto, Anexo II
       vice/2026-10-28-b1: []
+      vice/2026-10-29: []
+      vice/2026-10-29-b1: []
 log:
 - 'br-p-luiz-inacio-lula-da-silva: 191 compromissos em 52 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 50 compromissos em 35 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 51 compromissos em 35 dias (0 dias não lidos)'

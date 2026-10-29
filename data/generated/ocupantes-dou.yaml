@@ -1,12 +1,12 @@
 # GERADO por etl/ocupantes_dou.py. Não edite à mão.
-generated_at: '2026-10-22T14:57:53'
+generated_at: '2026-10-29T16:24:27'
 fonte: Diário Oficial da União — busca pública www.in.gov.br/consulta (todas as seções), consulta pelo nome do cargo
 nota: 'Ocupante achado buscando o CARGO no DOU (o inverso de etl/posses.py, que busca o nome). started_at = dia da PUBLICAÇÃO do ato de nomeação/designação/recondução, não o da posse. Só entra quando o
   cargo citado no ato casa com o cargo do grafo em todos os termos significativos; confiança alta = cargo e órgão casam, média = só o cargo casa (órgão vindo da sigla ou da hierarquia do ato) ou a nomeação
   é interina. Ato de exoneração/dispensa posterior descarta a pessoa. Em reitoria e estatal, ato anterior a quatro anos e meio cai para média: é o mais recente do DOU, mas o mandato já venceu.'
 janela:
   de: '2018-01-01'
-  ate: '2026-10-22'
+  ate: '2026-10-29'
 positions:
   br-autoridade-nacional-de-seguranca-nuclear-diretor-presidente:
   - id: br-p-alessandro-facure-neves-de-salles-soares
@@ -1614,13 +1614,11 @@ nao_encontrados:
 - br-companhia-de-pesquisa-de-recursos-minerais-presidente
 - br-companhia-docas-do-ceara-presidente
 - br-companhia-docas-do-para-presidente
-- br-dataprev-dirigente
 - br-eletronuclear-s-a-presidente
 - br-empresa-brasileira-de-participacoes-em-energia-nuclear-e-binacional-s-a-presidente
 - br-empresa-de-trens-urbanos-de-porto-alegre-s-a-presidente
 - br-empresa-gerencial-de-projetos-navais-presidente
 - br-empresa-gestora-de-ativos-presidente
-- br-enap-dirigente
 - br-fundacao-habitacional-do-exercito-diretor-presidente
 - br-fundacao-osorio-diretor
 - br-grupo-hospitalar-conceicao-s-a-presidente
@@ -1631,7 +1629,6 @@ nao_encontrados:
 - br-secretaria-de-estrategias-e-redes-secretario
 - br-secretaria-de-gestao-e-inovacao-secretario
 - br-secretaria-de-integridade-publica-secretario
-- br-secretaria-de-politicas-e-programas-estrategicos-secretario
 - br-secretaria-de-relacoes-de-trabalho-secretario
 - br-secretaria-do-patrimonio-da-uniao-secretario
 - br-secretaria-executiva-ciencia-e-tecnologia-secretario
@@ -1727,12 +1724,6 @@ nao_encontrados_detalhe:
   consultas: 4
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-dataprev-dirigente
-  cargo: Presidente da Dataprev
-  tipo: estatal
-  consultas: 4
-  atos_lidos: 0
-  motivo: nenhum ato de nomeação citando o cargo
 - cargo_id: br-eletronuclear-s-a-presidente
   cargo: Presidente da Eletronuclear S.A
   tipo: estatal
@@ -1784,12 +1775,6 @@ nao_encontrados_detalhe:
 - cargo_id: br-veiculo-de-desestatizacao-mg-investimentos-s-a-presidente
   cargo: Presidente do Veículo de Desestatização MG Investimentos S.A.
   tipo: estatal
-  consultas: 4
-  atos_lidos: 0
-  motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-enap-dirigente
-  cargo: Presidente da Enap
-  tipo: fundacao
   consultas: 4
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
@@ -1853,12 +1838,6 @@ nao_encontrados_detalhe:
   consultas: 6
   atos_lidos: 0
   motivo: nenhum ato de nomeação citando o cargo
-- cargo_id: br-secretaria-de-politicas-e-programas-estrategicos-secretario
-  cargo: Secretário de Políticas e Programas Estratégicos do Ministério da Ciência, Tecnologia e Inovação
-  tipo: secretaria
-  consultas: 6
-  atos_lidos: 0
-  motivo: nenhum ato de nomeação citando o cargo
 - cargo_id: br-secretaria-de-relacoes-de-trabalho-secretario
   cargo: Secretário de Relações de Trabalho do Ministério da Gestão e da Inovação em Serviços Públicos
   tipo: secretaria
@@ -1876,7 +1855,7 @@ nao_encontrados_detalhe:
   tipo: secretaria
   consultas: 6
   atos_lidos: 60
-  motivo: cargo do ato (SECRETÁRIO EXECUTIVO, matrícula SIAPE nº 1655166, da função gratificad) não casa em todos os termos
+  motivo: cargo do ato (Diretora de Programa da Secretaria-Executiva do Ministério de Minas e ) não casa em todos os termos
 - cargo_id: br-secretaria-nacional-de-biodiversidade-florestas-e-direitos-animais-secretario
   cargo: Secretário Nacional de Biodiversidade, Florestas e Direitos Animais do Ministério do Meio Ambiente e Mudança do Clima
   tipo: secretaria
@@ -1896,17 +1875,15 @@ nao_encontrados_detalhe:
   atos_lidos: 1
   motivo: cargo do ato (Assessora Especial da Secretaria-Executiva da Secretaria de Relações I) não casa em todos os termos
 resumo:
-  cargos_alvo: 44
+  cargos_alvo: 39
   cargos_alvo_por_tipo:
     autarquia: 2
-    estatal: 22
-    fundacao: 3
-    reitoria: 6
-    secretaria: 11
-  cargos_processados: 44
+    estatal: 21
+    fundacao: 2
+    reitoria: 4
+    secretaria: 10
+  cargos_processados: 39
   resolvidos: 106
-  por_confianca:
-    alta: 2
-  por_tipo:
-    reitoria: 2
-  sem_ato: 42
+  por_confianca: {}
+  por_tipo: {}
+  sem_ato: 39
