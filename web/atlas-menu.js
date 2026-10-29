@@ -19,6 +19,25 @@
       + '&body=' + encodeURIComponent('Página: ' + url + '\nBloco com problema: \nO que está errado: \nFonte oficial com o dado certo (link): ');
   }
 
+  // Link de correção no fim de cada página solta (estados, quem publica, metodologia, dados, guia).
+  // A roda já tinha isso nos painéis e as páginas estáticas de órgão e de pessoa ganharam no build;
+  // faltavam justamente as páginas de texto, que são as que as pessoas mandam uma para a outra.
+  // Não entra na home: lá o "main" é a roda, e o painel já traz o seu próprio link.
+  function linkDeCorrecao() {
+    try {
+      if (isHome || document.querySelector('.corrigir')) return;
+      var m = document.querySelector('main');
+      if (!m) return;
+      var p = document.createElement('p');
+      p.className = 'corrigir';
+      p.style.cssText = 'font-size:13px;margin:34px 0 0';
+      var a = document.createElement('a');
+      a.href = corrigirHref(); a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = 'Viu um erro nesta página? Avise, com a fonte oficial ↗';
+      p.appendChild(a); m.appendChild(p);
+    } catch (e) {}
+  }
+
   var SECTIONS = [
     { h: 'Explorar', items: [
       { t: 'Roda do governo federal', d: 'Todos os órgãos, cargos e colegiados da União', href: u('/'), act: 'home' },
@@ -182,4 +201,5 @@
     var want = location.hash.slice(8); history.replaceState(null, '', location.pathname);
     setTimeout(function () { var t = document.getElementById('tab-' + want); if (t) { t.click(); t.scrollIntoView({ block: 'center' }); } }, 300);
   }
+  linkDeCorrecao();
 })();
