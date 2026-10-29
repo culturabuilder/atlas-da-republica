@@ -14,6 +14,9 @@ jobs:
           python-version: "3.12"
       - run: python -m venv .venv && .venv/bin/pip install pyyaml pillow
       - run: .venv/bin/python scripts/build_graph.py && .venv/bin/python scripts/build_site.py --base https://atlasdarepublica.org --cname atlasdarepublica.org
+        # Sem o segredo, o build não injeta contador nenhum: é o estado padrão.
+        env:
+          ATLAS_ANALYTICS_TOKEN: ${{ secrets.ATLAS_ANALYTICS_TOKEN }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

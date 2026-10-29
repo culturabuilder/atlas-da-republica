@@ -732,7 +732,7 @@ if _tm:
 _em = _load_yaml("emendas.yaml")
 emendas = None
 if _em:
-    emendas = {k: _em.get(k) for k in ("generated_at", "year", "por_ano", "por_tipo_ano", "ano_eleitoral", "autores_top", "coletivos_top", "municipios_por_habitante_top", "autores_sem_pessoa")}
+    emendas = {k: _em.get(k) for k in ("generated_at", "year", "por_ano", "por_tipo_ano", "ano_eleitoral", "autores_top", "coletivos_top", "municipios_por_habitante_top", "por_uf", "autores_sem_pessoa")}
     emendas["por_ano"] = {y: v for y, v in (emendas.get("por_ano") or {}).items() if int(y) >= 2014}
 _rn = _load_yaml("renuncias.yaml")
 renuncias = {k: _rn.get(k) for k in ("generated_at", "ano", "fonte", "fonte_url", "total", "por_funcao", "gastos_top", "compare", "nota")} if _rn else None
@@ -1271,6 +1271,87 @@ if _ap_p.exists():
     for pid, a in (_ap.get("people") or {}).items():
         if pid in people_index and a and not people_index[pid].get("agenda"):
             people_index[pid]["agenda"] = dict({k: v for k, v in a.items() if k != "dias"}, generated_at=str(_ap.get("generated_at") or "")[:10], janela_dias=_ap.get("janela_dias")); stats["agendas_pessoas"] = stats.get("agendas_pessoas", 0) + 1
+# ---- o que a Casa faz, somado (bloco "casa" na Câmara, no Senado e no Congresso)
+# Medido em 28/10/2026: o setor legislativo tinha 0,40 bloco por nó e 88% dos nós sem nenhum, contra
+# 2,76 e 19% do Executivo. Não era dado faltando — era dado pendurado na PESSOA e em nenhum lugar na
+# INSTITUIÇÃO: as duas casas mais procuradas do país eram as páginas mais vazias do Atlas. Aqui o que
+# já existe por parlamentar é somado na Casa, com a fonte e a data de cada parcela.
+def _mediana(xs):
+    xs = sorted(x for x in xs if isinstance(x, (int, float)))
+    if not xs: return None
+    m = len(xs) // 2
+    return float(xs[m]) if len(xs) % 2 else round((xs[m - 1] + xs[m]) / 2, 2)
+
+def _casa_bloco(casa, cargo_id):
+    """Soma o que se sabe dos parlamentares de uma Casa. casa: 'camara' ou 'senado'."""
+    pids = [q.get("id") for q in (nodes.get(cargo_id) or {}).get("people") or [] if q.get("id")]
+    if not pids: return None
+    reg = [people_index[i] for i in pids if i in people_index]
+    if not reg: return None
+    ativ = [r["activity"] for r in reg if (r.get("activity") or {}).get("house") == casa]
+    prop = [r["proposicoes"] for r in reg if (r.get("proposicoes") or {}).get("house") == casa]
+    gab = [r["gabinete"] for r in reg if r.get("gabinete")]
+    em_ano = str(_em.get("year") or "") if _em else ""
+    em = [(r.get("emendas") or {}).get("anos", {}).get(em_ano, {}).get("empenhado") for r in reg] if em_ano else []
+    em = [x for x in em if isinstance(x, (int, float))]
+    out = {"parlamentares": len(pids), "cargo_id": cargo_id}
+    if ativ:
+        out["votacoes"] = {"nominais": (_at or {}).get(f"{casa}_votacoes"), "pessoas": len(ativ),
+                           "mediana_pct": _mediana([a.get("pct") for a in ativ]),
+                           "janela": (ativ[0] or {}).get("window"),
+                           "fonte": "API de dados abertos da Câmara dos Deputados" if casa == "camara" else "API de dados abertos do Senado Federal",
+                           "generated_at": str((_at or {}).get("generated_at") or "")[:10]}
+    if prop:
+        out["proposicoes"] = {"pessoas": len(prop), "apresentadas": sum(x.get("apresentadas") or 0 for x in prop),
+                              "mediana_por_pessoa": _mediana([x.get("apresentadas") for x in prop]),
+                              "requerimentos": sum(x.get("requerimentos") or 0 for x in prop),
+                              "projetos": sum(x.get("projetos") or 0 for x in prop),
+                              "desde": str((_pp_ or {}).get("since") or "")[:10],
+                              "generated_at": str((_pp_ or {}).get("generated_at") or "")[:10]}
+    if gab:
+        fonte_g = _gb if casa == "camara" else _gs
+        chave_folha = "folha_mensal_estimada" if casa == "camara" else "folha_mensal"
+        _folha = _mediana([x.get(chave_folha) for x in gab])
+        out["gabinetes"] = {"pessoas": len(gab), "assessores_total": sum(x.get("assessores") or 0 for x in gab),
+                            "mediana_assessores": _mediana([x.get("assessores") for x in gab]),
+                            "subsidio_mensal": (fonte_g or {}).get("subsidio_mensal"),
+                            "fonte": (fonte_g or {}).get("fonte"), "generated_at": str((fonte_g or {}).get("generated_at") or "")[:10]}
+        # O Senado publica o tamanho da equipe e a cota, mas não a folha do gabinete: `folha_mensal`
+        # vem 0 nos 81. Mediana zero na tela seria dizer que o gabinete não custa nada — então aqui
+        # ela só entra quando existe, e a ausência é dita com estas palavras.
+        if _folha: out["gabinetes"]["mediana_folha_mensal"] = _folha
+        else: out["gabinetes"]["folha_nao_publicada"] = True
+        # cota do mandato: na Câmara vem do CEAP (etl/atividade.py); no Senado, do CEAPS por rubrica
+        _cota = [((r.get("activity") or {}).get("cota") or {}).get("total") for r in reg] if casa == "camara" else [x.get("cotas_total") for x in gab]
+        _cota = [x for x in _cota if isinstance(x, (int, float)) and x]
+        if _cota:
+            out["gabinetes"]["cota"] = {"pessoas": len(_cota), "total": round(sum(_cota), 2), "mediana": _mediana(_cota),
+                                        "rotulo": "cota parlamentar (CEAP)" if casa == "camara" else "cota para exercício da atividade parlamentar (CEAPS)"}
+    if em:
+        out["emendas"] = {"ano": em_ano, "pessoas": len(em), "empenhado": round(sum(em), 2),
+                          "mediana": _mediana(em), "generated_at": str((_em or {}).get("generated_at") or "")[:10]}
+    return out if len(out) > 2 else None
+
+_casas = {}
+for _nid, _casa, _cargo in (("br-camara-dos-deputados", "camara", "br-deputado-federal"),
+                            ("br-senado-federal", "senado", "br-senador")):
+    _bl = _casa_bloco(_casa, _cargo)
+    if _bl and _nid in nodes: nodes[_nid]["casa"] = _bl; _casas[_casa] = _bl
+# O Congresso Nacional não tem membro próprio: ele é a soma das duas Casas, e é assim que a página diz.
+if len(_casas) == 2 and "br-congresso-nacional" in nodes:
+    _c, _s = _casas["camara"], _casas["senado"]
+    _somar = lambda bl, ch, cp: (((_c.get(bl) or {}).get(cp) or 0) + ((_s.get(bl) or {}).get(cp) or 0)) or None
+    nodes["br-congresso-nacional"]["casa"] = {
+        "parlamentares": _c["parlamentares"] + _s["parlamentares"], "soma_de": ["br-camara-dos-deputados", "br-senado-federal"],
+        "proposicoes": {"apresentadas": _somar("proposicoes", None, "apresentadas"), "projetos": _somar("proposicoes", None, "projetos"),
+                        "requerimentos": _somar("proposicoes", None, "requerimentos"),
+                        "desde": (_c.get("proposicoes") or {}).get("desde"), "generated_at": (_c.get("proposicoes") or {}).get("generated_at")},
+        "gabinetes": {"assessores_total": _somar("gabinetes", None, "assessores_total"),
+                      "fonte": "Câmara dos Deputados e Senado Federal", "generated_at": (_c.get("gabinetes") or {}).get("generated_at")},
+        "emendas": {"ano": (_c.get("emendas") or {}).get("ano"), "empenhado": round(((_c.get("emendas") or {}).get("empenhado") or 0) + ((_s.get("emendas") or {}).get("empenhado") or 0), 2),
+                    "pessoas": _somar("emendas", None, "pessoas"), "generated_at": (_c.get("emendas") or {}).get("generated_at")}}
+stats["casas"] = {k: {"parlamentares": v["parlamentares"], "blocos": [x for x in ("votacoes", "proposicoes", "gabinetes", "emendas") if v.get(x)]} for k, v in _casas.items()}
+
 stats["sinais"] = {"pessoas": sum(1 for r in people_index.values() if r.get("sinais")), "por_tipo": dict(__import__("collections").Counter(x["tipo"] for r in people_index.values() for x in r.get("sinais") or []))}
 stats["omissao"] = (omissao or {}).get("summary"); stats["resumos"] = len(_rs); stats["historico_cargos"] = _hi_n; stats["colegiados_com_composicao"] = _cg_n; stats["orgaos_com_programas"] = _pg_n; stats["dirigentes"] = _di_n; stats["cargos_com_subsidio"] = _sb_n; stats["orgaos_com_transferencias"] = _tr_n; stats["segundo_escalao"] = _se_n; stats["atividade_pessoas"] = len(atividade)
 stats["people"] = len(people_index)
@@ -1396,7 +1477,7 @@ Atualizado em {stats['generated_at']}.
 
 graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao, "novidades": novidades, "falabr": falabr, "contratos": contratos, "sancoes": sancoes, "recebidos": recebidos, "transferencias": transferencias}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
-HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "composicao", "subsidio", "custo", "programas", "transferencias", "budget", "dou", "candidaturas", "sancoes", "contratos", "falabr", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
+HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "composicao", "subsidio", "custo", "programas", "transferencias", "budget", "dou", "candidaturas", "sancoes", "contratos", "falabr", "casa", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
 core_nodes = {}
 (OUT / "nodes").mkdir(exist_ok=True)

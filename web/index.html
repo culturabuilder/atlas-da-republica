@@ -1279,6 +1279,35 @@ function recebidosHtml(){
   ${(R.quem_recebeu||[]).length?`<h3>Quem mais recebeu</h3>${bars((R.quem_recebeu||[]).slice(0,12), x=>x.nome, x=>x.encontros, {fmt:(v,it)=>`${v} ${v===1?'encontro':'encontros'} · ${it.entidades} ${it.entidades===1?'entidade':'entidades'}`, link:x=>P[x.pessoa]?'#'+x.pessoa:null})}`:''}
   <p class="note">${esc(R.nota||'')} A classificação parte da junção com os ${(G.stats.nodes||0).toLocaleString('pt-BR')} órgãos do próprio Atlas, depois da razão social no nome. Fonte: ${esc(R.fonte||'')}, agenda lida em ${fmtDate(R.agenda_lida_em)}${R.janela_inicio?`, janela desde ${fmtDate(R.janela_inicio)}`:''}.</p></div>`;
 }
+function casaHtml(n){
+  // O que a Casa faz, somado. Em 28/10/2026 o nó da Câmara e o do Senado não tinham bloco nenhum:
+  // os 513 e os 81 estavam pendurados no CARGO, e a instituição ficava vazia. Cada número aqui é a
+  // soma ou a mediana do que já se sabe de cada parlamentar, com a fonte e a data de cada parcela.
+  const c=n.casa; if(!c) return '';
+  const st=(v,l)=>`<div class="stat"><div class="n">${v}</div><div class="l">${l}</div></div>`;
+  const num=v=>v==null?'—':v.toLocaleString('pt-BR');
+  const bl=[st(num(c.parlamentares), c.soma_de?'parlamentares nas duas Casas':'parlamentares em exercício')];
+  const v=c.votacoes, pr=c.proposicoes, g=c.gabinetes, em=c.emendas;
+  if(v&&v.mediana_pct!=null) bl.push(st(`${num(v.mediana_pct)}%`,`das ${num(v.nominais)} votações nominais do ano, no voto do parlamentar mediano`));
+  if(pr&&pr.apresentadas) bl.push(st(num(pr.apresentadas),'proposições apresentadas no ano'));
+  if(g&&g.assessores_total) bl.push(st(num(g.assessores_total),'pessoas nos gabinetes'));
+  if(em&&em.empenhado) bl.push(st(brl(em.empenhado),`em emendas empenhadas em ${esc(em.ano||'')}`));
+  const cota=g&&g.cota;
+  if(cota&&cota.total) bl.push(st(brl(cota.total),`de ${esc(cota.rotulo||'cota')} no ano`));
+  const fontes=[];
+  if(v&&v.fonte) fontes.push(`votações e presença no voto: ${esc(v.fonte)}, lido em ${fmtDate(v.generated_at)}`);
+  if(pr&&pr.generated_at) fontes.push(`proposições desde ${fmtDate(pr.desde)}, lidas em ${fmtDate(pr.generated_at)}`);
+  if(g&&g.fonte) fontes.push(`gabinetes: ${esc(g.fonte)}, lido em ${fmtDate(g.generated_at)}`);
+  if(em&&em.generated_at) fontes.push(`emendas: Portal da Transparência, lido em ${fmtDate(em.generated_at)}`);
+  return `<div class="card"><h2>O que a Casa faz, somado</h2>
+  <div class="om">${bl.join('')}</div>
+  ${pr&&pr.projetos!=null&&pr.requerimentos!=null?`<p style="font-size:13px;color:var(--ink-2);margin:2px 0 6px">Das proposições do ano, <b>${num(pr.projetos)}</b> são projetos e <b>${num(pr.requerimentos)}</b> são requerimentos. ${pr.mediana_por_pessoa!=null?`O parlamentar mediano apresentou <b>${num(pr.mediana_por_pessoa)}</b>.`:''}</p>`:''}
+  ${g&&g.mediana_assessores!=null?`<p style="font-size:13px;color:var(--ink-2);margin:2px 0 6px">O gabinete mediano tem <b>${num(g.mediana_assessores)}</b> pessoas${g.mediana_folha_mensal?` e folha mensal estimada de <b>${brl(g.mediana_folha_mensal)}</b>`:''}${cota&&cota.mediana?`, e a cota mediana no ano é de <b>${brl(cota.mediana)}</b>`:''}.</p>`:''}
+  ${g&&g.folha_nao_publicada?`<p class="note">O Senado publica o tamanho da equipe e a cota, mas não a folha de pagamento do gabinete: por isso não há valor de folha aqui, e não zero.</p>`:''}
+  ${c.soma_de?`<p class="note">O Congresso Nacional não tem membro próprio: estes números são a soma da Câmara e do Senado.</p>`:''}
+  ${v&&v.mediana_pct!=null?`<p class="note">"No voto do parlamentar mediano" é participação em votação nominal, não presença em sessão: a lista de presença de cada sessão não entra aqui.</p>`:''}
+  ${fontes.length?`<p class="note">Fonte: ${fontes.join(' · ')}.</p>`:''}</div>`;
+}
 function falabrOrgaoHtml(n){
   // Quando alguém pergunta algo a este órgão, ele responde? É o que o cidadão sente na pele.
   const f=n.falabr; if(!f||!f.pedidos) return '';
@@ -1456,6 +1485,7 @@ function renderNode(n){
     // R$ 110 bi apareciam a 72% da rolagem. Agora vem primeiro o que o órgão faz com o dinheiro
     // público, depois quem compõe e sua história, e por fim o controle.
     const SECOES = [
+      ['casa',       'O que a Casa faz',     casaHtml],
       ['orcamento',  'Orçamento',            programasHtml],
       ['composicao', 'Quem compõe',          composicaoHtml],
       ['historico',  'Quem ocupou',          historicoHtml],

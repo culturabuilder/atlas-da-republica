@@ -39,6 +39,10 @@ def main():
     UFS = {"ACRE":"AC","ALAGOAS":"AL","AMAZONAS":"AM","AMAPÁ":"AP","BAHIA":"BA","CEARÁ":"CE","DISTRITO FEDERAL":"DF","ESPÍRITO SANTO":"ES","GOIÁS":"GO","MARANHÃO":"MA","MINAS GERAIS":"MG","MATO GROSSO DO SUL":"MS","MATO GROSSO":"MT","PARÁ":"PA","PARAÍBA":"PB","PERNAMBUCO":"PE","PIAUÍ":"PI","PARANÁ":"PR","RIO DE JANEIRO":"RJ","RIO GRANDE DO NORTE":"RN","RONDÔNIA":"RO","RORAIMA":"RR","RIO GRANDE DO SUL":"RS","SANTA CATARINA":"SC","SERGIPE":"SE","SÃO PAULO":"SP","TOCANTINS":"TO"}
     mun_uf = {}  # código IBGE -> (nome normalizado, UF)
     by_year = collections.defaultdict(lambda: [0.0, 0.0]); by_type_year = collections.defaultdict(lambda: collections.defaultdict(float)); names = {}; mun_names = {}
+    # por estado: o CSV já diz a UF de cada pagamento, então agregar por UF é de graça. Serve à página
+    # "no seu estado", que antes não existia porque o conector jogava fora tudo o que não era top 15.
+    by_uf_year = collections.defaultdict(lambda: collections.defaultdict(lambda: [0.0, 0.0]))
+    muns_por_uf = collections.defaultdict(set)
     with z.open(name) as f:
         for r in csv.DictReader(io.TextIOWrapper(f, encoding="latin1"), delimiter=";"):
             ano = int(r["Ano da Emenda"]); emp = money(r["Valor Empenhado"]); pago = money(r["Valor Pago"]); a = r["Nome do Autor da Emenda"]; t = r["Tipo de Emenda"]
@@ -51,6 +55,10 @@ def main():
                     mun_uf[cod] = (norm(r["Município"]), r["UF"] if len(r["UF"]) == 2 else UFS.get(r["UF"].upper(), r["UF"]))
                     if ano >= Y - 3: by_author_mun[k][cod] += emp
                     by_mun_year[cod][ano] += emp
+                    _uf = mun_uf[cod][1]
+                    if _uf and len(_uf) == 2:
+                        by_uf_year[_uf][ano][0] += emp; by_uf_year[_uf][ano][1] += pago
+                        if ano >= Y - 3: muns_por_uf[_uf].add(cod)
     # pagamentos por ano/mês (arquivo por favorecido): permite comparar o mesmo período de anos diferentes
     fav = [n for n in z.namelist() if n.endswith("PorFavorecido.csv")]
     by_ym = collections.defaultdict(float); fav_mun = collections.defaultdict(lambda: collections.defaultdict(float)); fav_names = {}; fav_pj = collections.defaultdict(lambda: collections.defaultdict(float))
@@ -99,7 +107,24 @@ def main():
     import statistics
     voto_emenda = {"parlamentares": len(cross), "mediana_emendas_nos_top15_pct": round(statistics.median(x["emendas_nos_top15_pct"] for x in cross), 1) if cross else None,
                    "mediana_votos_top15_pct": round(statistics.median(x["top15_votos_pct"] for x in cross), 1) if cross else None, "acima_de_50_pct": sum(1 for x in cross if x["emendas_nos_top15_pct"] >= 50)}
-    out = {"generated_at": TODAY.isoformat(), "year": Y, "voto_emenda": voto_emenda, "por_ano": {str(y): {"empenhado": round(v[0], 2), "pago": round(v[1], 2)} for y, v in sorted(by_year.items())},
+    # população por UF, somando os municípios (código IBGE: os dois primeiros dígitos são o estado)
+    pop_uf = collections.defaultdict(int)
+    COD_UF = {"11":"RO","12":"AC","13":"AM","14":"RR","15":"PA","16":"AP","17":"TO","21":"MA","22":"PI","23":"CE","24":"RN","25":"PB",
+              "26":"PE","27":"AL","28":"SE","29":"BA","31":"MG","32":"ES","33":"RJ","35":"SP","41":"PR","42":"SC","43":"RS",
+              "50":"MS","51":"MT","52":"GO","53":"DF"}
+    for c, n_ in pop.items():
+        u = COD_UF.get(str(c)[:2])
+        if u: pop_uf[u] += n_
+    por_uf = {}
+    for u, anos in sorted(by_uf_year.items()):
+        reg = {"anos": {str(y): {"empenhado": round(v[0], 2), "pago": round(v[1], 2)} for y, v in sorted(anos.items()) if y >= Y - 4},
+               "municipios_alcancados": len(muns_por_uf.get(u, ())), "desde": Y - 3}
+        _emp = (anos.get(Y) or [0.0])[0]
+        if pop_uf.get(u):
+            reg["populacao"] = pop_uf[u]
+            reg["por_habitante"] = round(_emp / pop_uf[u], 2)
+        por_uf[u] = reg
+    out = {"generated_at": TODAY.isoformat(), "year": Y, "por_uf": por_uf, "voto_emenda": voto_emenda, "por_ano": {str(y): {"empenhado": round(v[0], 2), "pago": round(v[1], 2)} for y, v in sorted(by_year.items())},
            "por_tipo_ano": {str(y): {t: round(v, 2) for t, v in sorted(d.items(), key=lambda kv: -kv[1])} for y, d in sorted(by_type_year.items()) if y >= Y - 2},
            "ano_eleitoral": eleitoral, "autores_top": [{"autor": names[k], "person_id": parl.get(k), "empenhado": round(v, 2)} for k, v in top_now], "coletivos_top": [{"autor": names[k], "empenhado": round(v, 2)} for k, v in top_coletivos],
            "municipios_por_habitante_top": [{"codigo": c, "nome": mun_names.get(c, c), "empenhado": round(v, 2), "populacao": pop.get(c), "por_habitante": round(v / pop[c], 2)} for c, v in top_mun],

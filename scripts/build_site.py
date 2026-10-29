@@ -5,7 +5,7 @@ Sem framework: o mesmo web/index.html vira o template; cada página recebe <titl
 JSON-LD e o painel do nó já renderizado dentro de <noscript>/<div id="ssr"> para rastreadores.
 Uso: .venv/bin/python scripts/build_site.py [--base https://atlas.exemplo.br]
 """
-import json, pathlib, argparse, html, shutil, re, datetime
+import json, os, pathlib, argparse, html, shutil, re, datetime, urllib.parse
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ap = argparse.ArgumentParser(); ap.add_argument("--base", default="https://atlasdarepublica.org"); ap.add_argument("--prefix", default=""); ap.add_argument("--cname", default=""); ap.add_argument("--previa", action="store_true", help="prévia de testes: noindex, faixa de aviso, câmera em foco suave por padrão"); a = ap.parse_args()
 PREFIX = a.prefix.rstrip("/")
@@ -27,6 +27,24 @@ for f in ("atlas.js", "atlas.css", "atlas-camera.js", "atlas-menu.js"): shutil.c
 _cam_flags = '<script>window.ATLAS_PREVIA=true;window.ATLAS_CAMERA_DEFAULT="focus";</script>' if a.previa else ''
 tpl = tpl.replace(f'<script src="{PREFIX}/atlas.js" defer></script>', f'{_cam_flags}<script>window.ATLAS_PREFIX="{PREFIX}";</script><script src="{PREFIX}/atlas.js" defer></script><script src="{PREFIX}/atlas-camera.js" defer></script><script src="{PREFIX}/atlas-menu.js" defer></script>', 1)
 if a.previa: tpl = tpl.replace("<title>", '<meta name="robots" content="noindex,nofollow">\n<title>', 1)
+# ---- contagem de uso, sem cookie e sem identificador que atravesse visitas.
+# Por que existe: desde 16/10/2026 a decisão de cortar ou manter bloco é palpite, porque ninguém sabe o
+# que é usado. O desenho é copiado do politicometro.org, com uma diferença honesta: eles contam no
+# próprio servidor e podem dizer que não guardam endereço de internet; o Atlas é estático no GitHub
+# Pages e não tem servidor nosso, então a contagem é a do Cloudflare Web Analytics — sem cookie, sem
+# armazenamento no navegador e sem perfil, mas num terceiro, e isso está escrito na metodologia.
+# Sem o token configurado (ATLAS_ANALYTICS_TOKEN) NADA é carregado: é o estado padrão deste repositório.
+_an_token = (os.environ.get("ATLAS_ANALYTICS_TOKEN") or "").strip()
+_analytics = ""
+if _an_token and not a.previa:
+    _analytics = (
+        "<script>(function(){try{"
+        "if(navigator.doNotTrack==='1'||window.doNotTrack==='1'||navigator.globalPrivacyControl)return;"  # quem pede para não ser seguido não é contado
+        "var s=document.createElement('script');s.defer=true;"
+        "s.src='https://static.cloudflareinsights.com/beacon.min.js';"
+        "s.setAttribute('data-cf-beacon', JSON.stringify({token:" + json.dumps(_an_token) + "}));"
+        "document.head.appendChild(s);}catch(e){}})();</script>")
+    tpl = tpl.replace("</html>", _analytics + "\n</html>") if "</html>" in tpl else tpl + _analytics
 # atlas.css é pequeno: embutido para não bloquear a renderização com mais uma requisição
 for _form in (f'<link rel="stylesheet" href="{PREFIX}/atlas.css">', '<link rel="stylesheet" href="atlas.css">'):
     tpl = tpl.replace(_form, "<style>" + (ROOT / "web" / "atlas.css").read_text(encoding="utf-8") + "</style>", 1)
@@ -41,6 +59,21 @@ except Exception as e: print("aviso: roda não pré-renderizada:", e)
 REL = {"elege": "elege", "nomeia": "nomeia", "sabatina": "sabatina e aprova", "fiscaliza": "fiscaliza", "supervisiona": "supervisiona", "aconselha": "aconselha", "chefia": "chefia", "membro_nato": "é membro nato de", "integra": "integra", "indica": "indica"}
 TYPE_SCHEMA = {"department": "GovernmentOrganization", "elected": "GovernmentOrganization", "commission": "GovernmentOrganization", "advisory": "GovernmentOrganization", "dept_head": "Role", "constituency": "Organization"}
 esc = html.escape
+
+ISSUES = "https://github.com/culturabuilder/atlas-da-republica/issues/new"
+
+def reportar(url, nome, kind="página"):
+    """Link de correção com a página já preenchida.
+
+    A roda já tinha isto nos painéis, mas as 2.615 páginas estáticas — as que o buscador indexa, as que
+    abrem sem JavaScript e as que as pessoas compartilham — não tinham nenhum caminho para avisar de um
+    erro. A ideia de ter isso em cada página vem do politicometro.org, que põe "Reportar erro" e
+    "Direito de resposta" em cada crachá.
+    """
+    t = urllib.parse.quote(f"Correção: {nome}")
+    b = urllib.parse.quote(f"Página: {url}\nBloco com problema: \nO que está errado: \nFonte oficial com o dado certo (link): ")
+    return (f'<p class="corrigir" style="font-size:13px;margin:18px 0 0"><a href="{ISSUES}?title={t}&body={b}&labels=corre%C3%A7%C3%A3o" '
+            f'target="_blank" rel="noopener">Viu um erro nesta {kind}? Avise, com a fonte oficial ↗</a></p>')
 
 def brl(v):
     """Valor em reais, na mesma forma que a tela usa, para o HTML entregue casar com o que o app mostra."""
@@ -98,12 +131,24 @@ def page(n):
         _pct = _fb.get("pct_negado_ou_parcial")
         _pcts = f"{_pct:.1f}".replace(".", ",") if _pct is not None else ""
         fatos.append(f'<li><b>Pedidos de acesso à informação:</b> {_fb["pedidos"]}{(f", {_pcts}% negados ou concedidos em parte") if _pct is not None else ""}</li>')
+    _cs = n.get("casa") or {}
+    if _cs.get("parlamentares"):
+        _v, _pr, _g = _cs.get("votacoes") or {}, _cs.get("proposicoes") or {}, _cs.get("gabinetes") or {}
+        fatos.append(f'<li><b>Parlamentares:</b> {_cs["parlamentares"]}'
+                     + (f'; participação do parlamentar mediano em {_v["nominais"]} votações nominais do ano: '
+                        + f'{str(_v["mediana_pct"]).replace(".", ",")}%' if _v.get("mediana_pct") is not None else "") + '</li>')
+        if _pr.get("apresentadas"):
+            fatos.append(f'<li><b>Proposições apresentadas no ano:</b> {_pr["apresentadas"]}'
+                         + (f' ({_pr["projetos"]} projetos e {_pr["requerimentos"]} requerimentos)' if _pr.get("projetos") is not None else "") + '</li>')
+        if _g.get("assessores_total"):
+            fatos.append(f'<li><b>Pessoas nos gabinetes:</b> {_g["assessores_total"]}'
+                         + (f'; cota do ano: {esc(brl((_g.get("cota") or {}).get("total") or 0))}' if (_g.get("cota") or {}).get("total") else "") + '</li>')
     _tt = (n.get("agenda") or {})
     if _tt.get("compromissos_total"):
         fatos.append(f'<li><b>Compromissos na agenda pública:</b> {_tt["compromissos_total"]}</li>')
     bloco_fatos = ("<h2>Em números</h2><ul>" + "".join(fatos) + "</ul>") if fatos else ""
     ssr = f'''<div id="ssr"><article><h1>{esc(n["name"])}</h1><p>{esc(n.get("description") or "")}</p><p>Fonte legal: {esc(n.get("cite") or "")}</p>
-{bloco_fatos}{("<h2>Ocupantes</h2><ul>" + people + "</ul>") if people else ""}{("<h2>Órgãos integrados e vinculados</h2><ul>" + kids + "</ul>") if kids else ""}<h2>Relações</h2><ul>{"".join(rels)}</ul><p><a href="/">Atlas da República</a></p></article></div>'''
+{bloco_fatos}{("<h2>Ocupantes</h2><ul>" + people + "</ul>") if people else ""}{("<h2>Órgãos integrados e vinculados</h2><ul>" + kids + "</ul>") if kids else ""}<h2>Relações</h2><ul>{"".join(rels)}</ul>{reportar(url, n["name"], "página")}<p><a href="/">Atlas da República</a></p></article></div>'''
     og_img = f"{BASE}{PREFIX}/og/{n['id']}.png" if n["id"] in OG_IDS else f"{BASE}{PREFIX}/og/atlas.png"
     head = f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc)}">\n<link rel="canonical" href="{url}">\n<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{url}"><meta property="og:type" content="website"><meta property="og:image" content="{og_img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
     out = tpl.replace("<title>Atlas da República</title>\n", head, 1)
@@ -120,7 +165,7 @@ def person_page(p):
     if p.get("photo"): ld["image"] = f"{BASE}/img/{p['id']}.jpg"
     og_img = f"{BASE}{PREFIX}/og/{p['id']}.png" if p["id"] in OG_IDS else f"{BASE}{PREFIX}/og/atlas.png"
     head = f'<title>{esc(title)}</title>\n<meta name="description" content="{esc(desc[:300])}">\n<link rel="canonical" href="{url}">\n<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc[:300])}"><meta property="og:url" content="{url}"><meta property="og:type" content="profile"><meta property="og:image" content="{og_img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
-    ssr = f'<div id="ssr"><article><h1>{esc(p["name"])}</h1><p>{esc(p.get("party") or "")} {esc(p.get("uf") or "")}</p><h2>Cargos</h2><ul>{pos}</ul><p><a href="/">Atlas da República</a></p></article></div>'
+    ssr = f'<div id="ssr"><article><h1>{esc(p["name"])}</h1><p>{esc(p.get("party") or "")} {esc(p.get("uf") or "")}</p><h2>Cargos</h2><ul>{pos}</ul>{reportar(url, p["name"], "ficha")}<p><a href="/">Atlas da República</a></p></article></div>'
     out = tpl.replace("<title>Atlas da República</title>\n", head, 1).replace('<div id="content"></div>', '<div id="content"></div>' + ssr, 1)
     out = out.replace("select(location.hash.slice(1));", f"select(location.hash.slice(1) || {json.dumps(p['id'])});", 1)
     return out.replace('href="/br/', f'href="{PREFIX}/br/').replace('href="/"', f'href="{PREFIX}/"')
@@ -164,7 +209,7 @@ if _met.exists():
         _quadro = ""
     (site / "metodologia" / "index.html").write_text(_mt.replace("__ATUALIZACAO__", _quadro).replace("</html>", f'<script>window.ATLAS_PREFIX="{PREFIX}";</script><script src="{PREFIX}/atlas-menu.js" defer></script>\n</html>'), encoding="utf-8"); urls.append(f"{BASE}/metodologia/")
 OG_IDS = set()
-for _name in ("build_do_zero", "build_comparar", "build_novidades", "build_feeds", "build_dados", "build_og"):
+for _name in ("build_do_zero", "build_comparar", "build_quem_publica", "build_estados", "build_novidades", "build_feeds", "build_dados", "build_og"):
     if (ROOT / "scripts" / f"{_name}.py").exists():
         try:
             r = _mod(_name).build(site, PREFIX, BASE, G)

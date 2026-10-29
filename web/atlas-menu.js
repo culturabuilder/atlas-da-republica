@@ -9,13 +9,24 @@
   var isHome = !!document.getElementById('graph');
   var u = function (p) { return P + p; };
 
+  // A correção já vem com a página e o título de onde a pessoa está: antes era um issue em branco,
+  // e quem avisava tinha de descrever onde tinha visto o erro. Vale em qualquer página do site.
+  function corrigirHref() {
+    var url = '', tit = '';
+    try { url = String(location.href).split('#')[0] + (location.hash || ''); tit = (document.title || '').replace(/ · Atlas da Rep.*$/, ''); } catch (e) {}
+    return 'https://github.com/culturabuilder/atlas-da-republica/issues/new?labels=corre%C3%A7%C3%A3o'
+      + '&title=' + encodeURIComponent('Correção: ' + (tit || 'Atlas'))
+      + '&body=' + encodeURIComponent('Página: ' + url + '\nBloco com problema: \nO que está errado: \nFonte oficial com o dado certo (link): ');
+  }
+
   var SECTIONS = [
     { h: 'Explorar', items: [
       { t: 'Roda do governo federal', d: 'Todos os órgãos, cargos e colegiados da União', href: u('/'), act: 'home' },
       { t: 'Buscar', d: 'Órgão, cargo, pessoa, sigla ou combinação', act: 'busca', href: u('/') },
       { t: 'Do zero', d: 'O governo explicado em palavras simples, para quem nunca estudou isso', href: u('/do-zero/') },
       { t: 'Como funciona a República', d: 'Visita guiada de 9 minutos pela roda', href: u('/como-funciona/') },
-      { t: 'Comparar parlamentares', d: 'Rankings e comparação lado a lado', href: u('/comparar/') }
+      { t: 'Comparar parlamentares', d: 'Rankings e comparação lado a lado', href: u('/comparar/') },
+      { t: 'No seu estado', d: 'Quem representa o seu estado e quanto dinheiro federal chega lá', href: u('/estados/') }
     ] },
     { h: 'Acompanhar', items: [
       { t: 'O que mudou', d: 'Posses, saídas, sabatinas e a transição de 2027', act: 'tab:mudou', href: u('/') },
@@ -32,7 +43,9 @@
     ] },
     { h: 'Dados e método', items: [
       { t: 'O que mudou no Atlas', d: 'Fonte nova, tela nova e conserto, mudança por mudança', href: u('/novidades/') },
+      { t: 'Quem publica e quem não', d: 'Que órgão deixa ver o quê, e quem nega pedido de informação', href: u('/quem-publica/') },
       { t: 'Dados abertos', d: 'Planilhas e JSON de tudo que o site mostra, CC BY 4.0', href: u('/dados/') },
+      { t: 'Usar no seu assistente', d: 'Servidor MCP de leitura: o grafo dentro do Claude ou de outro assistente', href: u('/dados/#mcp') },
       { t: 'Metodologia', d: 'Fonte, regra e limite de cada bloco', href: u('/metodologia/') }
     ] },
     { h: 'A roda', items: [
@@ -41,7 +54,7 @@
       { t: 'O que significam anéis e formas', d: 'Convenções de leitura', act: 'legenda', home: true }
     ] },
     { h: 'Participar', items: [
-      { t: 'Corrigir um dado', d: 'Abre um issue com a página e o campo', href: 'https://github.com/culturabuilder/atlas-da-republica/issues/new?labels=correcao&title=Corre%C3%A7%C3%A3o%3A%20', ext: true },
+      { t: 'Corrigir um dado', d: 'Abre um pedido de correção já com esta página preenchida', href: corrigirHref(), ext: true },
       { t: 'Pedir o grafo do seu estado ou cidade', href: 'https://github.com/culturabuilder/atlas-da-republica/issues/new?title=Pe%C3%A7o%20um%20grafo%3A%20', ext: true },
       { t: 'Código e dados no GitHub', href: 'https://github.com/culturabuilder/atlas-da-republica', ext: true },
       { t: 'Projeto apartidário e aberto', d: 'Sem partido, sem ideologia, sem financiamento de campanha', href: u('/metodologia/') }

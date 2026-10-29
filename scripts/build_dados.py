@@ -176,6 +176,12 @@ ul{{padding-left:20px}} li{{margin:4px 0}}
     <thead><tr><th>Arquivo</th><th>Conteúdo</th><th>Linhas</th><th>Tamanho</th></tr></thead>
     <tbody>{rows}</tbody>
   </table></div>
+  <h2 id="mcp">Usar no seu assistente (MCP)</h2>
+  <p>O Atlas tem um servidor <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">MCP</a> de leitura: o assistente consulta o grafo e responde citando a fonte oficial de cada número. Ele lê os mesmos arquivos desta página, não tem chave, não escreve nada e não manda nada para lugar nenhum.</p>
+  <p>No Claude Code, uma linha:</p>
+  <pre>claude mcp add atlas -- python3 /caminho/do/repo/scripts/mcp_atlas.py</pre>
+  <p>Em qualquer outro cliente MCP, o mesmo comando como servidor <code>stdio</code>. O arquivo é <code>scripts/mcp_atlas.py</code> no <a href="https://github.com/culturabuilder/atlas-da-republica" target="_blank" rel="noopener">repositório</a>, em Python puro, sem dependência: dá para ler antes de rodar.</p>
+  <p>As seis ferramentas: <code>buscar</code> (órgão, cargo ou pessoa pelo nome ou sigla) · <code>ver_orgao</code> (norma que o cria, quem o chefia, orçamento, contratos, punições, pedidos de informação) · <code>ver_pessoa</code> (cargos, atividade, gabinete, emendas, patrimônio) · <code>quem_nomeia</code> (as relações legais, com a norma de cada uma) · <code>o_que_esta_parado</code> (medidas provisórias, vetos e CPIs com prazo) · <code>quem_publica</code> (taxa de negativa na Lei de Acesso).</p>
   <h2>Licença e citação</h2>
   <p>Os arquivos são publicados sob <a href="https://creativecommons.org/licenses/by/4.0/deed.pt-br" rel="license">Creative Commons Atribuição 4.0 Internacional (CC BY 4.0)</a>. Você pode copiar, redistribuir, transformar e usar para qualquer fim, inclusive comercial, desde que cite a fonte. Os dados de origem são públicos e pertencem aos órgãos que os publicam.</p>
   <p>Como citar:</p>

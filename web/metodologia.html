@@ -100,7 +100,10 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
       <li><a href="#segundo-escalao"><b>20</b><span>Segundo escalão</span></a></li>
       <li><a href="#fora"><b>21</b><span>O que fica de fora</span></a></li>
       <li><a href="#corrigir"><b>22</b><span>Como corrigir um erro</span></a></li>
-    </ol>
+      <li><a href="#casa"><b>22</b><span>O que a Casa faz</span></a></li>
+      <li><a href="#estados"><b>23</b><span>No seu estado</span></a></li>
+      <li><a href="#uso"><b>24</b><span>Contagem de uso</span></a></li>
+</ol>
   </header>
 
   <section id="estrutura">
@@ -406,6 +409,42 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
     </dl>
   </section>
 
+  <section id="casa">
+    <div class="eyebrow">Bloco 22</div>
+    <h2>O que a Casa faz, somado</h2>
+    <p>Na página da Câmara, do Senado e do Congresso Nacional, o que já se sabe de cada parlamentar aparece somado na instituição.</p>
+    <dl>
+      <dt>Fonte</dt><dd>As mesmas dos blocos por pessoa: APIs de dados abertos da Câmara e do Senado (votações nominais, proposições, equipe de gabinete), cota parlamentar (CEAP na Câmara, CEAPS no Senado) e Portal da Transparência (emendas).</dd>
+      <dt>Regra</dt><dd>Total é soma; "mediano" é mediana, não média, para um gabinete muito grande não puxar o número de todos. A participação é em <b>votação nominal</b>, não presença em sessão: a Câmara publica a lista de presença de cada sessão e o Senado não, então o Atlas usa para as duas Casas a única medida que existe nas duas, e diz qual é.</dd>
+      <dt>Atualização</dt><dd>Diária, junto com os blocos por pessoa.</dd>
+      <dt>Estimativa</dt><dd>A folha de gabinete da Câmara é estimativa (quantidade de funcionários × tabela de níveis). O Senado não publica folha de gabinete: ali não aparece valor nenhum, e não zero.</dd>
+    </dl>
+  </section>
+
+  <section id="estados">
+    <div class="eyebrow">Bloco 23</div>
+    <h2>No seu estado</h2>
+    <p>Uma página por unidade da federação: quem a representa no Congresso e quanto dinheiro federal chega ao estado e às suas prefeituras.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Bancada: composição oficial da Câmara e do Senado. Emendas: Portal da Transparência, pela UF do favorecido, empenhado e pago por ano. Transferências: Tesouro Nacional, separando o que vai ao governo estadual e o que vai às prefeituras. População: estimativa do IBGE.</dd>
+      <dt>Regra</dt><dd>"Empenhado" é compromisso assumido, "pago" é o que saiu do caixa; são do mesmo ano e não se somam. O valor por habitante usa a população estimada do estado, e a mediana ao lado é a dos 27, para o número ter com o que ser comparado.</dd>
+      <dt>Atualização</dt><dd>Diária.</dd>
+      <dt>Limite</dt><dd>Emenda paga a favorecido sediado em Brasília entra no Distrito Federal, mesmo quando a obra é em outro lugar: é assim que a fonte publica, e o Atlas não redistribui por conta própria. A diferença de valor por habitante entre estados não é erro nem denúncia: emenda é escolhida por parlamentar, não repartida por população.</dd>
+    </dl>
+  </section>
+
+  <section id="uso">
+    <div class="eyebrow">Bloco 24</div>
+    <h2>Contagem de uso</h2>
+    <p>Desde 29/10/2026 o Atlas conta quantas pessoas abrem cada página, para saber o que é usado e o que não é. Sem isso, decidir o que cortar ou melhorar é palpite.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Cloudflare Web Analytics, carregado como script na página. O Atlas é um site estático: não há servidor nosso para contar.</dd>
+      <dt>Regra</dt><dd>Sem cookie, sem nada guardado no seu navegador, sem login e sem perfil. Não há identificador que atravesse visitas, nem cruzamento com outro site. Quem tem "não rastrear" ou "controle global de privacidade" ligado no navegador não é contado: o script nem é carregado.</dd>
+      <dt>O que não dá para esconder</dt><dd>A Cloudflare é um terceiro e recebe o endereço de internet da requisição, como qualquer servidor recebe ao entregar uma página; ela não o mostra no painel e o Atlas não tem acesso a ele. Se isso não serve para você, o bloqueio no navegador resolve e o site funciona igual.</dd>
+      <dt>Limite</dt><dd>Esses números nunca viram ranking de pessoa nem de órgão, e nunca entram em nenhum bloco do site como dado sobre alguém. Servem para decidir o que o Atlas mostra.</dd>
+    </dl>
+  </section>
+
   <section id="fora">
     <div class="eyebrow">Bloco 21</div>
     <h2>O que fica de fora</h2>
@@ -423,9 +462,10 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
   </section>
 
   <section id="corrigir">
-    <div class="eyebrow">Bloco 22</div>
+    <div class="eyebrow">Bloco 25</div>
     <h2>Como corrigir um erro</h2>
-    <p>Abra um issue em <a href="https://github.com/culturabuilder/atlas-da-republica/issues/new">https://github.com/culturabuilder/atlas-da-republica/issues/new</a>. Informe a página, o dado errado e, se possível, a fonte oficial com o dado certo. Correções de estrutura e de ocupantes entram no YAML curado com a citação; correções de dados derivados entram no código do conector.</p>
+    <p>Toda página do site tem, no fim, <b>"Viu um erro nesta página? Avise"</b>: o link abre um pedido de correção já com o endereço da página preenchido. O menu também tem "Corrigir um dado", que faz o mesmo de onde você estiver. Informe o dado errado e, se possível, a fonte oficial com o dado certo.</p>
+    <p>Sem isso, abra um issue em <a href="https://github.com/culturabuilder/atlas-da-republica/issues/new">https://github.com/culturabuilder/atlas-da-republica/issues/new</a>. Correções de estrutura e de ocupantes entram no YAML curado com a citação; correções de dados derivados entram no código do conector.</p>
     <p>Os arquivos usados nesta página estão em <a href="__PREFIX__/dados/">Dados</a>, sob licença CC BY 4.0. A área educativa <a href="__PREFIX__/como-funciona/">Como funciona a República</a> explica a roda passo a passo.</p>
   </section>
 

@@ -10,7 +10,8 @@ const { chromium } = require('playwright');
 // os 30s padrão do Playwright — 65 deles aqui davam mais de meia hora, e o eval agendado batia
 // no limite de 60 minutos sem terminar. Passado o teto a página já está desenhada; seguir é certo.
 const BASE = process.argv[2] || 'http://localhost:8767';
-const PAGINAS = ['/', '/dados/', '/metodologia/', '/comparar/', '/do-zero/', '/como-funciona/', '/novidades/'];
+const PAGINAS = ['/', '/dados/', '/metodologia/', '/comparar/', '/do-zero/', '/como-funciona/', '/novidades/',
+                 '/quem-publica/', '/estados/', '/estados/sp/', '/estados/ac/'];
 const LARGURAS = [360, 390, 520, 768];
 (async () => {
   const b = await chromium.launch();
