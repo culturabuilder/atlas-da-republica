@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-29'
+generated_at: '2026-10-30'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-01'
+janela_inicio: '2026-08-02'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -26,9 +26,9 @@ people:
       n: 12
     - nome: Miriam Belchior (Ministra da Casa Civil)
       n: 9
-    - nome: Mauro Vieira (Ministro das Relações Exteriores)
-      n: 4
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
+      n: 4
+    - nome: Mauro Vieira (Ministro das Relações Exteriores)
       n: 3
     - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
       n: 2
@@ -64,7 +64,7 @@ people:
     ultimo: '2026-10-29'
     recentes:
     - data: '2026-10-29'
-      hora: '15:00'
+      hora: '16:00'
       titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
       tipo: audiencia
       local: Palácio da Alvorada
@@ -72,7 +72,7 @@ people:
       - nome: Oswaldo Malatesta
         entidade: Chefe do Gabinete Pessoal do Presidente da República
     - data: '2026-10-29'
-      hora: '10:30'
+      hora: '12:00'
       titulo: Ministra da Casa Civil, Miriam Belchior
       tipo: audiencia
       local: Palácio da Alvorada
@@ -80,13 +80,13 @@ people:
       - nome: Miriam Belchior
         entidade: Ministra da Casa Civil
     - data: '2026-10-29'
-      hora: 09:30
-      titulo: Ministro das Relações Exteriores, Mauro Vieira
+      hora: '11:00'
+      titulo: Ministro da Secretaria de Comunicação Social, Sidônio Palmeira
       tipo: audiencia
       local: Palácio da Alvorada
       participantes:
-      - nome: Mauro Vieira
-        entidade: Ministro das Relações Exteriores
+      - nome: Sidônio Palmeira
+        entidade: Ministro da Secretaria de Comunicação Social
     - data: '2026-10-27'
       hora: '15:30'
       titulo: Ministro da Secretaria de Comunicação Social, Sidônio Palmeira, e Secretário de Imprensa da Secretaria de Comunicação
@@ -127,7 +127,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-08-01: []
       presidente/2026-08-02: []
       presidente/2026-08-03:
       - hora: '10:00'
@@ -805,15 +804,16 @@ people:
         local: Palácio da Alvorada
       presidente/2026-10-28: []
       presidente/2026-10-29:
-      - hora: 09:30
-        titulo: Ministro das Relações Exteriores, Mauro Vieira
+      - hora: '11:00'
+        titulo: Ministro da Secretaria de Comunicação Social, Sidônio Palmeira
         local: Palácio da Alvorada
-      - hora: '10:30'
+      - hora: '12:00'
         titulo: Ministra da Casa Civil, Miriam Belchior
         local: Palácio da Alvorada
-      - hora: '15:00'
+      - hora: '16:00'
         titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
         local: Palácio da Alvorada
+      presidente/2026-10-30: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -911,8 +911,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-08-01: []
-      vice/2026-08-01-b1: []
       vice/2026-08-02: []
       vice/2026-08-02-b1: []
       vice/2026-08-03:
@@ -1251,6 +1249,8 @@ people:
       vice/2026-10-28-b1: []
       vice/2026-10-29: []
       vice/2026-10-29-b1: []
+      vice/2026-10-30: []
+      vice/2026-10-30-b1: []
 log:
 - 'br-p-luiz-inacio-lula-da-silva: 191 compromissos em 52 dias (0 dias não lidos)'
 - 'br-p-geraldo-alckmin: 51 compromissos em 35 dias (0 dias não lidos)'

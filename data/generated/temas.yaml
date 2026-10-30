@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-10-29'
+generated_at: '2026-10-30'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,7 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-07-27': 131
+      '2026-07-27': 85
       '2026-08-03': 249
       '2026-08-10': 240
       '2026-08-17': 364
@@ -29,22 +29,11 @@ temas:
       '2026-10-05': 3172
       '2026-10-12': 1098
       '2026-10-19': 1687
-      '2026-10-26': 876
-    total_90d: 12925
-    last7: 1774
+      '2026-10-26': 1031
+    total_90d: 13034
+    last7: 1716
     peak_week: 3172
   processes:
-  - casa: camara
-    id: PEC 3/2021
-    ementa: Altera os arts. 14, 27, 53, 102 e 105 da Constituição Federal, para dispor sobre as prerrogativas parlamentares
-      e dá outras providências.
-    situation: Arquivada
-    last_move: '2025-09-17'
-    organ: MESA
-    closed: true
-    outcome: Arquivada
-    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2270800
-    requested: PEC 3/2021 (camara)
   - casa: senado
     id: PEC 3/2021
     ementa: Altera os arts. 53 e 102 da Constituição Federal, para dispor sobre as prerrogativas parlamentares.
@@ -67,7 +56,7 @@ temas:
   - cpi do master
   - vorcaro
   curated: cpmi-banco-master-2026
-  news_hits: 151
+  news_hits: 155
   news_weekly:
     '2026-09-14': 29
     '2026-09-21': 44
@@ -75,7 +64,7 @@ temas:
     '2026-10-05': 22
     '2026-10-12': 25
     '2026-10-19': 9
-    '2026-10-26': 9
+    '2026-10-26': 13
   news_recent:
   - id: bd7864e2c474bfa2
     title: '''Fingindo demência'': diretora do BRB alertou para R$ 1,1 bilhão em créditos atrasados, diz PF'
@@ -85,24 +74,24 @@ temas:
     title: Ex-presidente do BRB pressionou por compras de carteiras do Master mesmo após alertas, diz PF
     date: '2026-10-29'
     publication: g1 Política
-  - id: d3f3c56e058c8d17
-    title: 'Caso Master: veja os nomes e as condutas dos 15 indiciados no relatório da PF; lista inclui Vorcaro e ex-presidente
-      do BRB'
-    date: '2026-10-28'
+  - id: 4b37cfd8b8ea316a
+    title: Defesa diz que arquivos de celular de Vorcaro foram modificados após apreensão e questiona provas de investigação
+    date: '2026-10-29'
     publication: g1 Política
-  - id: 5260caba22131c67
-    title: Diretoria do BRB foi alertada sobre falhas em 90% de carteira do Master em 2024, diz relatório da PF
-    date: '2026-10-28'
+  - id: 785454bf7473e155
+    title: Fachin decide devolver investigação do INSS a Mendonça; presidente do STF mantém sob sua responsabilidade caso
+      Master
+    date: '2026-10-29'
     publication: g1 Política
-  - id: 09afefe4b8592303
-    title: 'Caso Master: PF indicia Vorcaro, ex-presidente do BRB e mais 13 em inquérito principal'
-    date: '2026-10-28'
+  - id: d84d0315af654ec3
+    title: 'Vorcaro nega danos ao BRB e diz que rombo bilionário foi causado pela investigação: ''Banco vive de credibilidade'''
+    date: '2026-10-29'
     publication: g1 Política
   wikipedia:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-07-27': 244
+      '2026-07-27': 197
       '2026-08-03': 427
       '2026-08-10': 484
       '2026-08-17': 420
@@ -115,24 +104,13 @@ temas:
       '2026-10-05': 5535
       '2026-10-12': 4756
       '2026-10-19': 4026
-      '2026-10-26': 1724
-    total_90d: 57443
-    last7: 4031
+      '2026-10-26': 2151
+    total_90d: 57823
+    last7: 3929
     peak_week: 10630
-  processes:
-  - casa: camara
-    id: RCP 1/2026
-    ementa: Requer a criação de Comissão Parlamentar de Inquérito para investigar as fraudes financeiras ocorridas na relação
-      entre o Banco Master e o Banco Regional de Brasília – BRB.
-    situation: Aguardando Despacho do Presidente da Câmara dos Deputados
-    last_move: '2026-07-20'
-    organ: MESA
-    closed: false
-    outcome: null
-    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
-    requested: RCP 1/2026 (camara)
-  state: parado
-  stalled_days: 101
+  processes: []
+  state: sem_processo
+  stalled_days: null
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -144,15 +122,20 @@ temas:
   - fim da escala
   - jornada 6x1
   curated: null
-  news_hits: 150
+  news_hits: 151
   news_weekly:
     '2026-09-14': 3
     '2026-09-28': 3
     '2026-10-05': 41
     '2026-10-12': 92
     '2026-10-19': 9
-    '2026-10-26': 2
+    '2026-10-26': 3
   news_recent:
+  - id: f45590ab895cdd11
+    title: 'É #FAKE que governo federal recuou sobre fim da escala 6x1 após vitória de Lula no segundo turno das eleições
+      2026'
+    date: '2026-10-29'
+    publication: g1 Política
   - id: 09d19fd3d5d67012
     title: 'O quarto mandato de Lula: vitória nas urnas e futuro do governo - O Assunto #1833'
     date: '2026-10-27'
@@ -169,15 +152,11 @@ temas:
     title: 'Quaest: fim da escala 6x1 e Caso Master tiveram maior impacto no voto para presidente no 1º turno'
     date: '2026-10-23'
     publication: g1 Política
-  - id: fb9f0d00a2fe2f7b
-    title: 'Datafolha: para 59%, o fim da escala de trabalho 6x1 é positiva para a vida pessoal'
-    date: '2026-10-23'
-    publication: g1 Política
   wikipedia:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-07-27': 119
+      '2026-07-27': 86
       '2026-08-03': 243
       '2026-08-10': 276
       '2026-08-17': 368
@@ -190,34 +169,12 @@ temas:
       '2026-10-05': 3170
       '2026-10-12': 10778
       '2026-10-19': 2158
-      '2026-10-26': 403
-    total_90d: 23093
-    last7: 858
+      '2026-10-26': 460
+    total_90d: 23117
+    last7: 750
     peak_week: 10778
-  processes:
-  - casa: camara
-    id: PEC 8/2025
-    ementa: Dá nova redação ao inciso XIII, do artigo 7° da Constituição Federal para dispor sobre a redução da jornada de
-      trabalho para quatro dias por semana no Brasil.
-    situation: Arquivada
-    last_move: '2026-05-27'
-    organ: MESA
-    closed: true
-    outcome: Arquivada
-    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2485341
-    requested: PEC 8/2025 (camara)
-  - casa: camara
-    id: PEC 221/2019
-    ementa: Altera o Art. 7º inciso XII da constituição Federal, reduzindo a jornada de trabalho a 36 horas semanais em 10
-      anos.
-    situation: Transformado em Norma Jurídica
-    last_move: '2026-10-16'
-    organ: MESA
-    closed: true
-    outcome: Transformado em Norma Jurídica
-    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2233802
-    requested: PEC 221/2019 (camara)
-  state: encerrado
+  processes: []
+  state: sem_processo
   stalled_days: null
   silence_after_peak: false
   silent_and_stalled: false
@@ -243,7 +200,7 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-07-27': 18
+      '2026-07-27': 13
       '2026-08-03': 33
       '2026-08-10': 29
       '2026-08-17': 55
@@ -256,10 +213,10 @@ temas:
       '2026-10-05': 43
       '2026-10-12': 29
       '2026-10-19': 70
-      '2026-10-26': 107
-    total_90d: 825
-    last7: 146
-    peak_week: 121
+      '2026-10-26': 129
+    total_90d: 842
+    last7: 156
+    peak_week: 129
   processes:
   - casa: camara
     id: PL 1087/2025
@@ -296,15 +253,19 @@ temas:
   - pl da dosimetria
   - pl da anistia
   curated: null
-  news_hits: 11
+  news_hits: 12
   news_weekly:
     '2026-09-14': 1
     '2026-09-28': 1
     '2026-10-05': 4
     '2026-10-12': 2
     '2026-10-19': 2
-    '2026-10-26': 1
+    '2026-10-26': 2
   news_recent:
+  - id: ddfbc006ddcf003c
+    title: Rui Costa questiona articulação a favor de Alcolumbre que prevê anistia ou indulto a Jair Bolsonaro
+    date: '2026-10-29'
+    publication: g1 Política
   - id: fc28e409636e2f6f
     title: Aliado de Lula, presidente da CCJ defende anistia pelo 8 de janeiro e admite conversas com Alcolumbre
     date: '2026-10-28'
@@ -321,10 +282,6 @@ temas:
   - id: 016335c8775ee421
     title: Campanha de Flávio Bolsonaro realiza manifestação na Paulista
     date: '2026-10-18'
-    publication: Agência Brasil
-  - id: 3a0c69c9c13c0da5
-    title: Em sabatina, Flávio não explica propostas e faz acusações sem provas
-    date: '2026-10-17'
     publication: Agência Brasil
   wikipedia:
     article: Ataques_de_8_de_janeiro_de_2023
@@ -367,7 +324,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 174
+  stalled_days: 175
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -445,7 +402,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1233
+  stalled_days: 1234
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -487,7 +444,7 @@ temas:
     article: Precatório
     url: https://pt.wikipedia.org/wiki/Precatório
     weekly:
-      '2026-07-27': 21
+      '2026-07-27': 15
       '2026-08-03': 25
       '2026-08-10': 33
       '2026-08-17': 30
@@ -500,9 +457,9 @@ temas:
       '2026-10-05': 61
       '2026-10-12': 87
       '2026-10-19': 59
-      '2026-10-26': 29
-    total_90d: 730
-    last7: 55
+      '2026-10-26': 34
+    total_90d: 729
+    last7: 53
     peak_week: 112
   processes:
   - casa: camara
@@ -573,7 +530,7 @@ temas:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-07-27': 105
+      '2026-07-27': 80
       '2026-08-03': 191
       '2026-08-10': 202
       '2026-08-17': 255
@@ -586,9 +543,9 @@ temas:
       '2026-10-05': 1023
       '2026-10-12': 754
       '2026-10-19': 903
-      '2026-10-26': 543
-    total_90d: 5781
-    last7: 1108
+      '2026-10-26': 654
+    total_90d: 5867
+    last7: 1095
     peak_week: 1023
   processes:
   - casa: camara
