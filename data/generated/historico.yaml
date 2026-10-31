@@ -1,22 +1,22 @@
 # GERADO por etl/historico.py. Não edite à mão.
-generated_at: '2026-10-30T15:51:04Z'
+generated_at: '2026-10-31T15:15:44Z'
 fonte: wikidata.org — P39 (cargo ocupado) com qualificadores P580/P582/P585/P1365/P1366/P2868 via busca haswbstatement; ou
   P488/P169/P1037 no item do órgão (rota org_item); desde 1985
 resumo:
-  cargos_com_historico: 63
+  cargos_com_historico: 62
   cargos_por_rota:
     busca: 8
-    mapa: 42
+    mapa: 41
     org_item: 6
     override: 7
   cargos_sem_qid: 80
-  cargos_vazios_no_wikidata: 8
+  cargos_vazios_no_wikidata: 9
   qids_invalidos: {}
-  mandatos: 551
-  mandatos_com_inicio_e_fim: 475
-  mandatos_sem_data: 181
-  mediana_geral_dias: 546
-  atualizados: 21
+  mandatos: 548
+  mandatos_com_inicio_e_fim: 470
+  mandatos_sem_data: 158
+  mediana_geral_dias: 553
+  atualizados: 20
   sem_qid:
     - br-ana-diretor
     - br-ana-dirigente
@@ -100,8 +100,9 @@ resumo:
     - br-tribunal-superior-do-trabalho-presidente
   vazios:
     - br-ipea-dirigente
-    - br-ministro-chefe-casa-civil
-    - br-supremo-tribunal-federal-ministro
+    - br-ministro-de-estado-da-fazenda
+    - br-ministro-de-estado-da-integracao-e-do-desenvolvimento-regional
+    - br-ministro-de-estado-da-pesca-e-aquicultura
     - br-agencia-espacial-brasileira-dirigente
     - br-anp-dirigente
     - br-procurador-geral-da-fazenda-nacional
@@ -1538,6 +1539,165 @@ cargos:
     ocupante_atual_no_wikidata: false
     sem_data_n: 0
     sem_data: []
+  br-ministro-chefe-casa-civil:
+    qid: Q5097042
+    rota: mapa
+    nome: Ministro de Estado Chefe da Casa Civil
+    ocupantes: 10
+    mandatos_n: 11
+    mediana_dias: 482
+    mandatos:
+      - qid: Q2421842
+        nome: Marco Maciel
+        inicio: '1986-02-14'
+        fim: '1987-04-30'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1940-07-21'
+        morte: '2021-06-12'
+        dias: 440
+        presidente: José Sarney
+        papel: null
+      - qid: Q1791320
+        nome: José Dirceu
+        inicio: '2003-01-01'
+        fim: '2005-06-21'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1946-03-16'
+        morte: null
+        dias: 902
+        presidente: Lula
+        papel: null
+      - qid: Q40722
+        nome: Dilma Rousseff
+        inicio: '2005-06-21'
+        fim: '2006-12-31'
+        interino: false
+        substituiu: Q1791320
+        substituido_por: Q40722
+        nascimento: '1947-12-14'
+        morte: null
+        dias: 558
+        presidente: Lula
+        papel: null
+      - qid: Q40722
+        nome: Dilma Rousseff
+        inicio: '2007-01-01'
+        fim: '2010-12-31'
+        interino: false
+        substituiu: Q40722
+        substituido_por: Q5385616
+        nascimento: '1947-12-14'
+        morte: null
+        dias: 1460
+        presidente: Lula
+        papel: null
+      - qid: Q457757
+        nome: Gleisi Hoffmann
+        inicio: '2011-06-08'
+        fim: '2014-02-02'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1965-09-06'
+        morte: null
+        dias: 970
+        presidente: Dilma Rousseff
+        papel: null
+      - qid: Q6159407
+        nome: Jaques Wagner
+        inicio: '2015-10-02'
+        fim: '2016-03-16'
+        interino: false
+        substituiu: Q3820720
+        substituido_por: Q37181
+        nascimento: '1951-03-16'
+        morte: null
+        dias: 166
+        presidente: Dilma Rousseff
+        papel: null
+      - qid: Q10341050
+        nome: Onyx Lorenzoni
+        inicio: '2019-01-01'
+        fim: '2020-02-18'
+        interino: false
+        substituiu: Q10271950
+        substituido_por: Q49323012
+        nascimento: '1954-10-03'
+        morte: null
+        dias: 413
+        presidente: Jair Bolsonaro
+        papel: null
+      - qid: Q49323012
+        nome: Braga Netto
+        inicio: '2020-02-18'
+        fim: '2021-03-29'
+        interino: false
+        substituiu: Q10341050
+        substituido_por: Q64682549
+        nascimento: '1957-03-11'
+        morte: null
+        dias: 405
+        presidente: Jair Bolsonaro
+        papel: null
+      - qid: Q64682549
+        nome: Luiz Eduardo Ramos
+        inicio: '2021-03-29'
+        fim: '2021-07-26'
+        interino: false
+        substituiu: Q49323012
+        substituido_por: Q15985219
+        nascimento: '1956-06-12'
+        morte: null
+        dias: 119
+        presidente: Jair Bolsonaro
+        papel: null
+      - qid: Q15985219
+        nome: Ciro Nogueira
+        inicio: '2021-07-26'
+        fim: '2023-01-01'
+        interino: false
+        substituiu: Q64682549
+        substituido_por: Q10365240
+        nascimento: '1968-11-21'
+        morte: null
+        dias: 524
+        presidente: Jair Bolsonaro
+        papel: null
+      - qid: Q10365240
+        nome: Rui Costa
+        inicio: '2023-01-01'
+        fim: null
+        interino: false
+        substituiu: Q15985219
+        substituido_por: null
+        nascimento: '1963-01-18'
+        morte: null
+        dias: null
+        presidente: Lula
+        papel: null
+    por_presidente:
+      José Sarney: 1
+      Lula: 4
+      Dilma Rousseff: 2
+      Jair Bolsonaro: 4
+    ocupante_atual: Miriam Belchior
+    wikidata_mais_recente: Rui Costa
+    wikidata_atualizado: false
+    ocupante_atual_no_wikidata: false
+    sem_data_n: 4
+    sem_data:
+      - qid: Q603993
+        nome: Antonio Palocci
+      - qid: Q10390370
+        nome: Victor Nunes Leal
+      - qid: Q16930194
+        nome: José Monteiro de Castro
+      - qid: Q5385616
+        nome: Erenice Guerra
   br-ministro-chefe-gabinete-de-seguranca-institucional:
     qid: Q99236096
     rota: mapa
@@ -2632,289 +2792,6 @@ cargos:
         nome: Hugo Napoleão do Rego Neto
       - qid: Q10336623
         nome: Ney Braga
-  br-ministro-de-estado-da-fazenda:
-    qid: Q18176438
-    rota: override
-    nome: Ministro de Estado da Fazenda
-    ocupantes: 14
-    mandatos_n: 15
-    mediana_dias: 315
-    mandatos:
-      - qid: Q5861550
-        nome: Ernane Galvêas
-        inicio: '1980-01-17'
-        fim: '1985-03-15'
-        interino: false
-        substituiu: Q10334302
-        substituido_por: Q10270754
-        nascimento: '1922-10-01'
-        morte: '2022-06-23'
-        dias: 1884
-        presidente: null
-        papel: null
-      - qid: Q8962336
-        nome: Francisco Dornelles
-        inicio: '1985-03-15'
-        fim: '1985-08-26'
-        interino: false
-        substituiu: null
-        substituido_por: Q8559941
-        nascimento: '1935-01-07'
-        morte: '2023-08-23'
-        dias: 164
-        presidente: José Sarney
-        papel: null
-      - qid: Q16337543
-        nome: Gustavo Krause
-        inicio: '1992-10-02'
-        fim: '1992-12-16'
-        interino: false
-        substituiu: Q6758601
-        substituido_por: Q10346779
-        nascimento: '1946-06-19'
-        morte: null
-        dias: 75
-        presidente: Itamar Franco
-        papel: null
-      - qid: Q230578
-        nome: Fernando Henrique Cardoso
-        inicio: '1993-05-19'
-        fim: '1994-03-30'
-        interino: false
-        substituiu: Q8774932
-        substituido_por: Q9070985
-        nascimento: '1931-06-18'
-        morte: null
-        dias: 315
-        presidente: Itamar Franco
-        papel: null
-      - qid: Q744798
-        nome: Ciro Gomes
-        inicio: '1994-09-06'
-        fim: '1995-01-01'
-        interino: false
-        substituiu: Q9070985
-        substituido_por: Q376883
-        nascimento: '1957-11-06'
-        morte: null
-        dias: 117
-        presidente: Itamar Franco
-        papel: null
-      - qid: Q376883
-        nome: Pedro Malan
-        inicio: '1995-01-01'
-        fim: '2003-01-01'
-        interino: false
-        substituiu: Q744798
-        substituido_por: Q603993
-        nascimento: '1943-02-19'
-        morte: null
-        dias: 2922
-        presidente: Fernando Henrique Cardoso
-        papel: null
-      - qid: Q603993
-        nome: Antonio Palocci
-        inicio: '2003-01-01'
-        fim: '2006-03-27'
-        interino: false
-        substituiu: Q376883
-        substituido_por: Q1359689
-        nascimento: '1960-10-04'
-        morte: null
-        dias: 1181
-        presidente: Lula
-        papel: null
-      - qid: Q1359689
-        nome: Guido Mantega
-        inicio: '2006-03-27'
-        fim: '2007-01-03'
-        interino: false
-        substituiu: Q603993
-        substituido_por: Q76429801
-        nascimento: '1949-04-07'
-        morte: null
-        dias: 282
-        presidente: Lula
-        papel: null
-      - qid: Q76429801
-        nome: Bernard Appy
-        inicio: '2007-01-03'
-        fim: '2007-01-14'
-        interino: false
-        substituiu: Q1359689
-        substituido_por: Q1359689
-        nascimento: '1962'
-        morte: null
-        dias: 11
-        presidente: Lula
-        papel: null
-      - qid: Q1359689
-        nome: Guido Mantega
-        inicio: '2007-01-14'
-        fim: '2015-01-01'
-        interino: false
-        substituiu: Q76429801
-        substituido_por: Q18563155
-        nascimento: '1949-04-07'
-        morte: null
-        dias: 2909
-        presidente: Lula
-        papel: null
-      - qid: Q18563155
-        nome: Joaquim Levy
-        inicio: '2015-01-01'
-        fim: '2015-12-21'
-        interino: false
-        substituiu: Q1359689
-        substituido_por: Q18563647
-        nascimento: '1961-02-17'
-        morte: null
-        dias: 354
-        presidente: Dilma Rousseff
-        papel: null
-      - qid: Q18563647
-        nome: Nelson Barbosa
-        inicio: '2015-12-21'
-        fim: '2016-05-12'
-        interino: false
-        substituiu: Q18563155
-        substituido_por: Q3428247
-        nascimento: '1969-11-17'
-        morte: null
-        dias: 143
-        presidente: Dilma Rousseff
-        papel: null
-      - qid: Q3428247
-        nome: Henrique Meirelles
-        inicio: '2016-05-12'
-        fim: '2018-04-06'
-        interino: false
-        substituiu: Q18563647
-        substituido_por: Q56346652
-        nascimento: '1945-08-31'
-        morte: null
-        dias: 694
-        presidente: Michel Temer
-        papel: null
-      - qid: Q56346652
-        nome: Eduardo Guardia
-        inicio: '2018-04-06'
-        fim: '2019-01-01'
-        interino: false
-        substituiu: Q3428247
-        substituido_por: Q56347746
-        nascimento: '1966-01-19'
-        morte: '2022-04-11'
-        dias: 270
-        presidente: Michel Temer
-        papel: null
-      - qid: Q3069485
-        nome: Fernando Haddad
-        inicio: '2023-01-01'
-        fim: '2026-03-20'
-        interino: false
-        substituiu: Q56347746
-        substituido_por: null
-        nascimento: '1963-01-25'
-        morte: null
-        dias: 1174
-        presidente: Lula
-        papel: null
-    por_presidente:
-      José Sarney: 1
-      Itamar Franco: 3
-      Fernando Henrique Cardoso: 1
-      Lula: 5
-      Dilma Rousseff: 2
-      Michel Temer: 2
-    ocupante_atual: Dario Carnevalli Durigan
-    wikidata_mais_recente: Fernando Haddad
-    wikidata_atualizado: false
-    ocupante_atual_no_wikidata: false
-    sem_data_n: 41
-    sem_data:
-      - qid: Q314698
-        nome: Rodrigues Alves
-      - qid: Q1797513
-        nome: Walter Moreira Sales
-      - qid: Q10320208
-        nome: Lucas Lopes
-      - qid: Q1791024
-        nome: Francisco de Paula Brochado da Rocha
-      - qid: Q9025488
-        nome: Bresser Pereira
-      - qid: Q1797270
-        nome: Otávio Gouveia de Bulhões
-      - qid: Q10309982
-        nome: José Maria Whitaker
-      - qid: Q9587797
-        nome: Agenor Lafayette de Roure
-      - qid: Q10334464
-        nome: Mário Leopoldo Pereira da Câmara
-      - qid: Q10264425
-        nome: David Morethson Campista
-      - qid: Q1797137
-        nome: Mário Henrique Simonsen
-      - qid: Q8076047
-        nome: Zélia Cardoso de Mello
-      - qid: Q9070985
-        nome: Rubens Ricupero
-      - qid: Q10369127
-        nome: Sebastião Paes de Almeida
-      - qid: Q8559941
-        nome: Dilson Funaro
-      - qid: Q10312133
-        nome: João Ribeiro de Oliveira e Sousa
-      - qid: Q8963541
-        nome: Gaspar da Silveira Martins
-      - qid: Q6758601
-        nome: Marcílio Marques Moreira
-      - qid: Q10270710
-        nome: Eduardo Lopes Rodrigues
-      - qid: Q10327633
-        nome: Maurício Chagas Bicalho
-      - qid: Q938542
-        nome: Maílson da Nóbrega
-      - qid: Q3069477
-        nome: Fernando José de Portugal e Castro
-      - qid: Q10341519
-        nome: Orlando Bandeira Vilela
-      - qid: Q10324189
-        nome: Manuel Guilherme da Silveira Filho
-      - qid: Q10340898
-        nome: Onaldo Brancante Machado
-      - qid: Q9594135
-        nome: Alberto Andrade de Queirós
-      - qid: Q10346895
-        nome: Paulo de Lira Tavares
-      - qid: Q10270754
-        nome: Eduardo Pereira de Carvalho
-      - qid: Q10346779
-        nome: Paulo Haddad
-      - qid: Q10312521
-        nome: João de Oliveira Castro Vianna Júnior
-      - qid: Q5102160
-        nome: Tomás António de Vila Nova Portugal
-      - qid: Q10294738
-        nome: Henrique Domingos Ribeiro Barbosa
-      - qid: Q10293647
-        nome: Hamilton Prisco Paraíso
-      - qid: Q10336630
-        nome: Ney Neves Galvão
-      - qid: Q10364256
-        nome: Romero Estelita Cavalcanti Pessoa
-      - qid: Q10281505
-        nome: Fernando Ribeiro do Val
-      - qid: Q16491311
-        nome: Antônio Carlos Barcellos
-      - qid: Q9697383
-        nome: Carlos Viacava
-      - qid: Q5945944
-        nome: José Flávio Pécora
-      - qid: Q10392984
-        nome: Waldyr Ramos Borges
-      - qid: Q10311974
-        nome: João Paulo Bezerra de Seixas
   br-ministro-de-estado-da-gestao:
     qid: Q116778083
     rota: mapa
@@ -2998,124 +2875,6 @@ cargos:
     sem_data:
       - qid: Q10272045
         nome: Eloi Ferreira Araújo
-  br-ministro-de-estado-da-integracao-e-do-desenvolvimento-regional:
-    qid: Q59346263
-    rota: mapa
-    nome: Ministro de Estado da Integração e do Desenvolvimento Regional
-    ocupantes: 8
-    mandatos_n: 8
-    mediana_dias: 694
-    mandatos:
-      - qid: Q100275893
-        nome: Mary Dayse Kinzo
-        inicio: '2002-04-05'
-        fim: '2002-06-06'
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: null
-        morte: null
-        dias: 62
-        presidente: Fernando Henrique Cardoso
-        papel: null
-      - qid: Q10288607
-        nome: Geddel Vieira Lima
-        inicio: '2007-03-16'
-        fim: '2010-03-31'
-        interino: false
-        substituiu: Q10347362
-        substituido_por: Q10312197
-        nascimento: '1959-03-18'
-        morte: null
-        dias: 1111
-        presidente: Lula
-        papel: null
-      - qid: Q10281269
-        nome: Fernando Bezerra Coelho
-        inicio: '2011-01-01'
-        fim: '2013-10-01'
-        interino: false
-        substituiu: Q10312197
-        substituido_por: Q16940032
-        nascimento: '1957-12-07'
-        morte: null
-        dias: 1004
-        presidente: Dilma Rousseff
-        papel: null
-      - qid: Q100466653
-        nome: Carlos Antônio Vieira Fernandes
-        inicio: '2016-03-02'
-        fim: '2016-04-16'
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: '1961'
-        morte: null
-        dias: 45
-        presidente: Dilma Rousseff
-        papel: null
-      - qid: Q3784499
-        nome: Helder Barbalho
-        inicio: '2016-05-12'
-        fim: '2018-04-06'
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: '1979-05-18'
-        morte: null
-        dias: 694
-        presidente: Michel Temer
-        papel: null
-      - qid: Q51882586
-        nome: Pádua Andrade
-        inicio: '2018-04-10'
-        fim: '2018-12-31'
-        interino: false
-        substituiu: Q3784499
-        substituido_por: Q60395001
-        nascimento: '1969'
-        morte: null
-        dias: 265
-        presidente: Michel Temer
-        papel: null
-      - qid: Q10364098
-        nome: Rogério Marinho
-        inicio: '2020-02-11'
-        fim: '2022-03-31'
-        interino: false
-        substituiu: Q60395001
-        substituido_por: Q111446676
-        nascimento: '1963-11-26'
-        morte: null
-        dias: 779
-        presidente: Jair Bolsonaro
-        papel: null
-      - qid: Q9095459
-        nome: Waldez Góes
-        inicio: '2023-01-01'
-        fim: null
-        interino: false
-        substituiu: Q111446676
-        substituido_por: null
-        nascimento: '1961-10-29'
-        morte: null
-        dias: null
-        presidente: Lula
-        papel: null
-    por_presidente:
-      Fernando Henrique Cardoso: 1
-      Lula: 2
-      Dilma Rousseff: 2
-      Michel Temer: 2
-      Jair Bolsonaro: 1
-    ocupante_atual: Antônio Waldez Góes da Silva
-    wikidata_mais_recente: Waldez Góes
-    wikidata_atualizado: true
-    ocupante_atual_no_wikidata: true
-    sem_data_n: 1
-    sem_data:
-      - qid: Q2130127
-        nome: Ramez Tebet
   br-ministro-de-estado-da-justica-e-seguranca-publica:
     qid: Q18176440
     rota: mapa
@@ -3597,10 +3356,10 @@ cargos:
         nome: Alfredo Buzaid
       - qid: Q10320820
         nome: Luiz Paulo Barreto
-      - qid: Q10287035
-        nome: Félix Gaspar de Barros e Almeida
       - qid: Q10310797
         nome: José de Jesus Filho
+      - qid: Q10287035
+        nome: Félix Gaspar de Barros e Almeida
       - qid: Q10342193
         nome: Oscar Pedroso Horta
       - qid: Q9587238
@@ -3615,12 +3374,12 @@ cargos:
         nome: Alfredo Pinto Vieira de Melo
       - qid: Q10287869
         nome: Gabriel Loureiro Bernardes
-      - qid: Q16488184
-        nome: Alexandre Dupeyrat
-      - qid: Q10309086
-        nome: José Carlos Dias
       - qid: Q10330142
         nome: Milton Seligman
+      - qid: Q10309086
+        nome: José Carlos Dias
+      - qid: Q16488184
+        nome: Alexandre Dupeyrat
       - qid: Q23893528
         nome: Wellington César Lima e Silva
       - qid: Q23893552
@@ -3629,34 +3388,6 @@ cargos:
         nome: Fernando Antunes
       - qid: Q10346905
         nome: Paulo de Tarso Ramos Ribeiro
-  br-ministro-de-estado-da-pesca-e-aquicultura:
-    qid: Q115950122
-    rota: mapa
-    nome: Ministro de Estado da Pesca e Aquicultura
-    ocupantes: 1
-    mandatos_n: 1
-    mediana_dias: null
-    mandatos:
-      - qid: Q16490361
-        nome: André de Paula
-        inicio: '2023-01-01'
-        fim: null
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: '1961-07-22'
-        morte: null
-        dias: null
-        presidente: Lula
-        papel: null
-    por_presidente:
-      Lula: 1
-    ocupante_atual: Rivetla Edipo Araujo Cruz
-    wikidata_mais_recente: André de Paula
-    wikidata_atualizado: false
-    ocupante_atual_no_wikidata: false
-    sem_data_n: 0
-    sem_data: []
   br-ministro-de-estado-da-previdencia-social:
     qid: Q98515349
     rota: mapa
@@ -5814,12 +5545,12 @@ cargos:
         nome: Kobkarn Wattanavrangkul
       - qid: Q3101783
         nome: George Naccache
+      - qid: Q131458650
+        nome: Soufiane Aghaichata Guichene
       - qid: Q126725672
         nome: null
       - qid: Q16127247
         nome: null
-      - qid: Q131458650
-        nome: Soufiane Aghaichata Guichene
       - qid: Q121740703
         nome: Lola Ade-John
       - qid: Q3308697
@@ -7128,6 +6859,161 @@ cargos:
     ocupante_atual_no_wikidata: false
     sem_data_n: 0
     sem_data: []
+  br-supremo-tribunal-federal-ministro:
+    qid: Q28466513
+    rota: override
+    nome: Ministro do Supremo Tribunal Federal
+    ocupantes: 10
+    mandatos_n: 10
+    mediana_dias: 3171
+    mandatos:
+      - qid: Q10332307
+        nome: Moreira Alves
+        inicio: '1975-06-20'
+        fim: '2003-04-20'
+        interino: false
+        substituiu: Q168447
+        substituido_por: Q867733
+        nascimento: '1933-04-19'
+        morte: '2023-10-06'
+        dias: 10166
+        papel: null
+      - qid: Q10321627
+        nome: Luís Rafael Mayer
+        inicio: '1978-12-13'
+        fim: '1989-03-14'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1919-03-27'
+        morte: '2013-11-23'
+        dias: 3744
+        papel: null
+      - qid: Q9600600
+        nome: Aldir Guimarães Passarinho Junior
+        inicio: '1982-08-16'
+        fim: '1991-04-22'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1952-05-19'
+        morte: '2014-04-29'
+        dias: 3171
+        papel: null
+      - qid: Q10263049
+        nome: Célio Borja
+        inicio: '1986-04-14'
+        fim: '1992-03-31'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1928-07-15'
+        morte: '2022-06-27'
+        dias: 2178
+        papel: null
+      - qid: Q10346483
+        nome: Paulo Brossard
+        inicio: '1989-04-05'
+        fim: '1994-10-24'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1924-10-23'
+        morte: '2015-04-12'
+        dias: 2028
+        papel: null
+      - qid: Q3509658
+        nome: Carlos Ayres Britto
+        inicio: '2003-06-25'
+        fim: '2012-11-14'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1942-11-18'
+        morte: null
+        dias: 3430
+        papel: null
+      - qid: Q10380305
+        nome: Teori Zavascki
+        inicio: '2012-11-29'
+        fim: '2017-01-19'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1948-08-15'
+        morte: '2017-01-19'
+        dias: 1512
+        papel: null
+      - qid: Q22294946
+        nome: Alexandre de Moraes
+        inicio: '2017-03-22'
+        fim: null
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1968-12-13'
+        morte: null
+        dias: null
+        papel: null
+      - qid: Q60396070
+        nome: André Mendonça
+        inicio: '2022-04-05'
+        fim: null
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1972-12-27'
+        morte: null
+        dias: null
+        papel: null
+      - qid: Q85870824
+        nome: Cristiano Zanin
+        inicio: '2023-08-03'
+        fim: null
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1975-11-15'
+        morte: null
+        dias: null
+        papel: null
+    por_presidente: {}
+    ocupante_atual: Edson Fachin
+    wikidata_mais_recente: Cristiano Zanin
+    wikidata_atualizado: false
+    ocupante_atual_no_wikidata: false
+    sem_data_n: 15
+    sem_data:
+      - qid: Q10390370
+        nome: Victor Nunes Leal
+      - qid: Q9697220
+        nome: Carlos Medeiros Silva
+      - qid: Q2944430
+        nome: Barata Ribeiro
+      - qid: Q10266077
+        nome: Dias Toffoli
+      - qid: Q3051421
+        nome: Ellen Gracie Northfleet
+      - qid: Q7724193
+        nome: Luís Roberto Barroso
+      - qid: Q2362405
+        nome: Gilmar Mendes
+      - qid: Q83019
+        nome: Cármen Lúcia
+      - qid: Q10364534
+        nome: Rosa Weber
+      - qid: Q3624733
+        nome: Luiz Fux
+      - qid: Q867733
+        nome: Joaquim Barbosa
+      - qid: Q7322696
+        nome: Ricardo Lewandowski
+      - qid: Q5041694
+        nome: Menezes Direito
+      - qid: Q3625473
+        nome: Antonio Cezar Peluso
+      - qid: Q3624713
+        nome: Marco Aurélio Mello
   br-supremo-tribunal-federal-presidente:
     qid: Q125897117
     rota: busca
@@ -7170,10 +7056,10 @@ cargos:
         nome: Joaquim Barbosa
       - qid: Q7322696
         nome: Ricardo Lewandowski
-      - qid: Q3509658
-        nome: Carlos Ayres Britto
       - qid: Q3625473
         nome: Antonio Cezar Peluso
+      - qid: Q3509658
+        nome: Carlos Ayres Britto
   br-tribunal-superior-do-trabalho-ministro:
     qid: Q103815244
     rota: mapa

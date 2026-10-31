@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-10-30'
+generated_at: '2026-10-31'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,7 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-07-27': 85
+      '2026-07-27': 68
       '2026-08-03': 249
       '2026-08-10': 240
       '2026-08-17': 364
@@ -29,11 +29,22 @@ temas:
       '2026-10-05': 3172
       '2026-10-12': 1098
       '2026-10-19': 1687
-      '2026-10-26': 1031
-    total_90d: 13034
-    last7: 1716
+      '2026-10-26': 1136
+    total_90d: 13122
+    last7: 1614
     peak_week: 3172
   processes:
+  - casa: camara
+    id: PEC 3/2021
+    ementa: Altera os arts. 14, 27, 53, 102 e 105 da Constituição Federal, para dispor sobre as prerrogativas parlamentares
+      e dá outras providências.
+    situation: Arquivada
+    last_move: '2025-09-17'
+    organ: MESA
+    closed: true
+    outcome: Arquivada
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2270800
+    requested: PEC 3/2021 (camara)
   - casa: senado
     id: PEC 3/2021
     ementa: Altera os arts. 53 e 102 da Constituição Federal, para dispor sobre as prerrogativas parlamentares.
@@ -91,7 +102,7 @@ temas:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-07-27': 197
+      '2026-07-27': 99
       '2026-08-03': 427
       '2026-08-10': 484
       '2026-08-17': 420
@@ -104,13 +115,24 @@ temas:
       '2026-10-05': 5535
       '2026-10-12': 4756
       '2026-10-19': 4026
-      '2026-10-26': 2151
-    total_90d: 57823
-    last7: 3929
+      '2026-10-26': 2458
+    total_90d: 58032
+    last7: 3670
     peak_week: 10630
-  processes: []
-  state: sem_processo
-  stalled_days: null
+  processes:
+  - casa: camara
+    id: RCP 1/2026
+    ementa: Requer a criação de Comissão Parlamentar de Inquérito para investigar as fraudes financeiras ocorridas na relação
+      entre o Banco Master e o Banco Regional de Brasília – BRB.
+    situation: Aguardando Despacho do Presidente da Câmara dos Deputados
+    last_move: '2026-07-20'
+    organ: MESA
+    closed: false
+    outcome: null
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
+    requested: RCP 1/2026 (camara)
+  state: parado
+  stalled_days: 103
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -122,15 +144,19 @@ temas:
   - fim da escala
   - jornada 6x1
   curated: null
-  news_hits: 151
+  news_hits: 152
   news_weekly:
     '2026-09-14': 3
     '2026-09-28': 3
     '2026-10-05': 41
     '2026-10-12': 92
     '2026-10-19': 9
-    '2026-10-26': 3
+    '2026-10-26': 4
   news_recent:
+  - id: fb84992c59002b6d
+    title: 'Dois repousos, um calendário: a escala 5×2 e o contrato especial de trabalho desportivo'
+    date: '2026-10-31'
+    publication: JOTA
   - id: f45590ab895cdd11
     title: 'É #FAKE que governo federal recuou sobre fim da escala 6x1 após vitória de Lula no segundo turno das eleições
       2026'
@@ -148,15 +174,11 @@ temas:
     title: 'Negociar com patrão, mudar jornadas e regular apps: o que Lula e Flávio propõem aos trabalhadores'
     date: '2026-10-23'
     publication: g1 Política
-  - id: 9af9e7e801ef2952
-    title: 'Quaest: fim da escala 6x1 e Caso Master tiveram maior impacto no voto para presidente no 1º turno'
-    date: '2026-10-23'
-    publication: g1 Política
   wikipedia:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-07-27': 86
+      '2026-07-27': 65
       '2026-08-03': 243
       '2026-08-10': 276
       '2026-08-17': 368
@@ -169,12 +191,34 @@ temas:
       '2026-10-05': 3170
       '2026-10-12': 10778
       '2026-10-19': 2158
-      '2026-10-26': 460
-    total_90d: 23117
-    last7: 750
+      '2026-10-26': 500
+    total_90d: 23136
+    last7: 668
     peak_week: 10778
-  processes: []
-  state: sem_processo
+  processes:
+  - casa: camara
+    id: PEC 8/2025
+    ementa: Dá nova redação ao inciso XIII, do artigo 7° da Constituição Federal para dispor sobre a redução da jornada de
+      trabalho para quatro dias por semana no Brasil.
+    situation: Arquivada
+    last_move: '2026-05-27'
+    organ: MESA
+    closed: true
+    outcome: Arquivada
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2485341
+    requested: PEC 8/2025 (camara)
+  - casa: camara
+    id: PEC 221/2019
+    ementa: Altera o Art. 7º inciso XII da constituição Federal, reduzindo a jornada de trabalho a 36 horas semanais em 10
+      anos.
+    situation: Transformado em Norma Jurídica
+    last_move: '2026-10-16'
+    organ: MESA
+    closed: true
+    outcome: Transformado em Norma Jurídica
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2233802
+    requested: PEC 221/2019 (camara)
+  state: encerrado
   stalled_days: null
   silence_after_peak: false
   silent_and_stalled: false
@@ -200,7 +244,7 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-07-27': 13
+      '2026-07-27': 5
       '2026-08-03': 33
       '2026-08-10': 29
       '2026-08-17': 55
@@ -213,10 +257,10 @@ temas:
       '2026-10-05': 43
       '2026-10-12': 29
       '2026-10-19': 70
-      '2026-10-26': 129
-    total_90d: 842
-    last7: 156
-    peak_week: 129
+      '2026-10-26': 157
+    total_90d: 862
+    last7: 168
+    peak_week: 157
   processes:
   - casa: camara
     id: PL 1087/2025
@@ -324,7 +368,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 175
+  stalled_days: 176
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -402,7 +446,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1234
+  stalled_days: 1235
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -444,7 +488,7 @@ temas:
     article: Precatório
     url: https://pt.wikipedia.org/wiki/Precatório
     weekly:
-      '2026-07-27': 15
+      '2026-07-27': 6
       '2026-08-03': 25
       '2026-08-10': 33
       '2026-08-17': 30
@@ -457,9 +501,9 @@ temas:
       '2026-10-05': 61
       '2026-10-12': 87
       '2026-10-19': 59
-      '2026-10-26': 34
-    total_90d: 729
-    last7: 53
+      '2026-10-26': 40
+    total_90d: 726
+    last7: 46
     peak_week: 112
   processes:
   - casa: camara
@@ -530,7 +574,7 @@ temas:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-07-27': 80
+      '2026-07-27': 44
       '2026-08-03': 191
       '2026-08-10': 202
       '2026-08-17': 255
@@ -543,9 +587,9 @@ temas:
       '2026-10-05': 1023
       '2026-10-12': 754
       '2026-10-19': 903
-      '2026-10-26': 654
-    total_90d: 5867
-    last7: 1095
+      '2026-10-26': 728
+    total_90d: 5905
+    last7: 1042
     peak_week: 1023
   processes:
   - casa: camara

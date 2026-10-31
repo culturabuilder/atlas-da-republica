@@ -1,23 +1,23 @@
 # GERADO por etl/falabr.py. Não edite à mão.
-generated_at: '2026-10-30'
+generated_at: '2026-10-31'
 ano: 2026
 fonte: Fala.BR (Lei 12.527/2011), dados abertos da Controladoria-Geral da União
 nota: 'Pedidos de acesso à informação de esfera federal registrados no ano. A taxa de negativa olha só os pedidos que o órgão decidiu sobre informação que
   lhe cabia: ''informação inexistente'' e ''não tem competência'' são contados à parte, porque somá-los inflaria a opacidade de quem apenas recebeu pedido
   endereçado errado. Recurso é atribuído ao órgão reclamado, não a quem julga. Taxa só é calculada com 20 decisões ou mais.'
 resumo:
-  pedidos: 67455
+  pedidos: 67506
   orgaos: 321
   orgaos_casados: 290
-  recursos: 8993
-  decididos: 60425
+  recursos: 9002
+  decididos: 60473
   pct_negado_ou_parcial_geral: 19.2
   orgaos_com_taxa: 272
 mais_negam:
 - orgao: BB – Banco do Brasil S.A.
   node: br-banco-do-brasil
-  pedidos: 266
-  decididos: 247
+  pedidos: 269
+  decididos: 250
   pct_negado_ou_parcial: 63.2
   recursos: 50
 - orgao: CC-PR – Casa Civil da Presidência da República
@@ -52,9 +52,9 @@ mais_negam:
   recursos: 64
 - orgao: MRE – Ministério das Relações Exteriores
   node: br-ministerio-das-relacoes-exteriores
-  pedidos: 993
-  decididos: 866
-  pct_negado_ou_parcial: 44.6
+  pedidos: 996
+  decididos: 869
+  pct_negado_ou_parcial: 44.8
   recursos: 267
 - orgao: ANCINE – Agência Nacional do Cinema
   node: br-ancine
@@ -171,60 +171,60 @@ orgaos:
       n: 126
   ANVISA – Agência Nacional de Vigilância Sanitária:
     node: br-anvisa
-    pedidos: 2523
-    concedido: 2014
+    pedidos: 2525
+    concedido: 2015
     negado: 160
     parcial: 86
-    inexistente: 59
+    inexistente: 60
     sem_competencia: 28
     fora_da_lai: 169
     duplicada: 7
     outra: 0
-    prorrogados: 351
+    prorrogados: 352
     recursos: 416
-    decididos: 2260
+    decididos: 2261
     pct_negado_ou_parcial: 10.9
     pct_prorrogado: 13.9
     motivos_top:
     - motivo: "\0"
-      n: 2521
+      n: 2523
     - motivo: Por questões de confidencialidade, não podemos divulgar as informações
       n: 1
     - motivo: A informação solicitada se refere a um dado pessoal por se tratar de i
       n: 1
     assuntos_top:
     - assunto: Transparência e acesso à informação
-      n: 1359
+      n: 1360
     - assunto: Autorização, Regulação e Fiscalização
       n: 299
     - assunto: Medicamentos, aparelhos e produtos em saúde
       n: 226
     - assunto: Informações processuais
-      n: 152
+      n: 153
   PETROBRAS – Petróleo Brasileiro S.A.:
     node: br-petrobras
-    pedidos: 2418
-    concedido: 1679
-    negado: 532
+    pedidos: 2421
+    concedido: 1680
+    negado: 533
     parcial: 114
     inexistente: 24
     sem_competencia: 8
     fora_da_lai: 18
-    duplicada: 43
+    duplicada: 44
     outra: 0
     prorrogados: 491
-    recursos: 279
-    decididos: 2325
+    recursos: 283
+    decididos: 2327
     pct_negado_ou_parcial: 27.8
     pct_prorrogado: 20.3
     motivos_top:
     - motivo: "\0"
-      n: 2417
+      n: 2420
     - motivo: 1) Lei nª 12.527/2011 - LAI art. 31 - impossibilitada por se tratar de
       n: 1
     assuntos_top:
     - assunto: Transparência e acesso à informação
-      n: 2027
+      n: 2030
     - assunto: Cadastros e Documentação
       n: 85
     - assunto: Petróleo, Gás e Biocombustíveis
@@ -233,32 +233,32 @@ orgaos:
       n: 36
   BACEN – Banco Central do Brasil:
     node: br-banco-central-do-brasil
-    pedidos: 2100
-    concedido: 1557
+    pedidos: 2105
+    concedido: 1561
     negado: 149
-    parcial: 138
+    parcial: 139
     inexistente: 65
     sem_competencia: 75
     fora_da_lai: 101
     duplicada: 15
     outra: 0
     prorrogados: 197
-    recursos: 143
-    decididos: 1844
+    recursos: 145
+    decididos: 1849
     pct_negado_ou_parcial: 15.6
     pct_prorrogado: 9.4
     motivos_top:
     - motivo: "\0"
-      n: 2100
+      n: 2105
     assuntos_top:
     - assunto: Economia e Finanças
-      n: 1585
+      n: 1586
     - assunto: Normas e Fiscalização
-      n: 314
+      n: 316
     - assunto: Gestão de Pessoas
       n: 48
     - assunto: Autorização, Regulação e Fiscalização
-      n: 42
+      n: 44
   MF - Ministério da Fazenda:
     node: br-ministerio-da-fazenda
     pedidos: 1997
@@ -427,8 +427,8 @@ orgaos:
       n: 124
   ANEEL – Agência Nacional de Energia Elétrica:
     node: br-aneel
-    pedidos: 1201
-    concedido: 849
+    pedidos: 1203
+    concedido: 851
     negado: 135
     parcial: 64
     inexistente: 66
@@ -438,12 +438,12 @@ orgaos:
     outra: 0
     prorrogados: 117
     recursos: 73
-    decididos: 1048
+    decididos: 1050
     pct_negado_ou_parcial: 19.0
     pct_prorrogado: 9.7
     motivos_top:
     - motivo: "\0"
-      n: 1186
+      n: 1188
     - motivo: 'Base Legal desta resposta: art. 7º, § 3º, da LAI, art. 3º e art. 55 do'
       n: 4
     - motivo: Dados pessoais.
@@ -456,28 +456,28 @@ orgaos:
     - assunto: Transparência e acesso à informação
       n: 236
     - assunto: Informações processuais
-      n: 223
+      n: 225
     - assunto: Autorização, Regulação e Fiscalização
       n: 52
   CEX – Comando do Exército:
     node: null
-    pedidos: 1179
-    concedido: 830
+    pedidos: 1183
+    concedido: 833
     negado: 138
     parcial: 29
-    inexistente: 109
+    inexistente: 110
     sem_competencia: 15
     fora_da_lai: 19
     duplicada: 39
     outra: 0
-    prorrogados: 470
-    recursos: 347
-    decididos: 997
-    pct_negado_ou_parcial: 16.8
-    pct_prorrogado: 39.9
+    prorrogados: 471
+    recursos: 348
+    decididos: 1000
+    pct_negado_ou_parcial: 16.7
+    pct_prorrogado: 39.8
     motivos_top:
     - motivo: "\0"
-      n: 1120
+      n: 1124
     - motivo: Informamos que a demanda, nos termos em que foi redigida, não pode ser
       n: 11
     - motivo: a documentação solicitada contém informações pessoais de terceiro, cuj
@@ -486,7 +486,7 @@ orgaos:
       n: 6
     assuntos_top:
     - assunto: Transparência e acesso à informação
-      n: 1179
+      n: 1183
   MTE - Ministério do Trabalho e Emprego:
     node: br-ministerio-do-trabalho-e-emprego
     pedidos: 1016
@@ -555,23 +555,23 @@ orgaos:
       n: 2
   MRE – Ministério das Relações Exteriores:
     node: br-ministerio-das-relacoes-exteriores
-    pedidos: 993
+    pedidos: 996
     concedido: 480
     negado: 289
-    parcial: 97
+    parcial: 100
     inexistente: 79
     sem_competencia: 17
     fora_da_lai: 6
     duplicada: 25
     outra: 0
-    prorrogados: 591
+    prorrogados: 594
     recursos: 267
-    decididos: 866
-    pct_negado_ou_parcial: 44.6
-    pct_prorrogado: 59.5
+    decididos: 869
+    pct_negado_ou_parcial: 44.8
+    pct_prorrogado: 59.6
     motivos_top:
     - motivo: "\0"
-      n: 981
+      n: 984
     - motivo: 'Nos termos  do art. 31, § 1º, da Lei nº 12.527/2011 – Lei de Acesso à '
       n: 1
     - motivo: Nos termos do art. 31, § 1º, da Lei nº 12.527/2011 - Lei de Acesso à I
@@ -580,9 +580,9 @@ orgaos:
       n: 1
     assuntos_top:
     - assunto: Relações internacionais
-      n: 550
+      n: 551
     - assunto: Transparência e acesso à informação
-      n: 251
+      n: 253
     - assunto: Meio ambiente
       n: 39
     - assunto: Cadastros e Documentação
@@ -943,7 +943,7 @@ orgaos:
     duplicada: 13
     outra: 0
     prorrogados: 117
-    recursos: 118
+    recursos: 119
     decididos: 549
     pct_negado_ou_parcial: 8.4
     pct_prorrogado: 19.9
@@ -1227,6 +1227,28 @@ orgaos:
       n: 27
     - assunto: Bibliotecas e Acervos Públicos
       n: 4
+  BNDES – Banco Nacional de Desenvolvimento Econômico e Social:
+    node: br-bndes
+    pedidos: 412
+    concedido: 335
+    negado: 9
+    parcial: 59
+    inexistente: 0
+    sem_competencia: 4
+    fora_da_lai: 3
+    duplicada: 2
+    outra: 0
+    prorrogados: 32
+    recursos: 45
+    decididos: 403
+    pct_negado_ou_parcial: 16.9
+    pct_prorrogado: 7.8
+    motivos_top:
+    - motivo: "\0"
+      n: 412
+    assuntos_top:
+    - assunto: Transparência e acesso à informação
+      n: 412
   SUSEP – Superintendência de Seguros Privados:
     node: br-superintendencia-de-seguros-privados
     pedidos: 406
@@ -1284,13 +1306,13 @@ orgaos:
       n: 1
     assuntos_top:
     - assunto: Trânsito e mobilidade
-      n: 310
+      n: 320
     - assunto: Transporte Ferroviário
-      n: 25
+      n: 20
     - assunto: Atendimento ao público
       n: 20
-    - assunto: Transparência e acesso à informação
-      n: 17
+    - assunto: Gestão Pública
+      n: 15
   INPI – Instituto Nacional da Propriedade Industrial:
     node: br-instituto-nacional-da-propriedade-industrial
     pedidos: 405
@@ -1315,28 +1337,6 @@ orgaos:
       n: 400
     - assunto: Tecnologia da Informação e Sistemas
       n: 5
-  BNDES – Banco Nacional de Desenvolvimento Econômico e Social:
-    node: br-bndes
-    pedidos: 401
-    concedido: 326
-    negado: 9
-    parcial: 57
-    inexistente: 0
-    sem_competencia: 4
-    fora_da_lai: 3
-    duplicada: 2
-    outra: 0
-    prorrogados: 30
-    recursos: 44
-    decididos: 392
-    pct_negado_ou_parcial: 16.8
-    pct_prorrogado: 7.5
-    motivos_top:
-    - motivo: "\0"
-      n: 401
-    assuntos_top:
-    - assunto: Transparência e acesso à informação
-      n: 401
   MDHC - Ministério dos Direitos Humanos e da Cidadania:
     node: br-ministerio-dos-direitos-humanos-e-da-cidadania
     pedidos: 389
@@ -1757,10 +1757,10 @@ orgaos:
       n: 25
   BB – Banco do Brasil S.A.:
     node: br-banco-do-brasil
-    pedidos: 266
-    concedido: 91
-    negado: 133
-    parcial: 23
+    pedidos: 269
+    concedido: 92
+    negado: 134
+    parcial: 24
     inexistente: 8
     sem_competencia: 5
     fora_da_lai: 1
@@ -1768,17 +1768,17 @@ orgaos:
     outra: 0
     prorrogados: 17
     recursos: 50
-    decididos: 247
+    decididos: 250
     pct_negado_ou_parcial: 63.2
-    pct_prorrogado: 6.4
+    pct_prorrogado: 6.3
     motivos_top:
     - motivo: "\0"
-      n: 265
+      n: 268
     - motivo: O presente caso, apresenta a hipótese de informação pessoal, nos termo
       n: 1
     assuntos_top:
     - assunto: Transparência e acesso à informação
-      n: 130
+      n: 131
     - assunto: Concursos e processos seletivos
       n: 16
     - assunto: Cadastros e Documentação
@@ -1849,8 +1849,8 @@ orgaos:
       n: 18
   IFPE – Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco:
     node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-pernambuco
-    pedidos: 252
-    concedido: 202
+    pedidos: 253
+    concedido: 203
     negado: 15
     parcial: 25
     inexistente: 4
@@ -1860,15 +1860,15 @@ orgaos:
     outra: 0
     prorrogados: 3
     recursos: 27
-    decididos: 242
+    decididos: 243
     pct_negado_ou_parcial: 16.5
     pct_prorrogado: 1.2
     motivos_top:
     - motivo: "\0"
-      n: 252
+      n: 253
     assuntos_top:
     - assunto: Concursos e processos seletivos
-      n: 92
+      n: 93
     - assunto: Gestão de Pessoas
       n: 42
     - assunto: Transparência e acesso à informação
@@ -1911,8 +1911,8 @@ orgaos:
       n: 15
   UFRGS – Universidade Federal do Rio Grande do Sul:
     node: br-universidade-federal-do-rio-grande-do-sul
-    pedidos: 236
-    concedido: 197
+    pedidos: 238
+    concedido: 199
     negado: 9
     parcial: 6
     inexistente: 6
@@ -1922,12 +1922,12 @@ orgaos:
     outra: 0
     prorrogados: 44
     recursos: 54
-    decididos: 212
-    pct_negado_ou_parcial: 7.1
-    pct_prorrogado: 18.6
+    decididos: 214
+    pct_negado_ou_parcial: 7.0
+    pct_prorrogado: 18.5
     motivos_top:
     - motivo: "\0"
-      n: 235
+      n: 237
     - motivo: Conforme a Nota nº 00059/2025/PROCURS/PFUFRGS/PGF/AGU, que ratificou o
       n: 1
     assuntos_top:
@@ -2883,6 +2883,34 @@ orgaos:
       n: 14
     - assunto: Ações Afirmativas
       n: 11
+  FINEP – Financiadora de Estudos e Projetos:
+    node: br-finep
+    pedidos: 151
+    concedido: 102
+    negado: 16
+    parcial: 22
+    inexistente: 7
+    sem_competencia: 0
+    fora_da_lai: 0
+    duplicada: 4
+    outra: 0
+    prorrogados: 32
+    recursos: 12
+    decididos: 140
+    pct_negado_ou_parcial: 27.1
+    pct_prorrogado: 21.2
+    motivos_top:
+    - motivo: "\0"
+      n: 151
+    assuntos_top:
+    - assunto: Transparência e acesso à informação
+      n: 64
+    - assunto: Ciência, tecnologia e inovação
+      n: 17
+    - assunto: Gestão de Pessoas
+      n: 11
+    - assunto: Concursos e processos seletivos
+      n: 10
   AGU – Advocacia-Geral da União:
     node: br-advocacia-geral-da-uniao
     pedidos: 151
@@ -2941,34 +2969,6 @@ orgaos:
       n: 7
     - assunto: Controle Social
       n: 3
-  FINEP – Financiadora de Estudos e Projetos:
-    node: br-finep
-    pedidos: 150
-    concedido: 101
-    negado: 16
-    parcial: 22
-    inexistente: 7
-    sem_competencia: 0
-    fora_da_lai: 0
-    duplicada: 4
-    outra: 0
-    prorrogados: 32
-    recursos: 12
-    decididos: 139
-    pct_negado_ou_parcial: 27.3
-    pct_prorrogado: 21.3
-    motivos_top:
-    - motivo: "\0"
-      n: 150
-    assuntos_top:
-    - assunto: Transparência e acesso à informação
-      n: 63
-    - assunto: Ciência, tecnologia e inovação
-      n: 17
-    - assunto: Gestão de Pessoas
-      n: 11
-    - assunto: Concursos e processos seletivos
-      n: 10
   IFPA – Instituto Federal de Educação, Ciência e Tecnologia do Pará:
     node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-para
     pedidos: 149
@@ -3515,6 +3515,32 @@ orgaos:
       n: 7
     - assunto: Gestão de Pessoas
       n: 6
+  TRANSPETRO - Petrobras Transporte S.A:
+    node: null
+    pedidos: 133
+    concedido: 80
+    negado: 10
+    parcial: 20
+    inexistente: 21
+    sem_competencia: 0
+    fora_da_lai: 2
+    duplicada: 0
+    outra: 0
+    prorrogados: 36
+    recursos: 14
+    decididos: 110
+    pct_negado_ou_parcial: 27.3
+    pct_prorrogado: 27.1
+    motivos_top:
+    - motivo: "\0"
+      n: 133
+    assuntos_top:
+    - assunto: Transparência e acesso à informação
+      n: 131
+    - assunto: Patrocínio
+      n: 1
+    - assunto: Registro e Cadastro de Empresas
+      n: 1
   UFJF – Universidade Federal de Juiz de Fora:
     node: br-universidade-federal-de-juiz-de-fora
     pedidos: 132
@@ -3545,32 +3571,6 @@ orgaos:
       n: 16
     - assunto: Ações Afirmativas
       n: 13
-  TRANSPETRO - Petrobras Transporte S.A:
-    node: null
-    pedidos: 132
-    concedido: 80
-    negado: 10
-    parcial: 19
-    inexistente: 21
-    sem_competencia: 0
-    fora_da_lai: 2
-    duplicada: 0
-    outra: 0
-    prorrogados: 35
-    recursos: 14
-    decididos: 109
-    pct_negado_ou_parcial: 26.6
-    pct_prorrogado: 26.5
-    motivos_top:
-    - motivo: "\0"
-      n: 132
-    assuntos_top:
-    - assunto: Transparência e acesso à informação
-      n: 130
-    - assunto: Patrocínio
-      n: 1
-    - assunto: Registro e Cadastro de Empresas
-      n: 1
   CPRM – Companhia de Pesquisa de Recursos Minerais:
     node: br-companhia-de-pesquisa-de-recursos-minerais
     pedidos: 131
@@ -3689,8 +3689,8 @@ orgaos:
       n: 11
   UNIVASF – Fundação Universidade Federal do Vale do São Francisco:
     node: br-fundacao-universidade-federal-do-vale-do-sao-francisco
-    pedidos: 126
-    concedido: 115
+    pedidos: 127
+    concedido: 116
     negado: 5
     parcial: 0
     inexistente: 0
@@ -3700,12 +3700,12 @@ orgaos:
     outra: 0
     prorrogados: 34
     recursos: 10
-    decididos: 120
-    pct_negado_ou_parcial: 4.2
-    pct_prorrogado: 27.0
+    decididos: 121
+    pct_negado_ou_parcial: 4.1
+    pct_prorrogado: 26.8
     motivos_top:
     - motivo: "\0"
-      n: 126
+      n: 127
     assuntos_top:
     - assunto: Transparência e acesso à informação
       n: 18
@@ -3714,7 +3714,7 @@ orgaos:
     - assunto: Educação Superior
       n: 17
     - assunto: Gestão Pública
-      n: 16
+      n: 17
   HEMOBRÁS – Empresa Brasileira de Hemoderivados e Biotecnologia:
     node: br-empresa-brasileira-de-hemoderivados-e-biotecnologia
     pedidos: 125
@@ -3833,6 +3833,36 @@ orgaos:
       n: 9
     - assunto: Concursos e processos seletivos
       n: 8
+  UFABC – Fundação Universidade Federal do ABC:
+    node: br-fundacao-universidade-federal-do-abc
+    pedidos: 124
+    concedido: 111
+    negado: 1
+    parcial: 5
+    inexistente: 2
+    sem_competencia: 1
+    fora_da_lai: 2
+    duplicada: 2
+    outra: 0
+    prorrogados: 17
+    recursos: 25
+    decididos: 117
+    pct_negado_ou_parcial: 5.1
+    pct_prorrogado: 13.7
+    motivos_top:
+    - motivo: "\0"
+      n: 123
+    - motivo: As imagens captadas pelo CFTV contêm, além do momento relatado, o regi
+      n: 1
+    assuntos_top:
+    - assunto: Gestão Pública
+      n: 27
+    - assunto: Educação Superior
+      n: 22
+    - assunto: Transparência e acesso à informação
+      n: 13
+    - assunto: Gestão de Pessoas
+      n: 11
   UNIFESP – Universidade Federal de São Paulo:
     node: br-universidade-federal-de-sao-paulo
     pedidos: 123
@@ -3865,36 +3895,34 @@ orgaos:
       n: 17
     - assunto: Gestão de Pessoas
       n: 10
-  UFABC – Fundação Universidade Federal do ABC:
-    node: br-fundacao-universidade-federal-do-abc
-    pedidos: 123
-    concedido: 110
-    negado: 1
-    parcial: 5
-    inexistente: 2
-    sem_competencia: 1
-    fora_da_lai: 2
-    duplicada: 2
+  UFOP – Fundação Universidade Federal de Ouro Preto:
+    node: br-fundacao-universidade-federal-de-ouro-preto
+    pedidos: 121
+    concedido: 96
+    negado: 7
+    parcial: 10
+    inexistente: 5
+    sem_competencia: 2
+    fora_da_lai: 1
+    duplicada: 0
     outra: 0
-    prorrogados: 16
-    recursos: 25
-    decididos: 116
-    pct_negado_ou_parcial: 5.2
-    pct_prorrogado: 13.0
+    prorrogados: 31
+    recursos: 16
+    decididos: 113
+    pct_negado_ou_parcial: 15.0
+    pct_prorrogado: 25.6
     motivos_top:
     - motivo: "\0"
-      n: 122
-    - motivo: As imagens captadas pelo CFTV contêm, além do momento relatado, o regi
-      n: 1
+      n: 121
     assuntos_top:
-    - assunto: Gestão Pública
-      n: 27
     - assunto: Educação Superior
-      n: 22
+      n: 58
     - assunto: Transparência e acesso à informação
-      n: 13
-    - assunto: Gestão de Pessoas
-      n: 11
+      n: 18
+    - assunto: Ações Afirmativas
+      n: 9
+    - assunto: Gestão Pública
+      n: 6
   UFAC – Fundação Universidade Federal do Acre:
     node: br-fundacao-universidade-federal-do-acre
     pedidos: 120
@@ -3923,34 +3951,6 @@ orgaos:
       n: 13
     - assunto: Ações Afirmativas
       n: 12
-  UFOP – Fundação Universidade Federal de Ouro Preto:
-    node: br-fundacao-universidade-federal-de-ouro-preto
-    pedidos: 120
-    concedido: 95
-    negado: 7
-    parcial: 10
-    inexistente: 5
-    sem_competencia: 2
-    fora_da_lai: 1
-    duplicada: 0
-    outra: 0
-    prorrogados: 31
-    recursos: 16
-    decididos: 112
-    pct_negado_ou_parcial: 15.2
-    pct_prorrogado: 25.8
-    motivos_top:
-    - motivo: "\0"
-      n: 120
-    assuntos_top:
-    - assunto: Educação Superior
-      n: 57
-    - assunto: Transparência e acesso à informação
-      n: 18
-    - assunto: Ações Afirmativas
-      n: 9
-    - assunto: Gestão Pública
-      n: 6
   IFPR – Instituto Federal de Educação, Ciência e Tecnologia do Paraná:
     node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-parana
     pedidos: 119
@@ -4125,8 +4125,8 @@ orgaos:
       n: 8
   IFAL – Instituto Federal de Educação, Ciência e Tecnologia de Alagoas:
     node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-alagoas
-    pedidos: 114
-    concedido: 94
+    pedidos: 115
+    concedido: 95
     negado: 3
     parcial: 6
     inexistente: 4
@@ -4134,25 +4134,53 @@ orgaos:
     fora_da_lai: 5
     duplicada: 0
     outra: 0
-    prorrogados: 22
+    prorrogados: 23
     recursos: 14
-    decididos: 103
+    decididos: 104
     pct_negado_ou_parcial: 8.7
-    pct_prorrogado: 19.3
+    pct_prorrogado: 20.0
     motivos_top:
     - motivo: "\0"
-      n: 113
+      n: 114
     - motivo: A imagem e a voz capturadas em uma prova didática (um ambiente de alta
       n: 1
     assuntos_top:
     - assunto: Transparência e acesso à informação
-      n: 64
+      n: 65
     - assunto: Concursos e processos seletivos
       n: 16
     - assunto: Gestão de Pessoas
       n: 12
     - assunto: Estudos e Pesquisas
       n: 6
+  IFMGSE – Instituto Federal de Educação, Ciência e Tecnologia do Sudeste de Minas Gerais:
+    node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sudeste-de-minas-gerais
+    pedidos: 113
+    concedido: 100
+    negado: 1
+    parcial: 7
+    inexistente: 5
+    sem_competencia: 0
+    fora_da_lai: 0
+    duplicada: 0
+    outra: 0
+    prorrogados: 18
+    recursos: 9
+    decididos: 108
+    pct_negado_ou_parcial: 7.4
+    pct_prorrogado: 15.9
+    motivos_top:
+    - motivo: "\0"
+      n: 113
+    assuntos_top:
+    - assunto: Transparência e acesso à informação
+      n: 20
+    - assunto: Gestão de Pessoas
+      n: 14
+    - assunto: Concursos e processos seletivos
+      n: 13
+    - assunto: Compras públicas
+      n: 9
   UFPR – Universidade Federal do Paraná:
     node: br-universidade-federal-do-parana
     pedidos: 113
@@ -4181,39 +4209,11 @@ orgaos:
       n: 14
     - assunto: Gestão Pública
       n: 12
-  IFMGSE – Instituto Federal de Educação, Ciência e Tecnologia do Sudeste de Minas Gerais:
-    node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sudeste-de-minas-gerais
-    pedidos: 112
-    concedido: 100
-    negado: 1
-    parcial: 6
-    inexistente: 5
-    sem_competencia: 0
-    fora_da_lai: 0
-    duplicada: 0
-    outra: 0
-    prorrogados: 18
-    recursos: 9
-    decididos: 107
-    pct_negado_ou_parcial: 6.5
-    pct_prorrogado: 16.1
-    motivos_top:
-    - motivo: "\0"
-      n: 112
-    assuntos_top:
-    - assunto: Transparência e acesso à informação
-      n: 20
-    - assunto: Gestão de Pessoas
-      n: 14
-    - assunto: Concursos e processos seletivos
-      n: 13
-    - assunto: Compras públicas
-      n: 9
   UTFPR – Universidade Tecnológica Federal do Paraná:
     node: br-universidade-tecnologica-federal-do-parana
-    pedidos: 111
+    pedidos: 112
     concedido: 86
-    negado: 4
+    negado: 5
     parcial: 6
     inexistente: 11
     sem_competencia: 0
@@ -4222,12 +4222,12 @@ orgaos:
     outra: 0
     prorrogados: 29
     recursos: 23
-    decididos: 96
-    pct_negado_ou_parcial: 10.4
-    pct_prorrogado: 26.1
+    decididos: 97
+    pct_negado_ou_parcial: 11.3
+    pct_prorrogado: 25.9
     motivos_top:
     - motivo: "\0"
-      n: 111
+      n: 112
     assuntos_top:
     - assunto: Transparência e acesso à informação
       n: 26
@@ -4439,6 +4439,36 @@ orgaos:
       n: 11
     - assunto: Ações Afirmativas
       n: 9
+  EPE – Empresa de Pesquisa Energética:
+    node: br-empresa-de-pesquisa-energetica
+    pedidos: 105
+    concedido: 66
+    negado: 13
+    parcial: 12
+    inexistente: 7
+    sem_competencia: 3
+    fora_da_lai: 0
+    duplicada: 4
+    outra: 0
+    prorrogados: 9
+    recursos: 7
+    decididos: 91
+    pct_negado_ou_parcial: 27.5
+    pct_prorrogado: 8.6
+    motivos_top:
+    - motivo: "\0"
+      n: 104
+    - motivo: Dados pessoais (e-mails) de funcionários.
+      n: 1
+    assuntos_top:
+    - assunto: Energia
+      n: 58
+    - assunto: Concursos e processos seletivos
+      n: 7
+    - assunto: Petróleo, Gás e Biocombustíveis
+      n: 7
+    - assunto: Estudos e Pesquisas
+      n: 6
   IFC – Instituto Federal de Educação, Ciência e Tecnologia Catarinense:
     node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-catarinense
     pedidos: 105
@@ -4591,36 +4621,6 @@ orgaos:
       n: 14
     - assunto: Bibliotecas e Acervos Públicos
       n: 5
-  EPE – Empresa de Pesquisa Energética:
-    node: br-empresa-de-pesquisa-energetica
-    pedidos: 103
-    concedido: 64
-    negado: 13
-    parcial: 12
-    inexistente: 7
-    sem_competencia: 3
-    fora_da_lai: 0
-    duplicada: 4
-    outra: 0
-    prorrogados: 9
-    recursos: 7
-    decididos: 89
-    pct_negado_ou_parcial: 28.1
-    pct_prorrogado: 8.7
-    motivos_top:
-    - motivo: "\0"
-      n: 102
-    - motivo: Dados pessoais (e-mails) de funcionários.
-      n: 1
-    assuntos_top:
-    - assunto: Energia
-      n: 58
-    - assunto: Concursos e processos seletivos
-      n: 7
-    - assunto: Estudos e Pesquisas
-      n: 6
-    - assunto: Petróleo, Gás e Biocombustíveis
-      n: 6
   UNILA – Universidade Federal da Integração Latino-Americana:
     node: br-universidade-federal-da-integracao-latino-americana
     pedidos: 102
@@ -4849,6 +4849,66 @@ orgaos:
       n: 1
     - assunto: Gestão Pública
       n: 1
+  IFSC – Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina:
+    node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-santa-catarina
+    pedidos: 97
+    concedido: 72
+    negado: 4
+    parcial: 2
+    inexistente: 4
+    sem_competencia: 3
+    fora_da_lai: 10
+    duplicada: 2
+    outra: 0
+    prorrogados: 2
+    recursos: 13
+    decididos: 78
+    pct_negado_ou_parcial: 7.7
+    pct_prorrogado: 2.1
+    motivos_top:
+    - motivo: "\0"
+      n: 96
+    - motivo: O referido processo contém informações pessoais relativas a agentes pú
+      n: 1
+    assuntos_top:
+    - assunto: Concursos e processos seletivos
+      n: 20
+    - assunto: Gestão de Pessoas
+      n: 12
+    - assunto: Transparência e acesso à informação
+      n: 9
+    - assunto: Estudos e Pesquisas
+      n: 7
+  IFAP – Instituto Federal de Educação, Ciência e Tecnologia do Amapá:
+    node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-amapa
+    pedidos: 95
+    concedido: 91
+    negado: 1
+    parcial: 0
+    inexistente: 1
+    sem_competencia: 0
+    fora_da_lai: 0
+    duplicada: 2
+    outra: 0
+    prorrogados: 24
+    recursos: 11
+    decididos: 92
+    pct_negado_ou_parcial: 1.1
+    pct_prorrogado: 25.3
+    motivos_top:
+    - motivo: "\0"
+      n: 94
+    - motivo: A negativa fundamenta-se no art. 31 da Lei nº 12.527/2011 (Lei de Aces
+      n: 1
+    assuntos_top:
+    - assunto: Transparência e acesso à informação
+      n: 45
+    - assunto: Gestão Pública
+      n: 11
+    - assunto: Concursos e processos seletivos
+      n: 9
+    - assunto: Ações Afirmativas
+      n: 5
   UNIFEI – Universidade Federal de Itajubá:
     node: br-universidade-federal-de-itajuba
     pedidos: 95
@@ -4879,36 +4939,6 @@ orgaos:
       n: 3
     - assunto: Controle Social
       n: 2
-  IFSC – Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina:
-    node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-santa-catarina
-    pedidos: 95
-    concedido: 70
-    negado: 4
-    parcial: 2
-    inexistente: 4
-    sem_competencia: 3
-    fora_da_lai: 10
-    duplicada: 2
-    outra: 0
-    prorrogados: 2
-    recursos: 13
-    decididos: 76
-    pct_negado_ou_parcial: 7.9
-    pct_prorrogado: 2.1
-    motivos_top:
-    - motivo: "\0"
-      n: 94
-    - motivo: O referido processo contém informações pessoais relativas a agentes pú
-      n: 1
-    assuntos_top:
-    - assunto: Concursos e processos seletivos
-      n: 19
-    - assunto: Gestão de Pessoas
-      n: 11
-    - assunto: Transparência e acesso à informação
-      n: 9
-    - assunto: Estudos e Pesquisas
-      n: 7
   UFJ - Universidade Federal de Jataí:
     node: br-universidade-federal-de-jatai
     pedidos: 95
@@ -4941,36 +4971,6 @@ orgaos:
       n: 10
     - assunto: Ações Afirmativas
       n: 9
-  IFAP – Instituto Federal de Educação, Ciência e Tecnologia do Amapá:
-    node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-amapa
-    pedidos: 94
-    concedido: 90
-    negado: 1
-    parcial: 0
-    inexistente: 1
-    sem_competencia: 0
-    fora_da_lai: 0
-    duplicada: 2
-    outra: 0
-    prorrogados: 23
-    recursos: 11
-    decididos: 91
-    pct_negado_ou_parcial: 1.1
-    pct_prorrogado: 24.5
-    motivos_top:
-    - motivo: "\0"
-      n: 93
-    - motivo: A negativa fundamenta-se no art. 31 da Lei nº 12.527/2011 (Lei de Aces
-      n: 1
-    assuntos_top:
-    - assunto: Transparência e acesso à informação
-      n: 44
-    - assunto: Gestão Pública
-      n: 11
-    - assunto: Concursos e processos seletivos
-      n: 9
-    - assunto: Ações Afirmativas
-      n: 5
   ? EBSERH - CH-UFC - Complexo Hospitalar da Universidade Federal do Ceará - Hospital Universitário Walter Cantídio (HUWC) e Maternidade Escola Assis Chateaubriand
     (MEAC)
   : node: br-ebserh
@@ -5088,6 +5088,34 @@ orgaos:
       n: 11
     - assunto: Educação Superior
       n: 10
+  UFCSPA – Fundação Universidade Federal de Ciências da Saúde de Porto Alegre:
+    node: br-fundacao-universidade-federal-de-ciencias-da-saude-de-porto-alegre
+    pedidos: 92
+    concedido: 58
+    negado: 5
+    parcial: 2
+    inexistente: 17
+    sem_competencia: 1
+    fora_da_lai: 7
+    duplicada: 2
+    outra: 0
+    prorrogados: 4
+    recursos: 10
+    decididos: 65
+    pct_negado_ou_parcial: 10.8
+    pct_prorrogado: 4.3
+    motivos_top:
+    - motivo: "\0"
+      n: 92
+    assuntos_top:
+    - assunto: Transparência e acesso à informação
+      n: 44
+    - assunto: Concursos e processos seletivos
+      n: 11
+    - assunto: Ações Afirmativas
+      n: 6
+    - assunto: Gestão Pública
+      n: 5
   IFMA – Instituto Federal de Educação, Ciência e Tecnologia do Maranhão:
     node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-maranhao
     pedidos: 92
@@ -5116,34 +5144,6 @@ orgaos:
       n: 8
     - assunto: Ações Afirmativas
       n: 8
-  UFCSPA – Fundação Universidade Federal de Ciências da Saúde de Porto Alegre:
-    node: br-fundacao-universidade-federal-de-ciencias-da-saude-de-porto-alegre
-    pedidos: 91
-    concedido: 57
-    negado: 5
-    parcial: 2
-    inexistente: 17
-    sem_competencia: 1
-    fora_da_lai: 7
-    duplicada: 2
-    outra: 0
-    prorrogados: 4
-    recursos: 10
-    decididos: 64
-    pct_negado_ou_parcial: 10.9
-    pct_prorrogado: 4.4
-    motivos_top:
-    - motivo: "\0"
-      n: 91
-    assuntos_top:
-    - assunto: Transparência e acesso à informação
-      n: 43
-    - assunto: Concursos e processos seletivos
-      n: 11
-    - assunto: Ações Afirmativas
-      n: 6
-    - assunto: Gestão Pública
-      n: 5
   UNIRIO – Universidade Federal do Estado do Rio de Janeiro:
     node: br-universidade-federal-do-estado-do-rio-de-janeiro
     pedidos: 90
@@ -6932,8 +6932,8 @@ orgaos:
       n: 4
   INB – Indústrias Nucleares do Brasil S.A.:
     node: br-industrias-nucleares-do-brasil-s-a
-    pedidos: 42
-    concedido: 36
+    pedidos: 43
+    concedido: 37
     negado: 2
     parcial: 2
     inexistente: 1
@@ -6943,15 +6943,15 @@ orgaos:
     outra: 0
     prorrogados: 5
     recursos: 5
-    decididos: 40
-    pct_negado_ou_parcial: 10.0
-    pct_prorrogado: 11.9
+    decididos: 41
+    pct_negado_ou_parcial: 9.8
+    pct_prorrogado: 11.6
     motivos_top:
     - motivo: "\0"
-      n: 42
+      n: 43
     assuntos_top:
     - assunto: Concursos e processos seletivos
-      n: 11
+      n: 12
     - assunto: Gestão de Pessoas
       n: 8
     - assunto: Transparência e acesso à informação
@@ -9375,13 +9375,13 @@ orgaos:
       n: 1
 nao_casados:
 - orgao: CEX – Comando do Exército
-  pedidos: 1179
+  pedidos: 1183
 - orgao: CMAR – Comando da Marinha
   pedidos: 588
 - orgao: COMAER – Comando da Aeronáutica
   pedidos: 308
 - orgao: TRANSPETRO - Petrobras Transporte S.A
-  pedidos: 132
+  pedidos: 133
 - orgao: IF GOIANO – Instituto Federal de Educação, Ciência e Tecnologia Goiano
   pedidos: 84
 - orgao: IF FLUMINENSE – Instituto Federal de Educação, Ciência e Tecnologia Fluminense
