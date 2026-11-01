@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-10-31'
+generated_at: '2026-11-01'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-03'
+janela_inicio: '2026-08-04'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,21 +11,21 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 191
-    dias_com_agenda: 52
+    compromissos_90d: 187
+    dias_com_agenda: 51
     por_tipo:
       evento: 63
-      audiencia: 60
+      audiencia: 56
       viagem: 54
       reuniao: 10
       outro: 4
     entidades_top:
-    - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República Substituto)
-      n: 13
-    - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
+    - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República)
       n: 12
+    - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
+      n: 11
     - nome: Miriam Belchior (Ministra da Casa Civil)
-      n: 9
+      n: 8
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 4
     - nome: Mauro Vieira (Ministro das Relações Exteriores)
@@ -42,9 +42,9 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 47
+      n: 44
     - nome: Palácio da Alvorada
-      n: 40
+      n: 39
     - nome: Base Aérea de Brasília
       n: 23
     - nome: Esplanada dos Ministérios, Brasília
@@ -127,19 +127,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-08-03:
-      - hora: '10:00'
-        titulo: Chefe do Gabinete Pessoal do Presidente da República Substituto, Oswaldo Malatesta
-        local: Palácio da Alvorada
-      - hora: '14:40'
-        titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
-        local: Palácio do Planalto
-      - hora: '15:00'
-        titulo: Ministro da Saúde, Alexandre Padilha, Dr. Devi Shetty e Dra. Ludhmila Hajjar
-        local: Palácio do Planalto
-      - hora: '16:00'
-        titulo: Ministra da Casa Civil, Miriam Belchior
-        local: Palácio do Planalto
       presidente/2026-08-04:
       - hora: '10:00'
         titulo: Ministro das Relações Exteriores, Mauro Vieira
@@ -814,6 +801,7 @@ people:
         local: Palácio da Alvorada
       presidente/2026-10-30: []
       presidente/2026-10-31: []
+      presidente/2026-11-01: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -821,11 +809,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 51
-    dias_com_agenda: 35
+    compromissos_90d: 48
+    dias_com_agenda: 34
     por_tipo:
-      evento: 22
-      viagem: 13
+      evento: 21
+      viagem: 11
       audiencia: 9
       outro: 4
       reuniao: 3
@@ -842,11 +830,9 @@ people:
     - nome: Brasília/DF
       n: 13
     - nome: São Paulo/SP
-      n: 10
+      n: 9
     - nome: Palácio do Planalto, Anexo II
       n: 7
-    - nome: Belo Horizonte/MG
-      n: 2
     - nome: São José dos Campos/SP
       n: 2
     - nome: São José do Rio Preto/SP
@@ -911,17 +897,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-08-03:
-      - hora: 07:50
-        titulo: Decolagem de São Paulo/SP para Belo Horizonte/MG
-        local: São Paulo/SP
-      - hora: '10:00'
-        titulo: Evento Eloos - Ciclo Indústia
-        local: Belo Horizonte/MG
-      - hora: '12:00'
-        titulo: Decolagem de Belo Horizonte/MG para Brasília/DF
-        local: Belo Horizonte/MG
-      vice/2026-08-03-b1: []
       vice/2026-08-04:
       - hora: '17:30'
         titulo: Sanção do PL nº 3085/2026, regulamenta o regime de relevância para recursos especiais no STJ
@@ -1251,6 +1226,8 @@ people:
       vice/2026-10-30-b1: []
       vice/2026-10-31: []
       vice/2026-10-31-b1: []
+      vice/2026-11-01: []
+      vice/2026-11-01-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 191 compromissos em 52 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 51 compromissos em 35 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 187 compromissos em 51 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 48 compromissos em 34 dias (0 dias não lidos)'
