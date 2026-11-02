@@ -1,16 +1,16 @@
 # GERADO por etl/falabr.py. Não edite à mão.
-generated_at: '2026-11-01'
+generated_at: '2026-11-02'
 ano: 2026
 fonte: Fala.BR (Lei 12.527/2011), dados abertos da Controladoria-Geral da União
 nota: 'Pedidos de acesso à informação de esfera federal registrados no ano. A taxa de negativa olha só os pedidos que o órgão decidiu sobre informação que
   lhe cabia: ''informação inexistente'' e ''não tem competência'' são contados à parte, porque somá-los inflaria a opacidade de quem apenas recebeu pedido
   endereçado errado. Recurso é atribuído ao órgão reclamado, não a quem julga. Taxa só é calculada com 20 decisões ou mais.'
 resumo:
-  pedidos: 67506
+  pedidos: 67516
   orgaos: 321
   orgaos_casados: 290
   recursos: 9002
-  decididos: 60473
+  decididos: 60482
   pct_negado_ou_parcial_geral: 19.2
   orgaos_com_taxa: 272
 mais_negam:
@@ -233,8 +233,8 @@ orgaos:
       n: 36
   BACEN – Banco Central do Brasil:
     node: br-banco-central-do-brasil
-    pedidos: 2105
-    concedido: 1561
+    pedidos: 2106
+    concedido: 1562
     negado: 149
     parcial: 139
     inexistente: 65
@@ -244,17 +244,17 @@ orgaos:
     outra: 0
     prorrogados: 197
     recursos: 145
-    decididos: 1849
+    decididos: 1850
     pct_negado_ou_parcial: 15.6
     pct_prorrogado: 9.4
     motivos_top:
     - motivo: "\0"
-      n: 2105
+      n: 2106
     assuntos_top:
     - assunto: Economia e Finanças
       n: 1586
     - assunto: Normas e Fiscalização
-      n: 316
+      n: 317
     - assunto: Gestão de Pessoas
       n: 48
     - assunto: Autorização, Regulação e Fiscalização
@@ -291,23 +291,23 @@ orgaos:
       n: 1
   DNIT – Departamento Nacional de Infraestrutura de Transportes:
     node: br-dnit
-    pedidos: 1914
+    pedidos: 1916
     concedido: 1462
     negado: 139
-    parcial: 131
+    parcial: 132
     inexistente: 44
-    sem_competencia: 94
+    sem_competencia: 95
     fora_da_lai: 1
     duplicada: 43
     outra: 0
     prorrogados: 195
     recursos: 77
-    decididos: 1732
+    decididos: 1733
     pct_negado_ou_parcial: 15.6
     pct_prorrogado: 10.2
     motivos_top:
     - motivo: "\0"
-      n: 1910
+      n: 1912
     - motivo: Não comprovou vinculo com a empresa.
       n: 1
     - motivo: Solicitante não comprovou que tem direitos sobre a empresa, como por e
@@ -320,7 +320,7 @@ orgaos:
     - assunto: Informações processuais
       n: 251
     - assunto: Condições Rodovia
-      n: 78
+      n: 79
     - assunto: Cadastros e Documentação
       n: 62
   MEC – Ministério da Educação:
@@ -427,8 +427,8 @@ orgaos:
       n: 124
   ANEEL – Agência Nacional de Energia Elétrica:
     node: br-aneel
-    pedidos: 1203
-    concedido: 851
+    pedidos: 1205
+    concedido: 853
     negado: 135
     parcial: 64
     inexistente: 66
@@ -438,12 +438,12 @@ orgaos:
     outra: 0
     prorrogados: 117
     recursos: 73
-    decididos: 1050
-    pct_negado_ou_parcial: 19.0
+    decididos: 1052
+    pct_negado_ou_parcial: 18.9
     pct_prorrogado: 9.7
     motivos_top:
     - motivo: "\0"
-      n: 1188
+      n: 1190
     - motivo: 'Base Legal desta resposta: art. 7º, § 3º, da LAI, art. 3º e art. 55 do'
       n: 4
     - motivo: Dados pessoais.
@@ -456,7 +456,7 @@ orgaos:
     - assunto: Transparência e acesso à informação
       n: 236
     - assunto: Informações processuais
-      n: 225
+      n: 227
     - assunto: Autorização, Regulação e Fiscalização
       n: 52
   CEX – Comando do Exército:
@@ -1306,13 +1306,13 @@ orgaos:
       n: 1
     assuntos_top:
     - assunto: Trânsito e mobilidade
-      n: 320
+      n: 382
     - assunto: Transporte Ferroviário
-      n: 20
+      n: 7
+    - assunto: Transporte Rodoviário
+      n: 6
     - assunto: Atendimento ao público
-      n: 20
-    - assunto: Gestão Pública
-      n: 15
+      n: 5
   INPI – Instituto Nacional da Propriedade Industrial:
     node: br-instituto-nacional-da-propriedade-industrial
     pedidos: 405
@@ -2141,6 +2141,34 @@ orgaos:
       n: 44
     - assunto: Gestão escolar e administrativa
       n: 33
+  UFPE – Universidade Federal de Pernambuco:
+    node: br-universidade-federal-de-pernambuco
+    pedidos: 214
+    concedido: 174
+    negado: 4
+    parcial: 14
+    inexistente: 6
+    sem_competencia: 0
+    fora_da_lai: 10
+    duplicada: 6
+    outra: 0
+    prorrogados: 31
+    recursos: 29
+    decididos: 192
+    pct_negado_ou_parcial: 9.4
+    pct_prorrogado: 14.5
+    motivos_top:
+    - motivo: "\0"
+      n: 214
+    assuntos_top:
+    - assunto: Concursos e processos seletivos
+      n: 47
+    - assunto: Educação Superior
+      n: 35
+    - assunto: Gestão de Pessoas
+      n: 24
+    - assunto: Transparência e acesso à informação
+      n: 20
   UFRN – Universidade Federal do Rio Grande do Norte:
     node: br-universidade-federal-do-rio-grande-do-norte
     pedidos: 213
@@ -2175,34 +2203,6 @@ orgaos:
       n: 15
     - assunto: Gestão Pública
       n: 12
-  UFPE – Universidade Federal de Pernambuco:
-    node: br-universidade-federal-de-pernambuco
-    pedidos: 211
-    concedido: 171
-    negado: 4
-    parcial: 14
-    inexistente: 6
-    sem_competencia: 0
-    fora_da_lai: 10
-    duplicada: 6
-    outra: 0
-    prorrogados: 30
-    recursos: 29
-    decididos: 189
-    pct_negado_ou_parcial: 9.5
-    pct_prorrogado: 14.2
-    motivos_top:
-    - motivo: "\0"
-      n: 211
-    assuntos_top:
-    - assunto: Concursos e processos seletivos
-      n: 45
-    - assunto: Educação Superior
-      n: 35
-    - assunto: Gestão de Pessoas
-      n: 24
-    - assunto: Transparência e acesso à informação
-      n: 20
   UFG – Universidade Federal de Goiás:
     node: br-universidade-federal-de-goias
     pedidos: 209
@@ -2495,28 +2495,28 @@ orgaos:
       n: 7
   UFF – Universidade Federal Fluminense:
     node: br-universidade-federal-fluminense
-    pedidos: 184
+    pedidos: 185
     concedido: 139
     negado: 6
-    parcial: 18
+    parcial: 19
     inexistente: 9
     sem_competencia: 1
     fora_da_lai: 8
     duplicada: 3
     outra: 0
-    prorrogados: 30
+    prorrogados: 31
     recursos: 40
-    decididos: 163
-    pct_negado_ou_parcial: 14.7
-    pct_prorrogado: 16.3
+    decididos: 164
+    pct_negado_ou_parcial: 15.2
+    pct_prorrogado: 16.8
     motivos_top:
     - motivo: "\0"
-      n: 184
+      n: 185
     assuntos_top:
     - assunto: Educação Superior
       n: 38
     - assunto: Transparência e acesso à informação
-      n: 28
+      n: 29
     - assunto: Concursos e processos seletivos
       n: 18
     - assunto: Gestão de Pessoas
@@ -3149,6 +3149,34 @@ orgaos:
       n: 6
     - assunto: Atendimento ao público
       n: 3
+  IFRN – Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte:
+    node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-grande-do-norte
+    pedidos: 143
+    concedido: 101
+    negado: 7
+    parcial: 12
+    inexistente: 3
+    sem_competencia: 1
+    fora_da_lai: 16
+    duplicada: 3
+    outra: 0
+    prorrogados: 27
+    recursos: 4
+    decididos: 120
+    pct_negado_ou_parcial: 15.8
+    pct_prorrogado: 18.9
+    motivos_top:
+    - motivo: "\0"
+      n: 143
+    assuntos_top:
+    - assunto: Gestão de Pessoas
+      n: 24
+    - assunto: Transparência e acesso à informação
+      n: 23
+    - assunto: Concursos e processos seletivos
+      n: 21
+    - assunto: Gestão Pública
+      n: 12
   UFS – Fundação Universidade Federal de Sergipe:
     node: br-fundacao-universidade-federal-de-sergipe
     pedidos: 143
@@ -3204,34 +3232,6 @@ orgaos:
     - assunto: Transparência e acesso à informação
       n: 21
     - assunto: Concursos e processos seletivos
-      n: 12
-  IFRN – Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte:
-    node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-grande-do-norte
-    pedidos: 142
-    concedido: 100
-    negado: 7
-    parcial: 12
-    inexistente: 3
-    sem_competencia: 1
-    fora_da_lai: 16
-    duplicada: 3
-    outra: 0
-    prorrogados: 27
-    recursos: 4
-    decididos: 119
-    pct_negado_ou_parcial: 16.0
-    pct_prorrogado: 19.0
-    motivos_top:
-    - motivo: "\0"
-      n: 142
-    assuntos_top:
-    - assunto: Gestão de Pessoas
-      n: 24
-    - assunto: Transparência e acesso à informação
-      n: 23
-    - assunto: Concursos e processos seletivos
-      n: 21
-    - assunto: Gestão Pública
       n: 12
   UFT – Fundação Universidade Federal do Tocantins:
     node: br-fundacao-universidade-federal-do-tocantins

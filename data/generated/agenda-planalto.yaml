@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-01'
+generated_at: '2026-11-02'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-04'
+janela_inicio: '2026-08-05'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,30 +11,30 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 187
-    dias_com_agenda: 51
+    compromissos_90d: 183
+    dias_com_agenda: 50
     por_tipo:
-      evento: 63
-      audiencia: 56
+      evento: 62
       viagem: 54
+      audiencia: 53
       reuniao: 10
       outro: 4
     entidades_top:
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República)
       n: 12
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
-      n: 11
+      n: 10
     - nome: Miriam Belchior (Ministra da Casa Civil)
       n: 8
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 4
     - nome: Mauro Vieira (Ministro das Relações Exteriores)
-      n: 3
-    - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
       n: 2
     - nome: Oswaldo Malatesta Neto (Chefe do Gabinete Pessoal do Presidente da República)
       n: 2
     - nome: Roberto Velasco (Secretário de Relações Exteriores do México)
+      n: 1
+    - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
       n: 1
     - nome: Embaixador Audo Faleiro (Assessor-Chefe Adjunto da Assessoria Especial do Presidente da Repúbli)
       n: 1
@@ -42,9 +42,9 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 44
+      n: 41
     - nome: Palácio da Alvorada
-      n: 39
+      n: 38
     - nome: Base Aérea de Brasília
       n: 23
     - nome: Esplanada dos Ministérios, Brasília
@@ -127,20 +127,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-08-04:
-      - hora: '10:00'
-        titulo: Ministro das Relações Exteriores, Mauro Vieira
-        local: Palácio da Alvorada
-      - hora: '15:00'
-        titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
-        local: Palácio do Planalto
-      - hora: '16:00'
-        titulo: Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinete Pessoal do Presidente da República,
-          Sandra Brandão
-        local: Palácio do Planalto
-      - hora: '17:30'
-        titulo: Sanção do PL nº 3085/2026, regulamenta o regime de relevância para recursos especiais no STJ
-        local: Palácio do Planalto
       presidente/2026-08-05:
       - hora: '11:00'
         titulo: Entrevista a Meteoro Brasil e Os Três Elementos
@@ -802,6 +788,7 @@ people:
       presidente/2026-10-30: []
       presidente/2026-10-31: []
       presidente/2026-11-01: []
+      presidente/2026-11-02: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -809,10 +796,10 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 48
-    dias_com_agenda: 34
+    compromissos_90d: 47
+    dias_com_agenda: 33
     por_tipo:
-      evento: 21
+      evento: 20
       viagem: 11
       audiencia: 9
       outro: 4
@@ -825,10 +812,10 @@ people:
     - nome: Sidônio Palmeira (Ministro-Chefe da Secretaria de Comunicação Social - SECOM)
       n: 1
     locais_top:
-    - nome: Palácio do Planalto
-      n: 13
     - nome: Brasília/DF
       n: 13
+    - nome: Palácio do Planalto
+      n: 12
     - nome: São Paulo/SP
       n: 9
     - nome: Palácio do Planalto, Anexo II
@@ -897,11 +884,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-08-04:
-      - hora: '17:30'
-        titulo: Sanção do PL nº 3085/2026, regulamenta o regime de relevância para recursos especiais no STJ
-        local: Palácio do Planalto
-      vice/2026-08-04-b1: []
       vice/2026-08-05:
       - hora: '17:00'
         titulo: Luiz Inácio Lula da Silva, Presidente da República
@@ -1228,6 +1210,8 @@ people:
       vice/2026-10-31-b1: []
       vice/2026-11-01: []
       vice/2026-11-01-b1: []
+      vice/2026-11-02: []
+      vice/2026-11-02-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 187 compromissos em 51 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 48 compromissos em 34 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 183 compromissos em 50 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 47 compromissos em 33 dias (0 dias não lidos)'
