@@ -1,21 +1,21 @@
 # GERADO por etl/historico.py. Não edite à mão.
-generated_at: '2026-11-02T19:34:36Z'
+generated_at: '2026-11-03T18:21:07Z'
 fonte: wikidata.org — P39 (cargo ocupado) com qualificadores P580/P582/P585/P1365/P1366/P2868 via busca haswbstatement; ou
   P488/P169/P1037 no item do órgão (rota org_item); desde 1985
 resumo:
-  cargos_com_historico: 64
+  cargos_com_historico: 65
   cargos_por_rota:
     busca: 8
-    mapa: 42
+    mapa: 43
     org_item: 6
     override: 8
   cargos_sem_qid: 80
-  cargos_vazios_no_wikidata: 7
+  cargos_vazios_no_wikidata: 6
   qids_invalidos: {}
-  mandatos: 564
-  mandatos_com_inicio_e_fim: 485
-  mandatos_sem_data: 199
-  mediana_geral_dias: 550
+  mandatos: 572
+  mandatos_com_inicio_e_fim: 492
+  mandatos_sem_data: 201
+  mediana_geral_dias: 549
   atualizados: 21
   sem_qid:
     - br-ana-diretor
@@ -100,7 +100,6 @@ resumo:
     - br-tribunal-superior-do-trabalho-presidente
   vazios:
     - br-ipea-dirigente
-    - br-ministro-de-estado-da-previdencia-social
     - br-agencia-espacial-brasileira-dirigente
     - br-anp-dirigente
     - br-procurador-geral-da-fazenda-nacional
@@ -3031,36 +3030,36 @@ cargos:
         nome: Eduardo Lopes Rodrigues
       - qid: Q10327633
         nome: Maurício Chagas Bicalho
-      - qid: Q3069477
-        nome: Fernando José de Portugal e Castro
       - qid: Q938542
         nome: Maílson da Nóbrega
-      - qid: Q9594135
-        nome: Alberto Andrade de Queirós
-      - qid: Q10324189
-        nome: Manuel Guilherme da Silveira Filho
-      - qid: Q10341519
-        nome: Orlando Bandeira Vilela
+      - qid: Q3069477
+        nome: Fernando José de Portugal e Castro
       - qid: Q10340898
         nome: Onaldo Brancante Machado
-      - qid: Q10270754
-        nome: Eduardo Pereira de Carvalho
+      - qid: Q10341519
+        nome: Orlando Bandeira Vilela
+      - qid: Q10324189
+        nome: Manuel Guilherme da Silveira Filho
+      - qid: Q9594135
+        nome: Alberto Andrade de Queirós
       - qid: Q10346895
         nome: Paulo de Lira Tavares
+      - qid: Q10270754
+        nome: Eduardo Pereira de Carvalho
       - qid: Q10346779
         nome: Paulo Haddad
       - qid: Q10312521
         nome: João de Oliveira Castro Vianna Júnior
-      - qid: Q5102160
-        nome: Tomás António de Vila Nova Portugal
       - qid: Q10294738
         nome: Henrique Domingos Ribeiro Barbosa
+      - qid: Q5102160
+        nome: Tomás António de Vila Nova Portugal
       - qid: Q10293647
         nome: Hamilton Prisco Paraíso
-      - qid: Q10336630
-        nome: Ney Neves Galvão
       - qid: Q10364256
         nome: Romero Estelita Cavalcanti Pessoa
+      - qid: Q10336630
+        nome: Ney Neves Galvão
       - qid: Q10281505
         nome: Fernando Ribeiro do Val
       - qid: Q16491311
@@ -3749,10 +3748,10 @@ cargos:
         nome: Márcio Thomaz Bastos
       - qid: Q9654119
         nome: Benedito Costa Neto
-      - qid: Q10363102
-        nome: Rivadávia da Cunha Correia
       - qid: Q16488302
         nome: Alfredo Buzaid
+      - qid: Q10363102
+        nome: Rivadávia da Cunha Correia
       - qid: Q10320820
         nome: Luiz Paulo Barreto
       - qid: Q10310797
@@ -3815,6 +3814,125 @@ cargos:
     ocupante_atual_no_wikidata: false
     sem_data_n: 0
     sem_data: []
+  br-ministro-de-estado-da-previdencia-social:
+    qid: Q98515349
+    rota: mapa
+    nome: Ministro de Estado da Previdência Social
+    ocupantes: 8
+    mandatos_n: 8
+    mediana_dias: 432
+    mandatos:
+      - qid: Q2420629
+        nome: Waldir Pires
+        inicio: '1985-03-15'
+        fim: '1986'
+        interino: false
+        substituiu: Q10305370
+        substituido_por: Q2131442
+        nascimento: '1926-10-21'
+        morte: '2018-06-22'
+        dias: 292
+        presidente: José Sarney
+        papel: null
+      - qid: Q3806086
+        nome: Jader Barbalho
+        inicio: '1988-07-30'
+        fim: '1990-03-15'
+        interino: false
+        substituiu: Q7312622
+        substituido_por: Q9622854
+        nascimento: '1944-10-27'
+        morte: null
+        dias: 593
+        presidente: José Sarney
+        papel: null
+      - qid: Q10376122
+        nome: Sérgio Cutolo dos Santos
+        inicio: '1993-12-13'
+        fim: 1995-02
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1952-12-18'
+        morte: null
+        dias: 415
+        presidente: Itamar Franco
+        papel: null
+      - qid: Q10358980
+        nome: Reinhold Stephanes
+        inicio: '1995-01-01'
+        fim: '1998-04-03'
+        interino: false
+        substituiu: Q10376122
+        substituido_por: Q1445738
+        nascimento: '1939-08-13'
+        morte: null
+        dias: 1188
+        presidente: Fernando Henrique Cardoso
+        papel: null
+      - qid: Q1445738
+        nome: Waldeck Ornelas
+        inicio: '1998-04-07'
+        fim: '2001-02-24'
+        interino: false
+        substituiu: Q10358980
+        substituido_por: Q10363257
+        nascimento: '1945-07-06'
+        morte: null
+        dias: 1054
+        presidente: Fernando Henrique Cardoso
+        papel: null
+      - qid: Q7322558
+        nome: Ricardo Berzoini
+        inicio: '2003-01-01'
+        fim: '2004-01-23'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1960-02-10'
+        morte: null
+        dias: 387
+        presidente: Lula
+        papel: null
+      - qid: Q10320792
+        nome: Luiz Marinho
+        inicio: '2007-03-29'
+        fim: '2008-06-03'
+        interino: false
+        substituiu: null
+        substituido_por: Q10308948
+        nascimento: '1959-05-20'
+        morte: null
+        dias: 432
+        presidente: Lula
+        papel: null
+      - qid: Q9697177
+        nome: Carlos Lupi
+        inicio: '2023-01-01'
+        fim: null
+        interino: false
+        substituiu: Q9697019
+        substituido_por: null
+        nascimento: '1957-03-26'
+        morte: null
+        dias: null
+        presidente: Lula
+        papel: null
+    por_presidente:
+      José Sarney: 2
+      Itamar Franco: 1
+      Fernando Henrique Cardoso: 2
+      Lula: 3
+    ocupante_atual: Wolney Queiroz Maciel
+    wikidata_mais_recente: Carlos Lupi
+    wikidata_atualizado: false
+    ocupante_atual_no_wikidata: false
+    sem_data_n: 2
+    sem_data:
+      - qid: Q10304991
+        nome: Jair Soares
+      - qid: Q519264
+        nome: Garibaldi Alves Filho
   br-ministro-de-estado-da-saude:
     qid: Q59346265
     rota: override
@@ -5855,9 +5973,9 @@ cargos:
         nome: George Naccache
       - qid: Q131458650
         nome: Soufiane Aghaichata Guichene
-      - qid: Q126725672
-        nome: null
       - qid: Q16127247
+        nome: null
+      - qid: Q126725672
         nome: null
       - qid: Q121740703
         nome: Lola Ade-John
@@ -7782,20 +7900,20 @@ cargos:
         nome: Teodor Boyan
       - qid: Q138820720
         nome: null
-      - qid: Q117830140
-        nome: Boscheron Des Portes
       - qid: Q136214714
         nome: Kaupo Kruusvee
+      - qid: Q117830140
+        nome: Boscheron Des Portes
       - qid: Q132833468
         nome: Liivi Loide
       - qid: Q125802951
         nome: null
       - qid: Q136214707
         nome: Kristjan Siigur
-      - qid: Q97919939
-        nome: Jørgen Jensen
       - qid: Q139937654
         nome: Fatoma Théra
+      - qid: Q97919939
+        nome: Jørgen Jensen
       - qid: Q136207507
         nome: Liina Naaber-Kivisoo
       - qid: Q3164332

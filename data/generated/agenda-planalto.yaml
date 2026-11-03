@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-02'
+generated_at: '2026-11-03'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-05'
+janela_inicio: '2026-08-06'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,21 +11,21 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 183
+    compromissos_90d: 184
     dias_com_agenda: 50
     por_tipo:
-      evento: 62
+      evento: 60
+      audiencia: 57
       viagem: 54
-      audiencia: 53
-      reuniao: 10
+      reuniao: 9
       outro: 4
     entidades_top:
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República)
-      n: 12
+      n: 13
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
       n: 10
     - nome: Miriam Belchior (Ministra da Casa Civil)
-      n: 8
+      n: 9
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 4
     - nome: Mauro Vieira (Ministro das Relações Exteriores)
@@ -41,10 +41,10 @@ people:
     - nome: Dario Durigan (Ministro da Fazenda)
       n: 1
     locais_top:
-    - nome: Palácio do Planalto
-      n: 41
     - nome: Palácio da Alvorada
-      n: 38
+      n: 41
+    - nome: Palácio do Planalto
+      n: 39
     - nome: Base Aérea de Brasília
       n: 23
     - nome: Esplanada dos Ministérios, Brasília
@@ -61,8 +61,38 @@ people:
       n: 3
     - nome: Aeroporto de Congonhas
       n: 2
-    ultimo: '2026-10-29'
+    ultimo: '2026-11-03'
     recentes:
+    - data: '2026-11-03'
+      hora: '17:00'
+      titulo: Ministro do Desenvolvimento, Indústria, Comércio e Serviços, Márcio Elias Rosa
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes: []
+    - data: '2026-11-03'
+      hora: '16:00'
+      titulo: Ministro do Meio Ambiente e Mudança do Clima, João Paulo Capobianco
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: João Paulo Capobianco
+        entidade: Ministro do Meio Ambiente e Mudança do Clima
+    - data: '2026-11-03'
+      hora: '15:00'
+      titulo: Ministra da Casa Civil, Miriam Belchior
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Miriam Belchior
+        entidade: Ministra da Casa Civil
+    - data: '2026-11-03'
+      hora: '10:00'
+      titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Oswaldo Malatesta
+        entidade: Chefe do Gabinete Pessoal do Presidente da República
     - data: '2026-10-29'
       hora: '16:00'
       titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
@@ -94,51 +124,8 @@ people:
       tipo: audiencia
       local: Palácio da Alvorada
       participantes: []
-    - data: '2026-10-27'
-      hora: '15:00'
-      titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
-      tipo: audiencia
-      local: Palácio da Alvorada
-      participantes:
-      - nome: Oswaldo Malatesta
-        entidade: Chefe do Gabinete Pessoal do Presidente da República
-    - data: '2026-10-27'
-      hora: '10:00'
-      titulo: Ministra da Casa Civil, Miriam Belchior
-      tipo: audiencia
-      local: Palácio da Alvorada
-      participantes:
-      - nome: Miriam Belchior
-        entidade: Ministra da Casa Civil
-    - data: '2026-10-27'
-      hora: 09:30
-      titulo: Ministro da Defesa, José Mucio
-      tipo: audiencia
-      local: Palácio da Alvorada
-      participantes:
-      - nome: José Mucio
-        entidade: Ministro da Defesa
-    - data: '2026-10-26'
-      hora: '16:30'
-      titulo: Presidente do Senado Federal e do Congresso Nacional, Senador Davi Alcolumbre, e Presidente da Câmara dos Deputados,
-        Deputado Hugo Motta
-      tipo: audiencia
-      local: Palácio da Alvorada
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-08-05:
-      - hora: '11:00'
-        titulo: Entrevista a Meteoro Brasil e Os Três Elementos
-        local: Palácio da Alvorada
-      - hora: '16:00'
-        titulo: Sanção do PLV nº 6/2026, que dispõe sobre o cadastramento das operações de transporte, a geração do CIOT e
-          o cumprimento da Política Nacional de Pisos Mínimos do Transporte Rodoviário de Cargas (aperfeiçoamento da Política
-          Nacional de Pisos Mínimos de Frete)
-        local: Palácio do Planalto
-      - hora: '17:00'
-        titulo: Reunião com motoristas sobre o Move
-        local: Palácio do Planalto
       presidente/2026-08-06:
       - hora: '10:00'
         titulo: Secretário de Relações Exteriores do México, Roberto Velasco
@@ -789,6 +776,19 @@ people:
       presidente/2026-10-31: []
       presidente/2026-11-01: []
       presidente/2026-11-02: []
+      presidente/2026-11-03:
+      - hora: '10:00'
+        titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
+        local: Palácio da Alvorada
+      - hora: '15:00'
+        titulo: Ministra da Casa Civil, Miriam Belchior
+        local: Palácio da Alvorada
+      - hora: '16:00'
+        titulo: Ministro do Meio Ambiente e Mudança do Clima, João Paulo Capobianco
+        local: Palácio da Alvorada
+      - hora: '17:00'
+        titulo: Ministro do Desenvolvimento, Indústria, Comércio e Serviços, Márcio Elias Rosa
+        local: Palácio da Alvorada
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -796,30 +796,32 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 47
+    compromissos_90d: 49
     dias_com_agenda: 33
     por_tipo:
       evento: 20
-      viagem: 11
-      audiencia: 9
+      viagem: 12
+      audiencia: 10
       outro: 4
       reuniao: 3
     entidades_top:
     - nome: Luiz Inácio Lula da Silva (Presidente da República)
-      n: 4
+      n: 3
     - nome: Sérgio Leite (Presidente da Federação dos Trabalhadores nas Indústrias Químicas e Fa)
       n: 1
     - nome: Sidônio Palmeira (Ministro-Chefe da Secretaria de Comunicação Social - SECOM)
+      n: 1
+    - nome: André Passos (Presidente da Associação Brasileira da Indústria Química - Abiquim)
       n: 1
     locais_top:
     - nome: Brasília/DF
       n: 13
     - nome: Palácio do Planalto
-      n: 12
+      n: 11
     - nome: São Paulo/SP
-      n: 9
+      n: 10
     - nome: Palácio do Planalto, Anexo II
-      n: 7
+      n: 9
     - nome: São José dos Campos/SP
       n: 2
     - nome: São José do Rio Preto/SP
@@ -830,8 +832,28 @@ people:
       n: 1
     - nome: Esplanada dos Ministérios, Bloco D
       n: 1
-    ultimo: '2026-10-28'
+    ultimo: '2026-11-03'
     recentes:
+    - data: '2026-11-03'
+      hora: '16:00'
+      titulo: Deputado Federal Felipe Carreras - PSB/PE
+      tipo: audiencia
+      local: Palácio do Planalto, Anexo II
+      participantes: []
+    - data: '2026-11-03'
+      hora: '15:00'
+      titulo: André Passos, Presidente da Associação Brasileira da Indústria Química - Abiquim
+      tipo: audiencia
+      local: Palácio do Planalto, Anexo II
+      participantes:
+      - nome: André Passos
+        entidade: Presidente da Associação Brasileira da Indústria Química - Abiquim
+    - data: '2026-11-03'
+      hora: 07:30
+      titulo: Decolagem de São Paulo/SP para Brasília/DF
+      tipo: viagem
+      local: São Paulo/SP
+      participantes: []
     - data: '2026-10-28'
       hora: '17:30'
       titulo: Sidônio Palmeira, Ministro-Chefe da Secretaria de Comunicação Social - SECOM
@@ -864,31 +886,8 @@ people:
       tipo: evento
       local: Brasília/DF
       participantes: []
-    - data: '2026-09-29'
-      hora: 09:00
-      titulo: Abertura do Congresso Aço Brasil 2026 (Videoconferência)
-      tipo: reuniao
-      local: Palácio do Planalto, Anexo II
-      participantes: []
-    - data: '2026-09-23'
-      hora: '15:00'
-      titulo: Prof. Dr. Paulo Fernando de Almeida, do Instituto de Ciências e Saúde da Universidade Federal da Bahia (ICS)
-      tipo: audiencia
-      local: Palácio do Planalto, Anexo II
-      participantes: []
-    - data: '2026-09-18'
-      hora: 09:00
-      titulo: Reunião com prefeitos de municípios atingidos pelas chuvas no Vale do Ribeira
-      tipo: reuniao
-      local: Registro/SP
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-08-05:
-      - hora: '17:00'
-        titulo: Luiz Inácio Lula da Silva, Presidente da República
-        local: Palácio do Planalto
-      vice/2026-08-05-b1: []
       vice/2026-08-06:
       - hora: 09:00
         titulo: Deputado Federal Paulo Pimenta – PT/RS
@@ -1212,6 +1211,17 @@ people:
       vice/2026-11-01-b1: []
       vice/2026-11-02: []
       vice/2026-11-02-b1: []
+      vice/2026-11-03:
+      - hora: 07:30
+        titulo: Decolagem de São Paulo/SP para Brasília/DF
+        local: São Paulo/SP
+      - hora: '15:00'
+        titulo: André Passos, Presidente da Associação Brasileira da Indústria Química - Abiquim
+        local: Palácio do Planalto, Anexo II
+      - hora: '16:00'
+        titulo: Deputado Federal Felipe Carreras - PSB/PE
+        local: Palácio do Planalto, Anexo II
+      vice/2026-11-03-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 183 compromissos em 50 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 47 compromissos em 33 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 184 compromissos em 50 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 49 compromissos em 33 dias (0 dias não lidos)'

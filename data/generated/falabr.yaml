@@ -1,16 +1,16 @@
 # GERADO por etl/falabr.py. Não edite à mão.
-generated_at: '2026-11-02'
+generated_at: '2026-11-03'
 ano: 2026
 fonte: Fala.BR (Lei 12.527/2011), dados abertos da Controladoria-Geral da União
 nota: 'Pedidos de acesso à informação de esfera federal registrados no ano. A taxa de negativa olha só os pedidos que o órgão decidiu sobre informação que
   lhe cabia: ''informação inexistente'' e ''não tem competência'' são contados à parte, porque somá-los inflaria a opacidade de quem apenas recebeu pedido
   endereçado errado. Recurso é atribuído ao órgão reclamado, não a quem julga. Taxa só é calculada com 20 decisões ou mais.'
 resumo:
-  pedidos: 67516
+  pedidos: 67524
   orgaos: 321
   orgaos_casados: 290
-  recursos: 9002
-  decididos: 60482
+  recursos: 9003
+  decididos: 60489
   pct_negado_ou_parcial_geral: 19.2
   orgaos_com_taxa: 272
 mais_negam:
@@ -589,23 +589,23 @@ orgaos:
       n: 19
   FUNAI – Fundação Nacional dos Povos Indígenas:
     node: br-funai
-    pedidos: 961
-    concedido: 696
+    pedidos: 964
+    concedido: 698
     negado: 77
     parcial: 29
     inexistente: 18
     sem_competencia: 7
-    fora_da_lai: 70
+    fora_da_lai: 71
     duplicada: 64
     outra: 0
-    prorrogados: 102
+    prorrogados: 103
     recursos: 55
-    decididos: 802
+    decididos: 804
     pct_negado_ou_parcial: 13.2
-    pct_prorrogado: 10.6
+    pct_prorrogado: 10.7
     motivos_top:
     - motivo: "\0"
-      n: 954
+      n: 957
     - motivo: o processo contém informações pessoais de servidores e indígenas, de m
       n: 1
     - motivo: 'Em resposta, informa-se que referido processo foi reclassificado como '
@@ -614,7 +614,7 @@ orgaos:
       n: 1
     assuntos_top:
     - assunto: Transparência e acesso à informação
-      n: 951
+      n: 954
     - assunto: Informações processuais
       n: 6
     - assunto: Certidões e Declarações
@@ -1143,9 +1143,9 @@ orgaos:
       n: 39
   ANTAQ – Agência Nacional de Transportes Aquaviários:
     node: br-antaq
-    pedidos: 426
-    concedido: 369
-    negado: 15
+    pedidos: 428
+    concedido: 370
+    negado: 16
     parcial: 10
     inexistente: 8
     sem_competencia: 2
@@ -1153,18 +1153,18 @@ orgaos:
     duplicada: 3
     outra: 0
     prorrogados: 54
-    recursos: 18
-    decididos: 394
-    pct_negado_ou_parcial: 6.3
-    pct_prorrogado: 12.7
+    recursos: 19
+    decididos: 396
+    pct_negado_ou_parcial: 6.6
+    pct_prorrogado: 12.6
     motivos_top:
     - motivo: "\0"
-      n: 426
+      n: 428
     assuntos_top:
     - assunto: Transporte aquaviário
       n: 173
     - assunto: Transparência e acesso à informação
-      n: 170
+      n: 172
     - assunto: Autorização, Regulação e Fiscalização
       n: 14
     - assunto: Informações processuais
@@ -4411,6 +4411,36 @@ orgaos:
       n: 4
     - assunto: Concursos e processos seletivos
       n: 4
+  IFC – Instituto Federal de Educação, Ciência e Tecnologia Catarinense:
+    node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-catarinense
+    pedidos: 106
+    concedido: 97
+    negado: 5
+    parcial: 1
+    inexistente: 0
+    sem_competencia: 0
+    fora_da_lai: 3
+    duplicada: 0
+    outra: 0
+    prorrogados: 7
+    recursos: 10
+    decididos: 103
+    pct_negado_ou_parcial: 5.8
+    pct_prorrogado: 6.6
+    motivos_top:
+    - motivo: "\0"
+      n: 105
+    - motivo: '. 1-Privacidade e Imagem: - Informações pessoais que dizem respeito à '
+      n: 1
+    assuntos_top:
+    - assunto: Transparência e acesso à informação
+      n: 63
+    - assunto: Informações processuais
+      n: 8
+    - assunto: Gestão de Pessoas
+      n: 4
+    - assunto: Concursos e processos seletivos
+      n: 4
   UFPel – Fundação Universidade Federal de Pelotas:
     node: br-fundacao-universidade-federal-de-pelotas
     pedidos: 106
@@ -4469,36 +4499,6 @@ orgaos:
       n: 7
     - assunto: Estudos e Pesquisas
       n: 6
-  IFC – Instituto Federal de Educação, Ciência e Tecnologia Catarinense:
-    node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-catarinense
-    pedidos: 105
-    concedido: 96
-    negado: 5
-    parcial: 1
-    inexistente: 0
-    sem_competencia: 0
-    fora_da_lai: 3
-    duplicada: 0
-    outra: 0
-    prorrogados: 7
-    recursos: 10
-    decididos: 102
-    pct_negado_ou_parcial: 5.9
-    pct_prorrogado: 6.7
-    motivos_top:
-    - motivo: "\0"
-      n: 104
-    - motivo: '. 1-Privacidade e Imagem: - Informações pessoais que dizem respeito à '
-      n: 1
-    assuntos_top:
-    - assunto: Transparência e acesso à informação
-      n: 62
-    - assunto: Informações processuais
-      n: 8
-    - assunto: Gestão de Pessoas
-      n: 4
-    - assunto: Concursos e processos seletivos
-      n: 4
   IFB – Instituto Federal de Educação, Ciência e Tecnologia de Brasília:
     node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-brasilia
     pedidos: 105
@@ -5488,6 +5488,36 @@ orgaos:
       n: 11
     - assunto: Educação Profissional e Tecnológica
       n: 7
+  IF FLUMINENSE – Instituto Federal de Educação, Ciência e Tecnologia Fluminense:
+    node: null
+    pedidos: 83
+    concedido: 63
+    negado: 5
+    parcial: 5
+    inexistente: 0
+    sem_competencia: 0
+    fora_da_lai: 7
+    duplicada: 3
+    outra: 0
+    prorrogados: 12
+    recursos: 15
+    decididos: 73
+    pct_negado_ou_parcial: 13.7
+    pct_prorrogado: 14.5
+    motivos_top:
+    - motivo: "\0"
+      n: 82
+    - motivo: Trata-se de pedido anônimo, referente a protocolos do Fala.BR que cita
+      n: 1
+    assuntos_top:
+    - assunto: Transparência e acesso à informação
+      n: 33
+    - assunto: Gestão de Pessoas
+      n: 22
+    - assunto: Gestão escolar e administrativa
+      n: 9
+    - assunto: Estudos e Pesquisas
+      n: 6
   UFNT - Universidade Federal do Norte do Tocantins:
     node: br-universidade-federal-do-norte-do-tocantins
     pedidos: 83
@@ -5544,36 +5574,6 @@ orgaos:
       n: 15
     - assunto: Educação Superior
       n: 13
-  IF FLUMINENSE – Instituto Federal de Educação, Ciência e Tecnologia Fluminense:
-    node: null
-    pedidos: 82
-    concedido: 62
-    negado: 5
-    parcial: 5
-    inexistente: 0
-    sem_competencia: 0
-    fora_da_lai: 7
-    duplicada: 3
-    outra: 0
-    prorrogados: 12
-    recursos: 15
-    decididos: 72
-    pct_negado_ou_parcial: 13.9
-    pct_prorrogado: 14.6
-    motivos_top:
-    - motivo: "\0"
-      n: 81
-    - motivo: Trata-se de pedido anônimo, referente a protocolos do Fala.BR que cita
-      n: 1
-    assuntos_top:
-    - assunto: Transparência e acesso à informação
-      n: 33
-    - assunto: Gestão de Pessoas
-      n: 22
-    - assunto: Gestão escolar e administrativa
-      n: 8
-    - assunto: Estudos e Pesquisas
-      n: 6
   EBSERH - HU-UFGD – Hospital Universitário de Grande Dourados:
     node: br-ebserh
     pedidos: 80
@@ -8072,6 +8072,35 @@ orgaos:
       n: 2
     - assunto: Atendimento ao público
       n: 1
+  ? EBSERH – CHU-UFPA (HUJBB e HUBFS) – Complexo Hospitalar Universitário da Universidade Federal do Pará – Hospitais Universitários João de Barros Barreto
+    e Bettina Ferro de Souza
+  : node: br-ebserh
+    pedidos: 23
+    concedido: 18
+    negado: 0
+    parcial: 1
+    inexistente: 1
+    sem_competencia: 2
+    fora_da_lai: 0
+    duplicada: 1
+    outra: 0
+    prorrogados: 1
+    recursos: 2
+    decididos: 19
+    pct_negado_ou_parcial: null
+    pct_prorrogado: 4.3
+    motivos_top:
+    - motivo: "\0"
+      n: 23
+    assuntos_top:
+    - assunto: Gestão de Pessoas
+      n: 9
+    - assunto: Controle Social
+      n: 5
+    - assunto: Concursos e processos seletivos
+      n: 3
+    - assunto: Cadastros e Documentação
+      n: 2
   AEB – Agência Espacial Brasileira:
     node: br-agencia-espacial-brasileira
     pedidos: 22
@@ -8154,35 +8183,6 @@ orgaos:
       n: 8
     - assunto: Controle Social
       n: 3
-  ? EBSERH – CHU-UFPA (HUJBB e HUBFS) – Complexo Hospitalar Universitário da Universidade Federal do Pará – Hospitais Universitários João de Barros Barreto
-    e Bettina Ferro de Souza
-  : node: br-ebserh
-    pedidos: 22
-    concedido: 17
-    negado: 0
-    parcial: 1
-    inexistente: 1
-    sem_competencia: 2
-    fora_da_lai: 0
-    duplicada: 1
-    outra: 0
-    prorrogados: 1
-    recursos: 2
-    decididos: 18
-    pct_negado_ou_parcial: null
-    pct_prorrogado: 4.5
-    motivos_top:
-    - motivo: "\0"
-      n: 22
-    assuntos_top:
-    - assunto: Gestão de Pessoas
-      n: 8
-    - assunto: Controle Social
-      n: 5
-    - assunto: Concursos e processos seletivos
-      n: 3
-    - assunto: Cadastros e Documentação
-      n: 2
   SUDAM – Superintendência do Desenvolvimento da Amazônia:
     node: br-sudam
     pedidos: 21
@@ -9385,7 +9385,7 @@ nao_casados:
 - orgao: IF GOIANO – Instituto Federal de Educação, Ciência e Tecnologia Goiano
   pedidos: 84
 - orgao: IF FLUMINENSE – Instituto Federal de Educação, Ciência e Tecnologia Fluminense
-  pedidos: 82
+  pedidos: 83
 - orgao: COAF - Conselho de Controle de Atividades Financeiras
   pedidos: 70
 - orgao: EBSERH/HUPES-UFBA – EBSERH - Filial Hospital Universitário Edgard Santos
