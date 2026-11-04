@@ -1,16 +1,16 @@
 # GERADO por etl/pep.py. Não edite à mão.
-generated_at: '2026-11-03'
+generated_at: '2026-11-04'
 fonte: Portal da Transparência, cadastro de Pessoas Expostas Politicamente (/api-de-dados/peps)
 nota: 'Data de início e fim de exercício de quem ocupa função de poder no Executivo federal. A data só é aceita quando o órgão do registro no
   PEP casa com o órgão do cargo no Atlas: o nome sozinho não basta, porque homônimo existe e a data entraria no cargo errado. O que não casa fica
   em ''recusados'', para conferência humana, e não é usado.'
 resumo:
-  consultados_nesta_rodada: 0
+  consultados_nesta_rodada: 2
   posses_conhecidas: 37
   novas_nesta_rodada: 0
-  recusados: 0
+  recusados: 1
   ja_sairam_segundo_o_pep: 0
-  sem_registro: 108
+  sem_registro: 110
 posses:
   br-p-adeilson-ribeiro-telles:
     inicio: '2026-08-10'
@@ -235,7 +235,13 @@ posses:
     orgao_pep: AGENCIA NACIONAL DE TELECOMUNICACOES
     em: '2026-10-14'
 ja_sairam: []
-recusados: []
+recusados:
+- pessoa: br-p-mariah-queiroz-costa-silva
+  nome: Mariah Queiroz Costa Silva
+  cargo: br-secretaria-de-estrategias-e-redes-secretario
+  pep_orgao: PRESIDENCIA DA REPUBLICA
+  pep_funcao: SECRETARIO
+  motivo: órgão do PEP não é o órgão do cargo no Atlas
 sem_registro:
   br-p-adriana-pionttkovsky-barcellos: '2026-10-14'
   br-p-aguimar-martins-peixoto: '2026-10-14'
@@ -288,6 +294,7 @@ sem_registro:
   br-p-joao-carlos-salles: '2026-10-14'
   br-p-joaquina-aparecida-nobre-da-silva: '2026-10-14'
   br-p-jorge-alvaro-marques-guedes: '2026-10-14'
+  br-p-jose-celso-cardoso-jr: '2026-11-04'
   br-p-jose-daniel-diniz-melo: '2026-10-14'
   br-p-jose-geraldo-ticianeli: '2026-10-14'
   br-p-jose-marques-de-lima: '2026-10-14'
@@ -305,6 +312,7 @@ sem_registro:
   br-p-marcos-sfair-sunye: '2026-10-14'
   br-p-maria-elizabeth-guimaraes-teixeira-rocha: '2026-10-14'
   br-p-maria-jose-de-sena: '2026-10-14'
+  br-p-mariah-queiroz-costa-silva: '2026-11-04'
   br-p-marinalva-vieira-barbosa: '2026-10-14'
   br-p-maristela-goncalves-leal-vasconcelos: '2026-10-14'
   br-p-martha-adaime: '2026-10-14'

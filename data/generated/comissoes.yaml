@@ -1,7 +1,7 @@
 # GERADO por etl/comissoes.py. Não edite à mão.
 generated_from: legis.senado.leg.br/dadosabertos + dadosabertos.camara.leg.br
-generated_at: '2026-11-03'
-pessoas_reaproveitadas: 62
+generated_at: '2026-11-04'
+pessoas_reaproveitadas: 64
 ids_corrigidos:
   br-p-cd-353: br-p-cd-73788 (Ricardo Barros)
   br-p-cd-3695: br-p-cd-74858 (Lindbergh Farias)
@@ -62,7 +62,9 @@ ids_corrigidos:
   br-p-cd-6564: br-p-cd-220682 (Tadeu Veneri)
   br-p-cd-6565: br-p-cd-220683 (Beto Richa)
   br-p-cd-6576: br-p-cd-220694 (Ricardo Maia)
+  br-p-cd-6580: br-p-cd-220698 (Beto Preto)
   br-p-cd-6585: br-p-cd-220703 (Neto Carletto)
+  br-p-cd-6590: br-p-cd-220708 (Gabriel Nunes)
   br-p-cd-6597: br-p-cd-221338 (Professora Luciene Cavalcante)
 pessoas_novas:
   - Eduardo Girão (?/sf)
@@ -841,11 +843,11 @@ nodes:
       - Comissão de Viação e Transportes
     description: 'Comissão permanente da Câmara dos Deputados (CVT). Discute e vota as proposições da sua área temática,
       podendo aprová-las em caráter conclusivo sem passar pelo Plenário, e fiscaliza os atos do Executivo no seu
-      campo. Composição atual: 25 titulares.'
+      campo. Composição atual: 26 titulares.'
     cite: CF/88 art. 58; RICD arts. 22 e 32
     cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
     official_url: https://www.camara.leg.br/comissoes/cvt
-    seats_count: 25
+    seats_count: 26
     verified: true
   - id: br-comissao-mista-de-controle-das-atividades-de-inteligencia
     type: commission
@@ -1031,15 +1033,15 @@ positions:
       source: senado
       source_url: https://legis.senado.leg.br/comissoes/comissao?codcol=38
       image_url: http://www.senado.leg.br/senadores/img/fotos-oficiais/senador5502.jpg
-    - id: br-p-sf-6295
-      name: Carlos Fávaro
-      party: PSD
-      uf: MT
+    - id: br-p-sf-5895
+      name: Jorge Kajuru
+      party: PSB
+      uf: GO
       role: Titular
       entry_mode: eleito
       source: senado
       source_url: https://legis.senado.leg.br/comissoes/comissao?codcol=38
-      image_url: http://www.senado.leg.br/senadores/img/fotos-oficiais/senador6295.jpg
+      image_url: http://www.senado.leg.br/senadores/img/fotos-oficiais/senador5895.jpg
     - id: br-p-sf-5385
       name: Irajá
       party: PSD
@@ -4804,6 +4806,15 @@ positions:
       source: senado
       source_url: https://legis.senado.leg.br/comissoes/comissao?codcol=1307
       image_url: http://www.senado.leg.br/senadores/img/fotos-oficiais/senador4694.jpg
+    - id: br-p-sf-6342
+      name: Jorge Seif
+      party: PL
+      uf: SC
+      role: Suplente
+      entry_mode: eleito
+      source: senado
+      source_url: https://legis.senado.leg.br/comissoes/comissao?codcol=1307
+      image_url: http://www.senado.leg.br/senadores/img/fotos-oficiais/senador6342.jpg
     - id: br-p-sf-5736
       name: Tereza Cristina
       party: PP
@@ -14932,6 +14943,16 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220574
+    - id: br-p-cd-220539
+      name: Defensor Stélio Dener
+      party: UNIÃO
+      uf: RR
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220539.jpg
+      role: Suplente
+      started_at: '2026-11-04'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220539
   br-comissao-de-defesa-dos-direitos-da-mulher-da-camara:
     - id: br-p-cd-220645
       name: Erika Hilton
@@ -19392,6 +19413,16 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/204479
+    - id: br-p-cd-204517
+      name: Zé Vitor
+      party: PL
+      uf: MG
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/204517.jpg
+      role: Titular
+      started_at: '2026-11-04'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/204517
     - id: br-p-cd-204391
       name: José Nelto
       party: UNIÃO
@@ -20287,6 +20318,24 @@ positions:
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
       image_url: https://www.camara.leg.br/internet/deputado/bandep/220571.jpg
+    - id: br-p-cd-220708
+      name: Gabriel Nunes
+      party: PSD
+      uf: BA
+      role: Suplente
+      entry_mode: eleito
+      source: senado
+      source_url: https://www.congressonacional.leg.br/comissoes
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220708.jpg
+    - id: br-p-cd-220698
+      name: Beto Preto
+      party: PSD
+      uf: PR
+      role: Suplente
+      entry_mode: eleito
+      source: senado
+      source_url: https://www.congressonacional.leg.br/comissoes
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220698.jpg
     - id: br-p-cd-220572
       name: Marussa Boldrin
       party: REPUBLICANOS

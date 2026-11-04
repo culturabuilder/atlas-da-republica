@@ -1,7 +1,7 @@
 # GERADO por etl/dirigentes.py. Não edite à mão.
 generated_from: build/graph.br.json (nós department sem dept_head) + sites oficiais dos tribunais, estatais e instituições
   federais de ensino
-generated_at: '2026-10-28'
+generated_at: '2026-11-04'
 resumo:
   cargos_criados:
     tribunais: 36
@@ -10,10 +10,10 @@ resumo:
   cargos_criados_total: 195
   com_ocupante:
     tribunais: 13
-    estatais: 15
+    estatais: 14
     ensino: 46
-  com_ocupante_total: 74
-  sem_ocupante: 121
+  com_ocupante_total: 73
+  sem_ocupante: 122
   orgaos_fora_do_escopo:
   - 'no': br-presidencia-da-republica
     motivo: subtype orgao_presidencia fora do escopo dos três blocos
@@ -121,13 +121,9 @@ resumo:
     - https://www.trt16.jus.br/trt16/institucional/presidencia
     - https://www.trt16.jus.br/trt16/institucional/composicao
   - orgao: br-tribunal-regional-do-trabalho-da-17a-regiao-es
-    motivo: 'https://www.trt17.jus.br: http 401'
+    motivo: 'https://www.trt17.jus.br: http 403'
     paginas:
     - https://www.trt17.jus.br
-  - orgao: br-tribunal-regional-do-trabalho-da-18a-regiao-go
-    motivo: 'https://www.trt18.jus.br: http 403'
-    paginas:
-    - https://www.trt18.jus.br
   - orgao: br-tribunal-regional-do-trabalho-da-19a-regiao-al
     motivo: 'https://www.trt19.jus.br: http 403'
     paginas:
@@ -141,7 +137,7 @@ resumo:
     paginas:
     - https://www.trt20.jus.br
   - orgao: br-tribunal-regional-do-trabalho-da-21a-regiao-rn
-    motivo: 'https://www.trt21.jus.br: http 404'
+    motivo: 'https://www.trt21.jus.br: http 403'
     paginas:
     - https://www.trt21.jus.br
   - orgao: br-tribunal-regional-do-trabalho-da-22a-regiao-pi
@@ -251,12 +247,9 @@ resumo:
     - https://www.bancoamazonia.com.br/composicao/quem-e-quem
     - https://www.bancoamazonia.com.br/institucional/quem-e-quem
   - orgao: br-banco-do-nordeste-do-brasil-s-a
-    motivo: 10 página(s) lida(s) sem casamento de cargo e nome
+    motivo: 'https://www.bnb.gov.br: rede (timed out)'
     paginas:
     - https://www.bnb.gov.br
-    - https://www.bnb.gov.br/acesso-a-informacao/institucional/quem-e-quem
-    - https://www.bnb.gov.br/composicao/quem-e-quem
-    - https://www.bnb.gov.br/institucional/quem-e-quem
   - orgao: br-caixa-cartoes-holding-s-a
     motivo: 'https://www.caixa.gov.br: http 302'
     paginas:
@@ -292,6 +285,12 @@ resumo:
     motivo: 'https://www.ceitec-sa.com: rede ([Errno 104] Connection reset by peer)'
     paginas:
     - https://www.ceitec-sa.com
+  - orgao: br-companhia-brasileira-de-trens-urbanos
+    motivo: 'https://www.gov.br/cbtu/pt-br: rede ([Errno 101] Network is unreachable); https://www.cbtu.gov.br: rede ([Errno
+      101] Network is unreachable)'
+    paginas:
+    - https://www.gov.br/cbtu/pt-br
+    - https://www.cbtu.gov.br
   - orgao: br-companhia-das-docas-do-estado-da-bahia
     motivo: 10 página(s) lida(s) sem casamento de cargo e nome
     paginas:
@@ -327,12 +326,8 @@ resumo:
     - https://www.cdp.com.br/acesso-a-informacao/institucional/quem-e-quem
     - https://www.cdp.com.br/composicao/quem-e-quem
     - https://www.cdp.com.br/institucional/quem-e-quem
-  - orgao: br-companhia-docas-do-rio-de-janeiro
-    motivo: 'https://www.portosrio.gov.br: rede (timed out)'
-    paginas:
-    - https://www.portosrio.gov.br
   - orgao: br-eletronuclear-s-a
-    motivo: 'https://www.gov.br/eletronuclear/pt-br: http 404'
+    motivo: 'https://www.gov.br/eletronuclear/pt-br: rede ([Errno 101] Network is unreachable)'
     paginas:
     - https://www.gov.br/eletronuclear/pt-br
   - orgao: br-empresa-brasileira-de-hemoderivados-e-biotecnologia
@@ -369,6 +364,13 @@ resumo:
     paginas:
     - https://www.fhe.org.br
     - https://www.fhe.com.br
+  - orgao: br-fundacao-joaquim-nabuco
+    motivo: 10 página(s) lida(s) sem casamento de cargo e nome
+    paginas:
+    - https://www.gov.br/fundaj/pt-br
+    - https://www.gov.br/fundaj/pt-br/acesso-a-informacao/institucional/quem-e-quem
+    - https://www.gov.br/fundaj/pt-br/composicao/quem-e-quem
+    - https://www.gov.br/fundaj/pt-br/institucional/quem-e-quem
   - orgao: br-fundacao-jorge-duprat-figueiredo-de-seguranca-e-medicina-do-trabalho
     motivo: 10 página(s) lida(s) sem casamento de cargo e nome
     paginas:
@@ -388,8 +390,7 @@ resumo:
     - https://www.ghc.com.br/default.asp?idMenu=institucional&amp;idSubMenu=2
     - https://www.ghc.com.br/default.asp?idMenu=transparencia&idSubMenu=28752
   - orgao: br-industria-de-material-belico-do-brasil
-    motivo: 'https://www.gov.br/imbel/pt-br: rede ([Errno 101] Network is unreachable); https://www.imbel.com.br: rede ([Errno
-      -2] Name or service not known)'
+    motivo: 'https://www.gov.br/imbel/pt-br: http 404; https://www.imbel.com.br: rede ([Errno -2] Name or service not known)'
     paginas:
     - https://www.gov.br/imbel/pt-br
     - https://www.imbel.com.br
@@ -400,6 +401,17 @@ resumo:
     - https://www.inb.gov.br
     - https://www.inb.gov.br/acesso-a-informacao/institucional/quem-e-quem
     - https://www.inb.gov.br/composicao/quem-e-quem
+  - orgao: br-instituto-brasileiro-de-museus
+    motivo: 'https://www.gov.br/museus/pt-br: rede ([Errno 101] Network is unreachable)'
+    paginas:
+    - https://www.gov.br/museus/pt-br
+    - https://www.museus.gov.br
+    - https://www.gov.br/museus/pt-br/composicao/presidencia
+    - https://www.gov.br/museus/pt-br/acesso-a-informacao/institucional/quem-e-quem
+  - orgao: br-superintendencia-da-zona-franca-de-manaus
+    motivo: 'https://www.gov.br/suframa/pt-br: rede ([Errno 101] Network is unreachable)'
+    paginas:
+    - https://www.gov.br/suframa/pt-br
   - orgao: br-veiculo-de-desestatizacao-mg-investimentos-s-a
     motivo: sem site oficial conhecido
   - orgao: br-centro-federal-de-educacao-tecnologica-celso-suckow-da-fonseca
@@ -445,6 +457,13 @@ resumo:
     - http://www.prograd.ufop.br/
     - http://www.propp.ufop.br
     - http://www.prace.ufop.br/
+  - orgao: br-fundacao-universidade-federal-de-pelotas
+    motivo: 'https://www.ufpel.br: rede ([Errno -2] Name or service not known); https://www.ufpel.edu.br: rede ([Errno 101]
+      Network is unreachable); https://ufpel.edu.br: rede ([Errno 101] Netw…'
+    paginas:
+    - https://www.ufpel.br
+    - https://www.ufpel.edu.br
+    - https://ufpel.edu.br
   - orgao: br-fundacao-universidade-federal-de-rondonia
     motivo: 'https://www.unir.br: rede (timed out); https://www.unir.edu.br: rede ([Errno -2] Name or service not known);
       https://unir.edu.br: rede ([Errno -2] Name or service not known)'
@@ -514,16 +533,16 @@ resumo:
     motivo: 10 página(s) lida(s) sem casamento de cargo e nome
     paginas:
     - https://www.furg.br
+    - https://www.furg.br/noticias/noticias-institucional/durante-convocacao-extraordinaria-nume-reconduz-seu-presidente-e-presidente-para-novo-mandato
     - https://eagendas.cgu.gov.br/?_token=BYlLuPHqPWctwN4bPOEjbRjtd0ZTFSpKfP3qXBlT&amp;filtro_orgaos_ativos=on&amp;filtro_orgao=1120&amp;filtro_cargos_ativos=on&amp;filtro_cargo=REITOR&amp;filtro_apos_ativos=on&amp;filtro_servidor=39838&amp;cargo_confianca_id=&amp;is_cargo_vago=false#divcalendar
     - https://www.furg.br/a-furg/palavra-da-reitora
-    - https://www.furg.br/reitoria/informes-da-reitoria
   - orgao: br-fundacao-universidade-federal-do-tocantins
     motivo: 'https://www.uft.br: rede ([Errno -2] Name or service not known)'
     paginas:
     - https://www.uft.br
     - https://www.uft.edu.br
-    - https://www.uft.edu.br/noticias/reitora-maria-santana-e-homenageada-com-titulo-de-cidada-palmense
     - https://www.uft.edu.br/reitoria
+    - https://www.uft.edu.br/reitoria/reitor
   - orgao: br-fundacao-universidade-federal-do-vale-do-sao-francisco
     motivo: 'http://www.univasf.edu.br: rede (no host given); https://www.univasf.br: rede ([Errno -2] Name or service not
       known)'
@@ -572,16 +591,9 @@ resumo:
     motivo: 10 página(s) lida(s) sem casamento de cargo e nome
     paginas:
     - https://www.ifmt.edu.br
-    - https://ifmt.edu.br/blog/ifmt-abre-selecao-de-estagio-para-quatro-vagas-na-reitoria-em-cuiaba/
+    - https://www.instagram.com/p/DfR-H5Oly_K/
     - https://ifmt.edu.br/blog/campus-curso/reitoria/
     - https://ifmt.edu.br/politica-de-ingresso-e-selecoes/dpis/
-  - orgao: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-mato-grosso-do-sul
-    motivo: 'https://www.ifms.br: rede ([Errno -2] Name or service not known); https://www.ifms.edu.br: rede (timed out);
-      https://ifms.edu.br: rede (timed out)'
-    paginas:
-    - https://www.ifms.br
-    - https://www.ifms.edu.br
-    - https://ifms.edu.br
   - orgao: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-minas-gerais
     motivo: 10 página(s) lida(s) sem casamento de cargo e nome
     paginas:
@@ -590,12 +602,12 @@ resumo:
     - https://www.ifmg.edu.br/reitoria/reitor
     - https://www.ifmg.edu.br/sobre/reitoria
   - orgao: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-pernambuco
-    motivo: 'https://www.ifpe.edu.br: rede (timed out); https://www.ifpe.br: rede ([Errno -2] Name or service not known);
-      https://ifpe.edu.br: rede ([Errno -5] No address associated with ho)'
+    motivo: 10 página(s) lida(s) sem casamento de cargo e nome
     paginas:
     - https://www.ifpe.edu.br
-    - https://www.ifpe.br
-    - https://ifpe.edu.br
+    - https://www.ifpe.edu.br/reitoria
+    - https://www.ifpe.edu.br/reitoria/reitor
+    - https://www.ifpe.edu.br/sobre/reitoria
   - orgao: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-rondonia
     motivo: 10 página(s) lida(s) sem casamento de cargo e nome
     paginas:
@@ -774,8 +786,8 @@ resumo:
     - https://www.uffs.edu.br/reitoria
     - https://www.uffs.edu.br/reitoria/reitor
   - orgao: br-universidade-federal-de-alfenas
-    motivo: 'https://www.unifal.br: rede ([Errno -2] Name or service not known); https://www.unifal.edu.br: rede ([Errno -3]
-      Temporary failure in name res)…'
+    motivo: 'https://www.unifal.br: rede ([Errno -2] Name or service not known); https://www.unifal.edu.br: rede (timed out);
+      https://unifal.edu.br: rede (timed out)…'
     paginas:
     - https://www.unifal.br
     - https://www.unifal.edu.br
@@ -824,6 +836,13 @@ resumo:
     - https://ufla.br/sobre/administracao/reitoria
     - https://ufla.br/sobre/administracao/pro-reitorias
     - https://www.ufla.br/reitoria
+  - orgao: br-universidade-federal-de-pernambuco
+    motivo: 'https://www.ufpe.br: rede (timed out); https://www.ufpe.edu.br: rede ([Errno -2] Name or service not known);
+      https://ufpe.edu.br: rede ([Errno -2] Name or service not known)'
+    paginas:
+    - https://www.ufpe.br
+    - https://www.ufpe.edu.br
+    - https://ufpe.edu.br
   - orgao: br-universidade-federal-de-rondonopolis
     motivo: 'https://www.ufr.edu.br: http 403; https://www.ufr.br: rede ([Errno -2] Name or service not known); https://ufr.edu.br:
       http 403'
@@ -832,13 +851,12 @@ resumo:
     - https://www.ufr.br
     - https://ufr.edu.br
   - orgao: br-universidade-federal-de-santa-catarina
-    motivo: 'https://ufsc.br: rede ([Errno 101] Network is unreachable); https://www.ufsc.br: rede ([Errno 101] Network is
-      unreachable); https://www.ufsc.edu.br: rede ([Errno 101] Network is un…'
+    motivo: 10 página(s) lida(s) sem casamento de cargo e nome
     paginas:
     - https://ufsc.br
-    - https://www.ufsc.br
-    - https://www.ufsc.edu.br
-    - https://ufsc.edu.br
+    - https://reitoria.ufsc.br/
+    - http://reitoria.paginas.ufsc.br/pro-reitorias-e-secretarias/
+    - https://ufsc.br/reitoria
   - orgao: br-universidade-federal-de-sao-paulo
     motivo: 'https://www.unifesp.br: erro TimeoutError; https://www.unifesp.edu.br: rede ([Errno -5] No address associated
       with ho); https://unifesp.edu.br: rede ([Errno -5] No address associat…'
@@ -920,12 +938,12 @@ resumo:
     - https://www.ufsb.edu.br/a-ufsb/pro-reitorias
     - https://www.ufsb.edu.br/tag-reitoria
   - orgao: br-universidade-federal-do-sul-e-sudeste-do-para
-    motivo: 10 página(s) lida(s) sem casamento de cargo e nome
+    motivo: 'https://www.unifesspa.edu.br: rede (timed out); https://www.unifesspa.br: rede ([Errno -2] Name or service not
+      known); https://unifesspa.edu.br: rede ([Errno 101] Network is unreac…'
     paginas:
     - https://www.unifesspa.edu.br
-    - https://proad.unifesspa.edu.br/
-    - https://progep.unifesspa.edu.br/
-    - https://proeg.unifesspa.edu.br/
+    - https://www.unifesspa.br
+    - https://unifesspa.edu.br
   - orgao: br-universidade-federal-dos-vales-do-jequitinhonha-e-mucuri
     motivo: 10 página(s) lida(s) sem casamento de cargo e nome
     paginas:
@@ -942,12 +960,12 @@ resumo:
     - https://www.unind.edu.br
     - https://unind.edu.br
   - orgao: br-universidade-federal-rural-da-amazonia
-    motivo: 'https://www.ufra.edu.br: rede (timed out); https://www.ufra.br: rede ([Errno -2] Name or service not known);
-      https://ufra.edu.br: rede (timed out)'
+    motivo: 10 página(s) lida(s) sem casamento de cargo e nome
     paginas:
     - https://www.ufra.edu.br
-    - https://www.ufra.br
-    - https://ufra.edu.br
+    - https://www.ufra.edu.br/reitoria
+    - https://www.ufra.edu.br/reitoria/reitor
+    - https://www.ufra.edu.br/sobre/reitoria
   - orgao: br-universidade-federal-rural-de-pernambuco
     motivo: 'https://www.ufrpe.br: rede (timed out); https://www.ufrpe.edu.br: rede ([Errno -2] Name or service not known);
       https://ufrpe.edu.br: rede ([Errno -2] Name or service not known)'
@@ -969,9 +987,16 @@ resumo:
     - http://prograd.ufersa.edu.br
     - http://proppg.ufersa.edu.br
     - https://proec.ufersa.edu.br
-  requisicoes_http: 1038
+  - orgao: br-universidade-tecnologica-federal-do-parana
+    motivo: 'https://www.utfpr.edu.br: rede (timed out); https://www.utfpr.br: rede ([Errno -2] Name or service not known);
+      https://utfpr.edu.br: rede (timed out)'
+    paginas:
+    - https://www.utfpr.edu.br
+    - https://www.utfpr.br
+    - https://utfpr.edu.br
+  requisicoes_http: 1055
   cache_hits: 3
-  duracao_s: 2984
+  duracao_s: 3152
 nodes: []
 positions:
 - id: br-tribunal-de-justica-do-distrito-federal-e-dos-territorios-presidente
@@ -995,7 +1020,7 @@ positions:
     entry_mode: eleito_pares
     source: oficial
     source_url: https://www.tjdft.jus.br/institucional/administracao-superior/presidencia
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Presidente"; trecho: Presidente | Jair Oliveira Soares'
 - id: br-tribunal-regional-do-trabalho-da-10a-regiao-df-e-to-presidente
@@ -1034,7 +1059,7 @@ positions:
     entry_mode: eleito_pares
     source: oficial
     source_url: https://portal.trt11.jus.br/index.php/home/presidencia
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Presidente"; trecho: Desembargador JORGE ALVARO MARQUES GUEDES - Presidente'
 - id: br-tribunal-regional-do-trabalho-da-12a-regiao-sc-presidente
@@ -1075,10 +1100,9 @@ positions:
     source_url: https://www.trt13.jus.br/institucional
     checked_at: '2026-09-22'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque
-      a página oficial não respondeu em 2026-10-21; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14;
-      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-07; página oficial do órgão; cargo na página:
-      "Presidente"…'
+    note: mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-21;
+      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14…
 - id: br-tribunal-regional-do-trabalho-da-14a-regiao-ro-e-ac-presidente
   type: dept_head
   head_of: br-tribunal-regional-do-trabalho-da-14a-regiao-ro-e-ac
@@ -1147,10 +1171,9 @@ positions:
     source_url: https://www.trt17.jus.br/w/composicao-do-tribunal
     checked_at: '2026-09-22'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque
-      a página oficial não respondeu em 2026-10-21; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14;
-      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-07; página oficial do órgão; cargo na página:
-      "Presidente"…'
+    note: mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-21;
+      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14…
 - id: br-tribunal-regional-do-trabalho-da-18a-regiao-go-presidente
   type: dept_head
   head_of: br-tribunal-regional-do-trabalho-da-18a-regiao-go
@@ -1172,10 +1195,9 @@ positions:
     entry_mode: eleito_pares
     source: oficial
     source_url: https://www.trt18.jus.br/portal/institucional/estrutura-administrativa/presidencia/
-    checked_at: '2026-10-21'
+    checked_at: '2026-11-04'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; página oficial do órgão; cargo
-      na página: "Presidente"; trecho: Presidente | Des. Eugênio José Cesário Rosa'
+    note: 'página oficial do órgão; cargo na página: "Presidente"; trecho: Presidente | Des. Eugênio José Cesário Rosa'
 - id: br-tribunal-regional-do-trabalho-da-19a-regiao-al-presidente
   type: dept_head
   head_of: br-tribunal-regional-do-trabalho-da-19a-regiao-al
@@ -1214,10 +1236,9 @@ positions:
     source_url: https://www.trt1.jus.br/web/guest/administracao-superior
     checked_at: '2026-09-22'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque
-      a página oficial não respondeu em 2026-10-21; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14;
-      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-07; página oficial do órgão; cargo na página:
-      "Presidente"…'
+    note: mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-21;
+      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14…
 - id: br-tribunal-regional-do-trabalho-da-20a-regiao-se-presidente
   type: dept_head
   head_of: br-tribunal-regional-do-trabalho-da-20a-regiao-se
@@ -1286,10 +1307,9 @@ positions:
     source_url: https://portal.trt23.jus.br/portal/composicao-do-trt
     checked_at: '2026-09-22'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque
-      a página oficial não respondeu em 2026-10-21; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14;
-      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-07; página oficial do órgão; cargo na página:
-      "Presidente"…'
+    note: mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-21;
+      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14…
 - id: br-tribunal-regional-do-trabalho-da-24a-regiao-ms-presidente
   type: dept_head
   head_of: br-tribunal-regional-do-trabalho-da-24a-regiao-ms
@@ -1311,7 +1331,7 @@ positions:
     entry_mode: eleito_pares
     source: oficial
     source_url: https://www.trt24.jus.br/composicao
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "PRESIDENTE"; trecho: PRESIDENTE: | des. Tomás Bawden de Castro Silva'
 - id: br-tribunal-regional-do-trabalho-da-2a-regiao-sp-presidente
@@ -1350,7 +1370,7 @@ positions:
     entry_mode: eleito_pares
     source: oficial
     source_url: https://portal.trt3.jus.br/internet/institucional/2-grau/composicao
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Presidente"; trecho: Presidente: Desembargador Sebastião Geraldo de
       Oliveira'
@@ -1392,10 +1412,9 @@ positions:
     source_url: https://www.trt5.jus.br/composicao
     checked_at: '2026-09-22'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque
-      a página oficial não respondeu em 2026-10-21; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14;
-      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-07; página oficial do órgão; cargo na página:
-      "PRESIDENTE"…'
+    note: mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-21;
+      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14…
 - id: br-tribunal-regional-do-trabalho-da-6a-regiao-pe-presidente
   type: dept_head
   head_of: br-tribunal-regional-do-trabalho-da-6a-regiao-pe
@@ -1419,8 +1438,9 @@ positions:
     source_url: https://www.trt6.jus.br/portal/institucional/composicao
     checked_at: '2026-10-21'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; página oficial do órgão; cargo
-      na página: "presidente"; trecho: Ivan de Souza Valença Alves (presidente),'
+    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; página oficial do órgão; cargo na página: "presidente"; trecho: Ivan de
+      Souza Valença Alves (presidente),'
 - id: br-tribunal-regional-do-trabalho-da-7a-regiao-ce-presidente
   type: dept_head
   head_of: br-tribunal-regional-do-trabalho-da-7a-regiao-ce
@@ -1442,7 +1462,7 @@ positions:
     entry_mode: eleito_pares
     source: oficial
     source_url: https://www.trt7.jus.br/index.php/institucional/composicao/presidencia
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Presidente"; trecho: Presidente | Uchôa de Albuquerque'
 - id: br-tribunal-regional-do-trabalho-da-8a-regiao-pa-e-ap-presidente
@@ -1587,7 +1607,7 @@ positions:
     entry_mode: eleito_pares
     source: oficial
     source_url: https://www.trf2.jus.br/trf2/institucional/presidencia
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Presidente"; trecho: Presidente | Desembargador federal LUIZ PAULO DA
       SILVA ARAÚJO FILHO'
@@ -1675,7 +1695,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.abgf.gov.br/a-abgf/quem-e-quem/direx/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Presidenta"; trecho: Presidenta | Maíra Madrid Barbosa da Silva'
 - id: br-amazonia-azul-tecnologias-de-defesa-s-a-presidente
@@ -1735,7 +1755,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://intranet.portodesantos.com.br/lei_acesso/principais_cargos.asp
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "PRESIDENTE"; trecho: MARISTELA GONÇALVES LEAL VASCONCELOS - PRESIDENTE'
 - id: br-banco-da-amazonia-s-a-presidente
@@ -1929,8 +1949,8 @@ positions:
     source_url: https://www.gov.br/cbtu/pt-br/pt-br/acesso-a-informacao/institucional/quem-e-quem
     checked_at: '2026-10-28'
     verified: false
-    note: 'página oficial do órgão; cargo na página: "Diretor-Presidente"; trecho: Diretor-Presidente da Companhia | José
-      Marques de Lima'
+    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; página oficial do órgão; cargo
+      na página: "Diretor-Presidente"; trecho: Diretor-Presidente da Companhia | José Marques de Lima'
 - id: br-companhia-das-docas-do-estado-da-bahia-presidente
   type: dept_head
   head_of: br-companhia-das-docas-do-estado-da-bahia
@@ -2045,10 +2065,9 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.portosrio.gov.br/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-10-21'
+    checked_at: '2026-11-04'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; página oficial do órgão; cargo
-      na página: "Presidente"; trecho: Presidente | Jesualdo Conceição da Silva'
+    note: 'página oficial do órgão; cargo na página: "Presidente"; trecho: Presidente | Jesualdo Conceição da Silva'
 - id: br-companhia-docas-do-rio-grande-do-norte-presidente
   type: dept_head
   head_of: br-companhia-docas-do-rio-grande-do-norte
@@ -2073,7 +2092,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://codern.com.br/p/quem-e-quem#ancora
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Presidente"; trecho: Raclenir Lopes Galvão Júnior - Presidente'
 - id: br-eletronuclear-s-a-presidente
@@ -2116,7 +2135,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.presalpetroleo.gov.br/diretoria-executiva/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Diretor-Presidente"; trecho: Diretor-Presidente | Luis Fernando Paroli'
 - id: br-empresa-brasileira-de-hemoderivados-e-biotecnologia-presidente
@@ -2224,8 +2243,8 @@ positions:
     started_at: null
     entry_mode: nomeado
     source: oficial
-    source_url: https://www.gov.br/casaruibarbosa/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-10-28'
+    source_url: https://www.gov.br/casaruibarbosa/pt-br/a-fundacao/equipe-organizacao/quem-e-quem
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Presidente"; trecho: Presidente | Alexandre de Souza Santini Rodrigues'
 - id: br-fundacao-de-previdencia-complementar-do-servidor-publico-federal-do-poder-executivo-diretor-presidente
@@ -2250,7 +2269,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.funpresp.com.br/transparencia/a-funpresp/quem-e-quem
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "DIRETOR-PRESIDENTE"; trecho: DIRETOR-PRESIDENTE | Cícero Rafael Dias'
 - id: br-fundacao-habitacional-do-exercito-diretor-presidente
@@ -2281,18 +2300,9 @@ positions:
   description: 'Dirige a Fundação Joaquim Nabuco (FUNDAJ), fundação pública federal, vinculada ao Ministério da Educação.
     Cargo de direção superior de livre nomeação e exoneração, que representa a FUNDAJ e responde por sua finalidade legal:
     promover estudos e pesquisas no campo das ciências sociais.'
-  official_url: https://www.gov.br
+  official_url: https://www.gov.br/fundaj/pt-br
   verified: false
-  people:
-  - id: br-p-marcia-angela
-    name: Marcia Angela
-    started_at: null
-    entry_mode: nomeado
-    source: oficial
-    source_url: https://www.gov.br/fundaj/pt-br/composicao/presidencia-1
-    checked_at: '2026-10-28'
-    verified: false
-    note: 'página oficial do órgão; cargo na página: "Presidente"; trecho: Agenda da Presidente MARCIA ANGELA DA SILVA AGUIAR'
+  people: []
 - id: br-fundacao-jorge-duprat-figueiredo-de-seguranca-e-medicina-do-trabalho-presidente
   type: dept_head
   head_of: br-fundacao-jorge-duprat-figueiredo-de-seguranca-e-medicina-do-trabalho
@@ -2366,7 +2376,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.hcpa.edu.br/quem-e-quem
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Presidente"; trecho: FERNANDO NASCIMENTO ZATTA - Presidente'
 - id: br-industria-de-material-belico-do-brasil-presidente
@@ -2428,8 +2438,8 @@ positions:
     source_url: https://www.gov.br/museus/pt-br/acesso-a-informacao/institucional/quem-e-quem
     checked_at: '2026-10-28'
     verified: false
-    note: 'página oficial do órgão; cargo na página: "Presidenta"; trecho: Presidenta do Instituto Brasileiro de Museus |
-      Fernanda Santana Rabello de Castro'
+    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; página oficial do órgão; cargo
+      na página: "Presidenta"; trecho: Presidenta do Instituto Brasileiro de Museus | Fernanda Santana Rabello de Castro'
 - id: br-instituto-de-pesquisas-jardim-botanico-do-rio-de-janeiro-presidente
   type: dept_head
   head_of: br-instituto-de-pesquisas-jardim-botanico-do-rio-de-janeiro
@@ -2452,7 +2462,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.gov.br/jbrj/pt-br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Presidente"; trecho: Presidente do JBRJ | Sergio Besserman Vianna'
 - id: br-nav-brasil-servicos-de-navegacao-aerea-s-a-presidente
@@ -2479,7 +2489,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.navbrasil.gov.br/acesso-a-informacao/institucional/quem-e-quem/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Presidente"; trecho: Presidente: Mauro Roma Cardoso de Barros'
 - id: br-nuclebras-equipamentos-pesados-s-a-presidente
@@ -2504,8 +2514,8 @@ positions:
     started_at: null
     entry_mode: nomeado
     source: oficial
-    source_url: https://www.nuclep.gov.br/composicao/presidencia
-    checked_at: '2026-10-28'
+    source_url: https://www.nuclep.gov.br/index.php/composicao/presidencia
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Presidente"; trecho: Presidente | Adeilson Ribeiro Telles'
 - id: br-superintendencia-da-zona-franca-de-manaus-superintendente
@@ -2532,8 +2542,8 @@ positions:
     source_url: https://www.gov.br/suframa/pt-br/acesso-a-informacao/institucional/quem-e-quem
     checked_at: '2026-10-28'
     verified: false
-    note: 'página oficial do órgão; cargo na página: "SUPERINTENDENTE"; trecho: SUPERINTENDENTE | Leopoldo Augusto Melo Montenegro
-      Júnior'
+    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; página oficial do órgão; cargo
+      na página: "SUPERINTENDENTE"; trecho: SUPERINTENDENTE | Leopoldo Augusto Melo Montenegro Júnior'
 - id: br-veiculo-de-desestatizacao-mg-investimentos-s-a-presidente
   type: dept_head
   head_of: br-veiculo-de-desestatizacao-mg-investimentos-s-a
@@ -2622,7 +2632,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://unb.br/administrativo-rodape/reitoria
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora | Márcia Abrahão Moura'
 - id: br-fundacao-universidade-do-amazonas-reitor
@@ -2648,7 +2658,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://ufam.edu.br/reitoria
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "REITORA"; trecho: REITORA | Professora Doutora Tanara Lauschner'
 - id: br-fundacao-universidade-federal-da-grande-dourados-reitor
@@ -2674,7 +2684,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ufgd.edu.br/reitoria/reitoria/informe/ufgd-19-anos---mensagem-da-reitoria-e-pro-reitorias
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "reitor"; trecho: as mensagens do reitor Jones Dari Goettert e da vice-reitora
       Cláudia Gonçalves de Lima e de todos os pró-reitores e pró-reitoras na'
@@ -2720,10 +2730,9 @@ positions:
     source_url: https://www.ufms.br/reitoria/
     checked_at: '2026-09-22'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque
-      a página oficial não respondeu em 2026-10-21; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14;
-      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-07; página oficial do órgão; cargo na página:
-      "Reitora"…'
+    note: mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-21;
+      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14…
 - id: br-fundacao-universidade-federal-de-mato-grosso-do-sul-reitor
   type: dept_head
   head_of: br-fundacao-universidade-federal-de-mato-grosso-do-sul
@@ -2747,7 +2756,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ufms.br/reitoria/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora | Professora Camila Celeste Brandão Ferreira
       Ítavo'
@@ -2793,7 +2802,8 @@ positions:
     source_url: https://wp.ufpel.edu.br/gabinete/reitor/
     checked_at: '2026-10-28'
     verified: false
-    note: 'página oficial do órgão; cargo na página: "REITORA"; trecho: REITORA | Ursula Rosa da Silva'
+    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; página oficial do órgão; cargo
+      na página: "REITORA"; trecho: REITORA | Ursula Rosa da Silva'
 - id: br-fundacao-universidade-federal-de-rondonia-reitor
   type: dept_head
   head_of: br-fundacao-universidade-federal-de-rondonia
@@ -2835,8 +2845,9 @@ positions:
     source_url: https://ufrr.br/reitoria/
     checked_at: '2026-10-21'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; página oficial do órgão; cargo
-      na página: "Reitor"; trecho: Reitor | PROFESSOR DOUTOR JOSÉ GERALDO TICIANELI'
+    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor | PROFESSOR
+      DOUTOR JOSÉ GERALDO TICIANELI'
 - id: br-fundacao-universidade-federal-de-sao-carlos-reitor
   type: dept_head
   head_of: br-fundacao-universidade-federal-de-sao-carlos
@@ -2927,7 +2938,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ufabc.edu.br/administracao/reitoria
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora: | Paula Homem de Mello'
 - id: br-fundacao-universidade-federal-do-acre-reitor
@@ -2953,7 +2964,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ufac.br/site/ufac/institucional
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor | Josimar Batista Ferreira'
 - id: br-fundacao-universidade-federal-do-amapa-reitor
@@ -3028,7 +3039,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://ufpi.br/reitoria
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora Nadir do Nascimento Nogueira (2024-2028)'
 - id: br-fundacao-universidade-federal-do-rio-grande-reitor
@@ -3134,7 +3145,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://portal.ifba.edu.br/reitoria/reitoria/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora | Luzia Matos Mota'
 - id: br-instituto-federal-de-educacao-ciencia-e-tecnologia-da-paraiba-reitor
@@ -3206,7 +3217,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ifg.edu.br/reitoria
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora: | Oneida Cristina Gomes Barcelos Irigon'
 - id: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-mato-grosso-reitor
@@ -3248,10 +3259,9 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ifms.edu.br/acesso-a-informacao/institucional/quem-e-quem
-    checked_at: '2026-10-21'
+    checked_at: '2026-11-04'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; página oficial do órgão; cargo
-      na página: "Reitora"; trecho: Reitora | Elaine Borges Monteiro Cassiano'
+    note: 'página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora | Elaine Borges Monteiro Cassiano'
 - id: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-minas-gerais-reitor
   type: dept_head
   head_of: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-minas-gerais
@@ -3356,10 +3366,9 @@ positions:
     source_url: https://www.ifsp.edu.br/reitoria
     checked_at: '2026-09-22'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque
-      a página oficial não respondeu em 2026-10-21; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14;
-      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-07; página oficial do órgão; cargo na página:
-      "Reitor"…'
+    note: mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-21;
+      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14…
 - id: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-sergipe-reitor
   type: dept_head
   head_of: br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-sergipe
@@ -3382,7 +3391,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ifs.edu.br/orgaos-colegiados/conselho-superior/consulta-publica-reitor-e-diretores-de-campi.html
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor | Elber Gama'
 - id: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-acre-reitor
@@ -3471,7 +3480,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ifes.edu.br/gabinete
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora | Adriana Pionttkovsky Barcellos'
 - id: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-maranhao-reitor
@@ -3514,10 +3523,9 @@ positions:
     source_url: https://www.ifnmg.edu.br/quem-e-quem
     checked_at: '2026-09-22'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque
-      a página oficial não respondeu em 2026-10-21; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14;
-      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-07; página oficial do órgão; cargo na página:
-      "Reitora"…'
+    note: mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-21;
+      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14…
 - id: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-para-reitor
   type: dept_head
   head_of: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-para
@@ -3542,8 +3550,9 @@ positions:
     source_url: https://ifpa.edu.br/reitoria
     checked_at: '2026-10-21'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; página oficial do órgão; cargo
-      na página: "Reitora"; trecho: Reitora | Ana Paula Palheta Santana'
+    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora |
+      Ana Paula Palheta Santana'
 - id: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-parana-reitor
   type: dept_head
   head_of: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-parana
@@ -3584,10 +3593,9 @@ positions:
     source_url: https://www.ifpi.edu.br/reitoria/reitor
     checked_at: '2026-09-22'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque
-      a página oficial não respondeu em 2026-10-21; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14;
-      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-07; página oficial do órgão; cargo na página:
-      "Reitor"…'
+    note: mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-21;
+      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14…
 - id: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-de-janeiro-reitor
   type: dept_head
   head_of: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-de-janeiro
@@ -3611,7 +3619,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://ifrj.edu.br/reitoria/reitor
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor | Prof. Dr. Thiago Matos Pinto -'
 - id: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-grande-do-norte-reitor
@@ -3688,7 +3696,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://ifsertaope.edu.br/a-instituicao/reitoria/gabinete-da-reitoria/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: O Reitor | Jean Carlos Coelho de Alencar'
 - id: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sudeste-de-minas-gerais-reitor
@@ -3745,7 +3753,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ifto.edu.br/ifto/reitoria/gabinete
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora | Paula Karini Dias Ferreira Amorim'
 - id: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-triangulo-mineiro-reitor
@@ -3803,7 +3811,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://portal1.iff.edu.br/nossos-campi/reitoria
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor | Prof. Victor Barbosa Saraiva'
 - id: br-instituto-federal-de-educacao-ciencia-e-tecnologia-goiano-reitor
@@ -3862,7 +3870,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://unilab.edu.br/reitoria/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor | ELIANE GONÇALVES DA COSTA -'
 - id: br-universidade-federal-da-bahia-reitor
@@ -3890,8 +3898,9 @@ positions:
     source_url: https://ufba.br/reitoria
     checked_at: '2026-10-21'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; página oficial do órgão; cargo
-      na página: "Reitor"; trecho: O Reitor | João Carlos Salles'
+    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; página oficial do órgão; cargo na página: "Reitor"; trecho: O Reitor |
+      João Carlos Salles'
 - id: br-universidade-federal-da-fronteira-norte-reitor
   type: dept_head
   head_of: br-universidade-federal-da-fronteira-norte
@@ -3948,7 +3957,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://portal.unila.edu.br/reitoria/reitoria
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora | Diana Araujo Pereira'
 - id: br-universidade-federal-da-paraiba-reitor
@@ -3974,7 +3983,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ufpb.br/reitoria/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora Terezinha Domiciano'
 - id: br-universidade-federal-de-alagoas-reitor
@@ -4000,7 +4009,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://ufal.br/ufal/institucional/reitoria
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor | Josealdo Tonholo'
 - id: br-universidade-federal-de-alfenas-reitor
@@ -4125,7 +4134,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www2.ufjf.br/ufjf/sobre/organizacao/reitoria/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora (2024-2028) | Girlene Alves da Silva'
 - id: br-universidade-federal-de-lavras-reitor
@@ -4167,7 +4176,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ufmg.br/a-universidade/gestao/dirigentes/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor | Alessandro Fernandes Moreira'
 - id: br-universidade-federal-de-pernambuco-reitor
@@ -4195,7 +4204,8 @@ positions:
     source_url: https://www.ufpe.br/institucional/gabinete-do-reitor
     checked_at: '2026-10-28'
     verified: false
-    note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor | Alfredo Macedo Gomes'
+    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; página oficial do órgão; cargo
+      na página: "Reitor"; trecho: Reitor | Alfredo Macedo Gomes'
 - id: br-universidade-federal-de-rondonopolis-reitor
   type: dept_head
   head_of: br-universidade-federal-de-rondonopolis
@@ -4253,7 +4263,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ufsm.br/reitoria/gabinete
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "reitora"; trecho: 65 anos de UFSM: entrevista com a próxima reitora
       Martha Adaime'
@@ -4282,10 +4292,9 @@ positions:
     source_url: https://portal.unifesp.br/institucional/reitoria/gabinete-reitoria
     checked_at: '2026-09-22'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque
-      a página oficial não respondeu em 2026-10-21; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14;
-      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-07; página oficial do órgão; cargo na página:
-      "Reitora"…'
+    note: mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-21;
+      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14…
 - id: br-universidade-federal-de-uberlandia-reitor
   type: dept_head
   head_of: br-universidade-federal-de-uberlandia
@@ -4325,7 +4334,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://ufape.edu.br/reitoria
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor: | Airon Aparecido Silva de Melo'
 - id: br-universidade-federal-do-cariri-reitor
@@ -4351,7 +4360,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ufca.edu.br/instituicao/administrativo/estrutura-organizacional/reitoria/o-reitor/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor Silvério de Paiva Freitas Júnior'
 - id: br-universidade-federal-do-ceara-reitor
@@ -4377,7 +4386,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ufc.br/pt/reitoria/gestao-da-reitoria
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Custódio Almeida (Reitor)'
 - id: br-universidade-federal-do-delta-do-parnaiba-reitor
@@ -4420,7 +4429,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ufes.br/reitoria
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor: Paulo Sergio de Paula Vargas'
 - id: br-universidade-federal-do-esporte-reitor
@@ -4513,7 +4522,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ufopa.edu.br/ufopa/institucional/reitoria-2/gabinete/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora | Profa. Dra. Aldenize Ruela Xavier'
 - id: br-universidade-federal-do-para-reitor
@@ -4541,10 +4550,9 @@ positions:
     source_url: https://ufpr.br/gabinete-do-reitor/
     checked_at: '2026-09-22'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque
-      a página oficial não respondeu em 2026-10-21; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14;
-      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-07; página oficial do órgão; cargo na página:
-      "Reitor"; trecho: Reitor | Prof.…'
+    note: mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; mantido da leitura anterior porque a página oficial não respondeu em 2026-10-21;
+      mantido da leitura anterior porque a página oficial não respondeu em 2026-10-14…
 - id: br-universidade-federal-do-parana-reitor
   type: dept_head
   head_of: br-universidade-federal-do-parana
@@ -4568,7 +4576,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://ufpr.br/gabinete-do-reitor/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor | Prof. Dr. Marcos Sfair Sunye'
 - id: br-universidade-federal-do-reconcavo-da-bahia-reitor
@@ -4611,7 +4619,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://ufrj.br/a-ufrj/contatos/reitoria/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor: Roberto de Andrade Medronho'
 - id: br-universidade-federal-do-rio-grande-do-norte-reitor
@@ -4637,7 +4645,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.ufrn.br/institucional/reitoria
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: A gestão dos professores José Daniel Diniz Melo (Reitor)
       e Henio Ferreira de Miranda (Vice-Reitor) começou no dia 28 de maio de 2019 e constitui o 16º reitorado entre os 14
@@ -4715,7 +4723,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.uftm.edu.br/reitoria
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitora"; trecho: Profª. Drª. Marinalva Vieira Barbosa - Reitora'
 - id: br-universidade-federal-dos-vales-do-jequitinhonha-e-mucuri-reitor
@@ -4758,7 +4766,7 @@ positions:
     entry_mode: nomeado
     source: oficial
     source_url: https://www.uff.br/sobre/reitoria/
-    checked_at: '2026-10-28'
+    checked_at: '2026-11-04'
     verified: false
     note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor | Antonio Claudio Lucas da Nóbrega'
 - id: br-universidade-federal-indigena-reitor
@@ -4820,8 +4828,9 @@ positions:
     source_url: https://ufrpe.br/reitoria/
     checked_at: '2026-10-21'
     verified: false
-    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-10-28; página oficial do órgão; cargo
-      na página: "Reitora"; trecho: Reitora: | Professora Maria José de Sena'
+    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; mantido da leitura anterior porque
+      a página oficial não respondeu em 2026-10-28; página oficial do órgão; cargo na página: "Reitora"; trecho: Reitora:
+      | Professora Maria José de Sena'
 - id: br-universidade-federal-rural-do-rio-de-janeiro-reitor
   type: dept_head
   head_of: br-universidade-federal-rural-do-rio-de-janeiro
@@ -4881,4 +4890,5 @@ positions:
     source_url: https://www.utfpr.edu.br/institucional/quem-e-quem
     checked_at: '2026-10-28'
     verified: false
-    note: 'página oficial do órgão; cargo na página: "Reitor"; trecho: Reitor | Everton Ricardi Lozano da Silva'
+    note: 'mantido da leitura anterior porque a página oficial não respondeu em 2026-11-04; página oficial do órgão; cargo
+      na página: "Reitor"; trecho: Reitor | Everton Ricardi Lozano da Silva'
