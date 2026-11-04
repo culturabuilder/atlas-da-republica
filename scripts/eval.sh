@@ -315,6 +315,7 @@ if [ "$RAPIDO" != "--rapido" ] && [ -n "$PW" ] && [ -d "$PW" ]; then
     "svgfit:ok"
     "pmap:erros \[\]"
     "paginas:nenhuma página rola de lado"
+    "rolagem:rolagem dentro do limite"
   )
   for par in "${PROVA[@]}"; do
     t=${par%%:*}; esperado=${par#*:}

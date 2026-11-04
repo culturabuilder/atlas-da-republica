@@ -78,7 +78,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
       - run: npm install --no-save playwright@1 && npx playwright install --with-deps chromium
-      - name: Construir o site e rodar as seis checagens
+      - name: Construir o site e rodar as checagens de interface
         id: checagens
         run: |
           set +e
@@ -91,7 +91,8 @@ jobs:
           # cada checagem precisa dizer que passou; saída que não casa a frase conta como falha, porque
           # em 27/09/2026 cinco checagens apareceram verdes com as cinco quebrando por falta do playwright
           for par in "overflow:contenção ok" "dzov:contenção ok" "quebra:nenhuma palavra quebrada" \
-                     "svgfit:ok" "pmap:erros \[\]" "paginas:nenhuma página rola de lado"; do
+                     "svgfit:ok" "pmap:erros \[\]" "paginas:nenhuma página rola de lado" \
+                     "rolagem:rolagem dentro do limite"; do
             t=${par%%:*}; esperado=${par#*:}
             saida=$(node "scripts/checagens/$t.js" 2>&1); codigo=$?
             if [ $codigo -ne 0 ]; then
