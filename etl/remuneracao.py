@@ -365,8 +365,26 @@ def main():
     total_setor = collections.Counter(o["setor"] for o in occ)
     mes_siape = None
 
+    # O Portal publica a folha com uns dois meses de atraso, e o mês pedido vira o seguinte no dia 1º.
+    # Em 1/11/2026 o alvo passou a ser 202609, que não existia: o conector gravou só os 81 do Senado
+    # (eram 504), a guarda de encolhimento devolveu o arquivo, e a remuneração ficou parada desde 31/10
+    # tentando todo dia o mesmo mês inexistente. O etl/teto.py já resolvia isso andando para trás até
+    # seis meses e usando o primeiro que existe; aqui faltava fazer o mesmo.
     if not zpath.exists():
-        print(f"remuneração: {zpath.name} ausente (etl/teto.py baixa); pulando o Executivo", file=sys.stderr)
+        _alt = None
+        _ano, _mes = int(m[:4]), int(m[4:6])
+        for _ in range(6):
+            _mes -= 1
+            if _mes == 0: _mes, _ano = 12, _ano - 1
+            _c = CACHE / f"{_ano}{_mes:02d}_Servidores_SIAPE.zip"
+            if _c.exists(): _alt = _c; break
+        if _alt:
+            print(f"remuneração: {zpath.name} ausente; usando {_alt.name}, o mês mais recente que existe", file=sys.stderr)
+            zpath = _alt; m = _alt.name[:6]
+        else:
+            print(f"remuneração: {zpath.name} ausente e nenhum mês anterior em cache (etl/teto.py baixa); pulando o Executivo", file=sys.stderr)
+    if not zpath.exists():
+        pass
     else:
         mes_siape = m
         # órgãos relevantes: códigos SIAFI cujo nó do grafo está na cadeia de algum ocupante
