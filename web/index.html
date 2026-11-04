@@ -121,6 +121,14 @@ p{margin:8px 0;color:var(--ink-2)}
 .news .it a.t:hover{text-decoration:underline}
 .news .it .m{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:2px}
 .news .it .e{display:inline-block;font-size:12.5px;color:var(--accent);text-decoration:none;margin-right:8px}
+/* A home tem 22 telas na aba "O que está parado". O bloco das quatro abas tem 235px de altura e fica
+   no topo: fixá-lo comeria 40% da tela. Esta faixa compacta aparece só depois que ele sai de vista. */
+.tabfix{position:sticky;top:0;z-index:4;display:none;gap:4px;padding:7px 8px;margin:0 0 8px;background:var(--card);border:1px solid var(--line-2);border-radius:10px;box-shadow:0 6px 14px -12px rgba(0,0,0,.5);overflow-x:auto}
+.tabfix.on{display:flex}
+.tabfix button{font:inherit;font-size:12.5px;white-space:nowrap;padding:5px 9px;border:1px solid transparent;border-radius:7px;background:transparent;color:var(--ink-2);cursor:pointer}
+.tabfix button[aria-pressed=true]{background:var(--accent-soft);color:var(--accent);border-color:var(--line-2);font-weight:600}
+.tabfix button:hover{color:var(--ink)}
+.tabfix .sep{flex:0 0 1px;align-self:stretch;background:var(--line-2);margin:0 3px}
 .acomp-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 12px}.acomp-h{font-size:1.06em}.acomp-h span{font-family:var(--mono);font-size:11px;color:var(--ink-3);font-weight:400}
 /* faixa de abertura: o número que as pessoas mais procuram, antes de qualquer outra coisa */
 .hero-arrec{container-type:inline-size;display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-left:5px solid var(--povo);border-radius:14px;background:var(--panel);padding:16px 18px 14px;margin:0 0 12px;transition:border-color .15s}
@@ -228,12 +236,17 @@ h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid va
 .om{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:8px 0 14px}
 .om .stat .n{font-size:22px}.om .stat .l{font-size:12px;color:var(--ink-3);line-height:1.3}
 .om-it{padding:9px 0;border-bottom:1px dashed var(--line-2);font-size:14px;line-height:1.4}
-.sumario{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;padding:10px 14px;margin:0 0 10px;background:var(--card);border:1px solid var(--line-2);border-radius:10px;font-size:13.5px}
+/* O sumário rolava embora: na página da Câmara são 20 telas, e quem chegava ao fim não tinha como
+   pular para outra seção sem rolar tudo de volta. Fixo no topo do painel, ele serve as 20 telas. */
+.sumario{position:sticky;top:0;z-index:3;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;padding:10px 14px;margin:0 0 10px;background:var(--card);border:1px solid var(--line-2);border-radius:10px;font-size:13.5px;box-shadow:0 6px 14px -12px rgba(0,0,0,.5)}
+.sumario b{width:auto;margin-right:2px}
 .sumario b{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;width:100%}
 .sumario a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line)}
 .sumario a:hover{border-color:var(--accent)}
-/* a âncora precisa de folga, senão o título fica atrás do topo fixo do painel */
-[id^="sec-"]{scroll-margin-top:12px}
+/* a âncora precisa de folga, senão o título fica atrás do topo fixo do painel.
+   O sumário fixo tem ~44px e a faixa de abas 47px: 64px deixa o título inteiro visível nos dois. */
+[id^="sec-"]{scroll-margin-top:64px}
+[id^="home-"]{scroll-margin-top:64px}
 .nov{display:flex;flex-direction:column;gap:2px}
 .nov-it{padding:8px 0;border-bottom:1px dashed var(--line-2);font-size:14px;line-height:1.4}
 .nov-it:last-child{border-bottom:0}
@@ -290,6 +303,11 @@ h2.sec{font-size:17px;margin:22px 0 8px;padding-top:14px;border-top:1px solid va
  .tres .c2::before{content:"esta pessoa: ";font-family:var(--mono);font-size:10.5px;color:var(--ink-3);text-transform:uppercase}
  .tres .c1{border-bottom:0;padding:2px 0}.tres .c2{padding:2px 0 6px}}
 details.estr,details.cadeira{margin:8px 0 0;border-top:1px solid var(--line-2);padding-top:8px}
+details.resto{margin:2px 0 14px}
+details.resto>summary{cursor:pointer;font-size:13.5px;color:var(--accent);list-style:none;padding:6px 0}
+details.resto>summary::-webkit-details-marker{display:none}
+details.resto>summary::before{content:"▸ ";color:var(--ink-3)}
+details.resto[open]>summary::before{content:"▾ "}
 details.estr>summary,details.cadeira>summary{cursor:pointer;font-size:13.5px;color:var(--ink-2);list-style:none}
 details.estr>summary::-webkit-details-marker,details.cadeira>summary::-webkit-details-marker{display:none}
 details.estr>summary::before,details.cadeira>summary::before,details.fora>summary::before{content:"▸ ";color:var(--ink-3)}
@@ -625,6 +643,7 @@ function renderPerson(p){
     ${sab.length?`<h3>Sabatinas no Senado</h3>${sab.map(sb=>`<div class="sab"><span>${esc((sb.cargo||'').slice(0,90))}</span><span class="r">${sb.deliberacao?fmtDate(sb.deliberacao):'em tramitação'}<br>${sb.resultado==='APROVADA_NO_PLENARIO'?`<b>aprovado</b>${sb.votos_sim!=null?` ${sb.votos_sim}×${sb.votos_nao}`:''}`:''}</span></div>`).join('')}`:''}
     ${na.length?`<h3>Na notícia</h3><div class="news">${na.map(a=>`<div class="it"><a class="t" href="#news:${a.id}">${esc(a.title)}</a><a class="ext" href="${a.url}" target="_blank" rel="noopener" title="Ler na fonte">fonte ↗</a>${(()=>{ const ps=(a.people||[]).filter(q=>q.id!==p.id).slice(0,4).map(q=>`<a href="#${P[q.id]?q.id:q.position}"><span class="av">${avatar(P[q.id]||{id:q.id,name:q.name})}</span>${esc(q.name)}</a>`); const es=(a.entities||[]).slice(0,3).map(id=>N[id]?`<a class="ent" href="#${id}">${esc(N[id].aliases&&N[id].aliases[0]&&N[id].aliases[0].length<=8?N[id].aliases[0]:N[id].name)}</a>`:'').filter(Boolean); return ps.length||es.length?`<span class="who">${ps.join('')}${es.join('')}</span>`:''; })()}<span class="m">${esc(a.publication)} · ${fmtDate(a.date)}</span></div>`).join('')}</div>`:''}
   </div>`;
+  sumarioDoDom(content.querySelector('.card'), 4);
   document.getElementById('panel').scrollTo({top:0});
 }
 function select(id){
@@ -651,6 +670,37 @@ function select(id){
 
 // ---------- painel ----------
 const content = document.getElementById('content');
+// A ficha de pessoa é um cartão só, com dez blocos em h3 e 10,6 telas de rolagem, e não tinha atalho
+// nenhum: o painel de órgão ganhou o sumário e ela ficou de fora. Montar a partir do DOM evita mexer
+// no template denso e serve qualquer painel que venha depois com a mesma forma.
+function sumarioDoDom(dentro, minimo){
+  if (!dentro || dentro.querySelector('.sumario')) return;
+  const hs = [...dentro.querySelectorAll('h2,h3')].filter(h => (h.textContent||'').trim().length > 2);
+  if (hs.length < (minimo || 4)) return;
+  const itens = hs.map((h, i) => {
+    const id = 'sec-p-' + i;
+    const alvo = h.closest('.card') === h.parentElement ? h : h;   // a âncora é o próprio título
+    alvo.id = id;
+    let rot = (h.textContent || '').trim().replace(/\s+/g, ' ');
+    rot = rot.replace(/\s*·.*$/, '').replace(/ (em|no|de) \d{4}.*$/, '');   // tira contagem e ano do rótulo
+    return `<a href="#${id}">${esc(rot.length > 30 ? rot.slice(0, 29) + '…' : rot)}</a>`;
+  });
+  const nav = document.createElement('nav');
+  nav.className = 'sumario'; nav.setAttribute('aria-label', 'Seções desta ficha');
+  nav.innerHTML = '<b>Nesta ficha</b>' + itens.join('');
+  const cab = dentro.querySelector('.phead');
+  if (cab && cab.parentElement) cab.parentElement.insertBefore(nav, cab.nextSibling);
+  else dentro.insertBefore(nav, dentro.firstChild);
+}
+// Um só ouvinte para todo sumário que o painel desenhar: rola até a seção sem passar pelo roteador.
+content.addEventListener('click', e => {
+  const a = e.target.closest('.sumario a[href^="#sec-"]');
+  if (!a) return;
+  const alvo = document.getElementById(a.getAttribute('href').slice(1));
+  if (!alvo) return;
+  e.preventDefault();
+  alvo.scrollIntoView({block: 'start', behavior: 'smooth'});
+});
 function sectorChip(sid){ return sid && COL[sid] ? `<span class="chip sec" style="background:${COL[sid]}">${esc(SEC[sid]?SEC[sid].name:sid)}</span>` : ''; }
 function link(id, extra){ const n=N[id]; if(!n) return ''; return `<a href="#${id}"><span class="dot" style="background:${COL[n.sector]||'var(--povo)'}"></span><span>${esc(n.name)}</span>${extra?`<span class="sm">${extra}</span>`:''}</a>`; }
 function fmtLong(d){ if(!d) return ''; const [y,m,dd]=d.split('-'); const M=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']; return dd&&m?`${+dd} ${M[+m-1]} ${y}`:y; }
@@ -1027,6 +1077,9 @@ function activityHtml(p){
 }
 // quatro perguntas em vez de sete abas: cada uma reúne blocos que antes ficavam separados
 const HOME_TABS = [['mudou','O que mudou'],['parado','O que está parado'],['dinheiro','Para onde vai o dinheiro'],['imprensa','Na imprensa']];
+// Os quatro painéis gerais que vêm depois do "Acompanhar" e respondem pelo resto da rolagem da home.
+// Entram na mesma faixa fixa das abas, para a coluna inteira ficar a um clique de qualquer altura.
+const HOME_ANCORAS = [['home-recebidos','Quem o governo recebeu'],['home-contratos','Contratos'],['home-lai','Acesso à informação'],['home-punicoes','Punições']];
 const NO_WIN = ['parado','dinheiro'];
 let impView = 'artigos'; // na aba "Na imprensa": artigos | pessoas mais citadas
 // números da faixa de resumo (um por pergunta), sempre visíveis
@@ -1074,7 +1127,16 @@ function homeBody(){
   const tot = apt.reduce((a,n)=>a+(n.seats||1),0), known = apt.reduce((a,n)=>a+Math.min(nOcup(n),n.seats||1),0), sab = apt.filter(n=>n.sabatina).reduce((a,n)=>a+(n.seats||1),0);
   const trans = `<div class="stats" style="margin-bottom:12px"><div class="stat"><div class="n">${apt.length}</div><div class="l">cargos nomeados pelo PR</div></div><div class="stat"><div class="n">${tot}</div><div class="l">cadeiras</div></div><div class="stat"><div class="n">${sab}</div><div class="l">passam pelo Senado</div></div></div>
     <p style="font-size:14px">A posse de 1º de janeiro de 2027 troca a cúpula do Executivo. Estes são os cargos de nomeação do Presidente da República mapeados no grafo, com quem os ocupa hoje. ${known} de ${tot} cadeiras têm ocupante conhecido.</p>
-    ${Object.keys(ARC).filter(k=>bySec[k]).map(k=>`<h3 style="color:${COL[k]}">${SEC[k].name} · ${bySec[k].length}</h3><div class="list">${bySec[k].sort((a,b)=>a.name.localeCompare(b.name,'pt')).map(n=>{ const p=holders(n)[0]; const extra = n.seats>1?`${Math.min(nOcup(n),n.seats)}/${n.seats}`:(p?esc(p.name.split(' ').slice(0,2).join(' ')):'<span style="color:var(--jud)">sem ocupante conhecido</span>'); return `<a href="#${n.id}"><span class="dot" style="background:${COL[n.sector]}"></span><span>${esc(n.name)}</span><span class="sm">${n.sabatina?'senado · ':''}${extra}</span>`; }).join('')}</div>`).join('')}`;
+    ${Object.keys(ARC).filter(k=>bySec[k]).map(k=>{
+      // 459 cargos do Executivo numa lista só davam 43.140px: 74 telas de rolagem, 95% de tudo o que
+      // o painel da home tinha. Ninguém lê 459 linhas iguais; quem procura um cargo usa a busca. Os
+      // 12 primeiros mostram do que se trata, e o resto fica a um clique, dentro de <details>.
+      const lista = bySec[k].sort((a,b)=>a.name.localeCompare(b.name,'pt'));
+      const linha = n=>{ const p=holders(n)[0]; const extra = n.seats>1?`${Math.min(nOcup(n),n.seats)}/${n.seats}`:(p?esc(p.name.split(' ').slice(0,2).join(' ')):'<span style="color:var(--jud)">sem ocupante conhecido</span>'); return `<a href="#${n.id}"><span class="dot" style="background:${COL[n.sector]}"></span><span>${esc(n.name)}</span><span class="sm">${n.sabatina?'senado · ':''}${extra}</span></a>`; };
+      const CORTE = 12, vis = lista.slice(0,CORTE), resto = lista.slice(CORTE);
+      return `<h3 style="color:${COL[k]}">${SEC[k].name} · ${lista.length}</h3><div class="list">${vis.map(linha).join('')}</div>`
+        + (resto.length?`<details class="resto"><summary>ver os outros ${resto.length} cargos · ${SEC[k].name}</summary><div class="list">${resto.map(linha).join('')}</div></details>`:'');
+    }).join('')}`;
   const winSel = `<div class="ptools"><span class="win" id="win-sel" role="group" aria-label="Janela de tempo">${[7,30,90].map(w=>`<button type="button" aria-pressed="${win===w}" data-win="${w}">${w} dias</button>`).join('')}</span></div>`;
   if (homeTab==='parado') return `<p class="lead">Decisões com prazo ou rito definido que ainda não aconteceram, e os temas em debate cruzados com o andamento dos processos.</p>${omissaoHtml()}<h2 class="sec">Temas em debate</h2>${temasHtml()}`;
   if (homeTab==='dinheiro') return `${arrecCard(true)}<h2 class="sec">Emendas, renúncias, viagens, cartão e teto</h2>${dinheiroHtml()}`;
@@ -1140,6 +1202,7 @@ function renderHomePanel(){
     if (window.ResizeObserver) { _pmObs = new ResizeObserver(() => desenharFios()); _pmObs.observe(pmbox); } }
   panel.setAttribute('aria-labelledby', 'tab-' + homeTab);
   document.querySelectorAll('#home-tablist [role=tab]').forEach(b => { const on = b.dataset.tab === homeTab; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
+  document.querySelectorAll('#home-tabfix [data-tabfix]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tabfix === homeTab)));
   panel.querySelectorAll('[data-win]').forEach(b => b.addEventListener('click', () => { win = +b.dataset.win; renderHomePanel(); }));
   panel.querySelectorAll('[data-imp]').forEach(b => b.addEventListener('click', () => { impView = b.dataset.imp; renderHomePanel(); }));
 }
@@ -1179,12 +1242,12 @@ function renderHome(){
   <div class="card"><h1>Quem manda em quê no governo federal</h1>
     <p>Um mapa de cada órgão, cargo e colegiado da União e das relações legais entre eles: quem elege, nomeia, sabatina, supervisiona e fiscaliza quem. Cada ligação cita a norma que a cria.</p>
     <div class="stats"><div class="stat"><div class="n">${st.nodes}</div><div class="l">nós</div></div><div class="stat"><div class="n">${st.edges}</div><div class="l">relações</div></div><div class="stat"><div class="n">${st.seats_filled||0}</div><div class="l">de ${st.seats_total} cadeiras com ocupante</div></div></div></div>
-  <div class="card acomp"><h2 class="acomp-h">Acompanhar <span>lido em ${fmtDate(st.generated_at)}</span></h2><div class="kpis" role="tablist" id="home-tablist" aria-label="Painéis da página inicial">${HOME_TABS.map(tab).join('')}</div><div id="home-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-${homeTab}"></div></div>
+  <div class="card acomp"><h2 class="acomp-h">Acompanhar <span>lido em ${fmtDate(st.generated_at)}</span></h2><div class="kpis" role="tablist" id="home-tablist" aria-label="Painéis da página inicial">${HOME_TABS.map(tab).join('')}</div><div class="tabfix" id="home-tabfix" aria-hidden="true">${HOME_TABS.map(([k,r])=>`<button type="button" data-tabfix="${k}" aria-pressed="${k===homeTab}">${esc(r)}</button>`).join('')}<span class="sep" aria-hidden="true"></span>${HOME_ANCORAS.map(([id,r])=>`<button type="button" data-ir-ancora="${id}">${esc(r)}</button>`).join('')}</div><div id="home-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-${homeTab}"></div></div>
+  <div id="home-recebidos">${recebidosHtml()}</div>
+  <div id="home-contratos">${contratosHtml()}</div>
+  <div id="home-lai">${falabrHtml()}</div>
+  <div id="home-punicoes">${sancoesHtml()}</div>
   ${novidadesHtml()}
-  ${recebidosHtml()}
-  ${contratosHtml()}
-  ${falabrHtml()}
-  ${sancoesHtml()}
   <div class="card"><h2>Por poder</h2><div class="counts">${Object.keys(ARC).map(s=>`<span class="k"><span class="dot" style="background:${COL[s]}"></span>${SEC[s].name}</span><span>${bs[s]||0}</span>`).join('')}</div>
     <h3>Por tipo de órgão</h3><div class="counts">${subRows.map(([k,l])=>`<span>${l}</span><span>${bsub[k]||0}</span>`).join('')}</div>
     <h3>Cargos e colegiados</h3><div class="counts"><span>Cargos de chefia mapeados</span><span>${bt.dept_head||0}</span><span>Cadeiras (inclui 513 deputados e 81 senadores)</span><span>${st.seats_total}</span><span>Sabatinas do Senado desde 2023</span><span>${st.sabatinas||0}</span><span>Colegiados deliberativos</span><span>${bt.commission||0}</span></div></div>
@@ -1215,6 +1278,24 @@ function renderHome(){
   tl.addEventListener('keydown', e => { const tabs = [...tl.querySelectorAll('[role=tab]')]; let i = tabs.findIndex(b => b.dataset.tab === homeTab); if (i < 0) i = 0;
     if (e.key === 'ArrowRight') i = (i + 1) % tabs.length; else if (e.key === 'ArrowLeft') i = (i - 1 + tabs.length) % tabs.length; else if (e.key === 'Home') i = 0; else if (e.key === 'End') i = tabs.length - 1; else return;
     e.preventDefault(); goTab(tabs[i]); });
+  // Faixa compacta: as quatro abas continuam ao alcance depois da vigésima tela de rolagem. Trocar de
+  // aba por ela devolve o leitor ao começo do painel novo, que é o que ele quer ver.
+  const fx = document.getElementById('home-tabfix');
+  if (fx) {
+    fx.addEventListener('click', e => {
+      const anc = e.target.closest('[data-ir-ancora]');
+      if (anc) { document.getElementById(anc.dataset.irAncora)?.scrollIntoView({block:'start', behavior:'smooth'}); return; }
+      const b = e.target.closest('[data-tabfix]'); if (!b) return;
+      homeTab = b.dataset.tabfix; renderHomePanel();
+      document.getElementById('home-tablist')?.scrollIntoView({block:'start'}); });
+    const alvo = document.getElementById('home-tablist');
+    const mostra = () => { const r = alvo.getBoundingClientRect(); const on = r.bottom < 56;
+      fx.classList.toggle('on', on); fx.setAttribute('aria-hidden', String(!on)); };
+    // o que rola é a coluna da esquerda (#panel), não o painel de aba
+    const rolo = document.getElementById('panel');
+    rolo.addEventListener('scroll', mostra, {passive:true});
+    mostra();
+  }
 }
 // o Portal publica os nomes de programa e ação sem acento e em caixa alta; este mapa devolve a grafia correta
 const ACC={acao:'ação',acoes:'ações',assistencia:'assistência',atencao:'atenção',atividades:'atividades',avaliacao:'avaliação',basica:'básica',beneficios:'benefícios',ciencia:'ciência',cidadania:'cidadania',complementacao:'complementação',comunicacao:'comunicação',conservacao:'conservação',construcao:'construção',contribuicao:'contribuição',credito:'crédito',defesa:'defesa',desenvolvimento:'desenvolvimento',divida:'dívida',educacao:'educação',eletrica:'elétrica',energetica:'energética',ensino:'ensino',especiais:'especiais',especifico:'específico',estrategicos:'estratégicos',execucao:'execução',farmaceutica:'farmacêutica',federacao:'federação',fiscalizacao:'fiscalização',formacao:'formação',funcionamento:'funcionamento',gestao:'gestão',hidricos:'hídricos',imunobiologicos:'imunobiológicos',indigena:'indígena',indigenas:'indígenas',informacao:'informação',infraestrutura:'infraestrutura',inovacao:'inovação',judiciais:'judiciais',juridica:'jurídica',manutencao:'manutenção',media:'média',medica:'médica',medicamentos:'medicamentos',militar:'militar',modernizacao:'modernização',municipios:'municípios',nutricional:'nutricional',operacoes:'operações',orcamentaria:'orçamentária',orgaos:'órgãos',participacao:'participação',pensoes:'pensões',pesquisa:'pesquisa',politica:'política',populacao:'população',precatorios:'precatórios',prevencao:'prevenção',previdencia:'previdência',primaria:'primária',producao:'produção',promocao:'promoção',protecao:'proteção',publica:'pública',publico:'público',publicos:'públicos',qualificacao:'qualificação',recuperacao:'recuperação',reducao:'redução',regiao:'região',regularizacao:'regularização',remuneracao:'remuneração',salarios:'salários',saneamento:'saneamento',saude:'saúde',seguranca:'segurança',sentencas:'sentenças',servicos:'serviços',servidores:'servidores',situacao:'situação',social:'social',solidaria:'solidária',tecnologia:'tecnologia',tecnologias:'tecnologias',transferencia:'transferência',transferencias:'transferências',transformacao:'transformação',uniao:'união',vencimentos:'vencimentos',vigilancia:'vigilância',aposentadorias:'aposentadorias',agencia:'agência',agricola:'agrícola',aquisicao:'aquisição',area:'área',areas:'áreas',basico:'básico',ciencias:'ciências',climaticas:'climáticas',combustiveis:'combustíveis',comercio:'comércio',condicoes:'condições',cooperacao:'cooperação',distribuicao:'distribuição',economica:'econômica',economico:'econômico',eletronica:'eletrônica',estatisticas:'estatísticas',exercito:'exército',familia:'família',financeira:'financeira',genero:'gênero',hospitalar:'hospitalar',implantacao:'implantação',inclusao:'inclusão',industria:'indústria',integracao:'integração',logistica:'logística',maritimo:'marítimo',nucleares:'nucleares',patrimonio:'patrimônio',pecuaria:'pecuária',periferia:'periferia',politicas:'políticas',portuaria:'portuária',proprios:'próprios',provisao:'provisão',recursos:'recursos',rodoviaria:'rodoviária',sanitaria:'sanitária',subsidios:'subsídios',territorial:'territorial',turismo:'turismo',urbana:'urbana',usuarios:'usuários',sao:'São',joao:'João',luis:'Luís',marica:'Maricá',goiania:'Goiânia',belem:'Belém',maceio:'Maceió',macae:'Macaé',niteroi:'Niterói',brasilia:'Brasília',vitoria:'Vitória',florianopolis:'Florianópolis',cuiaba:'Cuiabá',maraba:'Marabá',teofilo:'Teófilo',anapolis:'Anápolis',petrolina:'Petrolina',itaborai:'Itaboraí',guaruja:'Guarujá',jundiai:'Jundiaí',piracicaba:'Piracicaba',sorocaba:'Sorocaba',uberlandia:'Uberlândia',ribeirao:'Ribeirão',jose:'José',gama:'Gama',bernardo:'Bernardo',caucaia:'Caucaia',parauapebas:'Parauapebas',rondonopolis:'Rondonópolis'};
@@ -1439,7 +1520,9 @@ function renderNode(n){
   const order = ['chefia','elege','nomeia','sabatina','indica','supervisiona','integra','fiscaliza','aconselha','membro_nato'];
   let rels = '';
   for (const t of order) for (const dir of [':out',':in']) { const list = groups[t+dir]; if(!list) continue; const label = REL[t][dir===':out'?0:1];
-    rels += `<details class="rel" open><summary><span class="dot" style="background:var(--ink-3)"></span>${label}<span class="n">${list.length}</span></summary><div class="list">${list.map(e=>{ const o = e.from===n.id?e.to:e.from; const extra = (e.seats&&e.seats>1?`${e.seats} vagas · `:'')+(e.cite||'').split(';')[0]; return link(o, esc(extra)); }).join('')}</div></details>`; }
+    // Grupo pequeno abre; grupo grande fica fechado com a contagem no rótulo. Na Câmara, "nomeia" tem
+    // 31 itens e abria inteiro: 4 telas de rolagem para uma informação que o próprio rótulo já dá.
+    rels += `<details class="rel"${list.length<=8?' open':''}><summary><span class="dot" style="background:var(--ink-3)"></span>${label}<span class="n">${list.length}</span></summary><div class="list">${list.map(e=>{ const o = e.from===n.id?e.to:e.from; const extra = (e.seats&&e.seats>1?`${e.seats} vagas · `:'')+(e.cite||'').split(';')[0]; return link(o, esc(extra)); }).join('')}</div></details>`; }
   const head = n.head_of ? N[n.head_of] : null;
   const parent = n.parent ? N[n.parent] : null;
   const kids = (n.children||[]).map(id=>link(id, SUB[N[id].subtype]||'')).join('');
@@ -1564,7 +1647,13 @@ rlist.addEventListener('focusin', e => { const o = e.target.closest('[role=optio
 document.addEventListener('click', e => { if (!e.target.closest('.search')) closeSearch(); });
 // (a chamada inicial, no fim do script, é a que scripts/build_site.py troca por `select(hash || "<id>")`; por isso aqui a forma é outra)
 document.addEventListener('keydown', e => { if (e.key !== 'Escape' || e.defaultPrevented) return; const t = e.target; if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return; if (!res.hidden) return; if (location.hash) { location.hash = ''; } });
-window.addEventListener('hashchange', () => { closeSearch(); q.value=''; const h = location.hash.slice(1); select(h); });
+window.addEventListener('hashchange', () => { closeSearch(); q.value='';
+  const h = location.hash.slice(1);
+  // "sec-..." é âncora de seção DENTRO do painel, não um nó. Sem esta guarda, clicar no sumário
+  // "Nesta página" chamava select('sec-contratos'), que não acha nó e renderiza a home: o leitor
+  // era expulso da página que estava lendo. Estava assim desde que o sumário foi criado.
+  if (/^sec-/.test(h)) { document.getElementById(h)?.scrollIntoView({block:'start', behavior:'smooth'}); return; }
+  select(h); });
 
 // ---------- tooltip, teclado ----------
 const tip = document.getElementById('tip'), stage = document.getElementById('stage');
