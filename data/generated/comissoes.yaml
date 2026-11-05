@@ -1,11 +1,12 @@
 # GERADO por etl/comissoes.py. Não edite à mão.
 generated_from: legis.senado.leg.br/dadosabertos + dadosabertos.camara.leg.br
-generated_at: '2026-11-04'
-pessoas_reaproveitadas: 64
+generated_at: '2026-11-05'
+pessoas_reaproveitadas: 66
 ids_corrigidos:
   br-p-cd-353: br-p-cd-73788 (Ricardo Barros)
   br-p-cd-3695: br-p-cd-74858 (Lindbergh Farias)
   br-p-cd-3883: br-p-cd-74158 (Mário Heringer)
+  br-p-cd-437: br-p-cd-74581 (Gilmar Machado)
   br-p-cd-4602: br-p-cd-141408 (Cleber Verde)
   br-p-cd-4650: br-p-cd-141421 (Eduardo da Fonte)
   br-p-cd-4676: br-p-cd-141450 (Hugo Leal)
@@ -49,6 +50,7 @@ ids_corrigidos:
   br-p-cd-6408: br-p-cd-123086 (Átila Lira)
   br-p-cd-6409: br-p-cd-153423 (Renilce Nicodemos)
   br-p-cd-6410: br-p-cd-160161 (Marcelo Queiroz)
+  br-p-cd-6432: br-p-cd-220539 (Defensor Stélio Dener)
   br-p-cd-6444: br-p-cd-220553 (Denise Pessôa)
   br-p-cd-6458: br-p-cd-220568 (Gustavo Gayer)
   br-p-cd-6461: br-p-cd-220571 (Daniel Agrobom)
@@ -403,11 +405,11 @@ nodes:
       - Comissão de Cultura
     description: 'Comissão permanente da Câmara dos Deputados (CCULT). Discute e vota as proposições da sua área
       temática, podendo aprová-las em caráter conclusivo sem passar pelo Plenário, e fiscaliza os atos do Executivo
-      no seu campo. Composição atual: 16 titulares.'
+      no seu campo. Composição atual: 17 titulares.'
     cite: CF/88 art. 58; RICD arts. 22 e 32
     cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
     official_url: https://www.camara.leg.br/comissoes/ccult
-    seats_count: 16
+    seats_count: 17
     verified: true
   - id: br-comissao-de-defesa-do-consumidor-da-camara
     type: commission
@@ -9319,6 +9321,16 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/72442
+    - id: br-p-cd-226075
+      name: Priscila Costa
+      party: PL
+      uf: CE
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/226075.jpg
+      role: Titular
+      started_at: '2026-11-04'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/226075
     - id: br-p-cd-220623
       name: Duda Salabert
       party: PSOL
@@ -19949,15 +19961,15 @@ positions:
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
       image_url: https://www.camara.leg.br/internet/deputado/bandep/204486.jpg
-    - id: br-p-cd-204508
-      name: Igor Timo
+    - id: br-p-cd-220539
+      name: Defensor Stélio Dener
       party: UNIÃO
-      uf: MG
+      uf: RR
       role: Titular
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-      image_url: https://www.camara.leg.br/internet/deputado/bandep/204508.jpg
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220539.jpg
     - id: br-p-cd-141421
       name: Eduardo da Fonte
       party: PP
@@ -20183,6 +20195,15 @@ positions:
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
       image_url: https://www.camara.leg.br/internet/deputado/bandep/220662.jpg
+    - id: br-p-cd-74581
+      name: Gilmar Machado
+      party: PT
+      uf: MG
+      role: Titular
+      entry_mode: eleito
+      source: senado
+      source_url: https://www.congressonacional.leg.br/comissoes
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/74581.jpg
     - id: br-p-cd-156190
       name: Marcel van Hattem
       party: NOVO
@@ -20282,6 +20303,15 @@ positions:
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
       image_url: https://www.camara.leg.br/internet/deputado/bandep/220607.jpg
+    - id: br-p-cd-204508
+      name: Igor Timo
+      party: UNIÃO
+      uf: MG
+      role: Suplente
+      entry_mode: eleito
+      source: senado
+      source_url: https://www.congressonacional.leg.br/comissoes
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/204508.jpg
     - id: br-p-cd-141459
       name: João Maia
       party: PP

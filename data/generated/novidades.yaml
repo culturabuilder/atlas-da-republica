@@ -1,13 +1,24 @@
 # GERADO por scripts/novidades.py. Não edite à mão.
-generated_at: '2026-11-04'
+generated_at: '2026-11-05'
 nota: 'O que mudou no Atlas, tirado do histórico do projeto. Os commits automáticos de dado ficam fora: o que eles mudam aparece no painel de
   frescor da metodologia.'
-total: 160
+total: 161
 por_mes:
-  2026-11: 1
+  2026-11: 2
   2026-10: 27
   2026-09: 132
 novidades:
+- id: f975219f2
+  data: '2026-11-05'
+  ordem: 1793877197
+  titulo: 'TSE: os quatro conectores que esperavam download à mão agora se servem'
+  texto: 'O patrimônio estava 42 dias sem atualizar, com "falta arquivo local" em todo eval desde 24/09/2026. Candidaturas, doadores e votos liam
+    zips do TSE pela mesma via: alguém baixava num formulário e deixava em build/cache-tse/. Num runner limpo esse arquivo nunca existe, então
+    nenhum dos quatro podia ser consertado sem acesso a esta máquina.'
+  areas:
+  - fonte nova
+  - tela
+  arquivos: 1077
 - id: '745036475'
   data: '2026-11-04'
   ordem: 1793799422
