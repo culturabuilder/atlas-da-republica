@@ -28,23 +28,32 @@ _cam_flags = '<script>window.ATLAS_PREVIA=true;window.ATLAS_CAMERA_DEFAULT="focu
 tpl = tpl.replace(f'<script src="{PREFIX}/atlas.js" defer></script>', f'{_cam_flags}<script>window.ATLAS_PREFIX="{PREFIX}";</script><script src="{PREFIX}/atlas.js" defer></script><script src="{PREFIX}/atlas-camera.js" defer></script><script src="{PREFIX}/atlas-menu.js" defer></script>', 1)
 if a.previa: tpl = tpl.replace("<title>", '<meta name="robots" content="noindex,nofollow">\n<title>', 1)
 # ---- contagem de uso, sem cookie e sem identificador que atravesse visitas.
-# Por que existe: desde 16/10/2026 a decisão de cortar ou manter bloco é palpite, porque ninguém sabe o
-# que é usado. O desenho é copiado do politicometro.org, com uma diferença honesta: eles contam no
+# Por que existe: desde 16/10/2026 a decisão de cortar ou manter bloco é palpite, porque ninguém sabe
+# o que é usado. O desenho é copiado do politicometro.org, com uma diferença honesta: eles contam no
 # próprio servidor e podem dizer que não guardam endereço de internet; o Atlas é estático no GitHub
 # Pages e não tem servidor nosso, então a contagem é a do Cloudflare Web Analytics — sem cookie, sem
 # armazenamento no navegador e sem perfil, mas num terceiro, e isso está escrito na metodologia.
 # Sem o token configurado (ATLAS_ANALYTICS_TOKEN) NADA é carregado: é o estado padrão deste repositório.
+#
+# Vai no FIM de atlas-menu.js, não no template da roda: a primeira versão injetava no template e
+# deixou 57 páginas sem contador — justamente as soltas (/quem-publica/, /estados/, /metodologia/,
+# /dados/, /comparar/, /do-zero/), que são as que eu mais quero medir e as que as pessoas
+# compartilham. Toda página do site carrega o menu; é o único ponto que alcança todas.
 _an_token = (os.environ.get("ATLAS_ANALYTICS_TOKEN") or "").strip()
-_analytics = ""
 if _an_token and not a.previa:
-    _analytics = (
-        "<script>(function(){try{"
-        "if(navigator.doNotTrack==='1'||window.doNotTrack==='1'||navigator.globalPrivacyControl)return;"  # quem pede para não ser seguido não é contado
-        "var s=document.createElement('script');s.defer=true;"
-        "s.src='https://static.cloudflareinsights.com/beacon.min.js';"
-        "s.setAttribute('data-cf-beacon', JSON.stringify({token:" + json.dumps(_an_token) + "}));"
-        "document.head.appendChild(s);}catch(e){}})();</script>")
-    tpl = tpl.replace("</html>", _analytics + "\n</html>") if "</html>" in tpl else tpl + _analytics
+    _menu_p = site / "atlas-menu.js"
+    _an_js = ("\n/* contagem de uso: Cloudflare Web Analytics, sem cookie. Quem pede para não ser seguido\n"
+              "   não é contado — o script nem chega a ser carregado. Ver /metodologia/#uso. */\n"
+              "(function(){try{"
+              "if(navigator.doNotTrack==='1'||window.doNotTrack==='1'||navigator.globalPrivacyControl)return;"
+              "var s=document.createElement('script');s.type='module';s.defer=true;"
+              # type=module é o que o Cloudflare publica no próprio trecho de instalação. Conferido em
+              # 05/11/2026: beacon.min.js não tem sintaxe de módulo (é um IIFE) e o CDN responde
+              # Access-Control-Allow-Origin: *, então a busca com CORS que o módulo exige funciona.
+              "s.src='https://static.cloudflareinsights.com/beacon.min.js';"
+              "s.setAttribute('data-cf-beacon', JSON.stringify({token:" + json.dumps(_an_token) + "}));"
+              "document.head.appendChild(s);}catch(e){}})();\n")
+    _menu_p.write_text(_menu_p.read_text(encoding="utf-8") + _an_js, encoding="utf-8")
 # atlas.css é pequeno: embutido para não bloquear a renderização com mais uma requisição
 for _form in (f'<link rel="stylesheet" href="{PREFIX}/atlas.css">', '<link rel="stylesheet" href="atlas.css">'):
     tpl = tpl.replace(_form, "<style>" + (ROOT / "web" / "atlas.css").read_text(encoding="utf-8") + "</style>", 1)

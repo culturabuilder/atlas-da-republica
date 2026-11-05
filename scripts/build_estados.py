@@ -143,7 +143,11 @@ def build(site, prefix, base, G):
                           f'<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
                           f'<meta name="twitter:card" content="summary_large_image">', 1)
         out = out.replace("__CRUMB__", esc(titulo.split(" · ")[0]))
-        out = out.replace("</html>", f'<script>window.ATLAS_PREFIX="{prefix}";</script><script src="{prefix}/atlas-menu.js" defer></script>\n</html>')
+        # O template não fecha </html>, então o replace não casava e as 28 páginas de estado ficaram
+        # sem o menu: sem link de correção, sem botão de tema e sem contagem de uso. Em
+        # build_quem_publica.py eu tinha escrito o caso de reserva; aqui, esqueci.
+        _menu = f'<script>window.ATLAS_PREFIX="{prefix}";</script><script src="{prefix}/atlas-menu.js" defer></script>\n'
+        out = out.replace("</html>", _menu + "</html>") if "</html>" in out else out + _menu
         destino.mkdir(parents=True, exist_ok=True)
         (destino / "index.html").write_text(out, encoding="utf-8")
         urls.append(url)
