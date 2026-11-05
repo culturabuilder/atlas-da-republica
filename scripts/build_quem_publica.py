@@ -119,7 +119,10 @@ def corpo(G):
         nao.append(("Senado Federal", "não publica", "a folha de pagamento dos gabinetes", "publica o tamanho da equipe e a cota por rubrica, mas não quanto paga a cada pessoa do gabinete; por isso o Atlas mostra equipe e cota, e nenhum valor de folha"))
     nao.append(("Senado Federal", "não publica", "a lista de presença de cada sessão", "publica como cada senador aparece em cada votação nominal, não a presença em sessão; o Atlas mostra participação em votação nominal e diz que é isso"))
     nao.append(("Supremo Tribunal Federal", "não publica", "dados abertos de julgamento", "não há API pública; o que o Atlas mostra do STF vem de estrutura, nomeação e sabatina, não de processo"))
-    nao.append(("Tribunal Superior Eleitoral", "não oferece", "download automático de bens e votação", "os arquivos existem, abertos, mas atrás de um formulário: têm de ser baixados à mão, e por isso patrimônio e votos não atualizam sozinhos no servidor"))
+    # Esta linha acusava o TSE de não oferecer download automático. Em 05/11/2026 ficou provado o
+    # contrário: o catálogo CKAN publica o endereço direto no CDN, que serve sem formulário — o que
+    # bloqueava era o User-Agent de script. A acusação era nossa, não da fonte, e saiu.
+    nao.append(("Tribunal Superior Eleitoral", "publica, mas em arquivos grandes", "a prestação de contas (472 MB) e a votação por município (631 MB) de cada eleição", "o Atlas baixa sozinho os arquivos pequenos, de candidaturas e bens; esses dois só sob comando, porque são de eleição encerrada e não mudam mais"))
     ex = (st.get("execucao") or {})
     for n in (ex.get("sem_arquivo_local") or []):
         nao.append(("Atlas da República", "não atualiza sozinho", f"o bloco {str(n)}", "depende de arquivo que a fonte só entrega por formulário; o dado publicado é o da última vez que alguém rodou o conector com o arquivo em disco"))

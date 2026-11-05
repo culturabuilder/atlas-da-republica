@@ -11,9 +11,13 @@ import csv, io, re, sys, zipfile, pathlib, datetime, unicodedata, collections, j
 import yaml
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ZIP = ROOT / "build" / "cache-tse" / "votacao_candidato_munzona_2022.zip"
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from tse import baixar
 def norm(s): return re.sub(r"\s+", " ", re.sub(r"[^a-z ]", " ", unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode().lower())).strip()
 def main():
-    if not ZIP.exists(): print(f"votos: {ZIP} ausente (download manual do TSE); mantendo o arquivo gerado anterior", file=sys.stderr); return
+    # 631 MB, de eleição encerrada: só baixa com ATLAS_TSE_PESADO=1 (ver etl/tse.py).
+    baixar("votacao_candidato_munzona", 2022, ZIP.parent, pesado=True, timeout=2400)
+    if not ZIP.exists(): print(f"votos: {ZIP} ausente; mantendo o arquivo gerado anterior", file=sys.stderr); return
     g = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8")); P = g["people"]; N = g["nodes"]
     by_urna = {}; by_full = {}
     for pid, p in P.items():

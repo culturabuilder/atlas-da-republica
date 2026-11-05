@@ -12,10 +12,17 @@ import csv, io, re, sys, json, zipfile, pathlib, datetime, unicodedata, collecti
 import yaml
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CACHE = ROOT / "build" / "cache-tse"; LIMIAR_PF = 50000.0
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from tse import baixar
 def norm(s): return re.sub(r"\s+", " ", re.sub(r"[^a-z ]", " ", unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode().lower())).strip()
 def money(s): return float(str(s or "0").replace(".", "").replace(",", ".") or 0)
 def main():
     zp = CACHE / "prestacao_de_contas_eleitorais_candidatos_2022.zip"; cp = CACHE / "consulta_cand_2022.zip"
+    # A prestação de contas de 2022 tem 472 MB e é de eleição encerrada: não muda mais. Por isso só
+    # baixa com ATLAS_TSE_PESADO=1, e sem ela o que já está publicado continua. O de candidatos é
+    # pequeno e vem sempre. (ver etl/tse.py)
+    baixar("consulta_cand", 2022, CACHE)
+    baixar("prestacao_de_contas_eleitorais_candidatos", 2022, CACHE, pasta="prestacao_contas", pesado=True, timeout=1800)
     if not zp.exists() or not cp.exists(): print("doadores: zips do TSE ausentes; mantendo o gerado anterior", file=sys.stderr); return
     g = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8")); P = g["people"]; N = g["nodes"]
     full = {}

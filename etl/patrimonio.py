@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Patrimônio declarado ao TSE (2018 e 2022) dos parlamentares e ocupantes → data/generated/patrimonio.yaml.
 
-Fontes (zips baixados à mão em build/cache-tse/): bem_candidato_{ano}.zip (bens por SQ_CANDIDATO) e consulta_cand_{ano}.zip
+Fontes (zips em build/cache-tse/, baixados sozinho do CDN do TSE): bem_candidato_{ano}.zip (bens por SQ_CANDIDATO) e consulta_cand_{ano}.zip
 (SQ_CANDIDATO → nome, urna, UF, cargo). Casamento com o grafo: nome completo idêntico (normalizado) ou nome de urna único no ano
 + mesma UF. Variação 2018→2022 nominal e em valor real (IPCA, IBGE/SIDRA 1737). Declaração é do próprio candidato ao TSE.
 Uso: .venv/bin/python etl/patrimonio.py
@@ -11,6 +11,10 @@ import yaml
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CACHE = ROOT / "build" / "cache-tse"
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh) atlas-da-republica/0.1"}
+# O download vive em etl/tse.py, compartilhado com candidaturas, doadores e votos: os quatro liam
+# zips baixados à mão e ficavam "falta arquivo local" em todo eval do servidor.
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from tse import baixar
 def norm(s): return re.sub(r"\s+", " ", re.sub(r"[^a-z ]", " ", unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode().lower())).strip()
 def money(s): return float(str(s or "0").replace(".", "").replace(",", ".") or 0)
 def ipca_factor(from_ym, to_ym):
@@ -41,10 +45,12 @@ def main():
     # Os zips do TSE são baixados à mão e não existem num runner limpo. Sem eles o script produzia
     # zero pessoa e gravava por cima das 558 que já estavam publicadas. Agora sai antes de tocar no
     # arquivo, com código 2, para o registro de execução dizer "falhou" e não "ok".
+    for a in (2018, 2022):
+        for b in ("consulta_cand", "bem_candidato"): baixar(b, a, CACHE)
     faltando = [f"{b}_{a}.zip" for a in (2018, 2022) for b in ("consulta_cand", "bem_candidato")
                 if not (CACHE / f"{b}_{a}.zip").exists()]
     if len(faltando) >= 4:
-        print(f"nenhum arquivo do TSE em {CACHE}: baixe à mão antes de rodar "
+        print(f"nenhum arquivo do TSE em {CACHE} e o download falhou "
               f"(faltam {', '.join(faltando)}). Arquivo anterior mantido.", file=sys.stderr)
         sys.exit(2)
     g = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8")); P = g["people"]; N = g["nodes"]

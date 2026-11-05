@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Candidaturas dos ocupantes de cargos → data/generated/candidaturas.yaml.
 
-Fonte: TSE, "Candidatos" (consulta_cand_{ano}.zip, baixados manualmente em build/cache-tse/ porque o CDN do TSE bloqueia
+Fonte: TSE, "Candidatos" (consulta_cand_{ano}.zip, baixados sozinho do CDN do TSE para build/cache-tse/ (ver etl/tse.py)
 acesso automatizado). Para cada pessoa do grafo, as candidaturas encontradas por nome completo idêntico (normalizado):
 ano, cargo disputado, partido, UF/município e resultado. Quando a pessoa tem data de nascimento conhecida (Wikidata) e a
 candidatura também, a data precisa bater; nomes com até três palavras são marcados como "possível homônimo".
@@ -12,6 +12,11 @@ import csv, io, re, sys, zipfile, pathlib, datetime, unicodedata, collections, j
 import yaml
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CACHE = ROOT / "build" / "cache-tse"
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from tse import baixar
+# exatamente os anos que este conector já usava: automatizar o download não é hora de acrescentar
+# eleição nova ao que o site afirma — isso muda o que está publicado e é decisão de quem edita.
+ANOS = (2018, 2022, 2024)
 def norm(s): return re.sub(r"\s+", " ", re.sub(r"[^a-z ]", " ", unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode().lower())).strip()
 def main():
     g = json.load(open(ROOT / "build" / "graph.br.json", encoding="utf-8")); P = g["people"]; N = g["nodes"]
@@ -30,6 +35,7 @@ def main():
     for pid, p in P.items(): short[norm(p.get("name"))].append(pid)
     urna_count = collections.Counter(); urna_rows = []
     found = collections.defaultdict(list); rows = 0
+    for _a in ANOS: baixar("consulta_cand", _a, CACHE)
     if not list(CACHE.glob("consulta_cand_*.zip")): print("candidaturas: arquivos consulta_cand_*.zip ausentes (download manual do TSE); mantendo o gerado anterior", file=sys.stderr); return
     for zp in sorted(CACHE.glob("consulta_cand_*.zip")):
         z = zipfile.ZipFile(zp)
