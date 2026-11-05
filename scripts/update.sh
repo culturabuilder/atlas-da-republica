@@ -157,6 +157,9 @@ run "PEP" $PY etl/pep.py --segundos 600
 # Zip anual de 77 MB da CGU, que abre em 520 MB de CSV; o conector reusa o cache por 6 dias.
 LIM=1800 run "Fala.BR" $PY etl/falabr.py
 run "Sanções" $PY etl/sancoes.py
+# Dois CSV pequenos do CKAN do STJ (penalidades a fornecedor e diárias). Primeiro conector do
+# Judiciário: o poder tinha 63% dos órgãos sem nenhum dado aberto no Atlas.
+run "STJ" $PY etl/stj.py
 # Pagina o PNCP e filtra a esfera federal; acumula janela a janela. Lê o grafo para casar o órgão.
 LIM=1200 run "Contratos" $PY etl/contratos.py --dias 10 --paginas 160 --segundos 900
 run "Subsídios" $PY etl/subsidios.py

@@ -759,6 +759,13 @@ _vg = _load_yaml("viagens.yaml"); _vg_people = (_vg.get("people") or {}) if _vg 
 _ct = _load_yaml("cartao.yaml"); _ct_people = {}  # o extrato do CPGF identifica o portador (servidor de execução), não o ocupante: sem bloco por pessoa
 viagens = {k: _vg.get(k) for k in ("generated_at", "ano", "fonte", "orgaos", "total", "viagens_total", "nota")} if _vg else None
 cartao = {k: _ct.get(k) for k in ("generated_at", "ano", "meses", "fonte", "orgaos", "total", "nota", "orgaos_casados")} if _ct else None
+# O que o próprio tribunal publica de si. Vem como bloco "tribunal" para a mesma forma servir outro
+# tribunal depois: o Judiciário tinha 63% dos órgãos sem nenhum dado aberto, e este é o primeiro a
+# entrar. Não se mistura com "sancoes", que é a forma dos cadastros da CGU.
+_stj = _load_yaml("stj.yaml")
+if _stj and _stj.get("node") in nodes:
+    nodes[_stj["node"]]["tribunal"] = {k: v for k, v in _stj.items() if k != "node"}
+    stats["tribunais_com_dado_aberto"] = 1
 _nv = _load_yaml("novidades.yaml")
 # Só as três últimas e a contagem: a lista inteira é a página /novidades/.
 novidades = None
@@ -1383,7 +1390,7 @@ BLOCOS = {  # rótulo no site -> arquivo que o alimenta
     "Temas": "temas.yaml", "Arrecadação": "arrecadacao.yaml", "Atividade parlamentar": "atividade.yaml", "Proposições": "proposicoes.yaml",
     "Gabinetes": "gabinetes.yaml", "Gabinetes do Senado": "gabinetes-senado.yaml", "Emendas": "emendas.yaml", "Renúncias fiscais": "renuncias.yaml",
     "Acima do teto": "teto.yaml", "Remuneração": "remuneracao.yaml", "Viagens": "viagens.yaml", "Cartão corporativo": "cartao.yaml",
-    "Quem o governo recebeu": "recebidos.yaml", "Punições da CGU": "sancoes.yaml", "Contratos (PNCP)": "contratos.yaml", "Pessoas expostas politicamente": "pep.yaml", "Pedidos de acesso à informação": "falabr.yaml", "O que mudou no Atlas": "novidades.yaml",
+    "Quem o governo recebeu": "recebidos.yaml", "Punições da CGU": "sancoes.yaml", "Contratos (PNCP)": "contratos.yaml", "Pessoas expostas politicamente": "pep.yaml", "Pedidos de acesso à informação": "falabr.yaml", "Dados abertos do STJ": "stj.yaml", "O que mudou no Atlas": "novidades.yaml",
     "Orçamento": "orcamento.yaml", "Agenda pública": "agendas.yaml", "Agenda do Planalto": "agenda-planalto.yaml",
     "Patrimônio (TSE)": "patrimonio.yaml", "Doadores (TSE)": "doadores-2022.yaml", "Candidaturas (TSE)": "candidaturas.yaml",
     "Votos por município (TSE)": "votos-2022.yaml", "Resumos em linguagem simples": "resumos.yaml",
@@ -1477,7 +1484,7 @@ Atualizado em {stats['generated_at']}.
 
 graph = {"layout": layout, "nodes": nodes, "edges": {e["id"]: e for e in edges}, "stats": stats, "news": news, "power": power, "power_links": power_links if news_path.exists() else [], "changes": changes[:200], "people": people_index, "omissao": omissao, "arrecadacao": arrecadacao, "temas": temas, "emendas": emendas, "teto": teto, "renuncias": renuncias, "viagens": viagens, "cartao": cartao, "novidades": novidades, "falabr": falabr, "contratos": contratos, "sancoes": sancoes, "recebidos": recebidos, "transferencias": transferencias}
 # núcleo (topologia + home) e detalhe por nó, para carregar sob demanda no site estático
-HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "composicao", "subsidio", "custo", "programas", "transferencias", "budget", "dou", "candidaturas", "sancoes", "contratos", "falabr", "casa", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
+HEAVY = ("description", "siorg_description", "people", "sabatinas", "historico", "agenda", "composicao", "subsidio", "custo", "programas", "transferencias", "budget", "dou", "candidaturas", "sancoes", "contratos", "falabr", "casa", "tribunal", "cite", "cite_url", "official_url", "competencia", "note", "siorg_code", "checked_at", "mandato_anos", "vacant_seats")
 DERIVED = ("connected", "edges", "children", "positions", "verified", "source", "siorg_tipo", "natureza_juridica", "nomeado_por", "indicado_por", "eleito_por")
 core_nodes = {}
 (OUT / "nodes").mkdir(exist_ok=True)

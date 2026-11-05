@@ -21,10 +21,10 @@ DIR = ROOT / "data" / "generated"
 # Um alarme sobre arquivo que ninguém lê treina a gente a ignorar o alarme, que é o contrário do que
 # esta checagem serve. Cada entrada aqui foi verificada: o arquivo não é produzido por conector
 # agendado NEM consumido por nenhum build.
+# Vazio desde 04/11/2026: o portal-cce era o único, e o experimento foi removido em vez de ligado —
+# nada o lia, e ligá-lo seria publicar fonte nova que ninguém pediu. Deixo a estrutura porque o
+# próximo experimento vai existir, e é melhor declará-lo aqui que deixar o alarme virar ruído.
 NAO_EM_USO = {
-    "portal-cce.yaml": ("etl/portal_cce.py existe mas não está no update.sh e a saída não é lida por "
-                        "nenhum build — é resultado de um experimento de 18/09/2026 com 10 cargos. "
-                        "Decidir: ligar no update.sh ou remover os dois."),
 }
 
 # arquivo -> por que não tem generated_at
@@ -44,9 +44,9 @@ PRAZO = {
     "candidaturas.yaml": None, "doadores-2022.yaml": None, "votos-2022.yaml": None,
     "patrimonio.yaml": None,          # depende de zip do TSE baixado à mão
     "resumos.yaml": 30,               # só muda quando há item novo para resumir
-    "portal-cce.yaml": 30, "sabatinas.yaml": 20, "subsidios.yaml": 30,
+    "sabatinas.yaml": 20, "subsidios.yaml": 30,
     "teto.yaml": 40, "remuneracao.yaml": 40,   # folha mensal
-    "sancoes.yaml": 4, "recebidos.yaml": 4, "contratos.yaml": 4, "pep.yaml": 9, "falabr.yaml": 9,
+    "sancoes.yaml": 4, "stj.yaml": 9, "recebidos.yaml": 4, "contratos.yaml": 4, "pep.yaml": 9, "falabr.yaml": 9,
     "novidades.yaml": 45,   # só muda quando há mudança no projeto; semana sem mexer é normal
 }
 PADRAO = 3

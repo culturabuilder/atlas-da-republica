@@ -61,12 +61,17 @@ def medir(G):
 def corpo(G):
     por_setor, sem_nada, com_tudo = medir(G)
     st = G.get("stats") or {}
+    # Estava escrito "46 conectores" à mão e ficou errado no dia em que entrou o 47º (o STJ). O número
+    # sai do registro de execução do próprio build.
+    _ex = (st.get("execucao") or {})
+    _c = _ex.get("conectores")
+    n_con = (_c if isinstance(_c, int) else len(_c or {})) or 46
     partes = []
     tot_nos = sum(g["nos"] for g in por_setor.values()); tot_vaz = sum(g["vazios"] for g in por_setor.values())
     partes.append(f"""  <section id="placar">
     <div class="eyebrow">O placar</div>
     <h2>De {tot_nos} órgãos da União, {tot_vaz} não deixam ver nada</h2>
-    <p>Nada aqui quer dizer: nenhum dos 46 conectores do Atlas conseguiu ler um único assunto sobre aquele órgão numa fonte oficial em formato aberto — nem orçamento, nem contrato, nem punição, nem pedido de informação respondido.</p>
+    <p>Nada aqui quer dizer: nenhum dos {n_con} conectores do Atlas conseguiu ler um único assunto sobre aquele órgão numa fonte oficial em formato aberto — nem orçamento, nem contrato, nem punição, nem pedido de informação respondido.</p>
     <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0">""")
     for s, g in sorted(por_setor.items(), key=lambda x: -x[1]["nos"]):
         if s not in SETOR_ROT: continue

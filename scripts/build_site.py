@@ -143,6 +143,15 @@ def page(n):
         if _g.get("assessores_total"):
             fatos.append(f'<li><b>Pessoas nos gabinetes:</b> {_g["assessores_total"]}'
                          + (f'; cota do ano: {esc(brl((_g.get("cota") or {}).get("total") or 0))}' if (_g.get("cota") or {}).get("total") else "") + '</li>')
+    _tb = n.get("tribunal") or {}
+    if (_tb.get("penalidades") or {}).get("total"):
+        _pn = _tb["penalidades"]
+        fatos.append(f'<li><b>Punições que o tribunal aplicou a fornecedores:</b> {_pn["total"]} a {_pn.get("empresas", "?")} empresas'
+                     + (f', desde {_pn["desde"][:4]}' if _pn.get("desde") else "") + '</li>')
+    if (_tb.get("viagens") or {}).get("total"):
+        _vv = _tb["viagens"]
+        fatos.append(f'<li><b>Viagens pagas (diária e passagem):</b> {esc(brl(_vv["total"]))} em {_vv["viagens"]} viagens'
+                     + (f'; arquivo do tribunal parado desde {_vv["arquivo_de"]}' if _vv.get("arquivo_de") else "") + '</li>')
     _tt = (n.get("agenda") or {})
     if _tt.get("compromissos_total"):
         fatos.append(f'<li><b>Compromissos na agenda pública:</b> {_tt["compromissos_total"]}</li>')

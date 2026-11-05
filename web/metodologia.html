@@ -103,6 +103,8 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
       <li><a href="#casa"><b>22</b><span>O que a Casa faz</span></a></li>
       <li><a href="#estados"><b>23</b><span>No seu estado</span></a></li>
       <li><a href="#uso"><b>24</b><span>Contagem de uso</span></a></li>
+      <li><a href="#tribunal"><b>26</b><span>O que o tribunal publica</span></a></li>
+      <li><a href="#imprensa"><b>27</b><span>Na imprensa</span></a></li>
 </ol>
   </header>
 
@@ -430,6 +432,30 @@ code{font-family:var(--mono);font-size:14px;background:var(--card);padding:1px 5
       <dt>Regra</dt><dd>"Empenhado" é compromisso assumido, "pago" é o que saiu do caixa; são do mesmo ano e não se somam. O valor por habitante usa a população estimada do estado, e a mediana ao lado é a dos 27, para o número ter com o que ser comparado.</dd>
       <dt>Atualização</dt><dd>Diária.</dd>
       <dt>Limite</dt><dd>Emenda paga a favorecido sediado em Brasília entra no Distrito Federal, mesmo quando a obra é em outro lugar: é assim que a fonte publica, e o Atlas não redistribui por conta própria. A diferença de valor por habitante entre estados não é erro nem denúncia: emenda é escolhida por parlamentar, não repartida por população.</dd>
+    </dl>
+  </section>
+
+  <section id="imprensa">
+    <div class="eyebrow">Bloco 27</div>
+    <h2>Na imprensa</h2>
+    <p>As notícias que a página inicial mostra, e o porteiro que decide se uma notícia é sobre o governo federal.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Oito veículos de alcance nacional, por RSS. O Atlas não escreve notícia: mostra título, veículo, data e o link para a fonte, e liga a notícia aos órgãos e às pessoas que reconhece nela.</dd>
+      <dt>Regra</dt><dd>Entra o que é sobre o <b>governo federal</b>. Até 20/10/2026 a decisão vinha de um classificador calibrado (Ekbasis/Eikos), que respondia a uma pergunta binária com probabilidade; nesse dia o provedor encerrou a API hospedada. Desde então decide uma regra: ligação com órgão ou pessoa do grafo, mais uma lista de termos que indicam assunto estadual ou municipal. Medida contra o classificador antes do encerramento, a regra concorda em <b>91,6%</b> dos casos e cobre <b>64,2%</b> deles — o resto fica fora por falta de sinal, nunca por chute.</dd>
+      <dt>Marcação</dt><dd>Cada artigo guarda quem decidiu, no campo <code>gov_fonte</code>: <code>eikos</code> ou <code>regra</code>. Hoje são 4.159 pelo classificador e 1.522 pela regra, de 5.681 artigos — e a proporção da regra só cresce, porque é ela que decide todo artigo novo.</dd>
+      <dt>Limite</dt><dd>A regra é mais conservadora que o classificador: deixa passar menos e descarta notícia que fala do governo federal sem nomear órgão nem pessoa do grafo. Se o classificador voltar — os pesos são abertos e o cliente aponta para um servidor próprio por <code>EKBASIS_URL</code> —, ele volta a decidir e a marcação distingue os dois períodos. Nada é reclassificado para trás: o veredito fica com a data e a procedência que tinha.</dd>
+    </dl>
+  </section>
+
+  <section id="tribunal">
+    <div class="eyebrow">Bloco 26</div>
+    <h2>O que o tribunal publica de si</h2>
+    <p>Na página do Superior Tribunal de Justiça, o que o próprio tribunal publica em dados abertos sobre a sua administração.</p>
+    <dl>
+      <dt>Fonte</dt><dd>Portal de dados abertos do STJ (CKAN): conjuntos "Penalidades Fornecedores" e "Diárias e Passagens". Os identificadores de arquivo mudam quando o tribunal republica, então o Atlas pergunta ao catálogo qual é o arquivo atual em vez de guardar um endereço fixo.</dd>
+      <dt>Regra</dt><dd>As punições nomeiam <b>empresa</b>, com CNPJ, motivo e o ato que as aplicou — a mesma regra das sanções da CGU; não há pessoa física. As viagens são agregadas por cargo e por magistrado ou servidor, <b>nunca por pessoa</b>: em grande parte são servidores de execução, não ocupantes de cargo mapeado. O valor é o pago que o próprio tribunal informa, somando diária e passagem aérea.</dd>
+      <dt>Atualização</dt><dd>Diária. Quando a fonte não responde, o Atlas usa a cópia em disco da última leitura e diz a data do arquivo.</dd>
+      <dt>Limite</dt><dd>O arquivo de diárias do tribunal está parado desde 28/07/2025: a página mostra a data do arquivo ao lado do número, para ninguém ler como gasto de hoje. Processos não entram — o acervo em tramitação é um arquivo de 76 MB por dia, para um número de manchete — e a folha de pagamento do tribunal devolve erro na própria fonte.</dd>
     </dl>
   </section>
 

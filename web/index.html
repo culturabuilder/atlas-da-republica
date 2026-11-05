@@ -1369,6 +1369,28 @@ function recebidosHtml(){
   ${(R.quem_recebeu||[]).length?`<h3>Quem mais recebeu</h3>${bars((R.quem_recebeu||[]).slice(0,12), x=>x.nome, x=>x.encontros, {fmt:(v,it)=>`${v} ${v===1?'encontro':'encontros'} · ${it.entidades} ${it.entidades===1?'entidade':'entidades'}`, link:x=>P[x.pessoa]?'#'+x.pessoa:null})}`:''}
   <p class="note">${esc(R.nota||'')} A classificação parte da junção com os ${(G.stats.nodes||0).toLocaleString('pt-BR')} órgãos do próprio Atlas, depois da razão social no nome. Fonte: ${esc(R.fonte||'')}, agenda lida em ${fmtDate(R.agenda_lida_em)}${R.janela_inicio?`, janela desde ${fmtDate(R.janela_inicio)}`:''}.</p></div>`;
 }
+function tribunalHtml(n){
+  // O que o tribunal publica de si. Primeiro bloco do Judiciário no Atlas: medido em 29/10/2026, 63%
+  // dos órgãos desse poder não tinham nenhum dado aberto, e o STJ é o maior que publica em CKAN.
+  const t=n.tribunal; if(!t) return '';
+  const pe=t.penalidades, vg=t.viagens;
+  const st=(v,l)=>`<div class="stat"><div class="n">${v}</div><div class="l">${l}</div></div>`;
+  const num=v=>v==null?'—':v.toLocaleString('pt-BR');
+  const bl=[];
+  if(pe&&pe.total) bl.push(st(num(pe.total), `punições a fornecedor desde ${esc((pe.desde||'').slice(0,4))}`), st(num(pe.empresas),'empresas distintas punidas'));
+  if(pe&&pe.vigentes_hoje!=null) bl.push(st(num(pe.vigentes_hoje),'com penalidade ainda vigente hoje'));
+  if(vg&&vg.total) bl.push(st(brl(vg.total), `em ${num(vg.viagens)} viagens pagas`));
+  if(!bl.length) return '';
+  const quem=(vg&&vg.por_quem||[]).filter(x=>x.viagens);
+  return `<div class="card"><h2>O que o tribunal publica de si</h2>
+  <div class="om">${bl.join('')}</div>
+  ${pe&&pe.por_tipo?`<h3>Que punição o tribunal aplicou</h3><div class="act">${Object.entries(pe.por_tipo).map(([k,v])=>`<div class="row"><span>${esc(k)}</span><span class="v">${num(v)}</span></div>`).join('')}</div>`:''}
+  ${pe&&(pe.ultimas||[]).length?`<h3>As mais recentes</h3><p class="note">Punição aplicada pelo próprio tribunal a quem contratou com ele, com o ato que a aplicou. É empresa, não pessoa física, e não é acusação em apuração.</p><div class="sanc">${pe.ultimas.slice(0,6).map(x=>`<div class="sanc-it"><span class="t">${esc(x.empresa)}</span><span class="m">${esc(x.tipo)}${x.data?` · ${fmtDate(x.data)}`:''}${x.fim?` · até ${fmtDate(x.fim)}`:''}</span>${x.motivo?`<span class="f">${esc(x.motivo)}</span>`:''}${x.ato?`<span class="p">${esc(x.ato)}</span>`:''}</div>`).join('')}</div>${pe.ultimas.length>6?`<details class="resto"><summary>ver outras ${pe.ultimas.length-6} punições recentes</summary><div class="sanc">${pe.ultimas.slice(6).map(x=>`<div class="sanc-it"><span class="t">${esc(x.empresa)}</span><span class="m">${esc(x.tipo)}${x.data?` · ${fmtDate(x.data)}`:''}</span>${x.motivo?`<span class="f">${esc(x.motivo)}</span>`:''}</div>`).join('')}</div></details>`:''}`:''}
+  ${quem.length?`<h3>Quem viaja</h3><div class="act">${quem.map(x=>`<div class="row"><span>${esc(x.quem)}</span><span class="v">${num(x.viagens)} viagens · ${brl(x.gasto)}</span></div>`).join('')}</div>${vg.ao_exterior?`<p class="note">${num(vg.ao_exterior)} delas ao exterior, ${brl(vg.gasto_exterior)}. Diária e passagem aérea somadas, pelos valores pagos que o próprio tribunal informa.</p>`:''}`:''}
+  ${vg&&vg.arquivo_de?`<p class="note">O arquivo de viagens do tribunal está parado desde ${fmtDate(vg.arquivo_de)}: os números acima são os do último que ele publicou, não os de hoje.</p>`:''}
+  <p class="note">Fonte: ${esc(t.fonte||'')}, lido em ${fmtDate(t.generated_at)}${pe&&pe.arquivo_de?` · penalidades, arquivo de ${fmtDate(pe.arquivo_de)}`:''}. <a href="${esc(t.fonte_url||'#')}" target="_blank" rel="noopener">Ver na fonte ↗</a></p>
+  <p class="note">${esc(t.nota||'')}</p></div>`;
+}
 function casaHtml(n){
   // O que a Casa faz, somado. Em 28/10/2026 o nó da Câmara e o do Senado não tinham bloco nenhum:
   // os 513 e os 81 estavam pendurados no CARGO, e a instituição ficava vazia. Cada número aqui é a
@@ -1578,6 +1600,7 @@ function renderNode(n){
     // público, depois quem compõe e sua história, e por fim o controle.
     const SECOES = [
       ['casa',       'O que a Casa faz',     casaHtml],
+      ['tribunal',   'O que o tribunal publica', tribunalHtml],
       ['orcamento',  'Orçamento',            programasHtml],
       ['composicao', 'Quem compõe',          composicaoHtml],
       ['historico',  'Quem ocupou',          historicoHtml],
