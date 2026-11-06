@@ -1,5 +1,5 @@
 # GERADO por etl/recebidos.py. Não edite à mão.
-generated_at: '2026-11-05'
+generated_at: '2026-11-06'
 fonte: https://eagendas.cgu.gov.br (rotas públicas /pesquisa/orgaos, /pesquisa/agentes-publicos-obrigados-por-orgao e /?filtro_servidor=...)
 agenda_lida_em: '2026-11-01'
 janela_dias: 90
@@ -21,11 +21,11 @@ por_classe:
     entidades: 103
     encontros: 185
   nao_classificado:
-    entidades: 1383
-    encontros: 2437
+    entidades: 1385
+    encontros: 2831
   orgao_federal:
-    entidades: 914
-    encontros: 22152
+    entidades: 912
+    encontros: 21758
   publico_outro:
     entidades: 633
     encontros: 1559
@@ -6508,13 +6508,11 @@ entidades:
     conf: 0.955
     em: '2026-10-17'
   Centro Federal de Educação Tecnológica - Celso Suckow da Fonseca:
-    classe: orgao_federal
-    via: nome
-    'no': br-centro-federal-de-educacao-tecnologica-celso-suckow-da-fonseca
+    classe: nao_classificado
+    via: null
   Centro Federal de Educação Tecnológica de Minas Gerais:
-    classe: orgao_federal
-    via: nome
-    'no': br-centro-federal-de-educacao-tecnologica-de-minas-gerais
+    classe: nao_classificado
+    via: null
   Centro Nacional de Tecnologia Eletrônica Avançada S. A:
     classe: orgao_federal
     via: nome

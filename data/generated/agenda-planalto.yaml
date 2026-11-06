@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-05'
+generated_at: '2026-11-06'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-08'
+janela_inicio: '2026-08-09'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,13 +11,13 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 184
-    dias_com_agenda: 50
+    compromissos_90d: 188
+    dias_com_agenda: 51
     por_tipo:
-      audiencia: 57
-      evento: 57
+      audiencia: 59
+      evento: 58
       viagem: 56
-      reuniao: 10
+      reuniao: 11
       outro: 4
     entidades_top:
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República)
@@ -27,7 +27,7 @@ people:
     - nome: Miriam Belchior (Ministra da Casa Civil)
       n: 9
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
-      n: 5
+      n: 6
     - nome: Mauro Vieira (Ministro das Relações Exteriores)
       n: 2
     - nome: Oswaldo Malatesta Neto (Chefe do Gabinete Pessoal do Presidente da República)
@@ -41,10 +41,10 @@ people:
     - nome: José Mucio (Ministro da Defesa)
       n: 1
     locais_top:
+    - nome: Palácio do Planalto
+      n: 42
     - nome: Palácio da Alvorada
       n: 40
-    - nome: Palácio do Planalto
-      n: 39
     - nome: Base Aérea de Brasília
       n: 24
     - nome: Esplanada dos Ministérios, Brasília
@@ -61,8 +61,36 @@ people:
       n: 3
     - nome: Residência Oficial, Nova York (EUA)
       n: 3
-    ultimo: '2026-11-05'
+    ultimo: '2026-11-06'
     recentes:
+    - data: '2026-11-06'
+      hora: '17:00'
+      titulo: Ministro da Secretaria de Comunicação Social da Presidência da República, Sidônio Palmeira
+      tipo: audiencia
+      local: Palácio do Planalto
+      participantes:
+      - nome: Sidônio Palmeira
+        entidade: Ministro da Secretaria de Comunicação Social da Presidência da República
+    - data: '2026-11-06'
+      hora: '16:00'
+      titulo: Ministra da Casa Civil, Miriam Belchior, e Ministro da Justiça e Segurança Pública, Wellington César Lima e
+        Silva
+      tipo: audiencia
+      local: Palácio do Planalto
+      participantes: []
+    - data: '2026-11-06'
+      hora: '15:00'
+      titulo: Sanção do Projeto de Lei de Conversão nº 14/2026, que institui o Exame Nacional de Avaliação da Formação Médica
+        (ENAMED)
+      tipo: evento
+      local: Palácio do Planalto
+      participantes: []
+    - data: '2026-11-06'
+      hora: '10:00'
+      titulo: Reunião Extraordinária do Conselho Nacional de Política Energética (CNPE)
+      tipo: reuniao
+      local: Ministério de Minas e Energia
+      participantes: []
     - data: '2026-11-05'
       hora: '17:00'
       titulo: Ministra da Casa Civil, Miriam Belchior, e Ministro da Justiça e Segurança Pública, Wellington César Lima e
@@ -92,33 +120,8 @@ people:
       participantes:
       - nome: Marcelo Weick
         entidade: Secretário Especial para Assuntos Jurídicos da Casa Civil
-    - data: '2026-11-04'
-      hora: '11:30'
-      titulo: Chegada a Brasília
-      tipo: viagem
-      local: Base Aérea de Brasília
-      participantes: []
-    - data: '2026-11-04'
-      hora: '10:00'
-      titulo: Partida para Brasília
-      tipo: viagem
-      local: Aeroporto de Congonhas
-      participantes: []
-    - data: '2026-11-03'
-      hora: '18:30'
-      titulo: Chegada a São Paulo
-      tipo: viagem
-      local: Aeroporto de Congonhas – São Paulo
-      participantes: []
-    - data: '2026-11-03'
-      hora: '17:00'
-      titulo: Partida para São Paulo
-      tipo: viagem
-      local: Base Aérea de Brasília
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-08-08: []
       presidente/2026-08-09: []
       presidente/2026-08-10:
       - hora: '15:00'
@@ -780,6 +783,21 @@ people:
         titulo: Ministra da Casa Civil, Miriam Belchior, e Ministro da Justiça e Segurança Pública, Wellington César Lima
           e Silva
         local: Palácio do Planalto
+      presidente/2026-11-06:
+      - hora: '10:00'
+        titulo: Reunião Extraordinária do Conselho Nacional de Política Energética (CNPE)
+        local: Ministério de Minas e Energia
+      - hora: '15:00'
+        titulo: Sanção do Projeto de Lei de Conversão nº 14/2026, que institui o Exame Nacional de Avaliação da Formação Médica
+          (ENAMED)
+        local: Palácio do Planalto
+      - hora: '16:00'
+        titulo: Ministra da Casa Civil, Miriam Belchior, e Ministro da Justiça e Segurança Pública, Wellington César Lima
+          e Silva
+        local: Palácio do Planalto
+      - hora: '17:00'
+        titulo: Ministro da Secretaria de Comunicação Social da Presidência da República, Sidônio Palmeira
+        local: Palácio do Planalto
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -787,14 +805,14 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 46
-    dias_com_agenda: 32
+    compromissos_90d: 48
+    dias_com_agenda: 33
     por_tipo:
-      evento: 18
+      evento: 19
       viagem: 11
       audiencia: 9
+      reuniao: 5
       outro: 4
-      reuniao: 4
     entidades_top:
     - nome: Luiz Inácio Lula da Silva (Presidente da República)
       n: 3
@@ -806,9 +824,9 @@ people:
       n: 1
     locais_top:
     - nome: Brasília/DF
-      n: 12
+      n: 13
     - nome: Palácio do Planalto
-      n: 11
+      n: 12
     - nome: São Paulo/SP
       n: 10
     - nome: Palácio do Planalto, Anexo II
@@ -823,11 +841,24 @@ people:
       n: 1
     - nome: Esplanada dos Ministérios, Bloco D
       n: 1
-    ultimo: '2026-11-05'
+    ultimo: '2026-11-06'
     recentes:
+    - data: '2026-11-06'
+      hora: '15:00'
+      titulo: Sanção do Projeto de Lei de Conversão nº 14/2026, que institui o Exame Nacional de Avaliação da Formação Médica
+        – Enamed
+      tipo: evento
+      local: Palácio do Planalto
+      participantes: []
+    - data: '2026-11-06'
+      hora: '10:00'
+      titulo: Reunião Extraordinária do Conselho Nacional de Política Energética - CNPE
+      tipo: reuniao
+      local: Brasília/DF
+      participantes: []
     - data: '2026-11-05'
-      hora: '15:30'
-      titulo: 1ª Reunião do Conselho Nacional para Industrialização de Minerais Críticos e Estratégicos
+      hora: '16:30'
+      titulo: 1ª Reunião do Conselho Nacional para Industrialização de Minerais Críticos e Estratégicos - CIMCE
       tipo: reuniao
       local: Palácio do Planalto
       participantes: []
@@ -865,22 +896,8 @@ people:
       tipo: audiencia
       local: Palácio do Planalto, Anexo II
       participantes: []
-    - data: '2026-10-13'
-      hora: '15:00'
-      titulo: Cerimônia de Anúncio da Marca de 700 Mercados Abertos para o Agro Brasileiro
-      tipo: evento
-      local: Esplanada dos Ministérios, Bloco D
-      participantes: []
-    - data: '2026-10-13'
-      hora: '10:00'
-      titulo: Cerimônia sobre medidas para microempreendedores individuais
-      tipo: evento
-      local: Palácio do Planalto
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-08-08: []
-      vice/2026-08-08-b1: []
       vice/2026-08-09: []
       vice/2026-08-09-b1: []
       vice/2026-08-10:
@@ -1199,10 +1216,19 @@ people:
       vice/2026-11-04: []
       vice/2026-11-04-b1: []
       vice/2026-11-05:
-      - hora: '15:30'
-        titulo: 1ª Reunião do Conselho Nacional para Industrialização de Minerais Críticos e Estratégicos
+      - hora: '16:30'
+        titulo: 1ª Reunião do Conselho Nacional para Industrialização de Minerais Críticos e Estratégicos - CIMCE
         local: Palácio do Planalto
       vice/2026-11-05-b1: []
+      vice/2026-11-06:
+      - hora: '10:00'
+        titulo: Reunião Extraordinária do Conselho Nacional de Política Energética - CNPE
+        local: Brasília/DF
+      - hora: '15:00'
+        titulo: Sanção do Projeto de Lei de Conversão nº 14/2026, que institui o Exame Nacional de Avaliação da Formação Médica
+          – Enamed
+        local: Palácio do Planalto
+      vice/2026-11-06-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 184 compromissos em 50 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 46 compromissos em 32 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 188 compromissos em 51 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 48 compromissos em 33 dias (0 dias não lidos)'

@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-11-05'
+generated_at: '2026-11-06'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,7 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-08-03': 117
+      '2026-08-03': 80
       '2026-08-10': 240
       '2026-08-17': 364
       '2026-08-24': 447
@@ -29,9 +29,9 @@ temas:
       '2026-10-12': 1098
       '2026-10-19': 1687
       '2026-10-26': 1277
-      '2026-11-02': 184
-    total_90d: 13247
-    last7: 585
+      '2026-11-02': 229
+    total_90d: 13255
+    last7: 475
     peak_week: 3172
   processes:
   - casa: camara
@@ -67,7 +67,7 @@ temas:
   - cpi do master
   - vorcaro
   curated: cpmi-banco-master-2026
-  news_hits: 162
+  news_hits: 165
   news_weekly:
     '2026-09-14': 29
     '2026-09-21': 44
@@ -76,8 +76,20 @@ temas:
     '2026-10-12': 25
     '2026-10-19': 9
     '2026-10-26': 13
-    '2026-11-02': 7
+    '2026-11-02': 10
   news_recent:
+  - id: d2cabe882dcbc6da
+    title: Fachin nega pedido de revisão de prisão preventiva de Fabiano Zettel, cunhado de Vorcaro
+    date: '2026-11-06'
+    publication: Estadão
+  - id: 6601bf345e37edef
+    title: Empresário confirma à PF gastos milionários de Vorcaro com viagens de luxo de Ciro Nogueira; assista
+    date: '2026-11-06'
+    publication: Estadão
+  - id: 5f48db16baacdbf1
+    title: Fachin mantém prisão de cunhado de Vorcaro e pede manifestação da PGR sobre liberdade de ex-banqueiro
+    date: '2026-11-05'
+    publication: g1 Política
   - id: c6d426d3e12a84ae
     title: Fachin dá prazo de 15 dias para PGR se manifestar sobre indiciamento de Vorcaro
     date: '2026-11-04'
@@ -86,23 +98,11 @@ temas:
     title: 'Caso Master: pai de Vorcaro apresenta ao presidente do STF novo pedido de liberdade'
     date: '2026-11-03'
     publication: g1 Política
-  - id: fd9c045d8fe80418
-    title: Vorcaro aposta em perícia para anular investigação e afastar delação; acordão é objetivo final
-    date: '2026-11-03'
-    publication: g1 Política
-  - id: cce0bc71e59bb7f3
-    title: Vorcaro aciona Comissão Interamericana de Direitos Humanos contra prisão
-    date: '2026-11-02'
-    publication: Poder360
-  - id: 6e0b5f5389f86369
-    title: Defesa de Vorcaro recorre à Comissão Interamericana para tentar revogação de prisão e cita violações
-    date: '2026-11-02'
-    publication: Estadão
   wikipedia:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-08-03': 224
+      '2026-08-03': 168
       '2026-08-10': 484
       '2026-08-17': 420
       '2026-08-24': 806
@@ -115,9 +115,9 @@ temas:
       '2026-10-12': 4756
       '2026-10-19': 4026
       '2026-10-26': 3053
-      '2026-11-02': 1175
-    total_90d: 59500
-    last7: 2504
+      '2026-11-02': 1570
+    total_90d: 59839
+    last7: 2472
     peak_week: 10630
   processes:
   - casa: camara
@@ -132,7 +132,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
     requested: RCP 1/2026 (camara)
   state: parado
-  stalled_days: 108
+  stalled_days: 109
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -144,7 +144,7 @@ temas:
   - fim da escala
   - jornada 6x1
   curated: null
-  news_hits: 155
+  news_hits: 156
   news_weekly:
     '2026-09-14': 3
     '2026-09-28': 3
@@ -152,12 +152,16 @@ temas:
     '2026-10-12': 92
     '2026-10-19': 9
     '2026-10-26': 4
-    '2026-11-02': 3
+    '2026-11-02': 4
   news_recent:
   - id: a109628321f9d018
     title: 'Fim da escala 6x1: O que fazer se a empresa não respeitar a nova jornada? Veja como denunciar'
     date: '2026-11-05'
     publication: g1 Política
+  - id: 72cad456fdc1b490
+    title: Dino marca audiência de conciliação em ação que discute fim da escala 6×1
+    date: '2026-11-05'
+    publication: JOTA
   - id: 74a5938ba9ea8287
     title: MTE prevê publicar decreto sobre fim da escala 6×1 na próxima segunda-feira (9/11)
     date: '2026-11-04'
@@ -170,16 +174,11 @@ temas:
     title: 'Dois repousos, um calendário: a escala 5×2 e o contrato especial de trabalho desportivo'
     date: '2026-10-31'
     publication: JOTA
-  - id: f45590ab895cdd11
-    title: 'É #FAKE que governo federal recuou sobre fim da escala 6x1 após vitória de Lula no segundo turno das eleições
-      2026'
-    date: '2026-10-29'
-    publication: g1 Política
   wikipedia:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-08-03': 127
+      '2026-08-03': 99
       '2026-08-10': 276
       '2026-08-17': 368
       '2026-08-24': 506
@@ -192,9 +191,9 @@ temas:
       '2026-10-12': 10778
       '2026-10-19': 2158
       '2026-10-26': 573
-      '2026-11-02': 94
-    total_90d: 23122
-    last7: 264
+      '2026-11-02': 110
+    total_90d: 23110
+    last7: 223
     peak_week: 10778
   processes:
   - casa: camara
@@ -245,7 +244,7 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-08-03': 15
+      '2026-08-03': 7
       '2026-08-10': 29
       '2026-08-17': 55
       '2026-08-24': 104
@@ -258,9 +257,9 @@ temas:
       '2026-10-12': 29
       '2026-10-19': 70
       '2026-10-26': 176
-      '2026-11-02': 33
-    total_90d: 891
-    last7: 102
+      '2026-11-02': 47
+    total_90d: 897
+    last7: 94
     peak_week: 176
   processes:
   - casa: camara
@@ -344,9 +343,9 @@ temas:
       '2026-10-12': 8
       '2026-10-19': 2
       '2026-10-26': 2
-      '2026-11-02': 1
-    total_90d: 22
-    last7: 3
+      '2026-11-02': 4
+    total_90d: 25
+    last7: 6
     peak_week: 8
   processes:
   - casa: camara
@@ -371,7 +370,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 181
+  stalled_days: 182
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -384,13 +383,18 @@ temas:
   - mp 1344
   - preco do diesel
   curated: null
-  news_hits: 4
+  news_hits: 5
   news_weekly:
     '2026-09-14': 1
     '2026-09-21': 1
     '2026-10-19': 1
     '2026-10-26': 1
+    '2026-11-02': 1
   news_recent:
+  - id: 0aaf49943554acbd
+    title: Prorrogadas MPs de subsídio ao diesel e crédito para agricultura familiar
+    date: '2026-11-06'
+    publication: Agência Senado
   - id: 80c320aa447f31dc
     title: Governo Lula renovará subsídio ao diesel de R$ 2,12
     date: '2026-10-27'
@@ -454,7 +458,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1240
+  stalled_days: 1241
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -464,14 +468,19 @@ temas:
   - precatorios
   - pec dos precatorios
   curated: null
-  news_hits: 25
+  news_hits: 26
   news_weekly:
     '2026-09-21': 7
     '2026-09-28': 9
     '2026-10-05': 5
     '2026-10-12': 2
     '2026-10-19': 2
+    '2026-11-02': 1
   news_recent:
+  - id: 9c1950deb10a98a0
+    title: 'Precatórios e CNJ: entre organizar o mercado e legislar sobre ele'
+    date: '2026-11-06'
+    publication: JOTA
   - id: 2db8f7555875bfff
     title: CNJ discute política nacional para precatórios que incentiva acordos diretos
     date: '2026-10-25'
@@ -488,15 +497,11 @@ temas:
     title: Conselho da Justiça Federal suspende pagamento de precatórios de R$ 775 milhões
     date: '2026-10-14'
     publication: Estadão
-  - id: 0b4d6849e7c66b49
-    title: Gilmar Mendes quer retomada do debate sobre valores pagos pelo SUS a hospitais privados
-    date: '2026-10-09'
-    publication: JOTA
   wikipedia:
     article: Precatório
     url: https://pt.wikipedia.org/wiki/Precatório
     weekly:
-      '2026-08-03': 19
+      '2026-08-03': 13
       '2026-08-10': 33
       '2026-08-17': 30
       '2026-08-24': 24
@@ -509,9 +514,9 @@ temas:
       '2026-10-12': 87
       '2026-10-19': 59
       '2026-10-26': 45
-      '2026-11-02': 12
-    total_90d: 731
-    last7: 28
+      '2026-11-02': 14
+    total_90d: 727
+    last7: 25
     peak_week: 112
   processes:
   - casa: camara
@@ -582,7 +587,7 @@ temas:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-08-03': 111
+      '2026-08-03': 76
       '2026-08-10': 202
       '2026-08-17': 255
       '2026-08-24': 346
@@ -595,9 +600,9 @@ temas:
       '2026-10-12': 754
       '2026-10-19': 903
       '2026-10-26': 816
-      '2026-11-02': 119
-    total_90d: 5988
-    last7: 392
+      '2026-11-02': 146
+    total_90d: 5980
+    last7: 308
     peak_week: 1023
   processes:
   - casa: camara

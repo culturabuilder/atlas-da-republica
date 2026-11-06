@@ -1,19 +1,19 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-11-05'
+generated_at: '2026-11-06'
 mes: '202609'
 mes_senado: '202610'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1219
-  com_remuneracao: 507
+  ocupantes_no_grafo: 1217
+  com_remuneracao: 506
   por_setor:
     executivo:
-      ocupantes: 484
-      antes: 401
-      depois: 422
-      pct_antes: 82.9
-      pct_depois: 87.2
+      ocupantes: 482
+      antes: 400
+      depois: 421
+      pct_antes: 83.0
+      pct_depois: 87.3
     essenciais:
       ocupantes: 30
       antes: 4
@@ -33,7 +33,7 @@ resumo:
       pct_antes: 0.0
       pct_depois: 0.0
   por_criterio:
-    nome_completo+orgao: 387
+    nome_completo+orgao: 386
     nome_completo: 94
     primeiro_ultimo+orgao: 19
     subsequencia_no_orgao: 4
@@ -41,13 +41,13 @@ resumo:
     nome_sem_sufixo: 1
     subsequencia_subsidio: 1
   por_confianca:
-    alta: 482
+    alta: 481
     media: 25
   sem_remuneracao:
-    total: 88
+    total: 87
     por_motivo:
       ausente na folha: 24
-      órgão fora do SIAPE (empresa publica com folha própria): 15
+      órgão fora do SIAPE (empresa publica com folha própria): 14
       no cadastro do SIAPE mas sem linha de remuneração no mês: 14
       só há homônimo por primeiro+último sobrenome fora do órgão (...): 13
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
@@ -10184,6 +10184,38 @@ people:
     eventuais: 0.0
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
+  br-p-marcia-angela-da-silva-aguiar:
+    mes: '202609'
+    bruto: 27943.17
+    abate_teto: 0.0
+    bruto_apos_abate: 27943.17
+    liquido: 20172.51
+    componentes:
+      basica: 27943.17
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Fundação Joaquim Nabuco
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: MARCIA ANGELA DA SILVA AGUIAR
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/389007
+    position: br-fundacao-joaquim-nabuco-presidente
+    position_name: Presidente da Fundação Joaquim Nabuco
+    bruta: 27943.17
+    liquida: 20172.51
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-jose-cloves-da-silva:
     mes: '202609'
     bruto: 27943.17
@@ -10311,70 +10343,6 @@ people:
     ferias: 0.0
     eventuais: 0.0
     cargo: ANALISTA TECNICO ADMINISTRATIVO
-    funcao: Sem informação
-  br-p-mauricio-saldanha-motta:
-    mes: '202609'
-    bruto: 41595.58
-    abate_teto: 0.0
-    bruto_apos_abate: 41595.58
-    liquido: 28160.39
-    componentes:
-      basica: 37588.49
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 4007.09
-      indenizatorias: 1192.0
-    orgao: Centro Federal de Educação Tecnológica Celso Suckow da Fonseca
-    orgao_superior: Ministério da Educação
-    cargo_na_folha: Sem informaç
-    funcao_na_folha: CARGO DE DIRECAO - CD - IFES
-    vinculo: Função
-    criterio: nome_completo+orgao
-    confianca: alta
-    nome_na_folha: MAURICIO SALDANHA MOTTA
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/1057799
-    position: br-centro-federal-de-educacao-tecnologica-celso-suckow-da-fonseca-diretor-geral
-    position_name: Diretor-Geral do Centro Federal de Educação Tecnológica - Celso Suckow da Fonseca
-    bruta: 37588.49
-    liquida: 28160.39
-    indenizatorias: 1192.0
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 4007.09
-    cargo: Sem informaç
-    funcao: CARGO DE DIRECAO - CD - IFES
-  br-p-carla-simone-chamon:
-    mes: '202609'
-    bruto: 36655.51
-    abate_teto: 0.0
-    bruto_apos_abate: 36655.51
-    liquido: 24690.45
-    componentes:
-      basica: 36655.51
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 0.0
-      indenizatorias: 1192.0
-    orgao: Centro Federal de Educação Tecnológica de Minas Gerais
-    orgao_superior: Ministério da Educação
-    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
-    funcao_na_folha: Sem informação
-    vinculo: Cargo
-    criterio: nome_completo+orgao
-    confianca: alta
-    nome_na_folha: CARLA SIMONE CHAMON
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/2786160
-    position: br-centro-federal-de-educacao-tecnologica-de-minas-gerais-diretor-geral
-    position_name: Diretor-Geral do Centro Federal de Educação Tecnológica de Minas Gerais
-    bruta: 36655.51
-    liquida: 24690.45
-    indenizatorias: 1192.0
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 0.0
-    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
     funcao: Sem informação
   br-p-ana-paula-giraux-leitao:
     mes: '202609'
@@ -16636,11 +16604,6 @@ nao_encontrados:
   cargo: Ministro de Estado da Saúde
   setor: executivo
   motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
-- id: br-p-wp-aloizio-mercadante
-  nome: Aloizio Mercadante
-  cargo: Presidente do BNDES
-  setor: executivo
-  motivo: órgão fora do SIAPE (empresa publica com folha própria)
 - id: br-p-ana-paula-fioreza
   nome: Ana Paula Fioreza
   cargo: Diretor-Presidente da ANA

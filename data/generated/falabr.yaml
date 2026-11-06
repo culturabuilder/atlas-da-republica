@@ -1,5 +1,5 @@
 # GERADO por etl/falabr.py. Não edite à mão.
-generated_at: '2026-11-05'
+generated_at: '2026-11-06'
 ano: 2026
 fonte: Fala.BR (Lei 12.527/2011), dados abertos da Controladoria-Geral da União
 nota: 'Pedidos de acesso à informação de esfera federal registrados no ano. A taxa de negativa olha só os pedidos que o órgão decidiu sobre informação que
@@ -8,7 +8,7 @@ nota: 'Pedidos de acesso à informação de esfera federal registrados no ano. A
 resumo:
   pedidos: 68392
   orgaos: 321
-  orgaos_casados: 290
+  orgaos_casados: 288
   recursos: 9109
   decididos: 61279
   pct_negado_ou_parcial_geral: 19.3
@@ -4854,7 +4854,7 @@ orgaos:
     - assunto: Estudos e Pesquisas
       n: 7
   CEFET-MG – Centro Federal de Educação Tecnológica de Minas Gerais:
-    node: br-centro-federal-de-educacao-tecnologica-de-minas-gerais
+    node: null
     pedidos: 98
     concedido: 68
     negado: 0
@@ -6823,7 +6823,7 @@ orgaos:
     - assunto: Telecomunicações
       n: 4
   CEFET-RJ – Centro Federal de Educação Tecnológica Celso Suckow da Fonseca:
-    node: br-centro-federal-de-educacao-tecnologica-celso-suckow-da-fonseca
+    node: null
     pedidos: 47
     concedido: 44
     negado: 0
@@ -9386,6 +9386,8 @@ nao_casados:
   pedidos: 313
 - orgao: TRANSPETRO - Petrobras Transporte S.A
   pedidos: 135
+- orgao: CEFET-MG – Centro Federal de Educação Tecnológica de Minas Gerais
+  pedidos: 98
 - orgao: IF FLUMINENSE – Instituto Federal de Educação, Ciência e Tecnologia Fluminense
   pedidos: 84
 - orgao: IF GOIANO – Instituto Federal de Educação, Ciência e Tecnologia Goiano
@@ -9398,6 +9400,8 @@ nao_casados:
   pedidos: 52
 - orgao: Transportadora Brasileira Gasoduto Bolívia-Brasil S.A.
   pedidos: 48
+- orgao: CEFET-RJ – Centro Federal de Educação Tecnológica Celso Suckow da Fonseca
+  pedidos: 47
 - orgao: HUSE-Unirio - Hospital Universitário dos Servidores do Estado (RJ)
   pedidos: 27
 - orgao: BB Tecnologia e Serviços
@@ -9423,8 +9427,4 @@ nao_casados:
 - orgao: ESG – Escola Superior de Guerra
   pedidos: 6
 - orgao: Petrobras Biocombustível S.A.
-  pedidos: 5
-- orgao: ESD - Escola Superior de Defesa
-  pedidos: 5
-- orgao: INT – Instituto Nacional de Tecnologia
   pedidos: 5
