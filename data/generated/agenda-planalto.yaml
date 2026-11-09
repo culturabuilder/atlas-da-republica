@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-08'
+generated_at: '2026-11-09'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-11'
+janela_inicio: '2026-08-12'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -12,24 +12,22 @@ people:
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
     compromissos_90d: 185
-    dias_com_agenda: 50
+    dias_com_agenda: 51
     por_tipo:
-      audiencia: 57
-      evento: 57
-      viagem: 56
+      evento: 58
+      viagem: 57
+      audiencia: 55
       reuniao: 11
       outro: 4
     entidades_top:
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República)
       n: 13
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
-      n: 10
+      n: 9
     - nome: Miriam Belchior (Ministra da Casa Civil)
       n: 8
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 6
-    - nome: Mauro Vieira (Ministro das Relações Exteriores)
-      n: 2
     - nome: Oswaldo Malatesta Neto (Chefe do Gabinete Pessoal do Presidente da República)
       n: 2
     - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
@@ -38,15 +36,17 @@ people:
       n: 1
     - nome: Dario Durigan (Ministro da Fazenda)
       n: 1
+    - nome: Mauro Vieira (Ministro das Relações Exteriores)
+      n: 1
     - nome: José Mucio (Ministro da Defesa)
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 40
-    - nome: Palácio da Alvorada
       n: 39
+    - nome: Palácio da Alvorada
+      n: 38
     - nome: Base Aérea de Brasília
-      n: 24
+      n: 25
     - nome: Esplanada dos Ministérios, Brasília
       n: 5
     - nome: Aeroporto Internacional de Macapá
@@ -61,8 +61,20 @@ people:
       n: 3
     - nome: Residência Oficial, Nova York (EUA)
       n: 3
-    ultimo: '2026-11-06'
+    ultimo: '2026-11-09'
     recentes:
+    - data: '2026-11-09'
+      hora: 09:00
+      titulo: Partida para Antália, Turquia
+      tipo: viagem
+      local: Base Aérea de Brasília
+      participantes: []
+    - data: '2026-11-08'
+      hora: '11:00'
+      titulo: Visita à Sala de Monitoramento do Enem 2026
+      tipo: evento
+      local: INEP -  Setor de Indústrias Gráficas (SIG), Quadra 4, Lote 327 – Brasília
+      participantes: []
     - data: '2026-11-06'
       hora: '17:00'
       titulo: Ministro da Secretaria de Comunicação Social da Presidência da República, Sidônio Palmeira
@@ -104,31 +116,8 @@ people:
       tipo: reuniao
       local: Palácio do Planalto
       participantes: []
-    - data: '2026-11-05'
-      hora: 09:00
-      titulo: Ministro da Secretaria de Comunicação Social da Presidência da República, Sidônio Palmeira
-      tipo: audiencia
-      local: Palácio do Planalto
-      participantes:
-      - nome: Sidônio Palmeira
-        entidade: Ministro da Secretaria de Comunicação Social da Presidência da República
-    - data: '2026-11-04'
-      hora: '14:40'
-      titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
-      tipo: audiencia
-      local: Palácio da Alvorada
-      participantes:
-      - nome: Marcelo Weick
-        entidade: Secretário Especial para Assuntos Jurídicos da Casa Civil
     dias_nao_lidos: 0
     dias:
-      presidente/2026-08-11:
-      - hora: 09:00
-        titulo: Ministro das Relações Exteriores, Mauro Vieira
-        local: Palácio da Alvorada
-      - hora: '14:40'
-        titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
-        local: Palácio do Planalto
       presidente/2026-08-12:
       - hora: '10:00'
         titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta Neto
@@ -788,7 +777,14 @@ people:
         titulo: Ministro da Secretaria de Comunicação Social da Presidência da República, Sidônio Palmeira
         local: Palácio do Planalto
       presidente/2026-11-07: []
-      presidente/2026-11-08: []
+      presidente/2026-11-08:
+      - hora: '11:00'
+        titulo: Visita à Sala de Monitoramento do Enem 2026
+        local: INEP -  Setor de Indústrias Gráficas (SIG), Quadra 4, Lote 327 – Brasília
+      presidente/2026-11-09:
+      - hora: 09:00
+        titulo: Partida para Antália, Turquia
+        local: Base Aérea de Brasília
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -800,13 +796,13 @@ people:
     dias_com_agenda: 32
     por_tipo:
       evento: 18
-      viagem: 10
-      audiencia: 9
+      viagem: 11
+      audiencia: 8
       reuniao: 5
       outro: 4
     entidades_top:
     - nome: Luiz Inácio Lula da Silva (Presidente da República)
-      n: 3
+      n: 2
     - nome: Sérgio Leite (Presidente da Federação dos Trabalhadores nas Indústrias Químicas e Fa)
       n: 1
     - nome: Sidônio Palmeira (Ministro-Chefe da Secretaria de Comunicação Social - SECOM)
@@ -817,13 +813,13 @@ people:
     - nome: Brasília/DF
       n: 13
     - nome: Palácio do Planalto
-      n: 12
+      n: 11
     - nome: Palácio do Planalto, Anexo II
       n: 8
     - nome: São Paulo/SP
       n: 8
     - nome: São José dos Campos/SP
-      n: 1
+      n: 2
     - nome: São José do Rio Preto/SP
       n: 1
     - nome: Esplanada dos Ministérios, Brasília/DF
@@ -832,8 +828,14 @@ people:
       n: 1
     - nome: Esplanada dos Ministérios, Bloco D
       n: 1
-    ultimo: '2026-11-06'
+    ultimo: '2026-11-09'
     recentes:
+    - data: '2026-11-09'
+      hora: 06:15
+      titulo: Decolagem de São José dos Campos/SP para Brasília/DF
+      tipo: viagem
+      local: São José dos Campos/SP
+      participantes: []
     - data: '2026-11-06'
       hora: '15:00'
       titulo: Sanção do Projeto de Lei de Conversão nº 14/2026, que institui o Exame Nacional de Avaliação da Formação Médica
@@ -881,19 +883,8 @@ people:
       participantes:
       - nome: Sidônio Palmeira
         entidade: Ministro-Chefe da Secretaria de Comunicação Social - SECOM
-    - data: '2026-10-28'
-      hora: '12:30'
-      titulo: Senador Chico Rodrigues - PSB/RR
-      tipo: audiencia
-      local: Palácio do Planalto, Anexo II
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      vice/2026-08-11:
-      - hora: '16:00'
-        titulo: Luiz Inácio Lula da Silva, Presidente da República
-        local: Palácio do Planalto
-      vice/2026-08-11-b1: []
       vice/2026-08-12:
       - hora: '15:00'
         titulo: Assinatura de decretos sobre captura e estocagem de dióxido de carbono (CCS), combustível sustentável de aviação
@@ -1214,6 +1205,11 @@ people:
       vice/2026-11-07-b1: []
       vice/2026-11-08: []
       vice/2026-11-08-b1: []
+      vice/2026-11-09:
+      - hora: 06:15
+        titulo: Decolagem de São José dos Campos/SP para Brasília/DF
+        local: São José dos Campos/SP
+      vice/2026-11-09-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 185 compromissos em 50 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 185 compromissos em 51 dias (0 dias não lidos)'
 - 'br-p-geraldo-alckmin: 46 compromissos em 32 dias (0 dias não lidos)'

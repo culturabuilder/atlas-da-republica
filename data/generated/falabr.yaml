@@ -1,18 +1,18 @@
 # GERADO por etl/falabr.py. Não edite à mão.
-generated_at: '2026-11-08'
+generated_at: '2026-11-09'
 ano: 2026
 fonte: Fala.BR (Lei 12.527/2011), dados abertos da Controladoria-Geral da União
 nota: 'Pedidos de acesso à informação de esfera federal registrados no ano. A taxa de negativa olha só os pedidos que o órgão decidiu sobre informação que
   lhe cabia: ''informação inexistente'' e ''não tem competência'' são contados à parte, porque somá-los inflaria a opacidade de quem apenas recebeu pedido
   endereçado errado. Recurso é atribuído ao órgão reclamado, não a quem julga. Taxa só é calculada com 20 decisões ou mais.'
 resumo:
-  pedidos: 69219
+  pedidos: 69224
   orgaos: 321
   orgaos_casados: 288
   recursos: 9282
-  decididos: 62048
+  decididos: 62053
   pct_negado_ou_parcial_geral: 19.4
-  orgaos_com_taxa: 274
+  orgaos_com_taxa: 275
 mais_negam:
 - orgao: BB – Banco do Brasil S.A.
   node: br-banco-do-brasil
@@ -653,8 +653,8 @@ orgaos:
       n: 68
   INEP – Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira:
     node: br-inep
-    pedidos: 938
-    concedido: 808
+    pedidos: 939
+    concedido: 809
     negado: 73
     parcial: 26
     inexistente: 19
@@ -664,19 +664,19 @@ orgaos:
     outra: 0
     prorrogados: 428
     recursos: 44
-    decididos: 907
+    decididos: 908
     pct_negado_ou_parcial: 10.9
     pct_prorrogado: 45.6
     motivos_top:
     - motivo: "\0"
-      n: 927
+      n: 928
     - motivo: A Lei de Acesso à Informação, Lei nº 12.527/2011, estabelece diretrize
       n: 10
     - motivo: Prezado(a) Senhor(a),  Em atendimento ao pedido de acesso à informação
       n: 1
     assuntos_top:
     - assunto: Educação Básica
-      n: 585
+      n: 586
     - assunto: Educação Superior
       n: 278
     - assunto: Gestão escolar e administrativa
@@ -2115,8 +2115,8 @@ orgaos:
       n: 1
   UFPB – Universidade Federal da Paraíba:
     node: br-universidade-federal-da-paraiba
-    pedidos: 217
-    concedido: 132
+    pedidos: 218
+    concedido: 133
     negado: 22
     parcial: 35
     inexistente: 13
@@ -2126,17 +2126,17 @@ orgaos:
     outra: 0
     prorrogados: 33
     recursos: 36
-    decididos: 189
-    pct_negado_ou_parcial: 30.2
-    pct_prorrogado: 15.2
+    decididos: 190
+    pct_negado_ou_parcial: 30.0
+    pct_prorrogado: 15.1
     motivos_top:
     - motivo: "\0"
-      n: 216
+      n: 217
     - motivo: Prezado(a) Senhor(a),  Agradecemos o contato com o Serviço de Informaç
       n: 1
     assuntos_top:
     - assunto: Transparência e acesso à informação
-      n: 204
+      n: 205
     - assunto: Gestão de Pessoas
       n: 4
     - assunto: Concursos e processos seletivos
@@ -3117,8 +3117,8 @@ orgaos:
       n: 3
   IFRN – Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte:
     node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-grande-do-norte
-    pedidos: 146
-    concedido: 104
+    pedidos: 147
+    concedido: 105
     negado: 7
     parcial: 12
     inexistente: 3
@@ -3128,15 +3128,15 @@ orgaos:
     outra: 0
     prorrogados: 28
     recursos: 4
-    decididos: 123
-    pct_negado_ou_parcial: 15.4
-    pct_prorrogado: 19.2
+    decididos: 124
+    pct_negado_ou_parcial: 15.3
+    pct_prorrogado: 19.0
     motivos_top:
     - motivo: "\0"
-      n: 146
+      n: 147
     assuntos_top:
     - assunto: Gestão de Pessoas
-      n: 26
+      n: 27
     - assunto: Transparência e acesso à informação
       n: 23
     - assunto: Concursos e processos seletivos
@@ -8189,6 +8189,34 @@ orgaos:
       n: 3
     - assunto: Cadastros e Documentação
       n: 2
+  EBSERH - HU-UFSC - Hospital Universitário Professor Polydoro Ernani de São Thiago:
+    node: br-ebserh
+    pedidos: 22
+    concedido: 21
+    negado: 0
+    parcial: 0
+    inexistente: 1
+    sem_competencia: 0
+    fora_da_lai: 0
+    duplicada: 0
+    outra: 0
+    prorrogados: 1
+    recursos: 2
+    decididos: 21
+    pct_negado_ou_parcial: 0.0
+    pct_prorrogado: 4.5
+    motivos_top:
+    - motivo: "\0"
+      n: 22
+    assuntos_top:
+    - assunto: Concursos e processos seletivos
+      n: 9
+    - assunto: Controle Social
+      n: 3
+    - assunto: Transparência e acesso à informação
+      n: 3
+    - assunto: Assistência Hospitalar e Ambulatorial
+      n: 2
   Pré-Sal Petróleo S.A - Empresa Brasileira de Administração de Petróleo e Gás Natural S.A.:
     node: null
     pedidos: 22
@@ -8273,34 +8301,6 @@ orgaos:
       n: 3
     - assunto: Atendimento ao público
       n: 1
-  EBSERH - HU-UFSC - Hospital Universitário Professor Polydoro Ernani de São Thiago:
-    node: br-ebserh
-    pedidos: 20
-    concedido: 19
-    negado: 0
-    parcial: 0
-    inexistente: 1
-    sem_competencia: 0
-    fora_da_lai: 0
-    duplicada: 0
-    outra: 0
-    prorrogados: 1
-    recursos: 2
-    decididos: 19
-    pct_negado_ou_parcial: null
-    pct_prorrogado: 5.0
-    motivos_top:
-    - motivo: "\0"
-      n: 20
-    assuntos_top:
-    - assunto: Concursos e processos seletivos
-      n: 8
-    - assunto: Controle Social
-      n: 3
-    - assunto: Transparência e acesso à informação
-      n: 3
-    - assunto: Assistência Hospitalar e Ambulatorial
-      n: 2
   EMGEA – Empresa Gestora de Ativos:
     node: br-empresa-gestora-de-ativos
     pedidos: 19
