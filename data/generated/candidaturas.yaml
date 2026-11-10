@@ -1,5 +1,5 @@
 # GERADO por etl/candidaturas.py. Não edite à mão. Partido pelo qual a pessoa concorreu; não é filiação.
-generated_at: '2026-11-09'
+generated_at: '2026-11-10'
 fonte: TSE, Candidatos 2022 e 2024 (consulta_cand)
 people:
   br-p-cd-74356:
@@ -88,16 +88,6 @@ people:
     possivel_homonimo: false
   - ano: 2024
     cargo: Vereador
-    partido: PT
-    uf: MG
-    ue: Pedra Dourada
-    urna: Julio Da Madalena
-    resultado: Não Eleito
-    situacao: '#Ne'
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-  - ano: 2024
-    cargo: Vereador
     partido: PSD
     uf: MG
     ue: Conquista
@@ -113,6 +103,16 @@ people:
     ue: Belo Horizonte
     urna: Nego Gato
     resultado: null
+    situacao: '#Ne'
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+  - ano: 2024
+    cargo: Vereador
+    partido: PT
+    uf: MG
+    ue: Pedra Dourada
+    urna: Julio Da Madalena
+    resultado: Não Eleito
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -168,21 +168,11 @@ people:
     possivel_homonimo: false
   - ano: 2024
     cargo: Vereador
-    partido: SOLIDARIEDADE
+    partido: PODE
     uf: SP
-    ue: Oriente
-    urna: Julinho Entregador
+    ue: Paulicéia
+    urna: Julio Cesar Locutor Top Top
     resultado: Suplente
-    situacao: '#Ne'
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-  - ano: 2024
-    cargo: Vereador
-    partido: AGIR
-    uf: SP
-    ue: Rio Claro
-    urna: Julio Petruchio
-    resultado: Não Eleito
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -198,21 +188,31 @@ people:
     possivel_homonimo: false
   - ano: 2024
     cargo: Vereador
-    partido: UNIÃO
+    partido: AGIR
     uf: SP
-    ue: Peruíbe
-    urna: Julinho
-    resultado: Eleito Por Média
+    ue: Rio Claro
+    urna: Julio Petruchio
+    resultado: Não Eleito
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: false
   - ano: 2024
     cargo: Vereador
-    partido: PODE
+    partido: SOLIDARIEDADE
     uf: SP
-    ue: Tremembé
-    urna: Júlio Cesar Dos Santos
+    ue: Oriente
+    urna: Julinho Entregador
     resultado: Suplente
+    situacao: '#Ne'
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+  - ano: 2024
+    cargo: Vereador
+    partido: UNIÃO
+    uf: SP
+    ue: Peruíbe
+    urna: Julinho
+    resultado: Eleito Por Média
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -230,8 +230,8 @@ people:
     cargo: Vereador
     partido: PODE
     uf: SP
-    ue: Paulicéia
-    urna: Julio Cesar Locutor Top Top
+    ue: Tremembé
+    urna: Júlio Cesar Dos Santos
     resultado: Suplente
     situacao: '#Ne'
     confirmado_por_nascimento: false
@@ -1106,21 +1106,21 @@ people:
     possivel_homonimo: true
   - ano: 2024
     cargo: Vereador
-    partido: PSB
-    uf: SP
-    ue: São José Do Rio Pardo
-    urna: Antonio Carlos Sapo
-    resultado: null
-    situacao: '#Ne'
-    confirmado_por_nascimento: false
-    possivel_homonimo: true
-  - ano: 2024
-    cargo: Vereador
     partido: AGIR
     uf: SP
     ue: São Sebastião
     urna: Mestre Carvoeiro
     resultado: Não Eleito
+    situacao: '#Ne'
+    confirmado_por_nascimento: false
+    possivel_homonimo: true
+  - ano: 2024
+    cargo: Vereador
+    partido: PSB
+    uf: SP
+    ue: São José Do Rio Pardo
+    urna: Antonio Carlos Sapo
+    resultado: null
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: true
@@ -1327,17 +1327,6 @@ people:
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
-  br-p-maria-jose-de-sena:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PSB
-    uf: PE
-    ue: Pernambuco
-    urna: Professora Maria José De Sena
-    resultado: Suplente
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
   br-p-francisco-ferreira-alexandre:
   - ano: 2022
     cargo: 2º Suplente
@@ -1349,6 +1338,17 @@ people:
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: true
+  br-p-maria-jose-de-sena:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PSB
+    uf: PE
+    ue: Pernambuco
+    urna: Professora Maria José De Sena
+    resultado: Suplente
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
   br-p-sf-6369:
   - ano: 2022
     cargo: 1º Suplente
@@ -1412,18 +1412,6 @@ people:
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: true
-  br-p-cd-204526:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PL
-    uf: SP
-    ue: São Paulo
-    urna: Luiz Philippe De O Bragança
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
   br-p-guilherme-castro-boulos:
   - ano: 2024
     cargo: Prefeito
@@ -1456,6 +1444,18 @@ people:
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
+  br-p-cd-204526:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PL
+    uf: SP
+    ue: São Paulo
+    urna: Luiz Philippe De O Bragança
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
   br-p-adalberto-felicio-maluf-filho:
   - ano: 2022
     cargo: Deputado Federal
@@ -1540,11 +1540,11 @@ people:
     possivel_homonimo: true
   - ano: 2024
     cargo: Vereador
-    partido: UNIÃO
+    partido: AVANTE
     uf: SP
-    ue: Ubarana
-    urna: Brother
-    resultado: Suplente
+    ue: Cesário Lange
+    urna: Pastor Alexandre
+    resultado: Não Eleito
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: true
@@ -1560,11 +1560,11 @@ people:
     possivel_homonimo: true
   - ano: 2024
     cargo: Vereador
-    partido: AVANTE
+    partido: UNIÃO
     uf: SP
-    ue: Cesário Lange
-    urna: Pastor Alexandre
-    resultado: Não Eleito
+    ue: Ubarana
+    urna: Brother
+    resultado: Suplente
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: true
@@ -1622,27 +1622,6 @@ people:
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: true
-  br-p-carlos-henrique-de-carvalho:
-  - ano: 2024
-    cargo: Vereador
-    partido: REPUBLICANOS
-    uf: MG
-    ue: Campanha
-    urna: Sabonete
-    resultado: Suplente
-    situacao: '#Ne'
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-  - ano: 2024
-    cargo: Vereador
-    partido: PODE
-    uf: SP
-    ue: Atibaia
-    urna: Carlão Da Academia
-    resultado: Não Eleito
-    situacao: '#Ne'
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
   br-p-cd-220608:
   - ano: 2024
     cargo: Vereador
@@ -1665,6 +1644,27 @@ people:
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: true
+  br-p-carlos-henrique-de-carvalho:
+  - ano: 2024
+    cargo: Vereador
+    partido: REPUBLICANOS
+    uf: MG
+    ue: Campanha
+    urna: Sabonete
+    resultado: Suplente
+    situacao: '#Ne'
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+  - ano: 2024
+    cargo: Vereador
+    partido: PODE
+    uf: SP
+    ue: Atibaia
+    urna: Carlão Da Academia
+    resultado: Não Eleito
+    situacao: '#Ne'
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
   br-p-valdir-jose-da-silva:
   - ano: 2024
     cargo: Prefeito
@@ -1708,20 +1708,20 @@ people:
     possivel_homonimo: false
   - ano: 2024
     cargo: Vereador
-    partido: REPUBLICANOS
+    partido: PMB
     uf: SP
-    ue: Pinhalzinho
-    urna: Dedé Silva
+    ue: Poá
+    urna: Didi
     resultado: Não Eleito
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: false
   - ano: 2024
     cargo: Vereador
-    partido: PMB
+    partido: REPUBLICANOS
     uf: SP
-    ue: Poá
-    urna: Didi
+    ue: Pinhalzinho
+    urna: Dedé Silva
     resultado: Não Eleito
     situacao: '#Ne'
     confirmado_por_nascimento: false
@@ -1789,28 +1789,6 @@ people:
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: true
-  br-p-cd-73808:
-  - ano: 2024
-    cargo: Vereador
-    partido: PODE
-    uf: PR
-    ue: Sertanópolis
-    urna: Sergio Esquisito
-    resultado: Não Eleito
-    situacao: '#Ne'
-    confirmado_por_nascimento: false
-    possivel_homonimo: true
-  br-p-cd-178945:
-  - ano: 2024
-    cargo: Vereador
-    partido: UNIÃO
-    uf: PR
-    ue: Peabiru
-    urna: Rose Gomes
-    resultado: Suplente
-    situacao: '#Ne'
-    confirmado_por_nascimento: false
-    possivel_homonimo: true
   br-p-cd-204506:
   - ano: 2024
     cargo: Vereador
@@ -1842,13 +1820,24 @@ people:
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: true
-  br-p-cd-220588:
+  br-p-cd-178945:
   - ano: 2024
     cargo: Vereador
-    partido: PT
-    uf: RJ
-    ue: Campos Dos Goytacazes
-    urna: Dandão
+    partido: UNIÃO
+    uf: PR
+    ue: Peabiru
+    urna: Rose Gomes
+    resultado: Suplente
+    situacao: '#Ne'
+    confirmado_por_nascimento: false
+    possivel_homonimo: true
+  br-p-cd-73808:
+  - ano: 2024
+    cargo: Vereador
+    partido: PODE
+    uf: PR
+    ue: Sertanópolis
+    urna: Sergio Esquisito
     resultado: Não Eleito
     situacao: '#Ne'
     confirmado_por_nascimento: false
@@ -1864,6 +1853,17 @@ people:
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: false
+  br-p-cd-220588:
+  - ano: 2024
+    cargo: Vereador
+    partido: PT
+    uf: RJ
+    ue: Campos Dos Goytacazes
+    urna: Dandão
+    resultado: Não Eleito
+    situacao: '#Ne'
+    confirmado_por_nascimento: false
+    possivel_homonimo: true
   br-p-cd-74581:
   - ano: 2024
     cargo: Vereador
@@ -1872,6 +1872,17 @@ people:
     ue: Dois Irmãos
     urna: Paraná
     resultado: Não Eleito
+    situacao: '#Ne'
+    confirmado_por_nascimento: false
+    possivel_homonimo: true
+  br-p-cd-204423:
+  - ano: 2024
+    cargo: Vereador
+    partido: AGIR
+    uf: SP
+    ue: Bauru
+    urna: Andre Ferreira
+    resultado: null
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: true
@@ -1896,17 +1907,17 @@ people:
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: true
-  br-p-sandra-kennedy-viana:
+  br-p-marcos-alves-de-souza:
   - ano: 2024
-    cargo: Prefeito
-    partido: PT
+    cargo: Vereador
+    partido: PP
     uf: SP
-    ue: Registro
-    urna: Sandra Kennedy
-    resultado: Não Eleito
+    ue: Maracaí
+    urna: Leao Lanches
+    resultado: Suplente
     situacao: '#Ne'
     confirmado_por_nascimento: false
-    possivel_homonimo: true
+    possivel_homonimo: false
   br-p-marcelo-lima-costa:
   - ano: 2024
     cargo: Vereador
@@ -1950,28 +1961,6 @@ people:
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: true
-  br-p-cd-204444:
-  - ano: 2024
-    cargo: Vereador
-    partido: REPUBLICANOS
-    uf: SP
-    ue: São Simão
-    urna: Sargento Hélio
-    resultado: Suplente
-    situacao: '#Ne'
-    confirmado_por_nascimento: false
-    possivel_homonimo: true
-  br-p-cd-191923:
-  - ano: 2024
-    cargo: Vereador
-    partido: REPUBLICANOS
-    uf: SP
-    ue: Aramina
-    urna: Flavio Nogueira
-    resultado: Eleito Por Média
-    situacao: '#Ne'
-    confirmado_por_nascimento: false
-    possivel_homonimo: true
   br-p-cd-92699:
   - ano: 2024
     cargo: Vereador
@@ -1980,6 +1969,17 @@ people:
     ue: Ubirajara
     urna: Fernando Monteiro
     resultado: Não Eleito
+    situacao: '#Ne'
+    confirmado_por_nascimento: false
+    possivel_homonimo: true
+  br-p-cd-204444:
+  - ano: 2024
+    cargo: Vereador
+    partido: REPUBLICANOS
+    uf: SP
+    ue: São Simão
+    urna: Sargento Hélio
+    resultado: Suplente
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: true
@@ -1994,25 +1994,25 @@ people:
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: true
-  br-p-marcos-alves-de-souza:
+  br-p-sandra-kennedy-viana:
   - ano: 2024
-    cargo: Vereador
-    partido: PP
+    cargo: Prefeito
+    partido: PT
     uf: SP
-    ue: Maracaí
-    urna: Leao Lanches
-    resultado: Suplente
+    ue: Registro
+    urna: Sandra Kennedy
+    resultado: Não Eleito
     situacao: '#Ne'
     confirmado_por_nascimento: false
-    possivel_homonimo: false
-  br-p-cd-204423:
+    possivel_homonimo: true
+  br-p-cd-191923:
   - ano: 2024
     cargo: Vereador
-    partido: AGIR
+    partido: REPUBLICANOS
     uf: SP
-    ue: Bauru
-    urna: Andre Ferreira
-    resultado: null
+    ue: Aramina
+    urna: Flavio Nogueira
+    resultado: Eleito Por Média
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: true
@@ -5832,18 +5832,6 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: true
     casado_por: nome de urna único
-  br-p-cd-104552:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PP
-    uf: AC
-    ue: Acre
-    urna: Socorro Neri
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
   br-p-cd-220592:
   - ano: 2022
     cargo: Deputado Federal
@@ -5852,6 +5840,18 @@ people:
     ue: Acre
     urna: Zezinho Barbary
     resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-104552:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PP
+    uf: AC
+    ue: Acre
+    urna: Socorro Neri
+    resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -5868,14 +5868,14 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-204436:
+  br-p-cd-220576:
   - ano: 2022
     cargo: Deputado Federal
-    partido: MDB
+    partido: UNIÃO
     uf: AL
     ue: Alagoas
-    urna: Isnaldo Bulhões Jr
-    resultado: Eleito Por Qp
+    urna: Alfredo Gaspar
+    resultado: Eleito Por Média
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -5892,14 +5892,14 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220576:
+  br-p-cd-204436:
   - ano: 2022
     cargo: Deputado Federal
-    partido: UNIÃO
+    partido: MDB
     uf: AL
     ue: Alagoas
-    urna: Alfredo Gaspar
-    resultado: Eleito Por Média
+    urna: Isnaldo Bulhões Jr
+    resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -5928,18 +5928,6 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-160591:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PL
-    uf: AP
-    ue: Amapá
-    urna: Vinicius Gurgel
-    resultado: Eleito Por Média
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
   br-p-cd-220573:
   - ano: 2022
     cargo: Deputado Federal
@@ -5952,25 +5940,37 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-141458:
+  br-p-cd-160591:
   - ano: 2022
     cargo: Deputado Federal
     partido: PL
-    uf: BA
-    ue: Bahia
-    urna: João Carlos Bacelar
-    resultado: Eleito Por Qp
+    uf: AP
+    ue: Amapá
+    urna: Vinicius Gurgel
+    resultado: Eleito Por Média
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220693:
+  br-p-cd-204567:
   - ano: 2022
     cargo: Deputado Federal
-    partido: PL
+    partido: PODE
     uf: BA
     ue: Bahia
-    urna: Roberta Roma
+    urna: Raimundo Costa
+    resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-178854:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: UNIÃO
+    uf: BA
+    ue: Bahia
+    urna: Elmar Nascimento
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -5988,30 +5988,6 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-204567:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PODE
-    uf: BA
-    ue: Bahia
-    urna: Raimundo Costa
-    resultado: Eleito Por Média
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-204559:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PT
-    uf: BA
-    ue: Bahia
-    urna: Zé Neto
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
   br-p-cd-220696:
   - ano: 2022
     cargo: Deputado Federal
@@ -6019,18 +5995,6 @@ people:
     uf: BA
     ue: Bahia
     urna: Ivoneide Caetano
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-178854:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: UNIÃO
-    uf: BA
-    ue: Bahia
-    urna: Elmar Nascimento
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -6048,6 +6012,18 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
+  br-p-cd-220693:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PL
+    uf: BA
+    ue: Bahia
+    urna: Roberta Roma
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
   br-p-cd-220708:
   - ano: 2022
     cargo: Deputado Federal
@@ -6055,6 +6031,30 @@ people:
     uf: BA
     ue: Bahia
     urna: Gabriel Nunes
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-204559:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PT
+    uf: BA
+    ue: Bahia
+    urna: Zé Neto
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-141458:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PL
+    uf: BA
+    ue: Bahia
+    urna: João Carlos Bacelar
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -6072,14 +6072,14 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-178866:
+  br-p-cd-220658:
   - ano: 2022
     cargo: Deputado Federal
-    partido: PT
+    partido: PSD
     uf: CE
     ue: Ceará
-    urna: Luizianne Lins
-    resultado: Eleito Por Qp
+    urna: Luiz Gastão
+    resultado: Eleito Por Média
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -6096,14 +6096,14 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220658:
+  br-p-cd-178866:
   - ano: 2022
     cargo: Deputado Federal
-    partido: PSD
+    partido: PT
     uf: CE
     ue: Ceará
-    urna: Luiz Gastão
-    resultado: Eleito Por Média
+    urna: Luizianne Lins
+    resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -6115,6 +6115,18 @@ people:
     uf: CE
     ue: Ceará
     urna: André Fernandes
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220534:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: REPUBLICANOS
+    uf: DF
+    ue: Distrito Federal
+    urna: Fred Linhares
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -6132,14 +6144,14 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220534:
+  br-p-cd-220530:
   - ano: 2022
     cargo: Deputado Federal
     partido: REPUBLICANOS
-    uf: DF
-    ue: Distrito Federal
-    urna: Fred Linhares
-    resultado: Eleito Por Qp
+    uf: ES
+    ue: Espírito Santo
+    urna: Messias Donato
+    resultado: Eleito Por Média
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -6168,62 +6180,14 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220530:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: REPUBLICANOS
-    uf: ES
-    ue: Espírito Santo
-    urna: Messias Donato
-    resultado: Eleito Por Média
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-204412:
+  br-p-cd-220569:
   - ano: 2022
     cargo: Deputado Federal
     partido: UNIÃO
     uf: GO
     ue: Goiás
-    urna: Dr Zacharias Calil
-    resultado: Eleito Por Média
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220570:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PSD
-    uf: GO
-    ue: Goiás
-    urna: 'Dr Ismael Alexandrino '
-    resultado: Eleito Por Média
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220572:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: MDB
-    uf: GO
-    ue: Goiás
-    urna: Marussa Boldrin
-    resultado: Eleito Por Média
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220571:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PL
-    uf: GO
-    ue: Goiás
-    urna: Daniel Agrobom
-    resultado: Eleito Por Média
+    urna: Silvye Alves
+    resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -6235,18 +6199,6 @@ people:
     uf: GO
     ue: Goiás
     urna: Célio Silveira
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220569:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: UNIÃO
-    uf: GO
-    ue: Goiás
-    urna: Silvye Alves
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -6264,14 +6216,62 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220681:
+  br-p-cd-204412:
   - ano: 2022
     cargo: Deputado Federal
-    partido: PODE
+    partido: UNIÃO
+    uf: GO
+    ue: Goiás
+    urna: Dr Zacharias Calil
+    resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220571:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PL
+    uf: GO
+    ue: Goiás
+    urna: Daniel Agrobom
+    resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220572:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: MDB
+    uf: GO
+    ue: Goiás
+    urna: Marussa Boldrin
+    resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220570:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PSD
+    uf: GO
+    ue: Goiás
+    urna: 'Dr Ismael Alexandrino '
+    resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-204570:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PL
     uf: MA
     ue: Maranhão
-    urna: Fábio Macedo
-    resultado: Eleito Por Qp
+    urna: Pastor  Gil
+    resultado: Eleito Por Média
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -6300,14 +6300,14 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-204570:
+  br-p-cd-220681:
   - ano: 2022
     cargo: Deputado Federal
-    partido: PL
+    partido: PODE
     uf: MA
     ue: Maranhão
-    urna: Pastor  Gil
-    resultado: Eleito Por Média
+    urna: Fábio Macedo
+    resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -6324,14 +6324,38 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220631:
+  br-p-cd-220626:
   - ano: 2022
     cargo: Deputado Federal
-    partido: PL
+    partido: UNIÃO
     uf: MG
     ue: Minas Gerais
-    urna: Samuel Viana
+    urna: Rafael Simoes
     resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-171786:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PT
+    uf: MG
+    ue: Minas Gerais
+    urna: Miguel Ângelo
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220632:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PT
+    uf: MG
+    ue: Minas Gerais
+    urna: Ana Pimentel
+    resultado: Eleito Por Média
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -6343,6 +6367,78 @@ people:
     uf: MG
     ue: Minas Gerais
     urna: Emidinho Madeira
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-210989:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: AVANTE
+    uf: MG
+    ue: Minas Gerais
+    urna: Bruno Farias
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-206018:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PSOL
+    uf: MG
+    ue: Minas Gerais
+    urna: Célia Xakriabá
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-204518:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PATRIOTA
+    uf: MG
+    ue: Minas Gerais
+    urna: Dr. Frederico
+    resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220630:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PATRIOTA
+    uf: MG
+    ue: Minas Gerais
+    urna: Pedro Aihara
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-209787:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PL
+    uf: MG
+    ue: Minas Gerais
+    urna: Nikolas Ferreira
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220631:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PL
+    uf: MG
+    ue: Minas Gerais
+    urna: Samuel Viana
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -6372,90 +6468,6 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220632:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PT
-    uf: MG
-    ue: Minas Gerais
-    urna: Ana Pimentel
-    resultado: Eleito Por Média
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-209787:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PL
-    uf: MG
-    ue: Minas Gerais
-    urna: Nikolas Ferreira
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220630:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PATRIOTA
-    uf: MG
-    ue: Minas Gerais
-    urna: Pedro Aihara
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220626:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: UNIÃO
-    uf: MG
-    ue: Minas Gerais
-    urna: Rafael Simoes
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-210989:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: AVANTE
-    uf: MG
-    ue: Minas Gerais
-    urna: Bruno Farias
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-204518:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PATRIOTA
-    uf: MG
-    ue: Minas Gerais
-    urna: Dr. Frederico
-    resultado: Eleito Por Média
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-206018:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PSOL
-    uf: MG
-    ue: Minas Gerais
-    urna: Célia Xakriabá
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
   br-p-cd-204520:
   - ano: 2022
     cargo: Deputado Federal
@@ -6463,18 +6475,6 @@ people:
     uf: MG
     ue: Minas Gerais
     urna: Junio Amaral
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-171786:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PT
-    uf: MG
-    ue: Minas Gerais
-    urna: Miguel Ângelo
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -6492,6 +6492,18 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
+  br-p-cd-220548:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PT
+    uf: MS
+    ue: Mato Grosso Do Sul
+    urna: Camila Jara
+    resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
   br-p-sf-5736:
   - ano: 2022
     cargo: Senador
@@ -6504,13 +6516,25 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220548:
+  br-p-cd-204472:
   - ano: 2022
     cargo: Deputado Federal
-    partido: PT
-    uf: MS
-    ue: Mato Grosso Do Sul
-    urna: Camila Jara
+    partido: PL
+    uf: MT
+    ue: Mato Grosso
+    urna: José Medeiros
+    resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220594:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: UNIÃO
+    uf: MT
+    ue: Mato Grosso
+    urna: Coronel Assis
     resultado: Eleito Por Média
     situacao: Apto
     confirmado_por_nascimento: false
@@ -6528,25 +6552,13 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220594:
+  br-p-cd-220676:
   - ano: 2022
     cargo: Deputado Federal
-    partido: UNIÃO
-    uf: MT
-    ue: Mato Grosso
-    urna: Coronel Assis
-    resultado: Eleito Por Média
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-204472:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PL
-    uf: MT
-    ue: Mato Grosso
-    urna: José Medeiros
+    partido: MDB
+    uf: PA
+    ue: Pará
+    urna: Andreia Siqueira
     resultado: Eleito Por Média
     situacao: Apto
     confirmado_por_nascimento: false
@@ -6564,18 +6576,6 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220676:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: MDB
-    uf: PA
-    ue: Pará
-    urna: Andreia Siqueira
-    resultado: Eleito Por Média
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
   br-p-cd-220674:
   - ano: 2022
     cargo: Deputado Federal
@@ -6583,18 +6583,6 @@ people:
     uf: PA
     ue: Pará
     urna: Dra Alessandra Haber
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-160674:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: REPUBLICANOS
-    uf: PB
-    ue: Paraíba
-    urna: Hugo Motta
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -6624,25 +6612,25 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220667:
+  br-p-cd-160674:
   - ano: 2022
     cargo: Deputado Federal
-    partido: PSB
-    uf: PE
-    ue: Pernambuco
-    urna: Pedro Campos
+    partido: REPUBLICANOS
+    uf: PB
+    ue: Paraíba
+    urna: Hugo Motta
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220670:
+  br-p-cd-220663:
   - ano: 2022
     cargo: Deputado Federal
-    partido: MDB
+    partido: PSB
     uf: PE
     ue: Pernambuco
-    urna: Iza Arruda
+    urna: Eriberto Medeiros
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -6660,13 +6648,13 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220663:
+  br-p-cd-220667:
   - ano: 2022
     cargo: Deputado Federal
     partido: PSB
     uf: PE
     ue: Pernambuco
-    urna: Eriberto Medeiros
+    urna: Pedro Campos
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -6680,6 +6668,18 @@ people:
     ue: Pernambuco
     urna: Lula Da Fonte
     resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220670:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: MDB
+    uf: PE
+    ue: Pernambuco
+    urna: Iza Arruda
+    resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -6703,6 +6703,42 @@ people:
     uf: PI
     ue: Piauí
     urna: Castro Neto
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220698:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PSD
+    uf: PR
+    ue: Paraná
+    urna: Beto Preto
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-sf-6331:
+  - ano: 2022
+    cargo: Senador
+    partido: UNIÃO
+    uf: PR
+    ue: Paraná
+    urna: Sergio Moro
+    resultado: Eleito
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220701:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: UNIÃO
+    uf: PR
+    ue: Paraná
+    urna: Delegado Matheus Laiola
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -6732,30 +6768,6 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-225846:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PL
-    uf: PR
-    ue: Paraná
-    urna: Itamar Paim
-    resultado: Suplente
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: true
-    casado_por: nome de urna único
-  br-p-cd-220698:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PSD
-    uf: PR
-    ue: Paraná
-    urna: Beto Preto
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
   br-p-cd-73768:
   - ano: 2022
     cargo: Deputado Federal
@@ -6768,6 +6780,18 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
+  br-p-cd-225846:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PL
+    uf: PR
+    ue: Paraná
+    urna: Itamar Paim
+    resultado: Suplente
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: true
+    casado_por: nome de urna único
   br-p-cd-220704:
   - ano: 2022
     cargo: Deputado Federal
@@ -6775,150 +6799,6 @@ people:
     uf: PR
     ue: Paraná
     urna: Carol Dartora
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220701:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: UNIÃO
-    uf: PR
-    ue: Paraná
-    urna: Delegado Matheus Laiola
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-sf-6331:
-  - ano: 2022
-    cargo: Senador
-    partido: UNIÃO
-    uf: PR
-    ue: Paraná
-    urna: Sergio Moro
-    resultado: Eleito
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220618:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PODE
-    uf: RJ
-    ue: Rio De Janeiro
-    urna: Sargento Portugal
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-178947:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PL
-    uf: RJ
-    ue: Rio De Janeiro
-    urna: Sóstenes Cavalcante
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220599:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: REPUBLICANOS
-    uf: RJ
-    ue: Rio De Janeiro
-    urna: Marcelo Crivella
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-160512:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: SOLIDARIEDADE
-    uf: RJ
-    ue: Rio De Janeiro
-    urna: Aureo Ribeiro
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220611:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PL
-    uf: RJ
-    ue: Rio De Janeiro
-    urna: General  Pazuello
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-204450:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PP
-    uf: RJ
-    ue: Rio De Janeiro
-    urna: Doutor Luizinho
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220605:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PSB
-    uf: RJ
-    ue: Rio De Janeiro
-    urna: Bandeira De Mello
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220602:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PT
-    uf: RJ
-    ue: Rio De Janeiro
-    urna: Dimas Gadelha
-    resultado: Eleito Por Média
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220603:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: UNIÃO
-    uf: RJ
-    ue: Rio De Janeiro
-    urna: Dani Cunha
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220617:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: UNIÃO
-    uf: RJ
-    ue: Rio De Janeiro
-    urna: Murillo Gouvea
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -6936,6 +6816,78 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: true
     casado_por: nome de urna único
+  br-p-cd-178947:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PL
+    uf: RJ
+    ue: Rio De Janeiro
+    urna: Sóstenes Cavalcante
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220611:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PL
+    uf: RJ
+    ue: Rio De Janeiro
+    urna: General  Pazuello
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220613:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PL
+    uf: RJ
+    ue: Rio De Janeiro
+    urna: Roberto Monteiro Pai
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220605:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PSB
+    uf: RJ
+    ue: Rio De Janeiro
+    urna: Bandeira De Mello
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220603:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: UNIÃO
+    uf: RJ
+    ue: Rio De Janeiro
+    urna: Dani Cunha
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-204450:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PP
+    uf: RJ
+    ue: Rio De Janeiro
+    urna: Doutor Luizinho
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
   br-p-cd-74253:
   - ano: 2022
     cargo: Deputado Federal
@@ -6943,6 +6895,30 @@ people:
     uf: RJ
     ue: Rio De Janeiro
     urna: Julio Lopes
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220602:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PT
+    uf: RJ
+    ue: Rio De Janeiro
+    urna: Dimas Gadelha
+    resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220599:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: REPUBLICANOS
+    uf: RJ
+    ue: Rio De Janeiro
+    urna: Marcelo Crivella
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -6960,18 +6936,6 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-74858:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PT
-    uf: RJ
-    ue: Rio De Janeiro
-    urna: Lindbergh Farias
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
   br-p-cd-221329:
   - ano: 2022
     cargo: Deputado Federal
@@ -6984,13 +6948,49 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: true
     casado_por: nome de urna único
-  br-p-cd-220613:
+  br-p-cd-74858:
   - ano: 2022
     cargo: Deputado Federal
-    partido: PL
+    partido: PT
     uf: RJ
     ue: Rio De Janeiro
-    urna: Roberto Monteiro Pai
+    urna: Lindbergh Farias
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220618:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PODE
+    uf: RJ
+    ue: Rio De Janeiro
+    urna: Sargento Portugal
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-160512:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: SOLIDARIEDADE
+    uf: RJ
+    ue: Rio De Janeiro
+    urna: Aureo Ribeiro
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220617:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: UNIÃO
+    uf: RJ
+    ue: Rio De Janeiro
+    urna: Murillo Gouvea
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -7020,18 +7020,6 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220597:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: MDB
-    uf: RO
-    ue: Rondônia
-    urna: Thiago Flores
-    resultado: Eleito Por Média
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
   br-p-cd-204360:
   - ano: 2022
     cargo: Deputado Federal
@@ -7040,6 +7028,18 @@ people:
     ue: Rondônia
     urna: Silvia Cristina
     resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220597:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: MDB
+    uf: RO
+    ue: Rondônia
+    urna: Thiago Flores
+    resultado: Eleito Por Média
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -7056,14 +7056,14 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220539:
+  br-p-sf-5793:
   - ano: 2022
-    cargo: Deputado Federal
-    partido: REPUBLICANOS
+    cargo: Senador
+    partido: PP
     uf: RR
     ue: Roraima
-    urna: Defensor Stélio Dener
-    resultado: Eleito Por Média
+    urna: Dr. Hiran
+    resultado: Eleito
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -7092,6 +7092,18 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
+  br-p-cd-220539:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: REPUBLICANOS
+    uf: RR
+    ue: Roraima
+    urna: Defensor Stélio Dener
+    resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
   br-p-cd-220540:
   - ano: 2022
     cargo: Deputado Federal
@@ -7100,42 +7112,6 @@ people:
     ue: Roraima
     urna: Duda Ramos
     resultado: Eleito Por Média
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-sf-5793:
-  - ano: 2022
-    cargo: Senador
-    partido: PP
-    uf: RR
-    ue: Roraima
-    urna: Dr. Hiran
-    resultado: Eleito
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-74398:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PT
-    uf: RS
-    ue: Rio Grande Do Sul
-    urna: Maria Do Rosário
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-133810:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PL
-    uf: RS
-    ue: Rio Grande Do Sul
-    urna: Marcelo Moraes
-    resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -7152,13 +7128,13 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-220554:
+  br-p-cd-133810:
   - ano: 2022
     cargo: Deputado Federal
-    partido: PT
+    partido: PL
     uf: RS
     ue: Rio Grande Do Sul
-    urna: Alexandre Lindenmeyer
+    urna: Marcelo Moraes
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -7176,14 +7152,26 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-sf-6342:
+  br-p-cd-220554:
   - ano: 2022
-    cargo: Senador
-    partido: PL
-    uf: SC
-    ue: Santa Catarina
-    urna: Jorge Seif
-    resultado: Eleito
+    cargo: Deputado Federal
+    partido: PT
+    uf: RS
+    ue: Rio Grande Do Sul
+    urna: Alexandre Lindenmeyer
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-74398:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PT
+    uf: RS
+    ue: Rio Grande Do Sul
+    urna: Maria Do Rosário
+    resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -7200,38 +7188,14 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
-  br-p-cd-171623:
+  br-p-sf-6342:
   - ano: 2022
-    cargo: Deputado Federal
-    partido: PSD
-    uf: SE
-    ue: Sergipe
-    urna: Fabio Reis
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-sf-5352:
-  - ano: 2022
-    cargo: Governador
-    partido: PT
-    uf: SE
-    ue: Sergipe
-    urna: Rogério Carvalho
-    resultado: 2º Turno
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: true
-    casado_por: nome de urna único
-  br-p-cd-220563:
-  - ano: 2022
-    cargo: Deputado Federal
+    cargo: Senador
     partido: PL
-    uf: SE
-    ue: Sergipe
-    urna: Icaro De Valmir
-    resultado: Eleito Por Média
+    uf: SC
+    ue: Santa Catarina
+    urna: Jorge Seif
+    resultado: Eleito
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -7248,6 +7212,18 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
+  br-p-sf-5352:
+  - ano: 2022
+    cargo: Governador
+    partido: PT
+    uf: SE
+    ue: Sergipe
+    urna: Rogério Carvalho
+    resultado: 2º Turno
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: true
+    casado_por: nome de urna único
   br-p-cd-220561:
   - ano: 2022
     cargo: Deputado Federal
@@ -7256,6 +7232,198 @@ people:
     ue: Sergipe
     urna: Delegada Katarina
     resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220563:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PL
+    uf: SE
+    ue: Sergipe
+    urna: Icaro De Valmir
+    resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-171623:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PSD
+    uf: SE
+    ue: Sergipe
+    urna: Fabio Reis
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220654:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PL
+    uf: SP
+    ue: São Paulo
+    urna: Delegado Paulo Bilynskyj
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220644:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: UNIÃO
+    uf: SP
+    ue: São Paulo
+    urna: Rosângela Moro
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-226837:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PSD
+    uf: SP
+    ue: São Paulo
+    urna: Saulo Pedroso
+    resultado: Suplente
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: true
+    casado_por: nome de urna único
+  br-p-cd-220637:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: REDE
+    uf: SP
+    ue: São Paulo
+    urna: Marina Silva
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220646:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: UNIÃO
+    uf: SP
+    ue: São Paulo
+    urna: Felipe Becari
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220651:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: MDB
+    uf: SP
+    ue: São Paulo
+    urna: Simone Marquetto
+    resultado: Eleito Por Média
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220647:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PP
+    uf: SP
+    ue: São Paulo
+    urna: Mauricio Neves
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220653:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: MDB
+    uf: SP
+    ue: São Paulo
+    urna: Fabio Teruel
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220643:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PSOL
+    uf: SP
+    ue: São Paulo
+    urna: Sônia Guajajara
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220650:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PSDB
+    uf: SP
+    ue: São Paulo
+    urna: Paulo Alexandre Barbosa
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-175765:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PSD
+    uf: SP
+    ue: São Paulo
+    urna: Ribamar Silva
+    resultado: Suplente
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: true
+    casado_por: nome de urna único
+  br-p-cd-220649:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PP
+    uf: SP
+    ue: São Paulo
+    urna: Delegado Da Cunha
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220645:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PSOL
+    uf: SP
+    ue: São Paulo
+    urna: Erika Hilton
+    resultado: Eleito Por Qp
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: false
+    casado_por: mandato atual
+  br-p-cd-220655:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: PL
+    uf: SP
+    ue: São Paulo
+    urna: Mario Frias
+    resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
     possivel_homonimo: false
@@ -7272,6 +7440,18 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: false
     casado_por: mandato atual
+  br-p-cd-230957:
+  - ano: 2022
+    cargo: Deputado Federal
+    partido: MDB
+    uf: SP
+    ue: São Paulo
+    urna: João Cury
+    resultado: Suplente
+    situacao: Apto
+    confirmado_por_nascimento: false
+    possivel_homonimo: true
+    casado_por: nome de urna único
   br-p-cd-160548:
   - ano: 2022
     cargo: Deputado Federal
@@ -7291,186 +7471,6 @@ people:
     uf: SP
     ue: São Paulo
     urna: Kiko Celeguim
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220650:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PSDB
-    uf: SP
-    ue: São Paulo
-    urna: Paulo Alexandre Barbosa
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-226837:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PSD
-    uf: SP
-    ue: São Paulo
-    urna: Saulo Pedroso
-    resultado: Suplente
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: true
-    casado_por: nome de urna único
-  br-p-cd-220646:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: UNIÃO
-    uf: SP
-    ue: São Paulo
-    urna: Felipe Becari
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-230957:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: MDB
-    uf: SP
-    ue: São Paulo
-    urna: João Cury
-    resultado: Suplente
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: true
-    casado_por: nome de urna único
-  br-p-cd-220649:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PP
-    uf: SP
-    ue: São Paulo
-    urna: Delegado Da Cunha
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-175765:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PSD
-    uf: SP
-    ue: São Paulo
-    urna: Ribamar Silva
-    resultado: Suplente
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: true
-    casado_por: nome de urna único
-  br-p-cd-220651:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: MDB
-    uf: SP
-    ue: São Paulo
-    urna: Simone Marquetto
-    resultado: Eleito Por Média
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220653:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: MDB
-    uf: SP
-    ue: São Paulo
-    urna: Fabio Teruel
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220655:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PL
-    uf: SP
-    ue: São Paulo
-    urna: Mario Frias
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220637:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: REDE
-    uf: SP
-    ue: São Paulo
-    urna: Marina Silva
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220647:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PP
-    uf: SP
-    ue: São Paulo
-    urna: Mauricio Neves
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220645:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PSOL
-    uf: SP
-    ue: São Paulo
-    urna: Erika Hilton
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220644:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: UNIÃO
-    uf: SP
-    ue: São Paulo
-    urna: Rosângela Moro
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220654:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PL
-    uf: SP
-    ue: São Paulo
-    urna: Delegado Paulo Bilynskyj
-    resultado: Eleito Por Qp
-    situacao: Apto
-    confirmado_por_nascimento: false
-    possivel_homonimo: false
-    casado_por: mandato atual
-  br-p-cd-220643:
-  - ano: 2022
-    cargo: Deputado Federal
-    partido: PSOL
-    uf: SP
-    ue: São Paulo
-    urna: Sônia Guajajara
     resultado: Eleito Por Qp
     situacao: Apto
     confirmado_por_nascimento: false
@@ -7548,18 +7548,6 @@ people:
     confirmado_por_nascimento: false
     possivel_homonimo: true
     casado_por: nome de urna único
-  br-p-carlos-mello:
-  - ano: 2024
-    cargo: Vereador
-    partido: PT
-    uf: SP
-    ue: Iperó
-    urna: Carlos Mello
-    resultado: Não Eleito
-    situacao: '#Ne'
-    confirmado_por_nascimento: false
-    possivel_homonimo: true
-    casado_por: nome de urna único
   br-p-cd-204445:
   - ano: 2024
     cargo: Vereador
@@ -7568,6 +7556,18 @@ people:
     ue: Ribeira
     urna: Fernando Mineiro
     resultado: Eleito Por Média
+    situacao: '#Ne'
+    confirmado_por_nascimento: false
+    possivel_homonimo: true
+    casado_por: nome de urna único
+  br-p-carlos-mello:
+  - ano: 2024
+    cargo: Vereador
+    partido: PT
+    uf: SP
+    ue: Iperó
+    urna: Carlos Mello
+    resultado: Não Eleito
     situacao: '#Ne'
     confirmado_por_nascimento: false
     possivel_homonimo: true

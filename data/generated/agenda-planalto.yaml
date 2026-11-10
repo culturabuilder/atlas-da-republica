@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-09'
+generated_at: '2026-11-10'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-12'
+janela_inicio: '2026-08-13'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,25 +11,25 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 185
-    dias_com_agenda: 51
+    compromissos_90d: 182
+    dias_com_agenda: 50
     por_tipo:
-      evento: 58
+      evento: 57
       viagem: 57
-      audiencia: 55
+      audiencia: 53
       reuniao: 11
       outro: 4
     entidades_top:
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República)
       n: 13
-    - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
-      n: 9
     - nome: Miriam Belchior (Ministra da Casa Civil)
+      n: 8
+    - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
       n: 8
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 6
     - nome: Oswaldo Malatesta Neto (Chefe do Gabinete Pessoal do Presidente da República)
-      n: 2
+      n: 1
     - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
       n: 1
     - nome: Embaixador Audo Faleiro (Assessor-Chefe Adjunto da Assessoria Especial do Presidente da Repúbli)
@@ -41,10 +41,10 @@ people:
     - nome: José Mucio (Ministro da Defesa)
       n: 1
     locais_top:
-    - nome: Palácio do Planalto
-      n: 39
     - nome: Palácio da Alvorada
-      n: 38
+      n: 37
+    - nome: Palácio do Planalto
+      n: 37
     - nome: Base Aérea de Brasília
       n: 25
     - nome: Esplanada dos Ministérios, Brasília
@@ -118,18 +118,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-08-12:
-      - hora: '10:00'
-        titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta Neto
-        local: Palácio da Alvorada
-      - hora: '14:40'
-        titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
-        local: Palácio do Planalto
-      - hora: '15:00'
-        titulo: Assinatura de decretos sobre captura e estocagem de dióxido de carbono (CCS), combustível sustentável de aviação
-          (ProBioQAV), hidrogênio de baixa emissão de carbono (PHBC) e abertura do mercado livre de energia para consumidores
-          de baixa tensão
-        local: Palácio do Planalto
       presidente/2026-08-13:
       - hora: '10:00'
         titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta Neto
@@ -785,6 +773,7 @@ people:
       - hora: 09:00
         titulo: Partida para Antália, Turquia
         local: Base Aérea de Brasília
+      presidente/2026-11-10: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -792,10 +781,10 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 46
-    dias_com_agenda: 32
+    compromissos_90d: 45
+    dias_com_agenda: 31
     por_tipo:
-      evento: 18
+      evento: 17
       viagem: 11
       audiencia: 8
       reuniao: 5
@@ -813,7 +802,7 @@ people:
     - nome: Brasília/DF
       n: 13
     - nome: Palácio do Planalto
-      n: 11
+      n: 10
     - nome: Palácio do Planalto, Anexo II
       n: 8
     - nome: São Paulo/SP
@@ -885,13 +874,6 @@ people:
         entidade: Ministro-Chefe da Secretaria de Comunicação Social - SECOM
     dias_nao_lidos: 0
     dias:
-      vice/2026-08-12:
-      - hora: '15:00'
-        titulo: Assinatura de decretos sobre captura e estocagem de dióxido de carbono (CCS), combustível sustentável de aviação
-          (ProBioQAV), hidrogênio de baixa emissão de carbono (PHBC) e abertura do mercado livre de energia para consumidores
-          de baixa tensão
-        local: Palácio do Planalto
-      vice/2026-08-12-b1: []
       vice/2026-08-13:
       - hora: '16:30'
         titulo: Alunos da Faculdade de Direito da Universidade de São Paulo - USP
@@ -1210,6 +1192,8 @@ people:
         titulo: Decolagem de São José dos Campos/SP para Brasília/DF
         local: São José dos Campos/SP
       vice/2026-11-09-b1: []
+      vice/2026-11-10: []
+      vice/2026-11-10-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 185 compromissos em 51 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 46 compromissos em 32 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 182 compromissos em 50 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 45 compromissos em 31 dias (0 dias não lidos)'
