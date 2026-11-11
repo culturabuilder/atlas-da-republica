@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-10'
+generated_at: '2026-11-11'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-13'
+janela_inicio: '2026-08-14'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,14 +11,14 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 182
-    dias_com_agenda: 50
+    compromissos_90d: 189
+    dias_com_agenda: 51
     por_tipo:
-      evento: 57
-      viagem: 57
-      audiencia: 53
-      reuniao: 11
-      outro: 4
+      evento: 61
+      viagem: 58
+      audiencia: 52
+      reuniao: 13
+      outro: 5
     entidades_top:
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República)
       n: 13
@@ -28,8 +28,6 @@ people:
       n: 8
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 6
-    - nome: Oswaldo Malatesta Neto (Chefe do Gabinete Pessoal do Presidente da República)
-      n: 1
     - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
       n: 1
     - nome: Embaixador Audo Faleiro (Assessor-Chefe Adjunto da Assessoria Especial do Presidente da Repúbli)
@@ -41,10 +39,10 @@ people:
     - nome: José Mucio (Ministro da Defesa)
       n: 1
     locais_top:
-    - nome: Palácio da Alvorada
-      n: 37
     - nome: Palácio do Planalto
       n: 37
+    - nome: Palácio da Alvorada
+      n: 36
     - nome: Base Aérea de Brasília
       n: 25
     - nome: Esplanada dos Ministérios, Brasília
@@ -61,70 +59,58 @@ people:
       n: 3
     - nome: Residência Oficial, Nova York (EUA)
       n: 3
-    ultimo: '2026-11-09'
+    ultimo: '2026-11-11'
     recentes:
-    - data: '2026-11-09'
-      hora: 09:00
-      titulo: Partida para Antália, Turquia
-      tipo: viagem
-      local: Base Aérea de Brasília
+    - data: '2026-11-11'
+      hora: '18:30'
+      titulo: Jantar de gala oferecido pelo Presidente da República da Turquia, Recep Tayyip Erdoğan, e a Senhora Emine Erdoğan
+      tipo: reuniao
+      local: Zona Verde, Centro de Exposições de Antália
       participantes: []
-    - data: '2026-11-08'
-      hora: '11:00'
-      titulo: Visita à Sala de Monitoramento do Enem 2026
-      tipo: evento
-      local: INEP -  Setor de Indústrias Gráficas (SIG), Quadra 4, Lote 327 – Brasília
-      participantes: []
-    - data: '2026-11-06'
-      hora: '17:00'
-      titulo: Ministro da Secretaria de Comunicação Social da Presidência da República, Sidônio Palmeira
-      tipo: audiencia
-      local: Palácio do Planalto
-      participantes:
-      - nome: Sidônio Palmeira
-        entidade: Ministro da Secretaria de Comunicação Social da Presidência da República
-    - data: '2026-11-06'
+    - data: '2026-11-11'
       hora: '16:00'
-      titulo: Ministra da Casa Civil, Miriam Belchior, e Ministro da Justiça e Segurança Pública, Wellington César Lima e
-        Silva
-      tipo: audiencia
-      local: Palácio do Planalto
-      participantes: []
-    - data: '2026-11-06'
-      hora: '15:00'
-      titulo: Sanção do Projeto de Lei de Conversão nº 14/2026, que institui o Exame Nacional de Avaliação da Formação Médica
-        (ENAMED)
+      titulo: Declaração Nacional por ocasião da primeira parte do Segmento de Alto Nível para Chefes de Estado e de Governo
       tipo: evento
-      local: Palácio do Planalto
+      local: Plenária Anadolu, Centro de Exposições de Antália
       participantes: []
-    - data: '2026-11-06'
-      hora: '10:00'
-      titulo: Reunião Extraordinária do Conselho Nacional de Política Energética (CNPE)
+    - data: '2026-11-11'
+      hora: '15:00'
+      titulo: Cúpula de Líderes sobre Florestas
+      tipo: evento
+      local: Plenária Akdeniz, Centro de Exposições de Antália
+      participantes: []
+    - data: '2026-11-11'
+      hora: '14:30'
+      titulo: Reunião bilateral com o Primeiro-Ministro do Reino da Noruega, Jonas Gahr Støre
       tipo: reuniao
-      local: Ministério de Minas e Energia
+      local: Sala de Bilaterais 9, Centro de Exposições de Antália
       participantes: []
-    - data: '2026-11-05'
-      hora: '17:00'
-      titulo: Ministra da Casa Civil, Miriam Belchior, e Ministro da Justiça e Segurança Pública, Wellington César Lima e
-        Silva
-      tipo: audiencia
-      local: Palácio do Planalto
+    - data: '2026-11-11'
+      hora: '14:00'
+      titulo: Início da primeira parte do Segmento de Alto Nível para Chefes de Estado e de Governo
+      tipo: outro
+      local: Plenária Anadolu, Centro de Exposições de Antália
       participantes: []
-    - data: '2026-11-05'
-      hora: '15:30'
-      titulo: 1ª Reunião do Conselho Nacional para Industrialização de Minerais Críticos e Estratégicos (CIMCE)
+    - data: '2026-11-11'
+      hora: '12:15'
+      titulo: Sessão de abertura da Cúpula de Líderes e apresentação cultural
+      tipo: evento
+      local: Plenária Anadolu, Centro de Exposições de Antália
+      participantes: []
+    - data: '2026-11-11'
+      hora: '11:45'
+      titulo: Fotografia de família dos Chefes de Estado e de Governo
+      tipo: evento
+      local: Centro de Exposições de Antália
+      participantes: []
+    - data: '2026-11-10'
+      hora: '17:30'
+      titulo: Reunião bilateral com o Presidente da República da Turquia, Recep Tayyip Erdoğan
       tipo: reuniao
-      local: Palácio do Planalto
+      local: Antália, Turquia
       participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-08-13:
-      - hora: '10:00'
-        titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta Neto
-        local: Palácio da Alvorada
-      - hora: '15:00'
-        titulo: Reunião para apresentação de dados da Relação Anual de Informações Sociais (RAIS)
-        local: Ministério do Trabalho e Emprego, Brasília
       presidente/2026-08-14:
       - hora: '11:00'
         titulo: Entrevista para Déia Freitas (Não Inviabilize) e As Cunhãs
@@ -773,7 +759,36 @@ people:
       - hora: 09:00
         titulo: Partida para Antália, Turquia
         local: Base Aérea de Brasília
-      presidente/2026-11-10: []
+      presidente/2026-11-10:
+      - hora: 04:00
+        titulo: Chegada a Antália, Turquia
+        local: Aeroporto de Antália
+      - hora: '17:30'
+        titulo: Reunião bilateral com o Presidente da República da Turquia, Recep Tayyip Erdoğan
+        local: Antália, Turquia
+      presidente/2026-11-11:
+      - hora: '11:45'
+        titulo: Fotografia de família dos Chefes de Estado e de Governo
+        local: Centro de Exposições de Antália
+      - hora: '12:15'
+        titulo: Sessão de abertura da Cúpula de Líderes e apresentação cultural
+        local: Plenária Anadolu, Centro de Exposições de Antália
+      - hora: '14:00'
+        titulo: Início da primeira parte do Segmento de Alto Nível para Chefes de Estado e de Governo
+        local: Plenária Anadolu, Centro de Exposições de Antália
+      - hora: '14:30'
+        titulo: Reunião bilateral com o Primeiro-Ministro do Reino da Noruega, Jonas Gahr Støre
+        local: Sala de Bilaterais 9, Centro de Exposições de Antália
+      - hora: '15:00'
+        titulo: Cúpula de Líderes sobre Florestas
+        local: Plenária Akdeniz, Centro de Exposições de Antália
+      - hora: '16:00'
+        titulo: Declaração Nacional por ocasião da primeira parte do Segmento de Alto Nível para Chefes de Estado e de Governo
+        local: Plenária Anadolu, Centro de Exposições de Antália
+      - hora: '18:30'
+        titulo: Jantar de gala oferecido pelo Presidente da República da Turquia, Recep Tayyip Erdoğan, e a Senhora Emine
+          Erdoğan
+        local: Zona Verde, Centro de Exposições de Antália
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -781,14 +796,14 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 45
-    dias_com_agenda: 31
+    compromissos_90d: 44
+    dias_com_agenda: 30
     por_tipo:
       evento: 17
       viagem: 11
       audiencia: 8
       reuniao: 5
-      outro: 4
+      outro: 3
     entidades_top:
     - nome: Luiz Inácio Lula da Silva (Presidente da República)
       n: 2
@@ -803,10 +818,10 @@ people:
       n: 13
     - nome: Palácio do Planalto
       n: 10
-    - nome: Palácio do Planalto, Anexo II
-      n: 8
     - nome: São Paulo/SP
       n: 8
+    - nome: Palácio do Planalto, Anexo II
+      n: 7
     - nome: São José dos Campos/SP
       n: 2
     - nome: São José do Rio Preto/SP
@@ -874,11 +889,6 @@ people:
         entidade: Ministro-Chefe da Secretaria de Comunicação Social - SECOM
     dias_nao_lidos: 0
     dias:
-      vice/2026-08-13:
-      - hora: '16:30'
-        titulo: Alunos da Faculdade de Direito da Universidade de São Paulo - USP
-        local: Palácio do Planalto, Anexo II
-      vice/2026-08-13-b1: []
       vice/2026-08-14:
       - hora: 08:00
         titulo: Embarque de Brasília/DF para São Paulo/SP
@@ -1194,6 +1204,8 @@ people:
       vice/2026-11-09-b1: []
       vice/2026-11-10: []
       vice/2026-11-10-b1: []
+      vice/2026-11-11: []
+      vice/2026-11-11-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 182 compromissos em 50 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 45 compromissos em 31 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 189 compromissos em 51 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 44 compromissos em 30 dias (0 dias não lidos)'

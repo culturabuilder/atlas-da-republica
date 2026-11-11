@@ -1,16 +1,16 @@
 # GERADO por etl/pep.py. Não edite à mão.
-generated_at: '2026-11-10'
+generated_at: '2026-11-11'
 fonte: Portal da Transparência, cadastro de Pessoas Expostas Politicamente (/api-de-dados/peps)
 nota: 'Data de início e fim de exercício de quem ocupa função de poder no Executivo federal. A data só é aceita quando o órgão do registro no
   PEP casa com o órgão do cargo no Atlas: o nome sozinho não basta, porque homônimo existe e a data entraria no cargo errado. O que não casa fica
   em ''recusados'', para conferência humana, e não é usado.'
 resumo:
-  consultados_nesta_rodada: 0
+  consultados_nesta_rodada: 1
   posses_conhecidas: 38
   novas_nesta_rodada: 0
-  recusados: 0
+  recusados: 1
   ja_sairam_segundo_o_pep: 0
-  sem_registro: 110
+  sem_registro: 111
 posses:
   br-p-adeilson-ribeiro-telles:
     inicio: '2026-08-10'
@@ -241,7 +241,13 @@ posses:
     orgao_pep: AGENCIA NACIONAL DE TELECOMUNICACOES
     em: '2026-10-14'
 ja_sairam: []
-recusados: []
+recusados:
+- pessoa: br-p-raimunda-nonata-monteiro
+  nome: Raimunda Nonata Monteiro
+  cargo: br-secretaria-executiva-sri-pr-secretario
+  pep_orgao: PRESIDENCIA DA REPUBLICA
+  pep_funcao: SECRETARIO EXECUTIVO
+  motivo: órgão do PEP não é o órgão do cargo no Atlas
 sem_registro:
   br-p-adriana-pionttkovsky-barcellos: '2026-10-14'
   br-p-aguimar-martins-peixoto: '2026-10-14'
@@ -325,6 +331,7 @@ sem_registro:
   br-p-paulo-henrique-gomes-de-lima: '2026-10-14'
   br-p-raclenir-lopes-galvao-junior: '2026-10-14'
   br-p-raiane-patricia-severino-assumpcao: '2026-10-14'
+  br-p-raimunda-nonata-monteiro: '2026-11-11'
   br-p-regis-dudena: '2026-10-14'
   br-p-rita-leite-brito-rolim: '2026-10-14'
   br-p-roberta-cristina-martins: '2026-10-14'

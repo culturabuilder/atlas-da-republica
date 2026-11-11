@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-11-10'
+generated_at: '2026-11-11'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,7 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-08-10': 212
+      '2026-08-10': 176
       '2026-08-17': 364
       '2026-08-24': 447
       '2026-08-31': 494
@@ -29,11 +29,22 @@ temas:
       '2026-10-19': 1687
       '2026-10-26': 1277
       '2026-11-02': 309
-      '2026-11-09': 23
-    total_90d: 13250
-    last7: 270
+      '2026-11-09': 48
+    total_90d: 13239
+    last7: 217
     peak_week: 3172
   processes:
+  - casa: camara
+    id: PEC 3/2021
+    ementa: Altera os arts. 14, 27, 53, 102 e 105 da Constituição Federal, para dispor sobre as prerrogativas parlamentares
+      e dá outras providências.
+    situation: Arquivada
+    last_move: '2025-09-17'
+    organ: MESA
+    closed: true
+    outcome: Arquivada
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2270800
+    requested: PEC 3/2021 (camara)
   - casa: senado
     id: PEC 3/2021
     ementa: Altera os arts. 53 e 102 da Constituição Federal, para dispor sobre as prerrogativas parlamentares.
@@ -56,7 +67,7 @@ temas:
   - cpi do master
   - vorcaro
   curated: cpmi-banco-master-2026
-  news_hits: 175
+  news_hits: 181
   news_weekly:
     '2026-09-14': 29
     '2026-09-21': 44
@@ -66,33 +77,35 @@ temas:
     '2026-10-19': 9
     '2026-10-26': 13
     '2026-11-02': 15
-    '2026-11-09': 5
+    '2026-11-09': 11
   news_recent:
-  - id: 9ea76628338b910e
-    title: PF vai refazer relatórios sobre ministros do STF citados no caso Master
-    date: '2026-11-10'
+  - id: bb3acf5e362155d2
+    title: Relatório da PF deve identificar indício de crime e não fazer juízo sobre relação de ministros com Vorcaro, indica
+      Fachin a auxiliares
+    date: '2026-11-11'
     publication: g1 Política
-  - id: 254be6d5df5e9132
-    title: CNJ aprova novas regras para venda de precatórios e cria central nacional para tentar rastrear operações
-    date: '2026-11-10'
+  - id: a82522afbcd72abd
+    title: Crise na PF pode adiar para 2027 análise sobre envolvimento de ministros do STF com Vorcaro
+    date: '2026-11-11'
     publication: g1 Política
-  - id: 39a496adf82c3012
-    title: Defesa de Vorcaro pede a Fachin que Gilmar decida sobre prisão
-    date: '2026-11-10'
-    publication: Poder360
-  - id: 7e5c66f76dc30cc6
-    title: 'Antes de ser preso, Vorcaro disse a Flávio: “Tá muito difícil”'
-    date: '2026-11-09'
-    publication: Poder360
-  - id: 439c3337934074d4
-    title: PF detalha, em relatórios, relação de Toffoli, Moraes e Nunes Marques com Vorcaro
-    date: '2026-11-09'
+  - id: 145aad4c83a6b655
+    title: 'PF x PF: disputa pelo comando do órgão e de investigações do Master e do INSS está por trás de crise interna'
+    date: '2026-11-11'
+    publication: g1 Política
+  - id: a83b3c2ca348109a
+    title: Afastamento de delegados que produziram relatórios sobre ministros do STF e Vorcaro ocorre em meio a divergências
+      na PF
+    date: '2026-11-11'
+    publication: g1 Política
+  - id: 568dee7a394fb43b
+    title: 'O fim do inquérito das fake news e o STF ainda sob tensão - O Assunto #1843'
+    date: '2026-11-11'
     publication: g1 Política
   wikipedia:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-08-10': 409
+      '2026-08-10': 321
       '2026-08-17': 420
       '2026-08-24': 806
       '2026-08-31': 8813
@@ -105,13 +118,24 @@ temas:
       '2026-10-19': 4026
       '2026-10-26': 3053
       '2026-11-02': 2770
-      '2026-11-09': 278
-    total_90d: 61074
-    last7: 2610
+      '2026-11-09': 616
+    total_90d: 61324
+    last7: 2564
     peak_week: 10630
-  processes: []
-  state: sem_processo
-  stalled_days: null
+  processes:
+  - casa: camara
+    id: RCP 1/2026
+    ementa: Requer a criação de Comissão Parlamentar de Inquérito para investigar as fraudes financeiras ocorridas na relação
+      entre o Banco Master e o Banco Regional de Brasília – BRB.
+    situation: Aguardando Despacho do Presidente da Câmara dos Deputados
+    last_move: '2026-07-20'
+    organ: MESA
+    closed: false
+    outcome: null
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
+    requested: RCP 1/2026 (camara)
+  state: parado
+  stalled_days: 114
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -123,7 +147,7 @@ temas:
   - fim da escala
   - jornada 6x1
   curated: null
-  news_hits: 156
+  news_hits: 157
   news_weekly:
     '2026-09-14': 3
     '2026-09-28': 3
@@ -132,7 +156,12 @@ temas:
     '2026-10-19': 9
     '2026-10-26': 4
     '2026-11-02': 4
+    '2026-11-09': 1
   news_recent:
+  - id: a41f38e352bc5e7b
+    title: 'Escala 6x1: Dino sinaliza que decisão em ação que questiona transição da nova jornada de trabalho sai até sexta'
+    date: '2026-11-10'
+    publication: g1 Política
   - id: a109628321f9d018
     title: 'Fim da escala 6x1: O que fazer se a empresa não respeitar a nova jornada? Veja como denunciar'
     date: '2026-11-05'
@@ -149,15 +178,11 @@ temas:
     title: O Tema 316 do TST não se aplica à emenda do fim da escala 6×1
     date: '2026-11-03'
     publication: JOTA
-  - id: fb84992c59002b6d
-    title: 'Dois repousos, um calendário: a escala 5×2 e o contrato especial de trabalho desportivo'
-    date: '2026-10-31'
-    publication: JOTA
   wikipedia:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-08-10': 256
+      '2026-08-10': 238
       '2026-08-17': 368
       '2026-08-24': 506
       '2026-08-31': 827
@@ -170,12 +195,34 @@ temas:
       '2026-10-19': 2158
       '2026-10-26': 573
       '2026-11-02': 160
-      '2026-11-09': 7
-    total_90d: 23048
-    last7: 129
+      '2026-11-09': 23
+    total_90d: 23046
+    last7: 119
     peak_week: 10778
-  processes: []
-  state: sem_processo
+  processes:
+  - casa: camara
+    id: PEC 8/2025
+    ementa: Dá nova redação ao inciso XIII, do artigo 7° da Constituição Federal para dispor sobre a redução da jornada de
+      trabalho para quatro dias por semana no Brasil.
+    situation: Arquivada
+    last_move: '2026-05-27'
+    organ: MESA
+    closed: true
+    outcome: Arquivada
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2485341
+    requested: PEC 8/2025 (camara)
+  - casa: camara
+    id: PEC 221/2019
+    ementa: Altera o Art. 7º inciso XII da constituição Federal, reduzindo a jornada de trabalho a 36 horas semanais em 10
+      anos.
+    situation: Transformado em Norma Jurídica
+    last_move: '2026-10-16'
+    organ: MESA
+    closed: true
+    outcome: Transformado em Norma Jurídica
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2233802
+    requested: PEC 221/2019 (camara)
+  state: encerrado
   stalled_days: null
   silence_after_peak: false
   silent_and_stalled: false
@@ -201,7 +248,7 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-08-10': 25
+      '2026-08-10': 20
       '2026-08-17': 55
       '2026-08-24': 104
       '2026-08-31': 39
@@ -214,11 +261,22 @@ temas:
       '2026-10-19': 70
       '2026-10-26': 176
       '2026-11-02': 62
-      '2026-11-09': 11
+      '2026-11-09': 16
     total_90d: 912
-    last7: 71
+    last7: 64
     peak_week: 176
   processes:
+  - casa: camara
+    id: PL 1087/2025
+    ementa: Altera a legislação do imposto sobre a renda para instituir a redução do imposto devido nas bases de cálculo mensal
+      e anual e a tributação mínima para as pessoas físicas que auferem altas rendas, e dá outras providências
+    situation: Transformado em Norma Jurídica
+    last_move: '2025-12-01'
+    organ: MESA
+    closed: true
+    outcome: Transformado em Norma Jurídica
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2487436
+    requested: PL 1087/2025 (camara)
   - casa: senado
     id: PL 1087/2025
     ementa: 'Altera as Leis nºs 9.250, de 26 de dezembro de 1995, e 9.249, de 26 de dezembro de 1995, para instituir a redução
@@ -243,7 +301,7 @@ temas:
   - pl da dosimetria
   - pl da anistia
   curated: null
-  news_hits: 15
+  news_hits: 16
   news_weekly:
     '2026-09-14': 1
     '2026-09-28': 1
@@ -252,8 +310,12 @@ temas:
     '2026-10-19': 2
     '2026-10-26': 2
     '2026-11-02': 1
-    '2026-11-09': 2
+    '2026-11-09': 3
   news_recent:
+  - id: 22edcf65355a34e1
+    title: Segurança da posse de Lula terá 22 órgãos e será mantida até dia 10 para evitar ‘novo 8 de Janeiro’
+    date: '2026-11-11'
+    publication: Estadão
   - id: 4eb1e6b2c95f5ac7
     title: Fachin fala em ‘prudência’ no exercício da magistratura e classifica 8 de janeiro como ‘alerta’
     date: '2026-11-09'
@@ -270,15 +332,10 @@ temas:
     title: Rui Costa questiona articulação a favor de Alcolumbre que prevê anistia ou indulto a Jair Bolsonaro
     date: '2026-10-29'
     publication: g1 Política
-  - id: fc28e409636e2f6f
-    title: Aliado de Lula, presidente da CCJ defende anistia pelo 8 de janeiro e admite conversas com Alcolumbre
-    date: '2026-10-28'
-    publication: g1 Política
   wikipedia:
     article: Ataques_de_8_de_janeiro_de_2023
     url: https://pt.wikipedia.org/wiki/Ataques_de_8_de_janeiro_de_2023
     weekly:
-      '2026-08-10': 0
       '2026-08-17': 0
       '2026-08-24': 0
       '2026-09-07': 0
@@ -295,6 +352,17 @@ temas:
     last7: 6
     peak_week: 8
   processes:
+  - casa: camara
+    id: PL 2162/2023
+    ementa: Concede anistia aos participantes das manifestações reivindicatórias de motivação política ocorridas entre o dia
+      30 de outubro de 2022 e o dia de entrada em vigor desta Lei, e dá outras providências.
+    situation: Aguardando Envio ao Senado Federal
+    last_move: '2026-05-08'
+    organ: PLEN
+    closed: false
+    outcome: null
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2358548
+    requested: PL 2162/2023 (camara)
   - casa: senado
     id: PL 2162/2023
     ementa: Altera dispositivos da Lei nº 7.210, de 11 de julho de 1984 (Lei de Execução Penal) e do Decreto-Lei nº 2.848,
@@ -305,8 +373,8 @@ temas:
     outcome: Vetada
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
-  state: encerrado
-  stalled_days: null
+  state: parado
+  stalled_days: 187
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -394,7 +462,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1245
+  stalled_days: 1246
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -438,7 +506,7 @@ temas:
     article: Precatório
     url: https://pt.wikipedia.org/wiki/Precatório
     weekly:
-      '2026-08-10': 30
+      '2026-08-10': 25
       '2026-08-17': 30
       '2026-08-24': 24
       '2026-08-31': 80
@@ -451,11 +519,22 @@ temas:
       '2026-10-19': 59
       '2026-10-26': 45
       '2026-11-02': 23
-      '2026-11-09': 1
-    total_90d: 721
-    last7: 19
+      '2026-11-09': 4
+    total_90d: 719
+    last7: 16
     peak_week: 112
   processes:
+  - casa: camara
+    id: PEC 66/2023
+    ementa: Institui limite para o pagamento de precatórios pelos Municípios, abre novo prazo de parcelamento especial de
+      débitos dos Municípios com seus regimes próprios de previdência social e com o Regime Geral de Previdência Soc
+    situation: Transformado em Norma Jurídica
+    last_move: '2025-09-09'
+    organ: MESA
+    closed: true
+    outcome: Transformado em Norma Jurídica
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2454495
+    requested: PEC 66/2023 (camara)
   - casa: senado
     id: PEC 66/2023
     ementa: Abre novo prazo de parcelamento especial de débitos dos municípios com seus Regimes Próprios de Previdência Social
@@ -514,7 +593,7 @@ temas:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-08-10': 183
+      '2026-08-10': 149
       '2026-08-17': 255
       '2026-08-24': 346
       '2026-08-31': 390
@@ -527,12 +606,23 @@ temas:
       '2026-10-19': 903
       '2026-10-26': 816
       '2026-11-02': 222
-      '2026-11-09': 40
-    total_90d: 6001
-    last7: 220
+      '2026-11-09': 66
+    total_90d: 5993
+    last7: 207
     peak_week: 1023
-  processes: []
-  state: sem_processo
+  processes:
+  - casa: camara
+    id: PLP 210/2024
+    ementa: Altera a Lei Complementar nº 200, de 30 de agosto de 2023, que institui regime fiscal sustentável para garantir
+      a estabilidade macroeconômica do País e criar as condições adequadas ao crescimento socioeconômico, e dá out
+    situation: Transformado em Norma Jurídica
+    last_move: '2025-04-16'
+    organ: CREDN
+    closed: true
+    outcome: Transformado em Norma Jurídica
+    url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2473389
+    requested: PLP 210/2024 (camara)
+  state: encerrado
   stalled_days: null
   silence_after_peak: false
   silent_and_stalled: false
