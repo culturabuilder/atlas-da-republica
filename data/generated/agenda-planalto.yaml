@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-11'
+generated_at: '2026-11-12'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-14'
+janela_inicio: '2026-08-15'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -14,10 +14,10 @@ people:
     compromissos_90d: 189
     dias_com_agenda: 51
     por_tipo:
-      evento: 61
-      viagem: 58
+      evento: 60
+      viagem: 57
       audiencia: 52
-      reuniao: 13
+      reuniao: 15
       outro: 5
     entidades_top:
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República)
@@ -42,15 +42,13 @@ people:
     - nome: Palácio do Planalto
       n: 37
     - nome: Palácio da Alvorada
-      n: 36
+      n: 35
     - nome: Base Aérea de Brasília
-      n: 25
+      n: 24
     - nome: Esplanada dos Ministérios, Brasília
       n: 5
     - nome: Aeroporto Internacional de Macapá
       n: 4
-    - nome: Aeroporto de Congonhas
-      n: 3
     - nome: Centro Industrial Nuclear de Aramar, Iperó (SP)
       n: 3
     - nome: Av. Gerassina Tavares – Jardim Veneza, São José do Rio Preto (SP)
@@ -59,8 +57,28 @@ people:
       n: 3
     - nome: Residência Oficial, Nova York (EUA)
       n: 3
-    ultimo: '2026-11-11'
+    - nome: Plenária Anadolu, Centro de Exposições de Antália
+      n: 3
+    ultimo: '2026-11-12'
     recentes:
+    - data: '2026-11-12'
+      hora: '19:15'
+      titulo: Partida para Manila, Filipinas
+      tipo: viagem
+      local: Aeroporto de Antália
+      participantes: []
+    - data: '2026-11-12'
+      hora: '17:30'
+      titulo: Encontro com a Sociedade Civil nacional e internacional
+      tipo: reuniao
+      local: Plenária Akdeniz
+      participantes: []
+    - data: '2026-11-12'
+      hora: '13:00'
+      titulo: Encontro bilateral com o Presidente da República do Irã, Masoud Pezeshkian
+      tipo: reuniao
+      local: Local de hospedagem
+      participantes: []
     - data: '2026-11-11'
       hora: '18:30'
       titulo: Jantar de gala oferecido pelo Presidente da República da Turquia, Recep Tayyip Erdoğan, e a Senhora Emine Erdoğan
@@ -91,36 +109,8 @@ people:
       tipo: outro
       local: Plenária Anadolu, Centro de Exposições de Antália
       participantes: []
-    - data: '2026-11-11'
-      hora: '12:15'
-      titulo: Sessão de abertura da Cúpula de Líderes e apresentação cultural
-      tipo: evento
-      local: Plenária Anadolu, Centro de Exposições de Antália
-      participantes: []
-    - data: '2026-11-11'
-      hora: '11:45'
-      titulo: Fotografia de família dos Chefes de Estado e de Governo
-      tipo: evento
-      local: Centro de Exposições de Antália
-      participantes: []
-    - data: '2026-11-10'
-      hora: '17:30'
-      titulo: Reunião bilateral com o Presidente da República da Turquia, Recep Tayyip Erdoğan
-      tipo: reuniao
-      local: Antália, Turquia
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-08-14:
-      - hora: '11:00'
-        titulo: Entrevista para Déia Freitas (Não Inviabilize) e As Cunhãs
-        local: Palácio da Alvorada
-      - hora: '18:30'
-        titulo: Partida para São Paulo
-        local: Base Aérea de Brasília
-      - hora: '19:50'
-        titulo: Chegada a São Paulo
-        local: Aeroporto de Congonhas
       presidente/2026-08-15: []
       presidente/2026-08-16: []
       presidente/2026-08-17:
@@ -789,6 +779,16 @@ people:
         titulo: Jantar de gala oferecido pelo Presidente da República da Turquia, Recep Tayyip Erdoğan, e a Senhora Emine
           Erdoğan
         local: Zona Verde, Centro de Exposições de Antália
+      presidente/2026-11-12:
+      - hora: '13:00'
+        titulo: Encontro bilateral com o Presidente da República do Irã, Masoud Pezeshkian
+        local: Local de hospedagem
+      - hora: '17:30'
+        titulo: Encontro com a Sociedade Civil nacional e internacional
+        local: Plenária Akdeniz
+      - hora: '19:15'
+        titulo: Partida para Manila, Filipinas
+        local: Aeroporto de Antália
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -796,11 +796,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 44
-    dias_com_agenda: 30
+    compromissos_90d: 43
+    dias_com_agenda: 29
     por_tipo:
       evento: 17
-      viagem: 11
+      viagem: 10
       audiencia: 8
       reuniao: 5
       outro: 3
@@ -815,7 +815,7 @@ people:
       n: 1
     locais_top:
     - nome: Brasília/DF
-      n: 13
+      n: 12
     - nome: Palácio do Planalto
       n: 10
     - nome: São Paulo/SP
@@ -889,11 +889,6 @@ people:
         entidade: Ministro-Chefe da Secretaria de Comunicação Social - SECOM
     dias_nao_lidos: 0
     dias:
-      vice/2026-08-14:
-      - hora: 08:00
-        titulo: Embarque de Brasília/DF para São Paulo/SP
-        local: Brasília/DF
-      vice/2026-08-14-b1: []
       vice/2026-08-15: []
       vice/2026-08-15-b1: []
       vice/2026-08-16: []
@@ -1206,6 +1201,8 @@ people:
       vice/2026-11-10-b1: []
       vice/2026-11-11: []
       vice/2026-11-11-b1: []
+      vice/2026-11-12: []
+      vice/2026-11-12-b1: []
 log:
 - 'br-p-luiz-inacio-lula-da-silva: 189 compromissos em 51 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 44 compromissos em 30 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 43 compromissos em 29 dias (0 dias não lidos)'

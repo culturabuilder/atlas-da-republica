@@ -1,5 +1,5 @@
 # GERADO por etl/pep.py. Não edite à mão.
-generated_at: '2026-11-11'
+generated_at: '2026-11-12'
 fonte: Portal da Transparência, cadastro de Pessoas Expostas Politicamente (/api-de-dados/peps)
 nota: 'Data de início e fim de exercício de quem ocupa função de poder no Executivo federal. A data só é aceita quando o órgão do registro no
   PEP casa com o órgão do cargo no Atlas: o nome sozinho não basta, porque homônimo existe e a data entraria no cargo errado. O que não casa fica
@@ -8,9 +8,9 @@ resumo:
   consultados_nesta_rodada: 1
   posses_conhecidas: 38
   novas_nesta_rodada: 0
-  recusados: 1
+  recusados: 0
   ja_sairam_segundo_o_pep: 0
-  sem_registro: 111
+  sem_registro: 112
 posses:
   br-p-adeilson-ribeiro-telles:
     inicio: '2026-08-10'
@@ -241,13 +241,7 @@ posses:
     orgao_pep: AGENCIA NACIONAL DE TELECOMUNICACOES
     em: '2026-10-14'
 ja_sairam: []
-recusados:
-- pessoa: br-p-raimunda-nonata-monteiro
-  nome: Raimunda Nonata Monteiro
-  cargo: br-secretaria-executiva-sri-pr-secretario
-  pep_orgao: PRESIDENCIA DA REPUBLICA
-  pep_funcao: SECRETARIO EXECUTIVO
-  motivo: órgão do PEP não é o órgão do cargo no Atlas
+recusados: []
 sem_registro:
   br-p-adriana-pionttkovsky-barcellos: '2026-10-14'
   br-p-aguimar-martins-peixoto: '2026-10-14'
@@ -259,6 +253,7 @@ sem_registro:
   br-p-antonio-claudio-lucas-da-nobrega: '2026-10-14'
   br-p-camila-celeste-brandao-ferreira-itavo: '2026-10-14'
   br-p-carla-de-figueiredo-soares: '2026-10-14'
+  br-p-carla-simone-chamon: '2026-11-12'
   br-p-carlos-henrique-menezes-sobral: '2026-10-14'
   br-p-carlos-mello: '2026-10-14'
   br-p-ceica-pitaguary: '2026-10-14'

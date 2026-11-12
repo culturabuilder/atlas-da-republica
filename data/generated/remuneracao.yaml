@@ -1,19 +1,19 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-11-11'
+generated_at: '2026-11-12'
 mes: '202609'
 mes_senado: '202610'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1218
+  ocupantes_no_grafo: 1217
   com_remuneracao: 510
   por_setor:
     executivo:
-      ocupantes: 483
-      antes: 401
+      ocupantes: 482
+      antes: 400
       depois: 425
       pct_antes: 83.0
-      pct_depois: 88.0
+      pct_depois: 88.2
     essenciais:
       ocupantes: 30
       antes: 4
@@ -44,13 +44,13 @@ resumo:
     alta: 484
     media: 26
   sem_remuneracao:
-    total: 84
+    total: 83
     por_motivo:
       ausente na folha: 24
       órgão fora do SIAPE (empresa publica com folha própria): 14
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
       só há homônimo por primeiro+último sobrenome fora do órgão (...): 12
-      no cadastro do SIAPE mas sem linha de remuneração no mês: 12
+      no cadastro do SIAPE mas sem linha de remuneração no mês: 11
       órgão fora do SIAPE (sociedade economia mista com folha própria): 6
       vários servidores compatíveis no órgão (...) sem desempate: 2
       a entidade não aparece como órgão na folha do SIAPE (folha própria): 1
@@ -12680,6 +12680,38 @@ people:
     eventuais: 3812.74
     cargo: PROFESSOR DO MAGISTERIO SUPERIOR
     funcao: Sem informação
+  br-p-carla-simone-chamon:
+    mes: '202609'
+    bruto: 36655.51
+    abate_teto: 0.0
+    bruto_apos_abate: 36655.51
+    liquido: 24690.45
+    componentes:
+      basica: 36655.51
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Centro Federal de Educação Tecnológica de Minas Gerais
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CARLA SIMONE CHAMON
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2786160
+    position: br-universidade-federal-de-ciencia-e-inovacao-de-minas-gerais-reitor
+    position_name: Reitor da Universidade Federal de Ciência e Inovação de Minas Gerais
+    bruta: 36655.51
+    liquida: 24690.45
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: PROFESSOR ENS BASICO TECN TECNOLOGICO
+    funcao: Sem informação
   br-p-sandramara-matias-chaves:
     mes: '202609'
     bruto: 41523.58
@@ -13800,38 +13832,6 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO DE DIRECAO - CD - IFES
-  br-p-everton-ricardi-lozano-da-silva:
-    mes: '202609'
-    bruto: 39465.22
-    abate_teto: 0.0
-    bruto_apos_abate: 39465.22
-    liquido: 27817.47
-    componentes:
-      basica: 37265.22
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 2200.0
-      indenizatorias: 1351.27
-    orgao: Universidade Tecnológica Federal do Paraná
-    orgao_superior: Ministério da Educação
-    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
-    funcao_na_folha: Sem informação
-    vinculo: Cargo
-    criterio: nome_completo+orgao
-    confianca: alta
-    nome_na_folha: EVERTON RICARDI LOZANO DA SILVA
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/3074344
-    position: br-universidade-tecnologica-federal-do-parana-reitor
-    position_name: Reitor da Universidade Tecnológica Federal do Paraná
-    bruta: 37265.22
-    liquida: 27817.47
-    indenizatorias: 1351.27
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 2200.0
-    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
-    funcao: Sem informação
   br-p-sf-3830:
     mes: '202610'
     bruto: 46366.19
@@ -16852,11 +16852,6 @@ nao_encontrados:
   cargo: Presidente da Infra S.A.
   setor: executivo
   motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
-- id: br-p-jose-marques-de-lima
-  nome: José Marques de Lima
-  cargo: Presidente da Companhia Brasileira de Trens Urbanos
-  setor: executivo
-  motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
 - id: br-p-jose-nobre-guimaraes
   nome: José Nobre Guimarães
   cargo: Ministro de Estado Chefe da Secretaria de Relações Institucionais
@@ -16892,16 +16887,16 @@ nao_encontrados:
   cargo: Diretor-Geral da Abin
   setor: executivo
   motivo: só há homônimo por primeiro+último sobrenome fora do órgão (18)
+- id: br-p-wp-marcelo-andrade-moreira-pinto
+  nome: Marcelo Andrade Moreira Pinto
+  cargo: Presidente da Codevasf
+  setor: executivo
+  motivo: órgão fora do SIAPE (empresa publica com folha própria)
 - id: br-p-margareth-menezes-da-purificacao-costa
   nome: Margareth Menezes da Purificação Costa
   cargo: Ministro de Estado da Cultura
   setor: executivo
   motivo: só há homônimo por primeiro+último sobrenome fora do órgão (2)
-- id: br-p-maristela-goncalves-leal-vasconcelos
-  nome: Maristela Gonçalves Leal Vasconcelos
-  cargo: Presidente da Autoridade Portuária de Santos S.A.
-  setor: executivo
-  motivo: órgão fora do SIAPE (empresa publica com folha própria)
 - id: br-p-mauro-roma-cardoso-de-barros
   nome: Mauro Roma Cardoso de Barros
   cargo: Presidente da NAV Brasil Serviços de Navegação Aérea S.A
