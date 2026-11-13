@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-12'
+generated_at: '2026-11-13'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-15'
+janela_inicio: '2026-08-16'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,11 +11,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 189
-    dias_com_agenda: 51
+    compromissos_90d: 190
+    dias_com_agenda: 52
     por_tipo:
       evento: 60
-      viagem: 57
+      viagem: 58
       audiencia: 52
       reuniao: 15
       outro: 5
@@ -59,8 +59,14 @@ people:
       n: 3
     - nome: Plenária Anadolu, Centro de Exposições de Antália
       n: 3
-    ultimo: '2026-11-12'
+    ultimo: '2026-11-13'
     recentes:
+    - data: '2026-11-13'
+      hora: '13:00'
+      titulo: Chegada a Manila
+      tipo: viagem
+      local: Terminal Maharlika, Base Aérea Villamor
+      participantes: []
     - data: '2026-11-12'
       hora: '19:15'
       titulo: Partida para Manila, Filipinas
@@ -103,15 +109,8 @@ people:
       tipo: reuniao
       local: Sala de Bilaterais 9, Centro de Exposições de Antália
       participantes: []
-    - data: '2026-11-11'
-      hora: '14:00'
-      titulo: Início da primeira parte do Segmento de Alto Nível para Chefes de Estado e de Governo
-      tipo: outro
-      local: Plenária Anadolu, Centro de Exposições de Antália
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-08-15: []
       presidente/2026-08-16: []
       presidente/2026-08-17:
       - hora: 08:00
@@ -789,6 +788,10 @@ people:
       - hora: '19:15'
         titulo: Partida para Manila, Filipinas
         local: Aeroporto de Antália
+      presidente/2026-11-13:
+      - hora: '13:00'
+        titulo: Chegada a Manila
+        local: Terminal Maharlika, Base Aérea Villamor
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -889,8 +892,6 @@ people:
         entidade: Ministro-Chefe da Secretaria de Comunicação Social - SECOM
     dias_nao_lidos: 0
     dias:
-      vice/2026-08-15: []
-      vice/2026-08-15-b1: []
       vice/2026-08-16: []
       vice/2026-08-16-b1: []
       vice/2026-08-17:
@@ -1203,6 +1204,8 @@ people:
       vice/2026-11-11-b1: []
       vice/2026-11-12: []
       vice/2026-11-12-b1: []
+      vice/2026-11-13: []
+      vice/2026-11-13-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 189 compromissos em 51 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 190 compromissos em 52 dias (0 dias não lidos)'
 - 'br-p-geraldo-alckmin: 43 compromissos em 29 dias (0 dias não lidos)'

@@ -1,5 +1,5 @@
 # GERADO por etl/transferencias.py. Não edite à mão.
-generated_at: '2026-11-12'
+generated_at: '2026-11-13'
 fonte: Portal da Transparência — Transferências de Recursos, CSV mensal AAAAMM_Transferencias.zip
 fonte_url: https://portaldatransparencia.gov.br/download-de-dados/transferencias
 anos:
@@ -54,7 +54,7 @@ por_orgao:
         valor: 1000337.55
   br-aneel:
     '2026':
-      total: 22011091.59
+      total: 22244335.55
       municipios_atendidos: 0
       top_ufs:
       - uf: SP
@@ -65,10 +65,10 @@ por_orgao:
         valor: 1435453.92
       - uf: RS
         valor: 1416720.55
+      - uf: CE
+        valor: 1271562.59
       - uf: MS
         valor: 1159477.35
-      - uf: CE
-        valor: 1038318.63
       - uf: SE
         valor: 908195.56
       - uf: PE
@@ -103,12 +103,14 @@ por_orgao:
         valor: 97453.63
   br-cnpq:
     '2026':
-      total: 37987478.0
+      total: 41987478.0
       municipios_atendidos: 0
       top_ufs:
       - uf: BA
         valor: 6000000.0
       - uf: RS
+        valor: 4000000.0
+      - uf: MG
         valor: 4000000.0
       - uf: PR
         valor: 3792000.0
@@ -120,8 +122,6 @@ por_orgao:
         valor: 2500000.0
       - uf: PE
         valor: 2353149.61
-      - uf: SP
-        valor: 2050000.0
       top_municipios: []
     '2025':
       total: 18182875.0
@@ -146,21 +146,21 @@ por_orgao:
       top_municipios: []
   br-codevasf:
     '2026':
-      total: 95573752.53
-      municipios_atendidos: 55
+      total: 97485252.53
+      municipios_atendidos: 59
       top_ufs:
       - uf: PI
-        valor: 43542635.82
+        valor: 43685885.82
       - uf: AL
         valor: 36412519.16
       - uf: MA
         valor: 7420903.78
       - uf: PE
         valor: 3511108.3
+      - uf: BA
+        valor: 3251365.0
       - uf: GO
         valor: 2695041.12
-      - uf: BA
-        valor: 1483115.0
       - uf: MG
         valor: 508429.35
       top_municipios:
@@ -259,11 +259,11 @@ por_orgao:
         valor: 2559400.0
   br-dnit:
     '2026':
-      total: 62783056.98
+      total: 178783056.98
       municipios_atendidos: 1
       top_ufs:
       - uf: PI
-        valor: 37543336.2
+        valor: 153543336.2
       - uf: PE
         valor: 25239720.78
       top_municipios:
@@ -349,62 +349,62 @@ por_orgao:
       top_municipios: []
   br-fnde:
     '2026':
-      total: 29564346923.2
+      total: 30121627449.85
       municipios_atendidos: 5570
       top_ufs:
       - uf: SP
-        valor: 5248286788.0
+        valor: 5275326717.06
       - uf: MG
-        valor: 2622194711.12
+        valor: 2647490294.64
       - uf: BA
-        valor: 2415450733.1
-      - uf: RJ
-        valor: 1650558035.75
-      - uf: CE
-        valor: 1629097530.71
+        valor: 2487991852.03
       - uf: PA
-        valor: 1620903811.41
+        valor: 1681676817.88
+      - uf: CE
+        valor: 1668782531.31
       - uf: MA
-        valor: 1597288680.39
+        valor: 1666741386.79
+      - uf: RJ
+        valor: 1666416753.36
       - uf: PR
-        valor: 1529763611.27
+        valor: 1544716025.84
       top_municipios:
       - municipio: Sao Paulo
         uf: SP
-        valor: 573716622.57
+        valor: 573776622.57
       - municipio: Rio de Janeiro
         uf: RJ
-        valor: 452737420.91
+        valor: 454292420.91
       - municipio: Fortaleza
         uf: CE
-        valor: 187051831.33
+        valor: 188124755.1
       - municipio: Manaus
         uf: AM
-        valor: 167594262.81
+        valor: 168367502.81
       - municipio: Belo Horizonte
         uf: MG
-        valor: 133314836.46
+        valor: 135780905.1
       - municipio: Salvador
         uf: BA
-        valor: 99495618.88
+        valor: 102105855.67
       - municipio: Curitiba
         uf: PR
-        valor: 89614902.33
+        valor: 90511712.48
       - municipio: Campo Grande
         uf: MS
-        valor: 78707620.88
-      - municipio: Recife
-        uf: PE
-        valor: 71623255.21
+        valor: 78928620.88
       - municipio: Guarulhos
         uf: SP
-        valor: 71206398.32
+        valor: 72978620.87
+      - municipio: Recife
+        uf: PE
+        valor: 72009255.21
       - municipio: Teresina
         uf: PI
-        valor: 67864132.21
+        valor: 69123887.21
       - municipio: Goiania
         uf: GO
-        valor: 64471261.45
+        valor: 64666761.45
     '2025':
       total: 31368666551.57
       municipios_atendidos: 5570
@@ -496,23 +496,23 @@ por_orgao:
         valor: 100000.0
   br-funasa:
     '2026':
-      total: 224947212.9
-      municipios_atendidos: 252
+      total: 235958700.86
+      municipios_atendidos: 263
       top_ufs:
       - uf: CE
         valor: 48583373.42
       - uf: PI
-        valor: 34277301.02
-      - uf: BA
-        valor: 31212875.22
+        valor: 34549845.53
       - uf: MA
-        valor: 24868992.58
+        valor: 32412566.78
+      - uf: BA
+        valor: 31484847.96
       - uf: MG
         valor: 15032407.13
       - uf: PA
-        valor: 10024184.47
+        valor: 11572784.28
       - uf: PE
-        valor: 9329549.47
+        valor: 10704346.17
       - uf: PB
         valor: 5881281.64
       top_municipios:
@@ -611,13 +611,13 @@ por_orgao:
         valor: 2925616.89
   br-incra:
     '2026':
-      total: 35290928.63
-      municipios_atendidos: 19
+      total: 38318270.58
+      municipios_atendidos: 21
       top_ufs:
       - uf: RS
-        valor: 29894757.22
+        valor: 32472099.17
       - uf: PA
-        valor: 2600000.0
+        valor: 3050000.0
       - uf: BA
         valor: 1170715.79
       - uf: PR
@@ -629,12 +629,12 @@ por_orgao:
       - uf: PB
         valor: 100000.0
       top_municipios:
+      - municipio: Candiota
+        uf: RS
+        valor: 8521373.94
       - municipio: Sao Gabriel
         uf: RS
         valor: 6421284.42
-      - municipio: Candiota
-        uf: RS
-        valor: 6355783.15
       - municipio: Santana do Livramento
         uf: RS
         valor: 6037069.14
@@ -650,6 +650,9 @@ por_orgao:
       - municipio: Manoel Viana
         uf: RS
         valor: 1249150.66
+      - municipio: Acara
+        uf: PA
+        valor: 1050000.0
       - municipio: Aurora do Para
         uf: PA
         valor: 1000000.0
@@ -662,9 +665,6 @@ por_orgao:
       - municipio: Tupancireta
         uf: RS
         valor: 676987.89
-      - municipio: Cangucu
-        uf: RS
-        valor: 636007.19
     '2025':
       total: 68580178.84
       municipios_atendidos: 34
@@ -724,13 +724,17 @@ por_orgao:
         valor: 878850.8
   br-inep:
     '2026':
-      total: 26358752.77
+      total: 31827533.47
       municipios_atendidos: 4
       top_ufs:
       - uf: BA
         valor: 3577309.66
+      - uf: MG
+        valor: 3244218.92
       - uf: MA
         valor: 2655408.11
+      - uf: SP
+        valor: 2503883.15
       - uf: PE
         valor: 2213308.29
       - uf: CE
@@ -739,10 +743,6 @@ por_orgao:
         valor: 1810590.75
       - uf: PB
         valor: 1452722.71
-      - uf: GO
-        valor: 1446597.85
-      - uf: MS
-        valor: 1276382.8
       top_municipios:
       - municipio: Salvador
         uf: BA
@@ -878,11 +878,11 @@ por_orgao:
       top_municipios: []
   br-iphan:
     '2026':
-      total: 98112853.21
+      total: 99046475.88
       municipios_atendidos: 18
       top_ufs:
       - uf: MG
-        valor: 30018713.72
+        valor: 30652336.39
       - uf: BA
         valor: 22028777.34
       - uf: MS
@@ -891,10 +891,10 @@ por_orgao:
         valor: 8297500.0
       - uf: PE
         valor: 4702722.22
+      - uf: SE
+        valor: 4016202.65
       - uf: MA
         valor: 3984503.59
-      - uf: SE
-        valor: 3716202.65
       - uf: PB
         valor: 3000000.0
       top_municipios:
@@ -918,7 +918,7 @@ por_orgao:
         valor: 5898257.54
       - municipio: Sao Cristovao
         uf: SE
-        valor: 3716202.65
+        valor: 4016202.65
       - municipio: Recife
         uf: PE
         valor: 3521840.85
@@ -933,7 +933,7 @@ por_orgao:
         valor: 2500000.0
       - municipio: Serro
         uf: MG
-        valor: 1848464.59
+        valor: 2482087.26
     '2025':
       total: 168335150.98
       municipios_atendidos: 59
@@ -993,44 +993,47 @@ por_orgao:
         valor: 1664813.0
   br-ministerio-da-agricultura-e-pecuaria:
     '2026':
-      total: 550558247.49
-      municipios_atendidos: 545
+      total: 571189175.01
+      municipios_atendidos: 571
       top_ufs:
       - uf: ES
         valor: 77867990.17
       - uf: BA
-        valor: 68488930.57
+        valor: 68868075.76
       - uf: MT
-        valor: 43589010.22
+        valor: 44559494.01
       - uf: CE
-        valor: 39877926.94
+        valor: 41390218.94
+      - uf: MA
+        valor: 34906499.3
       - uf: RR
         valor: 31506867.59
-      - uf: MA
-        valor: 31048499.3
       - uf: PR
-        valor: 29343652.62
-      - uf: MG
-        valor: 28130877.23
+        valor: 31124452.99
+      - uf: RS
+        valor: 30013732.49
       top_municipios:
+      - municipio: Chapadinha
+        uf: MA
+        valor: 10370000.0
       - municipio: Lucas do Rio Verde
         uf: MT
         valor: 9195169.16
-      - municipio: Chapadinha
+      - municipio: Centro do Guilherme
         uf: MA
-        valor: 7540000.0
+        valor: 6876000.0
       - municipio: Alvorada do Sul
         uf: PR
         valor: 6523483.17
-      - municipio: Centro do Guilherme
-        uf: MA
-        valor: 5848000.0
       - municipio: Sao Felix do Araguaia
         uf: MT
         valor: 4814614.85
       - municipio: Coracao de Maria
         uf: BA
         valor: 3900000.0
+      - municipio: Reriutaba
+        uf: CE
+        valor: 3824584.0
       - municipio: Caroebe
         uf: RR
         valor: 3820000.0
@@ -1046,9 +1049,6 @@ por_orgao:
       - municipio: Tangara da Serra
         uf: MT
         valor: 3390049.46
-      - municipio: Iranduba
-        uf: AM
-        valor: 3056000.0
     '2025':
       total: 884622244.96
       municipios_atendidos: 832
@@ -1108,13 +1108,15 @@ por_orgao:
         valor: 5870093.42
   br-ministerio-da-ciencia-tecnologia-e-inovacao:
     '2026':
-      total: 126474948.55
+      total: 138341422.6
       municipios_atendidos: 22
       top_ufs:
+      - uf: BA
+        valor: 16891773.54
+      - uf: RJ
+        valor: 14590792.24
       - uf: MS
         valor: 13866049.8
-      - uf: BA
-        valor: 13519945.21
       - uf: MA
         valor: 10450335.21
       - uf: MT
@@ -1125,9 +1127,10 @@ por_orgao:
         valor: 8047234.23
       - uf: AM
         valor: 7998899.68
-      - uf: ES
-        valor: 7803300.0
       top_municipios:
+      - municipio: Rio de Janeiro
+        uf: RJ
+        valor: 14485792.24
       - municipio: Manaus
         uf: AM
         valor: 7998899.68
@@ -1140,12 +1143,9 @@ por_orgao:
       - municipio: Brasilia
         uf: DF
         valor: 7524000.0
-      - municipio: Rio de Janeiro
-        uf: RJ
-        valor: 6490792.24
       - municipio: Maceio
         uf: AL
-        valor: 6218000.0
+        valor: 6612645.72
       - municipio: Recife
         uf: PE
         valor: 6184000.0
@@ -1223,25 +1223,25 @@ por_orgao:
         valor: 1504000.0
   br-ministerio-da-cultura:
     '2026':
-      total: 80663241.39
-      municipios_atendidos: 41
+      total: 85881982.18
+      municipios_atendidos: 50
       top_ufs:
       - uf: PE
-        valor: 12668467.61
+        valor: 13615141.39
       - uf: PR
-        valor: 7713269.4
+        valor: 8394821.99
       - uf: BA
         valor: 7046206.26
       - uf: RS
-        valor: 6279915.07
+        valor: 6787289.01
       - uf: SE
-        valor: 5996993.28
+        valor: 6496993.28
       - uf: RJ
-        valor: 4745699.59
+        valor: 5801364.24
       - uf: PI
         valor: 3473540.13
       - uf: PB
-        valor: 3330979.64
+        valor: 3430741.45
       top_municipios:
       - municipio: Salvador
         uf: BA
@@ -1264,6 +1264,9 @@ por_orgao:
       - municipio: Diamantino
         uf: MT
         valor: 600000.0
+      - municipio: Itapetim
+        uf: PE
+        valor: 530000.0
       - municipio: Canhoba
         uf: SE
         valor: 500000.0
@@ -1273,12 +1276,9 @@ por_orgao:
       - municipio: Sao Francisco
         uf: SE
         valor: 500000.0
-      - municipio: Figueiropolis D'oeste
-        uf: MT
-        valor: 487329.0
-      - municipio: Joinville
-        uf: SC
-        valor: 487329.0
+      - municipio: Santana do Sao Francisco
+        uf: SE
+        valor: 500000.0
     '2025':
       total: 27523246.32
       municipios_atendidos: 19
@@ -1338,19 +1338,19 @@ por_orgao:
         valor: 199900.1
   br-ministerio-da-defesa:
     '2026':
-      total: 184131521.28
-      municipios_atendidos: 60
+      total: 190715219.28
+      municipios_atendidos: 61
       top_ufs:
       - uf: AP
-        valor: 57026419.68
+        valor: 57176419.68
       - uf: RR
         valor: 54264045.0
       - uf: AC
-        valor: 36139346.6
+        valor: 38378928.6
       - uf: TO
-        valor: 13360000.0
+        valor: 13796996.0
       - uf: RO
-        valor: 9242000.0
+        valor: 12999120.0
       - uf: AM
         valor: 9183800.0
       - uf: MA
@@ -1369,7 +1369,7 @@ por_orgao:
         valor: 9800000.0
       - municipio: Rio Branco
         uf: AC
-        valor: 6308993.0
+        valor: 8548575.0
       - municipio: Sao Joao da Baliza
         uf: RR
         valor: 5013707.0
@@ -1453,11 +1453,11 @@ por_orgao:
         valor: 10928546.0
   br-ministerio-da-educacao:
     '2026':
-      total: 70589752.29
+      total: 70714253.29
       municipios_atendidos: 2
       top_ufs:
       - uf: CE
-        valor: 54612888.4
+        valor: 54622155.4
       - uf: SP
         valor: 6514436.3
       - uf: PR
@@ -1469,7 +1469,7 @@ por_orgao:
       - uf: MT
         valor: 1061418.0
       - uf: PA
-        valor: 419561.81
+        valor: 479555.81
       - uf: PI
         valor: 321400.0
       top_municipios:
@@ -1560,47 +1560,53 @@ por_orgao:
         valor: 17253712.08
   br-ministerio-da-gestao:
     '2026':
-      total: 4681013468.68
-      municipios_atendidos: 3304
+      total: 5149654972.04
+      municipios_atendidos: 3588
       top_ufs:
       - uf: MG
-        valor: 512757254.14
+        valor: 577322354.38
       - uf: BA
-        valor: 398936100.27
+        valor: 451099117.71
       - uf: RS
-        valor: 304663193.28
+        valor: 352292885.77
       - uf: SP
-        valor: 292703264.57
+        valor: 321519903.52
       - uf: PE
-        valor: 242652895.55
+        valor: 262315048.9
       - uf: PA
-        valor: 223542527.85
+        valor: 246238324.84
       - uf: SC
-        valor: 211981024.03
+        valor: 223836300.85
       - uf: CE
-        valor: 185194680.33
+        valor: 210284889.15
       top_municipios:
       - municipio: Rio de Janeiro
         uf: RJ
         valor: 24452298.14
+      - municipio: Dourados
+        uf: MS
+        valor: 22821316.02
       - municipio: Mairipora
         uf: SP
         valor: 22652071.8
-      - municipio: Dourados
-        uf: MS
-        valor: 22323820.0
       - municipio: Barueri
         uf: SP
         valor: 21359929.04
       - municipio: Terra Alta
         uf: PA
         valor: 20795500.0
+      - municipio: Tarauaca
+        uf: AC
+        valor: 19531956.84
       - municipio: Ananindeua
         uf: PA
         valor: 18810478.98
       - municipio: Caroebe
         uf: RR
         valor: 17924533.19
+      - municipio: Santana
+        uf: AP
+        valor: 17822060.56
       - municipio: Pacaraima
         uf: RR
         valor: 17709209.0
@@ -1610,12 +1616,6 @@ por_orgao:
       - municipio: Rorainopolis
         uf: RR
         valor: 16782904.5
-      - municipio: Tarauaca
-        uf: AC
-        valor: 16521291.88
-      - municipio: Sao Joao de Meriti
-        uf: RJ
-        valor: 15833289.73
     '2025':
       total: 140564515.04
       municipios_atendidos: 194
@@ -1726,25 +1726,25 @@ por_orgao:
         valor: 65042.2
   br-ministerio-da-integracao-e-do-desenvolvimento-regional:
     '2026':
-      total: 2435794160.53
-      municipios_atendidos: 1296
+      total: 2654489334.27
+      municipios_atendidos: 1390
       top_ufs:
       - uf: RS
-        valor: 337338940.51
+        valor: 375883913.96
       - uf: PI
-        valor: 331798374.79
+        valor: 339287155.24
       - uf: MG
-        valor: 254989426.24
+        valor: 268123833.15
       - uf: AM
-        valor: 170247444.95
+        valor: 214953589.63
       - uf: PA
-        valor: 156515539.98
+        valor: 164501718.96
       - uf: CE
-        valor: 151829449.44
-      - uf: PB
-        valor: 111640194.7
+        valor: 155098249.58
       - uf: BA
-        valor: 106549262.12
+        valor: 118822611.21
+      - uf: PB
+        valor: 114478129.07
       top_municipios:
       - municipio: Uba
         uf: MG
@@ -1761,21 +1761,21 @@ por_orgao:
       - municipio: Maceio
         uf: AL
         valor: 30000000.0
+      - municipio: Bage
+        uf: RS
+        valor: 27698924.33
+      - municipio: Parintins
+        uf: AM
+        valor: 19408219.48
       - municipio: Salvador
         uf: BA
         valor: 19339478.0
       - municipio: Quixeramobim
         uf: CE
         valor: 19100000.0
-      - municipio: Parintins
-        uf: AM
-        valor: 19044639.48
       - municipio: Joao Pessoa
         uf: PB
         valor: 18314918.18
-      - municipio: Bage
-        uf: RS
-        valor: 18259004.99
       - municipio: Manaus
         uf: AM
         valor: 18099522.49
@@ -1841,23 +1841,23 @@ por_orgao:
         valor: 12000000.0
   br-ministerio-da-justica-e-seguranca-publica:
     '2026':
-      total: 826159416.84
-      municipios_atendidos: 59
+      total: 836810342.31
+      municipios_atendidos: 60
       top_ufs:
       - uf: RS
         valor: 96241116.41
       - uf: SP
-        valor: 68739141.88
+        valor: 70206355.0
       - uf: MA
         valor: 54424966.34
       - uf: PA
-        valor: 45727520.35
+        valor: 45860249.78
       - uf: BA
-        valor: 35920126.02
+        valor: 39420126.02
       - uf: PE
-        valor: 35762627.95
+        valor: 35885207.65
       - uf: MG
-        valor: 33386151.11
+        valor: 33634056.56
       - uf: RN
         valor: 33274371.61
       top_municipios:
@@ -1870,6 +1870,9 @@ por_orgao:
       - municipio: Castanhal
         uf: PA
         valor: 4996541.03
+      - municipio: Feira de Santana
+        uf: BA
+        valor: 4285000.0
       - municipio: Salvador
         uf: BA
         valor: 3500000.0
@@ -1884,19 +1887,16 @@ por_orgao:
         valor: 2306576.0
       - municipio: Camaragibe
         uf: PE
-        valor: 1870128.62
+        valor: 1992708.32
+      - municipio: Manaus
+        uf: AM
+        valor: 1902780.8
       - municipio: Florianopolis
         uf: SC
         valor: 1265904.78
       - municipio: Sao Miguel dos Campos
         uf: AL
-        valor: 1180502.24
-      - municipio: Campinas
-        uf: SP
-        valor: 1025521.17
-      - municipio: Feira de Santana
-        uf: BA
-        valor: 785000.0
+        valor: 1198857.44
     '2025':
       total: 2298068792.06
       municipios_atendidos: 76
@@ -1956,25 +1956,25 @@ por_orgao:
         valor: 986516.58
   br-ministerio-da-pesca-e-aquicultura:
     '2026':
-      total: 5732424.88
-      municipios_atendidos: 13
+      total: 7411732.51
+      municipios_atendidos: 16
       top_ufs:
       - uf: MG
-        valor: 1702685.0
+        valor: 1983992.63
+      - uf: PE
+        valor: 1054339.88
+      - uf: AM
+        valor: 898000.0
       - uf: RJ
         valor: 800000.0
       - uf: PA
         valor: 798000.0
-      - uf: AM
-        valor: 700000.0
       - uf: PR
         valor: 667400.0
       - uf: SE
         valor: 460000.0
       - uf: BA
         valor: 300000.0
-      - uf: MA
-        valor: 250000.0
       top_municipios:
       - municipio: Alto Rio Doce
         uf: MG
@@ -1988,6 +1988,9 @@ por_orgao:
       - municipio: Nazare
         uf: BA
         valor: 300000.0
+      - municipio: Buritizeiro
+        uf: MG
+        valor: 281307.63
       - municipio: Muribeca
         uf: SE
         valor: 260000.0
@@ -2008,9 +2011,6 @@ por_orgao:
         valor: 250000.0
       - municipio: Maues
         uf: AM
-        valor: 200000.0
-      - municipio: Indiaroba
-        uf: SE
         valor: 200000.0
     '2025':
       total: 33395698.45
@@ -2071,62 +2071,62 @@ por_orgao:
         valor: 496500.0
   br-ministerio-da-saude:
     '2026':
-      total: 141603631097.59
+      total: 148815116453.86
       municipios_atendidos: 5570
       top_ufs:
       - uf: SP
-        valor: 20859817422.8
+        valor: 22009088174.43
       - uf: MG
-        valor: 15361553657.24
+        valor: 16232892609.96
       - uf: RJ
-        valor: 10876453096.16
+        valor: 11497865651.69
       - uf: BA
-        valor: 10690636473.95
+        valor: 11273457068.26
       - uf: CE
-        valor: 7552327826.17
+        valor: 7914427397.75
       - uf: PR
-        valor: 7326084291.07
+        valor: 7734715261.78
       - uf: PE
-        valor: 7107089021.75
+        valor: 7587769437.9
       - uf: RS
-        valor: 6809861547.88
+        valor: 7190061158.84
       top_municipios:
       - municipio: Rio de Janeiro
         uf: RJ
-        valor: 3086803016.63
+        valor: 3310262296.12
       - municipio: Sao Paulo
         uf: SP
-        valor: 2920167238.72
+        valor: 3060356342.03
       - municipio: Belo Horizonte
         uf: MG
-        valor: 2423147471.99
+        valor: 2609129418.52
       - municipio: Fortaleza
         uf: CE
-        valor: 1624959325.11
+        valor: 1744065100.88
       - municipio: Curitiba
         uf: PR
-        valor: 1258052487.26
+        valor: 1347857631.72
       - municipio: Porto Alegre
         uf: RS
-        valor: 1142856372.54
+        valor: 1221238615.46
       - municipio: Salvador
         uf: BA
-        valor: 1067496196.98
+        valor: 1138093069.07
       - municipio: Goiania
         uf: GO
-        valor: 795918668.86
-      - municipio: Maceio
-        uf: AL
-        valor: 686796190.44
+        valor: 855409262.27
       - municipio: Recife
         uf: PE
-        valor: 682175847.47
+        valor: 733010290.41
+      - municipio: Maceio
+        uf: AL
+        valor: 721112104.93
       - municipio: Duque de Caxias
         uf: RJ
-        valor: 648583165.33
+        valor: 680506457.58
       - municipio: Belem
         uf: PA
-        valor: 628130462.97
+        valor: 671308436.56
     '2025':
       total: 161797493952.68
       municipios_atendidos: 5570
@@ -2186,35 +2186,35 @@ por_orgao:
         valor: 732994464.91
   br-ministerio-das-cidades:
     '2026':
-      total: 5056221408.04
-      municipios_atendidos: 2325
+      total: 5165679959.21
+      municipios_atendidos: 2384
       top_ufs:
       - uf: BA
-        valor: 779281176.56
+        valor: 790099775.8
       - uf: SP
-        valor: 650068625.87
+        valor: 658022101.01
       - uf: MA
-        valor: 494399609.52
+        valor: 501018370.98
       - uf: MG
-        valor: 357389807.77
+        valor: 367486921.14
       - uf: CE
-        valor: 259306974.32
+        valor: 270360117.7
       - uf: PA
-        valor: 259153432.92
+        valor: 266410046.11
       - uf: PE
-        valor: 253544429.74
+        valor: 261327216.41
       - uf: RS
-        valor: 231590064.29
+        valor: 244565585.09
       top_municipios:
       - municipio: Recife
         uf: PE
-        valor: 48600825.79
+        valor: 51472377.19
+      - municipio: Manaus
+        uf: AM
+        valor: 49683199.2
       - municipio: Sao Goncalo
         uf: RJ
         valor: 47807211.93
-      - municipio: Manaus
-        uf: AM
-        valor: 45935115.2
       - municipio: Rio de Janeiro
         uf: RJ
         valor: 39354826.46
@@ -2226,7 +2226,7 @@ por_orgao:
         valor: 31456663.46
       - municipio: Valparaiso de Goias
         uf: GO
-        valor: 30427029.23
+        valor: 31198315.53
       - municipio: Santana
         uf: AP
         valor: 23692154.36
@@ -2235,10 +2235,10 @@ por_orgao:
         valor: 21515988.5
       - municipio: Sao Leopoldo
         uf: RS
-        valor: 21110864.27
+        valor: 21214721.41
       - municipio: Olinda
         uf: PE
-        valor: 19977778.42
+        valor: 20937797.42
       - municipio: Juiz de Fora
         uf: MG
         valor: 19685386.26
@@ -2435,8 +2435,8 @@ por_orgao:
       top_municipios: []
   br-ministerio-do-desenvolvimento-agrario:
     '2026':
-      total: 14859149.2
-      municipios_atendidos: 11
+      total: 15359149.2
+      municipios_atendidos: 12
       top_ufs:
       - uf: AC
         valor: 2945137.0
@@ -2455,6 +2455,9 @@ por_orgao:
       - uf: PR
         valor: 791500.0
       top_municipios:
+      - municipio: Itupiranga
+        uf: PA
+        valor: 500000.0
       - municipio: Porto Acre
         uf: AC
         valor: 477500.0
@@ -2617,7 +2620,7 @@ por_orgao:
         valor: 477500.0
   br-ministerio-do-desenvolvimento-social:
     '2026':
-      total: 4195902607.86
+      total: 4198211107.86
       municipios_atendidos: 5567
       top_ufs:
       - uf: SP
@@ -2631,9 +2634,9 @@ por_orgao:
       - uf: PI
         valor: 271817153.36
       - uf: PR
-        valor: 244065282.21
+        valor: 244085282.21
       - uf: RS
-        valor: 227626991.59
+        valor: 227685391.59
       - uf: PB
         valor: 215593783.03
       top_municipios:
@@ -2732,7 +2735,7 @@ por_orgao:
         valor: 19192751.59
   br-ministerio-do-empreendedorismo:
     '2026':
-      total: 11989616.04
+      total: 13189616.04
       municipios_atendidos: 24
       top_ufs:
       - uf: SP
@@ -2741,6 +2744,8 @@ por_orgao:
         valor: 2245657.92
       - uf: GO
         valor: 1490540.36
+      - uf: ES
+        valor: 1200000.0
       - uf: PB
         valor: 856401.2
       - uf: CE
@@ -2837,25 +2842,25 @@ por_orgao:
         valor: 500000.0
   br-ministerio-do-esporte:
     '2026':
-      total: 476949937.18
-      municipios_atendidos: 491
+      total: 504738814.6
+      municipios_atendidos: 509
       top_ufs:
       - uf: MA
-        valor: 75436687.54
+        valor: 79626087.54
       - uf: PI
-        valor: 67887606.58
+        valor: 69581527.58
       - uf: SP
-        valor: 37241274.7
+        valor: 40509713.04
+      - uf: MG
+        valor: 30036439.84
+      - uf: BA
+        valor: 27470845.61
       - uf: PR
         valor: 27189129.36
-      - uf: BA
-        valor: 26106345.61
       - uf: AL
-        valor: 24665243.66
-      - uf: MG
-        valor: 24634992.76
+        valor: 26871143.81
       - uf: CE
-        valor: 23671164.63
+        valor: 26011164.63
       top_municipios:
       - municipio: Traipu
         uf: AL
@@ -2875,24 +2880,24 @@ por_orgao:
       - municipio: Recife
         uf: PE
         valor: 3219569.22
+      - municipio: Queimados
+        uf: RJ
+        valor: 3086651.0
       - municipio: Laranjal do Jari
         uf: AP
         valor: 3024916.37
       - municipio: Cipo
         uf: BA
         valor: 2895000.0
+      - municipio: Rio Preto da Eva
+        uf: AM
+        valor: 2866250.0
       - municipio: Santa Isabel
         uf: SP
         valor: 2865000.0
       - municipio: Nova Russas
         uf: CE
         valor: 2865000.0
-      - municipio: Corrente
-        uf: PI
-        valor: 2621800.0
-      - municipio: Timon
-        uf: MA
-        valor: 2460031.8
     '2025':
       total: 525778430.99
       municipios_atendidos: 547
@@ -2952,7 +2957,7 @@ por_orgao:
         valor: 2417500.0
   br-ministerio-do-meio-ambiente-e-mudanca-do-clima:
     '2026':
-      total: 9677085.12
+      total: 9877085.12
       municipios_atendidos: 27
       top_ufs:
       - uf: PA
@@ -3067,8 +3072,8 @@ por_orgao:
         valor: 191000.0
   br-ministerio-do-trabalho-e-emprego:
     '2026':
-      total: 1715094.34
-      municipios_atendidos: 9
+      total: 1758490.57
+      municipios_atendidos: 10
       top_ufs:
       - uf: ES
         valor: 500000.0
@@ -3114,6 +3119,9 @@ por_orgao:
       - municipio: Santo Andre
         uf: SP
         valor: 43396.23
+      - municipio: Contagem
+        uf: MG
+        valor: 43396.23
     '2025':
       total: 307692.28
       municipios_atendidos: 0
@@ -3129,19 +3137,19 @@ por_orgao:
       top_municipios: []
   br-ministerio-do-turismo:
     '2026':
-      total: 532742486.57
-      municipios_atendidos: 551
+      total: 541505398.75
+      municipios_atendidos: 559
       top_ufs:
       - uf: SP
-        valor: 60558335.15
+        valor: 61772349.33
+      - uf: PB
+        valor: 51729760.19
       - uf: MA
-        valor: 50114147.9
+        valor: 51088806.9
       - uf: CE
         valor: 50077316.75
-      - uf: PB
-        valor: 48961760.19
       - uf: PE
-        valor: 37240254.38
+        valor: 37540254.38
       - uf: BA
         valor: 35682715.4
       - uf: RS
@@ -3244,25 +3252,25 @@ por_orgao:
         valor: 3553002.35
   br-ministerio-dos-direitos-humanos-e-da-cidadania:
     '2026':
-      total: 42714534.08
+      total: 53055800.21
       municipios_atendidos: 5
       top_ufs:
       - uf: MG
         valor: 6431378.31
-      - uf: PE
-        valor: 4523700.18
       - uf: BA
-        valor: 3882997.25
+        valor: 5113774.15
+      - uf: PE
+        valor: 5039406.62
       - uf: CE
-        valor: 3368850.41
+        valor: 5015477.47
+      - uf: PB
+        valor: 3825643.35
+      - uf: RJ
+        valor: 3575437.78
       - uf: SP
         valor: 2782918.91
       - uf: PA
         valor: 2775249.21
-      - uf: MA
-        valor: 2717454.3
-      - uf: AC
-        valor: 2291122.67
       top_municipios:
       - municipio: Belo Horizonte
         uf: MG
@@ -3443,13 +3451,13 @@ por_orgao:
         valor: 27625.87
   br-sudeco:
     '2026':
-      total: 71124329.49
-      municipios_atendidos: 24
+      total: 72863449.34
+      municipios_atendidos: 25
       top_ufs:
       - uf: MT
         valor: 59014598.7
       - uf: MS
-        valor: 11365165.64
+        valor: 13104285.49
       - uf: GO
         valor: 663436.36
       - uf: DF
@@ -3464,6 +3472,9 @@ por_orgao:
       - municipio: Tres Lagoas
         uf: MS
         valor: 1535004.96
+      - municipio: Novo Horizonte do Sul
+        uf: MS
+        valor: 1501481.75
       - municipio: Bonito
         uf: MS
         valor: 1432677.6
@@ -3476,6 +3487,9 @@ por_orgao:
       - municipio: Inocencia
         uf: MS
         valor: 848134.95
+      - municipio: Aral Moreira
+        uf: MS
+        valor: 837638.1
       - municipio: Corumba
         uf: MS
         valor: 774515.5
@@ -3485,12 +3499,6 @@ por_orgao:
       - municipio: Coxim
         uf: MS
         valor: 700000.0
-      - municipio: Aguas Lindas de Goias
-        uf: GO
-        valor: 663436.36
-      - municipio: Eldorado
-        uf: MS
-        valor: 654506.4
     '2025':
       total: 97366609.54
       municipios_atendidos: 38
@@ -3540,11 +3548,11 @@ por_orgao:
         valor: 731683.9
   br-sudene:
     '2026':
-      total: 3683893.37
-      municipios_atendidos: 7
+      total: 3734805.9
+      municipios_atendidos: 8
       top_ufs:
       - uf: PE
-        valor: 3683893.37
+        valor: 3734805.9
       top_municipios:
       - municipio: Serra Talhada
         uf: PE
@@ -3567,6 +3575,9 @@ por_orgao:
       - municipio: Caruaru
         uf: PE
         valor: 153556.77
+      - municipio: Alianca
+        uf: PE
+        valor: 50912.53
     '2025':
       total: 16222926.85
       municipios_atendidos: 33
@@ -3617,14 +3628,14 @@ por_orgao:
 por_uf:
   RJ:
     '2026':
-      total: 62820656056.33
+      total: 63475334317.97
       por_tipo:
         Constitucionais e Royalties: 49670043103.76
-        Legais, Voluntárias e Específicas: 13150612952.57
-      a_estado: 28041285024.54
-      a_municipios: 34779371031.79
+        Legais, Voluntárias e Específicas: 13805291214.21
+      a_estado: 28121338298.09
+      a_municipios: 35353996019.88
       populacao: 17225410
-      por_habitante: 3646.98
+      por_habitante: 3684.98
     '2025':
       total: 72045033294.36
       por_tipo:
@@ -3636,14 +3647,14 @@ por_uf:
       por_habitante: 4182.49
   SP:
     '2026':
-      total: 58572757772.08
+      total: 59801522751.03
       por_tipo:
         Constitucionais e Royalties: 30464931188.78
-        Legais, Voluntárias e Específicas: 28107826583.3
-      a_estado: 15881655749.69
-      a_municipios: 42691102022.39
+        Legais, Voluntárias e Específicas: 29336591562.25
+      a_estado: 16334420883.24
+      a_municipios: 43467101867.79
       populacao: 46179008
-      por_habitante: 1268.38
+      por_habitante: 1294.99
     '2025':
       total: 69771090149.14
       por_tipo:
@@ -3655,14 +3666,14 @@ por_uf:
       por_habitante: 1510.88
   BA:
     '2026':
-      total: 57399629872.81
+      total: 58142584993.65
       por_tipo:
         Constitucionais e Royalties: 42324338367.43
-        Legais, Voluntárias e Específicas: 15075291505.38
-      a_estado: 19416300512.72
-      a_municipios: 37983329360.09
+        Legais, Voluntárias e Específicas: 15818246626.22
+      a_estado: 19701492841.69
+      a_municipios: 38441092151.96
       populacao: 14889472
-      por_habitante: 3855.05
+      por_habitante: 3904.95
     '2025':
       total: 68013661787.65
       por_tipo:
@@ -3674,14 +3685,14 @@ por_uf:
       por_habitante: 4567.9
   MG:
     '2026':
-      total: 54800985527.86
+      total: 55800349236.21
       por_tipo:
         Constitucionais e Royalties: 35030706854.68
-        Legais, Voluntárias e Específicas: 19770278673.18
-      a_estado: 11740800481.67
-      a_municipios: 43060185046.19
+        Legais, Voluntárias e Específicas: 20769642381.53
+      a_estado: 11767408292.42
+      a_municipios: 44032940943.79
       populacao: 21460311
-      por_habitante: 2553.6
+      por_habitante: 2600.16
     '2025':
       total: 66402859150.3
       por_tipo:
@@ -3693,14 +3704,14 @@ por_uf:
       por_habitante: 3094.22
   CE:
     '2026':
-      total: 38952793364.33
+      total: 39400026668.6
       por_tipo:
         Constitucionais e Royalties: 28561363241.81
-        Legais, Voluntárias e Específicas: 10391430122.52
-      a_estado: 13714384469.89
-      a_municipios: 25238408894.44
+        Legais, Voluntárias e Específicas: 10838663426.79
+      a_estado: 13821624573.81
+      a_municipios: 25578402094.79
       populacao: 9302211
-      por_habitante: 4187.48
+      por_habitante: 4235.56
     '2025':
       total: 46200644732.44
       por_tipo:
@@ -3712,14 +3723,14 @@ por_uf:
       por_habitante: 4966.63
   MA:
     '2026':
-      total: 35897891006.82
+      total: 36247755968.38
       por_tipo:
         Constitucionais e Royalties: 27529742911.01
-        Legais, Voluntárias e Específicas: 8368148095.81
-      a_estado: 13066422864.35
-      a_municipios: 22831468142.47
+        Legais, Voluntárias e Específicas: 8718013057.37
+      a_estado: 13144012360.69
+      a_municipios: 23103743607.69
       populacao: 7024557
-      por_habitante: 5110.34
+      por_habitante: 5160.15
     '2025':
       total: 44001680052.92
       por_tipo:
@@ -3731,14 +3742,14 @@ por_uf:
       por_habitante: 6263.98
   PA:
     '2026':
-      total: 34898397079.22
+      total: 35307107297.04
       por_tipo:
         Constitucionais e Royalties: 26697543993.71
-        Legais, Voluntárias e Específicas: 8200853085.51
-      a_estado: 12873150843.46
-      a_municipios: 22025246235.76
+        Legais, Voluntárias e Específicas: 8609563303.33
+      a_estado: 12983381373.0
+      a_municipios: 22323725924.04
       populacao: 8756324
-      por_habitante: 3985.51
+      por_habitante: 4032.18
     '2025':
       total: 42289231441.87
       por_tipo:
@@ -3750,14 +3761,14 @@ por_uf:
       por_habitante: 4829.56
   PE:
     '2026':
-      total: 32640967101.74
+      total: 33186882865.93
       por_tipo:
         Constitucionais e Royalties: 23211604740.63
-        Legais, Voluntárias e Específicas: 9429362361.11
-      a_estado: 14059983549.57
-      a_municipios: 18580983552.17
+        Legais, Voluntárias e Específicas: 9975278125.3
+      a_estado: 14331794977.88
+      a_municipios: 18855087888.05
       populacao: 9583176
-      por_habitante: 3406.07
+      por_habitante: 3463.04
     '2025':
       total: 39416366480.0
       por_tipo:
@@ -3769,14 +3780,14 @@ por_uf:
       por_habitante: 4113.08
   PR:
     '2026':
-      total: 28559473600.17
+      total: 29018748525.19
       por_tipo:
         Constitucionais e Royalties: 18860524834.73
-        Legais, Voluntárias e Específicas: 9698948765.44
-      a_estado: 8990394715.77
-      a_municipios: 19569078884.4
+        Legais, Voluntárias e Específicas: 10158223690.46
+      a_estado: 9148775867.78
+      a_municipios: 19869972657.41
       populacao: 11952456
-      por_habitante: 2389.42
+      por_habitante: 2427.85
     '2025':
       total: 35494399668.34
       por_tipo:
@@ -3788,14 +3799,14 @@ por_uf:
       por_habitante: 2969.63
   RS:
     '2026':
-      total: 25615648457.75
+      total: 26119867434.21
       por_tipo:
         Constitucionais e Royalties: 16104201965.78
-        Legais, Voluntárias e Específicas: 9511446491.97
-      a_estado: 6634413992.48
-      a_municipios: 18981234465.27
+        Legais, Voluntárias e Específicas: 10015665468.43
+      a_estado: 6745006416.15
+      a_municipios: 19374861018.06
       populacao: 11233317
-      por_habitante: 2280.33
+      por_habitante: 2325.21
     '2025':
       total: 31479462212.72
       por_tipo:
@@ -3807,14 +3818,14 @@ por_uf:
       por_habitante: 2802.33
   PI:
     '2026':
-      total: 21037030611.87
+      total: 21346582564.46
       por_tipo:
         Constitucionais e Royalties: 15407528821.18
-        Legais, Voluntárias e Específicas: 5629501790.69
-      a_estado: 8992452688.64
-      a_municipios: 12044577923.23
+        Legais, Voluntárias e Específicas: 5939053743.28
+      a_estado: 9177138216.73
+      a_municipios: 12169444347.73
       populacao: 3392617
-      por_habitante: 6200.83
+      por_habitante: 6292.07
     '2025':
       total: 23999178612.82
       por_tipo:
@@ -3826,14 +3837,14 @@ por_uf:
       por_habitante: 7073.94
   PB:
     '2026':
-      total: 20494040706.98
+      total: 20692270873.12
       por_tipo:
         Constitucionais e Royalties: 15025156799.22
-        Legais, Voluntárias e Específicas: 5468883907.76
-      a_estado: 8185729427.8
-      a_municipios: 12308311279.18
+        Legais, Voluntárias e Específicas: 5667114073.9
+      a_estado: 8219939545.91
+      a_municipios: 12472331327.21
       populacao: 4182828
-      por_habitante: 4899.57
+      por_habitante: 4946.96
     '2025':
       total: 24638356598.89
       por_tipo:
@@ -3845,14 +3856,14 @@ por_uf:
       por_habitante: 5890.36
   GO:
     '2026':
-      total: 18753678491.49
+      total: 18996304445.45
       por_tipo:
         Constitucionais e Royalties: 12573561118.67
-        Legais, Voluntárias e Específicas: 6180117372.82
-      a_estado: 6368997325.48
-      a_municipios: 12384681166.01
+        Legais, Voluntárias e Específicas: 6422743326.78
+      a_estado: 6403382553.88
+      a_municipios: 12592921891.57
       populacao: 7495033
-      por_habitante: 2502.15
+      por_habitante: 2534.52
     '2025':
       total: 22334003789.56
       por_tipo:
@@ -3864,14 +3875,14 @@ por_uf:
       por_habitante: 2979.84
   AL:
     '2026':
-      total: 18078916445.18
+      total: 18220674266.77
       por_tipo:
         Constitucionais e Royalties: 13571118432.59
-        Legais, Voluntárias e Específicas: 4507798012.59
-      a_estado: 7405815076.73
-      a_municipios: 10673101368.45
+        Legais, Voluntárias e Específicas: 4649555834.18
+      a_estado: 7435814900.77
+      a_municipios: 10784859366.0
       populacao: 3221128
-      por_habitante: 5612.6
+      por_habitante: 5656.61
     '2025':
       total: 22665717068.12
       por_tipo:
@@ -3883,14 +3894,14 @@ por_uf:
       por_habitante: 7036.58
   AM:
     '2026':
-      total: 17057269964.1
+      total: 17250570400.32
       por_tipo:
         Constitucionais e Royalties: 12079851710.52
-        Legais, Voluntárias e Específicas: 4977418253.58
-      a_estado: 7565183264.58
-      a_municipios: 9492086699.52
+        Legais, Voluntárias e Específicas: 5170718689.8
+      a_estado: 7632607414.35
+      a_municipios: 9617962985.97
       populacao: 4360926
-      por_habitante: 3911.39
+      por_habitante: 3955.71
     '2025':
       total: 20367844096.34
       por_tipo:
@@ -3900,35 +3911,16 @@ por_uf:
       a_municipios: 11156496923.25
       populacao: 4360926
       por_habitante: 4670.53
-  RN:
-    '2026':
-      total: 16207626820.52
-      por_tipo:
-        Constitucionais e Royalties: 11936586038.47
-        Legais, Voluntárias e Específicas: 4271040782.05
-      a_estado: 7360055200.04
-      a_municipios: 8847571620.48
-      populacao: 3463737
-      por_habitante: 4679.23
-    '2025':
-      total: 19982872483.7
-      por_tipo:
-        Constitucionais e Royalties: 15122830020.09
-        Legais, Voluntárias e Específicas: 4860042463.61
-      a_estado: 9486890720.08
-      a_municipios: 10495981763.62
-      populacao: 3463737
-      por_habitante: 5769.17
   SC:
     '2026':
-      total: 16184378070.16
+      total: 16481569999.83
       por_tipo:
         Constitucionais e Royalties: 9833735197.89
-        Legais, Voluntárias e Específicas: 6350642872.27
-      a_estado: 4703324377.97
-      a_municipios: 11481053692.19
+        Legais, Voluntárias e Específicas: 6647834801.94
+      a_estado: 4829261061.04
+      a_municipios: 11652308938.79
       populacao: 8312759
-      por_habitante: 1946.93
+      por_habitante: 1982.68
     '2025':
       total: 20090855578.98
       por_tipo:
@@ -3938,16 +3930,35 @@ por_uf:
       a_municipios: 13949043294.67
       populacao: 8312759
       por_habitante: 2416.87
+  RN:
+    '2026':
+      total: 16356250985.74
+      por_tipo:
+        Constitucionais e Royalties: 11936586038.47
+        Legais, Voluntárias e Específicas: 4419664947.27
+      a_estado: 7408325897.76
+      a_municipios: 8947925087.98
+      populacao: 3463737
+      por_habitante: 4722.14
+    '2025':
+      total: 19982872483.7
+      por_tipo:
+        Constitucionais e Royalties: 15122830020.09
+        Legais, Voluntárias e Específicas: 4860042463.61
+      a_estado: 9486890720.08
+      a_municipios: 10495981763.62
+      populacao: 3463737
+      por_habitante: 5769.17
   ES:
     '2026':
-      total: 13375618866.08
+      total: 13527597229.58
       por_tipo:
         Constitucionais e Royalties: 9643013024.22
-        Legais, Voluntárias e Específicas: 3732605841.86
-      a_estado: 6134338277.85
-      a_municipios: 7241280588.23
+        Legais, Voluntárias e Específicas: 3884584205.36
+      a_estado: 6212519498.45
+      a_municipios: 7315077731.13
       populacao: 4150692
-      por_habitante: 3222.5
+      por_habitante: 3259.12
     '2025':
       total: 14711634500.99
       por_tipo:
@@ -3959,14 +3970,14 @@ por_uf:
       por_habitante: 3544.38
   SE:
     '2026':
-      total: 12829168316.35
+      total: 12929231100.49
       por_tipo:
         Constitucionais e Royalties: 10177479761.54
-        Legais, Voluntárias e Específicas: 2651688554.81
-      a_estado: 6906195567.3
-      a_municipios: 5922972749.05
+        Legais, Voluntárias e Específicas: 2751751338.95
+      a_estado: 6955552651.0
+      a_municipios: 5973678449.49
       populacao: 2307255
-      por_habitante: 5560.36
+      por_habitante: 5603.73
     '2025':
       total: 15870079017.23
       por_tipo:
@@ -3978,14 +3989,14 @@ por_uf:
       por_habitante: 6878.34
   TO:
     '2026':
-      total: 11354819320.05
+      total: 11446088999.28
       por_tipo:
         Constitucionais e Royalties: 8852237232.73
-        Legais, Voluntárias e Específicas: 2502582087.32
-      a_estado: 6347580956.93
-      a_municipios: 5007238363.12
+        Legais, Voluntárias e Específicas: 2593851766.55
+      a_estado: 6388144060.19
+      a_municipios: 5057944939.09
       populacao: 1595994
-      por_habitante: 7114.58
+      por_habitante: 7171.76
     '2025':
       total: 14118719271.18
       por_tipo:
@@ -3997,14 +4008,14 @@ por_uf:
       por_habitante: 8846.35
   MT:
     '2026':
-      total: 10578627097.15
+      total: 10702621379.59
       por_tipo:
         Constitucionais e Royalties: 7202278012.47
-        Legais, Voluntárias e Específicas: 3376349084.68
-      a_estado: 4385748363.18
-      a_municipios: 6192878733.97
+        Legais, Voluntárias e Específicas: 3500343367.12
+      a_estado: 4416631294.12
+      a_municipios: 6285990085.47
       populacao: 3950330
-      por_habitante: 2677.91
+      por_habitante: 2709.3
     '2025':
       total: 13330128915.11
       por_tipo:
@@ -4016,14 +4027,14 @@ por_uf:
       por_habitante: 3374.43
   AC:
     '2026':
-      total: 8624936893.48
+      total: 8692627275.91
       por_tipo:
         Constitucionais e Royalties: 7252138579.16
-        Legais, Voluntárias e Específicas: 1372798314.32
-      a_estado: 6381390604.43
-      a_municipios: 2243546289.05
+        Legais, Voluntárias e Específicas: 1440488696.75
+      a_estado: 6413873932.72
+      a_municipios: 2278753343.19
       populacao: 887794
-      por_habitante: 9715.02
+      por_habitante: 9791.27
     '2025':
       total: 10955488314.45
       por_tipo:
@@ -4035,14 +4046,14 @@ por_uf:
       por_habitante: 12340.12
   AP:
     '2026':
-      total: 8534010939.65
+      total: 8652355437.71
       por_tipo:
         Constitucionais e Royalties: 6518736123.33
-        Legais, Voluntárias e Específicas: 2015274816.32
-      a_estado: 6341874241.23
-      a_municipios: 2192136698.42
+        Legais, Voluntárias e Específicas: 2133619314.38
+      a_estado: 6408371108.47
+      a_municipios: 2243984329.24
       populacao: 809953
-      por_habitante: 10536.43
+      por_habitante: 10682.54
     '2025':
       total: 9856742679.44
       por_tipo:
@@ -4054,14 +4065,14 @@ por_uf:
       por_habitante: 12169.52
   RO:
     '2026':
-      total: 8497106912.64
+      total: 8568948322.12
       por_tipo:
         Constitucionais e Royalties: 6508850919.66
-        Legais, Voluntárias e Específicas: 1988255992.98
-      a_estado: 5010664782.62
-      a_municipios: 3486442130.02
+        Legais, Voluntárias e Específicas: 2060097402.46
+      a_estado: 5039819628.3
+      a_municipios: 3529128693.82
       populacao: 1757338
-      por_habitante: 4835.21
+      por_habitante: 4876.1
     '2025':
       total: 10468683986.03
       por_tipo:
@@ -4073,14 +4084,14 @@ por_uf:
       por_habitante: 5957.13
   MS:
     '2026':
-      total: 8345838284.47
+      total: 8454592479.32
       por_tipo:
         Constitucionais e Royalties: 5452177423.59
-        Legais, Voluntárias e Específicas: 2893660860.88
-      a_estado: 3093670025.11
-      a_municipios: 5252168259.36
+        Legais, Voluntárias e Específicas: 3002415055.73
+      a_estado: 3113394249.62
+      a_municipios: 5341198229.7
       populacao: 2946317
-      por_habitante: 2832.63
+      por_habitante: 2869.55
     '2025':
       total: 10505307012.3
       por_tipo:
@@ -4092,14 +4103,14 @@ por_uf:
       por_habitante: 3565.57
   RR:
     '2026':
-      total: 7069499460.28
+      total: 7120551528.96
       por_tipo:
         Constitucionais e Royalties: 5862138308.22
-        Legais, Voluntárias e Específicas: 1207361152.06
-      a_estado: 4933732252.11
-      a_municipios: 2135767208.17
+        Legais, Voluntárias e Específicas: 1258413220.74
+      a_estado: 4965033572.16
+      a_municipios: 2155517956.8
       populacao: 761012
-      por_habitante: 9289.6
+      por_habitante: 9356.69
     '2025':
       total: 8866510415.54
       por_tipo:
@@ -4111,14 +4122,14 @@ por_uf:
       por_habitante: 11650.95
   DF:
     '2026':
-      total: 3224218154.67
+      total: 3294447748.63
       por_tipo:
         Constitucionais e Royalties: 1469525367.52
-        Legais, Voluntárias e Específicas: 1754692787.15
-      a_estado: 3146339040.59
-      a_municipios: 77879114.08
+        Legais, Voluntárias e Específicas: 1824922381.11
+      a_estado: 3206475356.92
+      a_municipios: 87972391.71
       populacao: 3009996
-      por_habitante: 1071.17
+      por_habitante: 1094.5
     '2025':
       total: 3716356185.2
       por_tipo:
@@ -4142,14 +4153,14 @@ resumo:
     valor: 748010827.78
   - codigo: '62901'
     nome: Fundo Nacional de Aviação Civil
-    valor: 74807269.7
+    valor: 80991687.06
   - codigo: '38901'
     nome: Fundo de Amparo ao Trabalhador
-    valor: 21262531.08
+    valor: 24721367.76
   total_por_ano:
     '2026':
-      total: 650405985194.23
-      com_orgao: 192584871120.92
+      total: 659233465095.49
+      com_orgao: 201412351022.19
       sem_orgao:
         Constitucionais e Royalties: 457821114073.32
       meses:
@@ -4188,85 +4199,85 @@ resumo:
   maiores_municipios:
   - municipio: Rio de Janeiro
     uf: RJ
-    valor: 5020790247.09
+    valor: 5253799526.58
   - municipio: Sao Paulo
     uf: SP
-    valor: 4663339367.36
+    valor: 4804452652.27
   - municipio: Fortaleza
     uf: CE
-    valor: 4255560322.35
-  - municipio: Marica
-    uf: RJ
-    valor: 3816362316.89
+    valor: 4376139021.89
   - municipio: Belo Horizonte
     uf: MG
-    valor: 3712826381.87
+    valor: 3901274397.04
+  - municipio: Marica
+    uf: RJ
+    valor: 3818727617.36
   - municipio: Salvador
     uf: BA
-    valor: 2897949537.25
+    valor: 2971608614.8
   - municipio: Saquarema
     uf: RJ
-    valor: 2309407484.48
+    valor: 2311158205.72
   - municipio: Manaus
     uf: AM
-    valor: 2152980265.29
-  - municipio: Niteroi
-    uf: RJ
-    valor: 2087029945.09
+    valor: 2166026747.06
   - municipio: Curitiba
     uf: PR
-    valor: 2044544095.0
+    valor: 2135246049.61
+  - municipio: Niteroi
+    uf: RJ
+    valor: 2103849024.46
   - municipio: Recife
     uf: PE
-    valor: 1974948019.06
+    valor: 2029040013.4
   - municipio: Teresina
     uf: PI
-    valor: 1813136189.17
+    valor: 1848541715.28
   - municipio: Sao Luis
     uf: MA
-    valor: 1764620677.54
+    valor: 1802242142.97
   - municipio: Porto Alegre
     uf: RS
-    valor: 1679290882.17
+    valor: 1757949815.09
   - municipio: Goiania
     uf: GO
-    valor: 1615150224.44
+    valor: 1674836317.85
   - municipio: Belem
     uf: PA
-    valor: 1600225206.78
+    valor: 1643975529.8
   - municipio: Joao Pessoa
     uf: PB
-    valor: 1573296632.47
+    valor: 1599703729.18
   - municipio: Maceio
     uf: AL
-    valor: 1561792504.44
+    valor: 1596716864.65
   - municipio: Macae
     uf: RJ
-    valor: 1539870767.97
+    valor: 1545292275.25
   - municipio: Boa Vista
     uf: RR
-    valor: 1320382683.68
+    valor: 1331081427.45
   maiores_por_habitante:
   - uf: AP
-    por_habitante: 10536.43
+    por_habitante: 10682.54
   - uf: AC
-    por_habitante: 9715.02
+    por_habitante: 9791.27
   - uf: RR
-    por_habitante: 9289.6
+    por_habitante: 9356.69
   - uf: TO
-    por_habitante: 7114.58
+    por_habitante: 7171.76
   - uf: PI
-    por_habitante: 6200.83
+    por_habitante: 6292.07
   - uf: AL
-    por_habitante: 5612.6
+    por_habitante: 5656.61
   - uf: SE
-    por_habitante: 5560.36
+    por_habitante: 5603.73
   - uf: MA
-    por_habitante: 5110.34
+    por_habitante: 5160.15
   - uf: PB
-    por_habitante: 4899.57
+    por_habitante: 4946.96
   - uf: RO
-    por_habitante: 4835.21
+    por_habitante: 4876.1
   amostra: false
   criterio: modalidade de aplicação 30/31/32/35/36 (Estados e DF) e 40/41/42/45/46 (Municípios); nas constitucionais, sem
     modalidade, usa-se o tipo de favorecido
