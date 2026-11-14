@@ -1,6 +1,6 @@
 # GERADO por etl/comissoes.py. Não edite à mão.
 generated_from: legis.senado.leg.br/dadosabertos + dadosabertos.camara.leg.br
-generated_at: '2026-11-13'
+generated_at: '2026-11-14'
 pessoas_reaproveitadas: 67
 ids_corrigidos:
   br-p-cd-353: br-p-cd-73788 (Ricardo Barros)
@@ -346,11 +346,11 @@ nodes:
       - Comissão de Administração e Serviço Público
     description: 'Comissão permanente da Câmara dos Deputados (CASP). Discute e vota as proposições da sua área
       temática, podendo aprová-las em caráter conclusivo sem passar pelo Plenário, e fiscaliza os atos do Executivo
-      no seu campo. Composição atual: 11 titulares.'
+      no seu campo. Composição atual: 12 titulares.'
     cite: CF/88 art. 58; RICD arts. 22 e 32
     cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
     official_url: https://www.camara.leg.br/comissoes/casp
-    seats_count: 11
+    seats_count: 12
     verified: true
   - id: br-comissao-de-constituicao-e-justica-e-de-cidadania-da-camara
     _merge_only: true
@@ -6835,6 +6835,16 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220656
+    - id: br-p-cd-160510
+      name: Luis Tibé
+      party: AVANTE
+      uf: MG
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/160510.jpg
+      role: Titular
+      started_at: '2026-11-13'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/160510
     - id: br-p-cd-204407
       name: Fernanda Melchionna
       party: PSOL
