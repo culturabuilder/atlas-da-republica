@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-14'
+generated_at: '2026-11-15'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-17'
+janela_inicio: '2026-08-18'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,13 +11,13 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 197
+    compromissos_90d: 193
     dias_com_agenda: 53
     por_tipo:
-      evento: 63
-      viagem: 58
+      evento: 62
       audiencia: 53
-      reuniao: 18
+      viagem: 52
+      reuniao: 21
       outro: 5
     entidades_top:
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República)
@@ -44,11 +44,9 @@ people:
     - nome: Palácio da Alvorada
       n: 35
     - nome: Base Aérea de Brasília
-      n: 24
+      n: 22
     - nome: Esplanada dos Ministérios, Brasília
       n: 5
-    - nome: Aeroporto Internacional de Macapá
-      n: 4
     - nome: Centro Industrial Nuclear de Aramar, Iperó (SP)
       n: 3
     - nome: Av. Gerassina Tavares – Jardim Veneza, São José do Rio Preto (SP)
@@ -59,8 +57,46 @@ people:
       n: 3
     - nome: Plenária Anadolu, Centro de Exposições de Antália
       n: 3
-    ultimo: '2026-11-14'
+    - nome: Centro de Convenções Internacional das Filipinas
+      n: 3
+    ultimo: '2026-11-15'
     recentes:
+    - data: '2026-11-15'
+      hora: '22:45'
+      titulo: Chegada a Madri
+      tipo: viagem
+      local: Aeroporto Internacional de Madri
+      participantes: []
+    - data: '2026-11-15'
+      hora: '14:00'
+      titulo: Partida para Madri
+      tipo: viagem
+      local: Base Aérea Villamo
+      participantes: []
+    - data: '2026-11-15'
+      hora: '11:45'
+      titulo: Encontro bilateral com o Primeiro-Ministro de Singapura, Lawrence Wong
+      tipo: reuniao
+      local: Centro de Convenções Internacional das Filipinas
+      participantes: []
+    - data: '2026-11-15'
+      hora: '11:00'
+      titulo: Encontro bilateral com o Primeiro-Ministro do Canadá, Mark Carney
+      tipo: reuniao
+      local: Centro de Convenções Internacional das Filipinas
+      participantes: []
+    - data: '2026-11-15'
+      hora: '10:15'
+      titulo: Reunião plenária da 49ª Cúpula da ASEAN
+      tipo: reuniao
+      local: Centro de Convenções Internacional das Filipinas, Auditório 2
+      participantes: []
+    - data: '2026-11-15'
+      hora: 09:00
+      titulo: Cerimônia de abertura da 49ª Cúpula da Associação de Nações do Sudeste Asiático (ASEAN)
+      tipo: evento
+      local: Centro de Convenções Internacional das Filipinas
+      participantes: []
     - data: '2026-11-14'
       hora: '18:30'
       titulo: Encerramento do Foro Empresarial Brasil-Filipinas
@@ -74,75 +110,8 @@ people:
       tipo: audiencia
       local: Resort Solaire, vila presidencial
       participantes: []
-    - data: '2026-11-14'
-      hora: '14:00'
-      titulo: Almoço de Estado
-      tipo: reuniao
-      local: Restaurante Amorsolo, Centro de Convenções Internacional das Filipinas
-      participantes: []
-    - data: '2026-11-14'
-      hora: '13:45'
-      titulo: Declaração conjunta à imprensa
-      tipo: evento
-      local: Sala de Conferências 5, Prédio dos Delegados, PICC
-      participantes: []
-    - data: '2026-11-14'
-      hora: '12:45'
-      titulo: Reunião ampliada
-      tipo: reuniao
-      local: Sala de Conferências 5, Prédio dos Delegados, PICC
-      participantes: []
-    - data: '2026-11-14'
-      hora: '12:15'
-      titulo: Reunião restrita
-      tipo: reuniao
-      local: Escritório privado, Sala de Conferências 5, Prédio dos Delegados, PICC
-      participantes: []
-    - data: '2026-11-14'
-      hora: '12:00'
-      titulo: Cerimônia de boas-vindas
-      tipo: evento
-      local: Centro de Convenções Internacional das Filipinas – PICC
-      participantes: []
-    - data: '2026-11-13'
-      hora: '13:00'
-      titulo: Chegada a Manila
-      tipo: viagem
-      local: Terminal Maharlika, Base Aérea Villamor
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-08-17:
-      - hora: 08:00
-        titulo: Partida para Macapá
-        local: Base Aérea de Brasília
-      - hora: '10:30'
-        titulo: Chegada a Macapá
-        local: Aeroporto Internacional de Macapá
-      - hora: '10:50'
-        titulo: Partida para Oiapoque
-        local: Aeroporto Internacional de Macapá
-      - hora: '11:30'
-        titulo: Chegada a Oiapoque (AP)
-        local: Aeroporto de Oiapoque
-      - hora: '13:00'
-        titulo: Visita ao navio-sonda da Petrobras
-        local: Bloco FZA-M-59, na Margem Equatorial
-      - hora: '15:00'
-        titulo: Intervenções sobre a visita ao navio-sonda da Petrobrás
-        local: Aeroporto de Oiapoque (AP)
-      - hora: '16:20'
-        titulo: Partida para Macapá
-        local: Aeroporto de Oiapoque (AP)
-      - hora: '17:00'
-        titulo: Chegada a Macapá
-        local: Aeroporto Internacional de Macapá
-      - hora: '17:20'
-        titulo: Partida para Brasília
-        local: Aeroporto Internacional de Macapá
-      - hora: '19:50'
-        titulo: Chegada a Brasília
-        local: Base Aérea de Brasília
       presidente/2026-08-18:
       - hora: 09:30
         titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
@@ -815,6 +784,25 @@ people:
       - hora: '18:30'
         titulo: Encerramento do Foro Empresarial Brasil-Filipinas
         local: Resort Solaire, Forum 1ABC
+      presidente/2026-11-15:
+      - hora: 09:00
+        titulo: Cerimônia de abertura da 49ª Cúpula da Associação de Nações do Sudeste Asiático (ASEAN)
+        local: Centro de Convenções Internacional das Filipinas
+      - hora: '10:15'
+        titulo: Reunião plenária da 49ª Cúpula da ASEAN
+        local: Centro de Convenções Internacional das Filipinas, Auditório 2
+      - hora: '11:00'
+        titulo: Encontro bilateral com o Primeiro-Ministro do Canadá, Mark Carney
+        local: Centro de Convenções Internacional das Filipinas
+      - hora: '11:45'
+        titulo: Encontro bilateral com o Primeiro-Ministro de Singapura, Lawrence Wong
+        local: Centro de Convenções Internacional das Filipinas
+      - hora: '14:00'
+        titulo: Partida para Madri
+        local: Base Aérea Villamo
+      - hora: '22:45'
+        titulo: Chegada a Madri
+        local: Aeroporto Internacional de Madri
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -822,11 +810,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 43
-    dias_com_agenda: 29
+    compromissos_90d: 41
+    dias_com_agenda: 28
     por_tipo:
-      evento: 17
-      viagem: 10
+      evento: 16
+      viagem: 9
       audiencia: 8
       reuniao: 5
       outro: 3
@@ -845,11 +833,9 @@ people:
     - nome: Palácio do Planalto
       n: 10
     - nome: São Paulo/SP
-      n: 8
+      n: 7
     - nome: Palácio do Planalto, Anexo II
       n: 7
-    - nome: São José dos Campos/SP
-      n: 2
     - nome: São José do Rio Preto/SP
       n: 1
     - nome: Esplanada dos Ministérios, Brasília/DF
@@ -857,6 +843,8 @@ people:
     - nome: Registro/SP
       n: 1
     - nome: Esplanada dos Ministérios, Bloco D
+      n: 1
+    - nome: São José dos Campos/SP
       n: 1
     ultimo: '2026-11-09'
     recentes:
@@ -915,14 +903,6 @@ people:
         entidade: Ministro-Chefe da Secretaria de Comunicação Social - SECOM
     dias_nao_lidos: 0
     dias:
-      vice/2026-08-17:
-      - hora: '10:00'
-        titulo: 27ª Conferência Anual Santander Brasil
-        local: São Paulo/SP
-      - hora: '17:00'
-        titulo: Embarque de São José dos Campos/SP para Brasília/DF
-        local: São José dos Campos/SP
-      vice/2026-08-17-b1: []
       vice/2026-08-18:
       - hora: '19:00'
         titulo: Cerimônia de Abertura do 34ª Congresso Nacional das Santas Casas e Hospitais Filantrópicos
@@ -1229,6 +1209,8 @@ people:
       vice/2026-11-13-b1: []
       vice/2026-11-14: []
       vice/2026-11-14-b1: []
+      vice/2026-11-15: []
+      vice/2026-11-15-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 197 compromissos em 53 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 43 compromissos em 29 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 193 compromissos em 53 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 41 compromissos em 28 dias (0 dias não lidos)'

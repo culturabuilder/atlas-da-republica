@@ -1,16 +1,16 @@
 # GERADO por etl/falabr.py. Não edite à mão.
-generated_at: '2026-11-14'
+generated_at: '2026-11-15'
 ano: 2026
 fonte: Fala.BR (Lei 12.527/2011), dados abertos da Controladoria-Geral da União
 nota: 'Pedidos de acesso à informação de esfera federal registrados no ano. A taxa de negativa olha só os pedidos que o órgão decidiu sobre informação que
   lhe cabia: ''informação inexistente'' e ''não tem competência'' são contados à parte, porque somá-los inflaria a opacidade de quem apenas recebeu pedido
   endereçado errado. Recurso é atribuído ao órgão reclamado, não a quem julga. Taxa só é calculada com 20 decisões ou mais.'
 resumo:
-  pedidos: 71110
+  pedidos: 71119
   orgaos: 321
   orgaos_casados: 288
-  recursos: 9562
-  decididos: 63759
+  recursos: 9563
+  decididos: 63768
   pct_negado_ou_parcial_geral: 19.5
   orgaos_com_taxa: 275
 mais_negam:
@@ -171,9 +171,9 @@ orgaos:
       n: 127
   PETROBRAS – Petróleo Brasileiro S.A.:
     node: br-petrobras
-    pedidos: 2688
+    pedidos: 2689
     concedido: 1808
-    negado: 664
+    negado: 665
     parcial: 117
     inexistente: 25
     sem_competencia: 8
@@ -182,17 +182,17 @@ orgaos:
     outra: 0
     prorrogados: 525
     recursos: 300
-    decididos: 2589
+    decididos: 2590
     pct_negado_ou_parcial: 30.2
     pct_prorrogado: 19.5
     motivos_top:
     - motivo: "\0"
-      n: 2687
+      n: 2688
     - motivo: 1) Lei nª 12.527/2011 - LAI art. 31 - impossibilitada por se tratar de
       n: 1
     assuntos_top:
     - assunto: Transparência e acesso à informação
-      n: 2297
+      n: 2298
     - assunto: Cadastros e Documentação
       n: 85
     - assunto: Petróleo, Gás e Biocombustíveis
@@ -393,8 +393,8 @@ orgaos:
       n: 156
   ANEEL – Agência Nacional de Energia Elétrica:
     node: br-aneel
-    pedidos: 1292
-    concedido: 899
+    pedidos: 1295
+    concedido: 902
     negado: 152
     parcial: 81
     inexistente: 70
@@ -404,12 +404,12 @@ orgaos:
     outra: 0
     prorrogados: 132
     recursos: 78
-    decididos: 1132
-    pct_negado_ou_parcial: 20.6
+    decididos: 1135
+    pct_negado_ou_parcial: 20.5
     pct_prorrogado: 10.2
     motivos_top:
     - motivo: "\0"
-      n: 1275
+      n: 1278
     - motivo: 'Base Legal desta resposta: art. 7º, § 3º, da LAI, art. 3º e art. 55 do'
       n: 4
     - motivo: Dados pessoais.
@@ -420,7 +420,7 @@ orgaos:
     - assunto: Energia
       n: 519
     - assunto: Informações processuais
-      n: 286
+      n: 289
     - assunto: Transparência e acesso à informação
       n: 238
     - assunto: Autorização, Regulação e Fiscalização
@@ -999,8 +999,8 @@ orgaos:
       n: 54
   IPHAN – Instituto do Patrimônio Histórico e Artístico Nacional:
     node: br-iphan
-    pedidos: 530
-    concedido: 422
+    pedidos: 534
+    concedido: 426
     negado: 23
     parcial: 34
     inexistente: 24
@@ -1010,12 +1010,12 @@ orgaos:
     outra: 0
     prorrogados: 78
     recursos: 53
-    decididos: 479
-    pct_negado_ou_parcial: 11.9
-    pct_prorrogado: 14.7
+    decididos: 483
+    pct_negado_ou_parcial: 11.8
+    pct_prorrogado: 14.6
     motivos_top:
     - motivo: "\0"
-      n: 527
+      n: 531
     - motivo: O pedido foi indeferido parcialmente porque envolve a divulgação de re
       n: 1
     - motivo: Em atenção à manifestação encaminhada por meio da Ouvidoria, referente
@@ -1024,7 +1024,7 @@ orgaos:
       n: 1
     assuntos_top:
     - assunto: Patrimônio histórico, artístico e cultural
-      n: 327
+      n: 331
     - assunto: Transparência e acesso à informação
       n: 187
     - assunto: Informações processuais
@@ -2231,6 +2231,40 @@ orgaos:
       n: 25
     - assunto: Transparência e acesso à informação
       n: 20
+  UFG – Universidade Federal de Goiás:
+    node: br-universidade-federal-de-goias
+    pedidos: 215
+    concedido: 162
+    negado: 21
+    parcial: 16
+    inexistente: 4
+    sem_competencia: 6
+    fora_da_lai: 3
+    duplicada: 3
+    outra: 0
+    prorrogados: 24
+    recursos: 57
+    decididos: 199
+    pct_negado_ou_parcial: 18.6
+    pct_prorrogado: 11.2
+    motivos_top:
+    - motivo: "\0"
+      n: 210
+    - motivo: 'Prezado(a), boa tarde.   Em atenção ao Pedido de Informação em tela o '
+      n: 1
+    - motivo: 'Em atendimento à solicitação NUP: 23546.071983/2026-44 vimos respeitos'
+      n: 1
+    - motivo: Em resposta ao pedido envio a documentação apresentada pela coordenaçã
+      n: 1
+    assuntos_top:
+    - assunto: Gestão escolar e administrativa
+      n: 66
+    - assunto: Transparência e acesso à informação
+      n: 33
+    - assunto: Gestão Pública
+      n: 14
+    - assunto: Concursos e processos seletivos
+      n: 14
   UFPA – Universidade Federal do Pará:
     node: br-universidade-federal-do-para
     pedidos: 215
@@ -2261,40 +2295,6 @@ orgaos:
       n: 29
     - assunto: Canais de atendimento
       n: 28
-  UFG – Universidade Federal de Goiás:
-    node: br-universidade-federal-de-goias
-    pedidos: 214
-    concedido: 161
-    negado: 21
-    parcial: 16
-    inexistente: 4
-    sem_competencia: 6
-    fora_da_lai: 3
-    duplicada: 3
-    outra: 0
-    prorrogados: 24
-    recursos: 57
-    decididos: 198
-    pct_negado_ou_parcial: 18.7
-    pct_prorrogado: 11.2
-    motivos_top:
-    - motivo: "\0"
-      n: 209
-    - motivo: 'Prezado(a), boa tarde.   Em atenção ao Pedido de Informação em tela o '
-      n: 1
-    - motivo: 'Em atendimento à solicitação NUP: 23546.071983/2026-44 vimos respeitos'
-      n: 1
-    - motivo: Em resposta ao pedido envio a documentação apresentada pela coordenaçã
-      n: 1
-    assuntos_top:
-    - assunto: Gestão escolar e administrativa
-      n: 65
-    - assunto: Transparência e acesso à informação
-      n: 33
-    - assunto: Gestão Pública
-      n: 14
-    - assunto: Concursos e processos seletivos
-      n: 14
   ANA – Agência Nacional de Águas:
     node: br-ana
     pedidos: 213
@@ -2510,11 +2510,11 @@ orgaos:
     fora_da_lai: 0
     duplicada: 3
     outra: 0
-    prorrogados: 16
+    prorrogados: 17
     recursos: 37
     decididos: 175
     pct_negado_ou_parcial: 45.7
-    pct_prorrogado: 8.2
+    pct_prorrogado: 8.7
     motivos_top:
     - motivo: "\0"
       n: 196
@@ -3881,7 +3881,7 @@ orgaos:
     duplicada: 2
     outra: 0
     prorrogados: 46
-    recursos: 6
+    recursos: 7
     decididos: 123
     pct_negado_ou_parcial: 11.4
     pct_prorrogado: 35.4

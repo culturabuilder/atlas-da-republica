@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-11-14'
+generated_at: '2026-11-15'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,8 +16,8 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-08-10': 65
-      '2026-08-17': 364
+      '2026-08-10': 35
+      '2026-08-17': 358
       '2026-08-24': 447
       '2026-08-31': 494
       '2026-09-07': 456
@@ -29,8 +29,8 @@ temas:
       '2026-10-19': 1687
       '2026-10-26': 1277
       '2026-11-02': 309
-      '2026-11-09': 147
-    total_90d: 13227
+      '2026-11-09': 166
+    total_90d: 13210
     last7: 189
     peak_week: 3172
   processes:
@@ -103,8 +103,8 @@ temas:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-08-10': 108
-      '2026-08-17': 420
+      '2026-08-10': 49
+      '2026-08-17': 414
       '2026-08-24': 806
       '2026-08-31': 8813
       '2026-09-07': 10630
@@ -116,9 +116,9 @@ temas:
       '2026-10-19': 4026
       '2026-10-26': 3053
       '2026-11-02': 2770
-      '2026-11-09': 1426
-    total_90d: 61921
-    last7: 2120
+      '2026-11-09': 1552
+    total_90d: 61982
+    last7: 1897
     peak_week: 10630
   processes:
   - casa: camara
@@ -133,7 +133,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
     requested: RCP 1/2026 (camara)
   state: parado
-  stalled_days: 117
+  stalled_days: 118
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -145,7 +145,7 @@ temas:
   - fim da escala
   - jornada 6x1
   curated: null
-  news_hits: 161
+  news_hits: 162
   news_weekly:
     '2026-09-14': 3
     '2026-09-28': 3
@@ -154,8 +154,12 @@ temas:
     '2026-10-19': 9
     '2026-10-26': 4
     '2026-11-02': 4
-    '2026-11-09': 5
+    '2026-11-09': 6
   news_recent:
+  - id: dfe5285bc8e33aa9
+    title: Fux suspende julgamento sobre escala 5x2 e leva caso para plenário físico do STF
+    date: '2026-11-14'
+    publication: g1 Política
   - id: ef5d3e5ba3243df8
     title: Senado aprova fim da 6x1 e garante dois dias de descanso semanal
     date: '2026-11-13'
@@ -173,16 +177,12 @@ temas:
       de trabalho
     date: '2026-11-12'
     publication: g1 Política
-  - id: a41f38e352bc5e7b
-    title: 'Escala 6x1: Dino sinaliza que decisão em ação que questiona transição da nova jornada de trabalho sai até sexta'
-    date: '2026-11-10'
-    publication: g1 Política
   wikipedia:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-08-10': 102
-      '2026-08-17': 368
+      '2026-08-10': 38
+      '2026-08-17': 350
       '2026-08-24': 506
       '2026-08-31': 827
       '2026-09-07': 536
@@ -194,9 +194,9 @@ temas:
       '2026-10-19': 2158
       '2026-10-26': 573
       '2026-11-02': 160
-      '2026-11-09': 63
-    total_90d: 22950
-    last7: 96
+      '2026-11-09': 67
+    total_90d: 22872
+    last7: 79
     peak_week: 10778
   processes:
   - casa: camara
@@ -247,8 +247,8 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-08-10': 4
-      '2026-08-17': 55
+      '2026-08-10': 1
+      '2026-08-17': 47
       '2026-08-24': 104
       '2026-08-31': 39
       '2026-09-07': 121
@@ -260,9 +260,9 @@ temas:
       '2026-10-19': 70
       '2026-10-26': 176
       '2026-11-02': 62
-      '2026-11-09': 39
-    total_90d: 919
-    last7: 51
+      '2026-11-09': 44
+    total_90d: 913
+    last7: 47
     peak_week: 176
   processes:
   - casa: camara
@@ -373,7 +373,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 190
+  stalled_days: 191
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -461,7 +461,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1249
+  stalled_days: 1250
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -506,7 +506,7 @@ temas:
     url: https://pt.wikipedia.org/wiki/Precatório
     weekly:
       '2026-08-10': 5
-      '2026-08-17': 30
+      '2026-08-17': 29
       '2026-08-24': 24
       '2026-08-31': 80
       '2026-09-07': 26
@@ -518,9 +518,9 @@ temas:
       '2026-10-19': 59
       '2026-10-26': 45
       '2026-11-02': 23
-      '2026-11-09': 17
-    total_90d: 712
-    last7: 20
+      '2026-11-09': 29
+    total_90d: 723
+    last7: 31
     peak_week: 112
   processes:
   - casa: camara
@@ -592,8 +592,8 @@ temas:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-08-10': 53
-      '2026-08-17': 255
+      '2026-08-10': 25
+      '2026-08-17': 241
       '2026-08-24': 346
       '2026-08-31': 390
       '2026-09-07': 303
@@ -605,9 +605,9 @@ temas:
       '2026-10-19': 903
       '2026-10-26': 816
       '2026-11-02': 222
-      '2026-11-09': 173
-    total_90d: 6004
-    last7: 214
+      '2026-11-09': 212
+    total_90d: 6001
+    last7: 229
     peak_week: 1023
   processes:
   - casa: camara
