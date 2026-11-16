@@ -1,5 +1,5 @@
 # GERADO por etl/cartao.py. Não edite à mão.
-generated_at: '2026-11-15'
+generated_at: '2026-11-16'
 ano: 2026
 meses:
 - '202601'
@@ -10,14 +10,16 @@ meses:
 - '202606'
 - '202607'
 - '202608'
+- '202609'
+- '202610'
 fonte: Portal da Transparência, cartão de pagamento do governo federal (CPGF), extratos mensais
 orgaos:
 - orgao: Ministério da Justiça e Segurança Pública
   node_id: br-ministerio-da-justica-e-seguranca-publica
-  total: 23841581.83
-  transacoes: 23078
-  portadores: 358
-  saques: 1624003.1
+  total: 35600419.25
+  transacoes: 33347
+  portadores: 422
+  saques: 2181565.85
   por_mes:
     '202601': 2468059.77
     '202602': 52871.07
@@ -27,108 +29,36 @@ orgaos:
     '202606': 4573429.39
     '202607': 3319185.37
     '202608': 3812311.35
+    '202609': 5556509.88
+    '202610': 6202327.54
   unidades_top:
   - nome: Coordenacao Geral De Administracao Cgad/Dlog/
-    valor: 7610031.0
+    valor: 12871460.14
   - nome: Superintendencia Regional No Estado De Sp
-    valor: 1152787.85
+    valor: 1638625.47
   - nome: Superintendencia Reg De Policia Federal Em Mg
-    valor: 1013619.79
+    valor: 1441223.24
   - nome: Superintendencia Regional No Estado Do Rs
-    valor: 873792.96
+    valor: 1255518.3
   - nome: Superintendencia Regional No Estado Da Ba
-    valor: 812623.68
+    valor: 1078757.53
   favorecidos_top:
   - nome: Sigiloso
-    valor: 18165219.79
+    valor: 26432668.98
   - nome: Saque em espécie
-    valor: 1624003.1
+    valor: 2181565.85
   - nome: Sem Informacao
-    valor: 1130063.63
-  - nome: Magalupay Instituicao De Pagamento S.A.
-    valor: 71203.73
-  - nome: Dlocal Brasil Instituicao De Pagamento S.A.
-    valor: 69811.17
-- orgao: Presidência da República
-  node_id: br-presidencia-da-republica
-  total: 10474974.83
-  transacoes: 8731
-  portadores: 42
-  saques: 20687.29
-  por_mes:
-    '202601': 1484748.06
-    '202602': 848240.05
-    '202603': 932623.35
-    '202604': 1354590.21
-    '202605': 1314241.03
-    '202606': 1473001.26
-    '202607': 1402577.0
-    '202608': 1664953.87
-  unidades_top:
-  - nome: Secretaria De Administracao - Peculiaridades
-    valor: 6311619.52
-  - nome: Gabinete De Seguranca Institucional/Pr
-    valor: 1911188.03
-  - nome: Agencia Brasileira De Inteligencia
-    valor: 1906149.32
-  - nome: Vice-Presidencia Da Republica
-    valor: 122406.3
-  - nome: Empresa Brasil De Comunicacao S.A
-    valor: 102353.94
-  favorecidos_top:
-  - nome: Sigiloso
-    valor: 10251363.17
-  - nome: Sem Informacao
-    valor: 113571.74
-  - nome: Saque em espécie
-    valor: 20687.29
-  - nome: Auto Posto Parque Villa Lobos Ltda.
-    valor: 20075.67
-  - nome: Auto Posto Hygienopolis Ltda
-    valor: 8935.23
-- orgao: Ministério da Educação
-  node_id: br-ministerio-da-educacao
-  total: 9556434.33
-  transacoes: 17148
-  portadores: 972
-  saques: 123697.0
-  por_mes:
-    '202601': 746999.93
-    '202602': 377132.61
-    '202603': 920676.01
-    '202604': 1616119.44
-    '202605': 1248534.14
-    '202606': 1858042.89
-    '202607': 1398953.37
-    '202608': 1389975.94
-  unidades_top:
-  - nome: Universidade Federal Fluminense
-    valor: 575820.28
-  - nome: Inst.Fed.De Educ.,Cienc.E Tec.De Minas Gerais
-    valor: 318673.6
-  - nome: Universidade Federal De Goias
-    valor: 297917.24
-  - nome: Universidade Federal De Pernambuco
-    valor: 235448.76
-  - nome: Hospital Universitario Da Ufjf
-    valor: 198568.45
-  favorecidos_top:
-  - nome: Sem Informacao
-    valor: 920200.67
-  - nome: Saque em espécie
-    valor: 123697.0
-  - nome: Ifood Pago Instituicao De Pagamento S.A.
-    valor: 74723.63
-  - nome: Vindi Intermediadora S/A
-    valor: 58662.86
-  - nome: Sendas Distribuidora S/A
-    valor: 56473.74
+    valor: 1384531.32
+  - nome: Azul Linhas Aereas Brasileiras S.A.
+    valor: 659226.52
+  - nome: Gol Linhas Aereas S.A.
+    valor: 629794.66
 - orgao: Ministério da Defesa
   node_id: br-ministerio-da-defesa
-  total: 9091578.34
-  transacoes: 12756
-  portadores: 1104
-  saques: 62689.08
+  total: 15562208.38
+  transacoes: 20616
+  portadores: 1677
+  saques: 91647.08
   por_mes:
     '202601': 874162.72
     '202602': 198194.96
@@ -138,34 +68,114 @@ orgaos:
     '202606': 1784848.71
     '202607': 1677875.19
     '202608': 1832838.05
+    '202609': 2865882.56
+    '202610': 3604747.48
   unidades_top:
   - nome: Centro De Intenden. Da Marinha Em Niteroi
-    valor: 1590999.12
+    valor: 2278846.59
   - nome: Comando Do Grupamento De Patrulha Nav. Do Sud
-    valor: 315165.33
-  - nome: Estabelecimento Central De Transporte
-    valor: 236773.59
+    valor: 554562.85
+  - nome: Grupamento De Apoio Do Distrito Fed
+    valor: 378675.74
   - nome: Centro De Intend. Da Marinha Parada De Lucas
-    valor: 227481.17
+    valor: 373057.08
   - nome: Comando Da Forca De Submarinos
-    valor: 211073.05
+    valor: 358587.59
   favorecidos_top:
   - nome: Sem Informacao
-    valor: 1193261.22
+    valor: 2303313.18
   - nome: Bmb Material De Construcao S.A.
-    valor: 194960.11
+    valor: 293050.04
   - nome: Ifood Pago Instituicao De Pagamento S.A.
-    valor: 93006.54
+    valor: 150748.17
   - nome: Leroy Merlin Companhia Brasileira De Bricolagem
-    valor: 90801.89
+    valor: 128429.34
   - nome: Paygo Administradora De Meios De Pagamentos Ltda
-    valor: 75512.2
+    valor: 109718.73
+- orgao: Presidência da República
+  node_id: br-presidencia-da-republica
+  total: 13847785.06
+  transacoes: 10960
+  portadores: 45
+  saques: 28287.29
+  por_mes:
+    '202601': 1484748.06
+    '202602': 848240.05
+    '202603': 932623.35
+    '202604': 1354590.21
+    '202605': 1314241.03
+    '202606': 1473001.26
+    '202607': 1402577.0
+    '202608': 1664953.87
+    '202609': 1668309.85
+    '202610': 1704500.38
+  unidades_top:
+  - nome: Secretaria De Administracao - Peculiaridades
+    valor: 8209148.32
+  - nome: Gabinete De Seguranca Institucional/Pr
+    valor: 2709478.79
+  - nome: Agencia Brasileira De Inteligencia
+    valor: 2520447.44
+  - nome: Vice-Presidencia Da Republica
+    valor: 149161.68
+  - nome: Empresa Brasil De Comunicacao S.A
+    valor: 109953.94
+  favorecidos_top:
+  - nome: Sigiloso
+    valor: 13588236.23
+  - nome: Sem Informacao
+    valor: 113571.74
+  - nome: Saque em espécie
+    valor: 28287.29
+  - nome: Auto Posto Parque Villa Lobos Ltda.
+    valor: 24702.35
+  - nome: Auto Posto Hygienopolis Ltda
+    valor: 10435.37
+- orgao: Ministério da Educação
+  node_id: br-ministerio-da-educacao
+  total: 12851038.38
+  transacoes: 23166
+  portadores: 1099
+  saques: 146457.0
+  por_mes:
+    '202601': 746999.93
+    '202602': 377132.61
+    '202603': 920676.01
+    '202604': 1616119.44
+    '202605': 1248534.14
+    '202606': 1858042.89
+    '202607': 1398953.37
+    '202608': 1389975.94
+    '202609': 1675487.51
+    '202610': 1619116.54
+  unidades_top:
+  - nome: Universidade Federal Fluminense
+    valor: 885373.24
+  - nome: Universidade Federal De Goias
+    valor: 406043.6
+  - nome: Inst.Fed.De Educ.,Cienc.E Tec.De Minas Gerais
+    valor: 405588.79
+  - nome: Universidade Federal De Pernambuco
+    valor: 360794.58
+  - nome: Universidade Federal Rural Do Rio De Janeiro
+    valor: 261383.34
+  favorecidos_top:
+  - nome: Sem Informacao
+    valor: 1299126.56
+  - nome: Saque em espécie
+    valor: 146457.0
+  - nome: Ifood Pago Instituicao De Pagamento S.A.
+    valor: 115280.82
+  - nome: Sendas Distribuidora S/A
+    valor: 82367.7
+  - nome: Vindi Intermediadora S/A
+    valor: 68592.99
 - orgao: Ministério do Planejamento e Orçamento
   node_id: br-ministerio-do-planejamento-e-orcamento
-  total: 5746047.19
-  transacoes: 12932
-  portadores: 966
-  saques: 3194214.0
+  total: 7939498.21
+  transacoes: 18161
+  portadores: 1069
+  saques: 4370064.0
   por_mes:
     '202601': 765433.47
     '202602': 201927.92
@@ -175,71 +185,36 @@ orgaos:
     '202606': 959441.95
     '202607': 872825.1
     '202608': 1006803.47
+    '202609': 1153131.44
+    '202610': 1040319.58
   unidades_top:
   - nome: Superintendencia Estadual Do Ibge No Amazonas
-    valor: 1331523.59
+    valor: 1904672.09
   - nome: Superintendencia Estadual Ibge Em Sao Paulo
-    valor: 820206.93
+    valor: 1104959.8
   - nome: Superintendencia Estadual Do Ibge No Para
-    valor: 474246.31
+    valor: 648479.38
   - nome: Superintendencia Estadual Do Ibge No Maranhao
-    valor: 386132.57
-  - nome: Superintendencia Estadual Do Ibge No Amapa
-    valor: 369570.54
+    valor: 635003.04
+  - nome: Superintendencia Do Ibge No Rio Grande Do Sul
+    valor: 493927.47
   favorecidos_top:
   - nome: Saque em espécie
-    valor: 3194214.0
+    valor: 4370064.0
   - nome: Sem Informacao
-    valor: 168547.64
+    valor: 254257.73
   - nome: Mcd Comercio De Petroleo Ltda
-    valor: 58239.6
+    valor: 95649.84
+  - nome: L S Comercio E Servicos Ltda
+    valor: 56993.04
   - nome: C A Pinheiro Queiroz Ltda
     valor: 39002.32
-  - nome: M C D Carvalho & Cia Ltda
-    valor: 38777.5
-- orgao: Ministério do Desenvolvimento Agrário e Agr
-  node_id: null
-  total: 2445113.02
-  transacoes: 4517
-  portadores: 162
-  saques: 109206.0
-  por_mes:
-    '202601': 654160.14
-    '202602': 61726.44
-    '202603': 147098.17
-    '202604': 310853.14
-    '202605': 249860.87
-    '202606': 407322.66
-    '202607': 328533.13
-    '202608': 285558.47
-  unidades_top:
-  - nome: Superint.Reg.Do Nordeste Do Para - Sr(01)Pa
-    valor: 806513.23
-  - nome: Superintend. Regional De Tocantins - Sr(26)To
-    valor: 520231.63
-  - nome: Superintendencia Regional De Goias - Sr(04)Go
-    valor: 173308.1
-  - nome: Superint. Regional Do Df E Entorno-Sr(28)Dfe
-    valor: 136649.47
-  - nome: Conab Sede Sureg Mato Grosso
-    valor: 75380.25
-  favorecidos_top:
-  - nome: M C Assuncao Ltda
-    valor: 414200.0
-  - nome: Sem Informacao
-    valor: 112666.94
-  - nome: Saque em espécie
-    valor: 109206.0
-  - nome: Fenix Servicos Automotivos Ltda
-    valor: 88847.0
-  - nome: Reynaldo Moraes Campos Oda
-    valor: 58246.86
 - orgao: Ministério do Meio Ambiente e Mudança do Cl
   node_id: null
-  total: 2232887.37
-  transacoes: 1818
-  portadores: 217
-  saques: 301220.0
+  total: 3547563.17
+  transacoes: 2642
+  portadores: 288
+  saques: 366960.0
   por_mes:
     '202601': 315460.56
     '202602': 18123.17
@@ -249,34 +224,75 @@ orgaos:
     '202606': 439637.54
     '202607': 427558.04
     '202608': 435099.1
+    '202609': 610409.81
+    '202610': 704265.99
   unidades_top:
-  - nome: Instituto Chico Mendes - Sede
-    valor: 647933.21
   - nome: Icmbio Gr2 Nordeste
-    valor: 564960.77
+    valor: 887397.82
+  - nome: Instituto Chico Mendes - Sede
+    valor: 783344.67
   - nome: Icmbio Gr1 Norte
-    valor: 254828.81
-  - nome: Ibama-Inst.Bras.Do Meio Amb.E Dos Rec.Nat.Ren
-    valor: 169055.72
+    valor: 547027.07
   - nome: Icmbio Gr3 Centro Oeste
-    valor: 146151.46
+    valor: 378516.25
+  - nome: Ibama-Inst.Bras.Do Meio Amb.E Dos Rec.Nat.Ren
+    valor: 238511.18
   favorecidos_top:
-  - nome: Saque em espécie
-    valor: 301220.0
   - nome: Sem Informacao
-    valor: 217584.43
+    valor: 373278.51
+  - nome: Saque em espécie
+    valor: 366960.0
+  - nome: Ifood Pago Instituicao De Pagamento S.A.
+    valor: 117997.38
+  - nome: Agro Rural Ltda
+    valor: 69987.2
   - nome: Aline Maria Ferreira Da Silva
     valor: 53150.0
-  - nome: 33.007.639 Waldir Almeida Dos Santos
-    valor: 39210.0
-  - nome: Ifood Pago Instituicao De Pagamento S.A.
-    valor: 30920.92
+- orgao: Ministério do Desenvolvimento Agrário e Agr
+  node_id: null
+  total: 2916422.05
+  transacoes: 5589
+  portadores: 181
+  saques: 164831.0
+  por_mes:
+    '202601': 654160.14
+    '202602': 61726.44
+    '202603': 147098.17
+    '202604': 310853.14
+    '202605': 249860.87
+    '202606': 407322.66
+    '202607': 328533.13
+    '202608': 285558.47
+    '202609': 269158.87
+    '202610': 202150.16
+  unidades_top:
+  - nome: Superint.Reg.Do Nordeste Do Para - Sr(01)Pa
+    valor: 977378.47
+  - nome: Superintend. Regional De Tocantins - Sr(26)To
+    valor: 520376.23
+  - nome: Superintendencia Regional De Goias - Sr(04)Go
+    valor: 226788.09
+  - nome: Superint. Regional Do Df E Entorno-Sr(28)Dfe
+    valor: 187085.95
+  - nome: Conab Sede Sureg Mato Grosso
+    valor: 94058.38
+  favorecidos_top:
+  - nome: M C Assuncao Ltda
+    valor: 414200.0
+  - nome: Saque em espécie
+    valor: 164831.0
+  - nome: Sem Informacao
+    valor: 157388.89
+  - nome: Fenix Servicos Automotivos Ltda
+    valor: 95847.0
+  - nome: Ws Tec Servicos Ltda
+    valor: 59488.91
 - orgao: Ministério da Fazenda
   node_id: br-ministerio-da-fazenda
-  total: 1773787.64
-  transacoes: 2579
-  portadores: 195
-  saques: 47180.0
+  total: 2472702.66
+  transacoes: 3486
+  portadores: 220
+  saques: 66445.0
   por_mes:
     '202601': 206553.73
     '202602': 35380.68
@@ -286,34 +302,36 @@ orgaos:
     '202606': 285444.22
     '202607': 222029.39
     '202608': 182026.39
+    '202609': 360733.81
+    '202610': 338181.21
   unidades_top:
   - nome: Coordenacao-Geral De Pesq.Investigacao Da Rfb
-    valor: 396700.0
+    valor: 626430.0
   - nome: Fcdf±Ssp ± Policia Civil Do Df
-    valor: 343213.43
+    valor: 405620.34
   - nome: Fcdf±Ssp±Corpo Bombeiro Militar Do Df
-    valor: 143458.06
+    valor: 208702.69
   - nome: Delegacia Da Rfb Em Vitoria
-    valor: 92903.17
-  - nome: Delegacia Da Rfb Em Campo Grande
-    valor: 78260.8
+    valor: 128948.09
+  - nome: Delegacia Da Rfb Em Manaus
+    valor: 98888.17
   favorecidos_top:
   - nome: Sigiloso
-    valor: 586700.0
+    valor: 853280.0
   - nome: Sem Informacao
-    valor: 123983.63
+    valor: 189762.83
   - nome: Saque em espécie
-    valor: 47180.0
+    valor: 66445.0
+  - nome: Capital Pneus E Auto Center Ltda
+    valor: 30307.5
   - nome: Paygo Administradora De Meios De Pagamentos Ltda
-    valor: 23466.2
-  - nome: Distribuidora Prime Ltda
-    valor: 14884.21
+    valor: 25792.12
 - orgao: Ministério da Saúde
   node_id: br-ministerio-da-saude
-  total: 1499036.03
-  transacoes: 2585
-  portadores: 117
-  saques: 27060.0
+  total: 1937394.19
+  transacoes: 3327
+  portadores: 135
+  saques: 35000.0
   por_mes:
     '202601': 171846.49
     '202602': 83153.02
@@ -323,34 +341,36 @@ orgaos:
     '202606': 203480.29
     '202607': 206428.01
     '202608': 259995.44
+    '202609': 231723.49
+    '202610': 206634.67
   unidades_top:
   - nome: Grupo Hospitalar Conceicao S.A
-    valor: 541365.84
-  - nome: Coordenacao Geral De Infraestrutura Dos Campi
-    valor: 98511.36
+    valor: 644647.63
   - nome: Instituto Goncalo Moniz
-    valor: 83202.14
+    valor: 110408.98
+  - nome: Instituto Nac. De Controle E Qualid. Em Saude
+    valor: 109027.41
   - nome: Undacao Nacional De Saude - Mg
-    valor: 83085.4
+    valor: 108211.0
   - nome: Agencia Nacional De Vigilancia Sanitaria
-    valor: 82505.23
+    valor: 105507.82
   favorecidos_top:
   - nome: Sem Informacao
-    valor: 124465.17
+    valor: 170695.55
   - nome: Ferragem Parati Conceicao Ltda
     valor: 42537.6
+  - nome: Saque em espécie
+    valor: 35000.0
   - nome: Pro Eletro Comercial Ltda
-    valor: 31837.4
+    valor: 33180.6
   - nome: Sulfase Comercio De Materiais De Construcao E Ferragens Ltda
     valor: 31236.02
-  - nome: Saque em espécie
-    valor: 27060.0
 - orgao: Ministério da Agricultura e Pecuária
   node_id: br-ministerio-da-agricultura-e-pecuaria
-  total: 1134146.58
-  transacoes: 2142
-  portadores: 135
-  saques: 126846.0
+  total: 1503974.67
+  transacoes: 2840
+  portadores: 151
+  saques: 165751.0
   por_mes:
     '202601': 182282.0
     '202602': 21639.38
@@ -360,34 +380,36 @@ orgaos:
     '202606': 189808.33
     '202607': 173440.49
     '202608': 195663.44
+    '202609': 194186.58
+    '202610': 175641.51
   unidades_top:
   - nome: Laboratorio Federal De Defesa Agropecuaria/Rs
-    valor: 141347.19
-  - nome: Superint.De Agricultura E Pecuaria - Sfa/Mg
-    valor: 81980.68
+    valor: 204799.44
   - nome: Embrapa/Cenargen
-    valor: 81781.22
+    valor: 113728.06
+  - nome: Superint.De Agricultura E Pecuaria - Sfa/Mg
+    valor: 103709.42
   - nome: Comissao Exec. Do Plano Da Lav.Cacaueira/Df
-    valor: 70241.87
+    valor: 91082.3
   - nome: Superint.De Agricultura E Pecuaria - Sfa/Pa
-    valor: 58042.39
+    valor: 78792.73
   favorecidos_top:
   - nome: Saque em espécie
-    valor: 126846.0
+    valor: 165751.0
   - nome: Sem Informacao
-    valor: 85810.84
+    valor: 140705.43
   - nome: Odenir Jose De Souza
-    valor: 26829.59
+    valor: 27116.69
+  - nome: M C Comercio De Ferragens E Ferramentas Ltda
+    valor: 17557.44
   - nome: Localiza Rent A Car Sa
     valor: 17404.64
-  - nome: M C Comercio De Ferragens E Ferramentas Ltda
-    valor: 13557.45
 - orgao: Ministério do Trabalho e Emprego
   node_id: br-ministerio-do-trabalho-e-emprego
-  total: 837131.02
-  transacoes: 1936
-  portadores: 107
-  saques: 13066.0
+  total: 1096806.8
+  transacoes: 2488
+  portadores: 115
+  saques: 15376.0
   por_mes:
     '202601': 148178.12
     '202602': 119.94
@@ -397,34 +419,36 @@ orgaos:
     '202606': 166723.53
     '202607': 128146.78
     '202608': 145268.78
+    '202609': 180066.43
+    '202610': 79609.35
   unidades_top:
   - nome: Secretaria De Inspecao Do Trabalho - Sit
-    valor: 437950.35
-  - nome: Superintendencia Regional Do Trabalho/Ba
-    valor: 49601.2
+    valor: 583190.34
   - nome: Superintendencia Regional Do Trabalho/Mt
-    valor: 48443.26
+    valor: 55944.36
+  - nome: Superintendencia Regional Do Trabalho/Ba
+    valor: 54884.47
   - nome: Superintendencia Regional Do Trabalho/Pb
-    valor: 45273.27
+    valor: 47731.94
   - nome: Superintendencia Regional Do Trabalho/Go
-    valor: 38917.26
+    valor: 42136.34
   favorecidos_top:
   - nome: Sem Informacao
-    valor: 41742.89
+    valor: 83711.49
+  - nome: Natalia Bernardo Da Silva
+    valor: 24580.0
   - nome: 62.892.895 Lucas Matheus Borges De Almeida
     valor: 23556.0
-  - nome: Natalia Bernardo Da Silva
-    valor: 23080.0
   - nome: Saque em espécie
-    valor: 13066.0
-  - nome: Auto Posto Copa 70 Ltda
-    valor: 10655.77
+    valor: 15376.0
+  - nome: Cruz & Cruz Comercio De Combustiveis Ltda
+    valor: 13615.24
 - orgao: Ministério da Ciência, Tecnologia e Inovaç
   node_id: null
-  total: 691932.56
-  transacoes: 1477
-  portadores: 66
-  saques: 10014.0
+  total: 933834.86
+  transacoes: 2026
+  portadores: 71
+  saques: 10994.0
   por_mes:
     '202601': 88791.44
     '202602': 4558.4
@@ -434,34 +458,36 @@ orgaos:
     '202606': 125951.18
     '202607': 106478.18
     '202608': 102303.73
+    '202609': 123591.17
+    '202610': 118311.13
   unidades_top:
   - nome: Comissao Nacional De Energia Nuclear-Ird
-    valor: 80863.3
-  - nome: Laboratorio Nacional De Astrofisica
-    valor: 71730.04
+    valor: 117711.66
   - nome: Comissao Nacional De Energia Nuclear
-    valor: 69330.83
+    valor: 99096.49
+  - nome: Laboratorio Nacional De Astrofisica
+    valor: 80891.18
   - nome: Comissao Nacional De Energia Nuclear-Ipen
-    valor: 58598.94
-  - nome: Instituto Nacional De Pesq. Espaciais-Inpe
-    valor: 49593.16
+    valor: 78866.63
+  - nome: Agencia Espacial Brasileira/Aeb
+    valor: 71154.65
   favorecidos_top:
   - nome: Sem Informacao
-    valor: 70455.36
-  - nome: Casa Costa Materiais De Construcao Ltda
-    valor: 16696.11
+    valor: 101475.12
   - nome: Prime Higiene E Limpeza Ltda
-    valor: 15451.2
+    valor: 22827.6
+  - nome: Casa Costa Materiais De Construcao Ltda
+    valor: 20261.41
+  - nome: Kalunga Sa
+    valor: 13765.59
   - nome: Eco Ambiental Comercio E Transporte De Residuos Ltda
     valor: 13330.0
-  - nome: Bruno Souza De Oliveira
-    valor: 11608.12
 - orgao: Ministério de Minas e Energia
   node_id: br-ministerio-de-minas-e-energia
-  total: 659080.12
-  transacoes: 1149
-  portadores: 109
-  saques: 3650.0
+  total: 920245.82
+  transacoes: 1560
+  portadores: 123
+  saques: 4310.0
   por_mes:
     '202601': 139295.46
     '202602': 25842.09
@@ -471,34 +497,36 @@ orgaos:
     '202606': 103320.56
     '202607': 100092.28
     '202608': 72433.83
+    '202609': 131622.68
+    '202610': 129543.02
   unidades_top:
   - nome: Companhia De Pesquisa De Recursos Minerais
-    valor: 317028.67
+    valor: 478165.55
   - nome: Agencia Nacional De Mineracao - Df
-    valor: 182179.34
+    valor: 223468.98
   - nome: Escritorio Central Da Anp
-    valor: 105327.37
+    valor: 144341.91
   - nome: Agencia Nacional De Energia Eletrica
-    valor: 29574.07
+    valor: 40232.51
   - nome: Coordenacao Geral De Recursos Logisticos-Cgrl
-    valor: 24970.67
+    valor: 31386.57
   favorecidos_top:
   - nome: Sem Informacao
-    valor: 66519.67
+    valor: 88353.02
   - nome: Kalunga Sa
-    valor: 24646.91
-  - nome: Tafa Engenharia Ltda
-    valor: 12220.0
-  - nome: Leroy Merlin Companhia Brasileira De Bricolagem
-    valor: 10350.08
-  - nome: Rp - Comercio De Ferragens Ltda
-    valor: 7818.94
+    valor: 26855.31
+  - nome: Zig Zag Solucoes E Servicos De Consultoria Empresarial Ltda
+    valor: 13790.24
+  - nome: Pagar.Me S.A.
+    valor: 13733.02
+  - nome: Ifood Pago Instituicao De Pagamento S.A.
+    valor: 13471.05
 - orgao: Banco Central do Brasil - Orçamento Fiscal e
   node_id: null
-  total: 432291.43
-  transacoes: 710
-  portadores: 19
-  saques: 18388.0
+  total: 548137.9
+  transacoes: 917
+  portadores: 21
+  saques: 27021.0
   por_mes:
     '202601': 51982.92
     '202602': 37808.72
@@ -508,26 +536,28 @@ orgaos:
     '202606': 84091.28
     '202607': 56357.63
     '202608': 60870.39
+    '202609': 75829.05
+    '202610': 40017.42
   unidades_top:
   - nome: Banco Central Do Brasil
-    valor: 432291.43
+    valor: 548137.9
   favorecidos_top:
   - nome: Sem Informacao
-    valor: 45448.37
+    valor: 51968.59
   - nome: Saque em espécie
-    valor: 18388.0
+    valor: 27021.0
   - nome: Dimensional Brasil Solucoes Ltda
-    valor: 16751.37
+    valor: 17209.62
   - nome: Cl Atacadista Da Construcao Ltda
-    valor: 15983.63
+    valor: 16521.63
   - nome: Fortcolor Tintas E Vernizes Ltda
-    valor: 11830.01
+    valor: 15492.88
 - orgao: Ministério da Integração e do Desenvolvime
   node_id: null
-  total: 420942.77
-  transacoes: 1112
-  portadores: 56
-  saques: 3460.0
+  total: 524807.61
+  transacoes: 1441
+  portadores: 60
+  saques: 3910.0
   por_mes:
     '202601': 102897.09
     '202602': 2435.1
@@ -537,34 +567,36 @@ orgaos:
     '202606': 84058.23
     '202607': 40976.96
     '202608': 61734.47
+    '202609': 56324.67
+    '202610': 47540.17
   unidades_top:
   - nome: Cia De Des.Dos Vales Do S.Franc.E Do Parnaiba
-    valor: 147843.45
+    valor: 199976.46
   - nome: Superintend. Do Desenvolvimento Da Amazonia
-    valor: 116151.97
+    valor: 127418.98
   - nome: Agencia Nacional De Aguas E Saneamento Basico
-    valor: 50073.64
+    valor: 60742.12
   - nome: Departamento Nacional De Obras Cont.As Secas
-    valor: 23080.85
+    valor: 30794.96
   - nome: Dnocs - Cest/Ba - Salvador - Ba
-    valor: 19319.68
+    valor: 22649.99
   favorecidos_top:
   - nome: Trinax Construcoes Ltda
     valor: 52343.8
   - nome: Sem Informacao
-    valor: 22969.84
+    valor: 42517.71
   - nome: Localiza Rent A Car Sa
-    valor: 21285.63
+    valor: 22790.35
   - nome: Replacom Engenharia E Comercio Ltda
     valor: 12417.24
   - nome: Kalunga Sa
-    valor: 8139.71
+    valor: 8408.71
 - orgao: Ministério da Gestão e da Inovação em Ser
   node_id: null
-  total: 359583.58
-  transacoes: 829
-  portadores: 114
-  saques: 21390.0
+  total: 521139.42
+  transacoes: 1093
+  portadores: 129
+  saques: 32615.0
   por_mes:
     '202601': 39664.63
     '202602': 897.6
@@ -574,34 +606,36 @@ orgaos:
     '202606': 71170.37
     '202607': 67981.8
     '202608': 62000.86
+    '202609': 99086.8
+    '202610': 62469.04
   unidades_top:
   - nome: Secretaria Do Patrimonio Da Uniao
-    valor: 69038.25
-  - nome: Superint.Reg.Adm.Do Mgi-Rio Grande Do Norte
-    valor: 33112.66
-  - nome: Arquivo Nacional
-    valor: 28687.29
+    valor: 96985.54
   - nome: Superintendencia Reg. Adm. Do Mgi - Amapa
-    valor: 27591.86
+    valor: 66016.47
+  - nome: Superint.Reg.Adm.Do Mgi-Rio Grande Do Norte
+    valor: 39301.15
   - nome: Superintendencia Reg.Adm.Do Mgi-Pernambuco
-    valor: 27480.31
+    valor: 32586.03
+  - nome: Superint. Reg. Adm. Do Mgi-Mato Grosso Do Sul
+    valor: 32294.08
   favorecidos_top:
   - nome: Sem Informacao
-    valor: 44534.89
+    valor: 56383.87
   - nome: Saque em espécie
-    valor: 21390.0
+    valor: 32615.0
+  - nome: F V Tavares Extintores Ltda
+    valor: 16423.0
   - nome: Toloza Engenharia Ltda
     valor: 14657.0
-  - nome: Lampadinha Materiais Eletricos Ltda
-    valor: 6211.2
   - nome: Armazem Coral Ltda
-    valor: 5700.77
+    valor: 6670.77
 - orgao: Ministério do Desenvolvimento, Indústria, C
   node_id: null
-  total: 245191.46
-  transacoes: 494
-  portadores: 36
-  saques: 49500.0
+  total: 315727.3
+  transacoes: 645
+  portadores: 41
+  saques: 60980.0
   por_mes:
     '202601': 34973.06
     '202602': 15230.68
@@ -611,69 +645,34 @@ orgaos:
     '202606': 37560.73
     '202607': 22466.76
     '202608': 31415.56
+    '202609': 33690.84
+    '202610': 36845.0
   unidades_top:
   - nome: Superintendencia Do Inmetro No Estado Do Rs
-    valor: 176902.72
+    valor: 220550.71
   - nome: Superintendencia Da Zona Franca De Manaus/Am
-    valor: 47470.81
+    valor: 68486.29
   - nome: Superintendencia Do Inmetro No Estado De Goia
-    valor: 18617.93
+    valor: 23988.5
   - nome: Instituto Nac.De Metrolog. Qualid. E Tecnolog
-    valor: 2200.0
+    valor: 2701.8
   favorecidos_top:
   - nome: Saque em espécie
-    valor: 49500.0
-  - nome: Robson Eduardo Ellwanger
-    valor: 11968.3
+    valor: 60980.0
+  - nome: Sem Informacao
+    valor: 18562.17
   - nome: Cheila Pamela Dassoglio Cappellin Ltda
-    valor: 11178.0
+    valor: 15898.0
+  - nome: Robson Eduardo Ellwanger
+    valor: 12764.13
   - nome: Personal Ltda
-    valor: 9336.5
-  - nome: Sem Informacao
-    valor: 8513.03
-- orgao: Ministério das Relações Exteriores
-  node_id: br-ministerio-das-relacoes-exteriores
-  total: 204114.98
-  transacoes: 261
-  portadores: 12
-  saques: 15500.0
-  por_mes:
-    '202601': 30399.3
-    '202602': 2137.69
-    '202603': 15123.14
-    '202604': 40365.48
-    '202605': 34606.56
-    '202606': 19951.42
-    '202607': 28461.33
-    '202608': 33070.06
-  unidades_top:
-  - nome: Divisao De Logistica E Infraestrutura - Dli
-    valor: 140905.6
-  - nome: Mre - Escritorio De Rpres.No Rio De Janeiro
-    valor: 20790.03
-  - nome: 2A.Comissao Brasileira Demarcadora De Limites
-    valor: 18970.79
-  - nome: 1A.Comissao Brasileira Demarcadora De Limites
-    valor: 12315.62
-  - nome: Fundacao Alexandre De Gusmao
-    valor: 7007.28
-  favorecidos_top:
-  - nome: Sem Informacao
-    valor: 24048.47
-  - nome: Solli Atacadista Ltda
-    valor: 15500.75
-  - nome: Saque em espécie
-    valor: 15500.0
-  - nome: Leroy Merlin Companhia Brasileira De Bricolagem
-    valor: 6304.19
-  - nome: Pagar.Me S.A.
-    valor: 5528.4
+    valor: 10736.5
 - orgao: Ministério da Cultura
   node_id: br-ministerio-da-cultura
-  total: 202780.73
-  transacoes: 383
-  portadores: 36
-  saques: 15250.0
+  total: 272539.04
+  transacoes: 502
+  portadores: 41
+  saques: 17500.0
   por_mes:
     '202601': 36284.93
     '202602': 14904.2
@@ -683,32 +682,73 @@ orgaos:
     '202606': 35539.3
     '202607': 30186.17
     '202608': 12200.49
+    '202609': 34094.39
+    '202610': 35663.92
   unidades_top:
   - nome: Fundacao Nacional De Artes
-    valor: 93535.3
+    valor: 120592.15
   - nome: Fundacao Cultural Palmares
-    valor: 62195.06
+    valor: 82144.18
   - nome: Agencia Nacional Do Cinema
-    valor: 19670.01
-  - nome: Superintendencia Do Iphan No Para, Iphan-Pa
-    valor: 6864.3
+    valor: 21570.01
+  - nome: Coord.Geral De Licit., Contrat. E Rec. Logist
+    valor: 13144.48
   - nome: Fundacao Casa De Rui Barbosa
-    valor: 4767.48
+    valor: 11382.89
   favorecidos_top:
   - nome: Sem Informacao
-    valor: 23377.44
+    valor: 31739.74
   - nome: Saque em espécie
-    valor: 15250.0
+    valor: 17500.0
+  - nome: Box 35 Servicos De Manutencao E Reparacao Mecanica Ltda
+    valor: 7543.14
   - nome: Vaston - Solucoes E Inspecoes Ltda
     valor: 6980.0
   - nome: Ifood Pago Instituicao De Pagamento S.A.
-    valor: 4810.0
-  - nome: Carlos Augusto Costa Rodrigues
-    valor: 4780.23
+    valor: 6530.0
+- orgao: Ministério das Relações Exteriores
+  node_id: br-ministerio-das-relacoes-exteriores
+  total: 246826.96
+  transacoes: 348
+  portadores: 14
+  saques: 27500.0
+  por_mes:
+    '202601': 30399.3
+    '202602': 2137.69
+    '202603': 15123.14
+    '202604': 40365.48
+    '202605': 34606.56
+    '202606': 19951.42
+    '202607': 28461.33
+    '202608': 33070.06
+    '202609': 27785.27
+    '202610': 14926.71
+  unidades_top:
+  - nome: Divisao De Logistica E Infraestrutura - Dli
+    valor: 158346.67
+  - nome: 2A.Comissao Brasileira Demarcadora De Limites
+    valor: 31869.79
+  - nome: Mre - Escritorio De Rpres.No Rio De Janeiro
+    valor: 24258.67
+  - nome: 1A.Comissao Brasileira Demarcadora De Limites
+    valor: 19263.89
+  - nome: Fundacao Alexandre De Gusmao
+    valor: 8722.28
+  favorecidos_top:
+  - nome: Saque em espécie
+    valor: 27500.0
+  - nome: Sem Informacao
+    valor: 25286.86
+  - nome: Solli Atacadista Ltda
+    valor: 15500.75
+  - nome: Ifood Pago Instituicao De Pagamento S.A.
+    valor: 8174.87
+  - nome: Leroy Merlin Companhia Brasileira De Bricolagem
+    valor: 6304.19
 - orgao: Ministério das Cidades
   node_id: br-ministerio-das-cidades
-  total: 159313.59
-  transacoes: 228
+  total: 203683.1
+  transacoes: 293
   portadores: 7
   saques: 0.0
   por_mes:
@@ -720,32 +760,34 @@ orgaos:
     '202606': 21464.41
     '202607': 24625.35
     '202608': 24574.25
+    '202609': 26375.42
+    '202610': 17994.09
   unidades_top:
   - nome: Cia.Brasileira De Trens Urbanos-Stu/Rec
-    valor: 148247.25
+    valor: 189037.88
   - nome: Cia. Brasileira De Trens Urbanos - Stu/Jop
-    valor: 4665.56
+    valor: 6815.64
   - nome: Cia Brasileira De Trens Urbanos - Stu/Nat
-    valor: 4651.38
+    valor: 6080.18
   - nome: Cia.Brasileira De Trens Urbanos-Stu/Mac
     valor: 1749.4
   favorecidos_top:
   - nome: Sem Informacao
-    valor: 21691.57
+    valor: 28359.37
   - nome: Timoteo Heraclio Do Rego Cavalcante
     valor: 13089.72
   - nome: Cabuga Parafusos Ltda
     valor: 8508.7
   - nome: C & A Material De Construcao Ltda
-    valor: 7353.3
-  - nome: Gerson Estevao De Morais
-    valor: 6277.3
+    valor: 7694.4
+  - nome: Pernambuco Distribuidora Atacadista - Epi'S, Insumos Industriais & Mro Ltda
+    valor: 7591.0
 - orgao: Ministério dos Transportes
   node_id: br-ministerio-dos-transportes
-  total: 120189.72
-  transacoes: 373
-  portadores: 32
-  saques: 4658.0
+  total: 152389.68
+  transacoes: 465
+  portadores: 36
+  saques: 6278.0
   por_mes:
     '202601': 11712.84
     '202602': 1204.69
@@ -755,34 +797,36 @@ orgaos:
     '202606': 19106.45
     '202607': 25243.77
     '202608': 19303.65
+    '202609': 18354.64
+    '202610': 13845.32
   unidades_top:
   - nome: Agencia Nacional De Transportes Terrestres
-    valor: 49264.44
+    valor: 61393.06
   - nome: Superintendencia Reg. No Estado Rn - Dnit
-    valor: 16477.23
-  - nome: Superintendencia Reg. No Estado Es - Dnit
-    valor: 11896.71
-  - nome: Superintendencia Reg. No Estado Pe - Dnit
-    valor: 11670.61
+    valor: 20628.44
+  - nome: Superintendencia Reg. No Estado Sc - Dnit
+    valor: 16037.63
   - nome: Valec Engenharia, Construcoes E Ferrovias S.A
-    valor: 11019.6
+    valor: 14350.79
+  - nome: Superintendencia Reg. No Estado Pe - Dnit
+    valor: 13314.64
   favorecidos_top:
   - nome: Sem Informacao
-    valor: 17574.2
+    valor: 26962.8
   - nome: Saque em espécie
-    valor: 4658.0
+    valor: 6278.0
   - nome: Dc2 Engenharia Ltda
     valor: 3999.99
+  - nome: Ferreira Costa & Cia Ltda
+    valor: 3518.9
   - nome: Metronorte Comercial De Veiculos Ltda
     valor: 3270.0
-  - nome: Marcelo Sena Da Silva
-    valor: 3000.0
 - orgao: Advocacia-Geral da União
   node_id: br-advocacia-geral-da-uniao
-  total: 100114.03
-  transacoes: 342
-  portadores: 53
-  saques: 20935.0
+  total: 116556.5
+  transacoes: 388
+  portadores: 58
+  saques: 24925.0
   por_mes:
     '202601': 17662.54
     '202602': 762.35
@@ -792,34 +836,36 @@ orgaos:
     '202606': 22119.43
     '202607': 13084.22
     '202608': 10425.42
+    '202609': 7339.37
+    '202610': 9103.1
   unidades_top:
   - nome: Superintendencia Reg. De Admin. Da 1ª Regiao
-    valor: 47694.43
+    valor: 53440.72
   - nome: Superintendencia Reg. De Admin. Da 5ª Regiao
-    valor: 19571.38
+    valor: 25228.08
   - nome: Superintendencia Reg. De Admin. Da 6ª Regiao
-    valor: 14888.93
+    valor: 15850.73
   - nome: Superintendencia Reg. De Admin. Da 4ª Regiao
-    valor: 10563.62
-  - nome: Superintendencia Reg. De Admin. Da 2ª Regiao
-    valor: 3766.5
+    valor: 13714.62
+  - nome: Superintendencia Reg. De Admin. Da 3ª Regiao
+    valor: 4225.85
   favorecidos_top:
   - nome: Saque em espécie
-    valor: 20935.0
+    valor: 24925.0
   - nome: Sem Informacao
-    valor: 7504.08
+    valor: 9404.09
+  - nome: Freitas & Cia Ltda
+    valor: 3190.34
   - nome: Leo Arte - Impressoes Graficas Ltda
     valor: 2970.0
   - nome: Hbl Carimbos E Placas Industria E Comercio Ltda
     valor: 2735.2
-  - nome: Freitas & Cia Ltda
-    valor: 2725.47
 - orgao: Ministério de Portos e Aeroportos
   node_id: br-ministerio-de-portos-e-aeroportos
-  total: 51528.82
-  transacoes: 70
-  portadores: 11
-  saques: 7000.0
+  total: 67134.29
+  transacoes: 96
+  portadores: 14
+  saques: 9660.0
   por_mes:
     '202601': 5947.8
     '202602': 3716.29
@@ -829,27 +875,29 @@ orgaos:
     '202606': 9904.24
     '202607': 7991.59
     '202608': 1726.87
+    '202609': 7875.19
+    '202610': 7730.28
   unidades_top:
   - nome: Agencia Nacional De Transportes Aquaviarios
-    valor: 34960.14
+    valor: 46754.12
   - nome: Agencia Nacional De Aviacao Civil
-    valor: 16568.68
+    valor: 20380.17
   favorecidos_top:
   - nome: Sem Informacao
-    valor: 11993.63
+    valor: 17973.31
   - nome: Saque em espécie
-    valor: 7000.0
+    valor: 9660.0
   - nome: Sendas Distribuidora S/A
-    valor: 5035.65
+    valor: 7529.7
   - nome: Sbf Comercio De Produtos Esportivos S.A.
     valor: 3149.93
   - nome: Kamila Y R Dutra
     valor: 2790.0
 - orgao: Ministério da Previdência Social
   node_id: br-ministerio-da-previdencia-social
-  total: 49622.74
-  transacoes: 88
-  portadores: 8
+  total: 54714.59
+  transacoes: 109
+  portadores: 9
   saques: 0.0
   por_mes:
     '202601': 3344.52
@@ -860,18 +908,20 @@ orgaos:
     '202606': 3629.48
     '202607': 15105.03
     '202608': 5710.74
+    '202609': 4308.25
+    '202610': 783.6
   unidades_top:
   - nome: Coord. Geral De Gestao E Administracao - Cgga
     valor: 23218.95
   - nome: Coordenacao Geral De Patrimonio E Logistica
-    valor: 16793.07
+    valor: 20562.92
   - nome: Superintendencia Regional Sul
-    valor: 7432.72
+    valor: 8754.72
   - nome: Gerencia Executiva Campo Grande
     valor: 2178.0
   favorecidos_top:
   - nome: Sem Informacao
-    valor: 10978.39
+    valor: 11931.34
   - nome: Naja Comunicacao E Sinalizacao Ltda
     valor: 3136.0
   - nome: Bel Ponto Bordados E Confeccoes Ltda
@@ -882,10 +932,10 @@ orgaos:
     valor: 2490.0
 - orgao: Controladoria-Geral da União
   node_id: br-controladoria-geral-da-uniao
-  total: 42203.62
-  transacoes: 56
-  portadores: 9
-  saques: 355.0
+  total: 53929.31
+  transacoes: 68
+  portadores: 12
+  saques: 675.0
   por_mes:
     '202601': 5814.22
     '202603': 1690.94
@@ -894,12 +944,14 @@ orgaos:
     '202606': 14372.95
     '202607': 3733.0
     '202608': 904.8
+    '202609': 235.2
+    '202610': 11490.49
   unidades_top:
   - nome: Coord-Geral De Licitacao,Contr.E Documentacao
-    valor: 42203.62
+    valor: 53929.31
   favorecidos_top:
   - nome: Sem Informacao
-    valor: 8039.8
+    valor: 12377.0
   - nome: L. H. Fotos E Producoes Ltda
     valor: 5675.0
   - nome: Movida Participacoes S.A.
@@ -908,7 +960,7 @@ orgaos:
     valor: 3000.0
   - nome: Qualidade Brindes E Impressao Ltda
     valor: 2996.0
-total: 72462343.34
+total: 104327300.66
 orgaos_casados: 18
 nota: 'Gastos com cartão corporativo lançados nos extratos de cada mês; saques são identificados pela descrição da transação.
   O extrato traz o portador do cartão, em regra servidor de execução, não o dirigente do órgão: por isso o Atlas mostra o

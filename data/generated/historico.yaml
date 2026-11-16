@@ -1,20 +1,20 @@
 # GERADO por etl/historico.py. Não edite à mão.
-generated_at: '2026-11-15T16:20:36Z'
+generated_at: '2026-11-16T19:48:50Z'
 fonte: wikidata.org — P39 (cargo ocupado) com qualificadores P580/P582/P585/P1365/P1366/P2868 via busca haswbstatement; ou
   P488/P169/P1037 no item do órgão (rota org_item); desde 1985
 resumo:
-  cargos_com_historico: 65
+  cargos_com_historico: 66
   cargos_por_rota:
     busca: 8
     mapa: 43
-    org_item: 6
+    org_item: 7
     override: 8
   cargos_sem_qid: 80
-  cargos_vazios_no_wikidata: 6
+  cargos_vazios_no_wikidata: 5
   qids_invalidos: {}
-  mandatos: 572
-  mandatos_com_inicio_e_fim: 492
-  mandatos_sem_data: 201
+  mandatos: 573
+  mandatos_com_inicio_e_fim: 493
+  mandatos_sem_data: 200
   mediana_geral_dias: 549
   atualizados: 21
   sem_qid:
@@ -102,7 +102,6 @@ resumo:
     - br-ipea-dirigente
     - br-agencia-espacial-brasileira-dirigente
     - br-anp-dirigente
-    - br-procurador-geral-da-fazenda-nacional
     - br-procurador-geral-da-uniao
     - br-secretario-especial-da-receita-federal
 cargos:
@@ -8489,6 +8488,33 @@ cargos:
     ocupante_atual_no_wikidata: true
     sem_data_n: 0
     sem_data: []
+  br-procurador-geral-da-fazenda-nacional:
+    qid: Q10354169
+    rota: org_item
+    nome: Procurador-Geral da Fazenda Nacional
+    ocupantes: 1
+    mandatos_n: 1
+    mediana_dias: 481
+    mandatos:
+      - qid: Q28920415
+        nome: José Levi Mello do Amaral Júnior
+        inicio: '2019-01-03'
+        fim: '2020-04-28'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1976-06-22'
+        morte: null
+        via: P488
+        dias: 481
+        papel: null
+    por_presidente: {}
+    ocupante_atual: Anelize Lenzi Ruas de Almeida
+    wikidata_mais_recente: José Levi Mello do Amaral Júnior
+    wikidata_atualizado: false
+    ocupante_atual_no_wikidata: false
+    sem_data_n: 0
+    sem_data: []
 cargos_so_sem_data:
   br-ipea-dirigente:
     qid: Q98771491
@@ -8511,13 +8537,6 @@ cargos_so_sem_data:
     sem_data:
       - qid: Q30932675
         nome: Décio Oddone
-  br-procurador-geral-da-fazenda-nacional:
-    qid: Q10354169
-    rota: org_item
-    nome: Procurador-Geral da Fazenda Nacional
-    sem_data:
-      - qid: Q28920415
-        nome: José Levi Mello do Amaral Júnior
   br-procurador-geral-da-uniao:
     qid: Q10354172
     rota: org_item

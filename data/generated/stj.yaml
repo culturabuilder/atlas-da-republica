@@ -1,5 +1,5 @@
 # GERADO por etl/stj.py. Não edite à mão.
-generated_at: '2026-11-15'
+generated_at: '2026-11-16'
 node: br-superior-tribunal-de-justica
 fonte: Superior Tribunal de Justiça, portal de dados abertos (CKAN)
 fonte_url: https://dadosabertos.web.stj.jus.br
@@ -7,15 +7,24 @@ nota: 'O que o próprio tribunal publica em formato aberto. Não inclui processo
   MB por dia, e a folha de pagamento devolve erro na fonte.'
 falhas: []
 penalidades:
-  total: 534
+  total: 535
   empresas: 295
   vigentes_hoje: 2
   por_tipo:
     multa: 460
-    advertência: 38
+    advertência: 39
     suspensão ou impedimento de licitar: 35
     declaração de inidoneidade: 1
   ultimas:
+  - empresa: BRASFORT ADMINISTRAÇÃO E SERVIÇOS LTDA.
+    cnpj: '36770857000138'
+    tipo: advertência
+    penalizacao: Advertência - Inciso I do Art. 156 a Lei n. 14.133/2021
+    motivo: Desconto indevido no salário de sete colaboradores referente ao mês de janeiro de 2026, devido ao atraso de três
+      dias em relação a seis empregados e de cinco dias a uma empregada.
+    ato: '7279516'
+    data: '2026-11-04'
+    fim: null
   - empresa: GENERAL CONTRACTOR CONSTRUTORA LTDA
     cnpj: '73509440000142'
     tipo: multa
@@ -114,17 +123,8 @@ penalidades:
     ato: '6994264'
     data: '2026-05-21'
     fim: null
-  - empresa: LISBOA NEGOCIOS E LICITACOES LTDA
-    cnpj: '59600977000192'
-    tipo: multa
-    penalizacao: Multa de Mora - Inciso II do Art. 156 da Lei n. 14.133/2021
-    motivo: Atraso de 23 (vinte e três) dias na entrega dos materiais da Nota de Empenho n. 1174/2025, com fundamento na alínea
-      "c" do item 14.2 da Cláusula Décima Quarta - Das Infrações Administrativas e Sanções do Edital de Licita
-    ato: '6973168'
-    data: '2026-05-12'
-    fim: null
   desde: '1998-01-29'
-  arquivo_de: '2026-11-04'
+  arquivo_de: '2026-11-16'
   fonte: STJ, dados abertos — Penalidades a fornecedores
   fonte_url: https://dadosabertos.web.stj.jus.br/dataset/penalidades-fornecedores
 viagens:
