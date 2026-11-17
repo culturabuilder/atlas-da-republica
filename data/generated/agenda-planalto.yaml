@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-16'
+generated_at: '2026-11-17'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-19'
+janela_inicio: '2026-08-20'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,11 +11,11 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 196
-    dias_com_agenda: 53
+    compromissos_90d: 187
+    dias_com_agenda: 52
     por_tipo:
-      evento: 62
-      viagem: 56
+      evento: 57
+      viagem: 52
       audiencia: 50
       reuniao: 23
       outro: 5
@@ -44,11 +44,9 @@ people:
     - nome: Palácio da Alvorada
       n: 32
     - nome: Base Aérea de Brasília
-      n: 23
+      n: 21
     - nome: Esplanada dos Ministérios, Brasília
       n: 5
-    - nome: Centro Industrial Nuclear de Aramar, Iperó (SP)
-      n: 3
     - nome: Av. Gerassina Tavares – Jardim Veneza, São José do Rio Preto (SP)
       n: 3
     - nome: Estrada da Produção – Montes Claros (MG)
@@ -59,6 +57,8 @@ people:
       n: 3
     - nome: Centro de Convenções Internacional das Filipinas
       n: 3
+    - nome: Base Aérea de Natal
+      n: 2
     ultimo: '2026-11-16'
     recentes:
     - data: '2026-11-16'
@@ -111,36 +111,6 @@ people:
       participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-08-19:
-      - hora: 08:00
-        titulo: Partida para Sorocaba
-        local: Base Aérea de Brasília
-      - hora: 09:10
-        titulo: Chegada a Sorocaba
-        local: Aeroporto de Sorocaba
-      - hora: '10:00'
-        titulo: Apresentação institucional sobre o Programa Nuclear da Marinha
-        local: Centro Industrial Nuclear de Aramar, Iperó (SP)
-      - hora: '10:35'
-        titulo: Visita ao Laboratório de Enriquecimento Isotópico
-        local: Centro Industrial Nuclear de Aramar, Iperó (SP
-      - hora: '11:20'
-        titulo: Visita ao Laboratório de Geração de Energia Nucleoelétrica (LABGENE)
-        local: Centro Industrial Nuclear de Aramar, Iperó (SP)
-      - hora: '12:10'
-        titulo: Intervenções no contexto da visita ao Centro Industrial Nuclear de Aramar
-        local: Centro Industrial Nuclear de Aramar, Iperó (SP)
-      - hora: '13:50'
-        titulo: Partida para Brasília
-        local: Aeroporto de Sorocaba
-      - hora: '15:00'
-        titulo: Chegada a Brasília
-        local: Base Aérea de Brasília
-      - hora: '18:00'
-        titulo: Solenidade de posse de Suas Excelências os Senhores Ministros Luis Felipe Salomão e Mauro Luiz Campbell Marques
-          nos cargos, respectivamente, de Presidente e Vice-Presidente do Superior Tribunal de Justiça (STJ) para o biênio
-          2026-2028
-        local: Superior Tribunal de Justiça, Brasília (DF)
       presidente/2026-08-20:
       - hora: '10:30'
         titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
@@ -811,6 +781,7 @@ people:
       - hora: '22:10'
         titulo: Chegada a Brasília
         local: Base Aérea de Brasília
+      presidente/2026-11-17: []
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -818,14 +789,14 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 40
-    dias_com_agenda: 27
+    compromissos_90d: 38
+    dias_com_agenda: 26
     por_tipo:
-      evento: 15
+      evento: 14
       viagem: 9
       audiencia: 8
       reuniao: 5
-      outro: 3
+      outro: 2
     entidades_top:
     - nome: Luiz Inácio Lula da Silva (Presidente da República)
       n: 2
@@ -836,10 +807,10 @@ people:
     - nome: André Passos (Presidente da Associação Brasileira da Indústria Química - Abiquim)
       n: 1
     locais_top:
-    - nome: Brasília/DF
-      n: 11
     - nome: Palácio do Planalto
       n: 10
+    - nome: Brasília/DF
+      n: 9
     - nome: São Paulo/SP
       n: 7
     - nome: Palácio do Planalto, Anexo II
@@ -911,15 +882,6 @@ people:
         entidade: Ministro-Chefe da Secretaria de Comunicação Social - SECOM
     dias_nao_lidos: 0
     dias:
-      vice/2026-08-19:
-      - hora: 09:00
-        titulo: 'Fórum Saúde EMS Esfera: Soberania e Tecnologia: Impulsionando a Indústria Nacional'
-        local: Brasília/DF
-      - hora: '18:00'
-        titulo: Solenidade de Posse dos Ministros Luis Felipe Salomão e Mauro Campbell Marques nos cargos de Presidente e
-          Vice-Presidente do Superior Tribunal de Justiça - STJ
-        local: Brasília/DF
-      vice/2026-08-19-b1: []
       vice/2026-08-20:
       - hora: '13:00'
         titulo: Embarque de Brasília/DF para São Paulo/SP
@@ -1216,6 +1178,8 @@ people:
       vice/2026-11-15-b1: []
       vice/2026-11-16: []
       vice/2026-11-16-b1: []
+      vice/2026-11-17: []
+      vice/2026-11-17-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 196 compromissos em 53 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 40 compromissos em 27 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 187 compromissos em 52 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 38 compromissos em 26 dias (0 dias não lidos)'

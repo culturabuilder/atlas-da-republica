@@ -1,6 +1,6 @@
 # GERADO por etl/comissoes.py. Não edite à mão.
 generated_from: legis.senado.leg.br/dadosabertos + dadosabertos.camara.leg.br
-generated_at: '2026-11-16'
+generated_at: '2026-11-17'
 pessoas_reaproveitadas: 67
 ids_corrigidos:
   br-p-cd-353: br-p-cd-73788 (Ricardo Barros)
@@ -675,11 +675,11 @@ nodes:
       - Comissão de Defesa dos Direitos da Mulher
     description: 'Comissão permanente da Câmara dos Deputados (CMULHER). Discute e vota as proposições da sua área
       temática, podendo aprová-las em caráter conclusivo sem passar pelo Plenário, e fiscaliza os atos do Executivo
-      no seu campo. Composição atual: 20 titulares.'
+      no seu campo. Composição atual: 21 titulares.'
     cite: CF/88 art. 58; RICD arts. 22 e 32
     cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
     official_url: https://www.camara.leg.br/comissoes/cmulher
-    seats_count: 20
+    seats_count: 21
     verified: true
   - id: br-comissao-de-previdencia-assistencia-social-infancia-adolescencia-e-familia-da-camara
     type: commission
@@ -808,11 +808,11 @@ nodes:
       - Comissão de Trabalho
     description: 'Comissão permanente da Câmara dos Deputados (CTRAB). Discute e vota as proposições da sua área
       temática, podendo aprová-las em caráter conclusivo sem passar pelo Plenário, e fiscaliza os atos do Executivo
-      no seu campo. Composição atual: 14 titulares.'
+      no seu campo. Composição atual: 15 titulares.'
     cite: CF/88 art. 58; RICD arts. 22 e 32
     cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
     official_url: https://www.camara.leg.br/comissoes/ctrab
-    seats_count: 14
+    seats_count: 15
     verified: true
   - id: br-comissao-de-turismo-da-camara
     type: commission
@@ -15214,6 +15214,16 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/226075
+    - id: br-p-cd-220654
+      name: Delegado Paulo Bilynskyj
+      party: PL
+      uf: SP
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220654.jpg
+      role: Titular
+      started_at: '2026-11-17'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220654
     - id: br-p-cd-180214
       name: Pastor Diniz
       party: UNIÃO
@@ -18641,6 +18651,16 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/204425
+    - id: br-p-cd-165470
+      name: Rodrigo Valadares
+      party: PL
+      uf: SE
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/165470.jpg
+      role: Titular
+      started_at: '2026-11-17'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/165470
     - id: br-p-cd-220645
       name: Erika Hilton
       party: PSOL
@@ -18851,6 +18871,26 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220574
+    - id: br-p-cd-160632
+      name: Zé Silva
+      party: UNIÃO
+      uf: MG
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/160632.jpg
+      role: Suplente
+      started_at: '2026-11-16'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/160632
+    - id: br-p-cd-220654
+      name: Delegado Paulo Bilynskyj
+      party: PL
+      uf: SP
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220654.jpg
+      role: Suplente
+      started_at: '2026-11-17'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220654
   br-comissao-de-turismo-da-camara:
     - id: br-p-cd-220557
       name: Daniela Reinehr
