@@ -1,22 +1,22 @@
 # GERADO por etl/historico.py. Não edite à mão.
-generated_at: '2026-11-17T19:25:01Z'
+generated_at: '2026-11-18T19:01:55Z'
 fonte: wikidata.org — P39 (cargo ocupado) com qualificadores P580/P582/P585/P1365/P1366/P2868 via busca haswbstatement; ou
   P488/P169/P1037 no item do órgão (rota org_item); desde 1985
 resumo:
-  cargos_com_historico: 66
+  cargos_com_historico: 64
   cargos_por_rota:
     busca: 8
-    mapa: 43
+    mapa: 41
     org_item: 7
     override: 8
   cargos_sem_qid: 80
-  cargos_vazios_no_wikidata: 5
+  cargos_vazios_no_wikidata: 7
   qids_invalidos: {}
-  mandatos: 573
-  mandatos_com_inicio_e_fim: 493
-  mandatos_sem_data: 200
-  mediana_geral_dias: 549
-  atualizados: 21
+  mandatos: 560
+  mandatos_com_inicio_e_fim: 481
+  mandatos_sem_data: 199
+  mediana_geral_dias: 546
+  atualizados: 20
   sem_qid:
     - br-ana-diretor
     - br-ana-dirigente
@@ -99,6 +99,8 @@ resumo:
     - br-telebras-dirigente
     - br-tribunal-superior-do-trabalho-presidente
   vazios:
+    - br-banco-do-brasil-dirigente
+    - br-fiocruz-dirigente
     - br-ipea-dirigente
     - br-agencia-espacial-brasileira-dirigente
     - br-anp-dirigente
@@ -263,161 +265,6 @@ cargos:
     ocupante_atual_no_wikidata: true
     sem_data_n: 0
     sem_data: []
-  br-banco-do-brasil-dirigente:
-    qid: Q98971588
-    rota: mapa
-    nome: Presidente do Banco do Brasil
-    ocupantes: 11
-    mandatos_n: 11
-    mediana_dias: 563
-    mandatos:
-      - qid: Q55999391
-        nome: Camillo Calazans de Magalhães
-        inicio: 1985-03
-        fim: '1988-03-07'
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: '1928-01-22'
-        morte: '2012-02-11'
-        dias: 1102
-        presidente: null
-        papel: null
-      - qid: Q107580376
-        nome: Lafaiete Coutinho Torres
-        inicio: '1991-05-16'
-        fim: '1992-09-29'
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: '1940-02-28'
-        morte: null
-        dias: 502
-        presidente: Fernando Collor
-        papel: null
-      - qid: Q9613885
-        nome: Andrea Calabi
-        inicio: '1999-01-06'
-        fim: '1999-07-28'
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: '1945-09-18'
-        morte: null
-        dias: 203
-        presidente: Fernando Henrique Cardoso
-        papel: null
-      - qid: Q82328
-        nome: Aldemir Bendine
-        inicio: '2009-04-23'
-        fim: '2015-02-06'
-        interino: false
-        substituiu: null
-        substituido_por: Q20045585
-        nascimento: '1963-12-10'
-        morte: null
-        dias: 2115
-        presidente: Lula
-        papel: null
-      - qid: Q20045585
-        nome: Alexandre Abreu
-        inicio: '2015-02-06'
-        fim: '2016-05-31'
-        interino: false
-        substituiu: Q82328
-        substituido_por: Q116466463
-        nascimento: '1965-11-29'
-        morte: null
-        dias: 480
-        presidente: Dilma Rousseff
-        papel: null
-      - qid: Q116466463
-        nome: Paulo Caffarelli
-        inicio: '2016-05-31'
-        fim: '2018-10-26'
-        interino: false
-        substituiu: Q20045585
-        substituido_por: Q116466852
-        nascimento: '1965-09-19'
-        morte: null
-        dias: 878
-        presidente: Michel Temer
-        papel: null
-      - qid: Q116466852
-        nome: Marcelo Labuto
-        inicio: '2018-10-26'
-        fim: '2019-01-07'
-        interino: false
-        substituiu: Q116466463
-        substituido_por: Q61000735
-        nascimento: null
-        morte: null
-        dias: 73
-        presidente: Michel Temer
-        papel: null
-      - qid: Q61000735
-        nome: Rubem Novaes
-        inicio: '2019-01-07'
-        fim: '2020-09-22'
-        interino: false
-        substituiu: Q116466852
-        substituido_por: Q116448040
-        nascimento: '1945-08-22'
-        morte: null
-        dias: 624
-        presidente: Jair Bolsonaro
-        papel: null
-      - qid: Q116448040
-        nome: André Brandão
-        inicio: '2020-09-22'
-        fim: '2021-04-01'
-        interino: false
-        substituiu: Q61000735
-        substituido_por: Q116448120
-        nascimento: null
-        morte: null
-        dias: 191
-        presidente: Jair Bolsonaro
-        papel: null
-      - qid: Q116448120
-        nome: Fausto Ribeiro
-        inicio: '2021-04-01'
-        fim: '2023-01-16'
-        interino: false
-        substituiu: Q116448040
-        substituido_por: Q115933621
-        nascimento: null
-        morte: null
-        dias: 655
-        presidente: Jair Bolsonaro
-        papel: null
-      - qid: Q115933621
-        nome: Tarciana Medeiros
-        inicio: '2023-01-16'
-        fim: null
-        interino: false
-        substituiu: Q116448120
-        substituido_por: null
-        nascimento: '1978-11-12'
-        morte: null
-        dias: null
-        presidente: Lula
-        papel: null
-    por_presidente:
-      Fernando Collor: 1
-      Fernando Henrique Cardoso: 1
-      Lula: 2
-      Dilma Rousseff: 1
-      Michel Temer: 2
-      Jair Bolsonaro: 3
-    ocupante_atual: Tarciana Medeiros
-    wikidata_mais_recente: Tarciana Medeiros
-    wikidata_atualizado: true
-    ocupante_atual_no_wikidata: true
-    sem_data_n: 1
-    sem_data:
-      - qid: Q10284900
-        nome: Francisco Jê Acaiaba de Montezuma
   br-bndes-dirigente:
     qid: Q98973126
     rota: busca
@@ -1079,47 +926,6 @@ cargos:
       Jair Bolsonaro: 1
     ocupante_atual: Rodrigo Alves Teixeira
     wikidata_mais_recente: Roberto Campos Neto
-    wikidata_atualizado: false
-    ocupante_atual_no_wikidata: false
-    sem_data_n: 0
-    sem_data: []
-  br-fiocruz-dirigente:
-    qid: Q116456463
-    rota: mapa
-    nome: Presidente da Fiocruz
-    ocupantes: 2
-    mandatos_n: 2
-    mediana_dias: 2556
-    mandatos:
-      - qid: Q92645474
-        nome: Paulo M Buss
-        inicio: '2000'
-        fim: '2008'
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: null
-        morte: null
-        dias: 2922
-        presidente: Fernando Henrique Cardoso
-        papel: null
-      - qid: Q96741667
-        nome: Nísia Trindade Lima
-        inicio: '2017'
-        fim: '2023'
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: '1958-01-17'
-        morte: null
-        dias: 2191
-        presidente: Michel Temer
-        papel: null
-    por_presidente:
-      Fernando Henrique Cardoso: 1
-      Michel Temer: 1
-    ocupante_atual: Mario Santos Moreira
-    wikidata_mais_recente: Nísia Trindade Lima
     wikidata_atualizado: false
     ocupante_atual_no_wikidata: false
     sem_data_n: 0
@@ -3033,26 +2839,26 @@ cargos:
         nome: Fernando José de Portugal e Castro
       - qid: Q938542
         nome: Maílson da Nóbrega
-      - qid: Q10341519
-        nome: Orlando Bandeira Vilela
-      - qid: Q10340898
-        nome: Onaldo Brancante Machado
-      - qid: Q10324189
-        nome: Manuel Guilherme da Silveira Filho
       - qid: Q9594135
         nome: Alberto Andrade de Queirós
-      - qid: Q10270754
-        nome: Eduardo Pereira de Carvalho
+      - qid: Q10341519
+        nome: Orlando Bandeira Vilela
+      - qid: Q10324189
+        nome: Manuel Guilherme da Silveira Filho
+      - qid: Q10340898
+        nome: Onaldo Brancante Machado
       - qid: Q10346895
         nome: Paulo de Lira Tavares
+      - qid: Q10270754
+        nome: Eduardo Pereira de Carvalho
       - qid: Q10346779
         nome: Paulo Haddad
       - qid: Q10312521
         nome: João de Oliveira Castro Vianna Júnior
-      - qid: Q10294738
-        nome: Henrique Domingos Ribeiro Barbosa
       - qid: Q5102160
         nome: Tomás António de Vila Nova Portugal
+      - qid: Q10294738
+        nome: Henrique Domingos Ribeiro Barbosa
       - qid: Q10293647
         nome: Hamilton Prisco Paraíso
       - qid: Q10336630
@@ -3747,16 +3553,16 @@ cargos:
         nome: Márcio Thomaz Bastos
       - qid: Q9654119
         nome: Benedito Costa Neto
-      - qid: Q10363102
-        nome: Rivadávia da Cunha Correia
       - qid: Q16488302
         nome: Alfredo Buzaid
+      - qid: Q10363102
+        nome: Rivadávia da Cunha Correia
       - qid: Q10320820
         nome: Luiz Paulo Barreto
-      - qid: Q10287035
-        nome: Félix Gaspar de Barros e Almeida
       - qid: Q10310797
         nome: José de Jesus Filho
+      - qid: Q10287035
+        nome: Félix Gaspar de Barros e Almeida
       - qid: Q10342193
         nome: Oscar Pedroso Horta
       - qid: Q9587238
@@ -3771,12 +3577,12 @@ cargos:
         nome: Alfredo Pinto Vieira de Melo
       - qid: Q10287869
         nome: Gabriel Loureiro Bernardes
-      - qid: Q16488184
-        nome: Alexandre Dupeyrat
       - qid: Q10330142
         nome: Milton Seligman
       - qid: Q10309086
         nome: José Carlos Dias
+      - qid: Q16488184
+        nome: Alexandre Dupeyrat
       - qid: Q23893528
         nome: Wellington César Lima e Silva
       - qid: Q23893552
@@ -5970,12 +5776,12 @@ cargos:
         nome: Kobkarn Wattanavrangkul
       - qid: Q3101783
         nome: George Naccache
+      - qid: Q131458650
+        nome: Soufiane Aghaichata Guichene
       - qid: Q126725672
         nome: null
       - qid: Q16127247
         nome: null
-      - qid: Q131458650
-        nome: Soufiane Aghaichata Guichene
       - qid: Q121740703
         nome: Lola Ade-John
       - qid: Q3308697
@@ -7481,10 +7287,10 @@ cargos:
         nome: Joaquim Barbosa
       - qid: Q7322696
         nome: Ricardo Lewandowski
-      - qid: Q3509658
-        nome: Carlos Ayres Britto
       - qid: Q3625473
         nome: Antonio Cezar Peluso
+      - qid: Q3509658
+        nome: Carlos Ayres Britto
   br-tribunal-superior-do-trabalho-ministro:
     qid: Q103815244
     rota: mapa
@@ -7899,10 +7705,10 @@ cargos:
         nome: Teodor Boyan
       - qid: Q138820720
         nome: null
-      - qid: Q136214714
-        nome: Kaupo Kruusvee
       - qid: Q117830140
         nome: Boscheron Des Portes
+      - qid: Q136214714
+        nome: Kaupo Kruusvee
       - qid: Q132833468
         nome: Liivi Loide
       - qid: Q125802951

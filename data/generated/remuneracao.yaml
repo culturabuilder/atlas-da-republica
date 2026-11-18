@@ -1,19 +1,19 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-11-17'
+generated_at: '2026-11-18'
 mes: '202609'
 mes_senado: '202610'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1217
-  com_remuneracao: 510
+  ocupantes_no_grafo: 1218
+  com_remuneracao: 512
   por_setor:
     executivo:
-      ocupantes: 482
-      antes: 400
-      depois: 425
-      pct_antes: 83.0
-      pct_depois: 88.2
+      ocupantes: 483
+      antes: 403
+      depois: 427
+      pct_antes: 83.4
+      pct_depois: 88.4
     essenciais:
       ocupantes: 30
       antes: 4
@@ -33,24 +33,24 @@ resumo:
       pct_antes: 0.0
       pct_depois: 0.0
   por_criterio:
-    nome_completo+orgao: 389
-    nome_completo: 94
-    primeiro_ultimo+orgao: 19
+    nome_completo+orgao: 395
+    nome_completo: 91
+    primeiro_ultimo+orgao: 18
     subsequencia_no_orgao: 5
     primeiro_ultimo_unico: 1
     nome_sem_sufixo: 1
     subsequencia_subsidio: 1
   por_confianca:
-    alta: 484
-    media: 26
+    alta: 487
+    media: 25
   sem_remuneracao:
-    total: 83
+    total: 82
     por_motivo:
       ausente na folha: 24
       órgão fora do SIAPE (empresa publica com folha própria): 14
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
       só há homônimo por primeiro+último sobrenome fora do órgão (...): 12
-      no cadastro do SIAPE mas sem linha de remuneração no mês: 11
+      no cadastro do SIAPE mas sem linha de remuneração no mês: 10
       órgão fora do SIAPE (sociedade economia mista com folha própria): 6
       vários servidores compatíveis no órgão (...) sem desempate: 2
       a entidade não aparece como órgão na folha do SIAPE (folha própria): 1
@@ -4452,38 +4452,38 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: FUNCÃO COMISSIONADA EXECUTIVA
-  br-p-carolina-magno-rodrigues-da-costa-chaves:
+  br-p-cleber-oliveira-soares:
     mes: '202609'
-    bruto: 19361.39
-    abate_teto: 0.0
-    bruto_apos_abate: 19361.39
-    liquido: 14431.84
+    bruto: 19151.56
+    abate_teto: 5948.58
+    bruto_apos_abate: 13202.98
+    liquido: 9779.21
     componentes:
-      basica: 19361.39
+      basica: 19151.56
       gratificacoes: 0.0
       funcao: null
       eventuais: 0.0
-      indenizatorias: 1192.0
-    orgao: MIN DO DESENV AGR E AGRIC FAMILIAR
+      indenizatorias: 0.0
+    orgao: MINISTERIO DA AGRICULTURA E PECUARIA
     orgao_superior: Sem informação
-    cargo_na_folha: ANALISTA EM CIENCIA E TECNOLOGIA
-    funcao_na_folha: Sem informação
-    vinculo: Cargo
-    criterio: nome_completo
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
     confianca: alta
-    nome_na_folha: CAROLINA MAGNO RODRIGUES DA COSTA CHAVES
+    nome_na_folha: CLEBER OLIVEIRA SOARES
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/5117
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1343441
     position: br-secretaria-executiva-agricultura-secretario
-    position_name: Secretária-Executiva do Ministério da Agricultura e Pecuária
-    bruta: 19361.39
-    liquida: 14431.84
-    indenizatorias: 1192.0
+    position_name: Secretário-Executivo do Ministério da Agricultura e Pecuária
+    bruta: 19151.56
+    liquida: 9779.21
+    indenizatorias: 0.0
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 0.0
-    cargo: ANALISTA EM CIENCIA E TECNOLOGIA
-    funcao: Sem informação
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-augusto-luis-billi:
     mes: '202609'
     bruto: 50224.09
@@ -4514,6 +4514,38 @@ people:
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 6139.77
+    cargo: AUDITOR FISCAL FEDERAL AGROPEC
+    funcao: Sem informação
+  br-p-carlos-goulart:
+    mes: '202609'
+    bruto: 44084.32
+    abate_teto: 0.0
+    bruto_apos_abate: 44084.32
+    liquido: 32257.79
+    componentes:
+      basica: 44084.32
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: MINISTERIO DA AGRICULTURA E PECUARIA
+    orgao_superior: Sem informação
+    cargo_na_folha: AUDITOR FISCAL FEDERAL AGROPEC
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: CARLOS GOULART
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1770467
+    position: br-secretaria-de-defesa-agropecuaria-secretario
+    position_name: Secretário de Defesa Agropecuária do Ministério da Agricultura e Pecuária
+    bruta: 44084.32
+    liquida: 32257.79
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
     cargo: AUDITOR FISCAL FEDERAL AGROPEC
     funcao: Sem informação
   br-p-clecivaldo-de-sousa-ribeiro:
@@ -5468,7 +5500,7 @@ people:
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
     fonte_url: https://portaldatransparencia.gov.br/servidores/2820750
     position: br-secretaria-de-coordenacao-e-governanca-das-empresas-estatais-secretario
-    position_name: Secretária de Coordenação e Governança das Empresas Estatais do Ministério da Gestão e da Inovação em Serviços
+    position_name: Secretário de Coordenação e Governança das Empresas Estatais do Ministério da Gestão e da Inovação em Serviços
       Públicos
     bruta: 45885.61
     liquida: 34571.01
@@ -5734,39 +5766,6 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
-  br-p-ronaldo-dos-santos:
-    mes: '202609'
-    bruto: 31943.17
-    abate_teto: 0.0
-    bruto_apos_abate: 31943.17
-    liquido: 24503.32
-    componentes:
-      basica: 27943.17
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 4000.0
-      indenizatorias: 1632.76
-    orgao: MINISTERIO DA IGUALDADE RACIAL
-    orgao_superior: Sem informação
-    cargo_na_folha: Sem informaç
-    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
-    vinculo: Função
-    criterio: nome_completo+orgao
-    confianca: alta
-    nome_na_folha: RONALDO DOS SANTOS
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/3628924
-    position: br-secretaria-de-polit-p-quilombolas-povos-e-comunidades-tradic-de-mat-africana-povos-de-terreiros-e-ciganos-secretario
-    position_name: Secretário de Polít. p/ Quilombolas, Povos e Comunidades Tradic de Mat. Africana, Povos de Terreiros e
-      Ciganos do Ministério da Igualdade Racial
-    bruta: 27943.17
-    liquida: 24503.32
-    indenizatorias: 1632.76
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 4000.0
-    cargo: Sem informaç
-    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-tiago-santana-da-conceicao:
     mes: '202609'
     bruto: 33818.79
@@ -6017,7 +6016,7 @@ people:
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
     fonte_url: https://portaldatransparencia.gov.br/servidores/818422
     position: br-secretaria-nacional-de-acesso-a-justica-secretario
-    position_name: Secretário Nacional de Acesso à Justiça do Ministério da Justiça e Segurança Pública
+    position_name: Secretária Nacional de Acesso à Justiça do Ministério da Justiça e Segurança Pública
     bruta: 27943.17
     liquida: 20451.18
     indenizatorias: 1192.0
@@ -6754,7 +6753,7 @@ people:
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
     fonte_url: https://portaldatransparencia.gov.br/servidores/2842224
     position: br-secretaria-executiva-cidades-secretario
-    position_name: Secretário-Executivo do Ministério das Cidades
+    position_name: Secretária-Executiva do Ministério das Cidades
     bruta: 38041.28
     liquida: 28488.67
     indenizatorias: 1192.0
@@ -7171,7 +7170,7 @@ people:
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
     fonte_url: https://portaldatransparencia.gov.br/servidores/2700128
     position: br-secretaria-geral-das-relacoes-exteriores-secretario
-    position_name: Secretária-Geral das Relações Exteriores do Ministério das Relações Exteriores
+    position_name: Secretário-Geral das Relações Exteriores do Ministério das Relações Exteriores
     bruta: 55845.56
     liquida: 34628.5
     indenizatorias: 1192.0
@@ -7372,6 +7371,38 @@ people:
     eventuais: 0.0
     cargo: ESP EM REGULACAO DE AVIACAO CIVIL
     funcao: Sem informação
+  br-p-otto-luiz-burlier-da-silveira-filho:
+    mes: '202609'
+    bruto: 53459.9
+    abate_teto: 7093.7
+    bruto_apos_abate: 46366.2
+    liquido: 34619.73
+    componentes:
+      basica: 53459.9
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: MINISTERIO DE PORTOS E AEROPORTOS
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: OTTO LUIZ BURLIER DA SILVEIRA FILHO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2076596
+    position: br-secretaria-nacional-de-hidrovias-e-navegacao-secretario
+    position_name: Secretário Nacional de Hidrovias e Navegação do Ministério de Portos e Aeroportos
+    bruta: 53459.9
+    liquida: 34619.73
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-alex-sandro-de-avila:
     mes: '202609'
     bruto: 32443.17
@@ -7402,6 +7433,38 @@ people:
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 4500.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-eric-sousa-moura:
+    mes: '202609'
+    bruto: 36104.27
+    abate_teto: 0.0
+    bruto_apos_abate: 36104.27
+    liquido: 27518.85
+    componentes:
+      basica: 31919.27
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 4185.0
+      indenizatorias: 1192.0
+    orgao: MIN DO DESENV AGR E AGRIC FAMILIAR
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ERIC SOUSA MOURA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2541888
+    position: br-secretaria-executiva-desenvolvimento-agrario-secretario
+    position_name: Secretário-Executivo do Ministério do Desenvolvimento Agrário e Agricultura Familiar
+    bruta: 31919.27
+    liquida: 27518.85
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 4185.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-ana-terra-reis:
@@ -8308,7 +8371,7 @@ people:
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
     fonte_url: https://portaldatransparencia.gov.br/servidores/1091851
     position: br-secretaria-executiva-meio-ambiente-secretario
-    position_name: Secretária-Executiva do Ministério do Meio Ambiente e Mudança do Clima
+    position_name: Secretário-Executivo do Ministério do Meio Ambiente e Mudança do Clima
     bruta: 46034.44
     liquida: 36310.94
     indenizatorias: 1557.42
@@ -8373,7 +8436,7 @@ people:
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
     fonte_url: https://portaldatransparencia.gov.br/servidores/2256870
     position: br-secretaria-nacional-de-biodiversidade-florestas-e-direitos-animais-secretario
-    position_name: Secretária Nacional de Biodiversidade, Florestas e Direitos Animais do Ministério do Meio Ambiente e Mudança
+    position_name: Secretário Nacional de Biodiversidade, Florestas e Direitos Animais do Ministério do Meio Ambiente e Mudança
       do Clima
     bruta: 37686.93
     liquida: 26114.2
@@ -8406,7 +8469,7 @@ people:
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
     fonte_url: https://portaldatransparencia.gov.br/servidores/852572
     position: br-secretaria-nacional-de-bioeconomia-secretario
-    position_name: Secretário Nacional de Bioeconomia do Ministério do Meio Ambiente e Mudança do Clima
+    position_name: Secretária Nacional de Bioeconomia do Ministério do Meio Ambiente e Mudança do Clima
     bruta: 27943.17
     liquida: 25003.32
     indenizatorias: 1631.09
@@ -9432,7 +9495,7 @@ people:
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
     fonte_url: https://portaldatransparencia.gov.br/servidores/300474
     position: br-secretaria-executiva-cc-pr-secretario
-    position_name: Secretário-Executivo da Casa Civil da Presidência da República
+    position_name: Secretária-Executiva da Casa Civil da Presidência da República
     bruta: 31919.27
     liquida: 23385.99
     indenizatorias: 1478.55
@@ -9441,46 +9504,110 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
-  br-p-bruno-de-carvalho-duarte:
+  br-p-danielle-cancela-cronemberger:
     mes: '202609'
-    bruto: 62354.12
-    abate_teto: 532.53
+    bruto: 71300.95
+    abate_teto: 9479.36
     bruto_apos_abate: 61821.59
-    liquido: 50986.56
+    liquido: 47304.78
     componentes:
-      basica: 46898.73
+      basica: 55845.56
       gratificacoes: 0.0
       funcao: null
       eventuais: 15455.39
-      indenizatorias: 1351.27
-    orgao: Ministério de Minas e Energia
+      indenizatorias: 1192.0
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: ANALISTA DE PLANEJAMENTO E ORCAMENTO
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: DANIELLE CANCELA CRONEMBERGER
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/2934148
+    position: br-secretaria-especial-de-analise-governamental-secretario
+    position_name: Secretária Especial de Análise Governamental da Casa Civil da Presidência da República
+    bruta: 55845.56
+    liquida: 47304.78
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 15455.39
+    eventuais: 0.0
+    cargo: ANALISTA DE PLANEJAMENTO E ORCAMENTO
+    funcao: Sem informação
+  br-p-roberto-nami-garibe-filho:
+    mes: '202609'
+    bruto: 55845.56
+    abate_teto: 9479.36
+    bruto_apos_abate: 46366.2
+    liquido: 35071.57
+    componentes:
+      basica: 55845.56
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: ESP POL PUBL GESTAO GOVERNAMENTAL
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: ROBERTO NAMI GARIBE FILHO
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3164324
+    position: br-secretaria-especial-do-programa-de-aceleracao-do-crescimento-secretario
+    position_name: Secretário Especial do Programa de Aceleração do Crescimento da Casa Civil da Presidência da República
+    bruta: 55845.56
+    liquida: 35071.57
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: ESP POL PUBL GESTAO GOVERNAMENTAL
+    funcao: Sem informação
+  br-p-marcus-benicio-foltz-cavalcanti:
+    mes: '202609'
+    bruto: 24135.27
+    abate_teto: 9680.26
+    bruto_apos_abate: 14455.01
+    liquido: 12926.12
+    componentes:
+      basica: 19151.56
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 4983.71
+      indenizatorias: 1374.71
+    orgao: Presidência da República
     orgao_superior: Sem informação
     cargo_na_folha: Sem informaç
     funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
     vinculo: Função
-    criterio: nome_completo
+    criterio: nome_completo+orgao
     confianca: alta
-    nome_na_folha: BRUNO DE CARVALHO DUARTE
+    nome_na_folha: MARCUS BENICIO FOLTZ CAVALCANTI
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/31959
-    position: br-secretaria-especial-de-analise-governamental-secretario
-    position_name: Secretário Especial de Análise Governamental da Casa Civil da Presidência da República
-    bruta: 46898.73
-    liquida: 50986.56
-    indenizatorias: 1351.27
+    fonte_url: https://portaldatransparencia.gov.br/servidores/649595
+    position: br-secretaria-especial-do-programa-de-parcerias-de-investimentos-secretario
+    position_name: Secretário Especial do Programa de Parcerias de Investimentos da Casa Civil da Presidência da República
+    bruta: 19151.56
+    liquida: 12926.12
+    indenizatorias: 1374.71
     gratificacao_natalina: 0.0
-    ferias: 15455.39
-    eventuais: 0.0
+    ferias: 0.0
+    eventuais: 4983.71
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
-  br-p-camilla-araujo-soares-da-silva:
+  br-p-marcelo-weick-pogliese:
     mes: '202609'
-    bruto: 47620.45
-    abate_teto: 12516.51
-    bruto_apos_abate: 35103.94
-    liquido: 26529.04
+    bruto: 31919.27
+    abate_teto: 0.0
+    bruto_apos_abate: 31919.27
+    liquido: 23148.98
     componentes:
-      basica: 47620.45
+      basica: 31919.27
       gratificacoes: 0.0
       funcao: null
       eventuais: 0.0
@@ -9492,51 +9619,19 @@ people:
     vinculo: Função
     criterio: nome_completo+orgao
     confianca: alta
-    nome_na_folha: CAMILLA ARAUJO SOARES DA SILVA
+    nome_na_folha: MARCELO WEICK POGLIESE
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/16240
-    position: br-secretaria-especial-do-programa-de-parcerias-de-investimentos-secretario
-    position_name: Secretária Especial do Programa de Parcerias de Investimentos da Casa Civil da Presidência da República
-    bruta: 47620.45
-    liquida: 26529.04
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1620555
+    position: br-secretaria-especial-para-assuntos-juridicos-secretario
+    position_name: Secretário Especial para Assuntos Jurídicos da Casa Civil da Presidência da República
+    bruta: 31919.27
+    liquida: 23148.98
     indenizatorias: 1192.0
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
-  br-p-jose-leite-dos-santos-neto:
-    mes: '202609'
-    bruto: 35423.96
-    abate_teto: 320.03
-    bruto_apos_abate: 35103.93
-    liquido: 26411.07
-    componentes:
-      basica: 35423.96
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 0.0
-      indenizatorias: 1722.52
-    orgao: MINISTERIO DA FAZENDA
-    orgao_superior: Sem informação
-    cargo_na_folha: PROCURADOR DA FAZENDA
-    funcao_na_folha: Sem informação
-    vinculo: Cargo
-    criterio: nome_completo
-    confianca: alta
-    nome_na_folha: JOSE LEITE DOS SANTOS NETO
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/901089
-    position: br-secretaria-especial-para-assuntos-juridicos-secretario
-    position_name: Secretário Especial para Assuntos Jurídicos da Casa Civil da Presidência da República
-    bruta: 35423.96
-    liquida: 26411.07
-    indenizatorias: 1722.52
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 0.0
-    cargo: PROCURADOR DA FAZENDA
-    funcao: Sem informação
   br-p-rogerio-da-veiga:
     mes: '202609'
     bruto: 53459.9
@@ -9764,38 +9859,6 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
-  br-p-danutta-de-a-rodrigues:
-    mes: '202609'
-    bruto: 32543.17
-    abate_teto: 0.0
-    bruto_apos_abate: 32543.17
-    liquido: 25103.32
-    componentes:
-      basica: 27943.17
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 4600.0
-      indenizatorias: 1342.6
-    orgao: Presidência da República
-    orgao_superior: Sem informação
-    cargo_na_folha: Sem informaç
-    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
-    vinculo: Função
-    criterio: primeiro_ultimo+orgao
-    confianca: media
-    nome_na_folha: DANUTTA DE ARAUJO RODRIGUES
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/3994696
-    position: br-secretaria-de-comunicacao-institucional-secretario
-    position_name: Secretário de Comunicação Institucional da Secretaria de Comunicação Social da Presidência da República
-    bruta: 27943.17
-    liquida: 25103.32
-    indenizatorias: 1342.6
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 4600.0
-    cargo: Sem informaç
-    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-mariah-queiroz-costa-silva:
     mes: '202609'
     bruto: 46714.22
@@ -9819,7 +9882,7 @@ people:
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
     fonte_url: https://portaldatransparencia.gov.br/servidores/3997861
     position: br-secretaria-de-estrategias-e-redes-secretario
-    position_name: Secretário de Estratégias e Redes da Secretaria de Comunicação Social da Presidência da República
+    position_name: Secretária de Estratégias e Redes da Secretaria de Comunicação Social da Presidência da República
     bruta: 0.0
     liquida: 16829.71
     indenizatorias: 0.0
@@ -9915,7 +9978,7 @@ people:
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
     fonte_url: https://portaldatransparencia.gov.br/servidores/4002293
     position: br-secretaria-de-publicidade-e-patrocinios-secretario
-    position_name: Secretário de Publicidade e Patrocínios da Secretaria de Comunicação Social da Presidência da República
+    position_name: Secretária de Publicidade e Patrocínios da Secretaria de Comunicação Social da Presidência da República
     bruta: 27943.17
     liquida: 26803.32
     indenizatorias: 1192.0
@@ -9924,79 +9987,14 @@ people:
     eventuais: 6300.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
-  br-p-raimunda-nonata-monteiro:
+  br-p-marcelo-almeida-cunha-costa:
     mes: '202609'
-    bruto: 46905.45
-    abate_teto: 0.0
-    bruto_apos_abate: 46905.45
-    liquido: 32255.23
-    componentes:
-      basica: 43092.71
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 3812.74
-      indenizatorias: 1192.0
-    orgao: Presidência da República
-    orgao_superior: Sem informação
-    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
-    funcao_na_folha: Sem informação
-    vinculo: Cargo
-    criterio: nome_completo+orgao
-    confianca: alta
-    nome_na_folha: RAIMUNDA NONATA MONTEIRO
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/2808434
-    position: br-secretaria-executiva-sri-pr-secretario
-    position_name: Secretária-Executiva da Secretaria de Relações Institucionais da Presidência da República
-    bruta: 43092.71
-    liquida: 32255.23
-    indenizatorias: 1192.0
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 3812.74
-    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
-    funcao: Sem informação
-  br-p-laina-peternella-ferreira:
-    mes: '202609'
-    bruto: 49584.49
-    abate_teto: 3218.29
+    bruto: 51989.05
+    abate_teto: 5622.85
     bruto_apos_abate: 46366.2
-    liquido: 34376.91
+    liquido: 30964.27
     componentes:
-      basica: 49584.49
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 0.0
-      indenizatorias: 1474.39
-    orgao: Presidência da República
-    orgao_superior: Sem informação
-    cargo_na_folha: ANALISTA DE PLANEJAMENTO E ORCAMENTO
-    funcao_na_folha: Sem informação
-    vinculo: Cargo
-    criterio: nome_completo+orgao
-    confianca: alta
-    nome_na_folha: LAINA PETERNELLA FERREIRA
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/2299288
-    position: br-secretaria-especial-de-acompanhamento-governamental-secretario
-    position_name: Secretária Especial de Acompanhamento Governamental da Secretaria de Relações Institucionais da Presidência
-      da República
-    bruta: 49584.49
-    liquida: 34376.91
-    indenizatorias: 1474.39
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 0.0
-    cargo: ANALISTA DE PLANEJAMENTO E ORCAMENTO
-    funcao: Sem informação
-  br-p-joao-batista-nascimento-soares:
-    mes: '202609'
-    bruto: 14419.69
-    abate_teto: 0.0
-    bruto_apos_abate: 14419.69
-    liquido: 10646.66
-    componentes:
-      basica: 14419.69
+      basica: 51989.05
       gratificacoes: 0.0
       funcao: null
       eventuais: 0.0
@@ -10008,28 +10006,27 @@ people:
     vinculo: Função
     criterio: nome_completo+orgao
     confianca: alta
-    nome_na_folha: JOAO BATISTA NASCIMENTO SOARES
+    nome_na_folha: MARCELO ALMEIDA CUNHA COSTA
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/4264528
-    position: br-secretaria-especial-de-assuntos-federativos-secretario
-    position_name: Secretário Especial de Assuntos Federativos da Secretaria de Relações Institucionais da Presidência da
-      República
-    bruta: 14419.69
-    liquida: 10646.66
+    fonte_url: https://portaldatransparencia.gov.br/servidores/16311
+    position: br-secretaria-executiva-sri-pr-secretario
+    position_name: Secretário-Executivo da Secretaria de Relações Institucionais da Presidência da República
+    bruta: 51989.05
+    liquida: 30964.27
     indenizatorias: 1192.0
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
-  br-p-teresa-elisa-sousa-da-silva:
+  br-p-andre-de-oliveira-bucar:
     mes: '202609'
-    bruto: 14419.69
-    abate_teto: 0.0
-    bruto_apos_abate: 14419.69
-    liquido: 10698.8
+    bruto: 55845.56
+    abate_teto: 9479.36
+    bruto_apos_abate: 46366.2
+    liquido: 30433.03
     componentes:
-      basica: 14419.69
+      basica: 55845.56
       gratificacoes: 0.0
       funcao: null
       eventuais: 0.0
@@ -10041,18 +10038,84 @@ people:
     vinculo: Função
     criterio: nome_completo+orgao
     confianca: alta
-    nome_na_folha: TERESA ELISA SOUSA DA SILVA
+    nome_na_folha: ANDRE DE OLIVEIRA BUCAR
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/4245601
-    position: br-secretaria-especial-de-assuntos-parlamentares-secretario
-    position_name: Secretária Especial de Assuntos Parlamentares da Secretaria de Relações Institucionais da Presidência da
-      República
-    bruta: 14419.69
-    liquida: 10698.8
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1161328
+    position: br-secretaria-especial-de-acompanhamento-governamental-secretario
+    position_name: Secretário Especial de Acompanhamento Governamental da Secretaria de Relações Institucionais da Presidência
+      da República
+    bruta: 55845.56
+    liquida: 30433.03
     indenizatorias: 1192.0
     gratificacao_natalina: 0.0
     ferias: 0.0
     eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-jose-ilario-goncalves-marques:
+    mes: '202609'
+    bruto: 31919.27
+    abate_teto: 0.0
+    bruto_apos_abate: 31919.27
+    liquido: 23333.85
+    componentes:
+      basica: 31919.27
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 0.0
+      indenizatorias: 1192.0
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: JOSE ILARIO GONCALVES MARQUES
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/1464646
+    position: br-secretaria-especial-de-assuntos-federativos-secretario
+    position_name: Secretário Especial de Assuntos Federativos da Secretaria de Relações Institucionais da Presidência da
+      República
+    bruta: 31919.27
+    liquida: 23333.85
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    cargo: Sem informaç
+    funcao: CARGO COMISSIONADO EXECUTIVO
+  br-p-gerson-luis-bittencourt:
+    mes: '202609'
+    bruto: 38819.27
+    abate_teto: 0.0
+    bruto_apos_abate: 38819.27
+    liquido: 30285.99
+    componentes:
+      basica: 31919.27
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 6900.0
+      indenizatorias: 1192.0
+    orgao: Presidência da República
+    orgao_superior: Sem informação
+    cargo_na_folha: Sem informaç
+    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
+    vinculo: Função
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: GERSON LUIS BITTENCOURT
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/4105250
+    position: br-secretaria-especial-de-assuntos-parlamentares-secretario
+    position_name: Secretário Especial de Assuntos Parlamentares da Secretaria de Relações Institucionais da Presidência da
+      República
+    bruta: 31919.27
+    liquida: 30285.99
+    indenizatorias: 1192.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 6900.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-josue-augusto-do-amaral-rocha:
@@ -16787,11 +16850,6 @@ nao_encontrados:
   cargo: Secretária Nacional de Gestão Ambiental e Territorial Indígena do Ministério dos Povos Indígenas
   setor: executivo
   motivo: ausente na folha
-- id: br-p-dino-antunes-dias-batista
-  nome: Dino Antunes Dias Batista
-  cargo: Secretário Nacional de Hidrovias e Navegação do Ministério de Portos e Aeroportos
-  setor: executivo
-  motivo: no cadastro do SIAPE mas sem linha de remuneração no mês
 - id: br-p-debora-freire
   nome: Débora Freire
   cargo: Secretária de Política Econômica do Ministério da Fazenda
@@ -16902,11 +16960,6 @@ nao_encontrados:
   cargo: Presidente da NAV Brasil Serviços de Navegação Aérea S.A
   setor: executivo
   motivo: órgão fora do SIAPE (empresa publica com folha própria)
-- id: br-p-mauricio-muniz-barretto-de-carvalho
-  nome: Maurício Muniz Barretto de Carvalho
-  cargo: Secretário Especial do Programa de Aceleração do Crescimento da Casa Civil da Presidência da República
-  setor: executivo
-  motivo: só há homônimo por primeiro+último sobrenome fora do órgão (21)
 - id: br-p-maira-madrid-barbosa-da-silva
   nome: Maíra Madrid Barbosa da Silva
   cargo: Presidente da Agência Brasileira Gestora de Fundos Garantidores e Garantias S.A.
@@ -16932,6 +16985,11 @@ nao_encontrados:
   cargo: Diretor do Banco Central do Brasil
   setor: executivo
   motivo: ausente na folha
+- id: br-p-paulo-venicius-brito-da-silva
+  nome: Paulo Venícius Brito da Silva
+  cargo: Secretário de Comunicação Institucional da Secretaria de Comunicação Social da Presidência da República
+  setor: executivo
+  motivo: só há homônimo por primeiro+último sobrenome fora do órgão (619)
 - id: br-p-pedro-ivo
   nome: Pedro Ivo
   cargo: Secretário de Competitividade e Política Regulatória do Ministério do Desenvolvimento, Indústria, Comércio e Serviços

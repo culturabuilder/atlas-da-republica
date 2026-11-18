@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-17'
+generated_at: '2026-11-18'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-20'
+janela_inicio: '2026-08-21'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,21 +11,21 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 187
+    compromissos_90d: 183
     dias_com_agenda: 52
     por_tipo:
-      evento: 57
-      viagem: 52
-      audiencia: 50
+      evento: 55
+      audiencia: 52
+      viagem: 48
       reuniao: 23
       outro: 5
     entidades_top:
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República)
-      n: 12
+      n: 11
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
-      n: 7
+      n: 8
     - nome: Miriam Belchior (Ministra da Casa Civil)
-      n: 7
+      n: 8
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 6
     - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
@@ -38,13 +38,15 @@ people:
       n: 1
     - nome: José Mucio (Ministro da Defesa)
       n: 1
+    - nome: Oswaldo Malatesta Neto (Chefe do Gabinete Pessoal do Presidente da República)
+      n: 1
     locais_top:
     - nome: Palácio do Planalto
       n: 37
     - nome: Palácio da Alvorada
-      n: 32
+      n: 34
     - nome: Base Aérea de Brasília
-      n: 21
+      n: 19
     - nome: Esplanada dos Ministérios, Brasília
       n: 5
     - nome: Av. Gerassina Tavares – Jardim Veneza, São José do Rio Preto (SP)
@@ -57,10 +59,34 @@ people:
       n: 3
     - nome: Centro de Convenções Internacional das Filipinas
       n: 3
-    - nome: Base Aérea de Natal
+    - nome: Aeroporto de Governador Valadares
       n: 2
-    ultimo: '2026-11-16'
+    ultimo: '2026-11-18'
     recentes:
+    - data: '2026-11-18'
+      hora: '15:00'
+      titulo: Ministra da Casa Civil, Miriam Belchior
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Miriam Belchior
+        entidade: Ministra da Casa Civil
+    - data: '2026-11-18'
+      hora: '14:40'
+      titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Marcelo Weick
+        entidade: Secretário Especial para Assuntos Jurídicos da Casa Civil
+    - data: '2026-11-18'
+      hora: '10:00'
+      titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta Neto
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Oswaldo Malatesta Neto
+        entidade: Chefe do Gabinete Pessoal do Presidente da República
     - data: '2026-11-16'
       hora: '22:10'
       titulo: Chegada a Brasília
@@ -91,48 +117,8 @@ people:
       tipo: reuniao
       local: Complexo da Moncloa, Madri
       participantes: []
-    - data: '2026-11-16'
-      hora: '11:00'
-      titulo: Reunião restrita com o Primeiro-Ministro do Reino da Espanha, Pedro Sánchez
-      tipo: reuniao
-      local: Complexo da Moncloa, Madri
-      participantes: []
-    - data: '2026-11-15'
-      hora: '22:45'
-      titulo: Chegada a Madri
-      tipo: viagem
-      local: Aeroporto Internacional de Madri
-      participantes: []
-    - data: '2026-11-15'
-      hora: '14:00'
-      titulo: Partida para Madri
-      tipo: viagem
-      local: Base Aérea Villamo
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-08-20:
-      - hora: '10:30'
-        titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
-        local: Palácio da Alvorada
-      - hora: '12:00'
-        titulo: Partida para Natal
-        local: Base Aérea de Brasília
-      - hora: '14:20'
-        titulo: Chegada a Natal
-        local: Base Aérea de Natal
-      - hora: '15:00'
-        titulo: Visita ao Parque Científico e Tecnológico Augusto Severo
-        local: Av. Santos Dumont, Zona Rural, Macaíba (RN)
-      - hora: '16:00'
-        titulo: Intervenções no contexto da visita ao local de implantação do supercomputador
-        local: Parque Científico e Tecnológico Augusto Severo, Macaíba (RN)
-      - hora: '20:00'
-        titulo: Partida para Brasília
-        local: Base Aérea de Natal
-      - hora: '22:20'
-        titulo: Chegada a Brasília
-        local: Base Aérea de Brasília
       presidente/2026-08-21:
       - hora: 09:30
         titulo: Telefonema com o Presidente dos Estados Unidos da América, Donald Trump
@@ -782,6 +768,16 @@ people:
         titulo: Chegada a Brasília
         local: Base Aérea de Brasília
       presidente/2026-11-17: []
+      presidente/2026-11-18:
+      - hora: '10:00'
+        titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta Neto
+        local: Palácio da Alvorada
+      - hora: '14:40'
+        titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
+        local: Palácio da Alvorada
+      - hora: '15:00'
+        titulo: Ministra da Casa Civil, Miriam Belchior
+        local: Palácio da Alvorada
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -789,12 +785,12 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 38
+    compromissos_90d: 39
     dias_com_agenda: 26
     por_tipo:
-      evento: 14
-      viagem: 9
-      audiencia: 8
+      evento: 15
+      audiencia: 9
+      viagem: 8
       reuniao: 5
       outro: 2
     entidades_top:
@@ -811,9 +807,9 @@ people:
       n: 10
     - nome: Brasília/DF
       n: 9
-    - nome: São Paulo/SP
-      n: 7
     - nome: Palácio do Planalto, Anexo II
+      n: 8
+    - nome: São Paulo/SP
       n: 7
     - nome: São José do Rio Preto/SP
       n: 1
@@ -825,8 +821,20 @@ people:
       n: 1
     - nome: São José dos Campos/SP
       n: 1
-    ultimo: '2026-11-09'
+    ultimo: '2026-11-18'
     recentes:
+    - data: '2026-11-18'
+      hora: '20:00'
+      titulo: Cerimônia de entrega da 2ª Edição do Prêmio JK - Correio Braziliense
+      tipo: evento
+      local: Brasília/DF
+      participantes: []
+    - data: '2026-11-18'
+      hora: '13:00'
+      titulo: Deputado Federal eleito Carlos Bezerra – PSD/SP
+      tipo: audiencia
+      local: Palácio do Planalto, Anexo II
+      participantes: []
     - data: '2026-11-09'
       hora: 06:15
       titulo: Decolagem de São José dos Campos/SP para Brasília/DF
@@ -866,27 +874,8 @@ people:
       participantes:
       - nome: André Passos
         entidade: Presidente da Associação Brasileira da Indústria Química - Abiquim
-    - data: '2026-11-03'
-      hora: 07:30
-      titulo: Decolagem de São Paulo/SP para Brasília/DF
-      tipo: viagem
-      local: São Paulo/SP
-      participantes: []
-    - data: '2026-10-28'
-      hora: '17:30'
-      titulo: Sidônio Palmeira, Ministro-Chefe da Secretaria de Comunicação Social - SECOM
-      tipo: audiencia
-      local: Palácio do Planalto, Anexo II
-      participantes:
-      - nome: Sidônio Palmeira
-        entidade: Ministro-Chefe da Secretaria de Comunicação Social - SECOM
     dias_nao_lidos: 0
     dias:
-      vice/2026-08-20:
-      - hora: '13:00'
-        titulo: Embarque de Brasília/DF para São Paulo/SP
-        local: Brasília/DF
-      vice/2026-08-20-b1: []
       vice/2026-08-21: []
       vice/2026-08-21-b1: []
       vice/2026-08-22: []
@@ -1180,6 +1169,14 @@ people:
       vice/2026-11-16-b1: []
       vice/2026-11-17: []
       vice/2026-11-17-b1: []
+      vice/2026-11-18:
+      - hora: '13:00'
+        titulo: Deputado Federal eleito Carlos Bezerra – PSD/SP
+        local: Palácio do Planalto, Anexo II
+      - hora: '20:00'
+        titulo: Cerimônia de entrega da 2ª Edição do Prêmio JK - Correio Braziliense
+        local: Brasília/DF
+      vice/2026-11-18-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 187 compromissos em 52 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 38 compromissos em 26 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 183 compromissos em 52 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 39 compromissos em 26 dias (0 dias não lidos)'
