@@ -1,19 +1,19 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-11-18'
+generated_at: '2026-11-19'
 mes: '202609'
 mes_senado: '202610'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1218
+  ocupantes_no_grafo: 1217
   com_remuneracao: 512
   por_setor:
     executivo:
-      ocupantes: 483
-      antes: 403
-      depois: 427
+      ocupantes: 481
+      antes: 401
+      depois: 426
       pct_antes: 83.4
-      pct_depois: 88.4
+      pct_depois: 88.6
     essenciais:
       ocupantes: 30
       antes: 4
@@ -21,11 +21,11 @@ resumo:
       pct_antes: 13.3
       pct_depois: 13.3
     legislativo:
-      ocupantes: 594
+      ocupantes: 595
       antes: 0
-      depois: 81
+      depois: 82
       pct_antes: 0.0
-      pct_depois: 13.6
+      pct_depois: 13.8
     judiciario:
       ocupantes: 111
       antes: 0
@@ -33,28 +33,28 @@ resumo:
       pct_antes: 0.0
       pct_depois: 0.0
   por_criterio:
-    nome_completo+orgao: 395
-    nome_completo: 91
+    nome_completo+orgao: 393
+    nome_completo: 92
     primeiro_ultimo+orgao: 18
-    subsequencia_no_orgao: 5
+    subsequencia_no_orgao: 6
     primeiro_ultimo_unico: 1
     nome_sem_sufixo: 1
     subsequencia_subsidio: 1
   por_confianca:
-    alta: 487
-    media: 25
+    alta: 486
+    media: 26
   sem_remuneracao:
-    total: 82
+    total: 81
     por_motivo:
       ausente na folha: 24
       órgão fora do SIAPE (empresa publica com folha própria): 14
       órgão não consta do arquivo do SIAPE (folha própria ou fora do Executivo civil): 13
       só há homônimo por primeiro+último sobrenome fora do órgão (...): 12
       no cadastro do SIAPE mas sem linha de remuneração no mês: 10
-      órgão fora do SIAPE (sociedade economia mista com folha própria): 6
+      órgão fora do SIAPE (sociedade economia mista com folha própria): 5
       vários servidores compatíveis no órgão (...) sem desempate: 2
       a entidade não aparece como órgão na folha do SIAPE (folha própria): 1
-  parlamentares: 'Senado: folha mensal nominal do Senado Federal cobre 81 de 81 senadores (202610). Câmara: sem fonte nominal
+  parlamentares: 'Senado: folha mensal nominal do Senado Federal cobre 82 de 82 senadores (202610). Câmara: sem fonte nominal
     — o relatório consolidado da Câmara é pseudonimizado (''Deputado 11530'') e a consulta nominal só cobre servidores; o
     subsídio do cargo vem de data/subsidios.yaml (513 deputados sem registro individual).'
   judiciario: 'sem fonte nominal aqui: o SIAPE não cobre o Judiciário nem o Ministério Público — cada tribunal e cada ramo
@@ -10471,38 +10471,6 @@ people:
     eventuais: 4237.0
     cargo: Sem informaç
     funcao: CARGO COMISSIONADO EXECUTIVO
-  br-p-sergio-besserman-vianna:
-    mes: '202609'
-    bruto: 37257.56
-    abate_teto: 0.0
-    bruto_apos_abate: 37257.56
-    liquido: 28279.83
-    componentes:
-      basica: 27943.17
-      gratificacoes: 0.0
-      funcao: null
-      eventuais: 9314.39
-      indenizatorias: 1192.0
-    orgao: Instituto de Pesquisas Jardim Botânico do Rio de Janeiro
-    orgao_superior: MINISTERIO DO MEIO AMBIENTE
-    cargo_na_folha: Sem informaç
-    funcao_na_folha: CARGO COMISSIONADO EXECUTIVO
-    vinculo: Função
-    criterio: nome_completo+orgao
-    confianca: alta
-    nome_na_folha: SERGIO BESSERMAN VIANNA
-    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
-    fonte_url: https://portaldatransparencia.gov.br/servidores/1401389
-    position: br-instituto-de-pesquisas-jardim-botanico-do-rio-de-janeiro-presidente
-    position_name: Presidente do Instituto de Pesquisas Jardim Botânico do Rio de Janeiro
-    bruta: 27943.17
-    liquida: 28279.83
-    indenizatorias: 1192.0
-    gratificacao_natalina: 0.0
-    ferias: 9314.39
-    eventuais: 0.0
-    cargo: Sem informaç
-    funcao: CARGO COMISSIONADO EXECUTIVO
   br-p-leopoldo-augusto-melo-montenegro-junior:
     mes: '202609'
     bruto: 33709.36
@@ -11623,7 +11591,7 @@ people:
     eventuais: 3500.0
     cargo: Sem informaç
     funcao: CARGO DE DIRECAO - CD - IFES
-  br-p-nilra-jane-filgueira-bezerra:
+  br-p-nilra-jane-filgueira:
     mes: '202609'
     bruto: 45566.24
     abate_teto: 1956.57
@@ -11640,8 +11608,8 @@ people:
     cargo_na_folha: PROFESSOR ENS BASICO TECN TECNOLOGICO
     funcao_na_folha: Sem informação
     vinculo: Cargo
-    criterio: nome_completo+orgao
-    confianca: alta
+    criterio: subsequencia_no_orgao
+    confianca: media
     nome_na_folha: NILRA JANE FILGUEIRA BEZERRA
     fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
     fonte_url: https://portaldatransparencia.gov.br/servidores/2373748
@@ -16479,6 +16447,40 @@ people:
     funcao: ''
     position: br-senador
     position_name: Senador da República
+  br-p-sf-5016:
+    mes: '202610'
+    bruto: 46366.19
+    abate_teto: 0.0
+    bruto_apos_abate: 46366.19
+    liquido: 29048.49
+    componentes:
+      basica: 46366.19
+      gratificacoes: 0.0
+      funcao: 0.0
+      eventuais: 0.0
+      indenizatorias: 0.0
+      vantagens_pessoais: 0.0
+      abono_permanencia: 0.0
+    bruta: 46366.19
+    liquida: 29048.49
+    indenizatorias: 0.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    orgao: Senado Federal
+    orgao_superior: Senado Federal
+    cargo_na_folha: Senador da República
+    funcao_na_folha: null
+    vinculo: Parlamentar
+    criterio: nome_completo
+    confianca: alta
+    nome_na_folha: José Wellington Barroso De Araujo Dias
+    fonte: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
+    fonte_url: https://adm.senado.gov.br/adm-dadosabertos/api/v1/servidores/remuneracoes/2026/10/csv
+    cargo: Senador da República
+    funcao: ''
+    position: br-senador
+    position_name: Senador da República
   br-p-sf-1173:
     mes: '202610'
     bruto: 46366.19
@@ -16815,11 +16817,6 @@ nao_encontrados:
   cargo: Diretor-Geral da Polícia Federal
   setor: executivo
   motivo: só há homônimo por primeiro+último sobrenome fora do órgão (4)
-- id: br-p-wp-andre-leandro-magalhaes
-  nome: André Leandro Magalhães
-  cargo: Presidente da Telebras
-  setor: executivo
-  motivo: órgão fora do SIAPE (sociedade economia mista com folha própria)
 - id: br-p-wp-antonia-pellegrino
   nome: Antonia Pellegrino
   cargo: Diretor-Presidente da EBC

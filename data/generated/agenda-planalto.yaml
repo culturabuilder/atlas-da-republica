@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-18'
+generated_at: '2026-11-19'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-21'
+janela_inicio: '2026-08-22'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,23 +11,23 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 183
+    compromissos_90d: 182
     dias_com_agenda: 52
     por_tipo:
-      evento: 55
-      audiencia: 52
-      viagem: 48
-      reuniao: 23
+      evento: 56
+      audiencia: 50
+      viagem: 49
+      reuniao: 22
       outro: 5
     entidades_top:
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República)
-      n: 11
+      n: 10
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
       n: 8
     - nome: Miriam Belchior (Ministra da Casa Civil)
       n: 8
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
-      n: 6
+      n: 5
     - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
       n: 1
     - nome: Embaixador Audo Faleiro (Assessor-Chefe Adjunto da Assessoria Especial do Presidente da Repúbli)
@@ -42,11 +42,11 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 37
+      n: 38
     - nome: Palácio da Alvorada
-      n: 34
+      n: 31
     - nome: Base Aérea de Brasília
-      n: 19
+      n: 20
     - nome: Esplanada dos Ministérios, Brasília
       n: 5
     - nome: Av. Gerassina Tavares – Jardim Veneza, São José do Rio Preto (SP)
@@ -59,10 +59,53 @@ people:
       n: 3
     - nome: Centro de Convenções Internacional das Filipinas
       n: 3
-    - nome: Aeroporto de Governador Valadares
+    - nome: Aeroporto de Juazeiro do Norte
       n: 2
-    ultimo: '2026-11-18'
+    ultimo: '2026-11-19'
     recentes:
+    - data: '2026-11-19'
+      hora: '17:40'
+      titulo: Chegada a Brasília
+      tipo: viagem
+      local: Base Aérea de Brasília
+      participantes: []
+    - data: '2026-11-19'
+      hora: '15:10'
+      titulo: Partida para Brasília
+      tipo: viagem
+      local: Aeroporto Regional Orlando Villas-Bôas
+      participantes: []
+    - data: '2026-11-19'
+      hora: '14:00'
+      titulo: Visita reservada ao Cacique Raoni Metuktire
+      tipo: evento
+      local: Peixoto de Azevedo (MT)
+      participantes: []
+    - data: '2026-11-19'
+      hora: '13:00'
+      titulo: Cerimônia de assinatura de Portaria do Ministério da Justiça e Segurança Pública que declara de posse permanente
+        dos Povos Indígenas Mebêngôkre e Yudjá a Terra Indígena Kapôt Nhinore
+      tipo: evento
+      local: Instituto Raoni – Peixoto de Azevedo (MT)
+      participantes: []
+    - data: '2026-11-19'
+      hora: '12:30'
+      titulo: Chegada a Matupá (MT)
+      tipo: viagem
+      local: Aeroporto Regional Orlando Villas-Bôas
+      participantes: []
+    - data: '2026-11-19'
+      hora: '12:00'
+      titulo: Partida para Matupá (MT)
+      tipo: viagem
+      local: Base Aérea de Brasília
+      participantes: []
+    - data: '2026-11-19'
+      hora: 09:30
+      titulo: Assinatura do decreto que regulamenta o fim da escala de trabalho 6x1
+      tipo: evento
+      local: Palácio do Planalto
+      participantes: []
     - data: '2026-11-18'
       hora: '15:00'
       titulo: Ministra da Casa Civil, Miriam Belchior
@@ -71,79 +114,8 @@ people:
       participantes:
       - nome: Miriam Belchior
         entidade: Ministra da Casa Civil
-    - data: '2026-11-18'
-      hora: '14:40'
-      titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
-      tipo: audiencia
-      local: Palácio da Alvorada
-      participantes:
-      - nome: Marcelo Weick
-        entidade: Secretário Especial para Assuntos Jurídicos da Casa Civil
-    - data: '2026-11-18'
-      hora: '10:00'
-      titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta Neto
-      tipo: audiencia
-      local: Palácio da Alvorada
-      participantes:
-      - nome: Oswaldo Malatesta Neto
-        entidade: Chefe do Gabinete Pessoal do Presidente da República
-    - data: '2026-11-16'
-      hora: '22:10'
-      titulo: Chegada a Brasília
-      tipo: viagem
-      local: Base Aérea de Brasília
-      participantes: []
-    - data: '2026-11-16'
-      hora: '18:20'
-      titulo: Partida para Brasília
-      tipo: viagem
-      local: Aeroporto Internacional Nelson Mandela
-      participantes: []
-    - data: '2026-11-16'
-      hora: '16:50'
-      titulo: Chegada a Praia, Cabo Verde
-      tipo: viagem
-      local: Aeroporto Internacional Nelson Mandela
-      participantes: []
-    - data: '2026-11-16'
-      hora: '14:30'
-      titulo: Partida para Praia, Cabo Verde
-      tipo: viagem
-      local: Base Aérea de Torrejón de Ardoz
-      participantes: []
-    - data: '2026-11-16'
-      hora: '11:30'
-      titulo: Reunião ampliada com o Primeiro-Ministro do Reino da Espanha, Pedro Sánchez
-      tipo: reuniao
-      local: Complexo da Moncloa, Madri
-      participantes: []
     dias_nao_lidos: 0
     dias:
-      presidente/2026-08-21:
-      - hora: 09:30
-        titulo: Telefonema com o Presidente dos Estados Unidos da América, Donald Trump
-        local: Palácio da Alvorada
-      - hora: '11:00'
-        titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
-        local: Palácio da Alvorada
-      - hora: '11:30'
-        titulo: Ministro da Secretaria de Comunicação Social da Presidência da República, Sidônio Palmeira
-        local: Palácio da Alvorada
-      - hora: '14:00'
-        titulo: Partida para Governador Valadares (MG)
-        local: Base Aérea de Brasília
-      - hora: '15:10'
-        titulo: Chegada a Governador Valadares (MG)
-        local: Aeroporto de Governador Valadares
-      - hora: '15:30'
-        titulo: Visita às Obras de Duplicação da Ponte São Raimundo (Rodovias BR-116/251/MG)
-        local: Av. Rio Bahia, km 413 - BR-116, Governador Valadares (MG)
-      - hora: '16:15'
-        titulo: Intervenções sobre a Visita às Obras de Duplicação da Ponte São Raimundo
-        local: Av. Rio Bahia, km 413 - BR-116, Governador Valadares (MG)
-      - hora: '18:00'
-        titulo: Partida para Belo Horizonte
-        local: Aeroporto de Governador Valadares
       presidente/2026-08-22: []
       presidente/2026-08-23: []
       presidente/2026-08-24:
@@ -778,6 +750,29 @@ people:
       - hora: '15:00'
         titulo: Ministra da Casa Civil, Miriam Belchior
         local: Palácio da Alvorada
+      presidente/2026-11-19:
+      - hora: 09:30
+        titulo: Assinatura do decreto que regulamenta o fim da escala de trabalho 6x1
+        local: Palácio do Planalto
+      - hora: '12:00'
+        titulo: Partida para Matupá (MT)
+        local: Base Aérea de Brasília
+      - hora: '12:30'
+        titulo: Chegada a Matupá (MT)
+        local: Aeroporto Regional Orlando Villas-Bôas
+      - hora: '13:00'
+        titulo: Cerimônia de assinatura de Portaria do Ministério da Justiça e Segurança Pública que declara de posse permanente
+          dos Povos Indígenas Mebêngôkre e Yudjá a Terra Indígena Kapôt Nhinore
+        local: Instituto Raoni – Peixoto de Azevedo (MT)
+      - hora: '14:00'
+        titulo: Visita reservada ao Cacique Raoni Metuktire
+        local: Peixoto de Azevedo (MT)
+      - hora: '15:10'
+        titulo: Partida para Brasília
+        local: Aeroporto Regional Orlando Villas-Bôas
+      - hora: '17:40'
+        titulo: Chegada a Brasília
+        local: Base Aérea de Brasília
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -785,10 +780,10 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 39
-    dias_com_agenda: 26
+    compromissos_90d: 40
+    dias_com_agenda: 27
     por_tipo:
-      evento: 15
+      evento: 16
       audiencia: 9
       viagem: 8
       reuniao: 5
@@ -804,7 +799,7 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 10
+      n: 11
     - nome: Brasília/DF
       n: 9
     - nome: Palácio do Planalto, Anexo II
@@ -821,8 +816,14 @@ people:
       n: 1
     - nome: São José dos Campos/SP
       n: 1
-    ultimo: '2026-11-18'
+    ultimo: '2026-11-19'
     recentes:
+    - data: '2026-11-19'
+      hora: 09:30
+      titulo: Assinatura do Decreto que regulamenta o Fim da Escala 6X1
+      tipo: evento
+      local: Palácio do Planalto
+      participantes: []
     - data: '2026-11-18'
       hora: '20:00'
       titulo: Cerimônia de entrega da 2ª Edição do Prêmio JK - Correio Braziliense
@@ -866,18 +867,8 @@ people:
       tipo: audiencia
       local: Palácio do Planalto, Anexo II
       participantes: []
-    - data: '2026-11-03'
-      hora: '15:00'
-      titulo: André Passos, Presidente da Associação Brasileira da Indústria Química - Abiquim
-      tipo: audiencia
-      local: Palácio do Planalto, Anexo II
-      participantes:
-      - nome: André Passos
-        entidade: Presidente da Associação Brasileira da Indústria Química - Abiquim
     dias_nao_lidos: 0
     dias:
-      vice/2026-08-21: []
-      vice/2026-08-21-b1: []
       vice/2026-08-22: []
       vice/2026-08-22-b1: []
       vice/2026-08-23: []
@@ -1177,6 +1168,11 @@ people:
         titulo: Cerimônia de entrega da 2ª Edição do Prêmio JK - Correio Braziliense
         local: Brasília/DF
       vice/2026-11-18-b1: []
+      vice/2026-11-19:
+      - hora: 09:30
+        titulo: Assinatura do Decreto que regulamenta o Fim da Escala 6X1
+        local: Palácio do Planalto
+      vice/2026-11-19-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 183 compromissos em 52 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 39 compromissos em 26 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 182 compromissos em 52 dias (0 dias não lidos)'
+- 'br-p-geraldo-alckmin: 40 compromissos em 27 dias (0 dias não lidos)'

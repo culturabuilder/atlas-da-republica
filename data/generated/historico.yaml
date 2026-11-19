@@ -1,22 +1,22 @@
 # GERADO por etl/historico.py. Não edite à mão.
-generated_at: '2026-11-18T19:01:55Z'
+generated_at: '2026-11-19T18:09:29Z'
 fonte: wikidata.org — P39 (cargo ocupado) com qualificadores P580/P582/P585/P1365/P1366/P2868 via busca haswbstatement; ou
   P488/P169/P1037 no item do órgão (rota org_item); desde 1985
 resumo:
-  cargos_com_historico: 64
+  cargos_com_historico: 65
   cargos_por_rota:
     busca: 8
-    mapa: 41
+    mapa: 42
     org_item: 7
     override: 8
   cargos_sem_qid: 80
-  cargos_vazios_no_wikidata: 7
+  cargos_vazios_no_wikidata: 6
   qids_invalidos: {}
-  mandatos: 560
-  mandatos_com_inicio_e_fim: 481
-  mandatos_sem_data: 199
-  mediana_geral_dias: 546
-  atualizados: 20
+  mandatos: 567
+  mandatos_com_inicio_e_fim: 488
+  mandatos_sem_data: 200
+  mediana_geral_dias: 553
+  atualizados: 21
   sem_qid:
     - br-ana-diretor
     - br-ana-dirigente
@@ -99,9 +99,8 @@ resumo:
     - br-telebras-dirigente
     - br-tribunal-superior-do-trabalho-presidente
   vazios:
-    - br-banco-do-brasil-dirigente
-    - br-fiocruz-dirigente
     - br-ipea-dirigente
+    - br-ministro-de-estado-das-cidades
     - br-agencia-espacial-brasileira-dirigente
     - br-anp-dirigente
     - br-procurador-geral-da-uniao
@@ -265,6 +264,161 @@ cargos:
     ocupante_atual_no_wikidata: true
     sem_data_n: 0
     sem_data: []
+  br-banco-do-brasil-dirigente:
+    qid: Q98971588
+    rota: mapa
+    nome: Presidente do Banco do Brasil
+    ocupantes: 11
+    mandatos_n: 11
+    mediana_dias: 563
+    mandatos:
+      - qid: Q55999391
+        nome: Camillo Calazans de Magalhães
+        inicio: 1985-03
+        fim: '1988-03-07'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1928-01-22'
+        morte: '2012-02-11'
+        dias: 1102
+        presidente: null
+        papel: null
+      - qid: Q107580376
+        nome: Lafaiete Coutinho Torres
+        inicio: '1991-05-16'
+        fim: '1992-09-29'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1940-02-28'
+        morte: null
+        dias: 502
+        presidente: Fernando Collor
+        papel: null
+      - qid: Q9613885
+        nome: Andrea Calabi
+        inicio: '1999-01-06'
+        fim: '1999-07-28'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1945-09-18'
+        morte: null
+        dias: 203
+        presidente: Fernando Henrique Cardoso
+        papel: null
+      - qid: Q82328
+        nome: Aldemir Bendine
+        inicio: '2009-04-23'
+        fim: '2015-02-06'
+        interino: false
+        substituiu: null
+        substituido_por: Q20045585
+        nascimento: '1963-12-10'
+        morte: null
+        dias: 2115
+        presidente: Lula
+        papel: null
+      - qid: Q20045585
+        nome: Alexandre Abreu
+        inicio: '2015-02-06'
+        fim: '2016-05-31'
+        interino: false
+        substituiu: Q82328
+        substituido_por: Q116466463
+        nascimento: '1965-11-29'
+        morte: null
+        dias: 480
+        presidente: Dilma Rousseff
+        papel: null
+      - qid: Q116466463
+        nome: Paulo Caffarelli
+        inicio: '2016-05-31'
+        fim: '2018-10-26'
+        interino: false
+        substituiu: Q20045585
+        substituido_por: Q116466852
+        nascimento: '1965-09-19'
+        morte: null
+        dias: 878
+        presidente: Michel Temer
+        papel: null
+      - qid: Q116466852
+        nome: Marcelo Labuto
+        inicio: '2018-10-26'
+        fim: '2019-01-07'
+        interino: false
+        substituiu: Q116466463
+        substituido_por: Q61000735
+        nascimento: null
+        morte: null
+        dias: 73
+        presidente: Michel Temer
+        papel: null
+      - qid: Q61000735
+        nome: Rubem Novaes
+        inicio: '2019-01-07'
+        fim: '2020-09-22'
+        interino: false
+        substituiu: Q116466852
+        substituido_por: Q116448040
+        nascimento: '1945-08-22'
+        morte: null
+        dias: 624
+        presidente: Jair Bolsonaro
+        papel: null
+      - qid: Q116448040
+        nome: André Brandão
+        inicio: '2020-09-22'
+        fim: '2021-04-01'
+        interino: false
+        substituiu: Q61000735
+        substituido_por: Q116448120
+        nascimento: null
+        morte: null
+        dias: 191
+        presidente: Jair Bolsonaro
+        papel: null
+      - qid: Q116448120
+        nome: Fausto Ribeiro
+        inicio: '2021-04-01'
+        fim: '2023-01-16'
+        interino: false
+        substituiu: Q116448040
+        substituido_por: Q115933621
+        nascimento: null
+        morte: null
+        dias: 655
+        presidente: Jair Bolsonaro
+        papel: null
+      - qid: Q115933621
+        nome: Tarciana Medeiros
+        inicio: '2023-01-16'
+        fim: null
+        interino: false
+        substituiu: Q116448120
+        substituido_por: null
+        nascimento: '1978-11-12'
+        morte: null
+        dias: null
+        presidente: Lula
+        papel: null
+    por_presidente:
+      Fernando Collor: 1
+      Fernando Henrique Cardoso: 1
+      Lula: 2
+      Dilma Rousseff: 1
+      Michel Temer: 2
+      Jair Bolsonaro: 3
+    ocupante_atual: Tarciana Medeiros
+    wikidata_mais_recente: Tarciana Medeiros
+    wikidata_atualizado: true
+    ocupante_atual_no_wikidata: true
+    sem_data_n: 1
+    sem_data:
+      - qid: Q10284900
+        nome: Francisco Jê Acaiaba de Montezuma
   br-bndes-dirigente:
     qid: Q98973126
     rota: busca
@@ -926,6 +1080,47 @@ cargos:
       Jair Bolsonaro: 1
     ocupante_atual: Rodrigo Alves Teixeira
     wikidata_mais_recente: Roberto Campos Neto
+    wikidata_atualizado: false
+    ocupante_atual_no_wikidata: false
+    sem_data_n: 0
+    sem_data: []
+  br-fiocruz-dirigente:
+    qid: Q116456463
+    rota: mapa
+    nome: Presidente da Fiocruz
+    ocupantes: 2
+    mandatos_n: 2
+    mediana_dias: 2556
+    mandatos:
+      - qid: Q92645474
+        nome: Paulo M Buss
+        inicio: '2000'
+        fim: '2008'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: null
+        morte: null
+        dias: 2922
+        presidente: Fernando Henrique Cardoso
+        papel: null
+      - qid: Q96741667
+        nome: Nísia Trindade Lima
+        inicio: '2017'
+        fim: '2023'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1958-01-17'
+        morte: null
+        dias: 2191
+        presidente: Michel Temer
+        papel: null
+    por_presidente:
+      Fernando Henrique Cardoso: 1
+      Michel Temer: 1
+    ocupante_atual: Mario Santos Moreira
+    wikidata_mais_recente: Nísia Trindade Lima
     wikidata_atualizado: false
     ocupante_atual_no_wikidata: false
     sem_data_n: 0
@@ -4145,96 +4340,6 @@ cargos:
         nome: Paulo Pinheiro Chagas
       - qid: Q10334472
         nome: Mário Machado de Lemos
-  br-ministro-de-estado-das-cidades:
-    qid: Q59346267
-    rota: mapa
-    nome: Ministro de Estado das Cidades
-    ocupantes: 6
-    mandatos_n: 6
-    mediana_dias: 395
-    mandatos:
-      - qid: Q252591
-        nome: Olívio Dutra
-        inicio: '2003-01-01'
-        fim: '2005-07-20'
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: '1941-06-10'
-        morte: null
-        dias: 931
-        presidente: Lula
-        papel: null
-      - qid: Q10334497
-        nome: Mário Negromonte
-        inicio: '2011-01-03'
-        fim: '2012-02-02'
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: '1950-07-06'
-        morte: null
-        dias: 395
-        presidente: Dilma Rousseff
-        papel: null
-      - qid: Q100481143
-        nome: Elton Santa Fé Zacarias
-        inicio: '2015-02-12'
-        fim: '2016-04-26'
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: '1961'
-        morte: null
-        dias: 439
-        presidente: Dilma Rousseff
-        papel: null
-      - qid: Q25439030
-        nome: Inês Magalhães
-        inicio: '2016-04-15'
-        fim: '2016-05-12'
-        interino: false
-        substituiu: Q2546210
-        substituido_por: Q9667467
-        nascimento: '1963'
-        morte: null
-        dias: 27
-        presidente: Dilma Rousseff
-        papel: null
-      - qid: Q100700851
-        nome: Marco Aurélio de Queiroz Campos
-        inicio: '2017-05-19'
-        fim: '2017-12-20'
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: '1971'
-        morte: null
-        dias: 215
-        presidente: Michel Temer
-        papel: null
-      - qid: Q115945653
-        nome: Jader Barbalho Filho
-        inicio: '2023-01-01'
-        fim: null
-        interino: false
-        substituiu: null
-        substituido_por: null
-        nascimento: '1980-10-04'
-        morte: null
-        dias: null
-        presidente: Lula
-        papel: null
-    por_presidente:
-      Lula: 2
-      Dilma Rousseff: 3
-      Michel Temer: 1
-    ocupante_atual: Antonio Vladimir Moura Lima
-    wikidata_mais_recente: Jader Barbalho Filho
-    wikidata_atualizado: false
-    ocupante_atual_no_wikidata: false
-    sem_data_n: 0
-    sem_data: []
   br-ministro-de-estado-das-comunicacoes:
     qid: Q96240294
     rota: busca
