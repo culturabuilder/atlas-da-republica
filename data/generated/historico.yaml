@@ -1,22 +1,22 @@
 # GERADO por etl/historico.py. Não edite à mão.
-generated_at: '2026-11-19T18:09:29Z'
+generated_at: '2026-11-20T17:51:38Z'
 fonte: wikidata.org — P39 (cargo ocupado) com qualificadores P580/P582/P585/P1365/P1366/P2868 via busca haswbstatement; ou
   P488/P169/P1037 no item do órgão (rota org_item); desde 1985
 resumo:
-  cargos_com_historico: 65
+  cargos_com_historico: 66
   cargos_por_rota:
     busca: 8
-    mapa: 42
+    mapa: 43
     org_item: 7
     override: 8
   cargos_sem_qid: 80
-  cargos_vazios_no_wikidata: 6
+  cargos_vazios_no_wikidata: 5
   qids_invalidos: {}
-  mandatos: 567
-  mandatos_com_inicio_e_fim: 488
-  mandatos_sem_data: 200
-  mediana_geral_dias: 553
-  atualizados: 21
+  mandatos: 573
+  mandatos_com_inicio_e_fim: 493
+  mandatos_sem_data: 202
+  mediana_geral_dias: 549
+  atualizados: 20
   sem_qid:
     - br-ana-diretor
     - br-ana-dirigente
@@ -100,7 +100,6 @@ resumo:
     - br-tribunal-superior-do-trabalho-presidente
   vazios:
     - br-ipea-dirigente
-    - br-ministro-de-estado-das-cidades
     - br-agencia-espacial-brasileira-dirigente
     - br-anp-dirigente
     - br-procurador-geral-da-uniao
@@ -492,10 +491,10 @@ cargos:
       Fernando Henrique Cardoso: 1
       Lula: 2
       Michel Temer: 1
-    ocupante_atual: Aloizio Mercadante
+    ocupante_atual: null
     wikidata_mais_recente: Aloizio Mercadante
-    wikidata_atualizado: true
-    ocupante_atual_no_wikidata: true
+    wikidata_atualizado: false
+    ocupante_atual_no_wikidata: false
     sem_data_n: 0
     sem_data: []
   br-caixa-economica-federal-dirigente:
@@ -3034,26 +3033,26 @@ cargos:
         nome: Fernando José de Portugal e Castro
       - qid: Q938542
         nome: Maílson da Nóbrega
-      - qid: Q9594135
-        nome: Alberto Andrade de Queirós
       - qid: Q10341519
         nome: Orlando Bandeira Vilela
-      - qid: Q10324189
-        nome: Manuel Guilherme da Silveira Filho
       - qid: Q10340898
         nome: Onaldo Brancante Machado
-      - qid: Q10346895
-        nome: Paulo de Lira Tavares
+      - qid: Q10324189
+        nome: Manuel Guilherme da Silveira Filho
+      - qid: Q9594135
+        nome: Alberto Andrade de Queirós
       - qid: Q10270754
         nome: Eduardo Pereira de Carvalho
+      - qid: Q10346895
+        nome: Paulo de Lira Tavares
       - qid: Q10346779
         nome: Paulo Haddad
       - qid: Q10312521
         nome: João de Oliveira Castro Vianna Júnior
-      - qid: Q5102160
-        nome: Tomás António de Vila Nova Portugal
       - qid: Q10294738
         nome: Henrique Domingos Ribeiro Barbosa
+      - qid: Q5102160
+        nome: Tomás António de Vila Nova Portugal
       - qid: Q10293647
         nome: Hamilton Prisco Paraíso
       - qid: Q10336630
@@ -3748,16 +3747,16 @@ cargos:
         nome: Márcio Thomaz Bastos
       - qid: Q9654119
         nome: Benedito Costa Neto
-      - qid: Q16488302
-        nome: Alfredo Buzaid
       - qid: Q10363102
         nome: Rivadávia da Cunha Correia
+      - qid: Q16488302
+        nome: Alfredo Buzaid
       - qid: Q10320820
         nome: Luiz Paulo Barreto
-      - qid: Q10310797
-        nome: José de Jesus Filho
       - qid: Q10287035
         nome: Félix Gaspar de Barros e Almeida
+      - qid: Q10310797
+        nome: José de Jesus Filho
       - qid: Q10342193
         nome: Oscar Pedroso Horta
       - qid: Q9587238
@@ -3772,12 +3771,12 @@ cargos:
         nome: Alfredo Pinto Vieira de Melo
       - qid: Q10287869
         nome: Gabriel Loureiro Bernardes
+      - qid: Q16488184
+        nome: Alexandre Dupeyrat
       - qid: Q10330142
         nome: Milton Seligman
       - qid: Q10309086
         nome: José Carlos Dias
-      - qid: Q16488184
-        nome: Alexandre Dupeyrat
       - qid: Q23893528
         nome: Wellington César Lima e Silva
       - qid: Q23893552
@@ -4340,6 +4339,96 @@ cargos:
         nome: Paulo Pinheiro Chagas
       - qid: Q10334472
         nome: Mário Machado de Lemos
+  br-ministro-de-estado-das-cidades:
+    qid: Q59346267
+    rota: mapa
+    nome: Ministro de Estado das Cidades
+    ocupantes: 6
+    mandatos_n: 6
+    mediana_dias: 395
+    mandatos:
+      - qid: Q252591
+        nome: Olívio Dutra
+        inicio: '2003-01-01'
+        fim: '2005-07-20'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1941-06-10'
+        morte: null
+        dias: 931
+        presidente: Lula
+        papel: null
+      - qid: Q10334497
+        nome: Mário Negromonte
+        inicio: '2011-01-03'
+        fim: '2012-02-02'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1950-07-06'
+        morte: null
+        dias: 395
+        presidente: Dilma Rousseff
+        papel: null
+      - qid: Q100481143
+        nome: Elton Santa Fé Zacarias
+        inicio: '2015-02-12'
+        fim: '2016-04-26'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1961'
+        morte: null
+        dias: 439
+        presidente: Dilma Rousseff
+        papel: null
+      - qid: Q25439030
+        nome: Inês Magalhães
+        inicio: '2016-04-15'
+        fim: '2016-05-12'
+        interino: false
+        substituiu: Q2546210
+        substituido_por: Q9667467
+        nascimento: '1963'
+        morte: null
+        dias: 27
+        presidente: Dilma Rousseff
+        papel: null
+      - qid: Q100700851
+        nome: Marco Aurélio de Queiroz Campos
+        inicio: '2017-05-19'
+        fim: '2017-12-20'
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1971'
+        morte: null
+        dias: 215
+        presidente: Michel Temer
+        papel: null
+      - qid: Q115945653
+        nome: Jader Barbalho Filho
+        inicio: '2023-01-01'
+        fim: null
+        interino: false
+        substituiu: null
+        substituido_por: null
+        nascimento: '1980-10-04'
+        morte: null
+        dias: null
+        presidente: Lula
+        papel: null
+    por_presidente:
+      Lula: 2
+      Dilma Rousseff: 3
+      Michel Temer: 1
+    ocupante_atual: Antonio Vladimir Moura Lima
+    wikidata_mais_recente: Jader Barbalho Filho
+    wikidata_atualizado: false
+    ocupante_atual_no_wikidata: false
+    sem_data_n: 0
+    sem_data: []
   br-ministro-de-estado-das-comunicacoes:
     qid: Q96240294
     rota: busca
@@ -5881,12 +5970,12 @@ cargos:
         nome: Kobkarn Wattanavrangkul
       - qid: Q3101783
         nome: George Naccache
-      - qid: Q131458650
-        nome: Soufiane Aghaichata Guichene
       - qid: Q126725672
         nome: null
       - qid: Q16127247
         nome: null
+      - qid: Q131458650
+        nome: Soufiane Aghaichata Guichene
       - qid: Q121740703
         nome: Lola Ade-John
       - qid: Q3308697
@@ -7392,10 +7481,10 @@ cargos:
         nome: Joaquim Barbosa
       - qid: Q7322696
         nome: Ricardo Lewandowski
-      - qid: Q3625473
-        nome: Antonio Cezar Peluso
       - qid: Q3509658
         nome: Carlos Ayres Britto
+      - qid: Q3625473
+        nome: Antonio Cezar Peluso
   br-tribunal-superior-do-trabalho-ministro:
     qid: Q103815244
     rota: mapa
@@ -7798,7 +7887,7 @@ cargos:
     wikidata_mais_recente: Katrin Rieke
     wikidata_atualizado: false
     ocupante_atual_no_wikidata: false
-    sem_data_n: 19
+    sem_data_n: 21
     sem_data:
       - qid: Q17279884
         nome: Carlo Biotti
@@ -7810,10 +7899,12 @@ cargos:
         nome: Teodor Boyan
       - qid: Q138820720
         nome: null
-      - qid: Q117830140
-        nome: Boscheron Des Portes
       - qid: Q136214714
         nome: Kaupo Kruusvee
+      - qid: Q117830140
+        nome: Boscheron Des Portes
+      - qid: Q142215922
+        nome: null
       - qid: Q132833468
         nome: Liivi Loide
       - qid: Q125802951
@@ -7830,6 +7921,8 @@ cargos:
         nome: Jean-Baptiste Pajot
       - qid: Q135957208
         nome: Dije Abdu Aboki
+      - qid: Q142220178
+        nome: null
       - qid: Q138319592
         nome: null
       - qid: Q59287067
