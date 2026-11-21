@@ -1,16 +1,16 @@
 # GERADO por etl/falabr.py. Não edite à mão.
-generated_at: '2026-11-20'
+generated_at: '2026-11-21'
 ano: 2026
 fonte: Fala.BR (Lei 12.527/2011), dados abertos da Controladoria-Geral da União
 nota: 'Pedidos de acesso à informação de esfera federal registrados no ano. A taxa de negativa olha só os pedidos que o órgão decidiu sobre informação que
   lhe cabia: ''informação inexistente'' e ''não tem competência'' são contados à parte, porque somá-los inflaria a opacidade de quem apenas recebeu pedido
   endereçado errado. Recurso é atribuído ao órgão reclamado, não a quem julga. Taxa só é calculada com 20 decisões ou mais.'
 resumo:
-  pedidos: 72607
+  pedidos: 72619
   orgaos: 321
   orgaos_casados: 288
   recursos: 9746
-  decididos: 65122
+  decididos: 65134
   pct_negado_ou_parcial_geral: 19.6
   orgaos_com_taxa: 276
 mais_negam:
@@ -2415,28 +2415,28 @@ orgaos:
       n: 18
   UFRJ – Universidade Federal do Rio de Janeiro:
     node: br-universidade-federal-do-rio-de-janeiro
-    pedidos: 212
+    pedidos: 213
     concedido: 128
     negado: 19
-    parcial: 17
+    parcial: 18
     inexistente: 37
     sem_competencia: 9
     fora_da_lai: 1
     duplicada: 1
     outra: 0
-    prorrogados: 81
+    prorrogados: 82
     recursos: 61
-    decididos: 164
-    pct_negado_ou_parcial: 22.0
-    pct_prorrogado: 38.2
+    decididos: 165
+    pct_negado_ou_parcial: 22.4
+    pct_prorrogado: 38.5
     motivos_top:
     - motivo: "\0"
-      n: 211
+      n: 212
     - motivo: Em atenção à sua solicitação, informamos que os dados relativos à vida
       n: 1
     assuntos_top:
     - assunto: Transparência e acesso à informação
-      n: 63
+      n: 64
     - assunto: Concursos e processos seletivos
       n: 30
     - assunto: Gestão de Pessoas
@@ -2798,7 +2798,7 @@ orgaos:
     - assunto: Transparência e acesso à informação
       n: 101
     - assunto: Turismo
-      n: 45
+      n: 46
     - assunto: Gestão Pública
       n: 22
     - assunto: Gestão de Pessoas
@@ -3145,28 +3145,58 @@ orgaos:
       n: 22
     - assunto: Gestão de Pessoas
       n: 15
+  UFT – Fundação Universidade Federal do Tocantins:
+    node: br-fundacao-universidade-federal-do-tocantins
+    pedidos: 153
+    concedido: 123
+    negado: 13
+    parcial: 5
+    inexistente: 2
+    sem_competencia: 2
+    fora_da_lai: 7
+    duplicada: 1
+    outra: 0
+    prorrogados: 19
+    recursos: 34
+    decididos: 141
+    pct_negado_ou_parcial: 12.8
+    pct_prorrogado: 12.4
+    motivos_top:
+    - motivo: "\0"
+      n: 152
+    - motivo: A demandante não comprovou por meio de documento pessoal ser a solicit
+      n: 1
+    assuntos_top:
+    - assunto: Transparência e acesso à informação
+      n: 83
+    - assunto: Concursos e processos seletivos
+      n: 11
+    - assunto: Educação Superior
+      n: 10
+    - assunto: Ações Afirmativas
+      n: 8
   UFS – Fundação Universidade Federal de Sergipe:
     node: br-fundacao-universidade-federal-de-sergipe
-    pedidos: 152
+    pedidos: 153
     concedido: 112
     negado: 5
-    parcial: 17
+    parcial: 18
     inexistente: 10
     sem_competencia: 0
     fora_da_lai: 4
     duplicada: 4
     outra: 0
-    prorrogados: 33
+    prorrogados: 34
     recursos: 23
-    decididos: 134
-    pct_negado_ou_parcial: 16.4
-    pct_prorrogado: 21.7
+    decididos: 135
+    pct_negado_ou_parcial: 17.0
+    pct_prorrogado: 22.2
     motivos_top:
     - motivo: "\0"
-      n: 152
+      n: 153
     assuntos_top:
     - assunto: Transparência e acesso à informação
-      n: 86
+      n: 87
     - assunto: Estudos e Pesquisas
       n: 24
     - assunto: Concursos e processos seletivos
@@ -3291,36 +3321,6 @@ orgaos:
       n: 21
     - assunto: Gestão Pública
       n: 12
-  UFT – Fundação Universidade Federal do Tocantins:
-    node: br-fundacao-universidade-federal-do-tocantins
-    pedidos: 147
-    concedido: 117
-    negado: 13
-    parcial: 5
-    inexistente: 2
-    sem_competencia: 2
-    fora_da_lai: 7
-    duplicada: 1
-    outra: 0
-    prorrogados: 17
-    recursos: 34
-    decididos: 135
-    pct_negado_ou_parcial: 13.3
-    pct_prorrogado: 11.6
-    motivos_top:
-    - motivo: "\0"
-      n: 146
-    - motivo: A demandante não comprovou por meio de documento pessoal ser a solicit
-      n: 1
-    assuntos_top:
-    - assunto: Transparência e acesso à informação
-      n: 79
-    - assunto: Concursos e processos seletivos
-      n: 10
-    - assunto: Educação Superior
-      n: 10
-    - assunto: Ações Afirmativas
-      n: 8
   UFRR – Fundação Universidade Federal de Roraima:
     node: br-fundacao-universidade-federal-de-roraima
     pedidos: 146
@@ -3523,6 +3523,36 @@ orgaos:
       n: 22
     - assunto: Proteção e Benefícios ao Trabalhador
       n: 5
+  CODEVASF – Companhia de Desenvolvimento dos Vales do São Francisco e do Parnaíba:
+    node: br-codevasf
+    pedidos: 140
+    concedido: 129
+    negado: 3
+    parcial: 3
+    inexistente: 2
+    sem_competencia: 1
+    fora_da_lai: 1
+    duplicada: 1
+    outra: 0
+    prorrogados: 48
+    recursos: 13
+    decididos: 135
+    pct_negado_ou_parcial: 4.4
+    pct_prorrogado: 34.3
+    motivos_top:
+    - motivo: "\0"
+      n: 139
+    - motivo: O Cidadão não apresentou a documentação necessária para a disponibiliz
+      n: 1
+    assuntos_top:
+    - assunto: Transparência e acesso à informação
+      n: 22
+    - assunto: Informações processuais
+      n: 17
+    - assunto: Concursos e processos seletivos
+      n: 17
+    - assunto: Gestão de Pessoas
+      n: 12
   UFU – Universidade Federal de Uberlândia:
     node: br-universidade-federal-de-uberlandia
     pedidos: 140
@@ -3553,34 +3583,6 @@ orgaos:
       n: 13
     - assunto: Concursos e processos seletivos
       n: 13
-  CODEVASF – Companhia de Desenvolvimento dos Vales do São Francisco e do Parnaíba:
-    node: br-codevasf
-    pedidos: 139
-    concedido: 129
-    negado: 2
-    parcial: 3
-    inexistente: 2
-    sem_competencia: 1
-    fora_da_lai: 1
-    duplicada: 1
-    outra: 0
-    prorrogados: 47
-    recursos: 13
-    decididos: 134
-    pct_negado_ou_parcial: 3.7
-    pct_prorrogado: 33.8
-    motivos_top:
-    - motivo: "\0"
-      n: 139
-    assuntos_top:
-    - assunto: Transparência e acesso à informação
-      n: 22
-    - assunto: Concursos e processos seletivos
-      n: 17
-    - assunto: Informações processuais
-      n: 16
-    - assunto: Gestão de Pessoas
-      n: 12
   IFSPE – Instituto Federal de Educação, Ciência e Tecnologia do Sertão Pernambucano:
     node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sertao-pernambucano
     pedidos: 139
@@ -3725,6 +3727,34 @@ orgaos:
       n: 13
     - assunto: Gestão de Pessoas
       n: 13
+  UFAC – Fundação Universidade Federal do Acre:
+    node: br-fundacao-universidade-federal-do-acre
+    pedidos: 136
+    concedido: 112
+    negado: 5
+    parcial: 11
+    inexistente: 2
+    sem_competencia: 2
+    fora_da_lai: 2
+    duplicada: 2
+    outra: 0
+    prorrogados: 51
+    recursos: 8
+    decididos: 128
+    pct_negado_ou_parcial: 12.5
+    pct_prorrogado: 37.5
+    motivos_top:
+    - motivo: "\0"
+      n: 136
+    assuntos_top:
+    - assunto: Gestão de Pessoas
+      n: 19
+    - assunto: Educação Superior
+      n: 18
+    - assunto: Estudos e Pesquisas
+      n: 16
+    - assunto: Transparência e acesso à informação
+      n: 14
   IFPR – Instituto Federal de Educação, Ciência e Tecnologia do Paraná:
     node: br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-parana
     pedidos: 135
@@ -3843,34 +3873,6 @@ orgaos:
       n: 10
     - assunto: Educação Superior
       n: 10
-  UFAC – Fundação Universidade Federal do Acre:
-    node: br-fundacao-universidade-federal-do-acre
-    pedidos: 134
-    concedido: 111
-    negado: 5
-    parcial: 10
-    inexistente: 2
-    sem_competencia: 2
-    fora_da_lai: 2
-    duplicada: 2
-    outra: 0
-    prorrogados: 49
-    recursos: 8
-    decididos: 126
-    pct_negado_ou_parcial: 11.9
-    pct_prorrogado: 36.6
-    motivos_top:
-    - motivo: "\0"
-      n: 134
-    assuntos_top:
-    - assunto: Gestão de Pessoas
-      n: 18
-    - assunto: Educação Superior
-      n: 18
-    - assunto: Estudos e Pesquisas
-      n: 16
-    - assunto: Transparência e acesso à informação
-      n: 14
   UFOP – Fundação Universidade Federal de Ouro Preto:
     node: br-fundacao-universidade-federal-de-ouro-preto
     pedidos: 132
@@ -5160,8 +5162,8 @@ orgaos:
       n: 8
   UFGD – Fundação Universidade Federal da Grande Dourados:
     node: br-fundacao-universidade-federal-da-grande-dourados
-    pedidos: 95
-    concedido: 86
+    pedidos: 96
+    concedido: 87
     negado: 6
     parcial: 3
     inexistente: 0
@@ -5169,19 +5171,19 @@ orgaos:
     fora_da_lai: 0
     duplicada: 0
     outra: 0
-    prorrogados: 41
+    prorrogados: 42
     recursos: 5
-    decididos: 95
-    pct_negado_ou_parcial: 9.5
-    pct_prorrogado: 43.2
+    decididos: 96
+    pct_negado_ou_parcial: 9.4
+    pct_prorrogado: 43.8
     motivos_top:
     - motivo: "\0"
-      n: 94
+      n: 95
     - motivo: 'Justificativa do setor:   Em atenção ao pedido de acesso à informação '
       n: 1
     assuntos_top:
     - assunto: Controle Social
-      n: 20
+      n: 21
     - assunto: Transparência e acesso à informação
       n: 13
     - assunto: Estudos e Pesquisas
