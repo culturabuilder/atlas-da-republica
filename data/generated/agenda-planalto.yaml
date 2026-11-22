@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-21'
+generated_at: '2026-11-22'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-24'
+janela_inicio: '2026-08-25'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,21 +11,21 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 182
-    dias_com_agenda: 52
+    compromissos_90d: 179
+    dias_com_agenda: 51
     por_tipo:
       evento: 56
-      audiencia: 50
       viagem: 49
-      reuniao: 22
+      audiencia: 48
+      reuniao: 21
       outro: 5
     entidades_top:
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República)
-      n: 10
-    - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
-      n: 8
+      n: 9
     - nome: Miriam Belchior (Ministra da Casa Civil)
       n: 8
+    - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
+      n: 7
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
       n: 5
     - nome: Sandra Brandão (Chefe do Gabinete Adjunto de Informações em Apoio à Decisão do Gabinet)
@@ -42,9 +42,9 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 38
+      n: 36
     - nome: Palácio da Alvorada
-      n: 31
+      n: 30
     - nome: Base Aérea de Brasília
       n: 20
     - nome: Esplanada dos Ministérios, Brasília
@@ -114,18 +114,8 @@ people:
       participantes:
       - nome: Miriam Belchior
         entidade: Ministra da Casa Civil
-    dias_nao_lidos: 2
+    dias_nao_lidos: 3
     dias:
-      presidente/2026-08-24:
-      - hora: '10:00'
-        titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
-        local: Palácio da Alvorada
-      - hora: '14:40'
-        titulo: Secretário Especial para Assuntos Jurídicos da Casa Civil, Marcelo Weick
-        local: Palácio do Planalto
-      - hora: '15:00'
-        titulo: Reunião do Contrata+Brasil
-        local: Palácio do Planalto
       presidente/2026-08-25:
       - hora: '10:00'
         titulo: Cerimônia do Dia do Soldado
@@ -778,18 +768,18 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 40
-    dias_com_agenda: 27
+    compromissos_90d: 38
+    dias_com_agenda: 26
     por_tipo:
       evento: 16
-      audiencia: 9
-      viagem: 8
+      audiencia: 8
+      viagem: 7
       reuniao: 5
       outro: 2
     entidades_top:
-    - nome: Luiz Inácio Lula da Silva (Presidente da República)
-      n: 2
     - nome: Sérgio Leite (Presidente da Federação dos Trabalhadores nas Indústrias Químicas e Fa)
+      n: 1
+    - nome: Luiz Inácio Lula da Silva (Presidente da República)
       n: 1
     - nome: Sidônio Palmeira (Ministro-Chefe da Secretaria de Comunicação Social - SECOM)
       n: 1
@@ -799,11 +789,11 @@ people:
     - nome: Palácio do Planalto
       n: 11
     - nome: Brasília/DF
-      n: 9
+      n: 8
     - nome: Palácio do Planalto, Anexo II
       n: 8
     - nome: São Paulo/SP
-      n: 7
+      n: 6
     - nome: São José do Rio Preto/SP
       n: 1
     - nome: Esplanada dos Ministérios, Brasília/DF
@@ -865,16 +855,8 @@ people:
       tipo: audiencia
       local: Palácio do Planalto, Anexo II
       participantes: []
-    dias_nao_lidos: 4
+    dias_nao_lidos: 6
     dias:
-      vice/2026-08-24:
-      - hora: 07:30
-        titulo: Embarque de São Paulo/SP para Brasília/DF
-        local: São Paulo/SP
-      - hora: '15:00'
-        titulo: Luiz Inácio Lula da Silva, Presidente da República
-        local: Brasília/DF
-      vice/2026-08-24-b1: []
       vice/2026-08-25:
       - hora: 06:30
         titulo: Embarque de Brasília/DF para São Paulo/SP
@@ -1168,5 +1150,5 @@ people:
         local: Palácio do Planalto
       vice/2026-11-19-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 182 compromissos em 52 dias (2 dias não lidos)'
-- 'br-p-geraldo-alckmin: 40 compromissos em 27 dias (4 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 179 compromissos em 51 dias (3 dias não lidos)'
+- 'br-p-geraldo-alckmin: 38 compromissos em 26 dias (6 dias não lidos)'

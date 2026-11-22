@@ -1,16 +1,16 @@
 # GERADO por etl/falabr.py. Não edite à mão.
-generated_at: '2026-11-21'
+generated_at: '2026-11-22'
 ano: 2026
 fonte: Fala.BR (Lei 12.527/2011), dados abertos da Controladoria-Geral da União
 nota: 'Pedidos de acesso à informação de esfera federal registrados no ano. A taxa de negativa olha só os pedidos que o órgão decidiu sobre informação que
   lhe cabia: ''informação inexistente'' e ''não tem competência'' são contados à parte, porque somá-los inflaria a opacidade de quem apenas recebeu pedido
   endereçado errado. Recurso é atribuído ao órgão reclamado, não a quem julga. Taxa só é calculada com 20 decisões ou mais.'
 resumo:
-  pedidos: 72619
+  pedidos: 72624
   orgaos: 321
   orgaos_casados: 288
   recursos: 9746
-  decididos: 65134
+  decididos: 65139
   pct_negado_ou_parcial_geral: 19.6
   orgaos_com_taxa: 276
 mais_negam:
@@ -58,8 +58,8 @@ mais_negam:
   recursos: 39
 - orgao: MRE – Ministério das Relações Exteriores
   node: br-ministerio-das-relacoes-exteriores
-  pedidos: 1103
-  decididos: 966
+  pedidos: 1108
+  decididos: 971
   pct_negado_ou_parcial: 45.1
   recursos: 284
 - orgao: EBSERH - Filial Complexo Hospitalar da UFRJ (HUCFF, IPPMG, ME)
@@ -523,9 +523,9 @@ orgaos:
       n: 163
   MRE – Ministério das Relações Exteriores:
     node: br-ministerio-das-relacoes-exteriores
-    pedidos: 1103
-    concedido: 530
-    negado: 324
+    pedidos: 1108
+    concedido: 533
+    negado: 326
     parcial: 112
     inexistente: 82
     sem_competencia: 19
@@ -534,12 +534,12 @@ orgaos:
     outra: 0
     prorrogados: 623
     recursos: 284
-    decididos: 966
+    decididos: 971
     pct_negado_ou_parcial: 45.1
-    pct_prorrogado: 56.5
+    pct_prorrogado: 56.2
     motivos_top:
     - motivo: "\0"
-      n: 1091
+      n: 1096
     - motivo: 'Nos termos  do art. 31, § 1º, da Lei nº 12.527/2011 – Lei de Acesso à '
       n: 1
     - motivo: Nos termos do art. 31, § 1º, da Lei nº 12.527/2011 - Lei de Acesso à I
@@ -548,7 +548,7 @@ orgaos:
       n: 1
     assuntos_top:
     - assunto: Relações internacionais
-      n: 595
+      n: 600
     - assunto: Transparência e acesso à informação
       n: 315
     - assunto: Meio ambiente
@@ -2796,9 +2796,9 @@ orgaos:
       n: 179
     assuntos_top:
     - assunto: Transparência e acesso à informação
-      n: 101
+      n: 99
     - assunto: Turismo
-      n: 46
+      n: 48
     - assunto: Gestão Pública
       n: 22
     - assunto: Gestão de Pessoas
