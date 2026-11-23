@@ -1,19 +1,19 @@
 # GERADO por etl/proposicoes.py. Não edite à mão.
-generated_at: '2026-11-22'
+generated_at: '2026-11-23'
 since: '2026-02-02'
-duracao_s: 269
+duracao_s: 343
 resumo:
   camara:
-    pessoas: 513
+    pessoas: 514
     com_proposicao: 512
-    proposicoes_distintas: 27957
-    virou_norma: 7
+    proposicoes_distintas: 28000
+    virou_norma: 8
     designacoes_relator: 6238
     designacoes_casadas: 6227
-    mediana_apresentadas: 36
-    mediana_projetos: 10
-    mediana_requerimentos: 16
-    mediana_relatorias: 7
+    mediana_apresentadas: 36.0
+    mediana_projetos: 10.0
+    mediana_requerimentos: 16.0
+    mediana_relatorias: 7.0
     fonte: arquivos em lote proposicoes/proposicoesAutores/proposicoesTemas/proposicoesTramitacoes-2026.csv (dadosabertos.camara.leg.br)
     relatorias_fonte: eventos "Designação de Relator(a)" nas tramitações do ano, casados por nome parlamentar (proposições
       de qualquer ano)
@@ -21,7 +21,7 @@ resumo:
     pessoas: 84
     erros: 0
     com_proposicao: 83
-    proposicoes_distintas: 2453
+    proposicoes_distintas: 2460
     virou_norma: 34
     mediana_apresentadas: 39.0
     mediana_projetos: 10.0
@@ -17665,92 +17665,22 @@ people:
       CDHMIR: 2
       CMO: 2
     virou_norma: 0
-  br-p-cd-74295:
+  br-p-cd-613:
     house: camara
     window: ano
-    apresentadas: 28
-    como_primeiro_autor: 14
-    projetos: 10
-    requerimentos: 17
-    emendas: 1
+    apresentadas: 0
+    como_primeiro_autor: 0
+    projetos: 0
+    requerimentos: 0
+    emendas: 0
     outros: 0
-    pareceres_como_relator: 10
-    por_tipo:
-      REQ: 17
-      PL: 8
-      PPP: 2
-      PRLP: 2
-      RDF: 2
-      SBT: 2
-      DOC: 1
-      EMP: 1
-      PEC: 1
-      PEP: 1
-      PLP: 1
-      PRLE: 1
-    temas:
-    - Finanças Públicas e Orçamento
-    - Viação, Transporte e Mobilidade
-    - Educação
-    ultimas:
-    - id: 2655613
-      sigla: PL
-      numero: 5914
-      ano: 2026
-      ementa: Institui o Fundo Soberano de Desenvolvimento Nacional (FSDN) e estabelece diretrizes para sua organização, governança,
-        gestão e aplicação de recursos.
-      situacao: Apresentação de Proposição
-      orgao: null
-      data: '2026-11-19'
-      apresentada: '2026-11-19'
-      url: https://www.camara.leg.br/propostas-legislativas/2655613
-    - id: 2654838
-      sigla: PL
-      numero: 5889
-      ano: 2026
-      ementa: Dispõe sobre a incidência do Imposto sobre a Renda das Pessoas Físicas sobre lucros e dividendos distribuídos
-        por pessoas jurídicas, altera as Leis nº 9.249, d…
-      situacao: Apresentação de Requerimento
-      orgao: null
-      data: '2026-11-19'
-      apresentada: '2026-11-17'
-      url: https://www.camara.leg.br/propostas-legislativas/2654838
-    - id: 2654382
-      sigla: PLP
-      numero: 307
-      ano: 2026
-      ementa: Institui o Imposto sobre Grandes Fortunas, previsto no art. 153, inciso VII, da Constituição Federal.
-      situacao: Apresentação de Proposição
-      orgao: null
-      data: '2026-11-17'
-      apresentada: '2026-11-17'
-      url: https://www.camara.leg.br/propostas-legislativas/2654382
-    - id: 2653947
-      sigla: PL
-      numero: 5855
-      ano: 2026
-      ementa: Altera a Lei nº 9.249, de 26 de dezembro de 1995, para elevar a alíquota do Imposto de Renda Retido na Fonte
-        incidente sobre os juros sobre o capital próprio.
-      situacao: Apresentação de Proposição
-      orgao: null
-      data: '2026-11-13'
-      apresentada: '2026-11-13'
-      url: https://www.camara.leg.br/propostas-legislativas/2653947
-    - id: 2653946
-      sigla: PL
-      numero: 5854
-      ano: 2026
-      ementa: Dispõe sobre a incidência do Imposto sobre a Renda das Pessoas Físicas sobre lucros e dividendos distribuídos
-        por pessoas jurídicas, altera as Leis nº 9.249, d…
-      situacao: Apresentação de Requerimento
-      orgao: null
-      data: '2026-11-19'
-      apresentada: '2026-11-13'
-      url: https://www.camara.leg.br/propostas-legislativas/2653946
-    relatorias: 2
-    relatorias_projetos: 2
-    relatorias_por_orgao:
-      CCTI: 2
+    pareceres_como_relator: 0
+    por_tipo: {}
+    temas: []
+    ultimas: []
+    relatorias: 0
+    relatorias_projetos: 0
+    relatorias_por_orgao: {}
     virou_norma: 0
   br-p-cd-74158:
     house: camara
@@ -27120,7 +27050,7 @@ people:
       ano: 2026
       ementa: Estabelece que as infrações de trânsito atribuídas a ambulâncias deverão ser anuladas de ofício pelos órgãos
         autuadores.
-      situacao: Aguardando Despacho do Presidente da Câmara dos Deputados
+      situacao: Aguardando Autorização do Despacho
       orgao: SECAP(SGM)
       data: '2026-10-27'
       apresentada: '2026-10-27'
@@ -33292,7 +33222,7 @@ people:
       ano: 2026
       ementa: Dispõe sobre a proibição de criação de contas de crianças em redes sociais classificadas como de alto risco
         para crianças.
-      situacao: Aguardando Despacho do Presidente da Câmara dos Deputados
+      situacao: Aguardando Autorização do Despacho
       orgao: SECAP(SGM)
       data: '2026-10-28'
       apresentada: '2026-10-28'
@@ -33434,6 +33364,87 @@ people:
       CSAUDE: 1
       CFFC: 1
     virou_norma: 0
+  br-p-cd-141470:
+    house: camara
+    window: ano
+    apresentadas: 87
+    como_primeiro_autor: 75
+    projetos: 11
+    requerimentos: 74
+    emendas: 2
+    outros: 0
+    pareceres_como_relator: 3
+    por_tipo:
+      RPD: 45
+      REQ: 29
+      PL: 8
+      ERD: 3
+      EMP: 2
+      PLP: 2
+      PRC: 1
+    temas:
+    - Direitos Humanos e Minorias
+    - Finanças Públicas e Orçamento
+    - Defesa e Segurança
+    ultimas:
+    - id: 2615287
+      sigla: PL
+      numero: 1754
+      ano: 2026
+      ementa: Institui a TerraBras, empresa pública destinada à defesa da soberania nacional e ao aproveitamento dos minerais
+        críticos ou estratégicos; estabelece o regime d…
+      situacao: Apresentação de Requerimento
+      orgao: null
+      data: '2026-04-22'
+      apresentada: '2026-04-10'
+      url: https://www.camara.leg.br/propostas-legislativas/2615287
+    - id: 2611658
+      sigla: PL
+      numero: 1381
+      ano: 2026
+      ementa: Institui o Dia Nacional do Ceará e do Cearense e da Cearense.
+      situacao: Aguardando Designação de Relator(a)
+      orgao: CCJC
+      data: '2026-10-20'
+      apresentada: '2026-03-25'
+      url: https://www.camara.leg.br/propostas-legislativas/2611658
+    - id: 2611313
+      sigla: PLP
+      numero: 74
+      ano: 2026
+      ementa: Dispõe sobre regras relativas a benefícios tributários e despesas obrigatórias no exercício de 2026.
+      situacao: Transformado em Norma Jurídica
+      orgao: MESA
+      data: '2026-09-04'
+      apresentada: '2026-03-23'
+      url: https://www.camara.leg.br/propostas-legislativas/2611313
+    - id: 2611296
+      sigla: PL
+      numero: 1334
+      ano: 2026
+      ementa: Altera a Lei nº 5.517, de 23 de outubro de 1968, a Lei nº 9.605, de 12 de fevereiro de 1998, a Lei nº 13.426,
+        de 30 de março de 2017, e a Lei nº 15.046, de 17…
+      situacao: Aguardando Parecer
+      orgao: CMADS
+      data: '2026-06-02'
+      apresentada: '2026-03-23'
+      url: https://www.camara.leg.br/propostas-legislativas/2611296
+    - id: 2611295
+      sigla: PL
+      numero: 1333
+      ano: 2026
+      ementa: Altera a Lei nº 10.741, de 1º de outubro de 2003, para assegurar, no sistema de transporte coletivo interestadual,
+        a alocação da pessoa idosa em assento acessí…
+      situacao: Pronta para Pauta
+      orgao: CVT
+      data: '2026-11-10'
+      apresentada: '2026-03-23'
+      url: https://www.camara.leg.br/propostas-legislativas/2611295
+    relatorias: 4
+    relatorias_projetos: 4
+    relatorias_por_orgao:
+      CCJC: 4
+    virou_norma: 1
   br-p-cd-204391:
     house: camara
     window: ano
@@ -43902,13 +43913,13 @@ people:
       apresentada: '2026-05-19'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/174217
-    relatorias: 73
-    relatorias_projetos: 25
+    relatorias: 75
+    relatorias_projetos: 27
     relatorias_por_colegiado:
       CDIR: 47
       CE: 13
       CAS: 7
-      CRE: 3
+      PLEN: 3
     virou_norma: 0
   br-p-sf-5998:
     house: senado
@@ -44070,8 +44081,8 @@ people:
       apresentada: '2026-06-18'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/174771
-    relatorias: 72
-    relatorias_projetos: 19
+    relatorias: 73
+    relatorias_projetos: 20
     relatorias_por_colegiado:
       CDIR: 54
       CCT: 12
@@ -44243,8 +44254,8 @@ people:
       apresentada: '2026-08-13'
       norma: Resolução do Senado Federal nº 41 de 14/08/2026
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175484
-    relatorias: 105
-    relatorias_projetos: 46
+    relatorias: 106
+    relatorias_projetos: 47
     relatorias_por_colegiado:
       CDIR: 56
       CCT: 15
@@ -44924,9 +44935,9 @@ people:
   br-p-sf-5959:
     house: senado
     window: ano
-    apresentadas: 21
-    como_primeiro_autor: 5
-    projetos: 8
+    apresentadas: 22
+    como_primeiro_autor: 6
+    projetos: 9
     requerimentos: 11
     emendas: 0
     outros: 2
@@ -44935,11 +44946,23 @@ people:
       PEC: 6
       RQS: 6
       REQ: 5
-      PL: 2
+      PL: 3
       PET: 1
       VET: 1
     temas: []
     ultimas:
+    - id: 9135925
+      sigla: PL
+      numero: 5923
+      ano: 2026
+      ementa: Altera a Lei nº 8.078, de 11 de setembro de 1990, e a Lei nº 7.565, de 19 de dezembro de 1986, para estabelecer
+        a prevalência das normas de proteção e defesa d…
+      situacao: Aguardando despacho
+      orgao: SF
+      data: '2026-11-23'
+      apresentada: '2026-11-23'
+      norma: null
+      url: https://www25.senado.leg.br/web/atividade/materias/-/materia/176521
     - id: 9120051
       sigla: PEC
       numero: 19
@@ -44987,18 +45010,6 @@ people:
       apresentada: '2026-07-01'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/174915
-    - id: 9055580
-      sigla: PEC
-      numero: 12
-      ano: 2026
-      ementa: Altera o Art. 7° da Constituição Federal para prever a possibilidade de opção pelos empregados quanto à jornada
-        de trabalho, podendo escolher entre o regime co…
-      situacao: Aguardando designação do relator
-      orgao: SF
-      data: '2026-05-28'
-      apresentada: '2026-05-28'
-      norma: null
-      url: https://www25.senado.leg.br/web/atividade/materias/-/materia/174362
     relatorias: 7
     relatorias_projetos: 7
     relatorias_por_colegiado:
@@ -45606,15 +45617,15 @@ people:
   br-p-sf-5974:
     house: senado
     window: ano
-    apresentadas: 22
-    como_primeiro_autor: 9
+    apresentadas: 23
+    como_primeiro_autor: 10
     projetos: 8
-    requerimentos: 11
+    requerimentos: 12
     emendas: 0
     outros: 3
     pareceres_como_relator: null
     por_tipo:
-      RQS: 9
+      RQS: 10
       PL: 5
       PEC: 3
       PET: 2
@@ -46457,18 +46468,18 @@ people:
       numero: 55
       ano: 2026
       ementa: Institui a Frente Parlamentar Mista de Defesa, Segurança e Soberania.
-      situacao: Pronta para a pauta na comissão
+      situacao: Incluída na pauta da reunião
       orgao: PLEN
-      data: '2026-11-16'
+      data: '2026-11-23'
       apresentada: '2026-10-19'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175987
-    relatorias: 63
-    relatorias_projetos: 57
+    relatorias: 65
+    relatorias_projetos: 59
     relatorias_por_colegiado:
       CCT: 25
       CCJ: 12
-      CRE: 9
+      CRE: 11
       CSP: 8
     virou_norma: 2
   br-p-sf-742:
@@ -46814,16 +46825,16 @@ people:
   br-p-sf-3806:
     house: senado
     window: ano
-    apresentadas: 60
-    como_primeiro_autor: 41
+    apresentadas: 61
+    como_primeiro_autor: 42
     projetos: 16
-    requerimentos: 41
+    requerimentos: 42
     emendas: 0
     outros: 3
     pareceres_como_relator: null
     por_tipo:
       REQ: 27
-      RQS: 13
+      RQS: 14
       PEC: 9
       PL: 5
       PET: 2
@@ -47580,8 +47591,8 @@ people:
       apresentada: '2026-08-13'
       norma: Resolução do Senado Federal nº 27 de 13/08/2026
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175471
-    relatorias: 35
-    relatorias_projetos: 33
+    relatorias: 36
+    relatorias_projetos: 34
     relatorias_por_colegiado:
       CDH: 15
       CAS: 10
@@ -47591,16 +47602,16 @@ people:
   br-p-sf-6342:
     house: senado
     window: ano
-    apresentadas: 79
-    como_primeiro_autor: 54
+    apresentadas: 80
+    como_primeiro_autor: 55
     projetos: 16
-    requerimentos: 60
+    requerimentos: 61
     emendas: 0
     outros: 3
     pareceres_como_relator: null
     por_tipo:
       RQS: 34
-      REQ: 26
+      REQ: 27
       PL: 8
       PEC: 6
       PDL: 2
@@ -47668,8 +47679,8 @@ people:
       apresentada: '2026-05-14'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/174153
-    relatorias: 35
-    relatorias_projetos: 35
+    relatorias: 36
+    relatorias_projetos: 36
     relatorias_por_colegiado:
       CCT: 11
       CDH: 9
@@ -49070,15 +49081,15 @@ people:
   br-p-sf-5985:
     house: senado
     window: ano
-    apresentadas: 88
-    como_primeiro_autor: 71
+    apresentadas: 90
+    como_primeiro_autor: 73
     projetos: 7
-    requerimentos: 79
+    requerimentos: 81
     emendas: 0
     outros: 2
     pareceres_como_relator: null
     por_tipo:
-      RQS: 57
+      RQS: 59
       REQ: 22
       PEC: 6
       INS: 1
@@ -49761,10 +49772,10 @@ people:
       apresentada: '2026-10-15'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/175966
-    relatorias: 80
-    relatorias_projetos: 78
+    relatorias: 81
+    relatorias_projetos: 79
     relatorias_por_colegiado:
-      CCT: 51
+      CCT: 52
       CDH: 11
       CE: 5
       CAS: 5
@@ -49939,16 +49950,16 @@ people:
   br-p-sf-5793:
     house: senado
     window: ano
-    apresentadas: 120
-    como_primeiro_autor: 46
+    apresentadas: 121
+    como_primeiro_autor: 47
     projetos: 28
-    requerimentos: 89
+    requerimentos: 90
     emendas: 0
     outros: 3
     pareceres_como_relator: null
     por_tipo:
       RQS: 51
-      REQ: 37
+      REQ: 38
       PL: 11
       PEC: 10
       PDL: 5
@@ -50384,11 +50395,11 @@ people:
       apresentada: '2026-06-22'
       norma: null
       url: https://www25.senado.leg.br/web/atividade/materias/-/materia/174847
-    relatorias: 101
-    relatorias_projetos: 101
+    relatorias: 102
+    relatorias_projetos: 102
     relatorias_por_colegiado:
       CCT: 62
-      CE: 17
+      CE: 18
       CAS: 11
       CDH: 10
     virou_norma: 1

@@ -1,7 +1,7 @@
 # GERADO por etl/comissoes.py. Não edite à mão.
 generated_from: legis.senado.leg.br/dadosabertos + dadosabertos.camara.leg.br
-generated_at: '2026-11-22'
-pessoas_reaproveitadas: 66
+generated_at: '2026-11-23'
+pessoas_reaproveitadas: 65
 ids_corrigidos:
   br-p-cd-353: br-p-cd-73788 (Ricardo Barros)
   br-p-cd-3695: br-p-cd-74858 (Lindbergh Farias)
@@ -36,7 +36,6 @@ ids_corrigidos:
   br-p-cd-6059: br-p-cd-198197 (Greyce Elias)
   br-p-cd-6105: br-p-cd-204396 (Vermelho)
   br-p-cd-6125: br-p-cd-204419 (Glaustin da Fokus)
-  br-p-cd-613: br-p-cd-74295 (Inácio Arruda)
   br-p-cd-6130: br-p-cd-204425 (Silvio Costa Filho)
   br-p-cd-6158: br-p-cd-204455 (Luiz Lima)
   br-p-cd-6175: br-p-cd-204473 (General Girão)
@@ -70,6 +69,7 @@ ids_corrigidos:
   br-p-cd-6597: br-p-cd-221338 (Professora Luciene Cavalcante)
 pessoas_novas:
   - Eduardo Girão (?/sf)
+  - Inácio Arruda (?/cd)
   - Leila Barros (?/sf)
   - Rodrigo Pacheco (?/sf)
 nodes:
@@ -481,11 +481,11 @@ nodes:
       - Comissão de Desenvolvimento Urbano
     description: 'Comissão permanente da Câmara dos Deputados (CDU). Discute e vota as proposições da sua área temática,
       podendo aprová-las em caráter conclusivo sem passar pelo Plenário, e fiscaliza os atos do Executivo no seu
-      campo. Composição atual: 11 titulares.'
+      campo. Composição atual: 10 titulares.'
     cite: CF/88 art. 58; RICD arts. 22 e 32
     cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
     official_url: https://www.camara.leg.br/comissoes/cdu
-    seats_count: 11
+    seats_count: 10
     verified: true
   - id: br-comissao-de-educacao-da-camara
     type: commission
@@ -674,11 +674,11 @@ nodes:
       - Comissão de Defesa dos Direitos da Mulher
     description: 'Comissão permanente da Câmara dos Deputados (CMULHER). Discute e vota as proposições da sua área
       temática, podendo aprová-las em caráter conclusivo sem passar pelo Plenário, e fiscaliza os atos do Executivo
-      no seu campo. Composição atual: 21 titulares.'
+      no seu campo. Composição atual: 20 titulares.'
     cite: CF/88 art. 58; RICD arts. 22 e 32
     cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
     official_url: https://www.camara.leg.br/comissoes/cmulher
-    seats_count: 21
+    seats_count: 20
     verified: true
   - id: br-comissao-de-previdencia-assistencia-social-infancia-adolescencia-e-familia-da-camara
     type: commission
@@ -788,11 +788,11 @@ nodes:
       - Comissão de Segurança Pública e Combate ao Crime Organizado
     description: 'Comissão permanente da Câmara dos Deputados (CSPCCO). Discute e vota as proposições da sua área
       temática, podendo aprová-las em caráter conclusivo sem passar pelo Plenário, e fiscaliza os atos do Executivo
-      no seu campo. Composição atual: 34 titulares.'
+      no seu campo. Composição atual: 35 titulares.'
     cite: CF/88 art. 58; RICD arts. 22 e 32
     cite_url: https://www.camara.leg.br/internet/legislacao/regimento_interno/RIpdf/RegInterno.pdf
     official_url: https://www.camara.leg.br/comissoes/cspcco
-    seats_count: 34
+    seats_count: 35
     verified: true
   - id: br-comissao-de-trabalho-da-camara
     type: commission
@@ -9132,16 +9132,6 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220574
-    - id: br-p-cd-74295
-      name: Inácio Arruda
-      party: PCdoB
-      uf: CE
-      image_url: https://www.camara.leg.br/internet/deputado/bandep/74295.jpg
-      role: Suplente
-      started_at: '2026-06-22'
-      entry_mode: eleito
-      source: camara
-      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/74295
     - id: br-p-cd-141533
       name: Rodrigo Rollemberg
       party: PSB
@@ -10467,16 +10457,6 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/179000
-    - id: br-p-cd-74295
-      name: Inácio Arruda
-      party: PCdoB
-      uf: CE
-      image_url: https://www.camara.leg.br/internet/deputado/bandep/74295.jpg
-      role: Titular
-      started_at: '2026-06-22'
-      entry_mode: eleito
-      source: camara
-      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/74295
     - id: br-p-cd-204444
       name: Helio Lopes
       party: PL
@@ -15178,16 +15158,6 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/226075
-    - id: br-p-cd-220654
-      name: Delegado Paulo Bilynskyj
-      party: PL
-      uf: SP
-      image_url: https://www.camara.leg.br/internet/deputado/bandep/220654.jpg
-      role: Titular
-      started_at: '2026-11-17'
-      entry_mode: eleito
-      source: camara
-      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220654
     - id: br-p-cd-180214
       name: Pastor Diniz
       party: UNIÃO
@@ -15288,16 +15258,6 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/204525
-    - id: br-p-cd-220644
-      name: Rosangela Moro
-      party: PL
-      uf: SP
-      image_url: https://www.camara.leg.br/internet/deputado/bandep/220644.jpg
-      role: Suplente
-      started_at: '2026-03-24'
-      entry_mode: eleito
-      source: camara
-      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220644
     - id: br-p-cd-220640
       name: Juliana Cardoso
       party: PT
@@ -15388,6 +15348,16 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/204464
+    - id: br-p-cd-220654
+      name: Delegado Paulo Bilynskyj
+      party: PL
+      uf: SP
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/220654.jpg
+      role: Suplente
+      started_at: '2026-11-23'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220654
   br-comissao-de-previdencia-assistencia-social-infancia-adolescencia-e-familia-da-camara:
     - id: br-p-cd-220635
       name: Bruno Ganem
@@ -18144,6 +18114,16 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220699
+    - id: br-p-cd-141450
+      name: Hugo Leal
+      party: PSD
+      uf: RJ
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/141450.jpg
+      role: Titular
+      started_at: '2026-11-23'
+      entry_mode: eleito
+      source: camara
+      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/141450
     - id: br-p-cd-220570
       name: Dr. Ismael Alexandrino
       party: PSD
@@ -19216,16 +19196,6 @@ positions:
       entry_mode: eleito
       source: camara
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220591
-    - id: br-p-cd-141485
-      name: Luiz Carlos Busato
-      party: UNIÃO
-      uf: RS
-      image_url: https://www.camara.leg.br/internet/deputado/bandep/141485.jpg
-      role: Suplente
-      started_at: '2026-11-18'
-      entry_mode: eleito
-      source: camara
-      source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/141485
   br-comissao-de-viacao-e-transportes-da-camara:
     - id: br-p-cd-74537
       name: Claudio Cajado
@@ -20211,15 +20181,14 @@ positions:
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
       image_url: https://www.camara.leg.br/internet/deputado/bandep/220682.jpg
-    - id: br-p-cd-74295
+    - id: br-p-cd-613
       name: Inácio Arruda
-      party: PCdoB
-      uf: CE
+      party: null
+      uf: null
       role: Titular
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-      image_url: https://www.camara.leg.br/internet/deputado/bandep/74295.jpg
     - id: br-p-cd-220703
       name: Neto Carletto
       party: AVANTE
