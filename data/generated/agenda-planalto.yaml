@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-23'
+generated_at: '2026-11-24'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-26'
+janela_inicio: '2026-08-27'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,19 +11,19 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 180
-    dias_com_agenda: 51
+    compromissos_90d: 177
+    dias_com_agenda: 49
     por_tipo:
       evento: 55
-      audiencia: 50
       viagem: 49
+      audiencia: 47
       reuniao: 21
       outro: 5
     entidades_top:
     - nome: Oswaldo Malatesta (Chefe do Gabinete Pessoal do Presidente da República)
-      n: 10
-    - nome: Miriam Belchior (Ministra da Casa Civil)
       n: 9
+    - nome: Miriam Belchior (Ministra da Casa Civil)
+      n: 8
     - nome: Marcelo Weick (Secretário Especial para Assuntos Jurídicos da Casa Civil)
       n: 7
     - nome: Sidônio Palmeira (Ministro da Secretaria de Comunicação Social da Presidência da Repúbli)
@@ -42,9 +42,9 @@ people:
       n: 1
     locais_top:
     - nome: Palácio do Planalto
-      n: 37
+      n: 36
     - nome: Palácio da Alvorada
-      n: 31
+      n: 29
     - nome: Base Aérea de Brasília
       n: 20
     - nome: Esplanada dos Ministérios, Brasília
@@ -61,24 +61,8 @@ people:
       n: 3
     - nome: Aeroporto de Juazeiro do Norte
       n: 2
-    ultimo: '2026-11-23'
+    ultimo: '2026-11-19'
     recentes:
-    - data: '2026-11-23'
-      hora: '15:00'
-      titulo: Ministra da Casa Civil, Miriam Belchior
-      tipo: audiencia
-      local: Palácio do Planalto
-      participantes:
-      - nome: Miriam Belchior
-        entidade: Ministra da Casa Civil
-    - data: '2026-11-23'
-      hora: 09:00
-      titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
-      tipo: audiencia
-      local: Palácio da Alvorada
-      participantes:
-      - nome: Oswaldo Malatesta
-        entidade: Chefe do Gabinete Pessoal do Presidente da República
     - data: '2026-11-19'
       hora: '17:40'
       titulo: Chegada a Brasília
@@ -116,13 +100,22 @@ people:
       tipo: viagem
       local: Base Aérea de Brasília
       participantes: []
-    dias_nao_lidos: 0
+    - data: '2026-11-19'
+      hora: 09:30
+      titulo: Assinatura do decreto que regulamenta o fim da escala de trabalho 6x1
+      tipo: evento
+      local: Palácio do Planalto
+      participantes: []
+    - data: '2026-11-18'
+      hora: '15:00'
+      titulo: Ministra da Casa Civil, Miriam Belchior
+      tipo: audiencia
+      local: Palácio da Alvorada
+      participantes:
+      - nome: Miriam Belchior
+        entidade: Ministra da Casa Civil
+    dias_nao_lidos: 2
     dias:
-      presidente/2026-08-26:
-      - hora: '10:00'
-        titulo: Ministro da Secretaria de Comunicação Social, Sidônio Palmeira, e Secretário de Imprensa da Secretaria de
-          Comunicação Social, Laércio Portela
-        local: Palácio da Alvorada
       presidente/2026-08-27:
       - hora: '21:00'
         titulo: Entrevista ao Jornal Nacional
@@ -762,13 +755,6 @@ people:
       presidente/2026-11-20: []
       presidente/2026-11-21: []
       presidente/2026-11-22: []
-      presidente/2026-11-23:
-      - hora: 09:00
-        titulo: Chefe do Gabinete Pessoal do Presidente da República, Oswaldo Malatesta
-        local: Palácio da Alvorada
-      - hora: '15:00'
-        titulo: Ministra da Casa Civil, Miriam Belchior
-        local: Palácio do Planalto
   br-p-geraldo-alckmin:
     agente: Geraldo Alckmin
     cargo: Vice-Presidente da República
@@ -776,17 +762,15 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 38
-    dias_com_agenda: 26
+    compromissos_90d: 35
+    dias_com_agenda: 24
     por_tipo:
-      evento: 16
-      audiencia: 8
-      viagem: 7
+      evento: 15
+      audiencia: 7
+      viagem: 6
       reuniao: 5
       outro: 2
     entidades_top:
-    - nome: Sérgio Leite (Presidente da Federação dos Trabalhadores nas Indústrias Químicas e Fa)
-      n: 1
     - nome: Luiz Inácio Lula da Silva (Presidente da República)
       n: 1
     - nome: Sidônio Palmeira (Ministro-Chefe da Secretaria de Comunicação Social - SECOM)
@@ -796,9 +780,9 @@ people:
     locais_top:
     - nome: Palácio do Planalto
       n: 11
-    - nome: Palácio do Planalto, Anexo II
-      n: 8
     - nome: Brasília/DF
+      n: 7
+    - nome: Palácio do Planalto, Anexo II
       n: 7
     - nome: São Paulo/SP
       n: 5
@@ -812,22 +796,8 @@ people:
       n: 1
     - nome: São José dos Campos/SP
       n: 1
-    - nome: São José do Barreiro/SP
-      n: 1
-    ultimo: '2026-11-23'
+    ultimo: '2026-11-19'
     recentes:
-    - data: '2026-11-23'
-      hora: '12:30'
-      titulo: Decolagem de Guaratinguetá/SP para Brasília/DF
-      tipo: viagem
-      local: Guaratinguetá/SP
-      participantes: []
-    - data: '2026-11-23'
-      hora: 09:00
-      titulo: Lançamento do Projeto Revive Brasil - Fazenda Pau D'Alho
-      tipo: evento
-      local: São José do Barreiro/SP
-      participantes: []
     - data: '2026-11-19'
       hora: 09:30
       titulo: Assinatura do Decreto que regulamenta o Fim da Escala 6X1
@@ -865,14 +835,20 @@ people:
       tipo: reuniao
       local: Brasília/DF
       participantes: []
-    dias_nao_lidos: 0
+    - data: '2026-11-05'
+      hora: '16:30'
+      titulo: 1ª Reunião do Conselho Nacional para Industrialização de Minerais Críticos e Estratégicos - CIMCE
+      tipo: reuniao
+      local: Palácio do Planalto
+      participantes: []
+    - data: '2026-11-03'
+      hora: '16:00'
+      titulo: Deputado Federal Felipe Carreras - PSB/PE
+      tipo: audiencia
+      local: Palácio do Planalto, Anexo II
+      participantes: []
+    dias_nao_lidos: 4
     dias:
-      vice/2026-08-26:
-      - hora: '14:00'
-        titulo: Sérgio Leite, Presidente da Federação dos Trabalhadores nas Indústrias Químicas e Farmacêuticas do Estado
-          de São Paulo - FEQUIMFAR
-        local: Palácio do Planalto, Anexo II
-      vice/2026-08-26-b1: []
       vice/2026-08-27: []
       vice/2026-08-27-b1: []
       vice/2026-08-28:
@@ -1157,14 +1133,6 @@ people:
       vice/2026-11-21-b1: []
       vice/2026-11-22: []
       vice/2026-11-22-b1: []
-      vice/2026-11-23:
-      - hora: 09:00
-        titulo: Lançamento do Projeto Revive Brasil - Fazenda Pau D'Alho
-        local: São José do Barreiro/SP
-      - hora: '12:30'
-        titulo: Decolagem de Guaratinguetá/SP para Brasília/DF
-        local: Guaratinguetá/SP
-      vice/2026-11-23-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 180 compromissos em 51 dias (0 dias não lidos)'
-- 'br-p-geraldo-alckmin: 38 compromissos em 26 dias (0 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 177 compromissos em 49 dias (2 dias não lidos)'
+- 'br-p-geraldo-alckmin: 35 compromissos em 24 dias (4 dias não lidos)'

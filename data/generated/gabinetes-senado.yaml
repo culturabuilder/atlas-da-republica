@@ -1,5 +1,5 @@
 # GERADO por etl/gabinetes_senado.py. Não edite à mão.
-generated_at: '2026-11-23'
+generated_at: '2026-11-24'
 fonte: Senado Federal, API administrativa de dados abertos (recursos utilizados, servidores e remunerações)
 subsidio_mensal: 46366.19
 folha_mes: null
@@ -7,16 +7,16 @@ nota: 'Equipe: servidores lotados no gabinete do senador, em Brasília e nos esc
   básica, função comissionada e vantagens pessoais dessas pessoas em None, pela folha publicada pelo Senado, sem auxílios
   nem 13º. Nomes de servidores comissionados são públicos.'
 medianas:
-  assessores: 36
+  assessores: 37
   folha_mensal_estimada: 0
   cota: 482931.37
-  custo_ano_total: 982140.68
+  custo_ano_total: 983686.22
   escritorios_apoio: 20
 people:
   br-p-sf-5672:
     casa: senado
-    assessores: 38
-    assessores_gabinete_oficial: 17
+    assessores: 39
+    assessores_gabinete_oficial: 18
     escritorios_apoio: 21
     folha_mensal: 0
     folha_mes: null
@@ -56,6 +56,11 @@ people:
       vinculo: Comissionado
       salario: null
       desde: '2026-08-12'
+    - nome: Artur Silva Póvoa
+      funcao: Ajudante Parlamentar Pleno
+      vinculo: Comissionado
+      salario: null
+      desde: '2026-11-23'
     - nome: Bruno Medeiros De Sousa
       funcao: Auxiliar Parlamentar Intermediário
       vinculo: Comissionado
@@ -229,10 +234,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 374667.12
       gabinete_estimado: 0.0
-      total: 873876.43
+      total: 875421.97
   br-p-sf-5982:
     casa: senado
     assessores: 36
@@ -442,10 +447,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 618570.5
       gabinete_estimado: 0.0
-      total: 1117779.81
+      total: 1119325.35
   br-p-sf-6358:
     casa: senado
     assessores: 31
@@ -626,10 +631,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 501544.94
       gabinete_estimado: 0.0
-      total: 1000754.25
+      total: 1002299.79
   br-p-sf-5967:
     casa: senado
     assessores: 40
@@ -855,10 +860,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 426303.49
       gabinete_estimado: 0.0
-      total: 925512.8
+      total: 927058.34
   br-p-sf-6009:
     casa: senado
     assessores: 24
@@ -989,13 +994,13 @@ people:
       desde: '2024-11-18'
     mesmo_sobrenome: []
     cotas:
-      Aluguel de imóveis para escritório político: 53318.14
-      Aquisição de material de consumo: 3938.5
+      Aluguel de imóveis para escritório político: 55348.14
+      Aquisição de material de consumo: 4413.5
       Locomoção, hospedagem, alimentação e combustíveis: 16775.36
-      Contratação de serviços de apoio ao parlamentar: 6403.13
-      Divulgação da atividade parlamentar: 93719.2
+      Contratação de serviços de apoio ao parlamentar: 11094.92
+      Divulgação da atividade parlamentar: 186719.2
       Passagens aéreas, aquáticas e terrestres nacionais: 112140.48
-    cotas_total: 286294.81
+    cotas_total: 386491.6
     nao_inclusos:
       Viagens Oficiais - Diárias: 220360.49
       Consumo de Material - Outros materiais: 4676.05
@@ -1007,10 +1012,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 726370.01
+      subsidio: 500754.85
+      cota: 826566.8
       gabinete_estimado: 0.0
-      total: 1225579.32
+      total: 1327321.65
   br-p-sf-4639:
     casa: senado
     assessores: 70
@@ -1385,10 +1390,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 797429.15
       gabinete_estimado: 0.0
-      total: 1296638.46
+      total: 1298184.0
   br-p-sf-6336:
     casa: senado
     assessores: 34
@@ -1585,10 +1590,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 207596.23
       gabinete_estimado: 0.0
-      total: 706805.54
+      total: 708351.08
   br-p-sf-6295:
     casa: senado
     assessores: 20
@@ -1714,10 +1719,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 393386.89
       gabinete_estimado: 0.0
-      total: 892596.2
+      total: 894141.74
   br-p-sf-5936:
     casa: senado
     assessores: 30
@@ -1879,26 +1884,26 @@ people:
     mesmo_sobrenome: []
     cotas:
       Aluguel de imóveis para escritório político: 44298.28
-      Aquisição de material de consumo: 4014.04
-      Locomoção, hospedagem, alimentação e combustíveis: 214690.96
+      Aquisição de material de consumo: 4526.75
+      Locomoção, hospedagem, alimentação e combustíveis: 215772.33
       Contratação de serviços de apoio ao parlamentar: 35000
-      Passagens aéreas, aquáticas e terrestres nacionais: 101378.37
-    cotas_total: 399381.65
+      Passagens aéreas, aquáticas e terrestres nacionais: 122260.17
+    cotas_total: 421857.53
     nao_inclusos:
       Viagens Oficiais - Diárias: 10161.02
       Consumo de Material - Outros materiais: 4141.99
       Correios: 46910.08
       Cotas para Impulsionamento em Mídias Sociais: 8635.28
-      Aquisição de passagens aéreas (ATC 2/2023): 134384.57
-    nao_inclusos_total: 204232.94
+      Aquisição de passagens aéreas (ATC 2/2023): 143016.75
+    nao_inclusos_total: 212865.12
     auxilio_moradia: Não utilizou
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 603614.59
+      subsidio: 500754.85
+      cota: 634722.65
       gabinete_estimado: 0.0
-      total: 1102823.9
+      total: 1135477.5
   br-p-sf-5990:
     casa: senado
     assessores: 26
@@ -2057,10 +2062,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 605570.23
       gabinete_estimado: 0.0
-      total: 1104779.54
+      total: 1106325.08
   br-p-sf-470:
     casa: senado
     assessores: 39
@@ -2285,10 +2290,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 420187.25
       gabinete_estimado: 0.0
-      total: 919396.56
+      total: 920942.1
   br-p-sf-5973:
     casa: senado
     assessores: 48
@@ -2558,10 +2563,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 496616.44
       gabinete_estimado: 0.0
-      total: 995825.75
+      total: 997371.29
   br-p-sf-739:
     casa: senado
     assessores: 50
@@ -2831,18 +2836,18 @@ people:
     nao_inclusos:
       Viagens Oficiais - Diárias: 41333.35
       Consumo de Material - Outros materiais: 5457.73
-      Correios: 51542.96
+      Correios: 52797.62
       Cotas para Impulsionamento em Mídias Sociais: 2398.93
       Aquisição de passagens aéreas (ATC 2/2023): 17012.52
-    nao_inclusos_total: 117745.49
+    nao_inclusos_total: 119000.15
     auxilio_moradia: Utilizou
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 459138.24
+      subsidio: 500754.85
+      cota: 460392.9
       gabinete_estimado: 0.0
-      total: 958347.55
+      total: 961147.75
   br-p-sf-6337:
     casa: senado
     assessores: 19
@@ -2948,11 +2953,11 @@ people:
       desde: '2023-02-06'
     mesmo_sobrenome: []
     cotas:
-      Aluguel de imóveis para escritório político: 29003.07
+      Aluguel de imóveis para escritório político: 30436.53
       Aquisição de material de consumo: 40
       Locomoção, hospedagem, alimentação e combustíveis: 19875.39
       Contratação de serviços de apoio ao parlamentar: 1353.61
-    cotas_total: 50272.07
+    cotas_total: 51705.53
     nao_inclusos:
       Consumo de Material - Outros materiais: 2866.02
       Correios: 200.39
@@ -2961,10 +2966,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 53338.48
+      subsidio: 500754.85
+      cota: 54771.94
       gabinete_estimado: 0.0
-      total: 552547.79
+      total: 555526.79
   br-p-sf-475:
     casa: senado
     assessores: 36
@@ -3172,10 +3177,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 278722.36
       gabinete_estimado: 0.0
-      total: 777931.67
+      total: 779477.21
   br-p-sf-6335:
     casa: senado
     assessores: 33
@@ -3368,10 +3373,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 386293.58
       gabinete_estimado: 0.0
-      total: 885502.89
+      total: 887048.43
   br-p-sf-5998:
     casa: senado
     assessores: 37
@@ -3569,10 +3574,10 @@ people:
     cotas:
       Aluguel de imóveis para escritório político: 33000
       Aquisição de material de consumo: 3000
-      Contratação de serviços de apoio ao parlamentar: 196094
+      Contratação de serviços de apoio ao parlamentar: 204794
       Divulgação da atividade parlamentar: 74300
-      Passagens aéreas, aquáticas e terrestres nacionais: 115995.74
-    cotas_total: 422389.74
+      Passagens aéreas, aquáticas e terrestres nacionais: 121773.77
+    cotas_total: 436867.77
     nao_inclusos:
       Viagens Oficiais - Diárias: 13442.99
       Consumo de Material - Outros materiais: 3423.52
@@ -3584,10 +3589,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 522352.74
+      subsidio: 500754.85
+      cota: 536830.77
       gabinete_estimado: 0.0
-      total: 1021562.05
+      total: 1037585.62
   br-p-sf-3830:
     casa: senado
     assessores: 24
@@ -3730,10 +3735,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 251357.09
       gabinete_estimado: 0.0
-      total: 750566.4
+      total: 752111.94
   br-p-sf-5793:
     casa: senado
     assessores: 42
@@ -3981,10 +3986,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 546134.37
       gabinete_estimado: 0.0
-      total: 1045343.68
+      total: 1046889.22
   br-p-sf-5906:
     casa: senado
     assessores: 27
@@ -4146,10 +4151,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 519133.49
       gabinete_estimado: 0.0
-      total: 1018342.8
+      total: 1019888.34
   br-p-sf-4994:
     casa: senado
     assessores: 40
@@ -4368,16 +4373,16 @@ people:
     cotas_total: 440028.65
     nao_inclusos:
       Consumo de Material - Outros materiais: 7474.32
-      Correios: 23197.24
-    nao_inclusos_total: 30671.56
+      Correios: 24337.94
+    nao_inclusos_total: 31812.26
     auxilio_moradia: Não utilizou
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 470700.21
+      subsidio: 500754.85
+      cota: 471840.91
       gabinete_estimado: 0.0
-      total: 969909.52
+      total: 972595.76
   br-p-sf-3777:
     casa: senado
     assessores: 84
@@ -4829,10 +4834,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 274207.84
       gabinete_estimado: 0.0
-      total: 773417.15
+      total: 774962.69
   br-p-sf-4642:
     casa: senado
     assessores: 64
@@ -5180,14 +5185,14 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 311948.02
       gabinete_estimado: 0.0
-      total: 811157.33
+      total: 812702.87
   br-p-sf-5718:
     casa: senado
-    assessores: 62
-    assessores_gabinete_oficial: 31
+    assessores: 61
+    assessores_gabinete_oficial: 30
     escritorios_apoio: 31
     folha_mensal: 0
     folha_mes: null
@@ -5387,11 +5392,6 @@ people:
       vinculo: Comissionado
       salario: null
       desde: '2025-06-24'
-    - nome: Maiara Costa Aragao
-      funcao: Assistente Parlamentar Júnior
-      vinculo: Comissionado
-      salario: null
-      desde: '2023-05-10'
     - nome: Marcel Araujo Oliveira
       funcao: Assistente Parlamentar Pleno
       vinculo: Comissionado
@@ -5522,13 +5522,13 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 753169.95
       gabinete_estimado: 0.0
-      total: 1252379.26
+      total: 1253924.8
   br-p-sf-22:
     casa: senado
-    assessores: 33
+    assessores: 34
     assessores_gabinete_oficial: 15
     escritorios_apoio: 19
     folha_mensal: 0
@@ -5619,6 +5619,11 @@ people:
       vinculo: Comissionado
       salario: null
       desde: '2024-04-01'
+    - nome: Leila Maria De Arruda
+      funcao: Assessor Parlamentar
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-02-01'
     - nome: Leridiana Neves Ramos
       funcao: Assistente Parlamentar Pleno
       vinculo: Comissionado
@@ -5701,12 +5706,12 @@ people:
       desde: '2019-03-12'
     mesmo_sobrenome: []
     cotas:
-      Aluguel de imóveis para escritório político: 76767.66
+      Aluguel de imóveis para escritório político: 76977.65
       Aquisição de material de consumo: 26213.76
-      Locomoção, hospedagem, alimentação e combustíveis: 108537.5
+      Locomoção, hospedagem, alimentação e combustíveis: 109629.48
       Contratação de serviços de apoio ao parlamentar: 3423.75
-      Passagens aéreas, aquáticas e terrestres nacionais: 106170.32
-    cotas_total: 321112.99
+      Passagens aéreas, aquáticas e terrestres nacionais: 109563.83
+    cotas_total: 325808.47
     nao_inclusos:
       Viagens Oficiais - Diárias: 38847.69
       Consumo de Material - Outros materiais: 6632.18
@@ -5718,10 +5723,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 602145.58
+      subsidio: 500754.85
+      cota: 606841.06
       gabinete_estimado: 0.0
-      total: 1101354.89
+      total: 1107595.91
   br-p-sf-5953:
     casa: senado
     assessores: 32
@@ -5909,10 +5914,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 540161.45
       gabinete_estimado: 0.0
-      total: 1039370.76
+      total: 1040916.3
   br-p-sf-5917:
     casa: senado
     assessores: 27
@@ -6076,10 +6081,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 622607.76
       gabinete_estimado: 0.0
-      total: 1121817.07
+      total: 1123362.61
   br-p-sf-345:
     casa: senado
     assessores: 29
@@ -6250,14 +6255,14 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 284066.98
       gabinete_estimado: 0.0
-      total: 783276.29
+      total: 784821.83
   br-p-sf-5894:
     casa: senado
-    assessores: 24
-    assessores_gabinete_oficial: 19
+    assessores: 25
+    assessores_gabinete_oficial: 20
     escritorios_apoio: 5
     folha_mensal: 0
     folha_mes: null
@@ -6312,6 +6317,11 @@ people:
       vinculo: Comissionado
       salario: null
       desde: '2009-08-18'
+    - nome: Jefferson Soares Damasceno
+      funcao: Auxiliar Parlamentar Sênior
+      vinculo: Comissionado
+      salario: null
+      desde: '2026-11-23'
     - nome: Juraci Passos Dos Reis
       funcao: Auxiliar Parlamentar Sênior
       vinculo: Comissionado
@@ -6384,11 +6394,11 @@ people:
       desde: '2019-03-25'
     mesmo_sobrenome: []
     cotas:
-      Aluguel de imóveis para escritório político: 47709.85
+      Aluguel de imóveis para escritório político: 49801.85
       Locomoção, hospedagem, alimentação e combustíveis: 4632.72
       Contratação de serviços de apoio ao parlamentar: 89.32
       Passagens aéreas, aquáticas e terrestres nacionais: 38954.61
-    cotas_total: 91386.5
+    cotas_total: 93478.5
     nao_inclusos:
       Consumo de Material - Outros materiais: 8538.91
       Correios: 14782.54
@@ -6397,10 +6407,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 114707.95
+      subsidio: 500754.85
+      cota: 116799.95
       gabinete_estimado: 0.0
-      total: 613917.26
+      total: 617554.8
   br-p-sf-6008:
     casa: senado
     assessores: 22
@@ -6538,10 +6548,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 588703.18
       gabinete_estimado: 0.0
-      total: 1087912.49
+      total: 1089458.03
   br-p-sf-6341:
     casa: senado
     assessores: 25
@@ -6693,10 +6703,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 540006.58
       gabinete_estimado: 0.0
-      total: 1039215.89
+      total: 1040761.43
   br-p-sf-5008:
     casa: senado
     assessores: 37
@@ -6903,18 +6913,18 @@ people:
     nao_inclusos:
       Viagens Oficiais - Diárias: 43054.91
       Consumo de Material - Outros materiais: 4541.27
-      Correios: 36864.43
+      Correios: 37049.85
       Cotas para Impulsionamento em Mídias Sociais: 4885.77
       Aquisição de passagens aéreas (ATC 2/2023): 127926.73
-    nao_inclusos_total: 217273.11
+    nao_inclusos_total: 217458.53
     auxilio_moradia: Não utilizou
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 696846.93
+      subsidio: 500754.85
+      cota: 697032.35
       gabinete_estimado: 0.0
-      total: 1196056.24
+      total: 1197787.2
   br-p-sf-5385:
     casa: senado
     assessores: 46
@@ -7172,10 +7182,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 805631.52
       gabinete_estimado: 0.0
-      total: 1304840.83
+      total: 1306386.37
   br-p-sf-6010:
     casa: senado
     assessores: 36
@@ -7367,28 +7377,28 @@ people:
     mesmo_sobrenome: []
     cotas:
       Aluguel de imóveis para escritório político: 99880.27
-      Aquisição de material de consumo: 22794.02
-      Locomoção, hospedagem, alimentação e combustíveis: 83176.99
+      Aquisição de material de consumo: 23109.27
+      Locomoção, hospedagem, alimentação e combustíveis: 84545.2
       Contratação de serviços de apoio ao parlamentar: 90991.51
-      Passagens aéreas, aquáticas e terrestres nacionais: 955.4
-    cotas_total: 297798.19
+      Passagens aéreas, aquáticas e terrestres nacionais: 1103.2
+    cotas_total: 299629.45
     nao_inclusos:
       Consumo de Material - Outros materiais: 7049.57
-      Correios: 25309.13
+      Correios: 25372.67
       Aquisição de passagens aéreas (ATC 2/2023): 35205.74
-    nao_inclusos_total: 67564.44
+    nao_inclusos_total: 67627.98
     auxilio_moradia: Não utilizou
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 365362.63
+      subsidio: 500754.85
+      cota: 367257.43
       gabinete_estimado: 0.0
-      total: 864571.94
+      total: 868012.28
   br-p-sf-4770:
     casa: senado
-    assessores: 59
-    assessores_gabinete_oficial: 35
+    assessores: 54
+    assessores_gabinete_oficial: 30
     escritorios_apoio: 24
     folha_mensal: 0
     folha_mes: null
@@ -7423,11 +7433,6 @@ people:
       vinculo: Comissionado
       salario: null
       desde: '2026-09-02'
-    - nome: Camila De Oliveira Ferreira Santos
-      funcao: Ajudante Parlamentar Intermediário
-      vinculo: Comissionado
-      salario: null
-      desde: '2026-08-24'
     - nome: Celio Rodolfo Dos Santos
       funcao: Ajudante Parlamentar Júnior
       vinculo: Comissionado
@@ -7483,16 +7488,6 @@ people:
       vinculo: Comissionado
       salario: null
       desde: '2022-11-14'
-    - nome: Fernando De Oliveira Iria Matias
-      funcao: Auxiliar Parlamentar Pleno
-      vinculo: Comissionado
-      salario: null
-      desde: '2025-07-03'
-    - nome: Flavio Marcelo Coelho De Oliveira
-      funcao: Auxiliar Parlamentar Intermediário
-      vinculo: Comissionado
-      salario: null
-      desde: '2026-03-18'
     - nome: Gildete Elaine Freitas De Araujo
       funcao: Auxiliar Parlamentar Pleno
       vinculo: Comissionado
@@ -7593,11 +7588,6 @@ people:
       vinculo: Comissionado
       salario: null
       desde: '2019-02-06'
-    - nome: Maria Elisa De Alencar
-      funcao: Auxiliar Parlamentar Pleno
-      vinculo: Comissionado
-      salario: null
-      desde: '2024-08-02'
     - nome: Maria Sara De Sousa
       funcao: Ajudante Parlamentar Júnior
       vinculo: Comissionado
@@ -7668,11 +7658,6 @@ people:
       vinculo: Comissionado
       salario: null
       desde: '2026-10-20'
-    - nome: Sabrina Araujo Marques
-      funcao: Ajudante Parlamentar Júnior
-      vinculo: Comissionado
-      salario: null
-      desde: '2026-04-22'
     - nome: Sandra Soares Salgado
       funcao: Ajudante Parlamentar Júnior
       vinculo: Comissionado
@@ -7689,7 +7674,6 @@ people:
       salario: null
       desde: '2025-04-28'
     mesmo_sobrenome:
-    - Camila De Oliveira Ferreira Santos
     - Christiano Vinicius Lima Ferreira Leite
     - Raimundo Costa Ferreira Neto
     cotas:
@@ -7703,10 +7687,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 353528.96
       gabinete_estimado: 0.0
-      total: 852738.27
+      total: 854283.81
   br-p-sf-35:
     casa: senado
     assessores: 22
@@ -7839,10 +7823,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 155333.68
       gabinete_estimado: 0.0
-      total: 654542.99
+      total: 656088.53
   br-p-sf-6340:
     casa: senado
     assessores: 35
@@ -8029,11 +8013,11 @@ people:
     mesmo_sobrenome: []
     cotas:
       Aluguel de imóveis para escritório político: 34195.19
-      Locomoção, hospedagem, alimentação e combustíveis: 72922.92
-      Contratação de serviços de apoio ao parlamentar: 10500
-      Divulgação da atividade parlamentar: 185776.85
+      Locomoção, hospedagem, alimentação e combustíveis: 74589.37
+      Contratação de serviços de apoio ao parlamentar: 26500
+      Divulgação da atividade parlamentar: 187776.85
       Passagens aéreas, aquáticas e terrestres nacionais: 135754.69
-    cotas_total: 439149.65
+    cotas_total: 458816.1
     nao_inclusos:
       Consumo de Material - Outros materiais: 5605.75
       Correios: 20435.88
@@ -8044,10 +8028,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 545731.39
+      subsidio: 500754.85
+      cota: 565397.84
       gabinete_estimado: 0.0
-      total: 1044940.7
+      total: 1066152.69
   br-p-sf-581:
     casa: senado
     assessores: 56
@@ -8354,10 +8338,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 513320.01
       gabinete_estimado: 0.0
-      total: 1012529.32
+      total: 1014074.86
   br-p-sf-4531:
     casa: senado
     assessores: 41
@@ -8576,24 +8560,24 @@ people:
       Aluguel de imóveis para escritório político: 6296.04
       Aquisição de material de consumo: 4529
       Locomoção, hospedagem, alimentação e combustíveis: 39705.94
-      Contratação de serviços de apoio ao parlamentar: 70000
+      Contratação de serviços de apoio ao parlamentar: 82500
       Divulgação da atividade parlamentar: 240210
       Passagens aéreas, aquáticas e terrestres nacionais: 77544.57
-    cotas_total: 438285.55
+    cotas_total: 450785.55
     nao_inclusos:
       Consumo de Material - Outros materiais: 12912.95
-      Correios: 22757.13
+      Correios: 39077.7
       Cotas para Impulsionamento em Mídias Sociais: 26171.18
       Aquisição de passagens aéreas (ATC 2/2023): 37860.18
-    nao_inclusos_total: 99701.44
+    nao_inclusos_total: 116022.01
     auxilio_moradia: Não utilizou
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 537986.99
+      subsidio: 500754.85
+      cota: 566807.56
       gabinete_estimado: 0.0
-      total: 1037196.3
+      total: 1067562.41
   br-p-sf-5895:
     casa: senado
     assessores: 30
@@ -8761,10 +8745,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 0
       gabinete_estimado: 0.0
-      total: 499209.31
+      total: 500754.85
   br-p-sf-6342:
     casa: senado
     assessores: 29
@@ -8924,26 +8908,26 @@ people:
     cotas:
       Aluguel de imóveis para escritório político: 77000.8
       Aquisição de material de consumo: 463.66
-      Locomoção, hospedagem, alimentação e combustíveis: 40611.42
+      Locomoção, hospedagem, alimentação e combustíveis: 42388.29
       Contratação de serviços de apoio ao parlamentar: 40900
       Divulgação da atividade parlamentar: 107666
       Passagens aéreas, aquáticas e terrestres nacionais: 16775.74
-    cotas_total: 283417.62
+    cotas_total: 285194.49
     nao_inclusos:
       Viagens Oficiais - Diárias: 38990.11
       Consumo de Material - Outros materiais: 4145.63
-      Correios: 13605.45
+      Correios: 13831.08
       Cotas para Impulsionamento em Mídias Sociais: 10815.75
       Aquisição de passagens aéreas (ATC 2/2023): 91738.53
-    nao_inclusos_total: 159295.47
+    nao_inclusos_total: 159521.1
     auxilio_moradia: Não utilizou
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 442713.09
+      subsidio: 500754.85
+      cota: 444715.59
       gabinete_estimado: 0.0
-      total: 941922.4
+      total: 945470.44
   br-p-sf-4811:
     casa: senado
     assessores: 39
@@ -9154,26 +9138,26 @@ people:
     cotas:
       Aluguel de imóveis para escritório político: 11931.49
       Aquisição de material de consumo: 36000
-      Locomoção, hospedagem, alimentação e combustíveis: 338794.9
+      Locomoção, hospedagem, alimentação e combustíveis: 339494.9
       Contratação de serviços de apoio ao parlamentar: 10500
       Divulgação da atividade parlamentar: 40398.77
       Passagens aéreas, aquáticas e terrestres nacionais: 99253.22
-    cotas_total: 536878.38
+    cotas_total: 537578.38
     nao_inclusos:
       Viagens Oficiais - Diárias: 72612.02
       Consumo de Material - Outros materiais: 4102.48
-      Correios: 86135.07
+      Correios: 86232.59
       Cotas para Impulsionamento em Mídias Sociais: 2017.02
       Aquisição de passagens aéreas (ATC 2/2023): 87454.62
-    nao_inclusos_total: 252321.21
+    nao_inclusos_total: 252418.73
     auxilio_moradia: Não utilizou
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 789199.59
+      subsidio: 500754.85
+      cota: 789997.11
       gabinete_estimado: 0.0
-      total: 1288408.9
+      total: 1290751.96
   br-p-sf-5977:
     casa: senado
     assessores: 44
@@ -9414,10 +9398,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 58793.04
       gabinete_estimado: 0.0
-      total: 558002.35
+      total: 559547.89
   br-p-sf-5926:
     casa: senado
     assessores: 77
@@ -9814,12 +9798,12 @@ people:
     mesmo_sobrenome:
     - Sérgio Afonso Barreto Guerreiro
     cotas:
-      Aluguel de imóveis para escritório político: 48145.95
-      Locomoção, hospedagem, alimentação e combustíveis: 125253.03
+      Aluguel de imóveis para escritório político: 54145.95
+      Locomoção, hospedagem, alimentação e combustíveis: 127851.95
       Contratação de serviços de apoio ao parlamentar: 78300
       Divulgação da atividade parlamentar: 51000
-      Passagens aéreas, aquáticas e terrestres nacionais: 160610.15
-    cotas_total: 463309.13
+      Passagens aéreas, aquáticas e terrestres nacionais: 170583.12
+    cotas_total: 481881.02
     nao_inclusos:
       Consumo de Material - Outros materiais: 5020.3
       Correios: 21505.58
@@ -9830,10 +9814,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 641016.99
+      subsidio: 500754.85
+      cota: 659588.88
       gabinete_estimado: 0.0
-      total: 1140226.3
+      total: 1160343.73
   br-p-sf-1186:
     casa: senado
     assessores: 24
@@ -9979,10 +9963,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 334835.02
       gabinete_estimado: 0.0
-      total: 834044.33
+      total: 835589.87
   br-p-sf-631:
     casa: senado
     assessores: 39
@@ -10189,22 +10173,22 @@ people:
     mesmo_sobrenome: []
     cotas:
       Aluguel de imóveis para escritório político: 95644.43
-      Aquisição de material de consumo: 1829.08
+      Aquisição de material de consumo: 2046.78
       Locomoção, hospedagem, alimentação e combustíveis: 47564.81
-      Passagens aéreas, aquáticas e terrestres nacionais: 206985.58
-    cotas_total: 352023.9
+      Passagens aéreas, aquáticas e terrestres nacionais: 209343.98
+    cotas_total: 354600.0
     nao_inclusos:
       Consumo de Material - Outros materiais: 4978.06
-      Correios: 24525.79
-    nao_inclusos_total: 29503.85
+      Correios: 24575.88
+    nao_inclusos_total: 29553.94
     auxilio_moradia: Não utilizou
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 381527.75
+      subsidio: 500754.85
+      cota: 384153.94
       gabinete_estimado: 0.0
-      total: 880737.06
+      total: 884908.79
   br-p-sf-5376:
     casa: senado
     assessores: 30
@@ -10365,27 +10349,27 @@ people:
       desde: '2019-02-01'
     mesmo_sobrenome: []
     cotas:
-      Aluguel de imóveis para escritório político: 101334.78
+      Aluguel de imóveis para escritório político: 102767.95
       Aquisição de material de consumo: 48090.11
       Locomoção, hospedagem, alimentação e combustíveis: 5577.25
       Contratação de serviços de apoio ao parlamentar: 87633.99
       Passagens aéreas, aquáticas e terrestres nacionais: 34861.34
-    cotas_total: 277497.47
+    cotas_total: 278930.64
     nao_inclusos:
       Viagens Oficiais - Diárias: 17131.96
       Viagens Oficiais - Ressarcimento de Passagens: 14322.69
       Consumo de Material - Outros materiais: 5204.07
-      Correios: 26802.2
+      Correios: 27880.46
       Aquisição de passagens aéreas (ATC 2/2023): 10108.59
-    nao_inclusos_total: 73569.51
+    nao_inclusos_total: 74647.77
     auxilio_moradia: Utilizou
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 351066.98
+      subsidio: 500754.85
+      cota: 353578.41
       gabinete_estimado: 0.0
-      total: 850276.29
+      total: 854333.26
   br-p-sf-742:
     casa: senado
     assessores: 53
@@ -10678,10 +10662,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 518489.28
       gabinete_estimado: 0.0
-      total: 1017698.59
+      total: 1019244.13
   br-p-sf-285:
     casa: senado
     assessores: 67
@@ -11043,10 +11027,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 575985.95
       gabinete_estimado: 0.0
-      total: 1075195.26
+      total: 1076740.8
   br-p-sf-5422:
     casa: senado
     assessores: 59
@@ -11369,10 +11353,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 551988.88
       gabinete_estimado: 0.0
-      total: 1051198.19
+      total: 1052743.73
   br-p-sf-5942:
     casa: senado
     assessores: 24
@@ -11518,13 +11502,13 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 515920.19
       gabinete_estimado: 0.0
-      total: 1015129.5
+      total: 1016675.04
   br-p-sf-5985:
     casa: senado
-    assessores: 73
+    assessores: 74
     assessores_gabinete_oficial: 54
     escritorios_apoio: 20
     folha_mensal: 0
@@ -11625,6 +11609,11 @@ people:
       vinculo: Comissionado
       salario: null
       desde: '2019-12-20'
+    - nome: Eliezer Pereira Dos Santos
+      funcao: Assessor Parlamentar
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-05-30'
     - nome: Elizandra Cuellar Da Costa
       funcao: Ajudante Parlamentar Júnior
       vinculo: Comissionado
@@ -11914,10 +11903,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 776083.93
       gabinete_estimado: 0.0
-      total: 1275293.24
+      total: 1276838.78
   br-p-sf-5525:
     casa: senado
     assessores: 69
@@ -12279,18 +12268,18 @@ people:
     cotas_total: 538582.83
     nao_inclusos:
       Consumo de Material - Outros materiais: 4896.76
-      Correios: 34440.8
+      Correios: 34959.3
       Cotas para Impulsionamento em Mídias Sociais: 14764.58
       Aquisição de passagens aéreas (ATC 2/2023): 3223.07
-    nao_inclusos_total: 57325.21
+    nao_inclusos_total: 57843.71
     auxilio_moradia: Não utilizou
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 595908.04
+      subsidio: 500754.85
+      cota: 596426.54
       gabinete_estimado: 0.0
-      total: 1095117.35
+      total: 1097181.39
   br-p-sf-5924:
     casa: senado
     assessores: 13
@@ -12377,10 +12366,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 67520.08
       gabinete_estimado: 0.0
-      total: 566729.39
+      total: 568274.93
   br-p-sf-5523:
     casa: senado
     assessores: 46
@@ -12621,24 +12610,24 @@ people:
       desde: '2024-11-19'
     mesmo_sobrenome: []
     cotas:
-      Aluguel de imóveis para escritório político: 59456.29
-      Locomoção, hospedagem, alimentação e combustíveis: 36275.35
+      Aluguel de imóveis para escritório político: 59931.29
+      Locomoção, hospedagem, alimentação e combustíveis: 37676.31
       Contratação de serviços de apoio ao parlamentar: 135000
       Divulgação da atividade parlamentar: 15000
-    cotas_total: 245731.64
+    cotas_total: 247607.6
     nao_inclusos:
       Consumo de Material - Outros materiais: 5803.86
       Correios: 17951.92
-      Aquisição de passagens aéreas (ATC 2/2023): 2969.26
-    nao_inclusos_total: 26725.04
+      Aquisição de passagens aéreas (ATC 2/2023): 4212.28
+    nao_inclusos_total: 27968.06
     auxilio_moradia: Não utilizou
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 272456.68
+      subsidio: 500754.85
+      cota: 275575.66
       gabinete_estimado: 0.0
-      total: 771665.99
+      total: 776330.51
   br-p-sf-825:
     casa: senado
     assessores: 45
@@ -12877,11 +12866,11 @@ people:
     cotas:
       Aluguel de imóveis para escritório político: 113378.07
       Aquisição de material de consumo: 147736.49
-      Locomoção, hospedagem, alimentação e combustíveis: 136225.25
+      Locomoção, hospedagem, alimentação e combustíveis: 138548.25
       Contratação de serviços de apoio ao parlamentar: 17778.78
       Divulgação da atividade parlamentar: 9500
       Passagens aéreas, aquáticas e terrestres nacionais: 58300.06
-    cotas_total: 482918.65
+    cotas_total: 485241.65
     nao_inclusos:
       Consumo de Material - Outros materiais: 4675.91
       Correios: 48936.36
@@ -12891,10 +12880,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 538031.18
+      subsidio: 500754.85
+      cota: 540354.18
       gabinete_estimado: 0.0
-      total: 1037240.49
+      total: 1041109.03
   br-p-sf-5502:
     casa: senado
     assessores: 55
@@ -13196,10 +13185,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 300405.82
       gabinete_estimado: 0.0
-      total: 799615.13
+      total: 801160.67
   br-p-sf-5386:
     casa: senado
     assessores: 55
@@ -13503,10 +13492,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 378345.38
       gabinete_estimado: 0.0
-      total: 877554.69
+      total: 879100.23
   br-p-sf-5012:
     casa: senado
     assessores: 59
@@ -13827,10 +13816,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 509518.32
       gabinete_estimado: 0.0
-      total: 1008727.63
+      total: 1010273.17
   br-p-sf-70:
     casa: senado
     assessores: 53
@@ -14113,18 +14102,18 @@ people:
     cotas_total: 188756.02
     nao_inclusos:
       Consumo de Material - Outros materiais: 5598.83
-      Correios: 29954.66
+      Correios: 29971.81
       Cotas para Impulsionamento em Mídias Sociais: 1881.63
       Aquisição de passagens aéreas (ATC 2/2023): 111970.89
-    nao_inclusos_total: 149406.01
+    nao_inclusos_total: 149423.16
     auxilio_moradia: Não utilizou
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 338162.03
+      subsidio: 500754.85
+      cota: 338179.18
       gabinete_estimado: 0.0
-      total: 837371.34
+      total: 838934.03
   br-p-sf-5207:
     casa: senado
     assessores: 16
@@ -14228,10 +14217,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 217461.17
       gabinete_estimado: 0.0
-      total: 716670.48
+      total: 718216.02
   br-p-sf-5257:
     casa: senado
     assessores: 14
@@ -14324,10 +14313,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 10420.57
       gabinete_estimado: 0.0
-      total: 509629.88
+      total: 511175.42
   br-p-sf-6025:
     casa: senado
     assessores: 58
@@ -14642,10 +14631,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 503172.99
       gabinete_estimado: 0.0
-      total: 1002382.3
+      total: 1003927.84
   br-p-sf-4694:
     casa: senado
     assessores: 32
@@ -14832,10 +14821,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 412109.74
       gabinete_estimado: 0.0
-      total: 911319.05
+      total: 912864.59
   br-p-sf-5352:
     casa: senado
     assessores: 86
@@ -15295,25 +15284,25 @@ people:
     cotas:
       Aluguel de imóveis para escritório político: 99877.6
       Aquisição de material de consumo: 1205
-      Locomoção, hospedagem, alimentação e combustíveis: 167890.88
+      Locomoção, hospedagem, alimentação e combustíveis: 174640.38
       Contratação de serviços de apoio ao parlamentar: 49516.26
       Divulgação da atividade parlamentar: 68600
       Passagens aéreas, aquáticas e terrestres nacionais: 93697.81
-    cotas_total: 480787.55
+    cotas_total: 487537.05
     nao_inclusos:
       Viagens Oficiais - Diárias: 32796.75
       Consumo de Material - Outros materiais: 5243.38
-      Correios: 5391.1
+      Correios: 5435.98
       Aquisição de passagens aéreas (ATC 2/2023): 86666.85
-    nao_inclusos_total: 130098.08
+    nao_inclusos_total: 130142.96
     auxilio_moradia: Não utilizou
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 610885.63
+      subsidio: 500754.85
+      cota: 617680.01
       gabinete_estimado: 0.0
-      total: 1110094.94
+      total: 1118434.86
   br-p-sf-5322:
     casa: senado
     assessores: 31
@@ -15482,26 +15471,26 @@ people:
       Aluguel de imóveis para escritório político: 47621.98
       Aquisição de material de consumo: 30114.63
       Locomoção, hospedagem, alimentação e combustíveis: 1498.35
-      Contratação de serviços de apoio ao parlamentar: 71829.3
+      Contratação de serviços de apoio ao parlamentar: 73829.3
       Passagens aéreas, aquáticas e terrestres nacionais: 19641.34
-    cotas_total: 170705.6
+    cotas_total: 172705.6
     nao_inclusos:
       Consumo de Material - Outros materiais: 2809.58
-      Correios: 35818.47
+      Correios: 35836.42
       Cotas para Impulsionamento em Mídias Sociais: 5016.77
       Aquisição de passagens aéreas (ATC 2/2023): 33092.46
-    nao_inclusos_total: 76737.28
+    nao_inclusos_total: 76755.23
     auxilio_moradia: Não utilizou
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 247442.88
+      subsidio: 500754.85
+      cota: 249460.83
       gabinete_estimado: 0.0
-      total: 746652.19
+      total: 750215.68
   br-p-sf-5974:
     casa: senado
-    assessores: 19
+    assessores: 18
     assessores_gabinete_oficial: 8
     escritorios_apoio: 11
     folha_mensal: 0
@@ -15512,11 +15501,6 @@ people:
       vinculo: Comissionado
       salario: null
       desde: '2019-04-08'
-    - nome: Aléxia Duarte Torres Portugal
-      funcao: Assistente Parlamentar Pleno
-      vinculo: Comissionado
-      salario: null
-      desde: '2023-02-16'
     - nome: Allan Arnaldo De Araújo
       funcao: Auxiliar Parlamentar Intermediário
       vinculo: Comissionado
@@ -15616,10 +15600,10 @@ people:
     imovel_funcional: Não utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 33980.61
       gabinete_estimado: 0.0
-      total: 533189.92
+      total: 534735.46
   br-p-sf-6331:
     casa: senado
     assessores: 22
@@ -15755,10 +15739,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 523933.74
       gabinete_estimado: 0.0
-      total: 1023143.05
+      total: 1024688.59
   br-p-sf-5988:
     casa: senado
     assessores: 38
@@ -15977,10 +15961,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 692113.41
       gabinete_estimado: 0.0
-      total: 1191322.72
+      total: 1192868.26
   br-p-sf-5959:
     casa: senado
     assessores: 17
@@ -16091,10 +16075,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 593212.87
       gabinete_estimado: 0.0
-      total: 1092422.18
+      total: 1093967.72
   br-p-sf-4560:
     casa: senado
     assessores: 34
@@ -16292,10 +16276,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 375452.81
       gabinete_estimado: 0.0
-      total: 874662.12
+      total: 876207.66
   br-p-sf-6338:
     casa: senado
     assessores: 41
@@ -16512,12 +16496,12 @@ people:
     mesmo_sobrenome:
     - Ismael Bento De Melo
     cotas:
-      Aluguel de imóveis para escritório político: 98517.36
-      Aquisição de material de consumo: 39411.46
-      Locomoção, hospedagem, alimentação e combustíveis: 182446.03
+      Aluguel de imóveis para escritório político: 101012.16
+      Aquisição de material de consumo: 42382.46
+      Locomoção, hospedagem, alimentação e combustíveis: 196588.21
       Divulgação da atividade parlamentar: 12480
       Passagens aéreas, aquáticas e terrestres nacionais: 83544.93
-    cotas_total: 416399.78
+    cotas_total: 436007.76
     nao_inclusos:
       Viagens Oficiais - Diárias: 10141.32
       Consumo de Material - Outros materiais: 5491.03
@@ -16528,10 +16512,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 604325.71
+      subsidio: 500754.85
+      cota: 623933.69
       gabinete_estimado: 0.0
-      total: 1103535.02
+      total: 1124688.54
   br-p-sf-5736:
     casa: senado
     assessores: 23
@@ -16674,10 +16658,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 446457.86
       gabinete_estimado: 0.0
-      total: 945667.17
+      total: 947212.71
   br-p-sf-5899:
     casa: senado
     assessores: 42
@@ -16910,10 +16894,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 124650.48
       gabinete_estimado: 0.0
-      total: 623859.79
+      total: 625405.33
   br-p-sf-5748:
     casa: senado
     assessores: 50
@@ -17190,19 +17174,226 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 395566.49
       gabinete_estimado: 0.0
-      total: 894775.8
+      total: 896321.34
   br-p-sf-5016:
     casa: senado
-    assessores: 0
+    assessores: 41
     assessores_gabinete_oficial: 19
-    escritorios_apoio: 21
+    escritorios_apoio: 22
     folha_mensal: 0
     folha_mes: null
-    equipe: []
-    mesmo_sobrenome: []
+    equipe:
+    - nome: Adrianea De Jesus Santos
+      funcao: Assistente Parlamentar Intermediário
+      vinculo: Comissionado
+      salario: null
+      desde: '2015-03-11'
+    - nome: Aldeli Ribeiro De Sousa
+      funcao: Assistente Parlamentar Júnior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-02-03'
+    - nome: Aline Nogueira Barroso E Silva
+      funcao: Auxiliar Parlamentar Sênior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-02-06'
+    - nome: Ana Maria Costa E Silva
+      funcao: Assistente Parlamentar Júnior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-06-07'
+    - nome: Armando De Melo Salmito Junior
+      funcao: Ajudante Parlamentar Sênior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-07-20'
+    - nome: Áurea Lourdes Ferreira Brandão De Carvalho
+      funcao: Ajudante Parlamentar Intermediário
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-10'
+    - nome: Fernanda Lemos De Melo Lôbo Lopes
+      funcao: Ajudante Parlamentar Intermediário
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-21'
+    - nome: Flávio Morais Dos Santos
+      funcao: Auxiliar Parlamentar Júnior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-05-05'
+    - nome: Francisco Antônio Andrade Oliveira
+      funcao: Ajudante Parlamentar Sênior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-30'
+    - nome: Francisco Ivan De  Araújo Bento
+      funcao: Ajudante Parlamentar Intermediário
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-14'
+    - nome: George Nogueira Leal De Holanda Pinheiro
+      funcao: Auxiliar Parlamentar Intermediário
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-10'
+    - nome: Geovana Silva Rocha
+      funcao: Auxiliar Parlamentar Júnior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-09'
+    - nome: Helayne Cristina De Sousa Lima
+      funcao: Auxiliar Parlamentar Intermediário
+      vinculo: Comissionado
+      salario: null
+      desde: '2025-01-30'
+    - nome: Hellen Karla Lobato Borges
+      funcao: Auxiliar Parlamentar Pleno
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-02-01'
+    - nome: Hilo De Almeida Sousa Segundo
+      funcao: Auxiliar Parlamentar Intermediário
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-10'
+    - nome: Jacqueline Mousinho Macario
+      funcao: Chefe De Gabinete
+      vinculo: Efetivo
+      salario: null
+      desde: '1984-08-28'
+    - nome: Jaine Xavier Da Silva
+      funcao: Auxiliar Parlamentar Júnior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-14'
+    - nome: Johnson Sousa Batista Filho
+      funcao: Ajudante Parlamentar Sênior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-10-24'
+    - nome: Jonas Trindade Pereira
+      funcao: Assistente Parlamentar Júnior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-06-07'
+    - nome: Jonathan Madeira De Barros Nunes
+      funcao: Função Comissionada
+      vinculo: Efetivo
+      salario: null
+      desde: '2014-06-09'
+    - nome: José Hector De Araújo Marques
+      funcao: Ajudante Parlamentar Júnior
+      vinculo: Comissionado
+      salario: null
+      desde: '2026-07-08'
+    - nome: Kesianne Izídio De Sousa
+      funcao: Assistente Parlamentar Pleno
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-05-11'
+    - nome: Kilpatrick Müller Bernardo Campelo
+      funcao: Função Comissionada
+      vinculo: Efetivo
+      salario: null
+      desde: '2014-08-21'
+    - nome: Larissa Rodrigues Pereira Belo Carcará
+      funcao: Auxiliar Parlamentar Intermediário
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-10'
+    - nome: Lelia Gomes Maia
+      funcao: Auxiliar Parlamentar Pleno
+      vinculo: Comissionado
+      salario: null
+      desde: '2025-07-16'
+    - nome: Leonardo Araújo De Assunção
+      funcao: Ajudante Parlamentar Pleno
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-07'
+    - nome: Leonardo Rio Lima Silveira
+      funcao: Auxiliar Parlamentar Pleno
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-06-19'
+    - nome: Liane Palmeira Dias Nunes Ferraz
+      funcao: Auxiliar Parlamentar Intermediário
+      vinculo: Comissionado
+      salario: null
+      desde: '2017-03-15'
+    - nome: Louise Maia Rio Lima Silveira
+      funcao: Ajudante Parlamentar Intermediário
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-10'
+    - nome: Lucas Castelo Branco De Deus
+      funcao: Ajudante Parlamentar Intermediário
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-16'
+    - nome: Lucas Ferreira Maia
+      funcao: Auxiliar Parlamentar Júnior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-15'
+    - nome: Lucíola De Souza Moura
+      funcao: Assistente Parlamentar Intermediário
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-02-03'
+    - nome: Maira Nunes Viñas
+      funcao: Auxiliar Parlamentar Intermediário
+      vinculo: Comissionado
+      salario: null
+      desde: '2024-08-08'
+    - nome: Maxwell Nascimento Lemos
+      funcao: Ajudante Parlamentar Sênior
+      vinculo: Comissionado
+      salario: null
+      desde: '2024-07-11'
+    - nome: Murilo André De Figueiredo Lopes
+      funcao: Ajudante Parlamentar Sênior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-10'
+    - nome: Raí Luiz Machado Araujo Bernardo
+      funcao: Ajudante Parlamentar Júnior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-14'
+    - nome: Sara Amorim Dias Coelho
+      funcao: Assistente Parlamentar Júnior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-02-01'
+    - nome: Selma Cristina Da Silva Sousa
+      funcao: Auxiliar Parlamentar Júnior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-02-01'
+    - nome: Vanda Rodrigues Da Silva
+      funcao: Ajudante Parlamentar Pleno
+      vinculo: Comissionado
+      salario: null
+      desde: '2026-09-11'
+    - nome: Wanderson Antunes De Carvalho
+      funcao: Motorista
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-02-01'
+    - nome: Yanne Maria Barbosa Da Silva
+      funcao: Auxiliar Parlamentar Júnior
+      vinculo: Comissionado
+      salario: null
+      desde: '2023-03-09'
+    mesmo_sobrenome:
+    - Liane Palmeira Dias Nunes Ferraz
+    - Sara Amorim Dias Coelho
     cotas: {}
     cotas_total: 0
     nao_inclusos: {}
@@ -17211,10 +17402,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 0
       gabinete_estimado: 0.0
-      total: 499209.31
+      total: 500754.85
   br-p-sf-1173:
     casa: senado
     assessores: 47
@@ -17475,10 +17666,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 482931.37
       gabinete_estimado: 0.0
-      total: 982140.68
+      total: 983686.22
   br-p-sf-5411:
     casa: senado
     assessores: 0
@@ -17507,10 +17698,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 571861.93
       gabinete_estimado: 0.0
-      total: 1071071.24
+      total: 1072616.78
   br-p-sf-5070:
     casa: senado
     assessores: 33
@@ -17700,10 +17891,10 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 153800.63
       gabinete_estimado: 0.0
-      total: 653009.94
+      total: 654555.48
   br-p-sf-5783:
     casa: senado
     assessores: 29
@@ -17869,16 +18060,16 @@ people:
       Consumo de Material - Outros materiais: 4667.75
       Correios: 17301
       Cotas para Impulsionamento em Mídias Sociais: 9000
-      Aquisição de passagens aéreas (ATC 2/2023): 114346.39
-    nao_inclusos_total: 145315.14
+      Aquisição de passagens aéreas (ATC 2/2023): 121261
+    nao_inclusos_total: 152229.75
     auxilio_moradia: Não utilizou
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
-      cota: 535973.44
+      subsidio: 500754.85
+      cota: 542888.05
       gabinete_estimado: 0.0
-      total: 1035182.75
+      total: 1043642.9
   br-p-sf-3806:
     casa: senado
     assessores: 57
@@ -18191,7 +18382,7 @@ people:
     imovel_funcional: Utilizou
     custo_ano:
       meses: 10.8
-      subsidio: 499209.31
+      subsidio: 500754.85
       cota: 550268.61
       gabinete_estimado: 0.0
-      total: 1049477.92
+      total: 1051023.46

@@ -1,5 +1,5 @@
 # GERADO por etl/temas.py. Não edite à mão.
-generated_at: '2026-11-23'
+generated_at: '2026-11-24'
 temas:
 - id: pec-da-blindagem
   name: PEC da Blindagem
@@ -16,7 +16,7 @@ temas:
     article: PEC_da_Blindagem
     url: https://pt.wikipedia.org/wiki/PEC_da_Blindagem
     weekly:
-      '2026-08-24': 456
+      '2026-08-24': 400
       '2026-08-31': 485
       '2026-09-07': 488
       '2026-09-14': 515
@@ -29,8 +29,9 @@ temas:
       '2026-11-02': 309
       '2026-11-09': 192
       '2026-11-16': 174
-    total_90d: 13504
-    last7: 174
+      '2026-11-23': 19
+    total_90d: 13467
+    last7: 173
     peak_week: 3355
   processes:
   - casa: camara
@@ -66,7 +67,7 @@ temas:
   - cpi do master
   - vorcaro
   curated: cpmi-banco-master-2026
-  news_hits: 228
+  news_hits: 232
   news_weekly:
     '2026-09-14': 29
     '2026-09-21': 44
@@ -78,32 +79,34 @@ temas:
     '2026-11-02': 15
     '2026-11-09': 21
     '2026-11-16': 37
+    '2026-11-23': 4
   news_recent:
+  - id: c2f9448d539e1c40
+    title: Nunes Marques é definido relator de pedido de Vorcaro para retirar caso Master do gabinete da presidência do STF
+    date: '2026-11-24'
+    publication: g1 Política
+  - id: dbd9d8b0a1ce2f93
+    title: Relatórios da PF têm citações a Moraes, Nunes e Toffoli, mas deixam de fora diálogos e documentos que poderiam
+      indicar conexão com Vorcaro
+    date: '2026-11-24'
+    publication: g1 Política
+  - id: 27836d02edd16e84
+    title: Damares Alves pede a Fachin autorização para visitar Vorcaro na Papuda
+    date: '2026-11-24'
+    publication: Estadão
+  - id: 5ec70ac51cf383f6
+    title: 'Caso Banco Master: por que os relatórios sobre os ministros do STF devem vir a público'
+    date: '2026-11-24'
+    publication: Estadão
   - id: bb4c54ebc68d3c67
     title: Fachin retira sigilo de relatório da PF com 11 conversas que citam André Mendonça no caso Master
     date: '2026-11-21'
-    publication: g1 Política
-  - id: 052291ff77a55203
-    title: 'Caso Master: Fachin mantém prisão do ex-banqueiro Daniel Vorcaro'
-    date: '2026-11-20'
-    publication: g1 Política
-  - id: 7ab2d7c13ee1a423
-    title: 'Master: relatório da PF sobre Mendonça cita tentativas de aproximação de Vorcaro ao ministro do STF'
-    date: '2026-11-20'
-    publication: g1 Política
-  - id: 73b84d9881656134
-    title: Galípolo diz que ligou para PF para alertar sobre possível fuga de Vorcaro
-    date: '2026-11-20'
-    publication: g1 Política
-  - id: c8d619d3fd271322
-    title: Ministros do STF recebem cópia do relatório da PF em que são citados sobre relações com Vorcaro
-    date: '2026-11-20'
     publication: g1 Política
   wikipedia:
     article: Banco_Master
     url: https://pt.wikipedia.org/wiki/Banco_Master
     weekly:
-      '2026-08-24': 824
+      '2026-08-24': 714
       '2026-08-31': 9186
       '2026-09-07': 10948
       '2026-09-14': 10201
@@ -116,8 +119,9 @@ temas:
       '2026-11-02': 2770
       '2026-11-09': 1672
       '2026-11-16': 720
-    total_90d: 64508
-    last7: 720
+      '2026-11-23': 83
+    total_90d: 64481
+    last7: 659
     peak_week: 10948
   processes:
   - casa: camara
@@ -132,7 +136,7 @@ temas:
     url: https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2600034
     requested: RCP 1/2026 (camara)
   state: parado
-  stalled_days: 126
+  stalled_days: 127
   silence_after_peak: false
   silent_and_stalled: false
 - id: escala-6x1
@@ -144,7 +148,7 @@ temas:
   - fim da escala
   - jornada 6x1
   curated: null
-  news_hits: 178
+  news_hits: 181
   news_weekly:
     '2026-09-14': 3
     '2026-09-28': 3
@@ -155,33 +159,34 @@ temas:
     '2026-11-02': 4
     '2026-11-09': 6
     '2026-11-16': 15
-    '2026-11-23': 1
+    '2026-11-23': 4
   news_recent:
+  - id: e5a731450a491bb9
+    title: '''Ninguém vai morrer se fechar um dia'', diz ministro sobre fim da escala 6x1'
+    date: '2026-11-24'
+    publication: g1 Política
+  - id: 54ee6390abc3ffbf
+    title: 'Fim da escala 6x1: ministro recomenda que setores ''corram'' para fechar acordo coletivo até dia 16 se quiserem
+      escala diferente'
+    date: '2026-11-24'
+    publication: g1 Política
   - id: 0fc8a6f114de98ad
     title: Fim da escala 6X1 deve impactar mais de 100 mil trabalhadores domésticos, estima instituto
     date: '2026-11-23'
     publication: g1 Política
+  - id: 9db7558287117fd6
+    title: AGU diz ao STF que decreto sobre fim da escala 6×1 torna liminar de Dino desnecessária
+    date: '2026-11-23'
+    publication: JOTA
   - id: 7feb4f538f7617af
     title: 'Ministérios, ajuste fiscal e articulações políticas: veja o que se sabe sobre o novo governo Lula'
     date: '2026-11-20'
-    publication: g1 Política
-  - id: 5160a5d396915634
-    title: JOTA Principal | Governo regulamenta fim da escala 6×1, e Lula manda recado a ministeriáveis
-    date: '2026-11-20'
-    publication: JOTA
-  - id: 3eec36df827b7b0d
-    title: Prevendo judicialização, Lula cobra atenção à aplicação da escala 5x2
-    date: '2026-11-19'
-    publication: Agência Brasil
-  - id: 4c4c100738badb68
-    title: Com regulamentação da escala 5x2, hora extra ficará mais cara; entenda
-    date: '2026-11-19'
     publication: g1 Política
   wikipedia:
     article: PEC_do_Fim_da_Escala_6x1
     url: https://pt.wikipedia.org/wiki/PEC_do_Fim_da_Escala_6x1
     weekly:
-      '2026-08-24': 422
+      '2026-08-24': 373
       '2026-08-31': 816
       '2026-09-07': 534
       '2026-09-14': 593
@@ -194,8 +199,9 @@ temas:
       '2026-11-02': 160
       '2026-11-09': 73
       '2026-11-16': 42
-    total_90d: 22521
-    last7: 42
+      '2026-11-23': 8
+    total_90d: 22480
+    last7: 44
     peak_week: 10854
   processes:
   - casa: camara
@@ -246,7 +252,7 @@ temas:
     article: Imposto_de_Renda_de_Pessoa_Física
     url: https://pt.wikipedia.org/wiki/Imposto_de_Renda_de_Pessoa_Física
     weekly:
-      '2026-08-24': 30
+      '2026-08-24': 26
       '2026-08-31': 39
       '2026-09-07': 123
       '2026-09-14': 14
@@ -259,8 +265,9 @@ temas:
       '2026-11-02': 62
       '2026-11-09': 49
       '2026-11-16': 22
-    total_90d: 664
-    last7: 22
+      '2026-11-23': 3
+    total_90d: 663
+    last7: 21
     peak_week: 175
   processes:
   - casa: camara
@@ -347,6 +354,7 @@ temas:
       '2026-11-02': 6
       '2026-11-09': 1
       '2026-11-16': 0
+      '2026-11-23': 0
     total_90d: 23
     last7: 1
     peak_week: 7
@@ -373,7 +381,7 @@ temas:
     url: https://www25.senado.leg.br/web/atividade/materias/-/materia/172003
     requested: PL 2162/2023 (senado)
   state: parado
-  stalled_days: 199
+  stalled_days: 200
   silence_after_peak: false
   silent_and_stalled: false
 - id: diesel-mp-1344
@@ -461,7 +469,7 @@ temas:
     url: https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/15729
     requested: VET 14/2023 (congresso)
   state: prazo_vencido
-  stalled_days: 1258
+  stalled_days: 1259
   silence_after_peak: null
   silent_and_stalled: false
 - id: precatorios
@@ -519,8 +527,9 @@ temas:
       '2026-11-02': 23
       '2026-11-09': 32
       '2026-11-16': 83
-    total_90d: 732
-    last7: 83
+      '2026-11-23': 2
+    total_90d: 734
+    last7: 81
     peak_week: 102
   processes:
   - casa: camara
@@ -593,7 +602,7 @@ temas:
     article: Orçamento_secreto
     url: https://pt.wikipedia.org/wiki/Orçamento_secreto
     weekly:
-      '2026-08-24': 296
+      '2026-08-24': 260
       '2026-08-31': 372
       '2026-09-07': 306
       '2026-09-14': 174
@@ -606,8 +615,9 @@ temas:
       '2026-11-02': 222
       '2026-11-09': 239
       '2026-11-16': 207
-    total_90d: 5882
-    last7: 207
+      '2026-11-23': 13
+    total_90d: 5859
+    last7: 187
     peak_week: 1022
   processes:
   - casa: camara
