@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-24'
+generated_at: '2026-11-25'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-27'
+janela_inicio: '2026-08-28'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -11,10 +11,10 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial do Planalto
     url: https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/agenda-do-presidente-da-republica
-    compromissos_90d: 177
-    dias_com_agenda: 49
+    compromissos_90d: 176
+    dias_com_agenda: 48
     por_tipo:
-      evento: 55
+      evento: 54
       viagem: 49
       audiencia: 47
       reuniao: 21
@@ -114,12 +114,8 @@ people:
       participantes:
       - nome: Miriam Belchior
         entidade: Ministra da Casa Civil
-    dias_nao_lidos: 2
+    dias_nao_lidos: 3
     dias:
-      presidente/2026-08-27:
-      - hora: '21:00'
-        titulo: Entrevista ao Jornal Nacional
-        local: Estrada dos Bandeirantes, Projac – Jacarepaguá, Rio de Janeiro
       presidente/2026-08-28: []
       presidente/2026-08-29: []
       presidente/2026-08-30: []
@@ -847,10 +843,8 @@ people:
       tipo: audiencia
       local: Palácio do Planalto, Anexo II
       participantes: []
-    dias_nao_lidos: 4
+    dias_nao_lidos: 6
     dias:
-      vice/2026-08-27: []
-      vice/2026-08-27-b1: []
       vice/2026-08-28:
       - hora: '10:00'
         titulo: Solenidade de Formatura de Encerramento dos Cursos de Formação Profissional dos Cargos Policiais das Carreiras
@@ -1134,5 +1128,5 @@ people:
       vice/2026-11-22: []
       vice/2026-11-22-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 177 compromissos em 49 dias (2 dias não lidos)'
-- 'br-p-geraldo-alckmin: 35 compromissos em 24 dias (4 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 176 compromissos em 48 dias (3 dias não lidos)'
+- 'br-p-geraldo-alckmin: 35 compromissos em 24 dias (6 dias não lidos)'
