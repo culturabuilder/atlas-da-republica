@@ -1,6 +1,6 @@
 # GERADO por etl/comissoes.py. Não edite à mão.
 generated_from: legis.senado.leg.br/dadosabertos + dadosabertos.camara.leg.br
-generated_at: '2026-11-25'
+generated_at: '2026-11-26'
 pessoas_reaproveitadas: 65
 ids_corrigidos:
   br-p-cd-353: br-p-cd-73788 (Ricardo Barros)
@@ -45,6 +45,7 @@ ids_corrigidos:
   br-p-cd-6227: br-p-cd-204526 (Luiz Philippe de Orleans e Bragança)
   br-p-cd-6250: br-p-cd-204549 (AJ Albuquerque)
   br-p-cd-6267: br-p-cd-204566 (Marreca Filho)
+  br-p-cd-6403: br-p-cd-91228 (Waldemar Oliveira)
   br-p-cd-6408: br-p-cd-123086 (Átila Lira)
   br-p-cd-6409: br-p-cd-153423 (Renilce Nicodemos)
   br-p-cd-6410: br-p-cd-160161 (Marcelo Queiroz)
@@ -63,7 +64,6 @@ ids_corrigidos:
   br-p-cd-6565: br-p-cd-220683 (Beto Richa)
   br-p-cd-6576: br-p-cd-220694 (Ricardo Maia)
   br-p-cd-6580: br-p-cd-220698 (Beto Preto)
-  br-p-cd-6585: br-p-cd-220703 (Neto Carletto)
   br-p-cd-6590: br-p-cd-220708 (Gabriel Nunes)
   br-p-cd-6592: br-p-cd-220713 (Saullo Vianna)
   br-p-cd-6597: br-p-cd-221338 (Professora Luciene Cavalcante)
@@ -71,6 +71,7 @@ pessoas_novas:
   - Eduardo Girão (?/sf)
   - Leila Barros (?/sf)
   - Rodrigo Pacheco (?/sf)
+  - Wellington Dias (?/sf)
 nodes:
   - id: br-comissao-de-assuntos-economicos-do-senado
     _merge_only: true
@@ -5117,13 +5118,12 @@ positions:
       image_url: http://www.senado.leg.br/senadores/img/fotos-oficiais/senador5352.jpg
     - id: br-p-sf-5016
       name: Wellington Dias
-      party: PT
-      uf: PI
+      party: null
+      uf: null
       role: Suplente
       entry_mode: eleito
       source: senado
       source_url: https://legis.senado.leg.br/comissoes/comissao?codcol=54
-      image_url: http://www.senado.leg.br/senadores/img/fotos-oficiais/senador5016.jpg
     - id: br-p-sf-1186
       name: Luis Carlos Heinze
       party: PP
@@ -7522,7 +7522,7 @@ positions:
       source_url: https://dadosabertos.camara.leg.br/api/v2/deputados/220648
     - id: br-p-cd-204566
       name: Marreca Filho
-      party: PRD
+      party: PODE
       uf: MA
       image_url: https://www.camara.leg.br/internet/deputado/bandep/204566.jpg
       role: Titular
@@ -20201,15 +20201,15 @@ positions:
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
       image_url: https://www.camara.leg.br/internet/deputado/bandep/220682.jpg
-    - id: br-p-cd-220703
-      name: Neto Carletto
+    - id: br-p-cd-91228
+      name: Waldemar Oliveira
       party: AVANTE
-      uf: BA
+      uf: PE
       role: Titular
       entry_mode: eleito
       source: senado
       source_url: https://www.congressonacional.leg.br/comissoes
-      image_url: https://www.camara.leg.br/internet/deputado/bandep/220703.jpg
+      image_url: https://www.camara.leg.br/internet/deputado/bandep/91228.jpg
     - id: br-p-cd-74158
       name: Mário Heringer
       party: PDT
@@ -20536,7 +20536,7 @@ positions:
       image_url: https://www.camara.leg.br/internet/deputado/bandep/69871.jpg
     - id: br-p-cd-204566
       name: Marreca Filho
-      party: PRD
+      party: PODE
       uf: MA
       role: Suplente
       entry_mode: eleito

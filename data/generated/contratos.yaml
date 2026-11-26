@@ -1,18 +1,13 @@
 # GERADO por etl/contratos.py. Não edite à mão.
-generated_at: '2026-11-25'
+generated_at: '2026-11-26'
 fonte: Portal Nacional de Contratações Públicas (PNCP), API pública de consulta, Lei 14.133/2021
 nota: 'Contratos de esfera federal publicados no PNCP. O arquivo acumula: cada rodada acrescenta a janela nova ao que já havia por órgão. A API não filtra
   por esfera e não preenche o campo de emenda parlamentar, então não é possível amarrar emenda a contrato por esta fonte. Não é o total de contratos da
   União: é o que foi publicado no PNCP nas janelas já lidas.'
 janela_atual:
-  de: '2026-11-15'
-  ate: '2026-11-25'
+  de: '2026-11-16'
+  ate: '2026-11-26'
 janelas:
-- de: '2026-10-17'
-  ate: '2026-10-27'
-  federais: 3597
-  paginas: 56
-  lido_em: '2026-10-27'
 - de: '2026-10-18'
   ate: '2026-10-28'
   federais: 2473
@@ -158,14 +153,19 @@ janelas:
   federais: 1983
   paginas: 33
   lido_em: '2026-11-25'
+- de: '2026-11-16'
+  ate: '2026-11-26'
+  federais: 1267
+  paginas: 22
+  lido_em: '2026-11-26'
 resumo:
   orgaos: 216
-  contratos: 108356
-  valor: 22097401089.39
-  federais_nesta_janela: 1983
-  lidos_nesta_janela: 16500
-  com_identificador_de_obra: 9
-  com_emenda_parlamentar: 17
+  contratos: 108980
+  valor: 22148790851.35
+  federais_nesta_janela: 1267
+  lidos_nesta_janela: 11000
+  com_identificador_de_obra: 4
+  com_emenda_parlamentar: 10
 fornecedor_sob_sancao:
   nota: 'Contrato assinado por empresa que, NAQUELE DIA, tinha sanção vigente no CEIS ou no CNEP. Entram só as sanções que proíbem contratar — impedimento,
     suspensão e declaração de inidoneidade — e que alcançavam o órgão contratante pela abrangência registrada. Multa e publicação extraordinária da condenação
@@ -399,8 +399,8 @@ fornecedor_sob_sancao:
 orgaos:
   br-dnit:
     nome: Departamento Nacional de Infraestrutura de Transportes
-    contratos: 736
-    valor: 4769229255.03
+    contratos: 737
+    valor: 4769232015.03
     fornecedores_top:
     - nome: LCM CONSTRUCAO E COMERCIO S.A
       n: 2
@@ -757,8 +757,8 @@ orgaos:
       id: 04892707002316-2-000041/2026
   br-ministerio-da-saude:
     nome: Ministério da Saúde
-    contratos: 10520
-    valor: 2834542348.82
+    contratos: 10574
+    valor: 2861549218.59
     fornecedores_top:
     - nome: JEOVA JIREH GESTAO DE ESTOQUE EM LOGISTICA BR LTDA
       n: 1
@@ -1102,8 +1102,8 @@ orgaos:
       id: 00394544000185-2-013065/2026
   br-exercito-brasileiro:
     nome: Exército Brasileiro
-    contratos: 6235
-    valor: 2731881027.9
+    contratos: 6241
+    valor: 2732816263.85
     fornecedores_top:
     - nome: COMPANHIA BRASILEIRA DE CARTUCHOS
       n: 1
@@ -1767,8 +1767,8 @@ orgaos:
       id: 59949362000176-2-000148/2026
   br-fiocruz:
     nome: Fundação Oswaldo Cruz
-    contratos: 4682
-    valor: 1008861966.66
+    contratos: 4695
+    valor: 1009738278.06
     fornecedores_top:
     - nome: TRANSRED TRANSPORTE E LOCACOES LTDA
       n: 1
@@ -2086,18 +2086,12 @@ orgaos:
       id: 33781055000135-2-006772/2026
   br-tribunal-superior-do-trabalho:
     nome: Tribunal Superior do Trabalho
-    contratos: 4097
-    valor: 828774462.34
+    contratos: 4118
+    valor: 829447484.35
     fornecedores_top:
-    - nome: GLR ADMINISTRADORA DE BENS LTDA
-      n: 1
-      valor: 3600000.0
     - nome: 2D&B ENGENHARIA LTDA
       n: 1
       valor: 1960000.0
-    - nome: A2C SOLUCOES EM TECNOLOGIA DA INFORMACAO LTDA
-      n: 1
-      valor: 658325.84
     - nome: COOPERATIVA DOS MEDICOS GINEC E OBSTETRAS DE PE COPEGO
       n: 1
       valor: 500000.0
@@ -2113,6 +2107,12 @@ orgaos:
     - nome: DIRETA SERVICOS LTDA
       n: 1
       valor: 205980.0
+    - nome: DATEN TECNOLOGIA LTDA
+      n: 1
+      valor: 205730.0
+    - nome: CLINICA REABILITAR LTDA
+      n: 1
+      valor: 149327.99
     recentes:
     - objeto: Serviço de pronto atendimento de alarmes de intrusão e detecção de incidentes - Foro Trabalhista de Camaquã.
       fornecedor: HENRIQUE & CIA LTDA - EPP
@@ -2428,8 +2428,8 @@ orgaos:
       id: 00509968000148-2-004267/2026
   br-forca-aerea-brasileira:
     nome: Força Aérea Brasileira
-    contratos: 564
-    valor: 759836008.46
+    contratos: 565
+    valor: 760529968.46
     fornecedores_top:
     - nome: AGROPECUARIA MASUTTI LTDA
       n: 1
@@ -2770,12 +2770,9 @@ orgaos:
       id: 00394429000100-2-001087/2026
   br-marinha-do-brasil:
     nome: Marinha do Brasil
-    contratos: 1327
-    valor: 681643921.72
+    contratos: 1335
+    valor: 684418251.0
     fornecedores_top:
-    - nome: VS DATA COMERCIO & DISTRIBUICAO LTDA
-      n: 1
-      valor: 39950000.0
     - nome: TRANSUNIVERSAL PINTURAS E ANTICORROSAO LTDA
       n: 1
       valor: 13141827.8
@@ -2785,18 +2782,21 @@ orgaos:
     - nome: HEIMAR-CONSTRUCOES E SERVICOS GERAIS LTDA
       n: 1
       valor: 6453909.0
-    - nome: SMARTER ENGENHARIA LTDA
-      n: 1
-      valor: 5750000.0
     - nome: VEENT EMPREENDIMENTOS EMPRESARIAIS LTDA
       n: 1
       valor: 2162950.08
-    - nome: ATHENAS ENGENHARIA E AUTOMACAO LTDA
-      n: 1
-      valor: 1132950.0
     - nome: MR PECAS E SERVICOS LTDA
       n: 2
       valor: 630000.0
+    - nome: PRIME CONSULTORIA E ASSESSORIA EMPRESARIAL LTDA
+      n: 3
+      valor: 567598.6
+    - nome: TASCON ENGENHARIA LTDA
+      n: 1
+      valor: 380785.96
+    - nome: LEOC SANTOS ENGENHARIA
+      n: 1
+      valor: 182078.58
     recentes:
     - objeto: 'FORNECIMENTO DE 01 (UM) INVERSOR DE FREQUÊNCIA, REF.: GA80U4168ABM E PLACA CARTÃO DE INTERFACE PARA ENCODER MODELO PG-X3, REF.: PLACA PG-X3'
       fornecedor: YASKAWA ELETRICO DO BRASIL LTDA.
@@ -3101,8 +3101,8 @@ orgaos:
       id: 00394502000144-2-002090/2026
   br-ministerio-da-justica-e-seguranca-publica:
     nome: Ministério da Justiça e Segurança Pública
-    contratos: 2229
-    valor: 661685651.72
+    contratos: 2241
+    valor: 673917081.48
     fornecedores_top:
     - nome: GUARDSEG VIGILANCIA E SEGURANCA LTDA
       n: 1
@@ -3119,15 +3119,15 @@ orgaos:
     - nome: GOHOBBY FUTURE TECHNOLOGY LTDA
       n: 1
       valor: 3344800.0
-    - nome: SOLLUTTY SERVICOS LTDA
-      n: 1
-      valor: 1662678.48
     - nome: LEICA DO BRASIL IMPORTACAO E COMERCIO LTDA.
       n: 1
       valor: 1631077.62
     - nome: F. LYRA EMPREENDIMENTOS E CONSTRUCOES LTDA
       n: 1
       valor: 1299529.91
+    - nome: ISOFEN ENERGY ENGENHARIA DE SUSTENTABILIDADE LTDA
+      n: 1
+      valor: 697000.0
     recentes:
     - objeto: 'CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE GESTÃO,
 
@@ -3438,8 +3438,8 @@ orgaos:
       id: 00394494000136-2-002411/2026
   br-ministerio-publico-da-uniao:
     nome: Ministério Público da União
-    contratos: 1876
-    valor: 567088904.39
+    contratos: 1879
+    valor: 568113330.48
     fornecedores_top:
     - nome: METODO TELECOMUNICACOES E COMERCIO LTDA
       n: 1
@@ -4120,8 +4120,8 @@ orgaos:
       id: 00508903000188-2-001580/2026
   br-receita-federal-do-brasil:
     nome: Secretaria Especial da Receita Federal do Brasil
-    contratos: 7392
-    valor: 448025453.0
+    contratos: 7402
+    valor: 448791258.0
     fornecedores_top:
     - nome: DPC DO BRASIL LTDA
       n: 1
@@ -4430,8 +4430,8 @@ orgaos:
       id: 00394460005887-2-006566/2026
   br-ministerio-da-gestao:
     nome: Ministério da Gestão e da Inovação em Serviços Públicos
-    contratos: 1060
-    valor: 351079651.8
+    contratos: 1062
+    valor: 351082051.8
     fornecedores_top:
     - nome: CINCOL SOLUCOES E SERVICOS LTDA
       n: 1
@@ -5111,8 +5111,8 @@ orgaos:
       id: 00038166000105-2-000230/2026
   br-tribunal-superior-eleitoral:
     nome: Tribunal Superior Eleitoral
-    contratos: 1804
-    valor: 295473880.02
+    contratos: 1818
+    valor: 295550471.02
     fornecedores_top:
     - nome: APPROACH TECNOLOGIA LTDA
       n: 1
@@ -5444,12 +5444,9 @@ orgaos:
       id: 00509018000113-2-004453/2026
   br-fundacao-universidade-de-brasilia:
     nome: Fundação Universidade de Brasília
-    contratos: 450
-    valor: 256362544.21
+    contratos: 454
+    valor: 256377669.91
     fornecedores_top:
-    - nome: LIFE DEFENSE SEGURANCA LTDA
-      n: 1
-      valor: 58780281.0
     - nome: FUNDACAO DE APOIO A PESQUISA
       n: 2
       valor: 4320990.0
@@ -5471,6 +5468,9 @@ orgaos:
     - nome: MLA ENSAIOS ANALITICOS E SOLUCOES AMBIENTAIS LTDA
       n: 1
       valor: 52500.0
+    - nome: GHI COMERCIO DE PAPEIS E ARTIGOS LTDA
+      n: 1
+      valor: 18909.0
     recentes:
     - objeto: CONTRATAÇÃO DE SERVIÇOS CONTÍNUOS NECESSÁRIOS AO FUNCIONAMENTO DO CENTRO UNB CERRADO, COMPREENDENDO SERVIÇOS DE FACILITIES, INCLUINDO O FORNECIMENTO
         D
@@ -6253,8 +6253,8 @@ orgaos:
       id: 00414607000118-2-000365/2026
   br-universidade-federal-de-santa-catarina:
     nome: Universidade Federal de Santa Catarina
-    contratos: 2857
-    valor: 147786187.2
+    contratos: 2864
+    valor: 148106874.66
     fornecedores_top:
     - nome: TORINO INFORMATICA LTDA..
       n: 1
@@ -6563,8 +6563,8 @@ orgaos:
       id: 83899526000182-2-002750/2026
   br-ministerio-da-educacao:
     nome: Ministério da Educação
-    contratos: 668
-    valor: 133237775.71
+    contratos: 669
+    valor: 133238735.71
     fornecedores_top:
     - nome: DIGISYSTEM SERVICOS ESPECIALIZADOS LTDA
       n: 1
@@ -6892,8 +6892,8 @@ orgaos:
       id: 42441758000105-2-000346/2026
   br-fundacao-universidade-federal-de-vicosa:
     nome: Fundação Universidade Federal de Viçosa
-    contratos: 1177
-    valor: 129659269.84
+    contratos: 1185
+    valor: 129672549.49
     fornecedores_top:
     - nome: CEMIG DISTRIBUICAO S.A
       n: 2
@@ -6911,14 +6911,14 @@ orgaos:
       n: 1
       valor: 31093.44
     - nome: LICITA VICOSA COMERCIO EM GERAL LTDA
-      n: 5
-      valor: 17656.4
+      n: 4
+      valor: 16876.4
     - nome: ASSOCIACAO CACE CONSULTORIA JUNIOR
       n: 1
       valor: 10560.0
-    - nome: INDUSTRIA E COMERCIO COLCHOES ORTHOVIDA LTDA
-      n: 2
-      valor: 8195.81
+    - nome: 65.142.833 MARIA APARECIDA DE SOUZA
+      n: 3
+      valor: 8041.73
     recentes:
     - objeto: 02 - IMEDIATO
       fornecedor: MUNDO OFFICE LTDA
@@ -7213,8 +7213,8 @@ orgaos:
       id: 25944455000196-2-000719/2026
   br-ministerio-da-fazenda:
     nome: Ministério da Fazenda
-    contratos: 269
-    valor: 104578389.53
+    contratos: 270
+    valor: 104585939.53
     fornecedores_top:
     - nome: POLUX MONTAGENS ELETRICAS LTDA
       n: 2
@@ -7553,8 +7553,8 @@ orgaos:
       id: 00394460000141-2-000779/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-sao-paulo:
     nome: Instituto Federal de Educação, Ciência e Tecnologia de São Paulo
-    contratos: 2415
-    valor: 103711406.05
+    contratos: 2429
+    valor: 104277191.54
     fornecedores_top:
     - nome: FAQUI SEGURANCA LTDA
       n: 1
@@ -7888,8 +7888,8 @@ orgaos:
       id: 10882594000165-2-002022/2026
   br-universidade-tecnologica-federal-do-parana:
     nome: Universidade Tecnológica Federal do Paraná
-    contratos: 2201
-    valor: 98237302.38
+    contratos: 2237
+    valor: 98399391.45
     fornecedores_top:
     - nome: FUNDACAO DE APOIO A EDUCACAO, PESQUISA E DESENVOLVIMENTO CIENTIFICO E TECNOLOGIC
       n: 5
@@ -7897,9 +7897,6 @@ orgaos:
     - nome: DWG CONSTRUCOES LTDA
       n: 1
       valor: 123781.73
-    - nome: LTA-RH INFORMATICA, COMERCIO, REPRESENTACOES LTDA
-      n: 1
-      valor: 42140.0
     - nome: IM SOLUCOES INTEGRADAS LTDA
       n: 1
       valor: 19840.0
@@ -7915,6 +7912,9 @@ orgaos:
     - nome: OTIMIZE ENGENHARIA E COMERCIO LTDA
       n: 1
       valor: 14800.32
+    - nome: SEGER COMERCIAL IMPORTADORA E EXPORTADORA S.A.
+      n: 1
+      valor: 12679.04
     recentes:
     - objeto: ENDER A NECESSIDADE DE CONTRATAÇÃO DE SERVIÇO DE CAPINA E ROÇAGEM.
       fornecedor: L. C. DA SILVA SERVICOS LTDA
@@ -8496,8 +8496,8 @@ orgaos:
       id: 00530352000159-2-000200/2026
   br-universidade-federal-da-bahia:
     nome: Universidade Federal da Bahia
-    contratos: 4464
-    valor: 88205019.49
+    contratos: 4480
+    valor: 88475349.4
     fornecedores_top:
     - nome: LIFEMED INDUSTRIAL DE EQUIPAMENTOS E ARTIGOS MEDICOS E HOSPITALARES S.A.
       n: 1
@@ -8823,8 +8823,8 @@ orgaos:
       id: 15180714000104-2-005049/2026
   br-presidencia-da-republica:
     nome: Presidência da República
-    contratos: 145
-    valor: 83969946.53
+    contratos: 147
+    valor: 84283096.53
     fornecedores_top:
     - nome: EMPRESA BRASIL DE COMUNICACAO S.A. - EBC
       n: 1
@@ -9204,8 +9204,8 @@ orgaos:
       id: 00378257000181-2-000067/2026
   br-ibge:
     nome: Instituto Brasileiro de Geografia e Estatística
-    contratos: 376
-    valor: 75222762.99
+    contratos: 377
+    valor: 75224562.99
     fornecedores_top:
     - nome: CNS NACIONAL DE SERVICOS LIMITADA
       n: 1
@@ -9546,8 +9546,8 @@ orgaos:
       id: 33787094000140-2-000654/2026
   br-universidade-federal-da-paraiba:
     nome: Universidade Federal da Paraíba
-    contratos: 6390
-    valor: 74081040.07
+    contratos: 6394
+    valor: 74102045.67
     fornecedores_top:
     - nome: RL INFORMATICA LTDA
       n: 4
@@ -9555,24 +9555,24 @@ orgaos:
     - nome: FORLIMP COMERCIO E DISTRIBUICAO DE PRODUTOS DE PERFUMARIA E LIMPEZA LTDA
       n: 2
       valor: 20755.0
-    - nome: RA NUTRICAO ANIMAL LTDA
-      n: 1
-      valor: 20176.0
-    - nome: B2W INFORMATICA LTDA
-      n: 3
-      valor: 10927.32
-    - nome: ROKA ASSISTANCE COMERCIO E SERVICOS LTDA
-      n: 2
-      valor: 7371.0
-    - nome: J J PRODUTOS LTDA
-      n: 1
-      valor: 6480.0
     - nome: INSERT TI COMERCIO E SERVICOS LTDA
       n: 2
       valor: 5997.0
     - nome: RC SCIENTIFIC COMERCIO DE INSTRUMENTOS ANALITICOS LTDA
       n: 2
       valor: 4566.0
+    - nome: ALCENIRA BORGES DA SILVA
+      n: 3
+      valor: 3150.0
+    - nome: REFINAR EMPRESARIAL ASSESSORIA EM CONTROLES ADMINISTRATIVOS LTDA
+      n: 2
+      valor: 2182.0
+    - nome: B2W INFORMATICA LTDA
+      n: 1
+      valor: 1875.96
+    - nome: QUALITY ATACADO LTDA
+      n: 1
+      valor: 1614.0
     recentes:
     - objeto: "SM 6125/2026-PARA O CCJ\r\nENTREGA ATÉ 30 DIAS APÓS O RECEBIMENTO DA NOTA DE EMPENHO PAGATO CONFORME PROGRAMAÇÃO DA UFPB\r\nLOCAL ALMOXARIFADO\
         \ CENTRAL DA "
@@ -10704,8 +10704,8 @@ orgaos:
       id: 92969856000198-2-001157/2026
   br-funai:
     nome: Fundação Nacional dos Povos Indígenas
-    contratos: 410
-    valor: 60191007.27
+    contratos: 412
+    valor: 60201108.57
     fornecedores_top:
     - nome: LISERVE VIGILANCIA E TRANSPORTE DE VALORES LTDA
       n: 1
@@ -10716,9 +10716,6 @@ orgaos:
     - nome: CATEDRAL DE SERVICOS LTDA
       n: 1
       valor: 1040155.7
-    - nome: MARCA MOTORS VEICULOS LTDA
-      n: 2
-      valor: 732270.0
     - nome: TECNO FACILITIES & SERVICOS LTDA
       n: 1
       valor: 278551.0
@@ -10731,6 +10728,9 @@ orgaos:
     - nome: ROBERVAL B DA SILVA
       n: 1
       valor: 40000.0
+    - nome: M. F. C. DOS SANTOS COMERCIO, SERVICOS E LOCACAO
+      n: 2
+      valor: 39877.07
     recentes:
     - objeto: 'O OBJETO DO PRESENTE INSTRUMENTO É A CONTRATAÇÃO DE SOLUÇÃO DE TECNOLOGIA DA INFORMAÇÃO E COMUNICAÇÃO DE SERVIÇO DE ACESSO À INTERNET BANDA
         LARGA NÃO '
@@ -12584,8 +12584,8 @@ orgaos:
       id: 00531954000120-2-000151/2026
   br-ministerio-da-ciencia-tecnologia-e-inovacao:
     nome: Ministério da Ciência, Tecnologia e Inovação
-    contratos: 628
-    valor: 45608185.75
+    contratos: 635
+    valor: 45650819.48
     fornecedores_top:
     - nome: WAVE TECNOLOGIAS EM SISTEMAS AUDIOVISUAIS LTDA
       n: 1
@@ -12930,8 +12930,8 @@ orgaos:
       id: 01263896000164-2-000908/2026
   br-ministerio-da-defesa:
     nome: Ministério da Defesa
-    contratos: 1713
-    valor: 44366797.12
+    contratos: 1718
+    valor: 44477078.48
     fornecedores_top:
     - nome: COMPWIRE INFORMATICA LTDA
       n: 1
@@ -13624,8 +13624,8 @@ orgaos:
       id: 29979036000140-2-000353/2026
   br-universidade-federal-do-rio-grande-do-norte:
     nome: Universidade Federal do Rio Grande do Norte
-    contratos: 1846
-    valor: 39592970.02
+    contratos: 1854
+    valor: 39648764.11
     fornecedores_top:
     - nome: FUNDACAO NORTE RIO GRANDENSE DE PESQUISA E CULTURA
       n: 6
@@ -13637,8 +13637,8 @@ orgaos:
       n: 1
       valor: 1152950.0
     - nome: NATAL DISTRIBUIDORA DE ALIMENTOS LTDA
-      n: 2
-      valor: 222807.2
+      n: 1
+      valor: 220074.6
     - nome: COMERCIAL D'ANJOUR  ATACADISTA DE HORTIFRUTI LTDA
       n: 1
       valor: 140950.4
@@ -13646,11 +13646,11 @@ orgaos:
       n: 1
       valor: 73395.0
     - nome: C. TRAJANO PINTO MENDONCA
-      n: 2
-      valor: 46402.95
-    - nome: J. ALBERTO SOARES MACIEL LTDA
-      n: 3
-      valor: 43504.5
+      n: 1
+      valor: 46132.95
+    - nome: SECO AMBIENTAL, SERVICOS, PESQUISAS E CONSTRUTORA LTDA
+      n: 1
+      valor: 32271.65
     recentes:
     - objeto: SM 29339/2026 DOD/CCS
       fornecedor: MEGA DENTAL IMPORTACAO, EXPORTACAO E COMERCIO DE PRODUTOS ODONTOLOGICOS LTDA
@@ -13942,8 +13942,8 @@ orgaos:
       id: 24365710000183-2-001422/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-parana:
     nome: Instituto Federal de Educação, Ciência e Tecnologia do Paraná
-    contratos: 1081
-    valor: 39371461.18
+    contratos: 1084
+    valor: 39387280.88
     fornecedores_top:
     - nome: LJS COMERCIO E SERVICOS LTDA
       n: 7
@@ -14295,8 +14295,8 @@ orgaos:
       id: 10652179000115-2-001049/2026
   br-ebserh:
     nome: Empresa Brasileira de Serviços Hospitalares
-    contratos: 124
-    valor: 37759997.88
+    contratos: 125
+    valor: 37831097.88
     fornecedores_top:
     - nome: GE HEALTHCARE DO BRASIL COMERCIO E SERVICOS PARA EQUIPAMENTOS MEDICO-HOSPITALARE
       n: 3
@@ -14638,8 +14638,8 @@ orgaos:
       id: 15126437000143-2-000789/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-maranhao:
     nome: Instituto Federal de Educação, Ciência e Tecnologia do Maranhão
-    contratos: 105
-    valor: 35679464.88
+    contratos: 107
+    valor: 35689804.88
     fornecedores_top:
     - nome: FUNDACAO CULTURAL E DE FOMENTO A PESQUISA, ENSINO, EXTENSAO E INOVACAO - FADEX
       n: 2
@@ -14975,8 +14975,8 @@ orgaos:
       id: 10735145000194-2-000300/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-grande-do-norte:
     nome: Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte
-    contratos: 562
-    valor: 35327906.82
+    contratos: 566
+    valor: 35353459.19
     fornecedores_top:
     - nome: FUNDACAO DE APOIO A EDUCACAO E AO DESENVOLVIMENTO TECNOLOGICO DO RN
       n: 3
@@ -15492,8 +15492,8 @@ orgaos:
       id: 26994558000123-2-000344/2025
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-santa-catarina:
     nome: Instituto Federal de Educação, Ciência e Tecnologia de Santa Catarina
-    contratos: 197
-    valor: 34600347.32
+    contratos: 199
+    valor: 34617759.96
     fornecedores_top:
     - nome: AZ CONSTRUCOES LTDA
       n: 1
@@ -15817,15 +15817,15 @@ orgaos:
       id: 11402887000160-2-000317/2026
   br-ministerio-da-agricultura-e-pecuaria:
     nome: Ministério da Agricultura e Pecuária
-    contratos: 977
-    valor: 34349530.15
+    contratos: 982
+    valor: 34370433.35
     fornecedores_top:
     - nome: ESPACO & FORMA MOVEIS E DIVISORIAS LTDA
       n: 1
       valor: 3276224.15
     - nome: LIFE TECHNOLOGIES BRASIL COMERCIO E INDUSTRIA DE PRODUTOS PARA BIOTECNOLOGIA LTD
-      n: 2
-      valor: 273303.06
+      n: 1
+      valor: 261219.0
     - nome: ABASE COMERCIO E REPRESENTACOES LTDA
       n: 2
       valor: 218867.5
@@ -16390,8 +16390,8 @@ orgaos:
       id: 00375114000116-2-000208/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-piaui:
     nome: Instituto Federal de Educação, Ciência e Tecnologia do Piauí
-    contratos: 557
-    valor: 33057473.03
+    contratos: 562
+    valor: 33073342.03
     fornecedores_top:
     - nome: PROSERV FACILITIES LTDA
       n: 1
@@ -16738,8 +16738,8 @@ orgaos:
       id: 10806496000149-2-000742/2026
   br-ibama:
     nome: Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis
-    contratos: 127
-    valor: 32998350.64
+    contratos: 128
+    valor: 33004000.64
     fornecedores_top:
     - nome: CAMPOS SERVICOS E COMERCIO LTDA
       n: 1
@@ -17080,8 +17080,8 @@ orgaos:
       id: 03659166002156-2-000089/2026
   br-universidade-federal-de-alagoas:
     nome: Universidade Federal de Alagoas
-    contratos: 2685
-    valor: 31134832.91
+    contratos: 2686
+    valor: 31202632.91
     fornecedores_top:
     - nome: J R MACHADO IMP. E EXP LTDA
       n: 1
@@ -17398,8 +17398,8 @@ orgaos:
       id: 24464109000148-2-001040/2026
   br-universidade-federal-de-pernambuco:
     nome: Universidade Federal de Pernambuco
-    contratos: 249
-    valor: 31069190.56
+    contratos: 251
+    valor: 31086034.46
     fornecedores_top:
     - nome: BELA VISTA - GESTAO DE RECURSOS HUMANOS LTDA
       n: 1
@@ -17423,8 +17423,8 @@ orgaos:
       n: 1
       valor: 165000.0
     - nome: A S DE LIMA COMERCIO LTDA.
-      n: 4
-      valor: 50985.0
+      n: 3
+      valor: 49005.0
     recentes:
     - objeto: CONTRATAÇÃO DE SERVIÇOS CONTÍNUOS DE CONTROLE DE PRAGAS DE  CUPINS, RATOS E INSETOS RASTEIROS E VOADORES EM ÁREAS ESPECÍFICAS DO CAMPUS JOAQUIM
         AMAZON
@@ -17742,8 +17742,8 @@ orgaos:
       id: 24134488000108-2-000351/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-espirito-santo:
     nome: Instituto Federal de Educação, Ciência e Tecnologia do Espírito Santo
-    contratos: 423
-    valor: 30087914.24
+    contratos: 427
+    valor: 30102143.7
     fornecedores_top:
     - nome: CONSERMA - SERVICOS, MANUTENCAO E TRANSPORTES LTDA
       n: 1
@@ -18066,8 +18066,8 @@ orgaos:
       id: 10838653000106-2-000737/2026
   br-universidade-federal-de-santa-maria:
     nome: Universidade Federal de Santa Maria
-    contratos: 3190
-    valor: 29232513.16
+    contratos: 3213
+    valor: 29349847.55
     fornecedores_top:
     - nome: SULCLEAN SERVICOS LTDA
       n: 1
@@ -18735,8 +18735,8 @@ orgaos:
       id: 21195755000169-2-000331/2026
   br-universidade-federal-do-ceara:
     nome: Universidade Federal do Ceará
-    contratos: 92
-    valor: 27745030.06
+    contratos: 93
+    valor: 27754030.06
     fornecedores_top:
     - nome: FUNDACAO DE APOIO A CULTURA, A PESQUISA E AO DESENVOLVIMENTO INSTITUCIONAL, CIEN
       n: 5
@@ -19057,8 +19057,8 @@ orgaos:
       id: 07272636000131-2-000436/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-da-paraiba:
     nome: Instituto Federal de Educação, Ciência e Tecnologia da Paraíba
-    contratos: 601
-    valor: 26987693.36
+    contratos: 609
+    valor: 27035533.46
     fornecedores_top:
     - nome: E C DA SILVA LTDA
       n: 2
@@ -19402,8 +19402,8 @@ orgaos:
       id: 10783898000175-2-000605/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-rondonia:
     nome: Instituto Federal de Educação, Ciência e Tecnologia de Rondônia
-    contratos: 358
-    valor: 26386377.89
+    contratos: 362
+    valor: 26399093.94
     fornecedores_top:
     - nome: FUNDACAO DE APOIO AO ENSINO, PESQUISA, EXTENSAO E INTERIORIZACAO DO IFAM
       n: 1
@@ -19745,8 +19745,8 @@ orgaos:
       id: 10817343000105-2-000555/2026
   br-universidade-federal-do-para:
     nome: Universidade Federal do Pará
-    contratos: 432
-    valor: 25705338.98
+    contratos: 439
+    valor: 25743531.88
     fornecedores_top:
     - nome: TAMANDARE INFORMATICA LTDA
       n: 1
@@ -20092,8 +20092,8 @@ orgaos:
       id: 34621748000123-2-000524/2026
   br-fundacao-universidade-federal-de-mato-grosso-do-sul:
     nome: Fundação Universidade Federal de Mato Grosso do Sul
-    contratos: 1113
-    valor: 24632898.78
+    contratos: 1136
+    valor: 24772812.09
     fornecedores_top:
     - nome: FUNDACAO DE APOIO A PESQUISA AO ENSINO E A CULTURA
       n: 2
@@ -20441,8 +20441,8 @@ orgaos:
       id: 15461510000133-2-001146/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-minas-gerais:
     nome: Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais
-    contratos: 651
-    valor: 24062513.84
+    contratos: 655
+    valor: 24094298.84
     fornecedores_top:
     - nome: WATT CONSTRUTORA LTDA
       n: 4
@@ -20950,8 +20950,8 @@ orgaos:
       id: 00043711000143-2-000199/2025
   br-universidade-federal-fluminense:
     nome: Universidade Federal Fluminense
-    contratos: 1963
-    valor: 23506928.82
+    contratos: 1969
+    valor: 23519440.32
     fornecedores_top:
     - nome: FUNDACAO EUCLIDES DA CUNHA DE APOIO INSTITUCIONAL A UFF
       n: 6
@@ -20971,12 +20971,12 @@ orgaos:
     - nome: QUALYTECK RJ TECNOLOGIA EM INFORMATICA LTDA
       n: 7
       valor: 22047.66
-    - nome: NOVA BRASIL LICITACOES LTDA
-      n: 1
-      valor: 19483.55
     - nome: RENATO N BARROTE D BALIEIRO DISTRIBUIDORA LTDA
       n: 1
       valor: 18247.5
+    - nome: GREEN MED DISTRIBUIDORA E IMPORTADORA DE MEDICAMENTOS E PRODUTOS PARA SAUDE LTDA
+      n: 3
+      valor: 10742.21
     recentes:
     - objeto: 'APOIO AO PROJETO NÚCLEO DE PRÁTICAS JURÍDICAS/NPJ - DEPARTAMENTO DE DIREITO DE VOLTA REDONDA. CUSTO OPERACIONAL R$ 5.800,00. COORDENADOR:
         LUIS HENRIQU'
@@ -21268,8 +21268,8 @@ orgaos:
       id: 28523215000106-2-001371/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-mato-grosso-do-sul:
     nome: Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso do Sul
-    contratos: 109
-    valor: 22441812.17
+    contratos: 110
+    valor: 22441878.17
     fornecedores_top:
     - nome: FUNDACAO DE EDUCACAO TECNOLOGICA E CULTURAL DA PARAIBA FUNETEC PB
       n: 1
@@ -22359,8 +22359,8 @@ orgaos:
       id: 10870883000144-2-000216/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-ceara:
     nome: Instituto Federal de Educação, Ciência e Tecnologia do Ceará
-    contratos: 634
-    valor: 20315832.01
+    contratos: 640
+    valor: 20381093.01
     fornecedores_top:
     - nome: PROTEMAXI SEGURANCA PATRIMONIAL ARMADA LTDA
       n: 2
@@ -22997,8 +22997,8 @@ orgaos:
       id: 03008521000183-2-000008/2025
   br-companhia-de-pesquisa-de-recursos-minerais:
     nome: Companhia de Pesquisa de Recursos Minerais
-    contratos: 810
-    valor: 18714229.78
+    contratos: 815
+    valor: 19041765.94
     fornecedores_top:
     - nome: SHINE RIO SERVICOS LTDA
       n: 1
@@ -23345,8 +23345,8 @@ orgaos:
       id: 00091652000189-2-000578/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-rio-grande-do-sul:
     nome: Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul
-    contratos: 359
-    valor: 18679557.51
+    contratos: 360
+    valor: 18702557.51
     fornecedores_top:
     - nome: PLANSERVICE TERCEIRIZACAO DE SERVICOS LTDA
       n: 1
@@ -23686,8 +23686,8 @@ orgaos:
       id: 10637926000146-2-000721/2026
   br-universidade-federal-do-parana:
     nome: Universidade Federal do Paraná
-    contratos: 4748
-    valor: 15686590.51
+    contratos: 4821
+    valor: 15759985.98
     fornecedores_top:
     - nome: ALCANCAR ASSESSORIA LTDA
       n: 1
@@ -24696,8 +24696,8 @@ orgaos:
       id: 06517387000134-2-000171/2026
   br-universidade-federal-do-rio-de-janeiro:
     nome: Universidade Federal do Rio de Janeiro
-    contratos: 1860
-    valor: 14407465.36
+    contratos: 1868
+    valor: 14450924.54
     fornecedores_top:
     - nome: CONSEG EQUIPAMENTOS E SISTEMAS CONTRA INCENDIO LTDA
       n: 1
@@ -25017,10 +25017,336 @@ orgaos:
       assinado: '2026-10-16'
       vigencia_fim: '2026-12-31'
       id: 33663683000116-2-001599/2026
+  br-instituto-federal-de-educacao-ciencia-e-tecnologia-baiano:
+    nome: Instituto Federal de Educação, Ciência e Tecnologia Baiano
+    contratos: 359
+    valor: 14341809.16
+    fornecedores_top:
+    - nome: ESTILO SOLUCOES EMPRESARIAIS LTDA
+      n: 2
+      valor: 2933238.48
+    - nome: ALCANCAR ASSESSORIA LTDA
+      n: 1
+      valor: 897321.12
+    - nome: FLEXFORM INDUSTRIA E COMERCIO DE MOVEIS LTDA
+      n: 1
+      valor: 422999.0
+    - nome: LEGI DISTRIBUIDORA LTDA
+      n: 1
+      valor: 259978.5
+    - nome: G.N. LOPES & CIA. LTDA
+      n: 1
+      valor: 253675.0
+    - nome: MOE SERVICOS LTDA
+      n: 1
+      valor: 195200.0
+    - nome: STB COMERCIO E DISTRIBUIDORA LTDA
+      n: 1
+      valor: 181143.0
+    - nome: CONSTRUTORA POSSAMAI LTDA
+      n: 1
+      valor: 169050.0
+    recentes:
+    - objeto: ATENDER DESPESA COM CONTRATAÇÃO DE SERVIÇOS GRÁFICOS PARA ATENDIMENTO DAS AÇÕES DE DIVULGAÇÃO INSTITUCIONAL DO IF BAIANO - CAMPUS BOM JESUS
+        DA LAPA.
+      fornecedor: ANDERSON DOS SANTOS SOUSA
+      cnpj_fornecedor: '67301246000174'
+      valor: 1966.37
+      assinado: '2026-11-10'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000693/2026
+    - objeto: CONTRATAÇÃO E EXECUÇÃO DOS SERVIÇOS CONTINUADOS DE LIMPEZA, CONSERVAÇÃO DE ÁREA E APOIO ADMINISTRATIVO COM DISPONIBILIZAÇÃO DE MÃO DE OBRA
+        EM REGIME D
+      fornecedor: ESTILO SOLUCOES EMPRESARIAIS LTDA
+      cnpj_fornecedor: 08563754000161
+      valor: 2385286.68
+      assinado: '2026-11-05'
+      vigencia_fim: '2027-12-01'
+      id: 10724903000179-2-000679/2026
+    - objeto: EXECUÇÃO DE SERVIÇOS CONTINUADOS DE LIMPEZA, CONSERVAÇÃO DE ÁREA E APOIO ADMINISTRATIVO, COM DISPONIBILIZAÇÃO DE MÃO DE OBRA EM REGIME DE
+        DEDICAÇÃO EX
+      fornecedor: ESTILO SOLUCOES EMPRESARIAIS LTDA
+      cnpj_fornecedor: 08563754000161
+      valor: 547951.8
+      assinado: '2026-11-05'
+      vigencia_fim: '2026-11-21'
+      id: 10724903000179-2-000680/2026
+    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS DA AGRICULTURA FAMILIAR.
+      fornecedor: COOPERATIVA DE PRODUCAO E COMERCIALIZACAO DOS PRODUTOS DA AGRICULTURA FAMILIAR D
+      cnpj_fornecedor: '23368101000115'
+      valor: 4216.23
+      assinado: '2026-11-03'
+      vigencia_fim: '2027-11-04'
+      id: 10724903000179-2-000651/2026
+    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS DA AGRICULTURA FAMILIAR.
+      fornecedor: ASSOCIACAO DOS PEQUENOS PRODUTORES RURAIS DO JACARE
+      cnpj_fornecedor: 02529421000130
+      valor: 28750.0
+      assinado: '2026-11-03'
+      vigencia_fim: '2027-11-04'
+      id: 10724903000179-2-000652/2026
+    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS DA AGRICULTURA FAMILIAR.
+      fornecedor: ASSOCIACAO CULTURAL, AGROECOLOGICA E PROTECAO AMBIENTAL DO TERRITORIO DAS GROTAS
+      cnpj_fornecedor: '62131112000139'
+      valor: 77929.11
+      assinado: '2026-11-03'
+      vigencia_fim: '2027-11-04'
+      id: 10724903000179-2-000653/2026
+    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS DA AGRICULTURA FAMILIAR.
+      fornecedor: ASSOCIACAO DOS PEQUENOS PROD.RURAIS DA REG.R.MULUNGU
+      cnpj_fornecedor: 01154009000110
+      valor: 5456.03
+      assinado: '2026-11-03'
+      vigencia_fim: '2027-11-04'
+      id: 10724903000179-2-000654/2026
+    - objeto: CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS CONTÍNUOS DE CONTROLE, SUPERVISÃO, MANUTENÇÃO CORRETIVA E PREVENTIVA DE EQUIPAMENTO
+        DE
+      fornecedor: MOE SERVICOS LTDA
+      cnpj_fornecedor: '23370206000109'
+      valor: 195200.0
+      assinado: '2026-11-03'
+      vigencia_fim: '2027-11-02'
+      id: 10724903000179-2-000660/2026
+    - objeto: AQUISIÇÃO E MONTAGEM DE MOBILIÁRIO.
+      fornecedor: FLEXFORM INDUSTRIA E COMERCIO DE MOVEIS LTDA
+      cnpj_fornecedor: '49058654000165'
+      valor: 422999.0
+      assinado: '2026-11-02'
+      vigencia_fim: '2027-11-02'
+      id: 10724903000179-2-000662/2026
+    - objeto: 'CONTRATAÇÃO DE SERVIÇO DE RECARGA DE EX NTORES E TESTE HIDROSTÁ CO EM MANGUEIRAS PARA COMBATE A INCÊNDIO PARA O INS TUTO FEDERAL DE EDUCAÇÃO,
+        CIÊNCIA '
+      fornecedor: SANTOLIN EXTINTORES LTDA
+      cnpj_fornecedor: '13412810000105'
+      valor: 4000.0
+      assinado: '2026-10-29'
+      vigencia_fim: '2027-10-28'
+      id: 10724903000179-2-000649/2026
+    - objeto: CONTRATAÇÃO DE SERVIÇOS CONTÍNUOS DE TELEFONIA MÓVEL PESSOAL DE DADOS E VOZ (SMP) E GERENCIAMENTO DE DISPOSITIVOS MÓVEIS (MDM), E OPÇÃO DE
+        APARELHOS T
+      fornecedor: CLARO S.A.
+      cnpj_fornecedor: '40432544000147'
+      valor: 9840.0
+      assinado: '2026-10-23'
+      vigencia_fim: '2029-04-23'
+      id: 10724903000179-2-000650/2026
+    - objeto: CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS CONTÍNUOS DE OUTSOURCING DE IMPRESSÃO DEPARTAMENTAL PARA O IF BAIANO - REITORIA
+      fornecedor: U.M. SOLUCOES EM IMPRESSAO LTDA.
+      cnpj_fornecedor: '11984609000169'
+      valor: 32275.0
+      assinado: '2026-10-22'
+      vigencia_fim: '2027-10-21'
+      id: 10724903000179-2-000633/2026
+    - objeto: "ATENDER DESPESA COM AQUISICAO DE GENEROS ALIMENTICIOS PARA O INSTITUTO FEDERAL BAIANO -\r\nCAMPUS BOM JESUS DA LAPA"
+      fornecedor: COMERCIO J.S. LTDA
+      cnpj_fornecedor: '66012411000105'
+      valor: 37314.8
+      assinado: '2026-10-22'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000671/2026
+    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS PARA ATENDER À PRODUÇÃO DE REFEIÇÕES DO REFEITÓRIO DO IF BAIANO - CAMPUS TEIXEIRA DE FREITAS
+      fornecedor: G.N. LOPES & CIA. LTDA
+      cnpj_fornecedor: '19022416000139'
+      valor: 253675.0
+      assinado: '2026-10-21'
+      vigencia_fim: '2027-10-23'
+      id: 10724903000179-2-000630/2026
+    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS PARA ATENDER À PRODUÇÃO DE REFEIÇÕES DO REFEITÓRIO DO IF BAIANO - CAMPUS TEIXEIRA DE FREITAS
+      fornecedor: LEGI DISTRIBUIDORA LTDA
+      cnpj_fornecedor: '31370536000122'
+      valor: 259978.5
+      assinado: '2026-10-21'
+      vigencia_fim: '2027-10-21'
+      id: 10724903000179-2-000642/2026
+    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS PARA ATENDER À PRODUÇÃO DE REFEIÇÕES DO REFEITÓRIO DO IF BAIANO - CAMPUS TEIXEIRA DE FREITAS
+      fornecedor: STB COMERCIO E DISTRIBUIDORA LTDA
+      cnpj_fornecedor: '31801716000111'
+      valor: 181143.0
+      assinado: '2026-10-21'
+      vigencia_fim: '2027-10-21'
+      id: 10724903000179-2-000643/2026
+    - objeto: AQUISIÇÃO DE GÁS LIQUEFEITO DE PETRÓLEO PARA ATENDER AO REFEITÓRIO DO IF BAIANO CAMPUS URUÇUCA, ATRAVÉS DO PREGÃO ELETRÔNICO (SRP) Nº 90002/2026.
+        PROC
+      fornecedor: QUALIGAS MS LTDA
+      cnpj_fornecedor: '47648890000106'
+      valor: 4753.0
+      assinado: '2026-10-21'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000656/2026
+    - objeto: ATENDER DESPESA COM AQUISICAO DE GENEROS ALIMENTICIOS PARA O INSTITUTO FEDERAL BAIANO - CAMPUS BOM JESUS DA LAPA.
+      fornecedor: SILVIA HELENA ALVES
+      cnpj_fornecedor: '13901553000167'
+      valor: 4250.0
+      assinado: '2026-10-21'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000659/2026
+    - objeto: AQUISICAO DE MEDALHAS E TROFEUS PARA ENCONTRO DOS SERVIDORES-2026 CONFORME PROCESSO 23327.253632.2026-34.
+      fornecedor: M.M.A ARTEFATOS EM ACRILICO, COMERCIO, INDUSTRIA, SERVICOS LTDA
+      cnpj_fornecedor: 00899984000194
+      valor: 9765.0
+      assinado: '2026-10-21'
+      vigencia_fim: '2027-01-31'
+      id: 10724903000179-2-000684/2026
+    - objeto: "ATENDER DESPESA COM AQUISICAO DE GENEROS ALIMENTICIOS PARA O REFEITORIO DO INSTITUTO\r\nFEDERAL BAIANO - CAMPUS BOM JESUS DA LAPA."
+      fornecedor: MERCADINHO SAMPAIO LTDA
+      cnpj_fornecedor: '73898397000154'
+      valor: 3472.5
+      assinado: '2026-10-21'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000691/2026
+    - objeto: ATENDER DESPESA COM AQUISICAO DE GENEROS ALIMENTICIOS PARA O REFEITORIO DO INSTITUTO FEDERAL BAIANO - CAMPUS BOM JESUS DA LAPA.
+      fornecedor: LUCIANE COUTINHO DA SILVA FIGUEREDO
+      cnpj_fornecedor: '11647212000181'
+      valor: 1200.0
+      assinado: '2026-10-21'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000692/2026
+    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS DA AGRICULTURA FAMILIAR PARA O ATENDIMENTO AO PROGRAMA NACIONAL DE ALIMENTAÇÃO ESCOLAR – PNAE.
+      fornecedor: COOPERATIVA DE PRODUCAO AGROPECUARIA DE GILO E REGIAO LTDA
+      cnpj_fornecedor: 07417529000154
+      valor: 60000.0
+      assinado: '2026-10-20'
+      vigencia_fim: '2027-10-20'
+      id: 10724903000179-2-000638/2026
+    - objeto: ADESÃO A ARP Nº 00050/2026, UASG 120013, DO CENTRO DE LANÇAMENTO DE ALCÂNTARA, ITENS 1 E 2 – AQUISIÇÃO DE GÁS LIQUEFEITO DE PETRÓLEO (GLP
+        13 KG E 45 K
+      fornecedor: LARABEN COMERCIAL DE GLP E BEBIDAS LTDA
+      cnpj_fornecedor: '40710323000193'
+      valor: 10500.0
+      assinado: '2026-10-20'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000689/2026
+    - objeto: CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A MODERNIZAÇÃO DOS ESPAÇOS LÚDICOS, DESPORTIVOS E PEDAGÓGICOS (PISOS PARA REVESTIMENTO E RECUPERAÇÃO
+        DAS QUA
+      fornecedor: CONSTRUTORA POSSAMAI LTDA
+      cnpj_fornecedor: '05725151000120'
+      valor: 169050.0
+      assinado: '2026-10-19'
+      vigencia_fim: '2027-10-18'
+      id: 10724903000179-2-000619/2026
+    - objeto: ATENDER DESPESA COM AQUISIÇÃO DE MATERIAIS DE MANUTENÇÃO E REPARO, DESTINADOS AO ATENDIMENTO DAS DEMANDAS DO IF BAIANO – CAMPUS SANTA INÊS.
+      fornecedor: MP SANDES COELHO LTDA.
+      cnpj_fornecedor: '15726706000102'
+      valor: 16610.3
+      assinado: '2026-10-19'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000625/2026
+    - objeto: 'AQUISICAO DE MATERIAL DE CONSUMO PARA OS DISCENTES DO IF BAIANO CAMPUS URUCUCA PREGAO ELETRONICO N° 90003/2026. PROCESSO NO SUAP: 23335.251849.2026-19'
+      fornecedor: BAHIA CESTAS LTDA
+      cnpj_fornecedor: 05788360000113
+      valor: 23218.0
+      assinado: '2026-10-16'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000661/2026
+    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS PARA ATENDER AO REFEITÓRIO DO IF BAIANO CAMPUS URUÇUCA, ATRAVÉS DO PREGÃO ELETRÔNICO (SRP) Nº 01/2026. 23335.251852.
+      fornecedor: ARCANJO ALIMENTOS E HORTIFRUTI LTDA
+      cnpj_fornecedor: '58574067000110'
+      valor: 3455.4
+      assinado: '2026-10-16'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000686/2026
+    - objeto: 'CONTRATAÇÃO DE SERVIÇO DE GERENCIAMENTO DE MEIOS PARA OPERAÇÃO DO FORNECIMENTO, DE MATERIAL DE CONSUMO
+
+        DE USO NECESSÁRIOS AO ATENDIMENTO DE DEMANDAS N'
+      fornecedor: THS TECNOLOGIA INFORMACAO E COMUNICACAO LTDA
+      cnpj_fornecedor: '10757593000199'
+      valor: 140000.0
+      assinado: '2026-10-14'
+      vigencia_fim: '2027-10-14'
+      id: 10724903000179-2-000613/2026
+    - objeto: ATENDER DESPESA COM AQUISIÇÃO DE ALIMENTOS PARA A  CONTINUIDADE DO FUNCIONAMENTO DO SETOR NUTRIÇÃO ESCOLAR, NA OFERTA DA ALIMENTAÇÃO À COMUNIDADE
+        DO C
+      fornecedor: MVR NOVIDADES LTDA
+      cnpj_fornecedor: 03935567000148
+      valor: 45990.0
+      assinado: '2026-10-14'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000616/2026
+    - objeto: 'ATENDER DESPESA COM CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM MANUTENÇÃO DE  CÂMARA FRIGORÍFICA, PARA ATENDIMENTO DAS NECESSIDADES DO INSTITUTO
+        FEDERAL '
+      fornecedor: ELISIO COSTA DOS SANTOS LTDA
+      cnpj_fornecedor: '14684839000109'
+      valor: 9800.0
+      assinado: '2026-10-14'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000624/2026
+    - objeto: CONTRATACAO DE LICENCA DE USO DO SOFTWARE BANCO DE PRECOS CONFORME PROCESSO 23327.253025.2026-74.
+      fornecedor: NP TECNOLOGIA E GESTAO DE DADOS LTDA
+      cnpj_fornecedor: 07797967000195
+      valor: 12750.0
+      assinado: '2026-10-14'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000636/2026
+    - objeto: ATENDER DESPESA COM CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A EXECUÇÃO DE SERVIÇOS DE DIAGNÓSTICO, MANUTENÇÃO E REPARO DO SISTEMA DE ALIMENTAÇÃO/INJ
+      fornecedor: JOTAMAR COMERCIO DE PECAS E TRANSPORTES RODOVIARIO LTDA.
+      cnpj_fornecedor: '14378830000161'
+      valor: 12270.02
+      assinado: '2026-10-14'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000647/2026
+    - objeto: ATENDER DESPESA COM CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A EXECUÇÃO DE SERVIÇOS DE DIAGNÓSTICO, MANUTENÇÃO E REPARO DO SISTEMA DE ALIMENTAÇÃO/INJ
+      fornecedor: JOTAMAR COMERCIO DE PECAS E TRANSPORTES RODOVIARIO LTDA.
+      cnpj_fornecedor: '14378830000161'
+      valor: 2990.0
+      assinado: '2026-10-14'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000648/2026
+    - objeto: CONTRATAÇÃO DE SERVIÇO DE LINK PARA CONEXÕES DEDICADAS DE ACESSO À INTERNET, POR MEIO DE FIBRA ÓPTICA, COM VELOCIDADE DE 600 MBPS, DOIS ENDEREÇOS
+        IPV4
+      fornecedor: POWER TELECOMUNICACOES LTDA
+      cnpj_fornecedor: 07802639000130
+      valor: 5400.0
+      assinado: '2026-10-09'
+      vigencia_fim: '2027-10-08'
+      id: 10724903000179-2-000601/2026
+    - objeto: 'CONTRATAÇÃO EMPRESA ESPECIALIZADA EM HIGIENIZAÇÃO E LAVAGEM DE RESERVATÓRIOS DE ÁGUA POTÁVEL PARA MANTER O PADRÃO DE POTABILIDADE DA ÁGUA
+        DES NADA AO '
+      fornecedor: NRS ENGENHARIA LTDA
+      cnpj_fornecedor: '52183861000156'
+      valor: 6086.0
+      assinado: '2026-10-09'
+      vigencia_fim: '2027-10-08'
+      id: 10724903000179-2-000614/2026
+    - objeto: CONTRATAÇÃO DE EMPRESA PARA A PRESTAÇÃO DE SERVIÇOS CONTÍNUOS DE TRADUTOR E INTÉRPRETE DE LÍNGUA BRASILEIRA DE SINAIS - LIBRAS
+      fornecedor: ALCANCAR ASSESSORIA LTDA
+      cnpj_fornecedor: 07031475000194
+      valor: 897321.12
+      assinado: '2026-10-09'
+      vigencia_fim: '2027-10-09'
+      id: 10724903000179-2-000646/2026
+    - objeto: AQUISIÇÃO DE MATERIAIS PARA TRATAMENTO DA PISCINA.
+      fornecedor: NOVAC INDUSTRIA QUIMICA LTDA
+      cnpj_fornecedor: '11015846000111'
+      valor: 17055.4
+      assinado: '2026-10-09'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000705/2026
+    - objeto: AQUISIÇÃO DE MOCHILAS PARA O IF BAIANO - CAMPUS GOVERNADOR MANGABEIRA.
+      fornecedor: 52.098.237 FABIANO BRAGHETTO BIANO
+      cnpj_fornecedor: '52098237000150'
+      valor: 29200.0
+      assinado: '2026-10-08'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000623/2026
+    - objeto: 'PAGAMENTO DE DESPESAS COM A FINALIDADE DE AQUISICAO DE MOCHILAS INSTITUCIONAIS PERSONALIZADAS PARA OS SERVIDORES DO INSTITUTO FEDERAL BAIANO
+        - CAMPUS '
+      fornecedor: ELO CRIACOES TEXTIL LTDA
+      cnpj_fornecedor: '33948013000146'
+      valor: 9895.0
+      assinado: '2026-10-08'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000672/2026
+    - objeto: AQUISIÇÃO DE GENÊROS ALIMENTÍCIOS PARA O INSTITUTO FEDERAL BAIANO - CAMPUS BOM JESUS DA LAPA.
+      fornecedor: VALFLOR DISTRIBUIDORA LTDA
+      cnpj_fornecedor: '35677306000161'
+      valor: 1503.6
+      assinado: '2026-10-07'
+      vigencia_fim: '2026-12-31'
+      id: 10724903000179-2-000598/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-fluminense:
     nome: Instituto Federal de Educação, Ciência e Tecnologia Fluminense
-    contratos: 209
-    valor: 14231743.24
+    contratos: 210
+    valor: 14248046.24
     fornecedores_top:
     - nome: NEWEN CONSTRUTORA E INCORPORADORA LTDA
       n: 1
@@ -25344,332 +25670,6 @@ orgaos:
       assinado: '2026-10-08'
       vigencia_fim: '2026-12-31'
       id: 10779511000107-2-000660/2026
-  br-instituto-federal-de-educacao-ciencia-e-tecnologia-baiano:
-    nome: Instituto Federal de Educação, Ciência e Tecnologia Baiano
-    contratos: 349
-    valor: 14025786.12
-    fornecedores_top:
-    - nome: ESTILO SOLUCOES EMPRESARIAIS LTDA
-      n: 2
-      valor: 2933238.48
-    - nome: ALCANCAR ASSESSORIA LTDA
-      n: 1
-      valor: 897321.12
-    - nome: FLEXFORM INDUSTRIA E COMERCIO DE MOVEIS LTDA
-      n: 1
-      valor: 422999.0
-    - nome: LEGI DISTRIBUIDORA LTDA
-      n: 1
-      valor: 259978.5
-    - nome: G.N. LOPES & CIA. LTDA
-      n: 1
-      valor: 253675.0
-    - nome: MOE SERVICOS LTDA
-      n: 1
-      valor: 195200.0
-    - nome: STB COMERCIO E DISTRIBUIDORA LTDA
-      n: 1
-      valor: 181143.0
-    - nome: CONSTRUTORA POSSAMAI LTDA
-      n: 1
-      valor: 169050.0
-    recentes:
-    - objeto: ATENDER DESPESA COM CONTRATAÇÃO DE SERVIÇOS GRÁFICOS PARA ATENDIMENTO DAS AÇÕES DE DIVULGAÇÃO INSTITUCIONAL DO IF BAIANO - CAMPUS BOM JESUS
-        DA LAPA.
-      fornecedor: ANDERSON DOS SANTOS SOUSA
-      cnpj_fornecedor: '67301246000174'
-      valor: 1966.37
-      assinado: '2026-11-10'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000693/2026
-    - objeto: CONTRATAÇÃO E EXECUÇÃO DOS SERVIÇOS CONTINUADOS DE LIMPEZA, CONSERVAÇÃO DE ÁREA E APOIO ADMINISTRATIVO COM DISPONIBILIZAÇÃO DE MÃO DE OBRA
-        EM REGIME D
-      fornecedor: ESTILO SOLUCOES EMPRESARIAIS LTDA
-      cnpj_fornecedor: 08563754000161
-      valor: 2385286.68
-      assinado: '2026-11-05'
-      vigencia_fim: '2027-12-01'
-      id: 10724903000179-2-000679/2026
-    - objeto: EXECUÇÃO DE SERVIÇOS CONTINUADOS DE LIMPEZA, CONSERVAÇÃO DE ÁREA E APOIO ADMINISTRATIVO, COM DISPONIBILIZAÇÃO DE MÃO DE OBRA EM REGIME DE
-        DEDICAÇÃO EX
-      fornecedor: ESTILO SOLUCOES EMPRESARIAIS LTDA
-      cnpj_fornecedor: 08563754000161
-      valor: 547951.8
-      assinado: '2026-11-05'
-      vigencia_fim: '2026-11-21'
-      id: 10724903000179-2-000680/2026
-    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS DA AGRICULTURA FAMILIAR.
-      fornecedor: COOPERATIVA DE PRODUCAO E COMERCIALIZACAO DOS PRODUTOS DA AGRICULTURA FAMILIAR D
-      cnpj_fornecedor: '23368101000115'
-      valor: 4216.23
-      assinado: '2026-11-03'
-      vigencia_fim: '2027-11-04'
-      id: 10724903000179-2-000651/2026
-    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS DA AGRICULTURA FAMILIAR.
-      fornecedor: ASSOCIACAO DOS PEQUENOS PRODUTORES RURAIS DO JACARE
-      cnpj_fornecedor: 02529421000130
-      valor: 28750.0
-      assinado: '2026-11-03'
-      vigencia_fim: '2027-11-04'
-      id: 10724903000179-2-000652/2026
-    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS DA AGRICULTURA FAMILIAR.
-      fornecedor: ASSOCIACAO CULTURAL, AGROECOLOGICA E PROTECAO AMBIENTAL DO TERRITORIO DAS GROTAS
-      cnpj_fornecedor: '62131112000139'
-      valor: 77929.11
-      assinado: '2026-11-03'
-      vigencia_fim: '2027-11-04'
-      id: 10724903000179-2-000653/2026
-    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS DA AGRICULTURA FAMILIAR.
-      fornecedor: ASSOCIACAO DOS PEQUENOS PROD.RURAIS DA REG.R.MULUNGU
-      cnpj_fornecedor: 01154009000110
-      valor: 5456.03
-      assinado: '2026-11-03'
-      vigencia_fim: '2027-11-04'
-      id: 10724903000179-2-000654/2026
-    - objeto: CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS CONTÍNUOS DE CONTROLE, SUPERVISÃO, MANUTENÇÃO CORRETIVA E PREVENTIVA DE EQUIPAMENTO
-        DE
-      fornecedor: MOE SERVICOS LTDA
-      cnpj_fornecedor: '23370206000109'
-      valor: 195200.0
-      assinado: '2026-11-03'
-      vigencia_fim: '2027-11-02'
-      id: 10724903000179-2-000660/2026
-    - objeto: AQUISIÇÃO E MONTAGEM DE MOBILIÁRIO.
-      fornecedor: FLEXFORM INDUSTRIA E COMERCIO DE MOVEIS LTDA
-      cnpj_fornecedor: '49058654000165'
-      valor: 422999.0
-      assinado: '2026-11-02'
-      vigencia_fim: '2027-11-02'
-      id: 10724903000179-2-000662/2026
-    - objeto: 'CONTRATAÇÃO DE SERVIÇO DE RECARGA DE EX NTORES E TESTE HIDROSTÁ CO EM MANGUEIRAS PARA COMBATE A INCÊNDIO PARA O INS TUTO FEDERAL DE EDUCAÇÃO,
-        CIÊNCIA '
-      fornecedor: SANTOLIN EXTINTORES LTDA
-      cnpj_fornecedor: '13412810000105'
-      valor: 4000.0
-      assinado: '2026-10-29'
-      vigencia_fim: '2027-10-28'
-      id: 10724903000179-2-000649/2026
-    - objeto: CONTRATAÇÃO DE SERVIÇOS CONTÍNUOS DE TELEFONIA MÓVEL PESSOAL DE DADOS E VOZ (SMP) E GERENCIAMENTO DE DISPOSITIVOS MÓVEIS (MDM), E OPÇÃO DE
-        APARELHOS T
-      fornecedor: CLARO S.A.
-      cnpj_fornecedor: '40432544000147'
-      valor: 9840.0
-      assinado: '2026-10-23'
-      vigencia_fim: '2029-04-23'
-      id: 10724903000179-2-000650/2026
-    - objeto: CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A PRESTAÇÃO DE SERVIÇOS CONTÍNUOS DE OUTSOURCING DE IMPRESSÃO DEPARTAMENTAL PARA O IF BAIANO - REITORIA
-      fornecedor: U.M. SOLUCOES EM IMPRESSAO LTDA.
-      cnpj_fornecedor: '11984609000169'
-      valor: 32275.0
-      assinado: '2026-10-22'
-      vigencia_fim: '2027-10-21'
-      id: 10724903000179-2-000633/2026
-    - objeto: "ATENDER DESPESA COM AQUISICAO DE GENEROS ALIMENTICIOS PARA O INSTITUTO FEDERAL BAIANO -\r\nCAMPUS BOM JESUS DA LAPA"
-      fornecedor: COMERCIO J.S. LTDA
-      cnpj_fornecedor: '66012411000105'
-      valor: 37314.8
-      assinado: '2026-10-22'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000671/2026
-    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS PARA ATENDER À PRODUÇÃO DE REFEIÇÕES DO REFEITÓRIO DO IF BAIANO - CAMPUS TEIXEIRA DE FREITAS
-      fornecedor: G.N. LOPES & CIA. LTDA
-      cnpj_fornecedor: '19022416000139'
-      valor: 253675.0
-      assinado: '2026-10-21'
-      vigencia_fim: '2027-10-23'
-      id: 10724903000179-2-000630/2026
-    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS PARA ATENDER À PRODUÇÃO DE REFEIÇÕES DO REFEITÓRIO DO IF BAIANO - CAMPUS TEIXEIRA DE FREITAS
-      fornecedor: LEGI DISTRIBUIDORA LTDA
-      cnpj_fornecedor: '31370536000122'
-      valor: 259978.5
-      assinado: '2026-10-21'
-      vigencia_fim: '2027-10-21'
-      id: 10724903000179-2-000642/2026
-    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS PARA ATENDER À PRODUÇÃO DE REFEIÇÕES DO REFEITÓRIO DO IF BAIANO - CAMPUS TEIXEIRA DE FREITAS
-      fornecedor: STB COMERCIO E DISTRIBUIDORA LTDA
-      cnpj_fornecedor: '31801716000111'
-      valor: 181143.0
-      assinado: '2026-10-21'
-      vigencia_fim: '2027-10-21'
-      id: 10724903000179-2-000643/2026
-    - objeto: AQUISIÇÃO DE GÁS LIQUEFEITO DE PETRÓLEO PARA ATENDER AO REFEITÓRIO DO IF BAIANO CAMPUS URUÇUCA, ATRAVÉS DO PREGÃO ELETRÔNICO (SRP) Nº 90002/2026.
-        PROC
-      fornecedor: QUALIGAS MS LTDA
-      cnpj_fornecedor: '47648890000106'
-      valor: 4753.0
-      assinado: '2026-10-21'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000656/2026
-    - objeto: ATENDER DESPESA COM AQUISICAO DE GENEROS ALIMENTICIOS PARA O INSTITUTO FEDERAL BAIANO - CAMPUS BOM JESUS DA LAPA.
-      fornecedor: SILVIA HELENA ALVES
-      cnpj_fornecedor: '13901553000167'
-      valor: 4250.0
-      assinado: '2026-10-21'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000659/2026
-    - objeto: AQUISICAO DE MEDALHAS E TROFEUS PARA ENCONTRO DOS SERVIDORES-2026 CONFORME PROCESSO 23327.253632.2026-34.
-      fornecedor: M.M.A ARTEFATOS EM ACRILICO, COMERCIO, INDUSTRIA, SERVICOS LTDA
-      cnpj_fornecedor: 00899984000194
-      valor: 9765.0
-      assinado: '2026-10-21'
-      vigencia_fim: '2027-01-31'
-      id: 10724903000179-2-000684/2026
-    - objeto: "ATENDER DESPESA COM AQUISICAO DE GENEROS ALIMENTICIOS PARA O REFEITORIO DO INSTITUTO\r\nFEDERAL BAIANO - CAMPUS BOM JESUS DA LAPA."
-      fornecedor: MERCADINHO SAMPAIO LTDA
-      cnpj_fornecedor: '73898397000154'
-      valor: 3472.5
-      assinado: '2026-10-21'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000691/2026
-    - objeto: ATENDER DESPESA COM AQUISICAO DE GENEROS ALIMENTICIOS PARA O REFEITORIO DO INSTITUTO FEDERAL BAIANO - CAMPUS BOM JESUS DA LAPA.
-      fornecedor: LUCIANE COUTINHO DA SILVA FIGUEREDO
-      cnpj_fornecedor: '11647212000181'
-      valor: 1200.0
-      assinado: '2026-10-21'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000692/2026
-    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS DA AGRICULTURA FAMILIAR PARA O ATENDIMENTO AO PROGRAMA NACIONAL DE ALIMENTAÇÃO ESCOLAR – PNAE.
-      fornecedor: COOPERATIVA DE PRODUCAO AGROPECUARIA DE GILO E REGIAO LTDA
-      cnpj_fornecedor: 07417529000154
-      valor: 60000.0
-      assinado: '2026-10-20'
-      vigencia_fim: '2027-10-20'
-      id: 10724903000179-2-000638/2026
-    - objeto: ADESÃO A ARP Nº 00050/2026, UASG 120013, DO CENTRO DE LANÇAMENTO DE ALCÂNTARA, ITENS 1 E 2 – AQUISIÇÃO DE GÁS LIQUEFEITO DE PETRÓLEO (GLP
-        13 KG E 45 K
-      fornecedor: LARABEN COMERCIAL DE GLP E BEBIDAS LTDA
-      cnpj_fornecedor: '40710323000193'
-      valor: 10500.0
-      assinado: '2026-10-20'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000689/2026
-    - objeto: CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A MODERNIZAÇÃO DOS ESPAÇOS LÚDICOS, DESPORTIVOS E PEDAGÓGICOS (PISOS PARA REVESTIMENTO E RECUPERAÇÃO
-        DAS QUA
-      fornecedor: CONSTRUTORA POSSAMAI LTDA
-      cnpj_fornecedor: '05725151000120'
-      valor: 169050.0
-      assinado: '2026-10-19'
-      vigencia_fim: '2027-10-18'
-      id: 10724903000179-2-000619/2026
-    - objeto: ATENDER DESPESA COM AQUISIÇÃO DE MATERIAIS DE MANUTENÇÃO E REPARO, DESTINADOS AO ATENDIMENTO DAS DEMANDAS DO IF BAIANO – CAMPUS SANTA INÊS.
-      fornecedor: MP SANDES COELHO LTDA.
-      cnpj_fornecedor: '15726706000102'
-      valor: 16610.3
-      assinado: '2026-10-19'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000625/2026
-    - objeto: 'AQUISICAO DE MATERIAL DE CONSUMO PARA OS DISCENTES DO IF BAIANO CAMPUS URUCUCA PREGAO ELETRONICO N° 90003/2026. PROCESSO NO SUAP: 23335.251849.2026-19'
-      fornecedor: BAHIA CESTAS LTDA
-      cnpj_fornecedor: 05788360000113
-      valor: 23218.0
-      assinado: '2026-10-16'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000661/2026
-    - objeto: AQUISIÇÃO DE GÊNEROS ALIMENTÍCIOS PARA ATENDER AO REFEITÓRIO DO IF BAIANO CAMPUS URUÇUCA, ATRAVÉS DO PREGÃO ELETRÔNICO (SRP) Nº 01/2026. 23335.251852.
-      fornecedor: ARCANJO ALIMENTOS E HORTIFRUTI LTDA
-      cnpj_fornecedor: '58574067000110'
-      valor: 3455.4
-      assinado: '2026-10-16'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000686/2026
-    - objeto: 'CONTRATAÇÃO DE SERVIÇO DE GERENCIAMENTO DE MEIOS PARA OPERAÇÃO DO FORNECIMENTO, DE MATERIAL DE CONSUMO
-
-        DE USO NECESSÁRIOS AO ATENDIMENTO DE DEMANDAS N'
-      fornecedor: THS TECNOLOGIA INFORMACAO E COMUNICACAO LTDA
-      cnpj_fornecedor: '10757593000199'
-      valor: 140000.0
-      assinado: '2026-10-14'
-      vigencia_fim: '2027-10-14'
-      id: 10724903000179-2-000613/2026
-    - objeto: ATENDER DESPESA COM AQUISIÇÃO DE ALIMENTOS PARA A  CONTINUIDADE DO FUNCIONAMENTO DO SETOR NUTRIÇÃO ESCOLAR, NA OFERTA DA ALIMENTAÇÃO À COMUNIDADE
-        DO C
-      fornecedor: MVR NOVIDADES LTDA
-      cnpj_fornecedor: 03935567000148
-      valor: 45990.0
-      assinado: '2026-10-14'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000616/2026
-    - objeto: 'ATENDER DESPESA COM CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM MANUTENÇÃO DE  CÂMARA FRIGORÍFICA, PARA ATENDIMENTO DAS NECESSIDADES DO INSTITUTO
-        FEDERAL '
-      fornecedor: ELISIO COSTA DOS SANTOS LTDA
-      cnpj_fornecedor: '14684839000109'
-      valor: 9800.0
-      assinado: '2026-10-14'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000624/2026
-    - objeto: CONTRATACAO DE LICENCA DE USO DO SOFTWARE BANCO DE PRECOS CONFORME PROCESSO 23327.253025.2026-74.
-      fornecedor: NP TECNOLOGIA E GESTAO DE DADOS LTDA
-      cnpj_fornecedor: 07797967000195
-      valor: 12750.0
-      assinado: '2026-10-14'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000636/2026
-    - objeto: ATENDER DESPESA COM CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A EXECUÇÃO DE SERVIÇOS DE DIAGNÓSTICO, MANUTENÇÃO E REPARO DO SISTEMA DE ALIMENTAÇÃO/INJ
-      fornecedor: JOTAMAR COMERCIO DE PECAS E TRANSPORTES RODOVIARIO LTDA.
-      cnpj_fornecedor: '14378830000161'
-      valor: 12270.02
-      assinado: '2026-10-14'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000647/2026
-    - objeto: ATENDER DESPESA COM CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA A EXECUÇÃO DE SERVIÇOS DE DIAGNÓSTICO, MANUTENÇÃO E REPARO DO SISTEMA DE ALIMENTAÇÃO/INJ
-      fornecedor: JOTAMAR COMERCIO DE PECAS E TRANSPORTES RODOVIARIO LTDA.
-      cnpj_fornecedor: '14378830000161'
-      valor: 2990.0
-      assinado: '2026-10-14'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000648/2026
-    - objeto: CONTRATAÇÃO DE SERVIÇO DE LINK PARA CONEXÕES DEDICADAS DE ACESSO À INTERNET, POR MEIO DE FIBRA ÓPTICA, COM VELOCIDADE DE 600 MBPS, DOIS ENDEREÇOS
-        IPV4
-      fornecedor: POWER TELECOMUNICACOES LTDA
-      cnpj_fornecedor: 07802639000130
-      valor: 5400.0
-      assinado: '2026-10-09'
-      vigencia_fim: '2027-10-08'
-      id: 10724903000179-2-000601/2026
-    - objeto: 'CONTRATAÇÃO EMPRESA ESPECIALIZADA EM HIGIENIZAÇÃO E LAVAGEM DE RESERVATÓRIOS DE ÁGUA POTÁVEL PARA MANTER O PADRÃO DE POTABILIDADE DA ÁGUA
-        DES NADA AO '
-      fornecedor: NRS ENGENHARIA LTDA
-      cnpj_fornecedor: '52183861000156'
-      valor: 6086.0
-      assinado: '2026-10-09'
-      vigencia_fim: '2027-10-08'
-      id: 10724903000179-2-000614/2026
-    - objeto: CONTRATAÇÃO DE EMPRESA PARA A PRESTAÇÃO DE SERVIÇOS CONTÍNUOS DE TRADUTOR E INTÉRPRETE DE LÍNGUA BRASILEIRA DE SINAIS - LIBRAS
-      fornecedor: ALCANCAR ASSESSORIA LTDA
-      cnpj_fornecedor: 07031475000194
-      valor: 897321.12
-      assinado: '2026-10-09'
-      vigencia_fim: '2027-10-09'
-      id: 10724903000179-2-000646/2026
-    - objeto: AQUISIÇÃO DE MATERIAIS PARA TRATAMENTO DA PISCINA.
-      fornecedor: NOVAC INDUSTRIA QUIMICA LTDA
-      cnpj_fornecedor: '11015846000111'
-      valor: 17055.4
-      assinado: '2026-10-09'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000705/2026
-    - objeto: AQUISIÇÃO DE MOCHILAS PARA O IF BAIANO - CAMPUS GOVERNADOR MANGABEIRA.
-      fornecedor: 52.098.237 FABIANO BRAGHETTO BIANO
-      cnpj_fornecedor: '52098237000150'
-      valor: 29200.0
-      assinado: '2026-10-08'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000623/2026
-    - objeto: 'PAGAMENTO DE DESPESAS COM A FINALIDADE DE AQUISICAO DE MOCHILAS INSTITUCIONAIS PERSONALIZADAS PARA OS SERVIDORES DO INSTITUTO FEDERAL BAIANO
-        - CAMPUS '
-      fornecedor: ELO CRIACOES TEXTIL LTDA
-      cnpj_fornecedor: '33948013000146'
-      valor: 9895.0
-      assinado: '2026-10-08'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000672/2026
-    - objeto: AQUISIÇÃO DE GENÊROS ALIMENTÍCIOS PARA O INSTITUTO FEDERAL BAIANO - CAMPUS BOM JESUS DA LAPA.
-      fornecedor: VALFLOR DISTRIBUIDORA LTDA
-      cnpj_fornecedor: '35677306000161'
-      valor: 1503.6
-      assinado: '2026-10-07'
-      vigencia_fim: '2026-12-31'
-      id: 10724903000179-2-000598/2026
   br-cnen:
     nome: Comissão Nacional de Energia Nuclear
     contratos: 201
@@ -25992,90 +25992,10 @@ orgaos:
       assinado: '2026-10-21'
       vigencia_fim: '2026-12-23'
       id: 00402552000126-2-000498/2026
-  br-empresa-brasil-de-comunicacao:
-    nome: Empresa Brasil de Comunicação
-    contratos: 7
-    valor: 12786575.11
-    fornecedores_top:
-    - nome: CERRADO VIAGENS LTDA
-      n: 1
-      valor: 12532212.4
-    - nome: ISH TECNOLOGIA S/A
-      n: 1
-      valor: 198178.08
-    - nome: LICITAR BRASILIA SERVICOS E COMERCIO LTDA
-      n: 1
-      valor: 17540.43
-    - nome: NOVA LIDER EQUIPAMENTOS CONTRA INCENDIO LTDA
-      n: 1
-      valor: 15224.0
-    - nome: E P PRODUTORA LTDA
-      n: 1
-      valor: 9657.0
-    - nome: BID COMERCIAL LTDA
-      n: 1
-      valor: 7323.2
-    - nome: WIDELAND BUFFET LTDA
-      n: 1
-      valor: 6440.0
-    recentes:
-    - objeto: 'FORNECIMENTO DE SERVIÇO DE WELCOME COFFEE, NA CIDADE SÃO PAULO - SP, INCLUINDO PREPARAÇÃO, MONTAGEM, REPOSIÇÃO, DESMONTAGEM, UTENSÍLIOS,
-        MATERIAIS DE '
-      fornecedor: WIDELAND BUFFET LTDA
-      cnpj_fornecedor: '62313117000182'
-      valor: 6440.0
-      assinado: '2026-11-12'
-      vigencia_fim: '2026-12-12'
-      id: 09168704000142-2-000025/2026
-    - objeto: CONFECÇÃO E INSTALAÇÃO DE PLACA INSTITUCIONAL, INCLUINDO FORNECIMENTO DE MATERIAIS, SISTEMA DE FIXAÇÃO, TRANSPORTE, ENTREGA E INSTALAÇÃO.
-      fornecedor: BID COMERCIAL LTDA
-      cnpj_fornecedor: '18670159000189'
-      valor: 7323.2
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-11'
-      id: 09168704000142-2-000026/2026
-    - objeto: PRESTAÇÃO DE SERVIÇOS DE INFRAESTRUTURA AUDIOVISUAL, INCLUINDO LOCAÇÃO, INSTALAÇÃO, OPERAÇÃO E DESMONTAGEM DE EQUIPAMENTOS
-      fornecedor: E P PRODUTORA LTDA
-      cnpj_fornecedor: '39672392000170'
-      valor: 9657.0
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-11'
-      id: 09168704000142-2-000027/2026
-    - objeto: RECARGA, TESTE HIDROSTÁTICO, MANUTENÇÃO, TROCA DE CILINDROS E REPOSIÇÃO DE PEÇAS DOS EXTINTORES DE INCÊNDIO, MANGUEIRAS, ESGUICHOS REGULÁVEIS
-        E ACESSÓ
-      fornecedor: NOVA LIDER EQUIPAMENTOS CONTRA INCENDIO LTDA
-      cnpj_fornecedor: '33442967000182'
-      valor: 15224.0
-      assinado: '2026-10-07'
-      vigencia_fim: '2027-01-07'
-      id: 09168704000142-2-000023/2026
-    - objeto: SERVIÇO DE SOLUÇÃO DE SEGURANÇA DA INFORMAÇÃO DO TIPO NEXT GENERATION FIREWALL (NGFW), QUE CONTEMPLA A MANUTENÇÃO DA SOLUÇÃO DE FIREWALL EXISTENTE
-        E D
-      fornecedor: ISH TECNOLOGIA S/A
-      cnpj_fornecedor: '01707536000104'
-      valor: 198178.08
-      assinado: '2026-10-05'
-      vigencia_fim: '2027-04-02'
-      id: 09168704000142-2-000022/2026
-    - objeto: AQUISIÇÃO DE EQUIPAMENTOS DE COMUNICAÇÃO CENTRAL HÍBRIDA (TELEFONIA ANALÓGICA E VOIP) PARA AS UNIDADES DA EBC NO RIO DE JANEIRO/RJ.
-      fornecedor: LICITAR BRASILIA SERVICOS E COMERCIO LTDA
-      cnpj_fornecedor: '37134432000103'
-      valor: 17540.43
-      assinado: '2026-10-02'
-      vigencia_fim: '2026-12-02'
-      id: 09168704000142-2-000021/2026
-    - objeto: 'SERVIÇOS CONTINUADOS DE AGENCIAMENTO DE VIAGENS CORPORATIVAS, ABRANGENDO, O FORNECIMENTO DE PASSAGENS AÉREAS NACIONAIS E INTERNACIONAIS;
-        FORNECIMENTO '
-      fornecedor: CERRADO VIAGENS LTDA
-      cnpj_fornecedor: '26722189000110'
-      valor: 12532212.4
-      assinado: '2026-08-31'
-      vigencia_fim: '2027-09-02'
-      id: 09168704000142-2-000024/2026
   br-universidade-federal-do-triangulo-mineiro:
     nome: Universidade Federal do Triângulo Mineiro
-    contratos: 689
-    valor: 12654526.71
+    contratos: 751
+    valor: 12907092.36
     fornecedores_top:
     - nome: JORDAN VENDAS INTELIGENTES LTDA
       n: 3
@@ -26423,10 +26343,90 @@ orgaos:
       assinado: '2026-11-13'
       vigencia_fim: '2026-12-31'
       id: 25437484000161-2-000536/2026
+  br-empresa-brasil-de-comunicacao:
+    nome: Empresa Brasil de Comunicação
+    contratos: 7
+    valor: 12786575.11
+    fornecedores_top:
+    - nome: CERRADO VIAGENS LTDA
+      n: 1
+      valor: 12532212.4
+    - nome: ISH TECNOLOGIA S/A
+      n: 1
+      valor: 198178.08
+    - nome: LICITAR BRASILIA SERVICOS E COMERCIO LTDA
+      n: 1
+      valor: 17540.43
+    - nome: NOVA LIDER EQUIPAMENTOS CONTRA INCENDIO LTDA
+      n: 1
+      valor: 15224.0
+    - nome: E P PRODUTORA LTDA
+      n: 1
+      valor: 9657.0
+    - nome: BID COMERCIAL LTDA
+      n: 1
+      valor: 7323.2
+    - nome: WIDELAND BUFFET LTDA
+      n: 1
+      valor: 6440.0
+    recentes:
+    - objeto: 'FORNECIMENTO DE SERVIÇO DE WELCOME COFFEE, NA CIDADE SÃO PAULO - SP, INCLUINDO PREPARAÇÃO, MONTAGEM, REPOSIÇÃO, DESMONTAGEM, UTENSÍLIOS,
+        MATERIAIS DE '
+      fornecedor: WIDELAND BUFFET LTDA
+      cnpj_fornecedor: '62313117000182'
+      valor: 6440.0
+      assinado: '2026-11-12'
+      vigencia_fim: '2026-12-12'
+      id: 09168704000142-2-000025/2026
+    - objeto: CONFECÇÃO E INSTALAÇÃO DE PLACA INSTITUCIONAL, INCLUINDO FORNECIMENTO DE MATERIAIS, SISTEMA DE FIXAÇÃO, TRANSPORTE, ENTREGA E INSTALAÇÃO.
+      fornecedor: BID COMERCIAL LTDA
+      cnpj_fornecedor: '18670159000189'
+      valor: 7323.2
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-11'
+      id: 09168704000142-2-000026/2026
+    - objeto: PRESTAÇÃO DE SERVIÇOS DE INFRAESTRUTURA AUDIOVISUAL, INCLUINDO LOCAÇÃO, INSTALAÇÃO, OPERAÇÃO E DESMONTAGEM DE EQUIPAMENTOS
+      fornecedor: E P PRODUTORA LTDA
+      cnpj_fornecedor: '39672392000170'
+      valor: 9657.0
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-11'
+      id: 09168704000142-2-000027/2026
+    - objeto: RECARGA, TESTE HIDROSTÁTICO, MANUTENÇÃO, TROCA DE CILINDROS E REPOSIÇÃO DE PEÇAS DOS EXTINTORES DE INCÊNDIO, MANGUEIRAS, ESGUICHOS REGULÁVEIS
+        E ACESSÓ
+      fornecedor: NOVA LIDER EQUIPAMENTOS CONTRA INCENDIO LTDA
+      cnpj_fornecedor: '33442967000182'
+      valor: 15224.0
+      assinado: '2026-10-07'
+      vigencia_fim: '2027-01-07'
+      id: 09168704000142-2-000023/2026
+    - objeto: SERVIÇO DE SOLUÇÃO DE SEGURANÇA DA INFORMAÇÃO DO TIPO NEXT GENERATION FIREWALL (NGFW), QUE CONTEMPLA A MANUTENÇÃO DA SOLUÇÃO DE FIREWALL EXISTENTE
+        E D
+      fornecedor: ISH TECNOLOGIA S/A
+      cnpj_fornecedor: '01707536000104'
+      valor: 198178.08
+      assinado: '2026-10-05'
+      vigencia_fim: '2027-04-02'
+      id: 09168704000142-2-000022/2026
+    - objeto: AQUISIÇÃO DE EQUIPAMENTOS DE COMUNICAÇÃO CENTRAL HÍBRIDA (TELEFONIA ANALÓGICA E VOIP) PARA AS UNIDADES DA EBC NO RIO DE JANEIRO/RJ.
+      fornecedor: LICITAR BRASILIA SERVICOS E COMERCIO LTDA
+      cnpj_fornecedor: '37134432000103'
+      valor: 17540.43
+      assinado: '2026-10-02'
+      vigencia_fim: '2026-12-02'
+      id: 09168704000142-2-000021/2026
+    - objeto: 'SERVIÇOS CONTINUADOS DE AGENCIAMENTO DE VIAGENS CORPORATIVAS, ABRANGENDO, O FORNECIMENTO DE PASSAGENS AÉREAS NACIONAIS E INTERNACIONAIS;
+        FORNECIMENTO '
+      fornecedor: CERRADO VIAGENS LTDA
+      cnpj_fornecedor: '26722189000110'
+      valor: 12532212.4
+      assinado: '2026-08-31'
+      vigencia_fim: '2027-09-02'
+      id: 09168704000142-2-000024/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-catarinense:
     nome: Instituto Federal de Educação, Ciência e Tecnologia Catarinense
-    contratos: 749
-    valor: 12474434.04
+    contratos: 756
+    valor: 12488327.04
     fornecedores_top:
     - nome: NEO INSTITUICAO DE PAGAMENTO LTDA
       n: 1
@@ -26770,8 +26770,8 @@ orgaos:
       id: 10635424000186-2-001639/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-sul-de-minas-gerais:
     nome: Instituto Federal de Educação, Ciência e Tecnologia do Sul de Minas Gerais
-    contratos: 738
-    valor: 12030219.02
+    contratos: 742
+    valor: 12049677.0
     fornecedores_top:
     - nome: PRESTAR SERVICE SERVICOS LTDA
       n: 1
@@ -28077,343 +28077,10 @@ orgaos:
       assinado: '2024-12-26'
       vigencia_fim: '2027-12-31'
       id: 00394536000139-2-000140/2024
-  br-fundacao-universidade-federal-de-mato-grosso:
-    nome: Fundação Universidade Federal de Mato Grosso
-    contratos: 97
-    valor: 11000783.28
-    fornecedores_top:
-    - nome: QUADRANTE ENGENHARIA LTDA
-      n: 1
-      valor: 6339061.52
-    - nome: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
-      n: 8
-      valor: 2448206.5
-    - nome: TEKIS TECNOLOGIAS AVANCADAS LTDA
-      n: 1
-      valor: 419568.0
-    - nome: GRUPO MULTILASER S.A.
-      n: 1
-      valor: 148033.9
-    - nome: VENTISOL DA AMAZONIA INDUSTRIA DE APARELHOS ELETRICOS LTDA
-      n: 3
-      valor: 82718.49
-    - nome: FRUTA SUL COMERCIO DE HORTIFRUTIGRANJEIROS LTDA
-      n: 1
-      valor: 41553.6
-    - nome: JEL AGROINDUSTRIA E COMERCIO DE PESCADOS LTDA
-      n: 1
-      valor: 36784.0
-    - nome: CASA E CAMPO AGROPECUARIA LTDA
-      n: 1
-      valor: 33429.4
-    recentes:
-    - objeto: AQUISIÇÃO DE ELETROELETRÔNICOS E UTENSÍLIOS DOMÉS COS
-      fornecedor: GPR SOLUCOES CONSULTIVAS LTDA
-      cnpj_fornecedor: '53111650000170'
-      valor: 214.0
-      assinado: '2026-11-11'
-      vigencia_fim: '2027-11-11'
-      id: 33004540000100-2-000292/2026
-    - objeto: FUTURA E EVENTUAL AQUISIÇÃO DE MATERIAIS DE CONSUMO – ALIMENTOS PARA ANIMAIS SILVESTRES (HOR FRU GRANJEIROS E CARNES) PARA ATENDER AS DEMANDAS
-        DO CENT
-      fornecedor: FRUTA SUL COMERCIO DE HORTIFRUTIGRANJEIROS LTDA
-      cnpj_fornecedor: '10264502000183'
-      valor: 41553.6
-      assinado: '2026-11-09'
-      vigencia_fim: '2027-11-09'
-      id: 33004540000100-2-000291/2026
-    - objeto: DESPESA PARA ATENDER A CONTRATAÇÃO DIRETA Nº 299/2026 (CONTRATA+BRASIL - I3300454000010010001202026-INEXIGIBILIDADE) PARA  CONTRATAÇÃO DE
-        SERVIÇO DE C
-      fornecedor: 40.110.540 EDSON FLORENTINO
-      cnpj_fornecedor: '40110540000142'
-      valor: 7400.0
-      assinado: '2026-11-05'
-      vigencia_fim: '2026-12-31'
-      id: 33004540000100-2-000296/2026
-    - objeto: CONTRATAÇÃO DE SOLUÇÃO DE TECNOLOGIA DA INFORMAÇÃO E  COMUNICAÇÃO, SOLUÇÃO TECNOLÓGICA ESPECIALIZADA EM MODELO SOFTWARE COMO SERVIÇO (SAAS)
-        PARA LICEN
-      fornecedor: TEKIS TECNOLOGIAS AVANCADAS LTDA
-      cnpj_fornecedor: '07674744000130'
-      valor: 419568.0
-      assinado: '2026-11-04'
-      vigencia_fim: '2030-11-04'
-      id: 33004540000100-2-000295/2026
-    - objeto: AQUISIÇÃO DE EQUIPAMENTOS CONDICIONADORES DE AR TIPO SPLIT
-      fornecedor: VENTISOL DA AMAZONIA INDUSTRIA DE APARELHOS ELETRICOS LTDA
-      cnpj_fornecedor: '17417928000179'
-      valor: 26673.08
-      assinado: '2026-10-30'
-      vigencia_fim: '2027-10-30'
-      id: 33004540000100-2-000287/2026
-    - objeto: FUTURA E EVENTUAL AQUISIÇÃO DE MATERIAIS DE CONSUMO — ALIMENTOS PARA ANIMAIS SILVESTRES (HORTIFRUTIGRANJEIROS E CARNES) PARA ATENDER AS DEMANDAS
-        DO CE
-      fornecedor: WA HORTIFRUTI LTDA
-      cnpj_fornecedor: '56252812000189'
-      valor: 28144.32
-      assinado: '2026-10-29'
-      vigencia_fim: '2027-10-29'
-      id: 33004540000100-2-000288/2026
-    - objeto: FUTURA E EVENTUAL AQUISIÇÃO DE MATERIAIS DE CONSUMO — ALIMENTOS PARA SILVESTRES(HORTIFRUTIGRANJEIROS E CARNES) PARA ATENDER AS DEMANDAS DO
-        CENTRO DE M
-      fornecedor: JEL AGROINDUSTRIA E COMERCIO DE PESCADOS LTDA
-      cnpj_fornecedor: '43614059000182'
-      valor: 36784.0
-      assinado: '2026-10-29'
-      vigencia_fim: '2027-10-29'
-      id: 33004540000100-2-000289/2026
-    - objeto: AQUISIÇÃO DE MOBILIÁRIOS, INCLUINDO INSTALAÇÃO E MONTAGEM
-      fornecedor: MOBILHE MOVEIS CORPORATIVOS LTDA
-      cnpj_fornecedor: '15011572000143'
-      valor: 227.37
-      assinado: '2026-10-22'
-      vigencia_fim: '2027-10-22'
-      id: 33004540000100-2-000277/2026
-    - objeto: AQUISIÇÃO DE EQUIPAMENTOS CONDICIONADORES DE AR TIPO SPLIT PARA ATENDER AS DEMANDAS DA FUNDAÇÃO UNIVERSIDADE FEDERAL DE MATO GROSSO – FUFMT,
-      fornecedor: VENTISOL DA AMAZONIA INDUSTRIA DE APARELHOS ELETRICOS LTDA
-      cnpj_fornecedor: '17417928000179'
-      valor: 42220.3
-      assinado: '2026-10-22'
-      vigencia_fim: '2027-10-22'
-      id: 33004540000100-2-000278/2026
-    - objeto: AQUISIÇÃO DE EQUIPAMENTOS CONDICIONADORES DE AR TIPO SPLIT PARA ATENDER AS DEMANDAS DA FUNDAÇÃO UNIVERSIDADE FEDERAL DE MATO GROSSO – FUFMT
-      fornecedor: VENTISOL DA AMAZONIA INDUSTRIA DE APARELHOS ELETRICOS LTDA
-      cnpj_fornecedor: '17417928000179'
-      valor: 13825.11
-      assinado: '2026-10-21'
-      vigencia_fim: '2027-10-21'
-      id: 33004540000100-2-000279/2026
-    - objeto: O OBJETO DO PRESENTE INSTRUMENTO É A A CONTRATAÇÃO DE SOLUÇÃO DE TECNOLOGIA DA INFORMAÇÃO E COMUNICAÇÃO, POR MEIO DO REGISTRO DE PREÇOS, PARA
-        A AQUISI
-      fornecedor: GRUPO MULTILASER S.A.
-      cnpj_fornecedor: '59717553000617'
-      valor: 148033.9
-      assinado: '2026-10-21'
-      vigencia_fim: '2027-10-21'
-      id: 33004540000100-2-000281/2026
-    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
-        À CONT
-      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
-      cnpj_fornecedor: 04845150000157
-      valor: 207245.0
-      assinado: '2026-10-19'
-      vigencia_fim: '2027-01-19'
-      id: 33004540000100-2-000265/2026
-    - objeto: AQUISIÇÃO DE ELETROELETRÔNICOS E UTENSÍLIOS DOMÉSTICOS
-      fornecedor: REI TECH LTDA
-      cnpj_fornecedor: '16778654000180'
-      valor: 2090.0
-      assinado: '2026-10-19'
-      vigencia_fim: '2027-10-19'
-      id: 33004540000100-2-000266/2026
-    - objeto: AQUISIÇÃO DE MOBILIÁRIOS, INCLUINDO INSTALAÇÃO E MONTAGEM
-      fornecedor: 2WE CORPORATIVOS LTDA
-      cnpj_fornecedor: '61331581000139'
-      valor: 1390.0
-      assinado: '2026-10-19'
-      vigencia_fim: '2027-10-19'
-      id: 33004540000100-2-000267/2026
-    - objeto: AQUISIÇÃO DE MOBILIÁRIOS, INCLUINDO INSTALAÇÃO E MONTAGEM
-      fornecedor: EQUIPAR COMERCIO E SERVICOS LTDA
-      cnpj_fornecedor: '30372538000198'
-      valor: 1184.0
-      assinado: '2026-10-19'
-      vigencia_fim: '2027-10-19'
-      id: 33004540000100-2-000268/2026
-    - objeto: AQUISIÇÃO DE ELETROELETRÔNICOS E UTENSÍLIOS DOMÉSTICOS
-      fornecedor: OLMI INFORMATICA LTDA
-      cnpj_fornecedor: 00789321000117
-      valor: 8169.0
-      assinado: '2026-10-16'
-      vigencia_fim: '2027-10-16'
-      id: 33004540000100-2-000261/2026
-    - objeto: AQUISIÇÃO DE ELETROELETRÔNICOS E UTENSÍLIOS DOMÉSTICOS
-      fornecedor: R. L. & L. CONEXOES COMERCIAIS LTDA
-      cnpj_fornecedor: '53117090000161'
-      valor: 1697.31
-      assinado: '2026-10-16'
-      vigencia_fim: '2027-10-16'
-      id: 33004540000100-2-000262/2026
-    - objeto: AQUISIÇÃO DE ELETROELETRÔNICOS E UTENSÍLIOS DOMÉSTICOS
-      fornecedor: LUCAS RICARDO MANIERI DE ALMEIDA  LTDA
-      cnpj_fornecedor: '54860605000181'
-      valor: 1940.0
-      assinado: '2026-10-16'
-      vigencia_fim: '2027-10-16'
-      id: 33004540000100-2-000263/2026
-    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
-        À CONT
-      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
-      cnpj_fornecedor: 04845150000157
-      valor: 88972.0
-      assinado: '2026-10-16'
-      vigencia_fim: '2027-06-17'
-      id: 33004540000100-2-000270/2026
-    - objeto: AQUISIÇÃO DE ELETROELETRÔNICOS E UTENSÍLIOS DOMÉSTICOS
-      fornecedor: REI TECH LTDA
-      cnpj_fornecedor: '16778654000180'
-      valor: 4180.0
-      assinado: '2026-10-16'
-      vigencia_fim: '2027-10-16'
-      id: 33004540000100-2-000272/2026
-    - objeto: DESPESA PARA ATENDER A CONTRATAÇÃO DIRETA ( 33004540000100-1-000110/2026- CONTRATA•BRASIL) PARA A  CONTRATAÇÃO DE SERVIÇOS DE SALGADEIRO(A)
-        INDEPENDEN
-      fornecedor: 23.520.403 PAULA FRANCA SANTOS SMARSSARO
-      cnpj_fornecedor: '23520403000167'
-      valor: 8000.0
-      assinado: '2026-10-16'
-      vigencia_fim: '2026-12-31'
-      id: 33004540000100-2-000285/2026
-    - objeto: AQUISIÇÃO DE MOBILIÁRIOS, INCLUINDO INSTALAÇÃO E MONTAGEM
-      fornecedor: AMERICANFER INDUSTRIA E COMERCIO DE MOVEIS DE ACO LTDA
-      cnpj_fornecedor: '23140496000102'
-      valor: 1591.59
-      assinado: '2026-10-15'
-      vigencia_fim: '2027-10-15'
-      id: 33004540000100-2-000258/2026
-    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
-        À CONT
-      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
-      cnpj_fornecedor: 04845150000157
-      valor: 156109.5
-      assinado: '2026-10-15'
-      vigencia_fim: '2031-10-15'
-      id: 33004540000100-2-000260/2026
-    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
-        À CONT
-      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
-      cnpj_fornecedor: 04845150000157
-      valor: 874480.0
-      assinado: '2026-10-15'
-      vigencia_fim: '2029-10-15'
-      id: 33004540000100-2-000269/2026
-    - objeto: CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA CONSTRUÇÃO DE DUAS GUARITAS DE CONTROLE ACESSO E VIGILÂNCIA PATRIMONIAL NO CAMPUS CUIABÁ DA UNIVERSIDADE
-        FED
-      fornecedor: QUADRANTE ENGENHARIA LTDA
-      cnpj_fornecedor: '58593078000147'
-      valor: 6339061.52
-      assinado: '2026-10-15'
-      vigencia_fim: '2028-07-15'
-      id: 33004540000100-2-000280/2026
-    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
-        À CONT
-      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
-      cnpj_fornecedor: 04845150000157
-      valor: 540000.0
-      assinado: '2026-10-14'
-      vigencia_fim: '2028-09-04'
-      id: 33004540000100-2-000259/2026
-    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
-        À CONT
-      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
-      cnpj_fornecedor: 04845150000157
-      valor: 335000.0
-      assinado: '2026-10-14'
-      vigencia_fim: '2028-10-14'
-      id: 33004540000100-2-000264/2026
-    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
-        À CONT
-      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
-      cnpj_fornecedor: 04845150000157
-      valor: 6400.0
-      assinado: '2026-10-13'
-      vigencia_fim: '2027-02-13'
-      id: 33004540000100-2-000256/2026
-    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
-        À CONT
-      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
-      cnpj_fornecedor: 04845150000157
-      valor: 240000.0
-      assinado: '2026-10-13'
-      vigencia_fim: '2027-04-13'
-      id: 33004540000100-2-000257/2026
-    - objeto: PARA ATENDER SOLICITAÇÃO DA FAZENDA EXPERIMENTAL/UFMT COM SOLICITAÇÃO DE MATERIAL DE CONSUMO/ALIMENTO PARA ANIMAIS (FARELO E MILHO) - PE 111/2026,
-        ATA
-      fornecedor: CASA E CAMPO AGROPECUARIA LTDA
-      cnpj_fornecedor: '27247291000173'
-      valor: 33429.4
-      assinado: '2026-10-13'
-      vigencia_fim: '2026-12-31'
-      id: 33004540000100-2-000276/2026
-    - objeto: DESPESA PARA ATENDER AO PE 90035/2025 PARA  CONTRATAÇÃO DE AQUISIÇÃO DE INSUMOS AGRÍCOLAS VISANDO ATENDER AS NECESSIDADES DA FAZENDA EXPERIMENTAL
-        DA F
-      fornecedor: M&A LICITACOES LTDA
-      cnpj_fornecedor: '50770391000100'
-      valor: 6500.0
-      assinado: '2026-10-13'
-      vigencia_fim: '2026-12-31'
-      id: 33004540000100-2-000297/2026
-    - objeto: AQUISIÇÃO DE ELETROELETRÔNICOS E UTENSÍLIOS DOMÉSTICOS
-      fornecedor: OLMI INFORMATICA LTDA
-      cnpj_fornecedor: 00789321000117
-      valor: 17000.0
-      assinado: '2026-10-09'
-      vigencia_fim: '2027-10-09'
-      id: 33004540000100-2-000252/2026
-    - objeto: AQUISIÇÃO DE MOBILIÁRIOS, INCLUINDO INSTALAÇÃO E MONTAGEM
-      fornecedor: MILAN MOVEIS INDUSTRIA E COMERCIO LTDA
-      cnpj_fornecedor: '00300400000112'
-      valor: 18200.0
-      assinado: '2026-10-09'
-      vigencia_fim: '2027-10-09'
-      id: 33004540000100-2-000253/2026
-    - objeto: .
-      fornecedor: ESCRIBLU COMERCIO DE MOVEIS LTDA
-      cnpj_fornecedor: '10902067000175'
-      valor: 6239.52
-      assinado: '2026-10-06'
-      vigencia_fim: '2027-10-06'
-      id: 33004540000100-2-000223/2026
-    - objeto: .
-      fornecedor: LUCAS RICARDO MANIERI DE ALMEIDA  LTDA
-      cnpj_fornecedor: '54860605000181'
-      valor: 583.33
-      assinado: '2026-10-06'
-      vigencia_fim: '2027-10-06'
-      id: 33004540000100-2-000249/2026
-    - objeto: DESPESA PARA ATENDER A  INEXIGIBILIDADE DE LICITAÇÃO Nº 194/2026 REFERENTE AO PAGAMENTO DE INSCRIÇÃO PARA PARTICIPAÇÃO NO XIV SINGEP-CIK 2026
-        – SIMPÓS
-      fornecedor: ROTA CERTA VIAGENS, TURISMO E EVENTOS - LTDA
-      cnpj_fornecedor: '23537927000160'
-      valor: 220.0
-      assinado: '2026-10-05'
-      vigencia_fim: '2026-12-31'
-      id: 33004540000100-2-000286/2026
-    - objeto: DESPESA PARA ATENDER A CONTRATAÇÃO DIRETA POR MEIO DO CONTRATA+BRASIL (33004540000100-1-000106/2026) PARA  PRESTAÇÃO DE SERVIÇOS DE MANUTENÇÃO
-        PREVENT
-      fornecedor: 26.954.993 ALLAN MATHEUS TAFAREL MENEGASSI
-      cnpj_fornecedor: '26954993000124'
-      valor: 11500.0
-      assinado: '2026-10-01'
-      vigencia_fim: '2026-12-31'
-      id: 33004540000100-2-000284/2026
-    - objeto: DESPESA PARA ATENDER AO PREGÃO Nº  90040/2025 PARA AQUISIÇÃO DE MATERIAL DE CONSUMO DA CATEGORIA REAGENTES QUÍMICOS, ANTIBIOGRAMAS, CEPAS,
-        CONJUNTOS E
-      fornecedor: EVEN COMERCIAL LTDA
-      cnpj_fornecedor: '53568001000101'
-      valor: 180.5
-      assinado: '2026-09-23'
-      vigencia_fim: '2026-12-31'
-      id: 33004540000100-2-000240/2026
-    - objeto: DESPESA PARA ATENDER AO PREGÃO Nº  90040/2025 PARA AQUISIÇÃO DE MATERIAL DE CONSUMO DA CATEGORIA REAGENTES QUÍMICOS, ANTIBIOGRAMAS, CEPAS,
-        CONJUNTOS E
-      fornecedor: PROC9 INDUSTRIA QUIMICA LTDA
-      cnpj_fornecedor: 07944100000115
-      valor: 1325.72
-      assinado: '2026-09-23'
-      vigencia_fim: '2026-12-31'
-      id: 33004540000100-2-000241/2026
-    - objeto: DESPESA PARA ATENDER AO PREGÃO Nº  90040/2025 PARA AQUISIÇÃO DE MATERIAL DE CONSUMO DA CATEGORIA REAGENTES QUÍMICOS, ANTIBIOGRAMAS, CEPAS,
-        CONJUNTOS E
-      fornecedor: CELLCO BIOTEC DO BRASIL LTDA.
-      cnpj_fornecedor: '21407123000111'
-      valor: 1000.0
-      assinado: '2026-09-23'
-      vigencia_fim: '2026-12-31'
-      id: 33004540000100-2-000242/2026
   br-universidade-federal-do-espirito-santo:
     nome: Universidade Federal do Espírito Santo
-    contratos: 312
-    valor: 10833861.57
+    contratos: 339
+    valor: 11211406.23
     fornecedores_top:
     - nome: FUNDACAO ESPIRITO SANTENSE DE TECNOLOGIA - FEST
       n: 2
@@ -28756,10 +28423,343 @@ orgaos:
       assinado: '2026-10-27'
       vigencia_fim: '2026-12-31'
       id: 32479123000143-2-000611/2026
+  br-fundacao-universidade-federal-de-mato-grosso:
+    nome: Fundação Universidade Federal de Mato Grosso
+    contratos: 97
+    valor: 11000783.28
+    fornecedores_top:
+    - nome: QUADRANTE ENGENHARIA LTDA
+      n: 1
+      valor: 6339061.52
+    - nome: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
+      n: 8
+      valor: 2448206.5
+    - nome: TEKIS TECNOLOGIAS AVANCADAS LTDA
+      n: 1
+      valor: 419568.0
+    - nome: GRUPO MULTILASER S.A.
+      n: 1
+      valor: 148033.9
+    - nome: VENTISOL DA AMAZONIA INDUSTRIA DE APARELHOS ELETRICOS LTDA
+      n: 3
+      valor: 82718.49
+    - nome: FRUTA SUL COMERCIO DE HORTIFRUTIGRANJEIROS LTDA
+      n: 1
+      valor: 41553.6
+    - nome: JEL AGROINDUSTRIA E COMERCIO DE PESCADOS LTDA
+      n: 1
+      valor: 36784.0
+    - nome: CASA E CAMPO AGROPECUARIA LTDA
+      n: 1
+      valor: 33429.4
+    recentes:
+    - objeto: AQUISIÇÃO DE ELETROELETRÔNICOS E UTENSÍLIOS DOMÉS COS
+      fornecedor: GPR SOLUCOES CONSULTIVAS LTDA
+      cnpj_fornecedor: '53111650000170'
+      valor: 214.0
+      assinado: '2026-11-11'
+      vigencia_fim: '2027-11-11'
+      id: 33004540000100-2-000292/2026
+    - objeto: FUTURA E EVENTUAL AQUISIÇÃO DE MATERIAIS DE CONSUMO – ALIMENTOS PARA ANIMAIS SILVESTRES (HOR FRU GRANJEIROS E CARNES) PARA ATENDER AS DEMANDAS
+        DO CENT
+      fornecedor: FRUTA SUL COMERCIO DE HORTIFRUTIGRANJEIROS LTDA
+      cnpj_fornecedor: '10264502000183'
+      valor: 41553.6
+      assinado: '2026-11-09'
+      vigencia_fim: '2027-11-09'
+      id: 33004540000100-2-000291/2026
+    - objeto: DESPESA PARA ATENDER A CONTRATAÇÃO DIRETA Nº 299/2026 (CONTRATA+BRASIL - I3300454000010010001202026-INEXIGIBILIDADE) PARA  CONTRATAÇÃO DE
+        SERVIÇO DE C
+      fornecedor: 40.110.540 EDSON FLORENTINO
+      cnpj_fornecedor: '40110540000142'
+      valor: 7400.0
+      assinado: '2026-11-05'
+      vigencia_fim: '2026-12-31'
+      id: 33004540000100-2-000296/2026
+    - objeto: CONTRATAÇÃO DE SOLUÇÃO DE TECNOLOGIA DA INFORMAÇÃO E  COMUNICAÇÃO, SOLUÇÃO TECNOLÓGICA ESPECIALIZADA EM MODELO SOFTWARE COMO SERVIÇO (SAAS)
+        PARA LICEN
+      fornecedor: TEKIS TECNOLOGIAS AVANCADAS LTDA
+      cnpj_fornecedor: '07674744000130'
+      valor: 419568.0
+      assinado: '2026-11-04'
+      vigencia_fim: '2030-11-04'
+      id: 33004540000100-2-000295/2026
+    - objeto: AQUISIÇÃO DE EQUIPAMENTOS CONDICIONADORES DE AR TIPO SPLIT
+      fornecedor: VENTISOL DA AMAZONIA INDUSTRIA DE APARELHOS ELETRICOS LTDA
+      cnpj_fornecedor: '17417928000179'
+      valor: 26673.08
+      assinado: '2026-10-30'
+      vigencia_fim: '2027-10-30'
+      id: 33004540000100-2-000287/2026
+    - objeto: FUTURA E EVENTUAL AQUISIÇÃO DE MATERIAIS DE CONSUMO — ALIMENTOS PARA ANIMAIS SILVESTRES (HORTIFRUTIGRANJEIROS E CARNES) PARA ATENDER AS DEMANDAS
+        DO CE
+      fornecedor: WA HORTIFRUTI LTDA
+      cnpj_fornecedor: '56252812000189'
+      valor: 28144.32
+      assinado: '2026-10-29'
+      vigencia_fim: '2027-10-29'
+      id: 33004540000100-2-000288/2026
+    - objeto: FUTURA E EVENTUAL AQUISIÇÃO DE MATERIAIS DE CONSUMO — ALIMENTOS PARA SILVESTRES(HORTIFRUTIGRANJEIROS E CARNES) PARA ATENDER AS DEMANDAS DO
+        CENTRO DE M
+      fornecedor: JEL AGROINDUSTRIA E COMERCIO DE PESCADOS LTDA
+      cnpj_fornecedor: '43614059000182'
+      valor: 36784.0
+      assinado: '2026-10-29'
+      vigencia_fim: '2027-10-29'
+      id: 33004540000100-2-000289/2026
+    - objeto: AQUISIÇÃO DE MOBILIÁRIOS, INCLUINDO INSTALAÇÃO E MONTAGEM
+      fornecedor: MOBILHE MOVEIS CORPORATIVOS LTDA
+      cnpj_fornecedor: '15011572000143'
+      valor: 227.37
+      assinado: '2026-10-22'
+      vigencia_fim: '2027-10-22'
+      id: 33004540000100-2-000277/2026
+    - objeto: AQUISIÇÃO DE EQUIPAMENTOS CONDICIONADORES DE AR TIPO SPLIT PARA ATENDER AS DEMANDAS DA FUNDAÇÃO UNIVERSIDADE FEDERAL DE MATO GROSSO – FUFMT,
+      fornecedor: VENTISOL DA AMAZONIA INDUSTRIA DE APARELHOS ELETRICOS LTDA
+      cnpj_fornecedor: '17417928000179'
+      valor: 42220.3
+      assinado: '2026-10-22'
+      vigencia_fim: '2027-10-22'
+      id: 33004540000100-2-000278/2026
+    - objeto: AQUISIÇÃO DE EQUIPAMENTOS CONDICIONADORES DE AR TIPO SPLIT PARA ATENDER AS DEMANDAS DA FUNDAÇÃO UNIVERSIDADE FEDERAL DE MATO GROSSO – FUFMT
+      fornecedor: VENTISOL DA AMAZONIA INDUSTRIA DE APARELHOS ELETRICOS LTDA
+      cnpj_fornecedor: '17417928000179'
+      valor: 13825.11
+      assinado: '2026-10-21'
+      vigencia_fim: '2027-10-21'
+      id: 33004540000100-2-000279/2026
+    - objeto: O OBJETO DO PRESENTE INSTRUMENTO É A A CONTRATAÇÃO DE SOLUÇÃO DE TECNOLOGIA DA INFORMAÇÃO E COMUNICAÇÃO, POR MEIO DO REGISTRO DE PREÇOS, PARA
+        A AQUISI
+      fornecedor: GRUPO MULTILASER S.A.
+      cnpj_fornecedor: '59717553000617'
+      valor: 148033.9
+      assinado: '2026-10-21'
+      vigencia_fim: '2027-10-21'
+      id: 33004540000100-2-000281/2026
+    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
+        À CONT
+      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
+      cnpj_fornecedor: 04845150000157
+      valor: 207245.0
+      assinado: '2026-10-19'
+      vigencia_fim: '2027-01-19'
+      id: 33004540000100-2-000265/2026
+    - objeto: AQUISIÇÃO DE ELETROELETRÔNICOS E UTENSÍLIOS DOMÉSTICOS
+      fornecedor: REI TECH LTDA
+      cnpj_fornecedor: '16778654000180'
+      valor: 2090.0
+      assinado: '2026-10-19'
+      vigencia_fim: '2027-10-19'
+      id: 33004540000100-2-000266/2026
+    - objeto: AQUISIÇÃO DE MOBILIÁRIOS, INCLUINDO INSTALAÇÃO E MONTAGEM
+      fornecedor: 2WE CORPORATIVOS LTDA
+      cnpj_fornecedor: '61331581000139'
+      valor: 1390.0
+      assinado: '2026-10-19'
+      vigencia_fim: '2027-10-19'
+      id: 33004540000100-2-000267/2026
+    - objeto: AQUISIÇÃO DE MOBILIÁRIOS, INCLUINDO INSTALAÇÃO E MONTAGEM
+      fornecedor: EQUIPAR COMERCIO E SERVICOS LTDA
+      cnpj_fornecedor: '30372538000198'
+      valor: 1184.0
+      assinado: '2026-10-19'
+      vigencia_fim: '2027-10-19'
+      id: 33004540000100-2-000268/2026
+    - objeto: AQUISIÇÃO DE ELETROELETRÔNICOS E UTENSÍLIOS DOMÉSTICOS
+      fornecedor: OLMI INFORMATICA LTDA
+      cnpj_fornecedor: 00789321000117
+      valor: 8169.0
+      assinado: '2026-10-16'
+      vigencia_fim: '2027-10-16'
+      id: 33004540000100-2-000261/2026
+    - objeto: AQUISIÇÃO DE ELETROELETRÔNICOS E UTENSÍLIOS DOMÉSTICOS
+      fornecedor: R. L. & L. CONEXOES COMERCIAIS LTDA
+      cnpj_fornecedor: '53117090000161'
+      valor: 1697.31
+      assinado: '2026-10-16'
+      vigencia_fim: '2027-10-16'
+      id: 33004540000100-2-000262/2026
+    - objeto: AQUISIÇÃO DE ELETROELETRÔNICOS E UTENSÍLIOS DOMÉSTICOS
+      fornecedor: LUCAS RICARDO MANIERI DE ALMEIDA  LTDA
+      cnpj_fornecedor: '54860605000181'
+      valor: 1940.0
+      assinado: '2026-10-16'
+      vigencia_fim: '2027-10-16'
+      id: 33004540000100-2-000263/2026
+    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
+        À CONT
+      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
+      cnpj_fornecedor: 04845150000157
+      valor: 88972.0
+      assinado: '2026-10-16'
+      vigencia_fim: '2027-06-17'
+      id: 33004540000100-2-000270/2026
+    - objeto: AQUISIÇÃO DE ELETROELETRÔNICOS E UTENSÍLIOS DOMÉSTICOS
+      fornecedor: REI TECH LTDA
+      cnpj_fornecedor: '16778654000180'
+      valor: 4180.0
+      assinado: '2026-10-16'
+      vigencia_fim: '2027-10-16'
+      id: 33004540000100-2-000272/2026
+    - objeto: DESPESA PARA ATENDER A CONTRATAÇÃO DIRETA ( 33004540000100-1-000110/2026- CONTRATA•BRASIL) PARA A  CONTRATAÇÃO DE SERVIÇOS DE SALGADEIRO(A)
+        INDEPENDEN
+      fornecedor: 23.520.403 PAULA FRANCA SANTOS SMARSSARO
+      cnpj_fornecedor: '23520403000167'
+      valor: 8000.0
+      assinado: '2026-10-16'
+      vigencia_fim: '2026-12-31'
+      id: 33004540000100-2-000285/2026
+    - objeto: AQUISIÇÃO DE MOBILIÁRIOS, INCLUINDO INSTALAÇÃO E MONTAGEM
+      fornecedor: AMERICANFER INDUSTRIA E COMERCIO DE MOVEIS DE ACO LTDA
+      cnpj_fornecedor: '23140496000102'
+      valor: 1591.59
+      assinado: '2026-10-15'
+      vigencia_fim: '2027-10-15'
+      id: 33004540000100-2-000258/2026
+    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
+        À CONT
+      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
+      cnpj_fornecedor: 04845150000157
+      valor: 156109.5
+      assinado: '2026-10-15'
+      vigencia_fim: '2031-10-15'
+      id: 33004540000100-2-000260/2026
+    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
+        À CONT
+      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
+      cnpj_fornecedor: 04845150000157
+      valor: 874480.0
+      assinado: '2026-10-15'
+      vigencia_fim: '2029-10-15'
+      id: 33004540000100-2-000269/2026
+    - objeto: CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA CONSTRUÇÃO DE DUAS GUARITAS DE CONTROLE ACESSO E VIGILÂNCIA PATRIMONIAL NO CAMPUS CUIABÁ DA UNIVERSIDADE
+        FED
+      fornecedor: QUADRANTE ENGENHARIA LTDA
+      cnpj_fornecedor: '58593078000147'
+      valor: 6339061.52
+      assinado: '2026-10-15'
+      vigencia_fim: '2028-07-15'
+      id: 33004540000100-2-000280/2026
+    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
+        À CONT
+      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
+      cnpj_fornecedor: 04845150000157
+      valor: 540000.0
+      assinado: '2026-10-14'
+      vigencia_fim: '2028-09-04'
+      id: 33004540000100-2-000259/2026
+    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
+        À CONT
+      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
+      cnpj_fornecedor: 04845150000157
+      valor: 335000.0
+      assinado: '2026-10-14'
+      vigencia_fim: '2028-10-14'
+      id: 33004540000100-2-000264/2026
+    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
+        À CONT
+      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
+      cnpj_fornecedor: 04845150000157
+      valor: 6400.0
+      assinado: '2026-10-13'
+      vigencia_fim: '2027-02-13'
+      id: 33004540000100-2-000256/2026
+    - objeto: CONSTITUI OBJETO DESTE INSTRUMENTO A CONTRATAÇÃO DA FUNDAÇÃO DE APOIO E DESENVOLVIMENTO DA UFMT – FUNDAÇÃO UNISELVA COM A FINALIDADE DE PRESTAR
+        À CONT
+      fornecedor: FUNDACAO DE APOIO E DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE MATO GROSSO
+      cnpj_fornecedor: 04845150000157
+      valor: 240000.0
+      assinado: '2026-10-13'
+      vigencia_fim: '2027-04-13'
+      id: 33004540000100-2-000257/2026
+    - objeto: PARA ATENDER SOLICITAÇÃO DA FAZENDA EXPERIMENTAL/UFMT COM SOLICITAÇÃO DE MATERIAL DE CONSUMO/ALIMENTO PARA ANIMAIS (FARELO E MILHO) - PE 111/2026,
+        ATA
+      fornecedor: CASA E CAMPO AGROPECUARIA LTDA
+      cnpj_fornecedor: '27247291000173'
+      valor: 33429.4
+      assinado: '2026-10-13'
+      vigencia_fim: '2026-12-31'
+      id: 33004540000100-2-000276/2026
+    - objeto: DESPESA PARA ATENDER AO PE 90035/2025 PARA  CONTRATAÇÃO DE AQUISIÇÃO DE INSUMOS AGRÍCOLAS VISANDO ATENDER AS NECESSIDADES DA FAZENDA EXPERIMENTAL
+        DA F
+      fornecedor: M&A LICITACOES LTDA
+      cnpj_fornecedor: '50770391000100'
+      valor: 6500.0
+      assinado: '2026-10-13'
+      vigencia_fim: '2026-12-31'
+      id: 33004540000100-2-000297/2026
+    - objeto: AQUISIÇÃO DE ELETROELETRÔNICOS E UTENSÍLIOS DOMÉSTICOS
+      fornecedor: OLMI INFORMATICA LTDA
+      cnpj_fornecedor: 00789321000117
+      valor: 17000.0
+      assinado: '2026-10-09'
+      vigencia_fim: '2027-10-09'
+      id: 33004540000100-2-000252/2026
+    - objeto: AQUISIÇÃO DE MOBILIÁRIOS, INCLUINDO INSTALAÇÃO E MONTAGEM
+      fornecedor: MILAN MOVEIS INDUSTRIA E COMERCIO LTDA
+      cnpj_fornecedor: '00300400000112'
+      valor: 18200.0
+      assinado: '2026-10-09'
+      vigencia_fim: '2027-10-09'
+      id: 33004540000100-2-000253/2026
+    - objeto: .
+      fornecedor: ESCRIBLU COMERCIO DE MOVEIS LTDA
+      cnpj_fornecedor: '10902067000175'
+      valor: 6239.52
+      assinado: '2026-10-06'
+      vigencia_fim: '2027-10-06'
+      id: 33004540000100-2-000223/2026
+    - objeto: .
+      fornecedor: LUCAS RICARDO MANIERI DE ALMEIDA  LTDA
+      cnpj_fornecedor: '54860605000181'
+      valor: 583.33
+      assinado: '2026-10-06'
+      vigencia_fim: '2027-10-06'
+      id: 33004540000100-2-000249/2026
+    - objeto: DESPESA PARA ATENDER A  INEXIGIBILIDADE DE LICITAÇÃO Nº 194/2026 REFERENTE AO PAGAMENTO DE INSCRIÇÃO PARA PARTICIPAÇÃO NO XIV SINGEP-CIK 2026
+        – SIMPÓS
+      fornecedor: ROTA CERTA VIAGENS, TURISMO E EVENTOS - LTDA
+      cnpj_fornecedor: '23537927000160'
+      valor: 220.0
+      assinado: '2026-10-05'
+      vigencia_fim: '2026-12-31'
+      id: 33004540000100-2-000286/2026
+    - objeto: DESPESA PARA ATENDER A CONTRATAÇÃO DIRETA POR MEIO DO CONTRATA+BRASIL (33004540000100-1-000106/2026) PARA  PRESTAÇÃO DE SERVIÇOS DE MANUTENÇÃO
+        PREVENT
+      fornecedor: 26.954.993 ALLAN MATHEUS TAFAREL MENEGASSI
+      cnpj_fornecedor: '26954993000124'
+      valor: 11500.0
+      assinado: '2026-10-01'
+      vigencia_fim: '2026-12-31'
+      id: 33004540000100-2-000284/2026
+    - objeto: DESPESA PARA ATENDER AO PREGÃO Nº  90040/2025 PARA AQUISIÇÃO DE MATERIAL DE CONSUMO DA CATEGORIA REAGENTES QUÍMICOS, ANTIBIOGRAMAS, CEPAS,
+        CONJUNTOS E
+      fornecedor: EVEN COMERCIAL LTDA
+      cnpj_fornecedor: '53568001000101'
+      valor: 180.5
+      assinado: '2026-09-23'
+      vigencia_fim: '2026-12-31'
+      id: 33004540000100-2-000240/2026
+    - objeto: DESPESA PARA ATENDER AO PREGÃO Nº  90040/2025 PARA AQUISIÇÃO DE MATERIAL DE CONSUMO DA CATEGORIA REAGENTES QUÍMICOS, ANTIBIOGRAMAS, CEPAS,
+        CONJUNTOS E
+      fornecedor: PROC9 INDUSTRIA QUIMICA LTDA
+      cnpj_fornecedor: 07944100000115
+      valor: 1325.72
+      assinado: '2026-09-23'
+      vigencia_fim: '2026-12-31'
+      id: 33004540000100-2-000241/2026
+    - objeto: DESPESA PARA ATENDER AO PREGÃO Nº  90040/2025 PARA AQUISIÇÃO DE MATERIAL DE CONSUMO DA CATEGORIA REAGENTES QUÍMICOS, ANTIBIOGRAMAS, CEPAS,
+        CONJUNTOS E
+      fornecedor: CELLCO BIOTEC DO BRASIL LTDA.
+      cnpj_fornecedor: '21407123000111'
+      valor: 1000.0
+      assinado: '2026-09-23'
+      vigencia_fim: '2026-12-31'
+      id: 33004540000100-2-000242/2026
   br-universidade-federal-de-minas-gerais:
     nome: Universidade Federal de Minas Gerais
-    contratos: 815
-    valor: 10431218.54
+    contratos: 818
+    valor: 10445003.04
     fornecedores_top:
     - nome: FUNDACAO INSTITUTO DE PESQUISAS ECONOMICAS, ADMINISTRATIVAS E CONTABEIS DE MINAS
       n: 2
@@ -29437,8 +29437,8 @@ orgaos:
       id: 03204421000122-2-000300/2026
   br-universidade-federal-da-integracao-latino-americana:
     nome: Universidade Federal da Integração Latino-Americana
-    contratos: 76
-    valor: 10187336.61
+    contratos: 77
+    valor: 10190336.61
     fornecedores_top:
     - nome: OFFICE MAX INDUSTRIA E COMERCIO DE MOVEIS LTDA
       n: 2
@@ -30012,8 +30012,8 @@ orgaos:
       id: 00662270000168-2-000099/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-sul-rio-grandense:
     nome: Instituto Federal de Educação, Ciência e Tecnologia Sul-Rio-Grandense
-    contratos: 634
-    valor: 9398422.44
+    contratos: 636
+    valor: 9403330.44
     fornecedores_top:
     - nome: ARSENAL - SEGURANCA PRIVADA LTDA
       n: 1
@@ -30544,8 +30544,8 @@ orgaos:
       id: 02270669000129-2-000085/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-pernambuco:
     nome: Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco
-    contratos: 223
-    valor: 9219541.32
+    contratos: 226
+    valor: 9227635.45
     fornecedores_top:
     - nome: FUNDACAO DE APOIO A EDUCACAO E AO DESENVOLVIMENTO TECNOLOGICO DO RN
       n: 1
@@ -30887,8 +30887,8 @@ orgaos:
       id: 10767239000145-2-000300/2026
   br-universidade-federal-de-sao-paulo:
     nome: Universidade Federal de São Paulo
-    contratos: 143
-    valor: 8917269.04
+    contratos: 144
+    valor: 8919389.04
     fornecedores_top:
     - nome: FUNDACAO DE APOIO A UNIVERSIDADE FEDERAL DE SAO PAULO
       n: 5
@@ -31233,8 +31233,8 @@ orgaos:
       id: 60453032000174-2-000430/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-mato-grosso:
     nome: Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
-    contratos: 566
-    valor: 8635667.7
+    contratos: 567
+    valor: 8642413.7
     fornecedores_top:
     - nome: GMS GOIAS MERCANTIL E SOLUCOES LTDA
       n: 1
@@ -33449,8 +33449,8 @@ orgaos:
       id: 08829974003886-2-000026/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-amazonas:
     nome: Instituto Federal de Educação, Ciência e Tecnologia do Amazonas
-    contratos: 219
-    valor: 7898858.3
+    contratos: 220
+    valor: 7902999.5
     fornecedores_top:
     - nome: QUALITY SERVICOS EMPRESARIAIS LTDA
       n: 3
@@ -34537,8 +34537,8 @@ orgaos:
       id: 02030715000112-2-000185/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-goiano:
     nome: Instituto Federal de Educação, Ciência e Tecnologia Goiano
-    contratos: 265
-    valor: 7075053.1
+    contratos: 268
+    valor: 7085753.5
     fornecedores_top:
     - nome: FUNDACAO DE APOIO A PESQUISA
       n: 1
@@ -35218,8 +35218,8 @@ orgaos:
       id: 10820882000195-2-000210/2025
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-da-bahia:
     nome: Instituto Federal de Educação, Ciência e Tecnologia da Bahia
-    contratos: 316
-    valor: 6289274.5
+    contratos: 318
+    valor: 6309517.85
     fornecedores_top:
     - nome: SANTANA LIMA ENGENHARIA LTDA
       n: 1
@@ -36364,8 +36364,8 @@ orgaos:
       id: 29406625000130-2-000097/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-norte-de-minas-gerais:
     nome: Instituto Federal de Educação, Ciência e Tecnologia do Norte de Minas Gerais
-    contratos: 479
-    valor: 5905863.74
+    contratos: 483
+    valor: 5936121.22
     fornecedores_top:
     - nome: ZK CONSERVACAO E SERVICOS DE LIMPEZA LTDA
       n: 1
@@ -37145,8 +37145,8 @@ orgaos:
       id: 42354068000119-2-000100/2025
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-farroupilha:
     nome: Instituto Federal de Educação, Ciência e Tecnologia Farroupilha
-    contratos: 441
-    valor: 5577100.71
+    contratos: 442
+    valor: 5591422.71
     fornecedores_top:
     - nome: CENTRAL NORTE SERVICOS TERCEIRIZADOS LTDA
       n: 1
@@ -37885,8 +37885,8 @@ orgaos:
       id: 03112386000111-2-000129/2025
   br-fundacao-universidade-federal-do-pampa:
     nome: Fundação Universidade Federal do Pampa
-    contratos: 335
-    valor: 5362553.36
+    contratos: 336
+    valor: 5362903.36
     fornecedores_top:
     - nome: PHENIX SOLUCOES LTDA
       n: 1
@@ -38363,8 +38363,8 @@ orgaos:
       id: 27136980000100-2-000048/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-brasilia:
     nome: Instituto Federal de Educação, Ciência e Tecnologia de Brasília
-    contratos: 130
-    valor: 5307104.84
+    contratos: 132
+    valor: 5307292.99
     fornecedores_top:
     - nome: TELEQUIP TELECOMUNICACOES E EQUIPAMENTOS LTDA
       n: 1
@@ -39002,8 +39002,8 @@ orgaos:
       id: 04071106000137-2-000122/2026
   br-fundacao-universidade-federal-de-rondonia:
     nome: Fundação Universidade Federal de Rondônia
-    contratos: 51
-    valor: 4853071.01
+    contratos: 52
+    valor: 4854421.01
     fornecedores_top:
     - nome: T R DE S SANTOS
       n: 1
@@ -41493,8 +41493,8 @@ orgaos:
       id: 05962421000117-2-000176/2026
   br-universidade-federal-da-fronteira-sul:
     nome: Universidade Federal da Fronteira Sul
-    contratos: 188
-    valor: 3914352.53
+    contratos: 190
+    valor: 3916996.03
     fornecedores_top:
     - nome: FUNDACAO DE AMPARO A PESQUISA E EXTENSAO UNIVERSITARIA
       n: 1
@@ -43023,8 +43023,8 @@ orgaos:
       id: 05465986000199-2-000023/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-do-tocantins:
     nome: Instituto Federal de Educação, Ciência e Tecnologia do Tocantins
-    contratos: 112
-    valor: 2768288.46
+    contratos: 115
+    valor: 2786598.14
     fornecedores_top:
     - nome: TARUMA - ENGENHARIA E CONSTRUCAO LTDA
       n: 1
@@ -44436,6 +44436,333 @@ orgaos:
       assinado: '2026-09-09'
       vigencia_fim: '2028-09-09'
       id: 10952708000104-2-000392/2026
+  br-universidade-federal-de-alfenas:
+    nome: Universidade Federal de Alfenas
+    contratos: 847
+    valor: 2326386.86
+    fornecedores_top:
+    - nome: FASTLABOR COMERCIAL LTDA
+      n: 5
+      valor: 21323.64
+    - nome: DANILO APARECIDO BORELLA
+      n: 1
+      valor: 16750.0
+    - nome: APICE CIENTIFICA LTDA
+      n: 4
+      valor: 13307.29
+    - nome: SOLABOR PRODUTOS PARA LABORATORIOS LTDA
+      n: 4
+      valor: 13110.4
+    - nome: 67.693.324 MARCIO JOSE CERQUEIRA DE OLIVEIRA
+      n: 1
+      valor: 11608.0
+    - nome: ALFALAGOS LTDA.
+      n: 3
+      valor: 5374.49
+    - nome: 62.723.651 DIEGO GOMES DO NASCIMENTO
+      n: 1
+      valor: 5000.0
+    - nome: COMERCIAL SOL RADIANTE LTDA
+      n: 1
+      valor: 4760.0
+    recentes:
+    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR - ICM\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: ALFALAGOS LTDA.
+      cnpj_fornecedor: 05194502000114
+      valor: 100.0
+      assinado: '2026-11-13'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001153/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL ELÉTRICO E ELETRÔNICO - BIOTERIO\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE:\
+        \ CIF"
+      fornecedor: ALEXANDRE FREIRE LTDA
+      cnpj_fornecedor: '39334587000100'
+      valor: 88.17
+      assinado: '2026-11-13'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001154/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL DE LIMPEZA E PROD. DE HIGIENIZAÇÃO - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\
+        \ - FRETE: CIF"
+      fornecedor: CONFIANCE COMERCIO VAREJISTA LTDA
+      cnpj_fornecedor: '20531237000106'
+      valor: 6.0
+      assinado: '2026-11-13'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001155/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: CALIBRY METROLOGIA COMERCIO E CALIBRACAO LTDA
+      cnpj_fornecedor: '11227424000100'
+      valor: 779.03
+      assinado: '2026-11-13'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001156/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: DIAG SOLUTION ARTIGOS MEDICOS LTDA
+      cnpj_fornecedor: '12021151000105'
+      valor: 166.0
+      assinado: '2026-11-13'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001157/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL DE CAMA, MESA E BANHO E  MATERIAL DE LIMPEZA E PROD. DE HIGIENIZAÇÃO - BIOTERIO\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A\
+        \ CONTAR DO RECEB"
+      fornecedor: COMPOSE TECIDOS LTDA
+      cnpj_fornecedor: 00008089000132
+      valor: 277.8
+      assinado: '2026-11-13'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001158/2026
+    - objeto: "AQUISIÇÃO DE GASES ENGARRAFADOS - DEPARTAMENTO DE INFRAESTRUTURA - DI\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE\
+        \ EMPENHO\r\nFRETE"
+      fornecedor: DANILO APARECIDO BORELLA
+      cnpj_fornecedor: 03368371000119
+      valor: 16750.0
+      assinado: '2026-11-13'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001159/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL ELÉTRICO E ELETRÔNICO - BIOTERIO\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE:\
+        \ CIF"
+      fornecedor: RCCS LICITACOES
+      cnpj_fornecedor: '36336388000143'
+      valor: 103.36
+      assinado: '2026-11-13'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001160/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL QUÍMICO - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO - FRETE: CIF"
+      fornecedor: APICE CIENTIFICA LTDA
+      cnpj_fornecedor: 05990063000156
+      valor: 491.6
+      assinado: '2026-11-13'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001161/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL P/ AUDIO, VIDEO E FOTO - MMP\r\nPRAZO DE ENTREGA: ATÉ 10 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE:\
+        \ CIF"
+      fornecedor: 67.693.324 MARCIO JOSE CERQUEIRA DE OLIVEIRA
+      cnpj_fornecedor: '67693324000123'
+      valor: 11608.0
+      assinado: '2026-11-13'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001162/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: FASTLABOR COMERCIAL LTDA
+      cnpj_fornecedor: '21707794000106'
+      valor: 2356.7
+      assinado: '2026-11-13'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001163/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL DE ACONDICIONAMENTO E EMBALAGEM E MATERIAL DE COPA E COZINHA - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO\
+        \ DA NOT"
+      fornecedor: TY BORTHOLIN COMERCIAL LTDA
+      cnpj_fornecedor: 05291541000130
+      valor: 46.24
+      assinado: '2026-11-13'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001164/2026
+    - objeto: "AQUISIÇÃO DE EQUIPAMENTO PARA AUDIO, VIDEO E FOTO - MMP\r\nPRAZO DE ENTREGA: ATÉ 10 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE:\
+        \ CIF"
+      fornecedor: 62.723.651 DIEGO GOMES DO NASCIMENTO
+      cnpj_fornecedor: '62723651000167'
+      valor: 5000.0
+      assinado: '2026-11-13'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001165/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL DE EXPEDIENTE - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: R & R NEGOCIOS E SOLUCOES EMPRESARIAS LTDA
+      cnpj_fornecedor: '52094857000111'
+      valor: 67.3
+      assinado: '2026-11-13'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001166/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL ELÉTRICO E ELETRÔNICO - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: MAX QUALITY COMERCIO LTDA
+      cnpj_fornecedor: '42810782000174'
+      valor: 74.15
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001133/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: CALIBRY METROLOGIA COMERCIO E CALIBRACAO LTDA
+      cnpj_fornecedor: '11227424000100'
+      valor: 137.05
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001134/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL DE EMBALAGEM E MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\
+        \nFRETE: CIF"
+      fornecedor: FASTLABOR COMERCIAL LTDA
+      cnpj_fornecedor: '21707794000106'
+      valor: 5430.68
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001135/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL DE ACONDICIONAMENTO E EMBALAGEM - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\
+        \nFRETE: CIF"
+      fornecedor: FASTLABOR COMERCIAL LTDA
+      cnpj_fornecedor: '21707794000106'
+      valor: 594.0
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001136/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL DE EMBALAGEM E MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\
+        \nFRETE: CIF"
+      fornecedor: PER-LAB INDUSTRIA E COMERCIO DE VIDROS PARA LABS LTDA
+      cnpj_fornecedor: '58954694000186'
+      valor: 329.5
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001137/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: SAINT VALLEN BIOTECNOLOGIA LTDA
+      cnpj_fornecedor: '13213516000166'
+      valor: 1944.86
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001138/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL QUÍMICO E BIOLÓGICO - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: APICE CIENTIFICA LTDA
+      cnpj_fornecedor: 05990063000156
+      valor: 1509.03
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001139/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: QUALY COMERCIAL LTDA
+      cnpj_fornecedor: '11301724000191'
+      valor: 717.0
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001140/2026
+    - objeto: "IMPORTÂNCIA PARA OCORRER COM DESPESAS DE SERVICOS GRÁFICOS E CARIMBOS - PRACE\r\nPRAZO DE ENTREGA: ATÉ 20 DIAS A CONTAR DO RECEBIMENTO DA\
+        \ NOTA DE EMPENH"
+      fornecedor: DIGIFLEX SOLUCOES INTEGRADAS LTDA
+      cnpj_fornecedor: '31709675000138'
+      valor: 720.0
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001141/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: ENDOGERAIS EQUIPAMENTOS MEDICOS LTDA
+      cnpj_fornecedor: 08697852000191
+      valor: 247.19
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001142/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL DE LIMPEZA E PROD. DE HIGIENIZAÇÃO - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\
+        \ - FRETE: CIF"
+      fornecedor: CONFIANCE COMERCIO VAREJISTA LTDA
+      cnpj_fornecedor: '20531237000106'
+      valor: 13.52
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001143/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR E MATERIAL DE PROTEÇÃO E SEGURANÇA - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA\
+        \ DE EMPENHO\r\nF"
+      fornecedor: DIMEBRAS COMERCIAL HOSPITALAR LTDA
+      cnpj_fornecedor: '56081482000106'
+      valor: 383.8
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001144/2026
+    - objeto: "IMPORTÂNCIA PARA OCORRER COM DESPESAS DE SERVICOS GRÁFICOS E CARIMBOS - PRACE\r\nPRAZO DE ENTREGA: ATÉ 20 DIAS A CONTAR DO RECEBIMENTO DA\
+        \ NOTA DE EMPENH"
+      fornecedor: FACILITA SERVICOS GERAIS LTDA.
+      cnpj_fornecedor: 05191550000230
+      valor: 277.45
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001145/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR E MATERIAL DE PROTEÇÃO E SEGURANÇA - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA\
+        \ DE EMPENHO\r\nF"
+      fornecedor: ALFALAGOS LTDA.
+      cnpj_fornecedor: 05194502000114
+      valor: 606.55
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001146/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR - FMED\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: DELTA SHOP - DISTRIBUIDORA DE PRODUTOS HOSPITALARES LTDA
+      cnpj_fornecedor: '19316524000114'
+      valor: 1886.22
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001147/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL QUÍMICO E BIOLÓGICO - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: SOLABOR PRODUTOS PARA LABORATORIOS LTDA
+      cnpj_fornecedor: '45812327000104'
+      valor: 3390.96
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001148/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: SOLABOR PRODUTOS PARA LABORATORIOS LTDA
+      cnpj_fornecedor: '45812327000104'
+      valor: 512.01
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001149/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL DE EXPEDIENTE - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: R & R NEGOCIOS E SOLUCOES EMPRESARIAS LTDA
+      cnpj_fornecedor: '52094857000111'
+      valor: 10.0
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001150/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: MEDSET SOLUCOES PARA SAUDE LTDA
+      cnpj_fornecedor: '52165681000141'
+      valor: 1705.68
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001151/2026
+    - objeto: "IMPORTÂNCIA PARA OCORRER COM DESPESAS DE SERVICOS GRÁFICOS E CARIMBOS - PRACE\r\nPRAZO DE ENTREGA: ATÉ 20 DIAS A CONTAR DO RECEBIMENTO DA\
+        \ NOTA DE EMPENH"
+      fornecedor: 60.827.030 JERONIDES LOPES DA SILVA
+      cnpj_fornecedor: '60827030000106'
+      valor: 35.0
+      assinado: '2026-11-11'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001152/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL QUÍMICO - FCF\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO - FRETE: CIF"
+      fornecedor: VIDA FARMA LTDA
+      cnpj_fornecedor: '49117036000149'
+      valor: 1709.3
+      assinado: '2026-11-10'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001107/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - FCF\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: BIOCELL BIOTECNOLOGIA LTDA
+      cnpj_fornecedor: '33432257000171'
+      valor: 232.4
+      assinado: '2026-11-10'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001108/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - FCF\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: FASTLABOR COMERCIAL LTDA
+      cnpj_fornecedor: '21707794000106'
+      valor: 4650.85
+      assinado: '2026-11-10'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001109/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR - FCF\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: MOLDLAB COMERCIO E INDUSTRIA DE PRODUTOS PLASTICOS LTDA
+      cnpj_fornecedor: '38134478000187'
+      valor: 500.5
+      assinado: '2026-11-10'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001110/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - FCF\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: TDA MATERIAIS E INSUMOS PARA LABORATORIO LTDA
+      cnpj_fornecedor: '24492680000176'
+      valor: 2389.45
+      assinado: '2026-11-10'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001111/2026
+    - objeto: "AQUISIÇÃO DE MATERIAL QUÍMICO E BIOLÓGICO - FCF\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
+      fornecedor: DIAG SOLUTION ARTIGOS MEDICOS LTDA
+      cnpj_fornecedor: '12021151000105'
+      valor: 2695.26
+      assinado: '2026-11-10'
+      vigencia_fim: '2026-12-31'
+      id: 17879859000115-2-001112/2026
   br-fundacao-universidade-federal-de-sao-carlos:
     nome: Fundação Universidade Federal de São Carlos
     contratos: 46
@@ -44779,333 +45106,6 @@ orgaos:
       assinado: '2026-10-06'
       vigencia_fim: '2026-12-31'
       id: 45358058000140-2-000276/2026
-  br-universidade-federal-de-alfenas:
-    nome: Universidade Federal de Alfenas
-    contratos: 826
-    valor: 2270815.57
-    fornecedores_top:
-    - nome: FASTLABOR COMERCIAL LTDA
-      n: 5
-      valor: 21323.64
-    - nome: DANILO APARECIDO BORELLA
-      n: 1
-      valor: 16750.0
-    - nome: APICE CIENTIFICA LTDA
-      n: 4
-      valor: 13307.29
-    - nome: SOLABOR PRODUTOS PARA LABORATORIOS LTDA
-      n: 4
-      valor: 13110.4
-    - nome: 67.693.324 MARCIO JOSE CERQUEIRA DE OLIVEIRA
-      n: 1
-      valor: 11608.0
-    - nome: ALFALAGOS LTDA.
-      n: 3
-      valor: 5374.49
-    - nome: 62.723.651 DIEGO GOMES DO NASCIMENTO
-      n: 1
-      valor: 5000.0
-    - nome: COMERCIAL SOL RADIANTE LTDA
-      n: 1
-      valor: 4760.0
-    recentes:
-    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR - ICM\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: ALFALAGOS LTDA.
-      cnpj_fornecedor: 05194502000114
-      valor: 100.0
-      assinado: '2026-11-13'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001153/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL ELÉTRICO E ELETRÔNICO - BIOTERIO\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE:\
-        \ CIF"
-      fornecedor: ALEXANDRE FREIRE LTDA
-      cnpj_fornecedor: '39334587000100'
-      valor: 88.17
-      assinado: '2026-11-13'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001154/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL DE LIMPEZA E PROD. DE HIGIENIZAÇÃO - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\
-        \ - FRETE: CIF"
-      fornecedor: CONFIANCE COMERCIO VAREJISTA LTDA
-      cnpj_fornecedor: '20531237000106'
-      valor: 6.0
-      assinado: '2026-11-13'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001155/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: CALIBRY METROLOGIA COMERCIO E CALIBRACAO LTDA
-      cnpj_fornecedor: '11227424000100'
-      valor: 779.03
-      assinado: '2026-11-13'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001156/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: DIAG SOLUTION ARTIGOS MEDICOS LTDA
-      cnpj_fornecedor: '12021151000105'
-      valor: 166.0
-      assinado: '2026-11-13'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001157/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL DE CAMA, MESA E BANHO E  MATERIAL DE LIMPEZA E PROD. DE HIGIENIZAÇÃO - BIOTERIO\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A\
-        \ CONTAR DO RECEB"
-      fornecedor: COMPOSE TECIDOS LTDA
-      cnpj_fornecedor: 00008089000132
-      valor: 277.8
-      assinado: '2026-11-13'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001158/2026
-    - objeto: "AQUISIÇÃO DE GASES ENGARRAFADOS - DEPARTAMENTO DE INFRAESTRUTURA - DI\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE\
-        \ EMPENHO\r\nFRETE"
-      fornecedor: DANILO APARECIDO BORELLA
-      cnpj_fornecedor: 03368371000119
-      valor: 16750.0
-      assinado: '2026-11-13'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001159/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL ELÉTRICO E ELETRÔNICO - BIOTERIO\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE:\
-        \ CIF"
-      fornecedor: RCCS LICITACOES
-      cnpj_fornecedor: '36336388000143'
-      valor: 103.36
-      assinado: '2026-11-13'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001160/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL QUÍMICO - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO - FRETE: CIF"
-      fornecedor: APICE CIENTIFICA LTDA
-      cnpj_fornecedor: 05990063000156
-      valor: 491.6
-      assinado: '2026-11-13'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001161/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL P/ AUDIO, VIDEO E FOTO - MMP\r\nPRAZO DE ENTREGA: ATÉ 10 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE:\
-        \ CIF"
-      fornecedor: 67.693.324 MARCIO JOSE CERQUEIRA DE OLIVEIRA
-      cnpj_fornecedor: '67693324000123'
-      valor: 11608.0
-      assinado: '2026-11-13'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001162/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: FASTLABOR COMERCIAL LTDA
-      cnpj_fornecedor: '21707794000106'
-      valor: 2356.7
-      assinado: '2026-11-13'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001163/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL DE ACONDICIONAMENTO E EMBALAGEM E MATERIAL DE COPA E COZINHA - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO\
-        \ DA NOT"
-      fornecedor: TY BORTHOLIN COMERCIAL LTDA
-      cnpj_fornecedor: 05291541000130
-      valor: 46.24
-      assinado: '2026-11-13'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001164/2026
-    - objeto: "AQUISIÇÃO DE EQUIPAMENTO PARA AUDIO, VIDEO E FOTO - MMP\r\nPRAZO DE ENTREGA: ATÉ 10 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE:\
-        \ CIF"
-      fornecedor: 62.723.651 DIEGO GOMES DO NASCIMENTO
-      cnpj_fornecedor: '62723651000167'
-      valor: 5000.0
-      assinado: '2026-11-13'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001165/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL DE EXPEDIENTE - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: R & R NEGOCIOS E SOLUCOES EMPRESARIAS LTDA
-      cnpj_fornecedor: '52094857000111'
-      valor: 67.3
-      assinado: '2026-11-13'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001166/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL ELÉTRICO E ELETRÔNICO - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: MAX QUALITY COMERCIO LTDA
-      cnpj_fornecedor: '42810782000174'
-      valor: 74.15
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001133/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: CALIBRY METROLOGIA COMERCIO E CALIBRACAO LTDA
-      cnpj_fornecedor: '11227424000100'
-      valor: 137.05
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001134/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL DE EMBALAGEM E MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\
-        \nFRETE: CIF"
-      fornecedor: FASTLABOR COMERCIAL LTDA
-      cnpj_fornecedor: '21707794000106'
-      valor: 5430.68
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001135/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL DE ACONDICIONAMENTO E EMBALAGEM - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\
-        \nFRETE: CIF"
-      fornecedor: FASTLABOR COMERCIAL LTDA
-      cnpj_fornecedor: '21707794000106'
-      valor: 594.0
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001136/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL DE EMBALAGEM E MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\
-        \nFRETE: CIF"
-      fornecedor: PER-LAB INDUSTRIA E COMERCIO DE VIDROS PARA LABS LTDA
-      cnpj_fornecedor: '58954694000186'
-      valor: 329.5
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001137/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: SAINT VALLEN BIOTECNOLOGIA LTDA
-      cnpj_fornecedor: '13213516000166'
-      valor: 1944.86
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001138/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL QUÍMICO E BIOLÓGICO - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: APICE CIENTIFICA LTDA
-      cnpj_fornecedor: 05990063000156
-      valor: 1509.03
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001139/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: QUALY COMERCIAL LTDA
-      cnpj_fornecedor: '11301724000191'
-      valor: 717.0
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001140/2026
-    - objeto: "IMPORTÂNCIA PARA OCORRER COM DESPESAS DE SERVICOS GRÁFICOS E CARIMBOS - PRACE\r\nPRAZO DE ENTREGA: ATÉ 20 DIAS A CONTAR DO RECEBIMENTO DA\
-        \ NOTA DE EMPENH"
-      fornecedor: DIGIFLEX SOLUCOES INTEGRADAS LTDA
-      cnpj_fornecedor: '31709675000138'
-      valor: 720.0
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001141/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: ENDOGERAIS EQUIPAMENTOS MEDICOS LTDA
-      cnpj_fornecedor: 08697852000191
-      valor: 247.19
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001142/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL DE LIMPEZA E PROD. DE HIGIENIZAÇÃO - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\
-        \ - FRETE: CIF"
-      fornecedor: CONFIANCE COMERCIO VAREJISTA LTDA
-      cnpj_fornecedor: '20531237000106'
-      valor: 13.52
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001143/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR E MATERIAL DE PROTEÇÃO E SEGURANÇA - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA\
-        \ DE EMPENHO\r\nF"
-      fornecedor: DIMEBRAS COMERCIAL HOSPITALAR LTDA
-      cnpj_fornecedor: '56081482000106'
-      valor: 383.8
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001144/2026
-    - objeto: "IMPORTÂNCIA PARA OCORRER COM DESPESAS DE SERVICOS GRÁFICOS E CARIMBOS - PRACE\r\nPRAZO DE ENTREGA: ATÉ 20 DIAS A CONTAR DO RECEBIMENTO DA\
-        \ NOTA DE EMPENH"
-      fornecedor: FACILITA SERVICOS GERAIS LTDA.
-      cnpj_fornecedor: 05191550000230
-      valor: 277.45
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001145/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR E MATERIAL DE PROTEÇÃO E SEGURANÇA - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA\
-        \ DE EMPENHO\r\nF"
-      fornecedor: ALFALAGOS LTDA.
-      cnpj_fornecedor: 05194502000114
-      valor: 606.55
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001146/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR - FMED\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: DELTA SHOP - DISTRIBUIDORA DE PRODUTOS HOSPITALARES LTDA
-      cnpj_fornecedor: '19316524000114'
-      valor: 1886.22
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001147/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL QUÍMICO E BIOLÓGICO - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: SOLABOR PRODUTOS PARA LABORATORIOS LTDA
-      cnpj_fornecedor: '45812327000104'
-      valor: 3390.96
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001148/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: SOLABOR PRODUTOS PARA LABORATORIOS LTDA
-      cnpj_fornecedor: '45812327000104'
-      valor: 512.01
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001149/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL DE EXPEDIENTE - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: R & R NEGOCIOS E SOLUCOES EMPRESARIAS LTDA
-      cnpj_fornecedor: '52094857000111'
-      valor: 10.0
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001150/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR - ICB\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: MEDSET SOLUCOES PARA SAUDE LTDA
-      cnpj_fornecedor: '52165681000141'
-      valor: 1705.68
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001151/2026
-    - objeto: "IMPORTÂNCIA PARA OCORRER COM DESPESAS DE SERVICOS GRÁFICOS E CARIMBOS - PRACE\r\nPRAZO DE ENTREGA: ATÉ 20 DIAS A CONTAR DO RECEBIMENTO DA\
-        \ NOTA DE EMPENH"
-      fornecedor: 60.827.030 JERONIDES LOPES DA SILVA
-      cnpj_fornecedor: '60827030000106'
-      valor: 35.0
-      assinado: '2026-11-11'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001152/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL QUÍMICO - FCF\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO - FRETE: CIF"
-      fornecedor: VIDA FARMA LTDA
-      cnpj_fornecedor: '49117036000149'
-      valor: 1709.3
-      assinado: '2026-11-10'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001107/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - FCF\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: BIOCELL BIOTECNOLOGIA LTDA
-      cnpj_fornecedor: '33432257000171'
-      valor: 232.4
-      assinado: '2026-11-10'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001108/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - FCF\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: FASTLABOR COMERCIAL LTDA
-      cnpj_fornecedor: '21707794000106'
-      valor: 4650.85
-      assinado: '2026-11-10'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001109/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL HOSPITALAR - FCF\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: MOLDLAB COMERCIO E INDUSTRIA DE PRODUTOS PLASTICOS LTDA
-      cnpj_fornecedor: '38134478000187'
-      valor: 500.5
-      assinado: '2026-11-10'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001110/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL LABORATORIAL - FCF\r\nPRAZO DE ENTREGA: ATÉ 30 ÚTEIS DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: TDA MATERIAIS E INSUMOS PARA LABORATORIO LTDA
-      cnpj_fornecedor: '24492680000176'
-      valor: 2389.45
-      assinado: '2026-11-10'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001111/2026
-    - objeto: "AQUISIÇÃO DE MATERIAL QUÍMICO E BIOLÓGICO - FCF\r\nPRAZO DE ENTREGA: ATÉ 30 DIAS A CONTAR DO RECEBIMENTO DA NOTA DE EMPENHO\r\nFRETE: CIF"
-      fornecedor: DIAG SOLUTION ARTIGOS MEDICOS LTDA
-      cnpj_fornecedor: '12021151000105'
-      valor: 2695.26
-      assinado: '2026-11-10'
-      vigencia_fim: '2026-12-31'
-      id: 17879859000115-2-001112/2026
   br-instituto-federal-de-educacao-ciencia-e-tecnologia-de-sergipe:
     nome: Instituto Federal de Educação, Ciência e Tecnologia de Sergipe
     contratos: 22
@@ -46338,9 +46338,6 @@ orgaos:
     - nome: QUIMTIA S.A
       n: 1
       valor: 61600.0
-    - nome: GUIDONI DISTRIBUIDORA LTDA
-      n: 1
-      valor: 58990.0
     - nome: VERSSERV VENDASONLINE LTDA
       n: 1
       valor: 34798.0
@@ -46350,6 +46347,9 @@ orgaos:
     - nome: LUCK ATACADO DE PRODUTOS E SERVICOS LTDA
       n: 1
       valor: 24583.68
+    - nome: PATRICIA MIRANDA COMERCIO E ASSESSORIA LTDA
+      n: 1
+      valor: 22249.9
     recentes:
     - objeto: AQUISIÇÃO DE BENS COMUNS DE GRADIL PARA CERCAMENTO, NAS CONDIÇÕES ESTABELECIDAS NO TERMO DE REFERÊNCIA
       fornecedor: TELAS LITORAL NORTE COMERCIO E SERVICOS LTDA
@@ -53783,48 +53783,24 @@ cnpj_no:
   '95591764000105': br-universidade-federal-de-santa-maria
 nao_casados:
 - orgao: UNIVERSIDADE FEDERAL DE SAO JOAO DEL-REI
-  n: 22
-- orgao: CONSELHO REGIONAL DE ENGENHARIA E AGRONOMIA DE GOIAS
-  n: 7
-- orgao: CONSELHO FEDERAL DOS REPRESENTANTES COMERCIAIS
-  n: 6
-- orgao: CONSELHO REGIONAL DE MEDICINA VETERINARIA DO ESTADO PR
-  n: 4
+  n: 12
 - orgao: UNIVERSIDADE FEDERAL DE PELOTAS
-  n: 4
-- orgao: INSTITUTO FEDERAL DE EDUCACAO, CIENCIA E TECNOLOGIA DE ALAGO
   n: 4
 - orgao: CONSELHO REGIONAL DE MEDICINA DO PARANA
   n: 3
-- orgao: CONSELHO REGIONAL DE ENGENHARIA E AGRONOMIA DO PARANA
+- orgao: CONSELHO REGIONAL DE MEDICINA VETERINARIA DO ESTADO PR
   n: 3
-- orgao: CONSELHO REGIONAL DE FISIOTERAPIA E TERAPIA OCUPACIONAL DA 4
+- orgao: INSTITUTO FEDERAL DE EDUCACAO, CIENCIA E TECNOLOGIA DE ALAGO
   n: 3
-- orgao: CONSELHO REGIONAL DOS CORRETORES DE IMOVEIS 4 REGIAO
-  n: 3
-- orgao: CONSELHO FEDERAL DE MEDICINA
-  n: 3
-- orgao: CONSELHO FEDERAL DE FISIOTERAPIA E TERAPIA OCUPACIONAL
-  n: 3
-- orgao: CONSELHO REGIONAL DE PSICOLOGIA DA 6 REGIAO - CRP-06
-  n: 3
-- orgao: CONSELHO REGIONAL DE MEDICINA VETERINARIA DO ESTADO DO CEARA
-  n: 3
-- orgao: CONSELHO REGIONAL DE FISIOTERAPIA E TERAPIA OCUPACIONAL DA 1
-  n: 3
-- orgao: CONSELHO REGIONAL DE FARMACIA
-  n: 3
-- orgao: TRIBUNAL REGIONAL ELEITORAL DO PARANA
-  n: 2
 - orgao: CONSELHO FEDERAL DE MEDICINA VETERINARIA
   n: 2
 - orgao: CONSELHO DE ARQUITETURA E URBANISMO DO RIO GRANDE DO SUL
   n: 2
 - orgao: CONSELHO REGIONAL DE ODONTOLOGIA DE SAO PAULO
   n: 2
-- orgao: TRIBUNAL REGIONAL ELEITORAL DO RIO DE JANEIRO
+- orgao: CONSELHO REGIONAL DOS CORRETORES DE IMOVEIS 4 REGIAO
   n: 2
-- orgao: CONSELHO REGIONAL DE CONTABILIDADE DO ESTADO DO RIO JAN
+- orgao: TRIBUNAL REGIONAL ELEITORAL DO RIO DE JANEIRO
   n: 2
 - orgao: MINISTERIO DO TRABALHO
   n: 2
@@ -53836,9 +53812,33 @@ nao_casados:
   n: 2
 - orgao: CONSELHO REGIONAL DE ODONTOLOGIA DE ALAGOAS
   n: 2
-- orgao: CONSELHO REGIONAL DE NUTRICIONISTAS DA OITAVA REGIAO
-  n: 2
-- orgao: JUSTICA FEDERAL DE PRIMEIRO GRAU NO RIO DE JANEIRO
-  n: 2
-- orgao: CONSELHO REGIONAL DE MEDICINA DO RIO GRANDE DO SUL
-  n: 2
+- orgao: TRIBUNAL REGIONAL ELEITORAL DO PARANA
+  n: 1
+- orgao: CONSELHO REGIONAL DE CONTABILIDADE DO PARANA
+  n: 1
+- orgao: TRIBUNAL REGIONAL ELEITORAL DO PIAUI
+  n: 1
+- orgao: CONSELHO REGIONAL DE ENGENHARIA E AGRONOMIA DO PARANA
+  n: 1
+- orgao: CONSELHO REGIONAL DE FARMACIA DO ESTADO DE MINAS GERAIS
+  n: 1
+- orgao: CONSELHO REGIONAL DOS TECNICOS INDUSTRIAIS DA SEGUNDA REGIAO
+  n: 1
+- orgao: CONSELHO REGIONAL DE FISIOTERAPIA E TERAPIA OCUPACIONAL DA 4
+  n: 1
+- orgao: CONSELHO REGIONAL DOS TECNICOS INDUSTRIAIS DA 7 REGIAO
+  n: 1
+- orgao: CONSELHO REGIONAL DE MEDICINA DO ESTADO DO RN
+  n: 1
+- orgao: CONSELHO REGIONAL DOS REPRESENTANTES COMERCIAIS NO ESTADO DE
+  n: 1
+- orgao: CONSELHO REGIONAL DE ENGENHARIA E AGRONOMIA DE SANTA CATARIN
+  n: 1
+- orgao: CONSELHO REGIONAL DE ENGENHARIA E AGRONOMIA DO ESTADO DO AMA
+  n: 1
+- orgao: CONSELHO REGIONAL DE ENGENHARIA E AGRONOMIA DO ESTADO DO TOC
+  n: 1
+- orgao: TRIBUNAL REGIONAL ELEITORAL DO AMAZONAS
+  n: 1
+- orgao: CONSELHO REGIONAL DE CONTABILIDADE DO ESTADO DO RIO JAN
+  n: 1

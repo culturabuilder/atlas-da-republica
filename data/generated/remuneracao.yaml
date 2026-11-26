@@ -1,19 +1,19 @@
 # GERADO por etl/remuneracao.py. Não edite à mão.
-generated_at: '2026-11-25'
+generated_at: '2026-11-26'
 mes: '202609'
 mes_senado: '202610'
 fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
 fonte_senado: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
 resumo:
-  ocupantes_no_grafo: 1209
-  com_remuneracao: 494
+  ocupantes_no_grafo: 1210
+  com_remuneracao: 495
   por_setor:
     executivo:
-      ocupantes: 476
-      antes: 392
-      depois: 409
+      ocupantes: 477
+      antes: 393
+      depois: 410
       pct_antes: 82.4
-      pct_depois: 85.9
+      pct_depois: 86.0
     essenciais:
       ocupantes: 30
       antes: 4
@@ -33,7 +33,7 @@ resumo:
       pct_antes: 0.0
       pct_depois: 0.0
   por_criterio:
-    nome_completo+orgao: 374
+    nome_completo+orgao: 375
     nome_completo: 96
     primeiro_ultimo+orgao: 16
     subsequencia_no_orgao: 5
@@ -41,7 +41,7 @@ resumo:
     nome_sem_sufixo: 1
     subsequencia_subsidio: 1
   por_confianca:
-    alta: 471
+    alta: 472
     media: 23
   sem_remuneracao:
     total: 93
@@ -13318,6 +13318,38 @@ people:
     eventuais: 0.0
     cargo: Sem informaç
     funcao: CARGO DE DIRECAO - CD - IFES
+  br-p-everton-ricardi-lozano-da-silva:
+    mes: '202609'
+    bruto: 39465.22
+    abate_teto: 0.0
+    bruto_apos_abate: 39465.22
+    liquido: 27817.47
+    componentes:
+      basica: 37265.22
+      gratificacoes: 0.0
+      funcao: null
+      eventuais: 2200.0
+      indenizatorias: 1351.27
+    orgao: Universidade Tecnológica Federal do Paraná
+    orgao_superior: Ministério da Educação
+    cargo_na_folha: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao_na_folha: Sem informação
+    vinculo: Cargo
+    criterio: nome_completo+orgao
+    confianca: alta
+    nome_na_folha: EVERTON RICARDI LOZANO DA SILVA
+    fonte: Portal da Transparência, remuneração de servidores civis (SIAPE)
+    fonte_url: https://portaldatransparencia.gov.br/servidores/3074344
+    position: br-universidade-tecnologica-federal-do-parana-reitor
+    position_name: Reitor da Universidade Tecnológica Federal do Paraná
+    bruta: 37265.22
+    liquida: 27817.47
+    indenizatorias: 1351.27
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 2200.0
+    cargo: PROFESSOR DO MAGISTERIO SUPERIOR
+    funcao: Sem informação
   br-p-sf-3830:
     mes: '202610'
     bruto: 46366.19
@@ -14712,6 +14744,40 @@ people:
     funcao: ''
     position: br-senador
     position_name: Senador da República
+  br-p-sf-6369:
+    mes: '202610'
+    bruto: 46366.19
+    abate_teto: 0.0
+    bruto_apos_abate: 46366.19
+    liquido: 33807.86
+    componentes:
+      basica: 46366.19
+      gratificacoes: 0.0
+      funcao: 0.0
+      eventuais: 0.0
+      indenizatorias: 0.0
+      vantagens_pessoais: 0.0
+      abono_permanencia: 0.0
+    bruta: 46366.19
+    liquida: 33807.86
+    indenizatorias: 0.0
+    gratificacao_natalina: 0.0
+    ferias: 0.0
+    eventuais: 0.0
+    orgao: Senado Federal
+    orgao_superior: Senado Federal
+    cargo_na_folha: Senador da República
+    funcao_na_folha: null
+    vinculo: Parlamentar
+    criterio: nome_completo
+    confianca: alta
+    nome_na_folha: Antonia Jussara Gomes Alves De Sousa Lima
+    fonte: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
+    fonte_url: https://adm.senado.gov.br/adm-dadosabertos/api/v1/servidores/remuneracoes/2026/10/csv
+    cargo: Senador da República
+    funcao: ''
+    position: br-senador
+    position_name: Senador da República
   br-p-sf-4811:
     mes: '202610'
     bruto: 46366.19
@@ -15862,40 +15928,6 @@ people:
     criterio: nome_completo
     confianca: alta
     nome_na_folha: Veneziano Vital Do Rêgo Segundo Neto
-    fonte: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
-    fonte_url: https://adm.senado.gov.br/adm-dadosabertos/api/v1/servidores/remuneracoes/2026/10/csv
-    cargo: Senador da República
-    funcao: ''
-    position: br-senador
-    position_name: Senador da República
-  br-p-sf-5016:
-    mes: '202610'
-    bruto: 46366.19
-    abate_teto: 0.0
-    bruto_apos_abate: 46366.19
-    liquido: 29048.49
-    componentes:
-      basica: 46366.19
-      gratificacoes: 0.0
-      funcao: 0.0
-      eventuais: 0.0
-      indenizatorias: 0.0
-      vantagens_pessoais: 0.0
-      abono_permanencia: 0.0
-    bruta: 46366.19
-    liquida: 29048.49
-    indenizatorias: 0.0
-    gratificacao_natalina: 0.0
-    ferias: 0.0
-    eventuais: 0.0
-    orgao: Senado Federal
-    orgao_superior: Senado Federal
-    cargo_na_folha: Senador da República
-    funcao_na_folha: null
-    vinculo: Parlamentar
-    criterio: nome_completo
-    confianca: alta
-    nome_na_folha: José Wellington Barroso De Araujo Dias
     fonte: Senado Federal, folha de pagamento mensal (API administrativa de dados abertos)
     fonte_url: https://adm.senado.gov.br/adm-dadosabertos/api/v1/servidores/remuneracoes/2026/10/csv
     cargo: Senador da República

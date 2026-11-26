@@ -1,8 +1,8 @@
 # GERADO por etl/agenda_planalto.py. Não edite à mão.
-generated_at: '2026-11-25'
+generated_at: '2026-11-26'
 fonte: gov.br/planalto — páginas diárias da agenda oficial (uma por dia, sem participantes)
 janela_dias: 90
-janela_inicio: '2026-08-28'
+janela_inicio: '2026-08-29'
 people:
   br-p-luiz-inacio-lula-da-silva:
     agente: Luiz Inácio Lula da Silva
@@ -114,9 +114,8 @@ people:
       participantes:
       - nome: Miriam Belchior
         entidade: Ministra da Casa Civil
-    dias_nao_lidos: 3
+    dias_nao_lidos: 4
     dias:
-      presidente/2026-08-28: []
       presidente/2026-08-29: []
       presidente/2026-08-30: []
       presidente/2026-08-31:
@@ -758,12 +757,12 @@ people:
     fonte: planalto
     fonte_nome: Agenda oficial da Vice-Presidência
     url: https://www.gov.br/planalto/pt-br/vice-presidencia/agenda-vice-presidente-geraldo-alckmin
-    compromissos_90d: 35
-    dias_com_agenda: 24
+    compromissos_90d: 33
+    dias_com_agenda: 23
     por_tipo:
-      evento: 15
+      evento: 14
       audiencia: 7
-      viagem: 6
+      viagem: 5
       reuniao: 5
       outro: 2
     entidades_top:
@@ -776,11 +775,11 @@ people:
     locais_top:
     - nome: Palácio do Planalto
       n: 11
-    - nome: Brasília/DF
-      n: 7
     - nome: Palácio do Planalto, Anexo II
       n: 7
     - nome: São Paulo/SP
+      n: 5
+    - nome: Brasília/DF
       n: 5
     - nome: São José do Rio Preto/SP
       n: 1
@@ -843,17 +842,8 @@ people:
       tipo: audiencia
       local: Palácio do Planalto, Anexo II
       participantes: []
-    dias_nao_lidos: 6
+    dias_nao_lidos: 8
     dias:
-      vice/2026-08-28:
-      - hora: '10:00'
-        titulo: Solenidade de Formatura de Encerramento dos Cursos de Formação Profissional dos Cargos Policiais das Carreiras
-          da Polícia Federal
-        local: Brasília/DF
-      - hora: '12:30'
-        titulo: Embarque de Brasília/DF para São Paulo/SP
-        local: Brasília/DF
-      vice/2026-08-28-b1: []
       vice/2026-08-29: []
       vice/2026-08-29-b1: []
       vice/2026-08-30: []
@@ -1128,5 +1118,5 @@ people:
       vice/2026-11-22: []
       vice/2026-11-22-b1: []
 log:
-- 'br-p-luiz-inacio-lula-da-silva: 176 compromissos em 48 dias (3 dias não lidos)'
-- 'br-p-geraldo-alckmin: 35 compromissos em 24 dias (6 dias não lidos)'
+- 'br-p-luiz-inacio-lula-da-silva: 176 compromissos em 48 dias (4 dias não lidos)'
+- 'br-p-geraldo-alckmin: 33 compromissos em 23 dias (8 dias não lidos)'
